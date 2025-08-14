@@ -49,9 +49,9 @@ const Contact = () => {
     <Layout>
       <div className="bg-gray-50 py-16">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h1 className="text-3xl font-bold text-gray-900">Contact Us</h1>
-            <p className="text-gray-600 mt-2">Get in touch with us for any inquiries or information</p>
+          <div className="text-center mb-16">
+            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Contact Us</h1>
+            <p className="text-gray-600 text-lg max-w-2xl mx-auto">Get in touch with us for any inquiries or information</p>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">

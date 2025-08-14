@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import WelcomeSection from "./WelcomeSection";
 import CollegeStats from "./CollegeStats";
 import LatestNews from "./LatestNews";
-import TestimonialsCarousel from "./TestimonialsCarousel";
+
 import ResearchHighlights from "./ResearchHighlights";
 
 interface NewsItem {
@@ -26,7 +26,7 @@ const MainContent = ({ latestNews }: MainContentProps) => {
       <ResearchHighlights />
       <CollegeStats />
       <LatestNews news={latestNews} />
-      <TestimonialsCarousel />
+      
       
       <div className="mt-12 text-center flex flex-col gap-4 sm:flex-row sm:justify-center">
         <Button variant="outline" className="hover:bg-college-blue hover:text-white" asChild>
