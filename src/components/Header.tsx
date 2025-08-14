@@ -51,63 +51,75 @@ const Header = () => {
             <Link to="/about" className={`nav-link ${isActive("/about") ? "active" : ""} ${scrolled ? "text-college-dark hover:text-college-blue" : "text-white hover:text-college-gold"}`}>
               About
             </Link>
-            <div className="relative" onMouseEnter={() => setDepartmentDropdown(true)} onMouseLeave={() => setDepartmentDropdown(false)}>
-              <Link to="/departments" className={`nav-link flex items-center ${isActive("/departments") ? "active" : ""} ${scrolled ? "text-college-dark hover:text-college-blue" : "text-white hover:text-college-gold"}`}>
+            <div className="relative">
+              <button 
+                onClick={() => setDepartmentDropdown(!departmentDropdown)}
+                className={`nav-link flex items-center ${isActive("/departments") ? "active" : ""} ${scrolled ? "text-college-dark hover:text-college-blue" : "text-white hover:text-college-gold"}`}
+              >
                 Departments <ChevronDown className="ml-1 h-4 w-4" />
-              </Link>
-              {departmentDropdown && <div className="absolute left-0 mt-1 w-64 bg-white rounded-md shadow-lg py-1 z-10 animate-fade-in">
-                  <Link to="/departments" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" onClick={() => setDepartmentDropdown(false)}>
-                    All Departments
-                  </Link>
-                  <div className="border-t border-gray-100 my-1"></div>
-                  <div className="px-4 py-1 text-xs font-semibold text-gray-500 uppercase">Languages</div>
-                  <Link to="/departments/telugu" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" onClick={() => setDepartmentDropdown(false)}>
-                    Telugu
-                  </Link>
-                  <Link to="/departments/hindi" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" onClick={() => setDepartmentDropdown(false)}>
-                    Hindi
-                  </Link>
-                  <Link to="/departments/english" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" onClick={() => setDepartmentDropdown(false)}>
-                    English
-                  </Link>
-                  <div className="border-t border-gray-100 my-1"></div>
-                  <div className="px-4 py-1 text-xs font-semibold text-gray-500 uppercase">Science</div>
-                  <Link to="/departments/physics" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" onClick={() => setDepartmentDropdown(false)}>
-                    Physics
-                  </Link>
-                  <Link to="/departments/chemistry" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" onClick={() => setDepartmentDropdown(false)}>
-                    Chemistry
-                  </Link>
-                  <Link to="/departments/computerscience" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" onClick={() => setDepartmentDropdown(false)}>
-                    Computer Science
-                  </Link>
-                  <Link to="/departments/mathematics" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" onClick={() => setDepartmentDropdown(false)}>
-                    Mathematics
-                  </Link>
-                  <Link to="/departments/botany" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" onClick={() => setDepartmentDropdown(false)}>
-                    Botany
-                  </Link>
-                  <Link to="/departments/zoology" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" onClick={() => setDepartmentDropdown(false)}>
-                    Zoology
-                  </Link>
-                  <Link to="/departments/aquaculture" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" onClick={() => setDepartmentDropdown(false)}>
-                    Aquaculture Technology
-                  </Link>
-                  <div className="border-t border-gray-100 my-1"></div>
-                  <div className="px-4 py-1 text-xs font-semibold text-gray-500 uppercase">Humanities</div>
-                  <Link to="/departments/commerce" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" onClick={() => setDepartmentDropdown(false)}>
-                    Commerce
-                  </Link>
-                  <Link to="/departments/economics" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" onClick={() => setDepartmentDropdown(false)}>
-                    Economics
-                  </Link>
-                  <Link to="/departments/politicalscience" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" onClick={() => setDepartmentDropdown(false)}>
-                    Political Science
-                  </Link>
-                  <Link to="/departments/history" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" onClick={() => setDepartmentDropdown(false)}>
-                    History
-                  </Link>
-                </div>}
+              </button>
+              {departmentDropdown && (
+                <>
+                  {/* Backdrop to close dropdown when clicking outside */}
+                  <div 
+                    className="fixed inset-0 z-10" 
+                    onClick={() => setDepartmentDropdown(false)}
+                  ></div>
+                  <div className="absolute left-0 mt-1 w-64 bg-white rounded-md shadow-lg py-1 z-20 animate-fade-in border">
+                    <Link to="/departments" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" onClick={() => setDepartmentDropdown(false)}>
+                      All Departments
+                    </Link>
+                    <div className="border-t border-gray-100 my-1"></div>
+                    <div className="px-4 py-1 text-xs font-semibold text-gray-500 uppercase">Languages</div>
+                    <Link to="/departments/telugu" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" onClick={() => setDepartmentDropdown(false)}>
+                      Telugu
+                    </Link>
+                    <Link to="/departments/hindi" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" onClick={() => setDepartmentDropdown(false)}>
+                      Hindi
+                    </Link>
+                    <Link to="/departments/english" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" onClick={() => setDepartmentDropdown(false)}>
+                      English
+                    </Link>
+                    <div className="border-t border-gray-100 my-1"></div>
+                    <div className="px-4 py-1 text-xs font-semibold text-gray-500 uppercase">Science</div>
+                    <Link to="/departments/physics" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" onClick={() => setDepartmentDropdown(false)}>
+                      Physics
+                    </Link>
+                    <Link to="/departments/chemistry" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" onClick={() => setDepartmentDropdown(false)}>
+                      Chemistry
+                    </Link>
+                    <Link to="/departments/computerscience" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" onClick={() => setDepartmentDropdown(false)}>
+                      Computer Science
+                    </Link>
+                    <Link to="/departments/mathematics" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" onClick={() => setDepartmentDropdown(false)}>
+                      Mathematics
+                    </Link>
+                    <Link to="/departments/botany" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" onClick={() => setDepartmentDropdown(false)}>
+                      Botany
+                    </Link>
+                    <Link to="/departments/zoology" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" onClick={() => setDepartmentDropdown(false)}>
+                      Zoology
+                    </Link>
+                    <Link to="/departments/aquaculture" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" onClick={() => setDepartmentDropdown(false)}>
+                      Aquaculture Technology
+                    </Link>
+                    <div className="border-t border-gray-100 my-1"></div>
+                    <div className="px-4 py-1 text-xs font-semibold text-gray-500 uppercase">Humanities</div>
+                    <Link to="/departments/commerce" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" onClick={() => setDepartmentDropdown(false)}>
+                      Commerce
+                    </Link>
+                    <Link to="/departments/economics" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" onClick={() => setDepartmentDropdown(false)}>
+                      Economics
+                    </Link>
+                    <Link to="/departments/politicalscience" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" onClick={() => setDepartmentDropdown(false)}>
+                      Political Science
+                    </Link>
+                    <Link to="/departments/history" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" onClick={() => setDepartmentDropdown(false)}>
+                      History
+                    </Link>
+                  </div>
+                </>
+              )}
             </div>
             
             <Link to="/news" className={`nav-link ${isActive("/news") ? "active" : ""} ${scrolled ? "text-college-dark hover:text-college-blue" : "text-white hover:text-college-gold"}`}>
