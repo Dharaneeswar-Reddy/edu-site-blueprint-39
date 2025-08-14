@@ -113,6 +113,9 @@ const Header = () => {
             <Link to="/news" className={`nav-link ${isActive("/news") ? "active" : ""} ${scrolled ? "text-college-dark hover:text-college-blue" : "text-white hover:text-college-gold"}`}>
               News
             </Link>
+            <Link to="/staff" className={`nav-link ${isActive("/staff") ? "active" : ""} ${scrolled ? "text-college-dark hover:text-college-blue" : "text-white hover:text-college-gold"}`}>
+              Staff
+            </Link>
             <Link to="/gallery" className={`nav-link ${isActive("/gallery") ? "active" : ""} ${scrolled ? "text-college-dark hover:text-college-blue" : "text-white hover:text-college-gold"}`}>
               Gallery
             </Link>
@@ -198,6 +201,9 @@ const Header = () => {
               </Link>
               <Link to="/news" className={`px-4 py-2 ${isActive("/news") ? "bg-primary/10 text-primary font-medium" : "text-gray-700"}`} onClick={closeMobileMenu}>
                 News
+              </Link>
+              <Link to="/staff" className={`px-4 py-2 ${isActive("/staff") ? "bg-primary/10 text-primary font-medium" : "text-gray-700"}`} onClick={closeMobileMenu}>
+                Staff
               </Link>
               <Link to="/gallery" className={`px-4 py-2 ${isActive("/gallery") ? "bg-primary/10 text-primary font-medium" : "text-gray-700"}`} onClick={closeMobileMenu}>
                 Gallery
