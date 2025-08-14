@@ -214,40 +214,26 @@ const Staff = () => {
   };
 
   const StaffCard = ({ member }) => (
-    <Card className="overflow-hidden hover:shadow-lg transition-shadow h-full">
-      <div className="h-48 overflow-hidden">
+    <Card className="overflow-hidden hover:shadow-lg transition-shadow h-full bg-white">
+      <div className="h-64 overflow-hidden bg-gray-100">
         <img 
           src={member.image}
           alt={member.name}
           className="w-full h-full object-cover"
         />
       </div>
-      <CardHeader>
-        <CardTitle className="text-lg">{member.name}</CardTitle>
-        <CardDescription>{member.designation}</CardDescription>
-        <Badge variant="outline" className="w-fit">{member.department}</Badge>
-      </CardHeader>
-      <CardContent className="space-y-3">
-        <div>
-          <p className="text-sm font-medium text-gray-700">Qualification:</p>
-          <p className="text-sm text-gray-600">{member.qualification}</p>
-        </div>
-        <div>
-          <p className="text-sm font-medium text-gray-700">Experience:</p>
-          <p className="text-sm text-gray-600">{member.experience}</p>
-        </div>
-        <div>
-          <p className="text-sm font-medium text-gray-700">Specialization:</p>
-          <p className="text-sm text-gray-600">{member.specialization}</p>
-        </div>
-        <div className="space-y-2 pt-2 border-t">
-          <div className="flex items-center space-x-2">
-            <Mail className="h-4 w-4 text-college-blue" />
-            <span className="text-xs text-gray-600">{member.email}</span>
+      <CardContent className="p-6 text-center">
+        <h3 className="text-lg font-bold text-college-blue mb-1">{member.name}</h3>
+        <p className="text-sm text-gray-600 mb-4">{member.designation}</p>
+        
+        <div className="space-y-2 text-sm">
+          <div className="flex items-center justify-center space-x-2 text-red-600">
+            <Mail className="h-4 w-4" />
+            <span>{member.email}</span>
           </div>
-          <div className="flex items-center space-x-2">
-            <Phone className="h-4 w-4 text-college-blue" />
-            <span className="text-xs text-gray-600">{member.phone}</span>
+          <div className="flex items-center justify-center space-x-2 text-red-600">
+            <Phone className="h-4 w-4" />
+            <span>{member.phone}</span>
           </div>
         </div>
       </CardContent>
@@ -257,37 +243,35 @@ const Staff = () => {
   return (
     <Layout>
       {/* Hero Section */}
-      <section className="relative pt-32 pb-20 bg-cover bg-center" 
+      <section className="relative pt-32 pb-16 bg-cover bg-center" 
         style={{ 
           backgroundImage: 'linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url("/lovable-uploads/ad1edf50-6e71-4375-91d2-7e8d76b3b7b5.png")' 
         }}>
-        <div className="container mx-auto px-4 text-white">
-          <div className="max-w-3xl">
-            <h1 className="text-4xl md:text-5xl font-bold mb-6">Our Faculty & Staff</h1>
-            <p className="text-xl">Meet our experienced and dedicated faculty members who are committed to providing quality education and shaping the future of our students.</p>
-          </div>
+        <div className="container mx-auto px-4 text-white text-center">
+          <h1 className="text-4xl md:text-5xl font-bold mb-4">Faculty & Staff</h1>
+          <p className="text-xl max-w-3xl mx-auto">Meet our distinguished faculty members and staff who are dedicated to excellence in education and research</p>
         </div>
       </section>
 
       {/* Faculty Stats */}
-      <section className="py-16 bg-white">
+      <section className="py-12 bg-white border-b">
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-16">
-            <div className="text-center p-6 bg-college-blue text-white rounded-lg">
-              <div className="text-3xl font-bold mb-2">150+</div>
-              <div className="text-sm">Total Faculty</div>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+            <div className="p-4">
+              <div className="text-3xl font-bold text-college-blue mb-2">150+</div>
+              <div className="text-sm text-gray-600 font-medium">Total Faculty</div>
             </div>
-            <div className="text-center p-6 bg-college-gold text-black rounded-lg">
-              <div className="text-3xl font-bold mb-2">80%</div>
-              <div className="text-sm">With Ph.D</div>
+            <div className="p-4">
+              <div className="text-3xl font-bold text-college-blue mb-2">80%</div>
+              <div className="text-sm text-gray-600 font-medium">With Ph.D</div>
             </div>
-            <div className="text-center p-6 bg-college-green text-white rounded-lg">
-              <div className="text-3xl font-bold mb-2">25+</div>
-              <div className="text-sm">Years Average Experience</div>
+            <div className="p-4">
+              <div className="text-3xl font-bold text-college-blue mb-2">25+</div>
+              <div className="text-sm text-gray-600 font-medium">Years Average Experience</div>
             </div>
-            <div className="text-center p-6 bg-purple-600 text-white rounded-lg">
-              <div className="text-3xl font-bold mb-2">500+</div>
-              <div className="text-sm">Research Publications</div>
+            <div className="p-4">
+              <div className="text-3xl font-bold text-college-blue mb-2">500+</div>
+              <div className="text-sm text-gray-600 font-medium">Research Publications</div>
             </div>
           </div>
         </div>
@@ -296,109 +280,101 @@ const Staff = () => {
       {/* Faculty Directory */}
       <section className="py-16 bg-gray-50">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-college-blue mb-4">Faculty Directory</h2>
-            <p className="text-gray-600 max-w-2xl mx-auto">
-              Our faculty members are highly qualified professionals with extensive academic and industry experience.
-            </p>
-          </div>
-
           <Tabs defaultValue="administration" className="w-full">
-            <div className="flex justify-center mb-8">
-              <TabsList className="grid grid-cols-4 w-full max-w-2xl">
-                <TabsTrigger value="administration" className="bg-college-blue text-white data-[state=active]:bg-college-gold data-[state=active]:text-black">Administration</TabsTrigger>
-                <TabsTrigger value="languages" className="bg-college-blue text-white data-[state=active]:bg-college-gold data-[state=active]:text-black">Languages</TabsTrigger>
-                <TabsTrigger value="science" className="bg-college-blue text-white data-[state=active]:bg-college-gold data-[state=active]:text-black">Science</TabsTrigger>
-                <TabsTrigger value="humanities" className="bg-college-blue text-white data-[state=active]:bg-college-gold data-[state=active]:text-black">Humanities</TabsTrigger>
+            {/* Tab Navigation */}
+            <div className="flex justify-center mb-12">
+              <TabsList className="grid grid-cols-4 w-full max-w-2xl bg-white border">
+                <TabsTrigger 
+                  value="administration" 
+                  className="data-[state=active]:bg-college-blue data-[state=active]:text-white font-medium"
+                >
+                  Administration
+                </TabsTrigger>
+                <TabsTrigger 
+                  value="languages" 
+                  className="data-[state=active]:bg-college-blue data-[state=active]:text-white font-medium"
+                >
+                  Languages
+                </TabsTrigger>
+                <TabsTrigger 
+                  value="science" 
+                  className="data-[state=active]:bg-college-blue data-[state=active]:text-white font-medium"
+                >
+                  Science
+                </TabsTrigger>
+                <TabsTrigger 
+                  value="humanities" 
+                  className="data-[state=active]:bg-college-blue data-[state=active]:text-white font-medium"
+                >
+                  Humanities
+                </TabsTrigger>
               </TabsList>
             </div>
 
-            <TabsContent value="administration" className="space-y-6">
-              <div className="text-center mb-6">
-                <h3 className="text-2xl font-bold text-college-blue">Administrative Team</h3>
-                <p className="text-muted-foreground">Leadership and administrative staff of the college</p>
+            {/* Administration Faculty */}
+            <TabsContent value="administration" className="space-y-8">
+              <div className="text-center mb-8">
+                <h2 className="text-3xl font-bold text-college-blue mb-2">Administration</h2>
+                <p className="text-gray-600">Leadership and administrative staff of the college</p>
+                <div className="text-sm text-gray-500 mt-2">
+                  <em>to email add</em> <strong>username@svrmc.edu.in</strong>
+                </div>
               </div>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
                 {staffData.administration.map((member, index) => (
                   <StaffCard key={index} member={member} />
                 ))}
               </div>
             </TabsContent>
 
-            <TabsContent value="languages" className="space-y-6">
-              <div className="text-center mb-6">
-                <h3 className="text-2xl font-bold text-college-blue">Languages Faculty</h3>
-                <p className="text-muted-foreground">Faculty members from language departments</p>
+            {/* Languages Faculty */}
+            <TabsContent value="languages" className="space-y-8">
+              <div className="text-center mb-8">
+                <h2 className="text-3xl font-bold text-college-blue mb-2">Languages Faculty</h2>
+                <p className="text-gray-600">Faculty members from language departments</p>
+                <div className="text-sm text-gray-500 mt-2">
+                  <em>to email add</em> <strong>username@svrmc.edu.in</strong>
+                </div>
               </div>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
                 {staffData.languages.map((member, index) => (
                   <StaffCard key={index} member={member} />
                 ))}
               </div>
             </TabsContent>
 
-            <TabsContent value="science" className="space-y-6">
-              <div className="text-center mb-6">
-                <h3 className="text-2xl font-bold text-college-blue">Science Faculty</h3>
-                <p className="text-muted-foreground">Faculty members from science departments</p>
+            {/* Science Faculty */}
+            <TabsContent value="science" className="space-y-8">
+              <div className="text-center mb-8">
+                <h2 className="text-3xl font-bold text-college-blue mb-2">Science Faculty</h2>
+                <p className="text-gray-600">Faculty members from science departments</p>
+                <div className="text-sm text-gray-500 mt-2">
+                  <em>to email add</em> <strong>username@svrmc.edu.in</strong>
+                </div>
               </div>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
                 {staffData.science.map((member, index) => (
                   <StaffCard key={index} member={member} />
                 ))}
               </div>
             </TabsContent>
 
-            <TabsContent value="humanities" className="space-y-6">
-              <div className="text-center mb-6">
-                <h3 className="text-2xl font-bold text-college-blue">Humanities Faculty</h3>
-                <p className="text-muted-foreground">Faculty members from humanities departments</p>
+            {/* Humanities Faculty */}
+            <TabsContent value="humanities" className="space-y-8">
+              <div className="text-center mb-8">
+                <h2 className="text-3xl font-bold text-college-blue mb-2">Humanities Faculty</h2>
+                <p className="text-gray-600">Faculty members from humanities departments</p>
+                <div className="text-sm text-gray-500 mt-2">
+                  <em>to email add</em> <strong>username@svrmc.edu.in</strong>
+                </div>
               </div>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
                 {staffData.humanities.map((member, index) => (
                   <StaffCard key={index} member={member} />
                 ))}
               </div>
             </TabsContent>
           </Tabs>
-        </div>
-      </section>
-
-      {/* Research & Achievements */}
-      <section className="py-16 bg-white">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-college-blue mb-4">Faculty Achievements</h2>
-            <p className="text-gray-600 max-w-2xl mx-auto">
-              Our faculty members have made significant contributions to research and academic excellence.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="text-center p-6 bg-gray-50 rounded-lg">
-              <Award className="h-12 w-12 text-college-gold mx-auto mb-4" />
-              <h3 className="text-xl font-bold text-college-blue mb-2">Awards & Recognition</h3>
-              <p className="text-gray-600">
-                Multiple faculty members have received prestigious awards for teaching excellence and research contributions.
-              </p>
-            </div>
-            
-            <div className="text-center p-6 bg-gray-50 rounded-lg">
-              <BookOpen className="h-12 w-12 text-college-gold mx-auto mb-4" />
-              <h3 className="text-xl font-bold text-college-blue mb-2">Publications</h3>
-              <p className="text-gray-600">
-                Over 500 research papers published in national and international journals by our faculty.
-              </p>
-            </div>
-            
-            <div className="text-center p-6 bg-gray-50 rounded-lg">
-              <Mail className="h-12 w-12 text-college-gold mx-auto mb-4" />
-              <h3 className="text-xl font-bold text-college-blue mb-2">Collaborations</h3>
-              <p className="text-gray-600">
-                Active collaborations with leading universities and research institutions worldwide.
-              </p>
-            </div>
-          </div>
         </div>
       </section>
 
