@@ -26,6 +26,8 @@ import AcademicCalendar from "./pages/AcademicCalendar";
 import Results from "./pages/Results";
 import ExamSchedule from "./pages/ExamSchedule";
 import Scholarships from "./pages/Scholarships";
+import ComputerScience from "./pages/ComputerScience";
+import Staff from "./pages/Staff";
 
 const queryClient = new QueryClient();
 
@@ -55,6 +57,8 @@ const App = () => (
           <Route path="/results" element={<Results />} />
           <Route path="/exam-schedule" element={<ExamSchedule />} />
           <Route path="/scholarships" element={<Scholarships />} />
+          <Route path="/departments/computerscience" element={<ComputerScience />} />
+          <Route path="/staff" element={<Staff />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

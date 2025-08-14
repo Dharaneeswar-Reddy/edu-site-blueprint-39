@@ -121,14 +121,7 @@ const Header = () => {
             </Link>
           </nav>
 
-          <div className="hidden lg:flex items-center space-x-2">
-            <Button variant="outline" className={`${scrolled ? "border-college-blue text-college-blue hover:bg-college-blue hover:text-white" : "border-white text-white hover:bg-white/10"}`} asChild>
-              <Link to="/admin-login">Admin Login</Link>
-            </Button>
-            <Button className="bg-college-green text-white hover:bg-green-700" asChild>
-              <Link to="/student-documents">Student Documents</Link>
-            </Button>
-          </div>
+          {/* Hidden admin login and student documents buttons */}
 
           <button className={`lg:hidden ${scrolled ? "text-college-blue" : "text-white"}`} onClick={toggleMobileMenu} aria-label="Toggle navigation menu">
             {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
@@ -212,14 +205,7 @@ const Header = () => {
               <Link to="/contact" className={`px-4 py-2 ${isActive("/contact") ? "bg-primary/10 text-primary font-medium" : "text-gray-700"}`} onClick={closeMobileMenu}>
                 Contact
               </Link>
-              <div className="pt-2 pb-1 px-4 border-t border-gray-200 flex space-x-2">
-                <Button variant="outline" className="text-primary border-primary w-full" asChild>
-                  <Link to="/admin-login" onClick={closeMobileMenu}>Admin Login</Link>
-                </Button>
-                <Button className="bg-college-green text-white hover:bg-green-700 w-full" asChild>
-                  <Link to="/student-documents" onClick={closeMobileMenu}>Student Documents</Link>
-                </Button>
-              </div>
+              {/* Hidden admin login and student documents buttons */}
             </div>
           </div>}
       </div>
