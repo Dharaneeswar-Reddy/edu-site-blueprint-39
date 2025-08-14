@@ -12,7 +12,7 @@ const CallToAction = () => {
           <Button size="lg" className="bg-college-gold text-college-blue hover:bg-yellow-400 hover-scale" asChild>
             <Link to="/admission">Apply Now</Link>
           </Button>
-          <Button size="lg" variant="outline" className="text-white border-white hover:bg-white/20 hover:text-white hover-scale" asChild>
+          <Button size="lg" variant="outline" className="text-black border-white hover:bg-white/20 hover:text-black hover-scale" asChild>
             <Link to="/contact">Contact Us</Link>
           </Button>
         </div>
