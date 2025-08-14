@@ -4,6 +4,16 @@ import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Mail, Phone, Award, BookOpen } from "lucide-react";
 
+// Import generated images
+import malePrincipal from "@/assets/male-principal.jpg";
+import femaleVicePrincipal from "@/assets/female-vice-principal.jpg";
+import maleProfessor1 from "@/assets/male-professor-1.jpg";
+import maleProfessor2 from "@/assets/male-professor-2.jpg";
+import maleProfessor3 from "@/assets/male-professor-3.jpg";
+import femaleProfessor1 from "@/assets/female-professor-1.jpg";
+import femaleProfessor2 from "@/assets/female-professor-2.jpg";
+import femaleProfessor3 from "@/assets/female-professor-3.jpg";
+
 const Staff = () => {
   const staffData = {
     administration: [
@@ -15,7 +25,7 @@ const Staff = () => {
         experience: "25+ years",
         email: "principal@svrmc.edu.in",
         phone: "+91 9999999999",
-        image: "/lovable-uploads/662ebac1-9113-46ee-b212-a9a1526878d4.png",
+        image: malePrincipal,
         specialization: "Educational Administration, Physics Research"
       },
       {
@@ -26,7 +36,7 @@ const Staff = () => {
         experience: "20+ years",
         email: "vp@svrmc.edu.in",
         phone: "+91 9999999998",
-        image: "/lovable-uploads/9f96f106-897d-46e3-a4a1-4c4b8f8f9f0c.png",
+        image: femaleVicePrincipal,
         specialization: "Academic Planning, English Literature"
       },
       {
@@ -37,7 +47,7 @@ const Staff = () => {
         experience: "18+ years",
         email: "dean@svrmc.edu.in", 
         phone: "+91 9999999997",
-        image: "/lovable-uploads/365bcf12-2218-4dd4-a6e7-6d4bc591739a.png",
+        image: maleProfessor1,
         specialization: "Curriculum Development, Organic Chemistry"
       }
     ],
@@ -50,7 +60,7 @@ const Staff = () => {
         experience: "20+ years",
         email: "telugu.head@svrmc.edu.in",
         phone: "+91 9999999996",
-        image: "/lovable-uploads/662ebac1-9113-46ee-b212-a9a1526878d4.png",
+        image: maleProfessor2,
         specialization: "Classical Telugu Literature, Poetry"
       },
       {
@@ -61,7 +71,7 @@ const Staff = () => {
         experience: "15+ years",
         email: "hindi.prof@svrmc.edu.in",
         phone: "+91 9999999995",
-        image: "/lovable-uploads/9f96f106-897d-46e3-a4a1-4c4b8f8f9f0c.png",
+        image: femaleProfessor1,
         specialization: "Modern Hindi Literature, Linguistics"
       },
       {
@@ -72,7 +82,7 @@ const Staff = () => {
         experience: "22+ years",
         email: "english.head@svrmc.edu.in",
         phone: "+91 9999999994",
-        image: "/lovable-uploads/9f96f106-897d-46e3-a4a1-4c4b8f8f9f0c.png",
+        image: femaleProfessor2,
         specialization: "Victorian Literature, Creative Writing"
       }
     ],
@@ -85,7 +95,7 @@ const Staff = () => {
         experience: "15+ years",
         email: "cs.head@svrmc.edu.in",
         phone: "+91 9999999993",
-        image: "/lovable-uploads/662ebac1-9113-46ee-b212-a9a1526878d4.png",
+        image: maleProfessor3,
         specialization: "Artificial Intelligence, Machine Learning"
       },
       {
@@ -96,7 +106,7 @@ const Staff = () => {
         experience: "12+ years",
         email: "priya.cs@svrmc.edu.in",
         phone: "+91 9999999992",
-        image: "/lovable-uploads/9f96f106-897d-46e3-a4a1-4c4b8f8f9f0c.png",
+        image: femaleProfessor3,
         specialization: "Data Structures, Algorithms"
       },
       {
@@ -107,7 +117,7 @@ const Staff = () => {
         experience: "25+ years",
         email: "physics.head@svrmc.edu.in",
         phone: "+91 9999999991",
-        image: "/lovable-uploads/662ebac1-9113-46ee-b212-a9a1526878d4.png",
+        image: maleProfessor1,
         specialization: "Nuclear Physics, Quantum Mechanics"
       },
       {
@@ -118,7 +128,7 @@ const Staff = () => {
         experience: "14+ years",
         email: "chemistry.prof@svrmc.edu.in",
         phone: "+91 9999999990",
-        image: "/lovable-uploads/9f96f106-897d-46e3-a4a1-4c4b8f8f9f0c.png",
+        image: femaleProfessor1,
         specialization: "Organic Synthesis, Medicinal Chemistry"
       },
       {
@@ -129,7 +139,7 @@ const Staff = () => {
         experience: "10+ years",
         email: "math.prof@svrmc.edu.in",
         phone: "+91 9999999989",
-        image: "/lovable-uploads/365bcf12-2218-4dd4-a6e7-6d4bc591739a.png",
+        image: maleProfessor2,
         specialization: "Applied Mathematics, Statistics"
       },
       {
@@ -140,7 +150,7 @@ const Staff = () => {
         experience: "18+ years",
         email: "botany.head@svrmc.edu.in",
         phone: "+91 9999999988",
-        image: "/lovable-uploads/9f96f106-897d-46e3-a4a1-4c4b8f8f9f0c.png",
+        image: femaleProfessor2,
         specialization: "Plant Physiology, Ecology"
       },
       {
@@ -151,7 +161,7 @@ const Staff = () => {
         experience: "16+ years",
         email: "zoology.prof@svrmc.edu.in",
         phone: "+91 9999999987",
-        image: "/lovable-uploads/662ebac1-9113-46ee-b212-a9a1526878d4.png",
+        image: maleProfessor3,
         specialization: "Animal Behavior, Genetics"
       }
     ],
@@ -164,7 +174,7 @@ const Staff = () => {
         experience: "20+ years",
         email: "commerce.head@svrmc.edu.in",
         phone: "+91 9999999986",
-        image: "/lovable-uploads/662ebac1-9113-46ee-b212-a9a1526878d4.png",
+        image: maleProfessor1,
         specialization: "Financial Management, Taxation"
       },
       {
@@ -175,7 +185,7 @@ const Staff = () => {
         experience: "13+ years",
         email: "economics.prof@svrmc.edu.in",
         phone: "+91 9999999985",
-        image: "/lovable-uploads/9f96f106-897d-46e3-a4a1-4c4b8f8f9f0c.png",
+        image: femaleProfessor3,
         specialization: "Development Economics, Econometrics"
       },
       {
@@ -186,7 +196,7 @@ const Staff = () => {
         experience: "22+ years",
         email: "history.prof@svrmc.edu.in",
         phone: "+91 9999999984",
-        image: "/lovable-uploads/365bcf12-2218-4dd4-a6e7-6d4bc591739a.png",
+        image: maleProfessor2,
         specialization: "Ancient Indian History, Archaeology"
       },
       {
@@ -197,7 +207,7 @@ const Staff = () => {
         experience: "8+ years",
         email: "polsci.prof@svrmc.edu.in",
         phone: "+91 9999999983",
-        image: "/lovable-uploads/9f96f106-897d-46e3-a4a1-4c4b8f8f9f0c.png",
+        image: femaleProfessor1,
         specialization: "Public Administration, International Relations"
       }
     ]

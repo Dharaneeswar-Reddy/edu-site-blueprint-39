@@ -5,6 +5,11 @@ import { Badge } from "@/components/ui/badge";
 import { Link } from "react-router-dom";
 import { Users, BookOpen, Award, GraduationCap, Code, Database, Globe, Cpu } from "lucide-react";
 
+// Import generated images
+import maleProfessor1 from "@/assets/male-professor-1.jpg";
+import maleProfessor3 from "@/assets/male-professor-3.jpg";
+import femaleProfessor3 from "@/assets/female-professor-3.jpg";
+
 const ComputerScience = () => {
   const courses = [
     {
@@ -35,21 +40,21 @@ const ComputerScience = () => {
       designation: "Professor & Head",
       specialization: "Artificial Intelligence, Machine Learning",
       experience: "15+ years",
-      image: "/lovable-uploads/662ebac1-9113-46ee-b212-a9a1526878d4.png"
+      image: maleProfessor3
     },
     {
       name: "Dr. Priya Sharma",
       designation: "Associate Professor",
       specialization: "Data Structures, Algorithms",
       experience: "12+ years", 
-      image: "/lovable-uploads/9f96f106-897d-46e3-a4a1-4c4b8f8f9f0c.png"
+      image: femaleProfessor3
     },
     {
       name: "Prof. Amit Patel",
       designation: "Assistant Professor",
       specialization: "Web Development, Database Systems",
       experience: "8+ years",
-      image: "/lovable-uploads/365bcf12-2218-4dd4-a6e7-6d4bc591739a.png"
+      image: maleProfessor1
     }
   ];
 
