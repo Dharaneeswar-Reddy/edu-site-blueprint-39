@@ -50,6 +50,12 @@ import ProgramStructure from "./pages/academics/ProgramStructure";
 import ProgrammesOffered from "./pages/academics/ProgrammesOffered";
 import CourseOutcomes from "./pages/academics/CourseOutcomes";
 import ProgramOutcomes from "./pages/academics/ProgramOutcomes";
+import Infrastructure from "./pages/infrastructure/Infrastructure";
+import DigitalCampus from "./pages/infrastructure/DigitalCampus";
+import SportsFacilities from "./pages/infrastructure/SportsFacilities";
+import IQAC from "./pages/iqac/IQAC";
+import QualityPolicy from "./pages/iqac/QualityPolicy";
+import NAAC from "./pages/naac/NAAC";
 
 const queryClient = new QueryClient();
 
@@ -103,6 +109,12 @@ const App = () => (
           <Route path="/academics/programmes-offered" element={<ProgrammesOffered />} />
           <Route path="/academics/course-outcomes" element={<CourseOutcomes />} />
           <Route path="/academics/program-outcomes" element={<ProgramOutcomes />} />
+          <Route path="/infrastructure" element={<Infrastructure />} />
+          <Route path="/infrastructure/digital-campus" element={<DigitalCampus />} />
+          <Route path="/infrastructure/sports-facilities" element={<SportsFacilities />} />
+          <Route path="/iqac" element={<IQAC />} />
+          <Route path="/iqac/quality-policy" element={<QualityPolicy />} />
+          <Route path="/naac" element={<NAAC />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
