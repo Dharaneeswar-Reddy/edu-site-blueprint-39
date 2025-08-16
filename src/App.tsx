@@ -40,6 +40,16 @@ import VisionMission from "./pages/about/VisionMission";
 import PrincipalMessage from "./pages/about/PrincipalMessage";
 import StrategicDocuments from "./pages/about/StrategicDocuments";
 import CollegePledgeSong from "./pages/about/CollegePledgeSong";
+import TeachingStaff from "./pages/administration/TeachingStaff";
+import NonTeachingStaff from "./pages/administration/NonTeachingStaff";
+import Organogram from "./pages/administration/Organogram";
+import GoverningBody from "./pages/administration/GoverningBody";
+import AcademicCouncil from "./pages/administration/AcademicCouncil";
+import CPDC from "./pages/administration/CPDC";
+import ProgramStructure from "./pages/academics/ProgramStructure";
+import ProgrammesOffered from "./pages/academics/ProgrammesOffered";
+import CourseOutcomes from "./pages/academics/CourseOutcomes";
+import ProgramOutcomes from "./pages/academics/ProgramOutcomes";
 
 const queryClient = new QueryClient();
 
@@ -83,6 +93,16 @@ const App = () => (
           <Route path="/about/principal-message" element={<PrincipalMessage />} />
           <Route path="/about/strategic-documents" element={<StrategicDocuments />} />
           <Route path="/about/college-pledge-song" element={<CollegePledgeSong />} />
+          <Route path="/administration/teaching-staff" element={<TeachingStaff />} />
+          <Route path="/administration/non-teaching-staff" element={<NonTeachingStaff />} />
+          <Route path="/administration/organogram" element={<Organogram />} />
+          <Route path="/administration/governing-body" element={<GoverningBody />} />
+          <Route path="/administration/academic-council" element={<AcademicCouncil />} />
+          <Route path="/administration/cpdc" element={<CPDC />} />
+          <Route path="/academics/program-structure" element={<ProgramStructure />} />
+          <Route path="/academics/programmes-offered" element={<ProgrammesOffered />} />
+          <Route path="/academics/course-outcomes" element={<CourseOutcomes />} />
+          <Route path="/academics/program-outcomes" element={<ProgramOutcomes />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
