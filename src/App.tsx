@@ -28,6 +28,13 @@ import ExamSchedule from "./pages/ExamSchedule";
 import Scholarships from "./pages/Scholarships";
 import ComputerScience from "./pages/ComputerScience";
 import Staff from "./pages/Staff";
+import ExaminationCell from "./pages/ExaminationCell";
+import Library from "./pages/Library";
+import Alumni from "./pages/Alumni";
+import Magazines from "./pages/Magazines";
+import ICC from "./pages/ICC";
+import NIRF from "./pages/NIRF";
+import Feedback from "./pages/Feedback";
 
 const queryClient = new QueryClient();
 
@@ -59,6 +66,13 @@ const App = () => (
           <Route path="/scholarships" element={<Scholarships />} />
           <Route path="/departments/computerscience" element={<ComputerScience />} />
           <Route path="/staff" element={<Staff />} />
+          <Route path="/examination-cell" element={<ExaminationCell />} />
+          <Route path="/library" element={<Library />} />
+          <Route path="/alumni" element={<Alumni />} />
+          <Route path="/magazines" element={<Magazines />} />
+          <Route path="/icc" element={<ICC />} />
+          <Route path="/nirf" element={<NIRF />} />
+          <Route path="/feedback" element={<Feedback />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
