@@ -35,6 +35,11 @@ import Magazines from "./pages/Magazines";
 import ICC from "./pages/ICC";
 import NIRF from "./pages/NIRF";
 import Feedback from "./pages/Feedback";
+import History from "./pages/about/History";
+import VisionMission from "./pages/about/VisionMission";
+import PrincipalMessage from "./pages/about/PrincipalMessage";
+import StrategicDocuments from "./pages/about/StrategicDocuments";
+import CollegePledgeSong from "./pages/about/CollegePledgeSong";
 
 const queryClient = new QueryClient();
 
@@ -73,6 +78,11 @@ const App = () => (
           <Route path="/icc" element={<ICC />} />
           <Route path="/nirf" element={<NIRF />} />
           <Route path="/feedback" element={<Feedback />} />
+          <Route path="/about/history" element={<History />} />
+          <Route path="/about/vision-mission" element={<VisionMission />} />
+          <Route path="/about/principal-message" element={<PrincipalMessage />} />
+          <Route path="/about/strategic-documents" element={<StrategicDocuments />} />
+          <Route path="/about/college-pledge-song" element={<CollegePledgeSong />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
