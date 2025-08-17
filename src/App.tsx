@@ -54,6 +54,13 @@ import SportsFacilities from "./pages/infrastructure/SportsFacilities";
 import IQAC from "./pages/iqac/IQAC";
 import QualityPolicy from "./pages/iqac/QualityPolicy";
 import NAAC from "./pages/naac/NAAC";
+import Physics from "./pages/departments/Physics";
+import Chemistry from "./pages/departments/Chemistry";
+import Mathematics from "./pages/departments/Mathematics";
+import Commerce from "./pages/departments/Commerce";
+import English from "./pages/departments/English";
+import Telugu from "./pages/departments/Telugu";
+import Hindi from "./pages/departments/Hindi";
 
 const queryClient = new QueryClient();
 
@@ -82,6 +89,13 @@ const App = () => (
           <Route path="/exam-schedule" element={<ExamSchedule />} />
           <Route path="/scholarships" element={<Scholarships />} />
           <Route path="/departments/computerscience" element={<ComputerScience />} />
+          <Route path="/departments/physics" element={<Physics />} />
+          <Route path="/departments/chemistry" element={<Chemistry />} />
+          <Route path="/departments/mathematics" element={<Mathematics />} />
+          <Route path="/departments/commerce" element={<Commerce />} />
+          <Route path="/departments/english" element={<English />} />
+          <Route path="/departments/telugu" element={<Telugu />} />
+          <Route path="/departments/hindi" element={<Hindi />} />
           <Route path="/staff" element={<Staff />} />
           <Route path="/examination-cell" element={<ExaminationCell />} />
           <Route path="/library" element={<Library />} />
