@@ -131,93 +131,58 @@ const Contact = () => {
             <div className="lg:col-span-2">
               <Card className="animate-fade-in" style={{ animationDelay: "0.2s" }}>
                 <CardHeader className="bg-college-blue text-white">
-                  <CardTitle className="text-xl">Send us a Message</CardTitle>
+                  <CardTitle className="text-xl">Visit Us</CardTitle>
                 </CardHeader>
                 <CardContent className="p-6 bg-white">
-                  <form onSubmit={handleSubmit} className="space-y-4">
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                      <div className="space-y-2">
-                        <Label htmlFor="name">Your Name</Label>
-                        <Input 
-                          id="name"
-                          name="name"
-                          placeholder="Enter your name"
-                          value={formData.name}
-                          onChange={handleChange}
-                          required
-                        />
-                      </div>
-                      <div className="space-y-2">
-                        <Label htmlFor="email">Email Address</Label>
-                        <Input 
-                          id="email"
-                          name="email"
-                          type="email"
-                          placeholder="Enter your email"
-                          value={formData.email}
-                          onChange={handleChange}
-                          required
-                        />
+                  <div className="space-y-6">
+                    <div>
+                      <h3 className="text-lg font-semibold mb-3 text-college-blue">Campus Location</h3>
+                      <p className="text-gray-700 mb-4">Our campus is strategically located for easy accessibility via all modes of transportation. We welcome visitors during working hours and encourage prospective students and parents to visit our facilities.</p>
+                      
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                          <h4 className="font-medium mb-2">Visiting Hours</h4>
+                          <p className="text-sm text-gray-600">Monday - Friday: 9:00 AM - 5:00 PM</p>
+                          <p className="text-sm text-gray-600">Saturday: 9:00 AM - 2:00 PM</p>
+                          <p className="text-sm text-gray-600">Sunday: Closed</p>
+                        </div>
+                        
+                        <div>
+                          <h4 className="font-medium mb-2">Admission Office</h4>
+                          <p className="text-sm text-gray-600">Ground Floor, Admin Block</p>
+                          <p className="text-sm text-gray-600">For admission inquiries and campus tours</p>
+                          <p className="text-sm text-gray-600">Prior appointment recommended</p>
+                        </div>
                       </div>
                     </div>
-                    <div className="space-y-2">
-                      <Label htmlFor="subject">Subject</Label>
-                      <Input 
-                        id="subject"
-                        name="subject"
-                        placeholder="Enter subject"
-                        value={formData.subject}
-                        onChange={handleChange}
-                        required
-                      />
+                    
+                    <div>
+                      <h3 className="text-lg font-semibold mb-3 text-college-blue">Getting Here</h3>
+                      <div className="space-y-2 text-sm text-gray-600">
+                        <p><strong>By Bus:</strong> Regular bus services available from Visakhapatnam city center</p>
+                        <p><strong>By Train:</strong> Nearest railway station is Visakhapatnam (15 km away)</p>
+                        <p><strong>By Air:</strong> Visakhapatnam Airport is 20 km from the campus</p>
+                        <p><strong>By Car:</strong> Free parking available on campus</p>
+                      </div>
                     </div>
-                    <div className="space-y-2">
-                      <Label htmlFor="message">Message</Label>
-                      <Textarea 
-                        id="message"
-                        name="message"
-                        placeholder="Enter your message here"
-                        value={formData.message}
-                        onChange={handleChange}
-                        rows={5}
-                        required
-                      />
-                    </div>
-                    <Button 
-                      type="submit" 
-                      className="w-full md:w-auto bg-college-blue hover:bg-blue-700"
-                      disabled={isSubmitting}
-                    >
-                      {isSubmitting ? (
-                        <span className="flex items-center">
-                          <svg className="animate-spin -ml-1 mr-2 h-4 w-4 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                            <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                            <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                          </svg>
-                          Sending...
-                        </span>
-                      ) : (
-                        <span className="flex items-center">
-                          <SendIcon className="mr-2 h-4 w-4" />
-                          Send Message
-                        </span>
-                      )}
-                    </Button>
-                  </form>
+                  </div>
                 </CardContent>
               </Card>
 
-              <div className="mt-8 h-[300px] rounded-lg overflow-hidden shadow-md animate-fade-in" style={{ animationDelay: "0.4s" }}>
-                <iframe 
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3798.3861539630434!2d83.34566931526856!3d17.796376287818396!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a395bedc7efb603%3A0x392c739c2dada6f!2sShri%20Vishnu%20Engineering%20College%20for%20Women!5e0!3m2!1sen!2sin!4v1653405878916!5m2!1sen!2sin"
-                  width="100%"
-                  height="100%"
-                  frameBorder="0"
-                  style={{ border: 0 }}
-                  allowFullScreen={true}
-                  aria-hidden="false"
-                  tabIndex={0}
-                ></iframe>
+              <div className="mt-8">
+                <h3 className="text-lg font-semibold mb-4 text-college-blue">Campus Navigation Map</h3>
+                <div className="h-[400px] rounded-lg overflow-hidden shadow-md animate-fade-in" style={{ animationDelay: "0.4s" }}>
+                  <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3798.3861539630434!2d83.34566931526856!3d17.796376287818396!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a395bedc7efb603%3A0x392c739c2dada6f!2sShri%20Vishnu%20Engineering%20College%20for%20Women!5e0!3m2!1sen!2sin!4v1653405878916!5m2!1sen!2sin"
+                    width="100%"
+                    height="100%"
+                    frameBorder="0"
+                    style={{ border: 0 }}
+                    allowFullScreen={true}
+                    aria-hidden="false"
+                    tabIndex={0}
+                  ></iframe>
+                </div>
               </div>
             </div>
           </div>

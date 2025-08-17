@@ -6,7 +6,7 @@ import WelcomeSection from "./WelcomeSection";
 import CollegeStats from "./CollegeStats";
 import LatestNews from "./LatestNews";
 
-import ResearchHighlights from "./ResearchHighlights";
+
 
 interface NewsItem {
   id: number;
@@ -23,20 +23,19 @@ const MainContent = ({ latestNews }: MainContentProps) => {
   return (
     <div className="lg:col-span-2">
       <WelcomeSection />
-      <ResearchHighlights />
       <CollegeStats />
       <LatestNews news={latestNews} />
       
       
       <div className="mt-12 text-center flex flex-col gap-4 sm:flex-row sm:justify-center">
         <Button variant="outline" className="hover:bg-college-blue hover:text-white" asChild>
-          <Link to="/academics" className="flex items-center">
-            Explore Academics <ArrowRight className="ml-2 h-4 w-4" />
+          <Link to="/departments" className="flex items-center">
+            Explore Departments <ArrowRight className="ml-2 h-4 w-4" />
           </Link>
         </Button>
         <Button variant="outline" className="hover:bg-college-blue hover:text-white" asChild>
-          <Link to="/research" className="flex items-center">
-            Discover Research <ArrowRight className="ml-2 h-4 w-4" />
+          <Link to="/placements" className="flex items-center">
+            Career Opportunities <ArrowRight className="ml-2 h-4 w-4" />
           </Link>
         </Button>
       </div>
