@@ -7,14 +7,12 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 // Import pages
 import Index from "./pages/Index";
-import About from "./pages/About";
 import Departments from "./pages/Departments";
 import Contact from "./pages/Contact";
 import AdminLogin from "./pages/AdminLogin";
 import StudentDocuments from "./pages/StudentDocuments";
 import NotFound from "./pages/NotFound";
-import Research from "./pages/Research";
-import Academics from "./pages/Academics";
+import Administration from "./pages/Administration";
 import News from "./pages/News";
 import Admission from "./pages/Admission";
 import NewsDetail from "./pages/NewsDetail";
@@ -67,13 +65,11 @@ const App = () => (
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Index />} />
-          <Route path="/about" element={<About />} />
+          <Route path="/administration" element={<Administration />} />
           <Route path="/departments" element={<Departments />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/admin-login" element={<AdminLogin />} />
           <Route path="/student-documents" element={<StudentDocuments />} />
-          <Route path="/research" element={<Research />} />
-          <Route path="/academics" element={<Academics />} />
           <Route path="/news" element={<News />} />
           <Route path="/news/:id" element={<NewsDetail />} />
           <Route path="/admission" element={<Admission />} />
@@ -94,21 +90,7 @@ const App = () => (
           <Route path="/icc" element={<ICC />} />
           <Route path="/nirf" element={<NIRF />} />
           <Route path="/feedback" element={<Feedback />} />
-          <Route path="/about/history" element={<History />} />
-          <Route path="/about/vision-mission" element={<VisionMission />} />
-          <Route path="/about/principal-message" element={<PrincipalMessage />} />
           <Route path="/about/strategic-documents" element={<StrategicDocuments />} />
-          <Route path="/about/college-pledge-song" element={<CollegePledgeSong />} />
-          <Route path="/administration/teaching-staff" element={<TeachingStaff />} />
-          <Route path="/administration/non-teaching-staff" element={<NonTeachingStaff />} />
-          <Route path="/administration/organogram" element={<Organogram />} />
-          <Route path="/administration/governing-body" element={<GoverningBody />} />
-          <Route path="/administration/academic-council" element={<AcademicCouncil />} />
-          <Route path="/administration/cpdc" element={<CPDC />} />
-          <Route path="/academics/program-structure" element={<ProgramStructure />} />
-          <Route path="/academics/programmes-offered" element={<ProgrammesOffered />} />
-          <Route path="/academics/course-outcomes" element={<CourseOutcomes />} />
-          <Route path="/academics/program-outcomes" element={<ProgramOutcomes />} />
           <Route path="/infrastructure" element={<Infrastructure />} />
           <Route path="/infrastructure/digital-campus" element={<DigitalCampus />} />
           <Route path="/infrastructure/sports-facilities" element={<SportsFacilities />} />

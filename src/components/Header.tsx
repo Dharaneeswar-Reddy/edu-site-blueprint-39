@@ -9,8 +9,6 @@ const Header = () => {
   const location = useLocation();
   const isMobile = useIsMobile();
   const [departmentDropdown, setDepartmentDropdown] = useState(false);
-  const [aboutDropdown, setAboutDropdown] = useState(false);
-  const [academicsDropdown, setAcademicsDropdown] = useState(false);
   const [administrationDropdown, setAdministrationDropdown] = useState(false);
   const [qualityDropdown, setQualityDropdown] = useState(false);
   const [hoverTimeout, setHoverTimeout] = useState<NodeJS.Timeout | null>(null);
@@ -40,8 +38,6 @@ const Header = () => {
   };
 
   const closeAllDropdowns = () => {
-    setAboutDropdown(false);
-    setAcademicsDropdown(false);
     setAdministrationDropdown(false);
     setDepartmentDropdown(false);
     setQualityDropdown(false);
@@ -84,101 +80,10 @@ const Header = () => {
               Home
             </Link>
             
-            {/* About Dropdown */}
-            <div className="relative" 
-              onMouseEnter={() => handleMouseEnter(setAboutDropdown)} 
-              onMouseLeave={() => handleMouseLeave(setAboutDropdown)}
-            >
-              <button 
-                onClick={() => handleDropdownClick(aboutDropdown, setAboutDropdown)}
-                className={`nav-link flex items-center ${isActive("/about") ? "active" : ""} ${scrolled ? "text-college-dark hover:text-college-blue" : "text-white hover:text-college-gold"}`}
-              >
-                About <ChevronDown className="ml-1 h-4 w-4" />
-              </button>
-              {aboutDropdown && (
-                <>
-                  <div 
-                    className="fixed inset-0 z-10" 
-                    onClick={() => setAboutDropdown(false)}
-                  ></div>
-                  <div className="absolute left-0 mt-1 w-64 bg-white rounded-md shadow-lg py-1 z-20 animate-fade-in border"
-                    onMouseEnter={() => handleMouseEnter(setAboutDropdown)}
-                    onMouseLeave={() => handleMouseLeave(setAboutDropdown)}
-                  >
-                    <Link to="/about" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" onClick={() => setAboutDropdown(false)}>About College</Link>
-                    <Link to="/about/history" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" onClick={() => setAboutDropdown(false)}>History</Link>
-                    <Link to="/about/vision-mission" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" onClick={() => setAboutDropdown(false)}>Vision & Mission</Link>
-                    <Link to="/about/principal-message" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" onClick={() => setAboutDropdown(false)}>Principal's Message</Link>
-                    <Link to="/about/strategic-documents" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" onClick={() => setAboutDropdown(false)}>Strategic Documents</Link>
-                    <Link to="/about/college-pledge-song" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" onClick={() => setAboutDropdown(false)}>College Pledge & Song</Link>
-                  </div>
-                </>
-              )}
-            </div>
-
-            {/* Academics Dropdown */}
-            <div className="relative" 
-              onMouseEnter={() => handleMouseEnter(setAcademicsDropdown)} 
-              onMouseLeave={() => handleMouseLeave(setAcademicsDropdown)}
-            >
-              <button 
-                onClick={() => handleDropdownClick(academicsDropdown, setAcademicsDropdown)}
-                className={`nav-link flex items-center ${isActive("/academics") ? "active" : ""} ${scrolled ? "text-college-dark hover:text-college-blue" : "text-white hover:text-college-gold"}`}
-              >
-                Academics <ChevronDown className="ml-1 h-4 w-4" />
-              </button>
-              {academicsDropdown && (
-                <>
-                  <div 
-                    className="fixed inset-0 z-10" 
-                    onClick={() => setAcademicsDropdown(false)}
-                  ></div>
-                  <div className="absolute left-0 mt-1 w-64 bg-white rounded-md shadow-lg py-1 z-20 animate-fade-in border"
-                    onMouseEnter={() => handleMouseEnter(setAcademicsDropdown)}
-                    onMouseLeave={() => handleMouseLeave(setAcademicsDropdown)}
-                  >
-                    <Link to="/academics" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" onClick={() => setAcademicsDropdown(false)}>Academic Overview</Link>
-                    <Link to="/academics/programmes-offered" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" onClick={() => setAcademicsDropdown(false)}>Programmes Offered</Link>
-                    <Link to="/academics/program-structure" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" onClick={() => setAcademicsDropdown(false)}>Program Structure</Link>
-                    <Link to="/academics/course-outcomes" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" onClick={() => setAcademicsDropdown(false)}>Course Outcomes</Link>
-                    <Link to="/academics/program-outcomes" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" onClick={() => setAcademicsDropdown(false)}>Program Outcomes</Link>
-                    <Link to="/academic-calendar" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" onClick={() => setAcademicsDropdown(false)}>Academic Calendar</Link>
-                  </div>
-                </>
-              )}
-            </div>
-
-            {/* Administration Dropdown */}
-            <div className="relative" 
-              onMouseEnter={() => handleMouseEnter(setAdministrationDropdown)} 
-              onMouseLeave={() => handleMouseLeave(setAdministrationDropdown)}
-            >
-              <button 
-                onClick={() => handleDropdownClick(administrationDropdown, setAdministrationDropdown)}
-                className={`nav-link flex items-center ${scrolled ? "text-college-dark hover:text-college-blue" : "text-white hover:text-college-gold"}`}
-              >
-                Administration <ChevronDown className="ml-1 h-4 w-4" />
-              </button>
-              {administrationDropdown && (
-                <>
-                  <div 
-                    className="fixed inset-0 z-10" 
-                    onClick={() => setAdministrationDropdown(false)}
-                  ></div>
-                  <div className="absolute left-0 mt-1 w-64 bg-white rounded-md shadow-lg py-1 z-20 animate-fade-in border"
-                    onMouseEnter={() => handleMouseEnter(setAdministrationDropdown)}
-                    onMouseLeave={() => handleMouseLeave(setAdministrationDropdown)}
-                  >
-                    <Link to="/administration/teaching-staff" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" onClick={() => setAdministrationDropdown(false)}>Teaching Staff</Link>
-                    <Link to="/administration/non-teaching-staff" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" onClick={() => setAdministrationDropdown(false)}>Non-Teaching Staff</Link>
-                    <Link to="/administration/organogram" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" onClick={() => setAdministrationDropdown(false)}>Organogram</Link>
-                    <Link to="/administration/governing-body" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" onClick={() => setAdministrationDropdown(false)}>Governing Body</Link>
-                    <Link to="/administration/academic-council" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" onClick={() => setAdministrationDropdown(false)}>Academic Council</Link>
-                    <Link to="/administration/cpdc" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" onClick={() => setAdministrationDropdown(false)}>CPDC</Link>
-                  </div>
-                </>
-              )}
-            </div>
+            {/* Administration Single Link */}
+            <Link to="/administration" className={`nav-link ${isActive("/administration") ? "active" : ""} ${scrolled ? "text-college-dark hover:text-college-blue" : "text-white hover:text-college-gold"}`}>
+              Administration
+            </Link>
 
             {/* Departments Dropdown */}
             <div className="relative" 
@@ -239,14 +144,12 @@ const Header = () => {
                     <Link to="/iqac/quality-policy" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" onClick={() => setQualityDropdown(false)}>Quality Policy</Link>
                     <Link to="/naac" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" onClick={() => setQualityDropdown(false)}>NAAC</Link>
                     <Link to="/nirf" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" onClick={() => setQualityDropdown(false)}>NIRF</Link>
+                    <Link to="/about/strategic-documents" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" onClick={() => setQualityDropdown(false)}>Strategic Documents</Link>
                   </div>
                 </>
               )}
             </div>
 
-            <Link to="/research" className={`nav-link ${isActive("/research") ? "active" : ""} ${scrolled ? "text-college-dark hover:text-college-blue" : "text-white hover:text-college-gold"}`}>
-              Research
-            </Link>
             <Link to="/admission" className={`nav-link ${isActive("/admission") ? "active" : ""} ${scrolled ? "text-college-dark hover:text-college-blue" : "text-white hover:text-college-gold"}`}>
               Admission
             </Link>
@@ -271,8 +174,8 @@ const Header = () => {
               <Link to="/" className={`px-4 py-2 ${isActive("/") ? "bg-primary/10 text-primary font-medium" : "text-gray-700"}`} onClick={closeMobileMenu}>
                 Home
               </Link>
-              <Link to="/about" className={`px-4 py-2 ${isActive("/about") ? "bg-primary/10 text-primary font-medium" : "text-gray-700"}`} onClick={closeMobileMenu}>
-                About
+              <Link to="/administration" className={`px-4 py-2 ${isActive("/administration") ? "bg-primary/10 text-primary font-medium" : "text-gray-700"}`} onClick={closeMobileMenu}>
+                Administration
               </Link>
               <div className="px-4 py-2 text-gray-700 font-medium">Departments</div>
               <Link to="/departments" className={`pl-8 py-2 ${isActive("/departments") ? "bg-primary/10 text-primary font-medium" : "text-gray-700"}`} onClick={closeMobileMenu}>
