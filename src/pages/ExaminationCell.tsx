@@ -2,49 +2,159 @@ import PageLayout from "@/components/PageLayout";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Download, Calendar, FileText, Clock, Users } from "lucide-react";
+import { useState } from "react";
+
+interface PDFDocument {
+  name: string;
+  file?: File;
+}
 
 const ExaminationCell = () => {
+  const [activeTab, setActiveTab] = useState("Academic Calendars");
+  const [documents, setDocuments] = useState<PDFDocument[]>([
+    { name: "IV B.Tech I & II Sem Academic Calendar 2025-2026" },
+    { name: "III B.Tech I & II Sem Academic Calendar 2025-2026" },
+    { name: "II B.Tech I & II Sem Academic Calendar 2025-2026" },
+    { name: "M.Tech III & IV Sem Academic Calendar 2025-2026" },
+    { name: "MCA III & IV Sem Academic Calendar 2025-2026" },
+    { name: "MBA III & IV Sem Academic Calendar 2025-2026" },
+    { name: "MCA I & II SEM ACADEMIC CALENDAR 2024-2025" },
+    { name: "M.Tech I & II SEM ACADEMIC CALENDAR 2024-2025" }
+  ]);
+
+  const tabs = [
+    "Academic Calendars",
+    "Exam Fee Notifications", 
+    "External Time Tables",
+    "Internal Time Tables",
+    "Internal Circulars",
+    "Downloads",
+    "Exam Cell - ERP"
+  ];
+
+  const handleFileUpload = (index: number, file: File) => {
+    const updatedDocuments = [...documents];
+    updatedDocuments[index].file = file;
+    setDocuments(updatedDocuments);
+  };
+
+  const handleOpenFile = (document: PDFDocument) => {
+    if (document.file) {
+      const url = URL.createObjectURL(document.file);
+      window.open(url, '_blank');
+    }
+  };
+
   return (
     <PageLayout 
       title="Examination Cell" 
       description="Central hub for all examination-related activities, schedules, and results at SVRMC."
     >
       <div className="space-y-8">
-        
-        {/* Quick Actions */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-          <Card className="hover:shadow-md transition-shadow">
-            <CardContent className="p-6 text-center">
-              <Calendar className="h-8 w-8 text-college-blue mx-auto mb-3" />
-              <h3 className="font-semibold mb-2">Exam Schedule</h3>
-              <p className="text-sm text-gray-600">View upcoming examinations</p>
-            </CardContent>
-          </Card>
-          
-          <Card className="hover:shadow-md transition-shadow">
-            <CardContent className="p-6 text-center">
-              <FileText className="h-8 w-8 text-college-blue mx-auto mb-3" />
-              <h3 className="font-semibold mb-2">Results</h3>
-              <p className="text-sm text-gray-600">Check examination results</p>
-            </CardContent>
-          </Card>
-          
-          <Card className="hover:shadow-md transition-shadow">
-            <CardContent className="p-6 text-center">
-              <Clock className="h-8 w-8 text-college-blue mx-auto mb-3" />
-              <h3 className="font-semibold mb-2">Hall Tickets</h3>
-              <p className="text-sm text-gray-600">Download admit cards</p>
-            </CardContent>
-          </Card>
-          
-          <Card className="hover:shadow-md transition-shadow">
-            <CardContent className="p-6 text-center">
-              <Users className="h-8 w-8 text-college-blue mx-auto mb-3" />
-              <h3 className="font-semibold mb-2">Exam Committee</h3>
-              <p className="text-sm text-gray-600">Meet the examination team</p>
-            </CardContent>
-          </Card>
+        {/* Navigation Tabs */}
+        <div className="flex flex-wrap border-b bg-white rounded-lg shadow-sm">
+          {tabs.map((tab, index) => (
+            <button
+              key={tab}
+              onClick={() => setActiveTab(tab)}
+              className={`px-4 py-3 text-sm font-medium transition-colors ${
+                activeTab === tab
+                  ? index === 0 
+                    ? "bg-blue-700 text-white"
+                    : "bg-gray-200 text-gray-800 border-b-2 border-blue-500"
+                  : "text-gray-600 hover:text-gray-800 hover:bg-gray-100"
+              } ${index === 0 ? "rounded-tl-lg" : ""}`}
+            >
+              {tab}
+            </button>
+          ))}
         </div>
+
+        {/* Content based on active tab */}
+        <Card>
+          <CardContent className="p-6">
+            {activeTab === "Academic Calendars" && (
+              <div>
+                <div className="overflow-x-auto">
+                  <table className="w-full">
+                    <thead>
+                      <tr className="border-b bg-gray-50">
+                        <th className="text-left py-3 px-4 font-semibold text-blue-600">S.No</th>
+                        <th className="text-left py-3 px-4 font-semibold text-blue-600">Name</th>
+                        <th className="text-center py-3 px-4 font-semibold text-blue-600">Action</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {documents.map((doc, index) => (
+                        <tr key={index} className="border-b hover:bg-gray-50">
+                          <td className="py-3 px-4 text-blue-600 font-medium">{index + 1}</td>
+                          <td className="py-3 px-4 text-blue-600">{doc.name}</td>
+                          <td className="py-3 px-4 text-center">
+                            <div className="flex flex-col gap-2">
+                              <Button
+                                variant="outline"
+                                size="sm"
+                                onClick={() => handleOpenFile(doc)}
+                                disabled={!doc.file}
+                                className="w-24"
+                              >
+                                Open File
+                              </Button>
+                              <input
+                                type="file"
+                                accept=".pdf"
+                                onChange={(e) => {
+                                  const file = e.target.files?.[0];
+                                  if (file) handleFileUpload(index, file);
+                                }}
+                                className="hidden"
+                                id={`file-${index}`}
+                              />
+                              <Button
+                                variant="outline"
+                                size="sm"
+                                onClick={() => document.getElementById(`file-${index}`)?.click()}
+                                className="w-24"
+                              >
+                                Upload PDF
+                              </Button>
+                            </div>
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            )}
+
+            {activeTab !== "Academic Calendars" && (
+              <div className="text-center py-8">
+                <FileText className="h-16 w-16 text-gray-400 mx-auto mb-4" />
+                <h3 className="text-lg font-semibold text-gray-700 mb-2">{activeTab}</h3>
+                <p className="text-gray-500 mb-4">Documents for this category will be available soon.</p>
+                <input
+                  type="file"
+                  accept=".pdf"
+                  multiple
+                  onChange={(e) => {
+                    const files = Array.from(e.target.files || []);
+                    console.log(`Uploaded ${files.length} files for ${activeTab}`);
+                  }}
+                  className="hidden"
+                  id={`upload-${activeTab}`}
+                />
+                <Button
+                  variant="outline"
+                  onClick={() => document.getElementById(`upload-${activeTab}`)?.click()}
+                >
+                  <Download className="h-4 w-4 mr-2" />
+                  Upload Documents
+                </Button>
+              </div>
+            )}
+          </CardContent>
+        </Card>
 
         {/* Notifications */}
         <Card>

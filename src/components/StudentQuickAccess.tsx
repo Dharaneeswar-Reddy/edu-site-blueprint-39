@@ -24,15 +24,9 @@ const StudentQuickAccess = () => {
         <DropdownMenuLabel>Student Portal</DropdownMenuLabel>
         <DropdownMenuSeparator />
         <DropdownMenuItem asChild>
-          <Link to="/student-documents" className="flex items-center cursor-pointer w-full">
-            <FileText className="h-4 w-4 mr-2" />
-            <span>My Documents</span>
-          </Link>
-        </DropdownMenuItem>
-        <DropdownMenuItem asChild>
-          <Link to="/admin-login" className="flex items-center cursor-pointer w-full">
+          <Link to="/student-login" className="flex items-center cursor-pointer w-full">
             <User className="h-4 w-4 mr-2" />
-            <span>Admin Login</span>
+            <span>Student Login</span>
           </Link>
         </DropdownMenuItem>
       </DropdownMenuContent>

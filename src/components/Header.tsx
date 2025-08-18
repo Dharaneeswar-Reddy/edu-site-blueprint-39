@@ -156,6 +156,12 @@ const Header = () => {
             <Link to="/placements" className={`nav-link ${isActive("/placements") ? "active" : ""} ${scrolled ? "text-college-dark hover:text-college-blue" : "text-white hover:text-college-gold"}`}>
               Placements
             </Link>
+            <Link to="/gallery" className={`nav-link ${isActive("/gallery") ? "active" : ""} ${scrolled ? "text-college-dark hover:text-college-blue" : "text-white hover:text-college-gold"}`}>
+              Photo Gallery
+            </Link>
+            <Link to="/examination-cell" className={`nav-link ${isActive("/examination-cell") ? "active" : ""} ${scrolled ? "text-college-dark hover:text-college-blue" : "text-white hover:text-college-gold"}`}>
+              Examination Cell
+            </Link>
             <Link to="/contact" className={`nav-link ${isActive("/contact") ? "active" : ""} ${scrolled ? "text-college-dark hover:text-college-blue" : "text-white hover:text-college-gold"}`}>
               Contact
             </Link>
@@ -243,7 +249,10 @@ const Header = () => {
                 Staff
               </Link>
               <Link to="/gallery" className={`px-4 py-2 ${isActive("/gallery") ? "bg-primary/10 text-primary font-medium" : "text-gray-700"}`} onClick={closeMobileMenu}>
-                Gallery
+                Photo Gallery
+              </Link>
+              <Link to="/examination-cell" className={`px-4 py-2 ${isActive("/examination-cell") ? "bg-primary/10 text-primary font-medium" : "text-gray-700"}`} onClick={closeMobileMenu}>
+                Examination Cell
               </Link>
               <Link to="/contact" className={`px-4 py-2 ${isActive("/contact") ? "bg-primary/10 text-primary font-medium" : "text-gray-700"}`} onClick={closeMobileMenu}>
                 Contact
