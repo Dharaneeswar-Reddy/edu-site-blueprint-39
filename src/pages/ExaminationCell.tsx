@@ -126,7 +126,19 @@ const ExaminationCell = () => {
       <div className="space-y-8">
         {/* Navigation Tabs */}
         <div className="flex flex-wrap border-b bg-white rounded-lg shadow-sm">
-          {tabs.map((tab, index) => {})}
+          {tabs.map((tab, index) => (
+            <button
+              key={index}
+              onClick={() => setActiveTab(tab)}
+              className={`px-4 py-3 text-sm font-medium border-b-2 transition-colors ${
+                activeTab === tab
+                  ? 'border-blue-600 text-blue-600 bg-blue-50'
+                  : 'border-transparent text-gray-600 hover:text-blue-600 hover:bg-gray-50'
+              }`}
+            >
+              {tab}
+            </button>
+          ))}
         </div>
 
         {/* Content based on active tab */}
