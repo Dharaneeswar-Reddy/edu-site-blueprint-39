@@ -79,35 +79,34 @@ const ExaminationCell = () => {
     }, {
       name: "Continuous Assessment Notification"
     }],
-    "Downloads": [{
-      name: "Exam Application Form"
+    "Results": [{
+      name: "B.Tech IV Year II Sem Results 2024-25"
     }, {
-      name: "Hall Ticket Format"
+      name: "B.Tech III Year II Sem Results 2024-25"
     }, {
-      name: "Re-evaluation Application Form"
+      name: "B.Tech II Year II Sem Results 2024-25"
     }, {
-      name: "Supplementary Exam Form"
+      name: "B.Tech I Year II Sem Results 2024-25"
     }, {
-      name: "Grade Card Application"
+      name: "M.Tech II Year Results 2024-25"
     }, {
-      name: "Transcript Application Form"
-    }],
-    "Exam Cell - ERP": [{
-      name: "ERP User Manual for Students"
+      name: "M.Tech I Year Results 2024-25"
     }, {
-      name: "ERP User Manual for Faculty"
+      name: "MCA II Year Results 2024-25"
     }, {
-      name: "Online Exam Guidelines"
+      name: "MCA I Year Results 2024-25"
     }, {
-      name: "ERP Login Instructions"
+      name: "MBA II Year Results 2024-25"
     }, {
-      name: "System Requirements"
+      name: "MBA I Year Results 2024-25"
     }, {
-      name: "Troubleshooting Guide"
+      name: "Supplementary Results 2024-25"
+    }, {
+      name: "Re-evaluation Results 2024-25"
     }]
   };
   const [documents, setDocuments] = useState<Record<string, PDFDocument[]>>(documentsByTab);
-  const tabs = ["Academic Calendars", "Exam Fee Notifications", "External Time Tables", "Internal Time Tables", "Internal Circulars", "Downloads", "Exam Cell - ERP"];
+  const tabs = ["Academic Calendars", "Exam Fee Notifications", "External Time Tables", "Internal Time Tables", "Internal Circulars", "Results"];
   const handleFileUpload = (index: number, file: File, tab: string) => {
     const updatedDocuments = {
       ...documents
