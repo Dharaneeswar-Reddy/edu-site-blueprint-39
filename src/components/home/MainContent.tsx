@@ -26,7 +26,6 @@ const MainContent = ({ latestNews }: MainContentProps) => {
       <WelcomeSection />
       <ChairmanMessage />
       <CollegeStats />
-      <LatestNews news={latestNews} />
       
       
       <div className="mt-12 text-center flex flex-col gap-4 sm:flex-row sm:justify-center">

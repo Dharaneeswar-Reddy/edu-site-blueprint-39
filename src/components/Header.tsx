@@ -130,8 +130,8 @@ const Header = () => {
               IQAC
             </Link>
 
-            <Link to="/naac" className={`nav-link ${isActive("/naac") ? "active" : ""} ${scrolled ? "text-college-dark hover:text-college-blue" : "text-white hover:text-college-gold"}`}>
-              NAAC
+            <Link to="/ncc" className={`nav-link ${isActive("/ncc") ? "active" : ""} ${scrolled ? "text-college-dark hover:text-college-blue" : "text-white hover:text-college-gold"}`}>
+              NCC
             </Link>
 
             <Link to="/examination-cell" className={`nav-link ${isActive("/examination-cell") ? "active" : ""} ${scrolled ? "text-college-dark hover:text-college-blue" : "text-white hover:text-college-gold"}`}>
@@ -228,8 +228,8 @@ const Header = () => {
               <Link to="/iqac" className={`px-4 py-2 ${isActive("/iqac") ? "bg-primary/10 text-primary font-medium" : "text-gray-700"}`} onClick={closeMobileMenu}>
                 IQAC
               </Link>
-              <Link to="/naac" className={`px-4 py-2 ${isActive("/naac") ? "bg-primary/10 text-primary font-medium" : "text-gray-700"}`} onClick={closeMobileMenu}>
-                NAAC
+              <Link to="/ncc" className={`px-4 py-2 ${isActive("/ncc") ? "bg-primary/10 text-primary font-medium" : "text-gray-700"}`} onClick={closeMobileMenu}>
+                NCC
               </Link>
               <Link to="/examination-cell" className={`px-4 py-2 ${isActive("/examination-cell") ? "bg-primary/10 text-primary font-medium" : "text-gray-700"}`} onClick={closeMobileMenu}>
                 Examination Cell

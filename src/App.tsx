@@ -55,7 +55,7 @@ import DigitalCampus from "./pages/infrastructure/DigitalCampus";
 import SportsFacilities from "./pages/infrastructure/SportsFacilities";
 import IQAC from "./pages/iqac/IQAC";
 import QualityPolicy from "./pages/iqac/QualityPolicy";
-import NAAC from "./pages/naac/NAAC";
+import NCC from "./pages/NCC";
 import Physics from "./pages/departments/Physics";
 import Chemistry from "./pages/departments/Chemistry";
 import Mathematics from "./pages/departments/Mathematics";
@@ -83,8 +83,6 @@ const App = () => (
           <Route path="/student-documents" element={<StudentDocuments />} />
           <Route path="/news" element={<News />} />
           <Route path="/news/:id" element={<NewsDetail />} />
-          <Route path="/admission" element={<Admission />} />
-          <Route path="/placements" element={<Placements />} />
           <Route path="/gallery" element={<Gallery />} />
           <Route path="/faculty-login" element={<FacultyLogin />} />
           <Route path="/student-login" element={<StudentLogin />} />
@@ -114,7 +112,7 @@ const App = () => (
           <Route path="/infrastructure/sports-facilities" element={<SportsFacilities />} />
           <Route path="/iqac" element={<IQAC />} />
           <Route path="/iqac/quality-policy" element={<QualityPolicy />} />
-          <Route path="/naac" element={<NAAC />} />
+          <Route path="/ncc" element={<NCC />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

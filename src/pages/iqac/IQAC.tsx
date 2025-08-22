@@ -1,7 +1,8 @@
 import PageLayout from "@/components/PageLayout";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Award, Users, FileText, Calendar, Target, Download, Activity, ClipboardList, BookOpen, TrendingUp } from "lucide-react";
+import { Progress } from "@/components/ui/progress";
+import { Award, Users, FileText, Calendar, Target, Download, Activity, ClipboardList, BookOpen, TrendingUp, Star, CheckCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const IQAC = () => {
@@ -126,21 +127,22 @@ const IQAC = () => {
           </div>
         </section>
 
-        {/* Minutes of IQAC */}
+        {/* Minutes and ATR Combined */}
         <section>
           <Card>
             <CardHeader>
               <CardTitle className="flex items-center gap-3">
                 <ClipboardList className="h-6 w-6 text-blue-600" />
-                Minutes of IQAC Meetings
+                Minutes & ATR (Action Taken Report)
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="space-y-4">
+              <div className="space-y-6">
+                <h3 className="text-xl font-semibold">Recent IQAC Meeting Minutes</h3>
                 {minutes.map((minute, index) => (
                   <div key={index} className="border-l-4 border-l-blue-200 pl-6 py-4 bg-gray-50 rounded-r-lg">
                     <div className="flex justify-between items-start mb-2">
-                      <h3 className="text-lg font-semibold text-gray-900">{minute.meeting}</h3>
+                      <h4 className="text-lg font-semibold text-gray-900">{minute.meeting}</h4>
                       <span className="text-sm text-blue-600 font-medium">{minute.date}</span>
                     </div>
                     <p className="text-gray-700 mb-2">{minute.agenda}</p>
@@ -158,208 +160,49 @@ const IQAC = () => {
           </Card>
         </section>
 
-        {/* Institutional Annual Plans */}
+        {/* NAAC Section Integrated */}
         <section>
           <Card>
             <CardHeader>
               <CardTitle className="flex items-center gap-3">
-                <BookOpen className="h-6 w-6 text-green-600" />
-                Institutional Annual Plans
+                <Star className="h-6 w-6 text-blue-600" />
+                NAAC (National Assessment and Accreditation Council)
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="grid md:grid-cols-2 gap-6">
-                <div className="space-y-4">
-                  <h3 className="text-lg font-semibold text-green-700">Academic Year 2024-25 Plans</h3>
-                  <div className="space-y-3">
-                    <div className="bg-green-50 p-4 rounded-lg">
-                      <h4 className="font-medium text-green-800">Academic Excellence</h4>
-                      <ul className="text-sm text-gray-700 mt-2 space-y-1">
-                        <li>• Curriculum revision as per NEP 2020</li>
-                        <li>• Faculty development programmes (4 programmes planned)</li>
-                        <li>• Student outcome assessment enhancement</li>
-                        <li>• Digital learning resource development</li>
-                      </ul>
-                    </div>
-                    <div className="bg-blue-50 p-4 rounded-lg">
-                      <h4 className="font-medium text-blue-800">Infrastructure Development</h4>
-                      <ul className="text-sm text-gray-700 mt-2 space-y-1">
-                        <li>• Smart classroom upgradation (15 classrooms)</li>
-                        <li>• Laboratory equipment modernization</li>
-                        <li>• Campus WiFi network expansion</li>
-                        <li>• Green campus initiatives</li>
-                      </ul>
+              <div className="bg-gradient-to-r from-blue-50 to-indigo-50 p-6 rounded-lg">
+                <div className="grid md:grid-cols-2 gap-6">
+                  <div>
+                    <h3 className="text-xl font-semibold text-blue-800 mb-4">Current Accreditation Status</h3>
+                    <div className="space-y-3">
+                      <div className="flex items-center justify-between">
+                        <span>NAAC Grade</span>
+                        <Badge className="bg-green-500 text-white text-lg px-3 py-1">A+</Badge>
+                      </div>
+                      <div className="flex items-center justify-between">
+                        <span>CGPA</span>
+                        <span className="font-bold text-lg text-green-600">3.42</span>
+                      </div>
+                      <div className="flex items-center justify-between">
+                        <span>Valid Until</span>
+                        <span className="font-medium">March 2029</span>
+                      </div>
                     </div>
                   </div>
-                </div>
-                <div className="space-y-4">
-                  <h3 className="text-lg font-semibold text-purple-700">Previous Year Achievements (2023-24)</h3>
-                  <div className="space-y-3">
-                    <div className="bg-purple-50 p-4 rounded-lg">
-                      <h4 className="font-medium text-purple-800">Quality Initiatives</h4>
-                      <ul className="text-sm text-gray-700 mt-2 space-y-1">
-                        <li>• NAAC accreditation maintained with A+ grade</li>
-                        <li>• 85% faculty completed certification courses</li>
-                        <li>• Student satisfaction index: 4.2/5</li>
-                        <li>• Research publications increased by 25%</li>
-                      </ul>
-                    </div>
-                    <div className="bg-orange-50 p-4 rounded-lg">
-                      <h4 className="font-medium text-orange-800">Resource Allocation</h4>
-                      <ul className="text-sm text-gray-700 mt-2 space-y-1">
-                        <li>• Budget allocation: ₹2.5 Cr for quality initiatives</li>
-                        <li>• Faculty research seed fund: ₹15 Lakhs</li>
-                        <li>• Infrastructure development: ₹1.8 Cr</li>
-                        <li>• Student welfare schemes: ₹50 Lakhs</li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-        </section>
-
-        {/* ATR (Action Taken Report) */}
-        <section>
-          <Card>
-            <CardHeader>
-              <CardTitle className="flex items-center gap-3">
-                <Activity className="h-6 w-6 text-orange-600" />
-                Action Taken Reports (ATR)
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="space-y-6">
-                <div className="bg-orange-50 p-6 rounded-lg">
-                  <h3 className="text-lg font-semibold text-orange-800 mb-4">ATR on NAAC Peer Team Recommendations (2023)</h3>
-                  <div className="grid md:grid-cols-2 gap-6">
-                    <div>
-                      <h4 className="font-medium text-gray-900 mb-2">Key Recommendations Addressed:</h4>
-                      <ul className="text-sm text-gray-700 space-y-1">
-                        <li>• Enhanced research infrastructure - ₹50 Lakhs invested</li>
-                        <li>• Faculty development programmes - 12 programmes conducted</li>
-                        <li>• Industry-academia partnerships - 8 new MoUs signed</li>
-                        <li>• Student support services - Expanded counseling facility</li>
-                        <li>• ICT integration - 100% smart classrooms achieved</li>
-                      </ul>
-                    </div>
-                    <div>
-                      <h4 className="font-medium text-gray-900 mb-2">Implementation Status:</h4>
-                      <div className="space-y-2">
-                        <div className="flex justify-between items-center">
-                          <span className="text-sm">Completed Actions</span>
-                          <Badge className="bg-green-100 text-green-800">18/20</Badge>
-                        </div>
-                        <div className="flex justify-between items-center">
-                          <span className="text-sm">In Progress</span>
-                          <Badge className="bg-yellow-100 text-yellow-800">2/20</Badge>
-                        </div>
-                        <div className="flex justify-between items-center">
-                          <span className="text-sm">Timeline Adherence</span>
-                          <Badge className="bg-blue-100 text-blue-800">95%</Badge>
-                        </div>
+                  <div>
+                    <h3 className="text-xl font-semibold text-blue-800 mb-4">Quality Indicators</h3>
+                    <div className="space-y-2">
+                      <div className="flex items-center">
+                        <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
+                        <span className="text-sm">Quality Indicators Met: 142/150</span>
+                      </div>
+                      <div className="flex items-center">
+                        <TrendingUp className="h-4 w-4 text-blue-500 mr-2" />
+                        <span className="text-sm">Improvement: 0.28 points</span>
                       </div>
                     </div>
                   </div>
                 </div>
-
-                <div className="bg-blue-50 p-6 rounded-lg">
-                  <h3 className="text-lg font-semibold text-blue-800 mb-4">ATR on Student Feedback Analysis (2023-24)</h3>
-                  <div className="grid md:grid-cols-3 gap-4">
-                    <div className="bg-white p-4 rounded-lg text-center">
-                      <div className="text-2xl font-bold text-blue-600">4.3/5</div>
-                      <div className="text-sm text-gray-600">Overall Rating</div>
-                    </div>
-                    <div className="bg-white p-4 rounded-lg text-center">
-                      <div className="text-2xl font-bold text-green-600">92%</div>
-                      <div className="text-sm text-gray-600">Response Rate</div>
-                    </div>
-                    <div className="bg-white p-4 rounded-lg text-center">
-                      <div className="text-2xl font-bold text-purple-600">15</div>
-                      <div className="text-sm text-gray-600">Improvements Made</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-        </section>
-
-        {/* Activities */}
-        <section>
-          <Card>
-            <CardHeader>
-              <CardTitle className="flex items-center gap-3">
-                <Calendar className="h-6 w-6 text-purple-600" />
-                IQAC Activities
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="space-y-4">
-                {activities.map((activity, index) => (
-                  <div key={index} className="border rounded-lg p-4 hover:shadow-md transition-shadow">
-                    <div className="flex justify-between items-start mb-2">
-                      <h3 className="text-lg font-semibold text-purple-700">{activity.title}</h3>
-                      <span className="text-sm text-gray-500">{activity.date}</span>
-                    </div>
-                    <div className="grid md:grid-cols-2 gap-4">
-                      <div>
-                        <p className="text-sm text-gray-600 mb-2">
-                          <strong>Participants:</strong> {activity.participants} faculty and students
-                        </p>
-                        <p className="text-sm text-gray-700">{activity.outcome}</p>
-                      </div>
-                      <div className="flex justify-end">
-                        <Button size="sm" variant="outline">
-                          <FileText className="h-4 w-4 mr-1" />
-                          View Report
-                        </Button>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </CardContent>
-          </Card>
-        </section>
-
-        {/* AQARs */}
-        <section>
-          <Card>
-            <CardHeader>
-              <CardTitle className="flex items-center gap-3">
-                <FileText className="h-6 w-6 text-red-600" />
-                Annual Quality Assurance Reports (AQARs)
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="space-y-4">
-                {aqarReports.map((report, index) => (
-                  <div key={index} className="bg-gradient-to-r from-red-50 to-pink-50 p-6 rounded-lg border-l-4 border-red-400">
-                    <div className="flex justify-between items-start mb-4">
-                      <div>
-                        <h3 className="text-xl font-semibold text-red-800">AQAR {report.year}</h3>
-                        <p className="text-sm text-red-600 font-medium">{report.status}</p>
-                      </div>
-                      <div className="text-right">
-                        <div className="text-2xl font-bold text-red-600">{report.pages}</div>
-                        <div className="text-sm text-gray-600">Pages</div>
-                      </div>
-                    </div>
-                    <p className="text-gray-700 mb-4">{report.highlights}</p>
-                    <div className="flex gap-2">
-                      <Button size="sm" variant="outline">
-                        <Download className="h-4 w-4 mr-1" />
-                        Download AQAR
-                      </Button>
-                      <Button size="sm" variant="outline">
-                        <FileText className="h-4 w-4 mr-1" />
-                        View Summary
-                      </Button>
-                    </div>
-                  </div>
-                ))}
               </div>
             </CardContent>
           </Card>

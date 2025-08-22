@@ -1,85 +1,81 @@
 import Layout from "@/components/Layout";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
-import { Users, Award, GraduationCap, BookOpen, Settings, FileText, Phone } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Users, Award, GraduationCap, BookOpen, Settings, FileText, Phone, Mail, MapPin, Calendar } from "lucide-react";
 
 const Administration = () => {
-  // Teaching Staff Data
-  const departments = [
+  // Faculty data matching the uploaded image style
+  const facultyCategories = [
     {
-      name: "Physics",
-      hod: "Dr. Rajesh Kumar",
+      title: "Regular Faculty",
       faculty: [
-        { name: "Dr. Rajesh Kumar", designation: "Professor & HOD", qualification: "Ph.D. Physics", experience: "20 years" },
-        { name: "Dr. Priya Sharma", designation: "Associate Professor", qualification: "Ph.D. Physics", experience: "15 years" },
-        { name: "Mr. Suresh Reddy", designation: "Assistant Professor", qualification: "M.Sc. Physics", experience: "8 years" },
+        {
+          name: "Dr. Aalok Dinkar Khandekar",
+          designation: "Head (LA) & Associate Professor",
+          department: "Computer Science",
+          qualification: "Ph.D: Rensselaer Polytechnic Institute",
+          expertise: ["Science, technology, and society studies (STS)", "Environmental sustainability", "Urban studies"],
+          image: "/lovable-uploads/52a8e7b1-5b22-4a0c-b1ec-450f99bfa9bb.png"
+        },
+        {
+          name: "Dr. Aardra Surendran",
+          designation: "Assistant Professor",
+          department: "Liberal Arts",
+          qualification: "Ph.D: Jawaharlal Nehru University, New Delhi",
+          expertise: ["Labour Studies", "Gender Studies", "Social Inequality"],
+          image: "/lovable-uploads/662ebac1-9113-46ee-b212-a9a1526878d4.png"
+        },
+        {
+          name: "Dr. Abhijit Sau",
+          designation: "Assistant Professor",
+          department: "Chemistry",
+          qualification: "Ph.D: Bose Institute, Kolkata",
+          expertise: ["Synthetic Organic Chemistry", "Medicinal Chemistry", "Glycoscience"],
+          image: "/lovable-uploads/71dea894-961d-4fd6-ac1f-78e8db8d93b4.png"
+        },
+        {
+          name: "Dr. Abhinav Kumar",
+          designation: "Professor",
+          department: "Computer Science",
+          qualification: "Ph.D: IIT Delhi",
+          expertise: ["Resource allocation for 5G", "Visible light based communications", "Security and Privacy in wireless networks"],
+          image: "/lovable-uploads/805efae8-1428-4b19-9a41-f2f62680aefc.png"
+        }
       ]
     },
     {
-      name: "Chemistry", 
-      hod: "Dr. Meera Patel",
+      title: "Visiting Faculty",
       faculty: [
-        { name: "Dr. Meera Patel", designation: "Professor & HOD", qualification: "Ph.D. Chemistry", experience: "18 years" },
-        { name: "Dr. Anil Kumar", designation: "Associate Professor", qualification: "Ph.D. Chemistry", experience: "12 years" },
-        { name: "Ms. Kavitha Rani", designation: "Assistant Professor", qualification: "M.Sc. Chemistry", experience: "6 years" },
+        {
+          name: "Dr. Rajesh Sharma",
+          designation: "Visiting Professor",
+          department: "Physics",
+          qualification: "Ph.D: IISc Bangalore",
+          expertise: ["Quantum Physics", "Nanotechnology", "Materials Science"],
+          image: "/lovable-uploads/85f3d76b-36b0-4119-9ae0-75167cea9d0b.png"
+        },
+        {
+          name: "Dr. Priya Nair",
+          designation: "Visiting Associate Professor",
+          department: "Mathematics",
+          qualification: "Ph.D: University of Cambridge",
+          expertise: ["Applied Mathematics", "Statistical Analysis", "Mathematical Modeling"],
+          image: "/lovable-uploads/8ca0ef83-413e-4894-9e73-7361e0c0106c.png"
+        }
       ]
     },
     {
-      name: "Computer Science",
-      hod: "Dr. Srinivas Reddy", 
+      title: "Adjunct Faculty",
       faculty: [
-        { name: "Dr. Srinivas Reddy", designation: "Professor & HOD", qualification: "Ph.D. Computer Science", experience: "16 years" },
-        { name: "Mr. Vikram Singh", designation: "Associate Professor", qualification: "M.Tech CSE", experience: "10 years" },
-        { name: "Ms. Anita Sharma", designation: "Assistant Professor", qualification: "M.Tech IT", experience: "7 years" },
-      ]
-    },
-    {
-      name: "Mathematics",
-      hod: "Dr. Lakshmi Devi",
-      faculty: [
-        { name: "Dr. Lakshmi Devi", designation: "Professor & HOD", qualification: "Ph.D. Mathematics", experience: "22 years" },
-        { name: "Mr. Ravi Kumar", designation: "Associate Professor", qualification: "M.Sc. Mathematics", experience: "14 years" },
-        { name: "Ms. Sunita Rao", designation: "Assistant Professor", qualification: "M.Sc. Statistics", experience: "9 years" },
-      ]
-    }
-  ];
-
-  // Non-Teaching Staff Data
-  const staffCategories = [
-    {
-      category: "Administrative Staff",
-      staff: [
-        { name: "Mr. Ramesh Kumar", designation: "Registrar", department: "Administration", experience: "15 years" },
-        { name: "Ms. Sunita Devi", designation: "Assistant Registrar", department: "Academic Affairs", experience: "12 years" },
-        { name: "Mr. Prakash Rao", designation: "Administrative Officer", department: "General Administration", experience: "10 years" },
-        { name: "Ms. Kamala Devi", designation: "Accounts Officer", department: "Finance", experience: "18 years" },
-      ]
-    },
-    {
-      category: "Technical Staff",
-      staff: [
-        { name: "Mr. Suresh Babu", designation: "Lab Technician", department: "Physics Lab", experience: "14 years" },
-        { name: "Ms. Radha Krishna", designation: "Lab Technician", department: "Chemistry Lab", experience: "11 years" },
-        { name: "Mr. Venkat Reddy", designation: "Computer Operator", department: "Computer Center", experience: "8 years" },
-        { name: "Ms. Latha Kumari", designation: "Lab Assistant", department: "Biology Lab", experience: "9 years" },
-      ]
-    },
-    {
-      category: "Library Staff", 
-      staff: [
-        { name: "Mrs. Padma Lakshmi", designation: "Librarian", department: "Central Library", experience: "16 years" },
-        { name: "Mr. Krishna Murthy", designation: "Assistant Librarian", department: "Central Library", experience: "12 years" },
-        { name: "Ms. Sita Devi", designation: "Library Assistant", department: "Digital Library", experience: "7 years" },
-      ]
-    },
-    {
-      category: "Support Staff",
-      staff: [
-        { name: "Mr. Raju", designation: "Office Assistant", department: "Principal Office", experience: "20 years" },
-        { name: "Ms. Rani", designation: "Office Assistant", department: "Academic Section", experience: "13 years" },
-        { name: "Mr. Govind", designation: "Security Supervisor", department: "Security", experience: "15 years" },
-        { name: "Mr. Naresh", designation: "Maintenance Supervisor", department: "Infrastructure", experience: "12 years" },
+        {
+          name: "Mr. Suresh Kumar",
+          designation: "Adjunct Professor",
+          department: "Commerce",
+          qualification: "MBA: Harvard Business School",
+          expertise: ["Business Strategy", "Financial Management", "Entrepreneurship"],
+          image: "/lovable-uploads/9ecf085a-3abc-45e7-844b-b132bfa85970.png"
+        }
       ]
     }
   ];
@@ -88,252 +84,222 @@ const Administration = () => {
     <Layout>
       <div className="min-h-screen bg-gray-50">
         <div className="container mx-auto px-4 py-8">
-          <div className="bg-white rounded-lg shadow-sm p-8">
-            <div className="mb-8">
-              <h1 className="text-3xl font-bold text-college-blue mb-4">Administration</h1>
-              <p className="text-lg text-gray-600">Leadership and administrative structure of SVRMC</p>
-            </div>
-
-            {/* Correspondent Section */}
-            <section className="mb-12">
-              <Card>
-                <CardHeader>
-                  <CardTitle className="text-2xl text-college-blue">Correspondent</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-start">
-                    <div className="md:col-span-1">
-                      <div className="rounded-lg overflow-hidden shadow-lg">
-                        <img 
-                          src="https://source.unsplash.com/random/400x500?businessman,portrait" 
-                          alt="Correspondent" 
-                          className="w-full h-auto"
-                        />
-                      </div>
-                      <div className="bg-college-blue text-white p-4 mt-4 rounded-lg">
-                        <h3 className="text-xl font-bold">Shri. Velagapudi Srinivas</h3>
-                        <p className="text-sm">Correspondent</p>
-                        <p className="text-sm mt-1">M.A., M.Ed.</p>
-                      </div>
-                    </div>
-                    <div className="md:col-span-2">
-                      <div className="space-y-4 text-gray-700">
-                        <p>Shri. Velagapudi Srinivas serves as the Correspondent of SVRM College, carrying forward the vision of his father, the late Shri Velagapudi Ramakrishna. Under his dynamic leadership, the college has expanded its academic offerings and enhanced its infrastructure to meet modern educational standards.</p>
-                        <p>His commitment to quality education and student welfare has been instrumental in establishing SVRMC as one of the premier educational institutions in Andhra Pradesh. He believes in providing affordable, quality education that nurtures both academic excellence and character development.</p>
-                        <p>With a strong focus on holistic development, he has introduced various initiatives for skill development, personality enhancement, and career guidance to ensure that students are well-prepared for the challenges of the modern world.</p>
-                      </div>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            </section>
-
-            {/* Principal Section */}
-            <section className="mb-12">
-              <Card>
-                <CardHeader>
-                  <CardTitle className="text-2xl text-college-blue">Principal</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-start">
-                    <div className="md:col-span-1">
-                      <div className="rounded-lg overflow-hidden shadow-lg">
-                        <img 
-                          src="https://source.unsplash.com/random/400x500?professor,academic" 
-                          alt="Principal" 
-                          className="w-full h-auto"
-                        />
-                      </div>
-                      <div className="bg-college-blue text-white p-4 mt-4 rounded-lg">
-                        <h3 className="text-xl font-bold">Dr. Rajesh Kumar</h3>
-                        <p className="text-sm">Principal</p>
-                        <p className="text-sm mt-1">Ph.D. in Educational Leadership</p>
-                      </div>
-                    </div>
-                    <div className="md:col-span-2">
-                      <div className="space-y-4 text-gray-700">
-                        <p>Dr. Rajesh Kumar brings over two decades of experience in higher education to his role as Principal of SVRMC. With a Ph.D. in Educational Leadership and extensive research in curriculum development, he has been instrumental in implementing innovative teaching methodologies and academic reforms.</p>
-                        <p>His vision for the college encompasses not just academic excellence but also the holistic development of students. Under his leadership, the college has achieved significant milestones in research, industry partnerships, and student placements.</p>
-                        <p>Dr. Kumar is known for his open-door policy and his commitment to faculty development and student welfare. He actively promotes research culture among faculty and encourages students to participate in national and international competitions.</p>
-                      </div>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            </section>
-
-            {/* Teaching Staff Section */}
-            <section className="mb-12">
-              <Card>
-                <CardHeader>
-                  <CardTitle className="text-2xl text-college-blue">Teaching Staff</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  {/* Overview Statistics */}
-                  <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
-                    <Card className="text-center">
-                      <CardContent className="p-6">
-                        <Users className="h-8 w-8 text-college-blue mx-auto mb-3" />
-                        <h3 className="text-2xl font-bold text-college-blue">45</h3>
-                        <p className="text-gray-600">Total Faculty</p>
-                      </CardContent>
-                    </Card>
-                    
-                    <Card className="text-center">
-                      <CardContent className="p-6">
-                        <Award className="h-8 w-8 text-college-blue mx-auto mb-3" />
-                        <h3 className="text-2xl font-bold text-college-blue">28</h3>
-                        <p className="text-gray-600">Ph.D. Holders</p>
-                      </CardContent>
-                    </Card>
-                    
-                    <Card className="text-center">
-                      <CardContent className="p-6">
-                        <GraduationCap className="h-8 w-8 text-college-blue mx-auto mb-3" />
-                        <h3 className="text-2xl font-bold text-college-blue">15:1</h3>
-                        <p className="text-gray-600">Student-Faculty Ratio</p>
-                      </CardContent>
-                    </Card>
-                    
-                    <Card className="text-center">
-                      <CardContent className="p-6">
-                        <BookOpen className="h-8 w-8 text-college-blue mx-auto mb-3" />
-                        <h3 className="text-2xl font-bold text-college-blue">150+</h3>
-                        <p className="text-gray-600">Research Publications</p>
-                      </CardContent>
-                    </Card>
-                  </div>
-
-                  {/* Department-wise Faculty */}
-                  {departments.map((dept, deptIndex) => (
-                    <Card key={deptIndex} className="mb-6">
-                      <CardHeader>
-                        <CardTitle className="flex items-center justify-between">
-                          <span>Department of {dept.name}</span>
-                          <Badge variant="secondary">HOD: {dept.hod}</Badge>
-                        </CardTitle>
-                      </CardHeader>
-                      <CardContent>
-                        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                          {dept.faculty.map((faculty, index) => (
-                            <div key={index} className="border rounded-lg p-4 hover:shadow-md transition-shadow">
-                              <div className="flex items-center mb-4">
-                                <Avatar className="h-16 w-16 mr-4">
-                                  <AvatarImage src="/placeholder.svg" alt={faculty.name} />
-                                  <AvatarFallback>{faculty.name.split(' ').map(n => n[0]).join('')}</AvatarFallback>
-                                </Avatar>
-                                <div>
-                                  <h4 className="font-semibold text-lg">{faculty.name}</h4>
-                                  <p className="text-sm text-gray-600">{faculty.designation}</p>
-                                </div>
-                              </div>
-                              
-                              <div className="space-y-2">
-                                <div className="flex justify-between">
-                                  <span className="text-sm text-gray-500">Qualification:</span>
-                                  <span className="text-sm font-medium">{faculty.qualification}</span>
-                                </div>
-                                <div className="flex justify-between">
-                                  <span className="text-sm text-gray-500">Experience:</span>
-                                  <span className="text-sm font-medium">{faculty.experience}</span>
-                                </div>
-                              </div>
-                            </div>
-                          ))}
-                        </div>
-                      </CardContent>
-                    </Card>
-                  ))}
-                </CardContent>
-              </Card>
-            </section>
-
-            {/* Non-Teaching Staff Section */}
-            <section>
-              <Card>
-                <CardHeader>
-                  <CardTitle className="text-2xl text-college-blue">Non-Teaching Staff</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  {/* Overview Statistics */}
-                  <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
-                    <Card className="text-center">
-                      <CardContent className="p-6">
-                        <Users className="h-8 w-8 text-college-blue mx-auto mb-3" />
-                        <h3 className="text-2xl font-bold text-college-blue">65</h3>
-                        <p className="text-gray-600">Total Non-Teaching Staff</p>
-                      </CardContent>
-                    </Card>
-                    
-                    <Card className="text-center">
-                      <CardContent className="p-6">
-                        <Settings className="h-8 w-8 text-college-blue mx-auto mb-3" />
-                        <h3 className="text-2xl font-bold text-college-blue">15</h3>
-                        <p className="text-gray-600">Administrative Staff</p>
-                      </CardContent>
-                    </Card>
-                    
-                    <Card className="text-center">
-                      <CardContent className="p-6">
-                        <FileText className="h-8 w-8 text-college-blue mx-auto mb-3" />
-                        <h3 className="text-2xl font-bold text-college-blue">25</h3>
-                        <p className="text-gray-600">Technical Staff</p>
-                      </CardContent>
-                    </Card>
-                    
-                    <Card className="text-center">
-                      <CardContent className="p-6">
-                        <Phone className="h-8 w-8 text-college-blue mx-auto mb-3" />
-                        <h3 className="text-2xl font-bold text-college-blue">25</h3>
-                        <p className="text-gray-600">Support Staff</p>
-                      </CardContent>
-                    </Card>
-                  </div>
-
-                  {/* Staff by Category */}
-                  {staffCategories.map((category, categoryIndex) => (
-                    <Card key={categoryIndex} className="mb-6">
-                      <CardHeader>
-                        <CardTitle className="flex items-center justify-between">
-                          <span>{category.category}</span>
-                          <Badge variant="secondary">{category.staff.length} Members</Badge>
-                        </CardTitle>
-                      </CardHeader>
-                      <CardContent>
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                          {category.staff.map((staff, index) => (
-                            <div key={index} className="border rounded-lg p-4 hover:shadow-md transition-shadow">
-                              <div className="flex items-center mb-4">
-                                <Avatar className="h-12 w-12 mr-4">
-                                  <AvatarImage src="/placeholder.svg" alt={staff.name} />
-                                  <AvatarFallback>{staff.name.split(' ').map(n => n[0]).join('')}</AvatarFallback>
-                                </Avatar>
-                                <div>
-                                  <h4 className="font-semibold">{staff.name}</h4>
-                                  <p className="text-sm text-gray-600">{staff.designation}</p>
-                                </div>
-                              </div>
-                              
-                              <div className="space-y-2">
-                                <div className="flex justify-between">
-                                  <span className="text-sm text-gray-500">Department:</span>
-                                  <span className="text-sm font-medium">{staff.department}</span>
-                                </div>
-                                <div className="flex justify-between">
-                                  <span className="text-sm text-gray-500">Experience:</span>
-                                  <span className="text-sm font-medium">{staff.experience}</span>
-                                </div>
-                              </div>
-                            </div>
-                          ))}
-                        </div>
-                      </CardContent>
-                    </Card>
-                  ))}
-                </CardContent>
-              </Card>
-            </section>
+          {/* Header */}
+          <div className="text-center mb-12">
+            <h1 className="text-4xl font-bold text-gray-900 mb-4">Administration</h1>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Leadership and administrative structure of SVRMC - Committed to academic excellence and institutional growth
+            </p>
           </div>
+
+          {/* Overview Stats */}
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-12">
+            <Card className="text-center">
+              <CardContent className="p-6">
+                <Users className="h-8 w-8 text-blue-600 mx-auto mb-3" />
+                <h3 className="text-3xl font-bold text-blue-600">120+</h3>
+                <p className="text-gray-600">Total Faculty & Staff</p>
+              </CardContent>
+            </Card>
+            <Card className="text-center">
+              <CardContent className="p-6">
+                <Award className="h-8 w-8 text-green-600 mx-auto mb-3" />
+                <h3 className="text-3xl font-bold text-green-600">85+</h3>
+                <p className="text-gray-600">Ph.D. Holders</p>
+              </CardContent>
+            </Card>
+            <Card className="text-center">
+              <CardContent className="p-6">
+                <GraduationCap className="h-8 w-8 text-purple-600 mx-auto mb-3" />
+                <h3 className="text-3xl font-bold text-purple-600">12:1</h3>
+                <p className="text-gray-600">Student-Faculty Ratio</p>
+              </CardContent>
+            </Card>
+            <Card className="text-center">
+              <CardContent className="p-6">
+                <BookOpen className="h-8 w-8 text-orange-600 mx-auto mb-3" />
+                <h3 className="text-3xl font-bold text-orange-600">250+</h3>
+                <p className="text-gray-600">Research Publications</p>
+              </CardContent>
+            </Card>
+          </div>
+
+          {/* Faculty Categories */}
+          {facultyCategories.map((category, categoryIndex) => (
+            <div key={categoryIndex} className="mb-16">
+              <div className="flex items-center justify-between mb-8">
+                <h2 className="text-3xl font-bold text-gray-900">{category.title}</h2>
+                <div className="bg-blue-100 text-blue-800 px-4 py-2 rounded-full">
+                  {category.faculty.length} Faculty Members
+                </div>
+              </div>
+              
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                {category.faculty.map((faculty, index) => (
+                  <Card key={index} className="group hover:shadow-xl transition-all duration-300 border-0 shadow-lg">
+                    <CardContent className="p-0">
+                      {/* Faculty Image */}
+                      <div className="relative overflow-hidden">
+                        <img 
+                          src={faculty.image} 
+                          alt={faculty.name}
+                          className="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-105"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                      </div>
+                      
+                      {/* Faculty Info */}
+                      <div className="p-6">
+                        <h3 className="text-lg font-bold text-gray-900 mb-1">{faculty.name}</h3>
+                        <p className="text-sm font-medium text-blue-600 mb-2">{faculty.designation}</p>
+                        <p className="text-sm text-gray-600 mb-3">{faculty.qualification}</p>
+                        
+                        {/* Expertise Tags */}
+                        <div className="flex flex-wrap gap-1 mb-4">
+                          {faculty.expertise.slice(0, 2).map((skill, skillIndex) => (
+                            <Badge key={skillIndex} variant="secondary" className="text-xs">
+                              {skill}
+                            </Badge>
+                          ))}
+                          {faculty.expertise.length > 2 && (
+                            <Badge variant="outline" className="text-xs">
+                              +{faculty.expertise.length - 2} more
+                            </Badge>
+                          )}
+                        </div>
+                        
+                        {/* Action Buttons */}
+                        <div className="flex gap-2">
+                          <Button size="sm" variant="outline" className="flex-1 text-xs">
+                            <Mail className="h-3 w-3 mr-1" />
+                            Contact
+                          </Button>
+                          <Button size="sm" variant="outline" className="flex-1 text-xs">
+                            <FileText className="h-3 w-3 mr-1" />
+                            Profile
+                          </Button>
+                        </div>
+                      </div>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
+            </div>
+          ))}
+
+          {/* Leadership Section */}
+          <div className="mb-16">
+            <h2 className="text-3xl font-bold text-gray-900 mb-8">Leadership</h2>
+            <div className="grid md:grid-cols-2 gap-8">
+              {/* Principal */}
+              <Card className="overflow-hidden shadow-lg">
+                <CardContent className="p-0">
+                  <div className="md:flex">
+                    <div className="md:w-1/3">
+                      <img 
+                        src="/lovable-uploads/9f96f106-897d-46e3-a4a1-4c4b8f8f9f0c.png" 
+                        alt="Principal"
+                        className="w-full h-64 md:h-full object-cover"
+                      />
+                    </div>
+                    <div className="p-6 md:w-2/3">
+                      <h3 className="text-2xl font-bold text-gray-900 mb-2">Dr. Rajesh Kumar</h3>
+                      <p className="text-blue-600 font-medium mb-3">Principal</p>
+                      <p className="text-sm text-gray-700 mb-4">
+                        Dr. Rajesh Kumar brings over two decades of experience in higher education. 
+                        Under his leadership, SVRMC has achieved significant milestones in academic excellence and research.
+                      </p>
+                      <div className="flex gap-2">
+                        <Button size="sm" variant="outline">
+                          <Mail className="h-4 w-4 mr-1" />
+                          principal@svrmc.edu.in
+                        </Button>
+                        <Button size="sm" variant="outline">
+                          <Phone className="h-4 w-4 mr-1" />
+                          Contact
+                        </Button>
+                      </div>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+
+              {/* Vice Principal */}
+              <Card className="overflow-hidden shadow-lg">
+                <CardContent className="p-0">
+                  <div className="md:flex">
+                    <div className="md:w-1/3">
+                      <img 
+                        src="/lovable-uploads/a29d5e18-fb3d-47a3-b3d2-a210ce08d66c.png" 
+                        alt="Vice Principal"
+                        className="w-full h-64 md:h-full object-cover"
+                      />
+                    </div>
+                    <div className="p-6 md:w-2/3">
+                      <h3 className="text-2xl font-bold text-gray-900 mb-2">Dr. Priya Sharma</h3>
+                      <p className="text-blue-600 font-medium mb-3">Vice Principal</p>
+                      <p className="text-sm text-gray-700 mb-4">
+                        Dr. Priya Sharma oversees academic affairs and student development programs. 
+                        She is instrumental in curriculum development and quality assurance initiatives.
+                      </p>
+                      <div className="flex gap-2">
+                        <Button size="sm" variant="outline">
+                          <Mail className="h-4 w-4 mr-1" />
+                          viceprincipal@svrmc.edu.in
+                        </Button>
+                        <Button size="sm" variant="outline">
+                          <Phone className="h-4 w-4 mr-1" />
+                          Contact
+                        </Button>
+                      </div>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
+          </div>
+
+          {/* Contact Information */}
+          <Card className="bg-blue-50 border-blue-200">
+            <CardHeader>
+              <CardTitle className="text-blue-900">Administrative Contact Information</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="grid md:grid-cols-3 gap-6">
+                <div className="flex items-start gap-3">
+                  <MapPin className="h-5 w-5 text-blue-600 mt-1" />
+                  <div>
+                    <h4 className="font-medium text-blue-900">Address</h4>
+                    <p className="text-sm text-gray-700">
+                      SVRM College Campus<br />
+                      Nagaram, Hyderabad<br />
+                      Telangana - 500083
+                    </p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3">
+                  <Phone className="h-5 w-5 text-blue-600 mt-1" />
+                  <div>
+                    <h4 className="font-medium text-blue-900">Phone</h4>
+                    <p className="text-sm text-gray-700">
+                      +91-40-2717-8888<br />
+                      +91-40-2717-9999
+                    </p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3">
+                  <Calendar className="h-5 w-5 text-blue-600 mt-1" />
+                  <div>
+                    <h4 className="font-medium text-blue-900">Office Hours</h4>
+                    <p className="text-sm text-gray-700">
+                      Monday - Friday: 9:00 AM - 5:00 PM<br />
+                      Saturday: 9:00 AM - 1:00 PM
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
         </div>
       </div>
     </Layout>
