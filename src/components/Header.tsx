@@ -80,9 +80,16 @@ const Header = () => {
               Home
             </Link>
             
-            {/* Administration Single Link */}
+            <Link to="/about-us" className={`nav-link ${isActive("/about-us") ? "active" : ""} ${scrolled ? "text-college-dark hover:text-college-blue" : "text-white hover:text-college-gold"}`}>
+              About Us
+            </Link>
+            
             <Link to="/administration" className={`nav-link ${isActive("/administration") ? "active" : ""} ${scrolled ? "text-college-dark hover:text-college-blue" : "text-white hover:text-college-gold"}`}>
               Administration
+            </Link>
+
+            <Link to="/academics" className={`nav-link ${isActive("/academics") ? "active" : ""} ${scrolled ? "text-college-dark hover:text-college-blue" : "text-white hover:text-college-gold"}`}>
+              Academics
             </Link>
 
             {/* Departments Dropdown */}
@@ -119,49 +126,22 @@ const Header = () => {
               )}
             </div>
 
-            {/* Quality Assurance Dropdown */}
-            <div className="relative" 
-              onMouseEnter={() => handleMouseEnter(setQualityDropdown)} 
-              onMouseLeave={() => handleMouseLeave(setQualityDropdown)}
-            >
-              <button 
-                onClick={() => handleDropdownClick(qualityDropdown, setQualityDropdown)}
-                className={`nav-link flex items-center ${scrolled ? "text-college-dark hover:text-college-blue" : "text-white hover:text-college-gold"}`}
-              >
-                Quality <ChevronDown className="ml-1 h-4 w-4" />
-              </button>
-              {qualityDropdown && (
-                <>
-                  <div 
-                    className="fixed inset-0 z-10" 
-                    onClick={() => setQualityDropdown(false)}
-                  ></div>
-                  <div className="absolute left-0 mt-1 w-64 bg-white rounded-md shadow-lg py-1 z-20 animate-fade-in border"
-                    onMouseEnter={() => handleMouseEnter(setQualityDropdown)}
-                    onMouseLeave={() => handleMouseLeave(setQualityDropdown)}
-                  >
-                    <Link to="/iqac" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" onClick={() => setQualityDropdown(false)}>IQAC</Link>
-                    <Link to="/iqac/quality-policy" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" onClick={() => setQualityDropdown(false)}>Quality Policy</Link>
-                    <Link to="/naac" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" onClick={() => setQualityDropdown(false)}>NAAC</Link>
-                    <Link to="/nirf" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" onClick={() => setQualityDropdown(false)}>NIRF</Link>
-                    <Link to="/about/strategic-documents" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" onClick={() => setQualityDropdown(false)}>Strategic Documents</Link>
-                  </div>
-                </>
-              )}
-            </div>
+            <Link to="/iqac" className={`nav-link ${isActive("/iqac") ? "active" : ""} ${scrolled ? "text-college-dark hover:text-college-blue" : "text-white hover:text-college-gold"}`}>
+              IQAC
+            </Link>
 
-            <Link to="/admission" className={`nav-link ${isActive("/admission") ? "active" : ""} ${scrolled ? "text-college-dark hover:text-college-blue" : "text-white hover:text-college-gold"}`}>
-              Admission
+            <Link to="/naac" className={`nav-link ${isActive("/naac") ? "active" : ""} ${scrolled ? "text-college-dark hover:text-college-blue" : "text-white hover:text-college-gold"}`}>
+              NAAC
             </Link>
-            <Link to="/placements" className={`nav-link ${isActive("/placements") ? "active" : ""} ${scrolled ? "text-college-dark hover:text-college-blue" : "text-white hover:text-college-gold"}`}>
-              Placements
-            </Link>
-            <Link to="/gallery" className={`nav-link ${isActive("/gallery") ? "active" : ""} ${scrolled ? "text-college-dark hover:text-college-blue" : "text-white hover:text-college-gold"}`}>
-              Photo Gallery
-            </Link>
+
             <Link to="/examination-cell" className={`nav-link ${isActive("/examination-cell") ? "active" : ""} ${scrolled ? "text-college-dark hover:text-college-blue" : "text-white hover:text-college-gold"}`}>
               Examination Cell
             </Link>
+
+            <Link to="/gallery" className={`nav-link ${isActive("/gallery") ? "active" : ""} ${scrolled ? "text-college-dark hover:text-college-blue" : "text-white hover:text-college-gold"}`}>
+              Photo Gallery
+            </Link>
+
             <Link to="/contact" className={`nav-link ${isActive("/contact") ? "active" : ""} ${scrolled ? "text-college-dark hover:text-college-blue" : "text-white hover:text-college-gold"}`}>
               Contact
             </Link>
@@ -180,8 +160,14 @@ const Header = () => {
               <Link to="/" className={`px-4 py-2 ${isActive("/") ? "bg-primary/10 text-primary font-medium" : "text-gray-700"}`} onClick={closeMobileMenu}>
                 Home
               </Link>
+              <Link to="/about-us" className={`px-4 py-2 ${isActive("/about-us") ? "bg-primary/10 text-primary font-medium" : "text-gray-700"}`} onClick={closeMobileMenu}>
+                About Us
+              </Link>
               <Link to="/administration" className={`px-4 py-2 ${isActive("/administration") ? "bg-primary/10 text-primary font-medium" : "text-gray-700"}`} onClick={closeMobileMenu}>
                 Administration
+              </Link>
+              <Link to="/academics" className={`px-4 py-2 ${isActive("/academics") ? "bg-primary/10 text-primary font-medium" : "text-gray-700"}`} onClick={closeMobileMenu}>
+                Academics
               </Link>
               <div className="px-4 py-2 text-gray-700 font-medium">Departments</div>
               <Link to="/departments" className={`pl-8 py-2 ${isActive("/departments") ? "bg-primary/10 text-primary font-medium" : "text-gray-700"}`} onClick={closeMobileMenu}>
@@ -239,25 +225,21 @@ const Header = () => {
                 History
               </Link>
               
-              <Link to="/placements" className={`px-4 py-2 ${isActive("/placements") ? "bg-primary/10 text-primary font-medium" : "text-gray-700"}`} onClick={closeMobileMenu}>
-                Placements
+              <Link to="/iqac" className={`px-4 py-2 ${isActive("/iqac") ? "bg-primary/10 text-primary font-medium" : "text-gray-700"}`} onClick={closeMobileMenu}>
+                IQAC
               </Link>
-              <Link to="/news" className={`px-4 py-2 ${isActive("/news") ? "bg-primary/10 text-primary font-medium" : "text-gray-700"}`} onClick={closeMobileMenu}>
-                News
-              </Link>
-              <Link to="/staff" className={`px-4 py-2 ${isActive("/staff") ? "bg-primary/10 text-primary font-medium" : "text-gray-700"}`} onClick={closeMobileMenu}>
-                Staff
-              </Link>
-              <Link to="/gallery" className={`px-4 py-2 ${isActive("/gallery") ? "bg-primary/10 text-primary font-medium" : "text-gray-700"}`} onClick={closeMobileMenu}>
-                Photo Gallery
+              <Link to="/naac" className={`px-4 py-2 ${isActive("/naac") ? "bg-primary/10 text-primary font-medium" : "text-gray-700"}`} onClick={closeMobileMenu}>
+                NAAC
               </Link>
               <Link to="/examination-cell" className={`px-4 py-2 ${isActive("/examination-cell") ? "bg-primary/10 text-primary font-medium" : "text-gray-700"}`} onClick={closeMobileMenu}>
                 Examination Cell
               </Link>
+              <Link to="/gallery" className={`px-4 py-2 ${isActive("/gallery") ? "bg-primary/10 text-primary font-medium" : "text-gray-700"}`} onClick={closeMobileMenu}>
+                Photo Gallery
+              </Link>
               <Link to="/contact" className={`px-4 py-2 ${isActive("/contact") ? "bg-primary/10 text-primary font-medium" : "text-gray-700"}`} onClick={closeMobileMenu}>
                 Contact
               </Link>
-              {/* Hidden admin login and student documents buttons */}
             </div>
           </div>}
       </div>

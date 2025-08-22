@@ -157,18 +157,10 @@ const ExaminationCell = () => {
                       <td className="py-3 px-4 text-blue-600 font-medium">{index + 1}</td>
                       <td className="py-3 px-4 text-blue-600">{doc.name}</td>
                       <td className="py-3 px-4 text-center">
-                        <div className="flex flex-col gap-2">
-                          <Button variant="outline" size="sm" onClick={() => handleOpenFile(doc)} disabled={!doc.file} className="w-24">
-                            Open File
-                          </Button>
-                          <input type="file" accept=".pdf" onChange={e => {
-                        const file = e.target.files?.[0];
-                        if (file) handleFileUpload(index, file, activeTab);
-                      }} className="hidden" id={`file-${activeTab}-${index}`} />
-                          <Button variant="outline" size="sm" onClick={() => document.getElementById(`file-${activeTab}-${index}`)?.click()} className="w-24">
-                            Upload PDF
-                          </Button>
-                        </div>
+                        <Button variant="outline" size="sm" onClick={() => handleOpenFile(doc)} disabled={!doc.file}>
+                          <Download className="h-4 w-4 mr-2" />
+                          Download PDF
+                        </Button>
                       </td>
                     </tr>)}
                 </tbody>
