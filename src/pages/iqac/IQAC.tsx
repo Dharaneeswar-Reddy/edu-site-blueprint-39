@@ -2,7 +2,7 @@ import PageLayout from "@/components/PageLayout";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
-import { Award, Users, FileText, Calendar, Target, Download, Activity, ClipboardList, BookOpen, TrendingUp, Star, CheckCircle } from "lucide-react";
+import { Award, Users, FileText, Calendar, Target, Download, Activity, ClipboardList, BookOpen, TrendingUp, CheckCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const IQAC = () => {
@@ -165,7 +165,7 @@ const IQAC = () => {
           <Card>
             <CardHeader>
               <CardTitle className="flex items-center gap-3">
-                <Star className="h-6 w-6 text-blue-600" />
+                <Award className="h-6 w-6 text-blue-600" />
                 NAAC (National Assessment and Accreditation Council)
               </CardTitle>
             </CardHeader>
