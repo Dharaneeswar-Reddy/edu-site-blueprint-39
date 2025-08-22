@@ -7,6 +7,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 // Import pages
 import Index from "./pages/Index";
+import AboutUs from "./pages/AboutUs";
+import Academics from "./pages/Academics";
 import Departments from "./pages/Departments";
 import Contact from "./pages/Contact";
 import AdminLogin from "./pages/AdminLogin";
@@ -72,7 +74,9 @@ const App = () => (
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Index />} />
+          <Route path="/about-us" element={<AboutUs />} />
           <Route path="/administration" element={<Administration />} />
+          <Route path="/academics" element={<Academics />} />
           <Route path="/departments" element={<Departments />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/admin-login" element={<AdminLogin />} />
