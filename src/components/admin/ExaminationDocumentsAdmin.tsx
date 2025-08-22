@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -60,20 +61,20 @@ const ExaminationDocumentsAdmin = () => {
     }
 
     try {
-      // Upload file to Supabase storage
+      // Upload file to the new examination-docs bucket
       const fileExt = uploadData.file.name.split('.').pop();
       const fileName = `${Date.now()}.${fileExt}`;
       const filePath = `examination-documents/${fileName}`;
 
       const { error: uploadError } = await supabase.storage
-        .from('admin-uploads')
+        .from('examination-docs')
         .upload(filePath, uploadData.file);
 
       if (uploadError) throw uploadError;
 
       // Get public URL
       const { data: { publicUrl } } = supabase.storage
-        .from('admin-uploads')
+        .from('examination-docs')
         .getPublicUrl(filePath);
 
       // Insert document record
@@ -121,12 +122,18 @@ const ExaminationDocumentsAdmin = () => {
 
   const handleDeleteDocument = async (id: string, fileUrl: string) => {
     try {
-      // Delete from storage
-      const filePath = fileUrl.split('/').pop();
-      if (filePath) {
+      // Extract file path from URL to determine which bucket to use
+      const urlParts = fileUrl.split('/');
+      const bucketIndex = urlParts.findIndex(part => part === 'examination-docs' || part === 'admin-uploads');
+      
+      if (bucketIndex !== -1) {
+        const bucketName = urlParts[bucketIndex];
+        const filePath = urlParts.slice(bucketIndex + 1).join('/');
+        
+        // Delete from storage (handles both old and new bucket files)
         await supabase.storage
-          .from('admin-uploads')
-          .remove([`examination-documents/${filePath}`]);
+          .from(bucketName)
+          .remove([filePath]);
       }
 
       // Delete from database
