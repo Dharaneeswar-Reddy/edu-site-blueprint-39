@@ -1,46 +1,77 @@
 import PageLayout from "@/components/PageLayout";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Award, Users, TrendingUp, FileText, Calendar, Target } from "lucide-react";
+import { Award, Users, FileText, Calendar, Target, Download, Activity, ClipboardList, BookOpen, TrendingUp } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 const IQAC = () => {
-  const composition = [
-    { role: "Chairperson", name: "Dr. R. Venkata Rao", designation: "Principal" },
-    { role: "IQAC Coordinator", name: "Dr. M. Lakshmi Prasanna", designation: "Associate Professor, Physics" },
-    { role: "Senior Administrative Officer", name: "Sri K. Ramesh", designation: "Registrar" },
-    { role: "Faculty Representatives", name: "Dr. S. Madhavi (Chemistry), Dr. P. Krishna (Mathematics)", designation: "Professors" },
-    { role: "External Expert", name: "Dr. A. Suresh Kumar", designation: "Retired Professor, Andhra University" },
-    { role: "Alumni Representative", name: "Sri M. Rajesh", designation: "Software Engineer, TCS" },
-    { role: "Employer Representative", name: "Ms. K. Priya", designation: "HR Manager, Infosys" },
-    { role: "Student Representatives", name: "Ms. L. Divya (Final Year), Sri R. Kiran (Second Year)", designation: "Student Leaders" }
-  ];
-
-  const initiatives = [
+  const aqarReports = [
     {
-      category: "Academic Enhancement",
-      projects: [
-        { name: "Curriculum Revision", status: "Ongoing", impact: "Updated syllabi for 2023-24" },
-        { name: "Teaching Methodology", status: "Completed", impact: "Faculty training on innovative methods" },
-        { name: "Assessment Reforms", status: "Implemented", impact: "Continuous evaluation system" },
-        { name: "Industry Integration", status: "Ongoing", impact: "Guest lectures and workshops" }
-      ]
+      year: "2023-24",
+      status: "Draft Prepared",
+      pages: 145,
+      highlights: "Digital transformation initiatives, Research excellence, Industry collaborations"
     },
     {
-      category: "Research Promotion",
-      projects: [
-        { name: "Research Policy", status: "Implemented", impact: "Clear guidelines for faculty research" },
-        { name: "Seed Money Scheme", status: "Active", impact: "₹50,000 per project for faculty" },
-        { name: "Publication Support", status: "Ongoing", impact: "Financial aid for research publications" },
-        { name: "Collaboration MoUs", status: "Expanding", impact: "Partnerships with 5+ institutions" }
-      ]
+      year: "2022-23", 
+      status: "Submitted to NAAC",
+      pages: 132,
+      highlights: "Quality enhancement measures, Student outcomes, Infrastructure development"
+    },
+    {
+      year: "2021-22",
+      status: "Submitted to NAAC",
+      pages: 118,
+      highlights: "COVID-19 response, Online learning implementation, Faculty development"
     }
   ];
 
-  const metrics = [
-    { icon: Award, label: "NAAC Grade", value: "A+", color: "text-green-600" },
-    { icon: TrendingUp, label: "Quality Score", value: "3.2/4", color: "text-blue-600" },
-    { icon: Users, label: "Faculty PhD", value: "85%", color: "text-purple-600" },
-    { icon: FileText, label: "Research Papers", value: "120+", color: "text-orange-600" }
+  const minutes = [
+    {
+      date: "March 15, 2024",
+      meeting: "Monthly Review Meeting",
+      agenda: "NAAC Preparation, Faculty Development, Infrastructure Assessment",
+      decisions: 5
+    },
+    {
+      date: "February 20, 2024", 
+      meeting: "Academic Quality Review",
+      agenda: "Curriculum Updates, Research Promotion, Student Feedback Analysis",
+      decisions: 7
+    },
+    {
+      date: "January 18, 2024",
+      meeting: "Strategic Planning Session",
+      agenda: "Annual Quality Plans, Best Practices Documentation, Industry Partnerships",
+      decisions: 4
+    }
+  ];
+
+  const activities = [
+    {
+      title: "Faculty Development Programme on Innovative Teaching Methods",
+      date: "March 10-12, 2024",
+      participants: 45,
+      outcome: "Enhanced pedagogical skills of faculty members"
+    },
+    {
+      title: "Student Feedback Analysis Workshop", 
+      date: "February 25, 2024",
+      participants: 25,
+      outcome: "Improved feedback collection and analysis mechanisms"
+    },
+    {
+      title: "Academic Audit and Quality Assessment",
+      date: "February 15, 2024", 
+      participants: 30,
+      outcome: "Comprehensive quality assessment report prepared"
+    },
+    {
+      title: "Research Methodology Workshop for PG Students",
+      date: "January 28, 2024",
+      participants: 60,
+      outcome: "Enhanced research capabilities among postgraduate students"
+    }
   ];
 
   return (
@@ -48,219 +79,291 @@ const IQAC = () => {
       title="Internal Quality Assurance Cell (IQAC)" 
       description="Ensuring continuous improvement in academic and administrative performance through systematic quality enhancement initiatives."
     >
-      <div className="space-y-8">
+      <div className="space-y-12">
         
-        {/* IQAC Metrics */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-          {metrics.map((metric, index) => (
-            <Card key={index} className="text-center">
-              <CardContent className="p-6">
-                <metric.icon className={`h-8 w-8 mx-auto mb-3 ${metric.color}`} />
-                <h3 className="text-2xl font-bold text-college-blue">{metric.value}</h3>
-                <p className="text-gray-600">{metric.label}</p>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
-
-        {/* IQAC Composition */}
-        <Card>
-          <CardHeader>
-            <CardTitle className="flex items-center gap-3">
-              <Users className="h-6 w-6 text-college-blue" />
-              IQAC Composition
-              <Badge variant="secondary">{composition.length} Members</Badge>
-            </CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="overflow-x-auto">
-              <table className="w-full border-collapse">
-                <thead>
-                  <tr className="border-b">
-                    <th className="text-left p-3 font-semibold">Role</th>
-                    <th className="text-left p-3 font-semibold">Name</th>
-                    <th className="text-left p-3 font-semibold">Designation</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {composition.map((member, index) => (
-                    <tr key={index} className="border-b hover:bg-gray-50">
-                      <td className="p-3 font-medium">{member.role}</td>
-                      <td className="p-3">{member.name}</td>
-                      <td className="p-3">{member.designation}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
+        {/* About IQAC */}
+        <section className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg p-8">
+          <div className="flex items-center gap-4 mb-6">
+            <Award className="h-8 w-8 text-blue-600" />
+            <h2 className="text-3xl font-bold text-gray-900">About IQAC</h2>
+          </div>
+          <div className="grid md:grid-cols-2 gap-8 items-center">
+            <div>
+              <p className="text-lg text-gray-700 leading-relaxed mb-4">
+                The Internal Quality Assurance Cell (IQAC) was established at SVRMC as per the guidelines of the National Assessment and Accreditation Council (NAAC) to ensure continuous quality improvement in all academic and administrative activities.
+              </p>
+              <p className="text-lg text-gray-700 leading-relaxed mb-4">
+                IQAC acts as a nodal agency for coordinating quality-related activities including adoption and dissemination of best practices within the institution. It channels the efforts and measures of an institution towards academic excellence.
+              </p>
+              <div className="grid grid-cols-2 gap-4">
+                <div className="bg-white p-4 rounded-lg shadow-sm">
+                  <div className="text-2xl font-bold text-blue-600">2018</div>
+                  <div className="text-sm text-gray-600">Established</div>
+                </div>
+                <div className="bg-white p-4 rounded-lg shadow-sm">
+                  <div className="text-2xl font-bold text-green-600">12</div>
+                  <div className="text-sm text-gray-600">Members</div>
+                </div>
+              </div>
             </div>
-          </CardContent>
-        </Card>
+            <div className="bg-white p-6 rounded-lg shadow-lg">
+              <h3 className="text-xl font-semibold text-blue-900 mb-4">IQAC Objectives</h3>
+              <ul className="space-y-3 text-gray-700">
+                <li className="flex items-start">
+                  <Target className="h-5 w-5 text-blue-500 mt-0.5 mr-2 flex-shrink-0" />
+                  Develop quality benchmarks and parameters for various academic activities
+                </li>
+                <li className="flex items-start">
+                  <TrendingUp className="h-5 w-5 text-green-500 mt-0.5 mr-2 flex-shrink-0" />
+                  Facilitate creation of learner-centric environment for quality education
+                </li>
+                <li className="flex items-start">
+                  <Users className="h-5 w-5 text-purple-500 mt-0.5 mr-2 flex-shrink-0" />
+                  Promote measures for institutional functioning towards quality enhancement
+                </li>
+              </ul>
+            </div>
+          </div>
+        </section>
 
-        {/* Quality Initiatives */}
-        {initiatives.map((category, index) => (
-          <Card key={index}>
+        {/* Minutes of IQAC */}
+        <section>
+          <Card>
             <CardHeader>
               <CardTitle className="flex items-center gap-3">
-                <Target className="h-6 w-6 text-college-blue" />
-                {category.category}
-                <Badge variant="secondary">{category.projects.length} Projects</Badge>
+                <ClipboardList className="h-6 w-6 text-blue-600" />
+                Minutes of IQAC Meetings
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                {category.projects.map((project, idx) => (
-                  <div key={idx} className="border rounded-lg p-4 hover:shadow-md transition-shadow">
+              <div className="space-y-4">
+                {minutes.map((minute, index) => (
+                  <div key={index} className="border-l-4 border-l-blue-200 pl-6 py-4 bg-gray-50 rounded-r-lg">
                     <div className="flex justify-between items-start mb-2">
-                      <h4 className="font-semibold text-college-blue">{project.name}</h4>
-                      <Badge variant={
-                        project.status === "Completed" ? "default" :
-                        project.status === "Ongoing" ? "secondary" : "outline"
-                      }>
-                        {project.status}
-                      </Badge>
+                      <h3 className="text-lg font-semibold text-gray-900">{minute.meeting}</h3>
+                      <span className="text-sm text-blue-600 font-medium">{minute.date}</span>
                     </div>
-                    <p className="text-gray-600 text-sm">{project.impact}</p>
+                    <p className="text-gray-700 mb-2">{minute.agenda}</p>
+                    <div className="flex gap-4">
+                      <Badge variant="secondary">{minute.decisions} Key Decisions</Badge>
+                      <Button size="sm" variant="outline" className="ml-auto">
+                        <Download className="h-4 w-4 mr-1" />
+                        Download Minutes
+                      </Button>
+                    </div>
                   </div>
                 ))}
               </div>
             </CardContent>
           </Card>
-        ))}
+        </section>
 
-        {/* IQAC Functions */}
-        <Card>
-          <CardHeader>
-            <CardTitle>Key Functions & Responsibilities</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              <div>
-                <h4 className="font-semibold mb-4 text-college-blue">Quality Enhancement</h4>
-                <div className="space-y-3">
-                  <div className="border-l-4 border-blue-500 pl-4">
-                    <h5 className="font-medium">Academic Quality</h5>
-                    <p className="text-sm text-gray-600">Curriculum development, teaching methods, assessment</p>
+        {/* Institutional Annual Plans */}
+        <section>
+          <Card>
+            <CardHeader>
+              <CardTitle className="flex items-center gap-3">
+                <BookOpen className="h-6 w-6 text-green-600" />
+                Institutional Annual Plans
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="grid md:grid-cols-2 gap-6">
+                <div className="space-y-4">
+                  <h3 className="text-lg font-semibold text-green-700">Academic Year 2024-25 Plans</h3>
+                  <div className="space-y-3">
+                    <div className="bg-green-50 p-4 rounded-lg">
+                      <h4 className="font-medium text-green-800">Academic Excellence</h4>
+                      <ul className="text-sm text-gray-700 mt-2 space-y-1">
+                        <li>• Curriculum revision as per NEP 2020</li>
+                        <li>• Faculty development programmes (4 programmes planned)</li>
+                        <li>• Student outcome assessment enhancement</li>
+                        <li>• Digital learning resource development</li>
+                      </ul>
+                    </div>
+                    <div className="bg-blue-50 p-4 rounded-lg">
+                      <h4 className="font-medium text-blue-800">Infrastructure Development</h4>
+                      <ul className="text-sm text-gray-700 mt-2 space-y-1">
+                        <li>• Smart classroom upgradation (15 classrooms)</li>
+                        <li>• Laboratory equipment modernization</li>
+                        <li>• Campus WiFi network expansion</li>
+                        <li>• Green campus initiatives</li>
+                      </ul>
+                    </div>
                   </div>
-                  <div className="border-l-4 border-green-500 pl-4">
-                    <h5 className="font-medium">Research Quality</h5>
-                    <p className="text-sm text-gray-600">Research promotion, publication support, collaboration</p>
-                  </div>
-                  <div className="border-l-4 border-purple-500 pl-4">
-                    <h5 className="font-medium">Infrastructure Quality</h5>
-                    <p className="text-sm text-gray-600">Facility enhancement, technology integration</p>
+                </div>
+                <div className="space-y-4">
+                  <h3 className="text-lg font-semibold text-purple-700">Previous Year Achievements (2023-24)</h3>
+                  <div className="space-y-3">
+                    <div className="bg-purple-50 p-4 rounded-lg">
+                      <h4 className="font-medium text-purple-800">Quality Initiatives</h4>
+                      <ul className="text-sm text-gray-700 mt-2 space-y-1">
+                        <li>• NAAC accreditation maintained with A+ grade</li>
+                        <li>• 85% faculty completed certification courses</li>
+                        <li>• Student satisfaction index: 4.2/5</li>
+                        <li>• Research publications increased by 25%</li>
+                      </ul>
+                    </div>
+                    <div className="bg-orange-50 p-4 rounded-lg">
+                      <h4 className="font-medium text-orange-800">Resource Allocation</h4>
+                      <ul className="text-sm text-gray-700 mt-2 space-y-1">
+                        <li>• Budget allocation: ₹2.5 Cr for quality initiatives</li>
+                        <li>• Faculty research seed fund: ₹15 Lakhs</li>
+                        <li>• Infrastructure development: ₹1.8 Cr</li>
+                        <li>• Student welfare schemes: ₹50 Lakhs</li>
+                      </ul>
+                    </div>
                   </div>
                 </div>
               </div>
-              
-              <div>
-                <h4 className="font-semibold mb-4 text-college-blue">Monitoring & Evaluation</h4>
-                <div className="space-y-3">
-                  <div className="border-l-4 border-orange-500 pl-4">
-                    <h5 className="font-medium">Performance Monitoring</h5>
-                    <p className="text-sm text-gray-600">Regular assessment of academic performance</p>
-                  </div>
-                  <div className="border-l-4 border-red-500 pl-4">
-                    <h5 className="font-medium">Feedback Systems</h5>
-                    <p className="text-sm text-gray-600">Student, faculty, and stakeholder feedback</p>
-                  </div>
-                  <div className="border-l-4 border-teal-500 pl-4">
-                    <h5 className="font-medium">Documentation</h5>
-                    <p className="text-sm text-gray-600">AQAR preparation, data maintenance</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
+            </CardContent>
+          </Card>
+        </section>
 
-        {/* Annual Quality Assurance Report */}
-        <Card>
-          <CardHeader>
-            <CardTitle className="flex items-center gap-3">
-              <FileText className="h-6 w-6 text-college-blue" />
-              Annual Quality Assurance Reports (AQAR)
-            </CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="space-y-4">
-              <div className="border-l-4 border-blue-500 pl-6">
-                <h4 className="font-semibold text-blue-700 mb-2">AQAR 2022-23</h4>
-                <p className="text-gray-600 text-sm mb-2">
-                  Comprehensive report on quality initiatives, achievements, and future plans.
-                </p>
-                <div className="flex gap-2">
-                  <Badge variant="outline">Submitted to NAAC</Badge>
-                  <Badge variant="secondary">120 Pages</Badge>
+        {/* ATR (Action Taken Report) */}
+        <section>
+          <Card>
+            <CardHeader>
+              <CardTitle className="flex items-center gap-3">
+                <Activity className="h-6 w-6 text-orange-600" />
+                Action Taken Reports (ATR)
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="space-y-6">
+                <div className="bg-orange-50 p-6 rounded-lg">
+                  <h3 className="text-lg font-semibold text-orange-800 mb-4">ATR on NAAC Peer Team Recommendations (2023)</h3>
+                  <div className="grid md:grid-cols-2 gap-6">
+                    <div>
+                      <h4 className="font-medium text-gray-900 mb-2">Key Recommendations Addressed:</h4>
+                      <ul className="text-sm text-gray-700 space-y-1">
+                        <li>• Enhanced research infrastructure - ₹50 Lakhs invested</li>
+                        <li>• Faculty development programmes - 12 programmes conducted</li>
+                        <li>• Industry-academia partnerships - 8 new MoUs signed</li>
+                        <li>• Student support services - Expanded counseling facility</li>
+                        <li>• ICT integration - 100% smart classrooms achieved</li>
+                      </ul>
+                    </div>
+                    <div>
+                      <h4 className="font-medium text-gray-900 mb-2">Implementation Status:</h4>
+                      <div className="space-y-2">
+                        <div className="flex justify-between items-center">
+                          <span className="text-sm">Completed Actions</span>
+                          <Badge className="bg-green-100 text-green-800">18/20</Badge>
+                        </div>
+                        <div className="flex justify-between items-center">
+                          <span className="text-sm">In Progress</span>
+                          <Badge className="bg-yellow-100 text-yellow-800">2/20</Badge>
+                        </div>
+                        <div className="flex justify-between items-center">
+                          <span className="text-sm">Timeline Adherence</span>
+                          <Badge className="bg-blue-100 text-blue-800">95%</Badge>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-              </div>
-              
-              <div className="border-l-4 border-green-500 pl-6">
-                <h4 className="font-semibold text-green-700 mb-2">AQAR 2021-22</h4>
-                <p className="text-gray-600 text-sm mb-2">
-                  Detailed analysis of COVID-19 impact and quality maintenance strategies.
-                </p>
-                <div className="flex gap-2">
-                  <Badge variant="outline">Submitted to NAAC</Badge>
-                  <Badge variant="secondary">95 Pages</Badge>
-                </div>
-              </div>
-              
-              <div className="border-l-4 border-purple-500 pl-6">
-                <h4 className="font-semibold text-purple-700 mb-2">AQAR 2020-21</h4>
-                <p className="text-gray-600 text-sm mb-2">
-                  Digital transformation initiatives and online learning implementation.
-                </p>
-                <div className="flex gap-2">
-                  <Badge variant="outline">Submitted to NAAC</Badge>
-                  <Badge variant="secondary">110 Pages</Badge>
-                </div>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
 
-        {/* Upcoming Activities */}
-        <Card>
-          <CardHeader>
-            <CardTitle className="flex items-center gap-3">
-              <Calendar className="h-6 w-6 text-college-blue" />
-              Upcoming IQAC Activities
-            </CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <div className="bg-blue-50 p-6 rounded-lg">
-                <h4 className="font-semibold mb-3 text-blue-700">March 2024</h4>
-                <ul className="text-sm text-gray-600 space-y-1">
-                  <li>• Faculty Development Program</li>
-                  <li>• Student Feedback Collection</li>
-                  <li>• External Peer Review</li>
-                  <li>• Quality Audit Preparation</li>
-                </ul>
+                <div className="bg-blue-50 p-6 rounded-lg">
+                  <h3 className="text-lg font-semibold text-blue-800 mb-4">ATR on Student Feedback Analysis (2023-24)</h3>
+                  <div className="grid md:grid-cols-3 gap-4">
+                    <div className="bg-white p-4 rounded-lg text-center">
+                      <div className="text-2xl font-bold text-blue-600">4.3/5</div>
+                      <div className="text-sm text-gray-600">Overall Rating</div>
+                    </div>
+                    <div className="bg-white p-4 rounded-lg text-center">
+                      <div className="text-2xl font-bold text-green-600">92%</div>
+                      <div className="text-sm text-gray-600">Response Rate</div>
+                    </div>
+                    <div className="bg-white p-4 rounded-lg text-center">
+                      <div className="text-2xl font-bold text-purple-600">15</div>
+                      <div className="text-sm text-gray-600">Improvements Made</div>
+                    </div>
+                  </div>
+                </div>
               </div>
-              
-              <div className="bg-green-50 p-6 rounded-lg">
-                <h4 className="font-semibold mb-3 text-green-700">April 2024</h4>
-                <ul className="text-sm text-gray-600 space-y-1">
-                  <li>• AQAR 2023-24 Preparation</li>
-                  <li>• Research Workshop</li>
-                  <li>• Industry Interaction Meet</li>
-                  <li>• Infrastructure Assessment</li>
-                </ul>
+            </CardContent>
+          </Card>
+        </section>
+
+        {/* Activities */}
+        <section>
+          <Card>
+            <CardHeader>
+              <CardTitle className="flex items-center gap-3">
+                <Calendar className="h-6 w-6 text-purple-600" />
+                IQAC Activities
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="space-y-4">
+                {activities.map((activity, index) => (
+                  <div key={index} className="border rounded-lg p-4 hover:shadow-md transition-shadow">
+                    <div className="flex justify-between items-start mb-2">
+                      <h3 className="text-lg font-semibold text-purple-700">{activity.title}</h3>
+                      <span className="text-sm text-gray-500">{activity.date}</span>
+                    </div>
+                    <div className="grid md:grid-cols-2 gap-4">
+                      <div>
+                        <p className="text-sm text-gray-600 mb-2">
+                          <strong>Participants:</strong> {activity.participants} faculty and students
+                        </p>
+                        <p className="text-sm text-gray-700">{activity.outcome}</p>
+                      </div>
+                      <div className="flex justify-end">
+                        <Button size="sm" variant="outline">
+                          <FileText className="h-4 w-4 mr-1" />
+                          View Report
+                        </Button>
+                      </div>
+                    </div>
+                  </div>
+                ))}
               </div>
-              
-              <div className="bg-purple-50 p-6 rounded-lg">
-                <h4 className="font-semibold mb-3 text-purple-700">May 2024</h4>
-                <ul className="text-sm text-gray-600 space-y-1">
-                  <li>• Annual Review Meeting</li>
-                  <li>• Best Practices Documentation</li>
-                  <li>• Academic Calendar Planning</li>
-                  <li>• Quality Policy Revision</li>
-                </ul>
+            </CardContent>
+          </Card>
+        </section>
+
+        {/* AQARs */}
+        <section>
+          <Card>
+            <CardHeader>
+              <CardTitle className="flex items-center gap-3">
+                <FileText className="h-6 w-6 text-red-600" />
+                Annual Quality Assurance Reports (AQARs)
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="space-y-4">
+                {aqarReports.map((report, index) => (
+                  <div key={index} className="bg-gradient-to-r from-red-50 to-pink-50 p-6 rounded-lg border-l-4 border-red-400">
+                    <div className="flex justify-between items-start mb-4">
+                      <div>
+                        <h3 className="text-xl font-semibold text-red-800">AQAR {report.year}</h3>
+                        <p className="text-sm text-red-600 font-medium">{report.status}</p>
+                      </div>
+                      <div className="text-right">
+                        <div className="text-2xl font-bold text-red-600">{report.pages}</div>
+                        <div className="text-sm text-gray-600">Pages</div>
+                      </div>
+                    </div>
+                    <p className="text-gray-700 mb-4">{report.highlights}</p>
+                    <div className="flex gap-2">
+                      <Button size="sm" variant="outline">
+                        <Download className="h-4 w-4 mr-1" />
+                        Download AQAR
+                      </Button>
+                      <Button size="sm" variant="outline">
+                        <FileText className="h-4 w-4 mr-1" />
+                        View Summary
+                      </Button>
+                    </div>
+                  </div>
+                ))}
               </div>
-            </div>
-          </CardContent>
-        </Card>
+            </CardContent>
+          </Card>
+        </section>
 
       </div>
     </PageLayout>
