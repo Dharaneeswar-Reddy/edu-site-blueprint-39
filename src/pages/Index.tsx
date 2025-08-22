@@ -150,41 +150,6 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Vision & Mission */}
-      <section className="py-16 bg-white">
-        <div className="container mx-auto px-4">
-          <div className="mb-12 text-center">
-            <h2 className="section-title">Vision & Mission</h2>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            <div className="bg-gray-50 p-8 rounded-lg shadow-md hover:shadow-lg transition-shadow border-t-4 border-college-blue">
-              <h3 className="text-2xl font-bold mb-4 text-college-blue">Our Vision</h3>
-              <p className="text-gray-700">To be a premier educational institution recognized for academic excellence, innovative research, and producing graduates who are intellectually competent, professionally skilled, and socially responsible citizens contributing to the national development.</p>
-            </div>
-            <div className="bg-gray-50 p-8 rounded-lg shadow-md hover:shadow-lg transition-shadow border-t-4 border-college-gold">
-              <h3 className="text-2xl font-bold mb-4 text-college-blue">Our Mission</h3>
-              <ul className="text-gray-700 space-y-2">
-                <li className="flex">
-                  <ArrowRight className="h-5 w-5 text-college-gold mr-2 flex-shrink-0 mt-0.5" />
-                  <span>To impart quality education through effective teaching-learning methods</span>
-                </li>
-                <li className="flex">
-                  <ArrowRight className="h-5 w-5 text-college-gold mr-2 flex-shrink-0 mt-0.5" />
-                  <span>To foster research, innovation, and entrepreneurship</span>
-                </li>
-                <li className="flex">
-                  <ArrowRight className="h-5 w-5 text-college-gold mr-2 flex-shrink-0 mt-0.5" />
-                  <span>To build industry-academia partnerships for enhanced learning</span>
-                </li>
-                <li className="flex">
-                  <ArrowRight className="h-5 w-5 text-college-gold mr-2 flex-shrink-0 mt-0.5" />
-                  <span>To promote holistic development through extracurricular activities</span>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
 
 
       {/* CTA Section */}

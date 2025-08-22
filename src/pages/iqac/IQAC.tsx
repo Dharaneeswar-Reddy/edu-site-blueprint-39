@@ -208,6 +208,63 @@ const IQAC = () => {
           </Card>
         </section>
 
+        {/* Documents Section - SSR, Grade Sheet, Certificate */}
+        <section>
+          <Card>
+            <CardHeader>
+              <CardTitle className="flex items-center gap-3">
+                <FileText className="h-6 w-6 text-blue-600" />
+                Important Documents
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="grid md:grid-cols-3 gap-6">
+                <Card className="border-blue-200 hover:shadow-lg transition-shadow">
+                  <CardContent className="p-6 text-center">
+                    <FileText className="h-12 w-12 text-blue-600 mx-auto mb-4" />
+                    <h3 className="text-xl font-semibold mb-2">Self Study Report (SSR)</h3>
+                    <p className="text-gray-600 text-sm mb-4">
+                      Comprehensive institutional evaluation report for NAAC accreditation process
+                    </p>
+                    <Button className="w-full">
+                      <Download className="h-4 w-4 mr-2" />
+                      Download SSR
+                    </Button>
+                  </CardContent>
+                </Card>
+
+                <Card className="border-green-200 hover:shadow-lg transition-shadow">
+                  <CardContent className="p-6 text-center">
+                    <Award className="h-12 w-12 text-green-600 mx-auto mb-4" />
+                    <h3 className="text-xl font-semibold mb-2">NAAC Grade Sheet</h3>
+                    <p className="text-gray-600 text-sm mb-4">
+                      Official grading and assessment details from NAAC evaluation
+                    </p>
+                    <Button className="w-full" variant="outline">
+                      <Download className="h-4 w-4 mr-2" />
+                      View Grade Sheet
+                    </Button>
+                  </CardContent>
+                </Card>
+
+                <Card className="border-yellow-200 hover:shadow-lg transition-shadow">
+                  <CardContent className="p-6 text-center">
+                    <Award className="h-12 w-12 text-yellow-600 mx-auto mb-4" />
+                    <h3 className="text-xl font-semibold mb-2">Accreditation Certificate</h3>
+                    <p className="text-gray-600 text-sm mb-4">
+                      Official NAAC accreditation certificate with A+ grade recognition
+                    </p>
+                    <Button className="w-full" variant="outline">
+                      <Download className="h-4 w-4 mr-2" />
+                      View Certificate
+                    </Button>
+                  </CardContent>
+                </Card>
+              </div>
+            </CardContent>
+          </Card>
+        </section>
+
       </div>
     </PageLayout>
   );

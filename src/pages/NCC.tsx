@@ -1,6 +1,5 @@
 import PageLayout from "@/components/PageLayout";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Calendar, MapPin, Trophy, Users, Star, Award, Shield, Target } from "lucide-react";
@@ -83,122 +82,114 @@ const NCC = () => {
       title="National Cadet Corps (NCC)"
       description="Developing leadership, discipline, and patriotism among students through the NCC program"
     >
-      <Tabs defaultValue="about" className="w-full">
-        <TabsList className="grid w-full grid-cols-5">
-          <TabsTrigger value="about">About NCC</TabsTrigger>
-          <TabsTrigger value="message">NCC Head Message</TabsTrigger>
-          <TabsTrigger value="activities">NCC Activities</TabsTrigger>
-          <TabsTrigger value="achievements">NCC Achievements</TabsTrigger>
-          <TabsTrigger value="gallery">Photo Gallery</TabsTrigger>
-        </TabsList>
-
-        <TabsContent value="about" className="mt-6">
-          <div className="grid gap-6">
-            <Card>
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <Shield className="h-6 w-6 text-blue-600" />
-                  About NCC Unit
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="grid md:grid-cols-2 gap-6">
-                  <div>
-                    <p className="text-gray-700 mb-4">
-                      The National Cadet Corps (NCC) unit at SVRM College was established in 1995 with the aim of developing character, comradeship, discipline, leadership, secular outlook, and the spirit of adventure among the youth of our nation.
-                    </p>
-                    <p className="text-gray-700 mb-4">
-                      Our NCC unit is affiliated with the 15 Andhra Battalion and operates under the motto "Unity and Discipline". We offer training in both Army and Navy wings, providing comprehensive military training to our cadets.
-                    </p>
-                    <div className="grid grid-cols-2 gap-4 mt-6">
-                      <div className="text-center p-4 bg-blue-50 rounded-lg">
-                        <Users className="h-8 w-8 text-blue-600 mx-auto mb-2" />
-                        <h3 className="font-semibold text-blue-900">120+</h3>
-                        <p className="text-sm text-gray-600">Total Cadets</p>
-                      </div>
-                      <div className="text-center p-4 bg-green-50 rounded-lg">
-                        <Award className="h-8 w-8 text-green-600 mx-auto mb-2" />
-                        <h3 className="font-semibold text-green-900">15+</h3>
-                        <p className="text-sm text-gray-600">Awards Won</p>
-                      </div>
+      <div className="space-y-12">
+        {/* About NCC Section */}
+        <section>
+          <Card>
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2">
+                <Shield className="h-6 w-6 text-blue-600" />
+                About NCC Unit
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="grid md:grid-cols-2 gap-6">
+                <div>
+                  <p className="text-gray-700 mb-4">
+                    The National Cadet Corps (NCC) unit at SVRM College was established in 1995 with the aim of developing character, comradeship, discipline, leadership, secular outlook, and the spirit of adventure among the youth of our nation.
+                  </p>
+                  <p className="text-gray-700 mb-4">
+                    Our NCC unit is affiliated with the 15 Andhra Battalion and operates under the motto "Unity and Discipline". We offer training in both Army and Navy wings, providing comprehensive military training to our cadets.
+                  </p>
+                  <div className="grid grid-cols-2 gap-4 mt-6">
+                    <div className="text-center p-4 bg-blue-50 rounded-lg">
+                      <Users className="h-8 w-8 text-blue-600 mx-auto mb-2" />
+                      <h3 className="font-semibold text-blue-900">120+</h3>
+                      <p className="text-sm text-gray-600">Total Cadets</p>
+                    </div>
+                    <div className="text-center p-4 bg-green-50 rounded-lg">
+                      <Award className="h-8 w-8 text-green-600 mx-auto mb-2" />
+                      <h3 className="font-semibold text-green-900">15+</h3>
+                      <p className="text-sm text-gray-600">Awards Won</p>
                     </div>
                   </div>
-                  <div>
-                    <img 
-                      src="/lovable-uploads/3135e1f8-603d-4960-af26-bdc4f401f693.png" 
-                      alt="NCC Training" 
-                      className="w-full h-64 object-cover rounded-lg shadow-md"
-                    />
+                </div>
+                <div>
+                  <img 
+                    src="/lovable-uploads/3135e1f8-603d-4960-af26-bdc4f401f693.png" 
+                    alt="NCC Training" 
+                    className="w-full h-64 object-cover rounded-lg shadow-md"
+                  />
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+
+          <div className="grid md:grid-cols-3 gap-6 mt-6">
+            <Card>
+              <CardHeader>
+                <CardTitle className="text-lg">Objectives</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <ul className="space-y-2 text-sm">
+                  <li className="flex items-start gap-2">
+                    <Target className="h-4 w-4 text-blue-600 mt-0.5" />
+                    <span>Develop leadership qualities</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <Target className="h-4 w-4 text-blue-600 mt-0.5" />
+                    <span>Instill discipline and character</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <Target className="h-4 w-4 text-blue-600 mt-0.5" />
+                    <span>Promote national integration</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <Target className="h-4 w-4 text-blue-600 mt-0.5" />
+                    <span>Build adventure spirit</span>
+                  </li>
+                </ul>
+              </CardContent>
+            </Card>
+
+            <Card>
+              <CardHeader>
+                <CardTitle className="text-lg">Training Programs</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <ul className="space-y-2 text-sm">
+                  <li>• Drill and Ceremonials</li>
+                  <li>• Physical Fitness Training</li>
+                  <li>• Map Reading & Field Craft</li>
+                  <li>• First Aid & Home Nursing</li>
+                  <li>• Social Service Activities</li>
+                  <li>• Adventure Sports</li>
+                </ul>
+              </CardContent>
+            </Card>
+
+            <Card>
+              <CardHeader>
+                <CardTitle className="text-lg">Wings Available</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="space-y-4">
+                  <div className="p-3 bg-blue-50 rounded-lg">
+                    <h4 className="font-semibold text-blue-900">Army Wing</h4>
+                    <p className="text-sm text-gray-600">Land-based military training</p>
+                  </div>
+                  <div className="p-3 bg-navy-50 rounded-lg">
+                    <h4 className="font-semibold text-navy-900">Naval Wing</h4>
+                    <p className="text-sm text-gray-600">Maritime and naval training</p>
                   </div>
                 </div>
               </CardContent>
             </Card>
-
-            <div className="grid md:grid-cols-3 gap-6">
-              <Card>
-                <CardHeader>
-                  <CardTitle className="text-lg">Objectives</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <ul className="space-y-2 text-sm">
-                    <li className="flex items-start gap-2">
-                      <Target className="h-4 w-4 text-blue-600 mt-0.5" />
-                      <span>Develop leadership qualities</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <Target className="h-4 w-4 text-blue-600 mt-0.5" />
-                      <span>Instill discipline and character</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <Target className="h-4 w-4 text-blue-600 mt-0.5" />
-                      <span>Promote national integration</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <Target className="h-4 w-4 text-blue-600 mt-0.5" />
-                      <span>Build adventure spirit</span>
-                    </li>
-                  </ul>
-                </CardContent>
-              </Card>
-
-              <Card>
-                <CardHeader>
-                  <CardTitle className="text-lg">Training Programs</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <ul className="space-y-2 text-sm">
-                    <li>• Drill and Ceremonials</li>
-                    <li>• Physical Fitness Training</li>
-                    <li>• Map Reading & Field Craft</li>
-                    <li>• First Aid & Home Nursing</li>
-                    <li>• Social Service Activities</li>
-                    <li>• Adventure Sports</li>
-                  </ul>
-                </CardContent>
-              </Card>
-
-              <Card>
-                <CardHeader>
-                  <CardTitle className="text-lg">Wings Available</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="space-y-4">
-                    <div className="p-3 bg-blue-50 rounded-lg">
-                      <h4 className="font-semibold text-blue-900">Army Wing</h4>
-                      <p className="text-sm text-gray-600">Land-based military training</p>
-                    </div>
-                    <div className="p-3 bg-navy-50 rounded-lg">
-                      <h4 className="font-semibold text-navy-900">Naval Wing</h4>
-                      <p className="text-sm text-gray-600">Maritime and naval training</p>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            </div>
           </div>
-        </TabsContent>
+        </section>
 
-        <TabsContent value="message" className="mt-6">
+        {/* NCC Head Message Section */}
+        <section>
           <Card>
             <CardHeader>
               <CardTitle>Message from NCC Officer</CardTitle>
@@ -237,9 +228,10 @@ const NCC = () => {
               </div>
             </CardContent>
           </Card>
-        </TabsContent>
+        </section>
 
-        <TabsContent value="activities" className="mt-6">
+        {/* NCC Activities Section */}
+        <section>
           <Card>
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
@@ -282,9 +274,10 @@ const NCC = () => {
               </div>
             </CardContent>
           </Card>
-        </TabsContent>
+        </section>
 
-        <TabsContent value="achievements" className="mt-6">
+        {/* NCC Achievements Section */}
+        <section>
           <Card>
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
@@ -318,12 +311,13 @@ const NCC = () => {
               </div>
             </CardContent>
           </Card>
-        </TabsContent>
+        </section>
 
-        <TabsContent value="gallery" className="mt-6">
+        {/* Photo Gallery Section */}
+        <section>
           <Card>
             <CardHeader>
-              <CardTitle>NCC Photo Gallery</CardTitle>
+              <CardTitle>Photo Gallery</CardTitle>
               <CardDescription>
                 Capturing moments of training, achievements, and memorable events
               </CardDescription>
@@ -350,8 +344,8 @@ const NCC = () => {
               </div>
             </CardContent>
           </Card>
-        </TabsContent>
-      </Tabs>
+        </section>
+      </div>
     </PageLayout>
   );
 };
