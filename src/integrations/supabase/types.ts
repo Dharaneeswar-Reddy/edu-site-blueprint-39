@@ -14,7 +14,237 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      announcements: {
+        Row: {
+          content: string
+          created_at: string
+          id: string
+          is_active: boolean | null
+          priority: number | null
+          title: string
+          type: string
+          updated_at: string
+        }
+        Insert: {
+          content: string
+          created_at?: string
+          id?: string
+          is_active?: boolean | null
+          priority?: number | null
+          title: string
+          type?: string
+          updated_at?: string
+        }
+        Update: {
+          content?: string
+          created_at?: string
+          id?: string
+          is_active?: boolean | null
+          priority?: number | null
+          title?: string
+          type?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      examination_documents: {
+        Row: {
+          academic_year: string | null
+          department: string | null
+          description: string | null
+          document_type: string
+          file_url: string
+          id: string
+          semester: string | null
+          title: string
+          updated_at: string
+          uploaded_at: string
+        }
+        Insert: {
+          academic_year?: string | null
+          department?: string | null
+          description?: string | null
+          document_type: string
+          file_url: string
+          id?: string
+          semester?: string | null
+          title: string
+          updated_at?: string
+          uploaded_at?: string
+        }
+        Update: {
+          academic_year?: string | null
+          department?: string | null
+          description?: string | null
+          document_type?: string
+          file_url?: string
+          id?: string
+          semester?: string | null
+          title?: string
+          updated_at?: string
+          uploaded_at?: string
+        }
+        Relationships: []
+      }
+      gallery_images: {
+        Row: {
+          category: string | null
+          created_at: string
+          description: string | null
+          display_order: number | null
+          id: string
+          image_url: string
+          is_active: boolean | null
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          category?: string | null
+          created_at?: string
+          description?: string | null
+          display_order?: number | null
+          id?: string
+          image_url: string
+          is_active?: boolean | null
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          category?: string | null
+          created_at?: string
+          description?: string | null
+          display_order?: number | null
+          id?: string
+          image_url?: string
+          is_active?: boolean | null
+          title?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      iqac_documents: {
+        Row: {
+          academic_year: string | null
+          description: string | null
+          document_type: string
+          file_url: string
+          id: string
+          title: string
+          updated_at: string
+          uploaded_at: string
+        }
+        Insert: {
+          academic_year?: string | null
+          description?: string | null
+          document_type: string
+          file_url: string
+          id?: string
+          title: string
+          updated_at?: string
+          uploaded_at?: string
+        }
+        Update: {
+          academic_year?: string | null
+          description?: string | null
+          document_type?: string
+          file_url?: string
+          id?: string
+          title?: string
+          updated_at?: string
+          uploaded_at?: string
+        }
+        Relationships: []
+      }
+      ncc_events: {
+        Row: {
+          created_at: string
+          description: string | null
+          event_date: string
+          event_time: string | null
+          event_type: string | null
+          id: string
+          is_active: boolean | null
+          location: string | null
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          description?: string | null
+          event_date: string
+          event_time?: string | null
+          event_type?: string | null
+          id?: string
+          is_active?: boolean | null
+          location?: string | null
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          description?: string | null
+          event_date?: string
+          event_time?: string | null
+          event_type?: string | null
+          id?: string
+          is_active?: boolean | null
+          location?: string | null
+          title?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      staff: {
+        Row: {
+          bio: string | null
+          created_at: string
+          department: string | null
+          designation: string
+          email: string | null
+          experience: string | null
+          id: string
+          is_active: boolean | null
+          name: string
+          phone: string | null
+          photo_url: string | null
+          qualification: string | null
+          staff_type: string
+          updated_at: string
+        }
+        Insert: {
+          bio?: string | null
+          created_at?: string
+          department?: string | null
+          designation: string
+          email?: string | null
+          experience?: string | null
+          id?: string
+          is_active?: boolean | null
+          name: string
+          phone?: string | null
+          photo_url?: string | null
+          qualification?: string | null
+          staff_type?: string
+          updated_at?: string
+        }
+        Update: {
+          bio?: string | null
+          created_at?: string
+          department?: string | null
+          designation?: string
+          email?: string | null
+          experience?: string | null
+          id?: string
+          is_active?: boolean | null
+          name?: string
+          phone?: string | null
+          photo_url?: string | null
+          qualification?: string | null
+          staff_type?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
