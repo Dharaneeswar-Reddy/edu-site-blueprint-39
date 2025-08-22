@@ -250,7 +250,22 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      get_public_staff_data: {
+        Args: Record<PropertyKey, never>
+        Returns: {
+          bio: string
+          created_at: string
+          department: string
+          designation: string
+          experience: string
+          id: string
+          name: string
+          photo_url: string
+          qualification: string
+          staff_type: string
+          updated_at: string
+        }[]
+      }
     }
     Enums: {
       [_ in never]: never
