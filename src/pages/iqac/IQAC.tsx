@@ -6,6 +6,102 @@ import { Award, Users, FileText, Calendar, Target, Download, Activity, Clipboard
 import { Button } from "@/components/ui/button";
 
 const IQAC = () => {
+  // IQAC Committee Members
+  const committeMembers = [
+    {
+      name: "Dr. Rajesh Kumar",
+      designation: "Principal & Chairperson",
+      department: "Administration",
+      role: "Chairperson"
+    },
+    {
+      name: "Dr. Priya Sharma", 
+      designation: "Vice Principal",
+      department: "Administration",
+      role: "Coordinator"
+    },
+    {
+      name: "Dr. Aalok Khandekar",
+      designation: "Head of Department",
+      department: "Computer Science",
+      role: "Member"
+    },
+    {
+      name: "Dr. Abhijit Sau",
+      designation: "Assistant Professor",
+      department: "Chemistry", 
+      role: "Member"
+    },
+    {
+      name: "Prof. Suresh Kumar",
+      designation: "Senior Faculty",
+      department: "Commerce",
+      role: "Member"
+    },
+    {
+      name: "Ms. Anita Reddy",
+      designation: "Student Representative",
+      department: "Final Year",
+      role: "Student Member"
+    }
+  ];
+
+  // IQAC Functions
+  const iqacFunctions = [
+    {
+      title: "Quality Enhancement",
+      description: "Development and application of quality benchmarks/parameters for various academic and administrative activities",
+      icon: Target
+    },
+    {
+      title: "Policy Development", 
+      description: "Facilitating the creation of a learner-centric environment conducive to quality education",
+      icon: BookOpen
+    },
+    {
+      title: "Institutional Functioning",
+      description: "Arrangement for feedback responses from students, parents and other stakeholders on quality-related institutional processes",
+      icon: Users
+    },
+    {
+      title: "Best Practices",
+      description: "Dissemination of information on various quality parameters of higher education",
+      icon: Award
+    },
+    {
+      title: "Documentation",
+      description: "Organization of inter and intra institutional workshops, seminars on quality related themes",
+      icon: FileText
+    },
+    {
+      title: "Continuous Monitoring",
+      description: "Development and maintenance of institutional database through MIS for the purpose of maintaining /enhancing the institutional quality",
+      icon: Activity
+    }
+  ];
+
+  // Academic Audits Data
+  const academicAudits = [
+    {
+      year: "2023-24",
+      type: "Internal Academic Audit",
+      status: "Completed",
+      findings: "Overall compliance rate of 95% with recommendations for curriculum enhancement"
+    },
+    {
+      year: "2022-23",
+      type: "External Quality Audit", 
+      status: "Completed",
+      findings: "Excellent rating in teaching-learning processes and research activities"
+    },
+    {
+      year: "2021-22",
+      type: "Departmental Audit",
+      status: "Completed", 
+      findings: "Satisfactory performance across all departments with scope for improvement in laboratory facilities"
+    }
+  ];
+
   const aqarReports = [
     {
       year: "2023-24",
@@ -127,6 +223,96 @@ const IQAC = () => {
           </div>
         </section>
 
+        {/* IQAC Committee */}
+        <section>
+          <Card>
+            <CardHeader>
+              <CardTitle className="flex items-center gap-3">
+                <Users className="h-6 w-6 text-blue-600" />
+                IQAC Committee
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="grid gap-4">
+                {committeMembers.map((member, index) => (
+                  <div key={index} className="bg-gray-50 p-4 rounded-lg border-l-4 border-l-blue-200">
+                    <div className="flex justify-between items-start">
+                      <div>
+                        <h4 className="font-semibold text-gray-900">{member.name}</h4>
+                        <p className="text-sm text-blue-600">{member.designation}</p>
+                        <p className="text-sm text-gray-600">{member.department}</p>
+                      </div>
+                      <Badge variant="outline">{member.role}</Badge>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </CardContent>
+          </Card>
+        </section>
+
+        {/* Functions of IQAC */}
+        <section>
+          <Card>
+            <CardHeader>
+              <CardTitle className="flex items-center gap-3">
+                <Target className="h-6 w-6 text-blue-600" />
+                Functions of IQAC
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {iqacFunctions.map((func, index) => {
+                  const IconComponent = func.icon;
+                  return (
+                    <div key={index} className="bg-gradient-to-br from-blue-50 to-indigo-50 p-6 rounded-lg">
+                      <IconComponent className="h-8 w-8 text-blue-600 mb-4" />
+                      <h4 className="font-semibold text-gray-900 mb-2">{func.title}</h4>
+                      <p className="text-sm text-gray-700">{func.description}</p>
+                    </div>
+                  );
+                })}
+              </div>
+            </CardContent>
+          </Card>
+        </section>
+
+        {/* IQAC Activities */}
+        <section>
+          <Card>
+            <CardHeader>
+              <CardTitle className="flex items-center gap-3">
+                <Activity className="h-6 w-6 text-blue-600" />
+                IQAC Activities
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="space-y-4">
+                {activities.map((activity, index) => (
+                  <div key={index} className="border rounded-lg p-6 hover:shadow-md transition-shadow">
+                    <div className="flex items-start justify-between mb-4">
+                      <div className="flex-1">
+                        <h4 className="text-lg font-semibold text-gray-900 mb-2">{activity.title}</h4>
+                        <div className="flex items-center gap-4 text-sm text-gray-600 mb-2">
+                          <div className="flex items-center gap-1">
+                            <Calendar className="h-4 w-4" />
+                            <span>{activity.date}</span>
+                          </div>
+                          <div className="flex items-center gap-1">
+                            <Users className="h-4 w-4" />
+                            <span>{activity.participants} participants</span>
+                          </div>
+                        </div>
+                        <p className="text-gray-700">{activity.outcome}</p>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </CardContent>
+          </Card>
+        </section>
+
         {/* Minutes and ATR Combined */}
         <section>
           <Card>
@@ -153,6 +339,65 @@ const IQAC = () => {
                         Download Minutes
                       </Button>
                     </div>
+                  </div>
+                ))}
+              </div>
+            </CardContent>
+          </Card>
+        </section>
+
+        {/* Academic Audits */}
+        <section>
+          <Card>
+            <CardHeader>
+              <CardTitle className="flex items-center gap-3">
+                <CheckCircle className="h-6 w-6 text-blue-600" />
+                Academic Audits
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="space-y-4">
+                {academicAudits.map((audit, index) => (
+                  <div key={index} className="bg-gray-50 p-4 rounded-lg border-l-4 border-l-green-200">
+                    <div className="flex justify-between items-start mb-2">
+                      <h4 className="font-semibold text-gray-900">{audit.type} ({audit.year})</h4>
+                      <Badge className="bg-green-500 text-white">{audit.status}</Badge>
+                    </div>
+                    <p className="text-gray-700 text-sm">{audit.findings}</p>
+                  </div>
+                ))}
+              </div>
+            </CardContent>
+          </Card>
+        </section>
+
+        {/* AQARs */}
+        <section>
+          <Card>
+            <CardHeader>
+              <CardTitle className="flex items-center gap-3">
+                <FileText className="h-6 w-6 text-blue-600" />
+                AQARs (Annual Quality Assurance Reports)
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="space-y-4">
+                {aqarReports.map((report, index) => (
+                  <div key={index} className="bg-blue-50 p-6 rounded-lg">
+                    <div className="flex justify-between items-start mb-4">
+                      <div>
+                        <h4 className="text-lg font-semibold text-blue-900">AQAR {report.year}</h4>
+                        <p className="text-sm text-gray-600">{report.pages} pages</p>
+                      </div>
+                      <Badge variant={report.status === "Submitted to NAAC" ? "default" : "secondary"}>
+                        {report.status}
+                      </Badge>
+                    </div>
+                    <p className="text-gray-700 mb-4">{report.highlights}</p>
+                    <Button size="sm" variant="outline">
+                      <Download className="h-4 w-4 mr-1" />
+                      Download AQAR
+                    </Button>
                   </div>
                 ))}
               </div>
