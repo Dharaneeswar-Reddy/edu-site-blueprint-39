@@ -1,126 +1,18 @@
 import PageLayout from "@/components/PageLayout";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Download, Calendar, FileText, Clock, Users } from "lucide-react";
+import { Download } from "lucide-react";
 import { useState } from "react";
-interface PDFDocument {
-  name: string;
-  file?: File;
-}
+import { useExaminationDocuments } from "@/hooks/useExaminationDocuments";
 const ExaminationCell = () => {
   const [activeTab, setActiveTab] = useState("Academic Calendars");
-  const documentsByTab = {
-    "Academic Calendars": [{
-      name: "IV B.Tech I & II Sem Academic Calendar 2025-2026"
-    }, {
-      name: "III B.Tech I & II Sem Academic Calendar 2025-2026"
-    }, {
-      name: "II B.Tech I & II Sem Academic Calendar 2025-2026"
-    }, {
-      name: "M.Tech III & IV Sem Academic Calendar 2025-2026"
-    }, {
-      name: "MCA III & IV Sem Academic Calendar 2025-2026"
-    }, {
-      name: "MBA III & IV Sem Academic Calendar 2025-2026"
-    }, {
-      name: "MCA I & II SEM ACADEMIC CALENDAR 2024-2025"
-    }, {
-      name: "M.Tech I & II SEM ACADEMIC CALENDAR 2024-2025"
-    }],
-    "Exam Fee Notifications": [{
-      name: "B.Tech Exam Fee Notification 2024-25"
-    }, {
-      name: "M.Tech Exam Fee Structure 2024-25"
-    }, {
-      name: "MCA Exam Fee Notification 2024-25"
-    }, {
-      name: "MBA Exam Fee Structure 2024-25"
-    }, {
-      name: "Supplementary Exam Fee Notification"
-    }, {
-      name: "Re-evaluation Fee Structure"
-    }],
-    "External Time Tables": [{
-      name: "B.Tech IV Year II Sem External Time Table"
-    }, {
-      name: "B.Tech III Year II Sem External Time Table"
-    }, {
-      name: "B.Tech II Year II Sem External Time Table"
-    }, {
-      name: "M.Tech II Year External Time Table"
-    }, {
-      name: "MCA II Year External Time Table"
-    }, {
-      name: "MBA II Year External Time Table"
-    }],
-    "Internal Time Tables": [{
-      name: "B.Tech IV Year Internal Time Table"
-    }, {
-      name: "B.Tech III Year Internal Time Table"
-    }, {
-      name: "B.Tech II Year Internal Time Table"
-    }, {
-      name: "M.Tech Internal Time Table"
-    }, {
-      name: "MCA Internal Time Table"
-    }, {
-      name: "MBA Internal Time Table"
-    }],
-    "Internal Circulars": [{
-      name: "Internal Assessment Guidelines 2024-25"
-    }, {
-      name: "Mid-term Exam Instructions"
-    }, {
-      name: "Assignment Submission Guidelines"
-    }, {
-      name: "Lab Exam Circular"
-    }, {
-      name: "Project Evaluation Circular"
-    }, {
-      name: "Continuous Assessment Notification"
-    }],
-    "Results": [{
-      name: "B.Tech IV Year II Sem Results 2024-25"
-    }, {
-      name: "B.Tech III Year II Sem Results 2024-25"
-    }, {
-      name: "B.Tech II Year II Sem Results 2024-25"
-    }, {
-      name: "B.Tech I Year II Sem Results 2024-25"
-    }, {
-      name: "M.Tech II Year Results 2024-25"
-    }, {
-      name: "M.Tech I Year Results 2024-25"
-    }, {
-      name: "MCA II Year Results 2024-25"
-    }, {
-      name: "MCA I Year Results 2024-25"
-    }, {
-      name: "MBA II Year Results 2024-25"
-    }, {
-      name: "MBA I Year Results 2024-25"
-    }, {
-      name: "Supplementary Results 2024-25"
-    }, {
-      name: "Re-evaluation Results 2024-25"
-    }]
-  };
-  const [documents, setDocuments] = useState<Record<string, PDFDocument[]>>(documentsByTab);
+  const { documents, loading } = useExaminationDocuments();
   const tabs = ["Academic Calendars", "Exam Fee Notifications", "External Time Tables", "Internal Time Tables", "Internal Circulars", "Results"];
-  const handleFileUpload = (index: number, file: File, tab: string) => {
-    const updatedDocuments = {
-      ...documents
-    };
-    updatedDocuments[tab][index].file = file;
-    setDocuments(updatedDocuments);
+  const handleOpenFile = (fileUrl: string) => {
+    window.open(fileUrl, '_blank');
   };
-  const handleOpenFile = (document: PDFDocument) => {
-    if (document.file) {
-      const url = URL.createObjectURL(document.file);
-      window.open(url, '_blank');
-    }
-  };
-  const currentDocuments = documents[activeTab] || [];
+
+  const filteredDocuments = documents.filter(doc => doc.document_type === activeTab);
   return <PageLayout title="Examination Cell" description="Central hub for all examination-related activities, schedules, and results at SVRMC.">
       <div className="space-y-8">
         {/* Navigation Tabs */}
@@ -143,29 +35,46 @@ const ExaminationCell = () => {
         {/* Content based on active tab */}
         <Card>
           <CardContent className="p-6">
-            <div className="overflow-x-auto">
-              <table className="w-full">
-                <thead>
-                  <tr className="border-b bg-gray-50">
-                    <th className="text-left py-3 px-4 font-semibold text-blue-600">S.No</th>
-                    <th className="text-left py-3 px-4 font-semibold text-blue-600">Name</th>
-                    <th className="text-center py-3 px-4 font-semibold text-blue-600">Action</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {currentDocuments.map((doc, index) => <tr key={index} className="border-b hover:bg-gray-50">
-                      <td className="py-3 px-4 text-blue-600 font-medium">{index + 1}</td>
-                      <td className="py-3 px-4 text-blue-600">{doc.name}</td>
-                      <td className="py-3 px-4 text-center">
-                        <Button variant="outline" size="sm" onClick={() => handleOpenFile(doc)} disabled={!doc.file}>
-                          <Download className="h-4 w-4 mr-2" />
-                          Download PDF
-                        </Button>
-                      </td>
-                    </tr>)}
-                </tbody>
-              </table>
-            </div>
+            {loading ? (
+              <div className="text-center py-8">
+                <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary mx-auto"></div>
+                <p className="text-muted-foreground mt-2">Loading documents...</p>
+              </div>
+            ) : filteredDocuments.length === 0 ? (
+              <div className="text-center py-8">
+                <p className="text-muted-foreground">No documents available for {activeTab}.</p>
+              </div>
+            ) : (
+              <div className="overflow-x-auto">
+                <table className="w-full">
+                  <thead>
+                    <tr className="border-b bg-muted/20">
+                      <th className="text-left py-3 px-4 font-semibold text-primary">S.No</th>
+                      <th className="text-left py-3 px-4 font-semibold text-primary">Name</th>
+                      <th className="text-center py-3 px-4 font-semibold text-primary">Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {filteredDocuments.map((doc, index) => (
+                      <tr key={doc.id} className="border-b hover:bg-muted/10">
+                        <td className="py-3 px-4 text-primary font-medium">{index + 1}</td>
+                        <td className="py-3 px-4 text-primary">{doc.title}</td>
+                        <td className="py-3 px-4 text-center">
+                          <Button 
+                            variant="outline" 
+                            size="sm" 
+                            onClick={() => handleOpenFile(doc.file_url)}
+                          >
+                            <Download className="h-4 w-4 mr-2" />
+                            Download PDF
+                          </Button>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            )}
           </CardContent>
         </Card>
 

@@ -68,6 +68,7 @@ import Admin from "./pages/Admin";
 
 // Admin Components
 import AnnouncementsAdmin from "@/components/admin/AnnouncementsAdmin";
+import ExaminationDocumentsAdmin from "@/components/admin/ExaminationDocumentsAdmin";
 import AdminLayout from "@/components/admin/AdminLayout";
 
 const queryClient = new QueryClient();
@@ -126,6 +127,11 @@ const App = () => (
             <Route path="/admin/announcements" element={
               <AdminLayout>
                 <AnnouncementsAdmin />
+              </AdminLayout>
+            } />
+            <Route path="/admin/examination" element={
+              <AdminLayout>
+                <ExaminationDocumentsAdmin />
               </AdminLayout>
             } />
             
