@@ -4,6 +4,7 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { AuthProvider } from "@/hooks/useAuth";
 
 // Import pages
 import Index from "./pages/Index";
@@ -63,60 +64,76 @@ import Commerce from "./pages/departments/Commerce";
 import English from "./pages/departments/English";
 import Telugu from "./pages/departments/Telugu";
 import Hindi from "./pages/departments/Hindi";
+import Admin from "./pages/Admin";
+
+// Admin Components
+import AnnouncementsAdmin from "@/components/admin/AnnouncementsAdmin";
+import AdminLayout from "@/components/admin/AdminLayout";
 
 const queryClient = new QueryClient();
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
-      <Toaster />
-      <Sonner />
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Index />} />
-          <Route path="/about-us" element={<AboutUs />} />
-          <Route path="/administration" element={<Administration />} />
-          <Route path="/academics" element={<Academics />} />
-          <Route path="/departments" element={<Departments />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/admin-login" element={<AdminLogin />} />
-          <Route path="/student-documents" element={<StudentDocuments />} />
-          <Route path="/news" element={<News />} />
-          <Route path="/news/:id" element={<NewsDetail />} />
-          <Route path="/gallery" element={<Gallery />} />
-          <Route path="/faculty-login" element={<FacultyLogin />} />
-          <Route path="/student-login" element={<StudentLogin />} />
-          <Route path="/academic-calendar" element={<AcademicCalendar />} />
-          <Route path="/results" element={<Results />} />
-          <Route path="/exam-schedule" element={<ExamSchedule />} />
-          <Route path="/scholarships" element={<Scholarships />} />
-          <Route path="/departments/computerscience" element={<ComputerScience />} />
-          <Route path="/departments/physics" element={<Physics />} />
-          <Route path="/departments/chemistry" element={<Chemistry />} />
-          <Route path="/departments/mathematics" element={<Mathematics />} />
-          <Route path="/departments/commerce" element={<Commerce />} />
-          <Route path="/departments/english" element={<English />} />
-          <Route path="/departments/telugu" element={<Telugu />} />
-          <Route path="/departments/hindi" element={<Hindi />} />
-          <Route path="/staff" element={<Staff />} />
-          <Route path="/examination-cell" element={<ExaminationCell />} />
-          <Route path="/library" element={<Library />} />
-          <Route path="/alumni" element={<Alumni />} />
-          <Route path="/magazines" element={<Magazines />} />
-          <Route path="/icc" element={<ICC />} />
-          <Route path="/nirf" element={<NIRF />} />
-          <Route path="/feedback" element={<Feedback />} />
-          <Route path="/about/strategic-documents" element={<StrategicDocuments />} />
-          <Route path="/infrastructure" element={<Infrastructure />} />
-          <Route path="/infrastructure/digital-campus" element={<DigitalCampus />} />
-          <Route path="/infrastructure/sports-facilities" element={<SportsFacilities />} />
-          <Route path="/iqac" element={<IQAC />} />
-          <Route path="/iqac/quality-policy" element={<QualityPolicy />} />
-          <Route path="/ncc" element={<NCC />} />
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </BrowserRouter>
+      <AuthProvider>
+        <Toaster />
+        <Sonner />
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<Index />} />
+            <Route path="/about-us" element={<AboutUs />} />
+            <Route path="/administration" element={<Administration />} />
+            <Route path="/academics" element={<Academics />} />
+            <Route path="/departments" element={<Departments />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/admin-login" element={<AdminLogin />} />
+            <Route path="/student-documents" element={<StudentDocuments />} />
+            <Route path="/news" element={<News />} />
+            <Route path="/news/:id" element={<NewsDetail />} />
+            <Route path="/gallery" element={<Gallery />} />
+            <Route path="/faculty-login" element={<FacultyLogin />} />
+            <Route path="/student-login" element={<StudentLogin />} />
+            <Route path="/academic-calendar" element={<AcademicCalendar />} />
+            <Route path="/results" element={<Results />} />
+            <Route path="/exam-schedule" element={<ExamSchedule />} />
+            <Route path="/scholarships" element={<Scholarships />} />
+            <Route path="/departments/computerscience" element={<ComputerScience />} />
+            <Route path="/departments/physics" element={<Physics />} />
+            <Route path="/departments/chemistry" element={<Chemistry />} />
+            <Route path="/departments/mathematics" element={<Mathematics />} />
+            <Route path="/departments/commerce" element={<Commerce />} />
+            <Route path="/departments/english" element={<English />} />
+            <Route path="/departments/telugu" element={<Telugu />} />
+            <Route path="/departments/hindi" element={<Hindi />} />
+            <Route path="/staff" element={<Staff />} />
+            <Route path="/examination-cell" element={<ExaminationCell />} />
+            <Route path="/library" element={<Library />} />
+            <Route path="/alumni" element={<Alumni />} />
+            <Route path="/magazines" element={<Magazines />} />
+            <Route path="/icc" element={<ICC />} />
+            <Route path="/nirf" element={<NIRF />} />
+            <Route path="/feedback" element={<Feedback />} />
+            <Route path="/about/strategic-documents" element={<StrategicDocuments />} />
+            <Route path="/infrastructure" element={<Infrastructure />} />
+            <Route path="/infrastructure/digital-campus" element={<DigitalCampus />} />
+            <Route path="/infrastructure/sports-facilities" element={<SportsFacilities />} />
+            <Route path="/iqac" element={<IQAC />} />
+            <Route path="/iqac/quality-policy" element={<QualityPolicy />} />
+            <Route path="/ncc" element={<NCC />} />
+            
+            {/* Admin Routes */}
+            <Route path="/admin" element={<Admin />} />
+            <Route path="/admin/announcements" element={
+              <AdminLayout>
+                <AnnouncementsAdmin />
+              </AdminLayout>
+            } />
+            
+            {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </BrowserRouter>
+      </AuthProvider>
     </TooltipProvider>
   </QueryClientProvider>
 );
