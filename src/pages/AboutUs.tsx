@@ -1,9 +1,74 @@
+import { useState } from "react";
 import PageLayout from "@/components/PageLayout";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Award, Users, Eye, Heart, Trophy, FileCheck, Shield, Globe } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Award, Users, Eye, Heart, Trophy, FileCheck, Shield, Globe, Building, BookOpen, FlaskConical, Computer, GraduationCap, ChevronRight } from "lucide-react";
 
 const AboutUs = () => {
+  const [expandedBuilding, setExpandedBuilding] = useState<string | null>(null);
+
+  const infrastructureData = [
+    {
+      id: "library",
+      name: "Central Library",
+      image: "/lovable-uploads/9ecf085a-3abc-45e7-844b-b132bfa85970.png",
+      icon: <BookOpen className="h-6 w-6 text-blue-600" />,
+      shortDescription: "Our state-of-the-art central library houses over 50,000 books, journals, and digital resources. It serves as the academic heart of our institution with modern reading facilities and research amenities.",
+      fullDescription: "The Central Library spans across 10,000 sq ft with a seating capacity of 200 students. It features air-conditioned reading halls, digital library section with 50 computers, OPAC terminals, reprographic facilities, and separate sections for reference books, periodicals, and rare collections. The library operates on automation software and provides access to national and international e-journals and databases. Special facilities include discussion rooms, faculty research cabins, and multimedia viewing centers.",
+      facilities: ["50,000+ Books & Journals", "Digital Library Section", "Air-conditioned Reading Halls", "OPAC Terminals", "Research Cabins"]
+    },
+    {
+      id: "classrooms",
+      name: "Smart Classrooms",
+      image: "/lovable-uploads/9f96f106-897d-46e3-a4a1-4c4b8f8f9f0c.png",
+      icon: <GraduationCap className="h-6 w-6 text-green-600" />,
+      shortDescription: "Modern classrooms equipped with interactive smart boards, projectors, and audio-visual systems. Each classroom accommodates 60 students with ergonomic furniture and optimal lighting.",
+      fullDescription: "Our 40 smart classrooms are designed with contemporary teaching methodologies in mind. Each classroom features interactive whiteboards, high-definition projectors, surround sound systems, and climate control. The ergonomic furniture includes adjustable desks and chairs, proper ventilation systems, and natural lighting optimization. Wi-Fi connectivity ensures seamless integration of digital learning resources. The classrooms also have recording capabilities for creating educational content and virtual learning sessions.",
+      facilities: ["Interactive Smart Boards", "HD Projectors", "Climate Control", "Wi-Fi Connectivity", "Recording Facilities"]
+    },
+    {
+      id: "computer-lab",
+      name: "Computer Science Laboratory",
+      image: "/lovable-uploads/a29d5e18-fb3d-47a3-b3d2-a210ce08d66c.png",
+      icon: <Computer className="h-6 w-6 text-purple-600" />,
+      shortDescription: "Advanced computer laboratory with 100 high-performance systems, latest software, and high-speed internet connectivity. Supports programming, research, and digital literacy programs.",
+      fullDescription: "The Computer Science Laboratory is a 3000 sq ft facility housing 100 latest-generation computers with high-performance processors, 16GB RAM, and SSD storage. The lab runs on a dedicated fiber optic internet connection with 1Gbps speed. It features specialized software for programming languages, database management, web development, and multimedia editing. The lab includes a server room, network administration center, and separate sections for different computing disciplines. Advanced security systems and backup power ensure uninterrupted operations.",
+      facilities: ["100 High-Performance Systems", "1Gbps Internet", "Latest Programming Software", "Server Room", "Backup Power Systems"]
+    },
+    {
+      id: "physics-lab",
+      name: "Physics Laboratory",
+      image: "/lovable-uploads/60af87cc-1db6-4454-a9d2-88641715b200.png",
+      icon: <FlaskConical className="h-6 w-6 text-orange-600" />,
+      shortDescription: "Well-equipped physics laboratory with modern instruments for mechanics, optics, electronics, and quantum physics experiments. Facilitates hands-on learning and research.",
+      fullDescription: "The Physics Laboratory complex includes separate labs for different branches - Mechanics Lab, Optics Lab, Electronics Lab, and Advanced Physics Lab. Each lab is equipped with precision instruments including digital oscilloscopes, function generators, spectrometers, interferometers, and quantum physics demonstration kits. The facility includes fume hoods, safety equipment, and specialized storage for sensitive instruments. Research-grade equipment enables students to conduct experiments at undergraduate and postgraduate levels.",
+      facilities: ["Precision Instruments", "Digital Oscilloscopes", "Spectrometers", "Research Equipment", "Safety Systems"]
+    },
+    {
+      id: "chemistry-lab",
+      name: "Chemistry Laboratory",
+      image: "/lovable-uploads/5eef37d5-a7a2-416d-9fb3-7df167c87f7e.png",
+      icon: <FlaskConical className="h-6 w-6 text-red-600" />,
+      shortDescription: "Modern chemistry laboratory with organic, inorganic, and analytical chemistry sections. Features fume hoods, analytical instruments, and safety systems for comprehensive chemical education.",
+      fullDescription: "The Chemistry Laboratory complex spans 4000 sq ft with separate sections for Organic, Inorganic, Physical, and Analytical Chemistry. It features modern fume hoods, gas chromatography systems, UV-Vis spectrophotometers, pH meters, and precision balances. The laboratory includes chemical storage rooms with proper ventilation, emergency shower systems, and waste disposal facilities. Advanced analytical instruments like FTIR, atomic absorption spectrometer, and electrochemical analyzers support both teaching and research activities.",
+      facilities: ["Fume Hoods", "Analytical Instruments", "Safety Systems", "Chemical Storage", "Research Equipment"]
+    },
+    {
+      id: "admin-block",
+      name: "Administrative Block",
+      image: "/lovable-uploads/828ea20e-f759-4b97-aa60-3dc97555221f.png",
+      icon: <Building className="h-6 w-6 text-indigo-600" />,
+      shortDescription: "The administrative hub housing principal's office, registrar, accounts, examination cell, and student services. Features modern offices with digital infrastructure and student-friendly facilities.",
+      fullDescription: "The Administrative Block is a four-story building that serves as the nerve center of college operations. It houses the Principal's office, Vice-Principal chambers, Registrar office, Accounts department, HR department, Examination cell, Admissions office, and Student services center. The building features modern office infrastructure with centralized air conditioning, high-speed internet, digital record management systems, and conference facilities. Special provisions include waiting areas for students and parents, information kiosks, and accessibility features for differently-abled individuals.",
+      facilities: ["Principal's Office", "Examination Cell", "Digital Records", "Conference Rooms", "Student Services"]
+    }
+  ];
+
+  const toggleExpansion = (buildingId: string) => {
+    setExpandedBuilding(expandedBuilding === buildingId ? null : buildingId);
+  };
+
   const principals = [
     {
       name: "Dr. K. Veerabhadra Rao",
@@ -126,6 +191,75 @@ const AboutUs = () => {
                 </CardContent>
               </Card>
             </div>
+          </div>
+        </section>
+
+        {/* Infrastructure Section */}
+        <section className="bg-white">
+          <div className="text-center mb-12">
+            <div className="flex items-center justify-center gap-4 mb-6">
+              <Building className="h-8 w-8 text-indigo-600" />
+              <h2 className="text-3xl font-bold text-gray-900">Infrastructure</h2>
+            </div>
+            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+              Our campus boasts world-class infrastructure designed to provide an optimal learning environment. 
+              From modern classrooms to advanced laboratories, every facility is crafted to enhance the educational experience.
+            </p>
+          </div>
+
+          <div className="space-y-16">
+            {infrastructureData.map((building, index) => {
+              const isExpanded = expandedBuilding === building.id;
+              const isEven = index % 2 === 0;
+              
+              return (
+                <div key={building.id} className={`grid lg:grid-cols-2 gap-8 items-center ${isEven ? '' : 'lg:grid-flow-col-dense'}`}>
+                  {/* Image Container */}
+                  <div className={`${isEven ? 'lg:order-1' : 'lg:order-2'} group`}>
+                    <div className="relative overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300">
+                      <img 
+                        src={building.image} 
+                        alt={building.name}
+                        className="w-full h-80 object-cover group-hover:scale-105 transition-transform duration-300"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    </div>
+                  </div>
+
+                  {/* Content Container */}
+                  <div className={`${isEven ? 'lg:order-2' : 'lg:order-1'} space-y-6`}>
+                    <div className="flex items-center gap-3 mb-4">
+                      {building.icon}
+                      <h3 className="text-2xl font-bold text-gray-900">{building.name}</h3>
+                    </div>
+
+                    <p className="text-gray-700 leading-relaxed text-lg">
+                      {isExpanded ? building.fullDescription : building.shortDescription}
+                    </p>
+
+                    {/* Facilities Grid */}
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mb-6">
+                      {building.facilities.map((facility, idx) => (
+                        <div key={idx} className="flex items-center gap-2 text-sm text-gray-600">
+                          <ChevronRight className="h-4 w-4 text-indigo-500" />
+                          <span>{facility}</span>
+                        </div>
+                      ))}
+                    </div>
+
+                    {/* Read More Button */}
+                    <Button 
+                      variant="outline" 
+                      onClick={() => toggleExpansion(building.id)}
+                      className="border-indigo-200 text-indigo-600 hover:bg-indigo-50 hover:border-indigo-300 transition-all duration-200"
+                    >
+                      {isExpanded ? 'Show Less' : 'Read More'}
+                      <ChevronRight className={`ml-2 h-4 w-4 transition-transform duration-200 ${isExpanded ? 'rotate-90' : ''}`} />
+                    </Button>
+                  </div>
+                </div>
+              );
+            })}
           </div>
         </section>
 

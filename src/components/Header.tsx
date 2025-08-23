@@ -134,6 +134,10 @@ const Header = () => {
               NCC
             </Link>
 
+            <Link to="/placements" className={`nav-link ${isActive("/placements") ? "active" : ""} ${scrolled ? "text-college-dark hover:text-college-blue" : "text-white hover:text-college-gold"}`}>
+              Placements
+            </Link>
+
             <Link to="/examination-cell" className={`nav-link ${isActive("/examination-cell") ? "active" : ""} ${scrolled ? "text-college-dark hover:text-college-blue" : "text-white hover:text-college-gold"}`}>
               Examination Cell
             </Link>
@@ -230,6 +234,9 @@ const Header = () => {
               </Link>
               <Link to="/ncc" className={`px-4 py-2 ${isActive("/ncc") ? "bg-primary/10 text-primary font-medium" : "text-gray-700"}`} onClick={closeMobileMenu}>
                 NCC
+              </Link>
+              <Link to="/placements" className={`px-4 py-2 ${isActive("/placements") ? "bg-primary/10 text-primary font-medium" : "text-gray-700"}`} onClick={closeMobileMenu}>
+                Placements
               </Link>
               <Link to="/examination-cell" className={`px-4 py-2 ${isActive("/examination-cell") ? "bg-primary/10 text-primary font-medium" : "text-gray-700"}`} onClick={closeMobileMenu}>
                 Examination Cell
