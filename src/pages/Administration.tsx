@@ -5,20 +5,19 @@ import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Separator } from "@/components/ui/separator";
 import { Users, Award, GraduationCap, BookOpen, Settings, FileText, Phone, Mail, MapPin, Calendar, Shield, Star, ExternalLink, Building2, UserCheck } from "lucide-react";
-
 const Administration = () => {
   // Leadership data
   const leadershipData = {
     chairman: {
       name: "Sri Velagapudi Ramakrishna Prasad",
-      designation: "Chairman, Board of Governors", 
+      designation: "Chairman, Board of Governors",
       image: "/lovable-uploads/b010e240-0ffe-43a4-884e-04e9e6094c36.png",
       description: "Leading the institution with visionary guidance and commitment to educational excellence for over three decades."
     },
     correspondent: {
       name: "Dr. Ramesh Kumar",
       designation: "Correspondent",
-      image: "/lovable-uploads/aa64612b-a2c2-4fc2-b645-b756306336a0.png", 
+      image: "/lovable-uploads/aa64612b-a2c2-4fc2-b645-b756306336a0.png",
       description: "Overseeing institutional operations and strategic development initiatives."
     },
     principal: {
@@ -30,74 +29,60 @@ const Administration = () => {
   };
 
   // Teaching Staff data
-  const teachingStaff = [
-    {
-      name: "Dr. Aalok Dinkar Khandekar",
-      designation: "Head (LA) & Associate Professor",
-      department: "Computer Science",
-      qualification: "Ph.D: Rensselaer Polytechnic Institute",
-      expertise: ["Science, technology, and society studies (STS)", "Environmental sustainability"],
-      image: "/lovable-uploads/52a8e7b1-5b22-4a0c-b1ec-450f99bfa9bb.png"
-    },
-    {
-      name: "Dr. Aardra Surendran",
-      designation: "Assistant Professor",
-      department: "Liberal Arts", 
-      qualification: "Ph.D: Jawaharlal Nehru University, New Delhi",
-      expertise: ["Labour Studies", "Gender Studies"],
-      image: "/lovable-uploads/662ebac1-9113-46ee-b212-a9a1526878d4.png"
-    },
-    {
-      name: "Dr. Abhijit Sau",
-      designation: "Assistant Professor",
-      department: "Chemistry",
-      qualification: "Ph.D: Bose Institute, Kolkata", 
-      expertise: ["Synthetic Organic Chemistry", "Medicinal Chemistry"],
-      image: "/lovable-uploads/71dea894-961d-4fd6-ac1f-78e8db8d93b4.png"
-    },
-    {
-      name: "Dr. Abhinav Kumar",
-      designation: "Professor", 
-      department: "Computer Science",
-      qualification: "Ph.D: IIT Delhi",
-      expertise: ["Resource allocation for 5G", "Visible light communications"],
-      image: "/lovable-uploads/805efae8-1428-4b19-9a41-f2f62680aefc.png"
-    }
-  ];
+  const teachingStaff = [{
+    name: "Dr. Aalok Dinkar Khandekar",
+    designation: "Head (LA) & Associate Professor",
+    department: "Computer Science",
+    qualification: "Ph.D: Rensselaer Polytechnic Institute",
+    expertise: ["Science, technology, and society studies (STS)", "Environmental sustainability"],
+    image: "/lovable-uploads/52a8e7b1-5b22-4a0c-b1ec-450f99bfa9bb.png"
+  }, {
+    name: "Dr. Aardra Surendran",
+    designation: "Assistant Professor",
+    department: "Liberal Arts",
+    qualification: "Ph.D: Jawaharlal Nehru University, New Delhi",
+    expertise: ["Labour Studies", "Gender Studies"],
+    image: "/lovable-uploads/662ebac1-9113-46ee-b212-a9a1526878d4.png"
+  }, {
+    name: "Dr. Abhijit Sau",
+    designation: "Assistant Professor",
+    department: "Chemistry",
+    qualification: "Ph.D: Bose Institute, Kolkata",
+    expertise: ["Synthetic Organic Chemistry", "Medicinal Chemistry"],
+    image: "/lovable-uploads/71dea894-961d-4fd6-ac1f-78e8db8d93b4.png"
+  }, {
+    name: "Dr. Abhinav Kumar",
+    designation: "Professor",
+    department: "Computer Science",
+    qualification: "Ph.D: IIT Delhi",
+    expertise: ["Resource allocation for 5G", "Visible light communications"],
+    image: "/lovable-uploads/805efae8-1428-4b19-9a41-f2f62680aefc.png"
+  }];
 
   // Non-Teaching Staff data
-  const nonTeachingStaff = [
-    {
-      name: "Mr. Suresh Kumar",
-      designation: "Administrative Officer",
-      department: "Administration",
-      qualification: "MBA: Business Administration",
-      expertise: ["Administrative Management", "Financial Planning"],
-      image: "/lovable-uploads/9ecf085a-3abc-45e7-844b-b132bfa85970.png"
-    },
-    {
-      name: "Ms. Priya Nair", 
-      designation: "Accounts Officer",
-      department: "Finance",
-      qualification: "M.Com: Commerce & Accountancy",
-      expertise: ["Financial Management", "Audit & Compliance"],
-      image: "/lovable-uploads/8ca0ef83-413e-4894-9e73-7361e0c0106c.png"
-    },
-    {
-      name: "Mr. Rajesh Sharma",
-      designation: "Library Officer",
-      department: "Library",
-      qualification: "M.Lib.Sc: Library Science",
-      expertise: ["Digital Library Management", "Information Systems"],
-      image: "/lovable-uploads/85f3d76b-36b0-4119-9ae0-75167cea9d0b.png"
-    }
-  ];
-
-  return (
-    <PageLayout
-      title="Administration & Faculty"
-      description="Meet our distinguished leadership team and faculty members committed to academic excellence and institutional development"
-    >
+  const nonTeachingStaff = [{
+    name: "Mr. Suresh Kumar",
+    designation: "Administrative Officer",
+    department: "Administration",
+    qualification: "MBA: Business Administration",
+    expertise: ["Administrative Management", "Financial Planning"],
+    image: "/lovable-uploads/9ecf085a-3abc-45e7-844b-b132bfa85970.png"
+  }, {
+    name: "Ms. Priya Nair",
+    designation: "Accounts Officer",
+    department: "Finance",
+    qualification: "M.Com: Commerce & Accountancy",
+    expertise: ["Financial Management", "Audit & Compliance"],
+    image: "/lovable-uploads/8ca0ef83-413e-4894-9e73-7361e0c0106c.png"
+  }, {
+    name: "Mr. Rajesh Sharma",
+    designation: "Library Officer",
+    department: "Library",
+    qualification: "M.Lib.Sc: Library Science",
+    expertise: ["Digital Library Management", "Information Systems"],
+    image: "/lovable-uploads/85f3d76b-36b0-4119-9ae0-75167cea9d0b.png"
+  }];
+  return <PageLayout title="Administration & Faculty" description="Meet our distinguished leadership team and faculty members committed to academic excellence and institutional development">
       <div className="max-w-7xl mx-auto space-y-16">
         
         {/* Institutional Overview */}
@@ -175,11 +160,7 @@ const Administration = () => {
               <div className="grid md:grid-cols-3 gap-8">
                 <div className="md:col-span-1">
                   <div className="relative">
-                    <img 
-                      src={leadershipData.chairman.image}
-                      alt={leadershipData.chairman.name}
-                      className="w-full aspect-[3/4] object-cover rounded-lg shadow-md"
-                    />
+                    <img src={leadershipData.chairman.image} alt={leadershipData.chairman.name} className="w-full aspect-[3/4] object-cover rounded-lg shadow-md" />
                     <div className="absolute -bottom-4 left-4 right-4 bg-white rounded-lg shadow-lg p-4 border border-slate-200">
                       <h4 className="font-bold text-slate-800 text-lg">{leadershipData.chairman.name}</h4>
                       <p className="text-slate-600 text-sm">{leadershipData.chairman.designation}</p>
@@ -199,38 +180,9 @@ const Administration = () => {
                     
                     <Separator />
                     
-                    <div>
-                      <h5 className="font-semibold text-slate-800 mb-3">Key Responsibilities</h5>
-                      <ul className="space-y-2 text-slate-700">
-                        <li className="flex items-center gap-2">
-                          <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
-                          Strategic planning and institutional governance
-                        </li>
-                        <li className="flex items-center gap-2">
-                          <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
-                          Academic excellence and quality assurance
-                        </li>
-                        <li className="flex items-center gap-2">
-                          <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
-                          Faculty development and recruitment oversight
-                        </li>
-                        <li className="flex items-center gap-2">
-                          <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
-                          Infrastructure development and resource allocation
-                        </li>
-                      </ul>
-                    </div>
                     
-                    <div className="flex gap-3 pt-4">
-                      <Button className="bg-slate-800 hover:bg-slate-700 text-white">
-                        <Mail className="h-4 w-4 mr-2" />
-                        Contact Office
-                      </Button>
-                      <Button variant="outline" className="border-slate-300">
-                        <ExternalLink className="h-4 w-4 mr-2" />
-                        View Full Profile
-                      </Button>
-                    </div>
+                    
+                    
                   </div>
                 </div>
               </div>
@@ -255,11 +207,7 @@ const Administration = () => {
               
               <div className="p-6">
                 <div className="flex items-start gap-4 mb-4">
-                  <img 
-                    src={leadershipData.correspondent.image}
-                    alt={leadershipData.correspondent.name}
-                    className="w-20 h-20 rounded-lg object-cover shadow-md"
-                  />
+                  <img src={leadershipData.correspondent.image} alt={leadershipData.correspondent.name} className="w-20 h-20 rounded-lg object-cover shadow-md" />
                   <div className="flex-1">
                     <h4 className="font-bold text-slate-800 text-lg">{leadershipData.correspondent.name}</h4>
                     <p className="text-blue-600 font-medium text-sm mb-2">{leadershipData.correspondent.designation}</p>
@@ -280,14 +228,8 @@ const Administration = () => {
                 </div>
                 
                 <div className="flex gap-2">
-                  <Button size="sm" className="flex-1 bg-blue-600 hover:bg-blue-700 text-white">
-                    <Mail className="h-3 w-3 mr-1" />
-                    Contact
-                  </Button>
-                  <Button size="sm" variant="outline" className="flex-1 border-slate-300">
-                    <FileText className="h-3 w-3 mr-1" />
-                    Profile
-                  </Button>
+                  
+                  
                 </div>
               </div>
             </div>
@@ -308,11 +250,7 @@ const Administration = () => {
               
               <div className="p-6">
                 <div className="flex items-start gap-4 mb-4">
-                  <img 
-                    src={leadershipData.principal.image}
-                    alt={leadershipData.principal.name}
-                    className="w-20 h-20 rounded-lg object-cover shadow-md"
-                  />
+                  <img src={leadershipData.principal.image} alt={leadershipData.principal.name} className="w-20 h-20 rounded-lg object-cover shadow-md" />
                   <div className="flex-1">
                     <h4 className="font-bold text-slate-800 text-lg">{leadershipData.principal.name}</h4>
                     <p className="text-emerald-600 font-medium text-sm mb-2">{leadershipData.principal.designation}</p>
@@ -333,14 +271,8 @@ const Administration = () => {
                 </div>
                 
                 <div className="flex gap-2">
-                  <Button size="sm" className="flex-1 bg-emerald-600 hover:bg-emerald-700 text-white">
-                    <Mail className="h-3 w-3 mr-1" />
-                    Contact
-                  </Button>
-                  <Button size="sm" variant="outline" className="flex-1 border-slate-300">
-                    <FileText className="h-3 w-3 mr-1" />
-                    Profile
-                  </Button>
+                  
+                  
                 </div>
               </div>
             </div>
@@ -366,16 +298,11 @@ const Administration = () => {
           </div>
             
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {teachingStaff.map((faculty, index) => (
-              <div key={index} className="bg-white rounded-2xl shadow-lg border border-slate-200 overflow-hidden hover:shadow-xl transition-all duration-300">
+            {teachingStaff.map((faculty, index) => <div key={index} className="bg-white rounded-2xl shadow-lg border border-slate-200 overflow-hidden hover:shadow-xl transition-all duration-300">
                 <div className="p-6">
                   <div className="text-center mb-6">
                     <div className="relative inline-block">
-                      <img 
-                        src={faculty.image} 
-                        alt={faculty.name}
-                        className="w-32 h-32 rounded-full object-cover shadow-lg mx-auto border-4 border-slate-100"
-                      />
+                      <img src={faculty.image} alt={faculty.name} className="w-32 h-32 rounded-full object-cover shadow-lg mx-auto border-4 border-slate-100" />
                       <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2">
                         <Badge variant="secondary" className="bg-slate-800 text-white text-xs px-3 py-1">
                           {faculty.department}
@@ -394,14 +321,9 @@ const Administration = () => {
                     <div>
                       <h4 className="text-sm font-semibold text-slate-700 mb-2">Research Areas</h4>
                       <div className="flex flex-wrap gap-2">
-                        {faculty.expertise.map((skill, skillIndex) => (
-                          <span 
-                            key={skillIndex} 
-                            className="text-xs bg-slate-100 text-slate-700 px-2 py-1 rounded-md border"
-                          >
+                        {faculty.expertise.map((skill, skillIndex) => <span key={skillIndex} className="text-xs bg-slate-100 text-slate-700 px-2 py-1 rounded-md border">
                             {skill}
-                          </span>
-                        ))}
+                          </span>)}
                       </div>
                     </div>
                     
@@ -430,8 +352,7 @@ const Administration = () => {
                     </div>
                   </div>
                 </div>
-              </div>
-            ))}
+              </div>)}
           </div>
         </section>
 
@@ -453,15 +374,10 @@ const Administration = () => {
           </div>
             
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {nonTeachingStaff.map((staff, index) => (
-              <div key={index} className="bg-white rounded-xl shadow-md border border-slate-200 overflow-hidden hover:shadow-lg transition-shadow">
+            {nonTeachingStaff.map((staff, index) => <div key={index} className="bg-white rounded-xl shadow-md border border-slate-200 overflow-hidden hover:shadow-lg transition-shadow">
                 <div className="p-6">
                   <div className="flex items-start gap-4 mb-4">
-                    <img 
-                      src={staff.image} 
-                      alt={staff.name}
-                      className="w-16 h-16 rounded-lg object-cover shadow-md"
-                    />
+                    <img src={staff.image} alt={staff.name} className="w-16 h-16 rounded-lg object-cover shadow-md" />
                     <div className="flex-1">
                       <h3 className="font-bold text-slate-800 mb-1">{staff.name}</h3>
                       <p className="text-blue-600 font-medium text-sm mb-1">{staff.designation}</p>
@@ -480,14 +396,9 @@ const Administration = () => {
                     <div>
                       <p className="text-sm text-slate-600 font-medium mb-2">Specializations</p>
                       <div className="flex flex-wrap gap-1">
-                        {staff.expertise.map((skill, skillIndex) => (
-                          <span 
-                            key={skillIndex} 
-                            className="text-xs bg-slate-100 text-slate-700 px-2 py-1 rounded border"
-                          >
+                        {staff.expertise.map((skill, skillIndex) => <span key={skillIndex} className="text-xs bg-slate-100 text-slate-700 px-2 py-1 rounded border">
                             {skill}
-                          </span>
-                        ))}
+                          </span>)}
                       </div>
                     </div>
                     
@@ -505,8 +416,7 @@ const Administration = () => {
                     </div>
                   </div>
                 </div>
-              </div>
-            ))}
+              </div>)}
           </div>
         </section>
 
@@ -572,8 +482,6 @@ const Administration = () => {
         </section>
 
       </div>
-    </PageLayout>
-  );
+    </PageLayout>;
 };
-
 export default Administration;
