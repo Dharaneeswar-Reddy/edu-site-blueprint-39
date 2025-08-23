@@ -8,7 +8,17 @@ const Administration = () => {
     designation: "Correspondent",
     department: "Administration",
     image: "/lovable-uploads/aa64612b-a2c2-4fc2-b645-b756306336a0.png",
-    email: "correspondent@svrmc.edu.in"
+    email: "correspondent@svrmc.edu.in",
+    qualifications: "Ph.D. in Educational Administration, M.Ed., B.Ed.",
+    experience: "25+ years in Educational Leadership",
+    specialization: "Educational Policy & Administration",
+    achievements: [
+      "Established 15+ educational institutions across the region",
+      "Recipient of Excellence in Education Award 2020",
+      "Published 30+ research papers in educational journals",
+      "Former President of Regional Education Board"
+    ],
+    message: "As the Correspondent of SVRM College, I am committed to fostering an environment of academic excellence and holistic development. Our institution stands as a beacon of quality education, preparing students to meet the challenges of the modern world with confidence and competence."
   };
 
   const principal = {
@@ -16,7 +26,17 @@ const Administration = () => {
     designation: "Principal",
     department: "Academic Affairs",
     image: "/lovable-uploads/9f96f106-897d-46e3-a4a1-4c4b8f8f9f0c.png",
-    email: "principal@svrmc.edu.in"
+    email: "principal@svrmc.edu.in",
+    qualifications: "Ph.D. in Computer Science, M.Tech in Software Engineering, B.Tech in CSE",
+    experience: "20+ years in Academia and Research",
+    specialization: "Machine Learning, Data Analytics & Educational Technology",
+    achievements: [
+      "Published 45+ research papers in international journals",
+      "Recipient of Best Principal Award 2022",
+      "Led digital transformation initiatives in higher education",
+      "Guided 25+ Ph.D. scholars to completion"
+    ],
+    message: "Under my leadership, SVRM College continues to excel in providing quality education while embracing innovation and technology. We are dedicated to nurturing critical thinking, creativity, and ethical values in our students, preparing them to be future leaders and responsible citizens."
   };
 
   // Teaching Staff data
@@ -90,15 +110,47 @@ const Administration = () => {
                 className="w-full max-w-xs rounded-lg shadow-md object-cover aspect-[3/4]"
               />
             </div>
-            <div className="w-full md:w-2/3 space-y-4">
+            <div className="w-full md:w-2/3 space-y-6">
               <div>
-                <h2 className="text-2xl font-bold text-foreground mb-2">{correspondent.name}</h2>
-                <p className="text-lg text-primary font-semibold">{correspondent.designation}</p>
-                <p className="text-muted-foreground">{correspondent.department}</p>
+                <h2 className="text-3xl font-bold text-foreground mb-2">{correspondent.name}</h2>
+                <p className="text-xl text-primary font-semibold mb-1">{correspondent.designation}</p>
+                <p className="text-muted-foreground text-lg">{correspondent.department}</p>
               </div>
-              <div className="flex items-center gap-2 text-muted-foreground">
-                <Mail className="h-4 w-4" />
-                <span>{correspondent.email}</span>
+              
+              <div className="grid md:grid-cols-2 gap-4">
+                <div>
+                  <h4 className="font-semibold text-foreground mb-2">Qualifications</h4>
+                  <p className="text-muted-foreground text-sm">{correspondent.qualifications}</p>
+                </div>
+                <div>
+                  <h4 className="font-semibold text-foreground mb-2">Experience</h4>
+                  <p className="text-muted-foreground text-sm">{correspondent.experience}</p>
+                </div>
+                <div>
+                  <h4 className="font-semibold text-foreground mb-2">Specialization</h4>
+                  <p className="text-muted-foreground text-sm">{correspondent.specialization}</p>
+                </div>
+                <div className="flex items-center gap-2 text-muted-foreground">
+                  <Mail className="h-4 w-4" />
+                  <span>{correspondent.email}</span>
+                </div>
+              </div>
+
+              <div>
+                <h4 className="font-semibold text-foreground mb-3">Key Achievements</h4>
+                <ul className="space-y-2">
+                  {correspondent.achievements.map((achievement, index) => (
+                    <li key={index} className="text-muted-foreground text-sm flex items-start">
+                      <span className="text-primary mr-2">•</span>
+                      {achievement}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <div className="bg-muted/50 p-4 rounded-lg">
+                <h4 className="font-semibold text-foreground mb-2">Message</h4>
+                <p className="text-muted-foreground text-sm italic leading-relaxed">{correspondent.message}</p>
               </div>
             </div>
           </div>
@@ -114,15 +166,47 @@ const Administration = () => {
                 className="w-full max-w-xs rounded-lg shadow-md object-cover aspect-[3/4]"
               />
             </div>
-            <div className="w-full md:w-2/3 space-y-4">
+            <div className="w-full md:w-2/3 space-y-6">
               <div>
-                <h2 className="text-2xl font-bold text-foreground mb-2">{principal.name}</h2>
-                <p className="text-lg text-primary font-semibold">{principal.designation}</p>
-                <p className="text-muted-foreground">{principal.department}</p>
+                <h2 className="text-3xl font-bold text-foreground mb-2">{principal.name}</h2>
+                <p className="text-xl text-primary font-semibold mb-1">{principal.designation}</p>
+                <p className="text-muted-foreground text-lg">{principal.department}</p>
               </div>
-              <div className="flex items-center gap-2 text-muted-foreground">
-                <Mail className="h-4 w-4" />
-                <span>{principal.email}</span>
+              
+              <div className="grid md:grid-cols-2 gap-4">
+                <div>
+                  <h4 className="font-semibold text-foreground mb-2">Qualifications</h4>
+                  <p className="text-muted-foreground text-sm">{principal.qualifications}</p>
+                </div>
+                <div>
+                  <h4 className="font-semibold text-foreground mb-2">Experience</h4>
+                  <p className="text-muted-foreground text-sm">{principal.experience}</p>
+                </div>
+                <div>
+                  <h4 className="font-semibold text-foreground mb-2">Specialization</h4>
+                  <p className="text-muted-foreground text-sm">{principal.specialization}</p>
+                </div>
+                <div className="flex items-center gap-2 text-muted-foreground">
+                  <Mail className="h-4 w-4" />
+                  <span>{principal.email}</span>
+                </div>
+              </div>
+
+              <div>
+                <h4 className="font-semibold text-foreground mb-3">Key Achievements</h4>
+                <ul className="space-y-2">
+                  {principal.achievements.map((achievement, index) => (
+                    <li key={index} className="text-muted-foreground text-sm flex items-start">
+                      <span className="text-primary mr-2">•</span>
+                      {achievement}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <div className="bg-muted/50 p-4 rounded-lg">
+                <h4 className="font-semibold text-foreground mb-2">Message</h4>
+                <p className="text-muted-foreground text-sm italic leading-relaxed">{principal.message}</p>
               </div>
             </div>
           </div>
