@@ -1,50 +1,109 @@
-
 import Layout from "@/components/Layout";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { ArrowRight, Briefcase, Building, Users, Award, TrendingUp, Target, MapPin, GraduationCap, UserCheck, Calendar, Building2 } from "lucide-react";
-
 const Placements = () => {
-  const topRecruiters = [
-    "Microsoft", "TCS", "Infosys", "Wipro", "Amazon", 
-    "IBM", "Accenture", "L&T Infotech", "Cognizant", "Tech Mahindra",
-    "Google", "HCL", "Capgemini", "Deloitte", "Oracle"
-  ];
-
-  const placementStats = [
-    { year: "2024-25", placed: 382, totalStudents: 425, percentagePlaced: 90 },
-    { year: "2023-24", placed: 364, totalStudents: 412, percentagePlaced: 88 },
-    { year: "2022-23", placed: 345, totalStudents: 401, percentagePlaced: 86 },
-    { year: "2021-22", placed: 302, totalStudents: 376, percentagePlaced: 80 }
-  ];
-
-  const departmentPlacements = [
-    { department: "Computer Science", placed: 145, total: 152, percentage: 95, avgPackage: "7.2 LPA" },
-    { department: "Commerce", placed: 89, total: 98, percentage: 91, avgPackage: "4.5 LPA" },
-    { department: "Mathematics", placed: 67, total: 75, percentage: 89, avgPackage: "5.8 LPA" },
-    { department: "Physics", placed: 45, total: 52, percentage: 87, avgPackage: "6.1 LPA" },
-    { department: "Chemistry", placed: 36, total: 48, percentage: 75, avgPackage: "5.2 LPA" }
-  ];
-
-  const placementStaff = [
-    { name: "Dr. Rajesh Kumar", designation: "Placement Officer", experience: "15 Years", contact: "placement@svrmc.edu.in" },
-    { name: "Ms. Priya Sharma", designation: "Training Coordinator", experience: "8 Years", contact: "training@svrmc.edu.in" },
-    { name: "Mr. Suresh Reddy", designation: "Industry Relations", experience: "12 Years", contact: "industry@svrmc.edu.in" },
-    { name: "Ms. Lakshmi Devi", designation: "Student Counselor", experience: "6 Years", contact: "counseling@svrmc.edu.in" }
-  ];
-
-  const activities = [
-    { title: "Industry Interaction Sessions", description: "Regular sessions with industry experts", frequency: "Monthly" },
-    { title: "Mock Interviews", description: "Practice interviews with feedback", frequency: "Weekly" },
-    { title: "Resume Building Workshops", description: "Professional resume writing guidance", frequency: "Bi-weekly" },
-    { title: "Soft Skills Training", description: "Communication and personality development", frequency: "Weekly" },
-    { title: "Technical Training", description: "Latest technology and skill enhancement", frequency: "Daily" },
-    { title: "Campus Drives", description: "On-campus recruitment drives", frequency: "Regular" }
-  ];
-
-  return (
-    <Layout>
+  const topRecruiters = ["Microsoft", "TCS", "Infosys", "Wipro", "Amazon", "IBM", "Accenture", "L&T Infotech", "Cognizant", "Tech Mahindra", "Google", "HCL", "Capgemini", "Deloitte", "Oracle"];
+  const placementStats = [{
+    year: "2024-25",
+    placed: 382,
+    totalStudents: 425,
+    percentagePlaced: 90
+  }, {
+    year: "2023-24",
+    placed: 364,
+    totalStudents: 412,
+    percentagePlaced: 88
+  }, {
+    year: "2022-23",
+    placed: 345,
+    totalStudents: 401,
+    percentagePlaced: 86
+  }, {
+    year: "2021-22",
+    placed: 302,
+    totalStudents: 376,
+    percentagePlaced: 80
+  }];
+  const departmentPlacements = [{
+    department: "Computer Science",
+    placed: 145,
+    total: 152,
+    percentage: 95,
+    avgPackage: "7.2 LPA"
+  }, {
+    department: "Commerce",
+    placed: 89,
+    total: 98,
+    percentage: 91,
+    avgPackage: "4.5 LPA"
+  }, {
+    department: "Mathematics",
+    placed: 67,
+    total: 75,
+    percentage: 89,
+    avgPackage: "5.8 LPA"
+  }, {
+    department: "Physics",
+    placed: 45,
+    total: 52,
+    percentage: 87,
+    avgPackage: "6.1 LPA"
+  }, {
+    department: "Chemistry",
+    placed: 36,
+    total: 48,
+    percentage: 75,
+    avgPackage: "5.2 LPA"
+  }];
+  const placementStaff = [{
+    name: "Dr. Rajesh Kumar",
+    designation: "Placement Officer",
+    experience: "15 Years",
+    contact: "placement@svrmc.edu.in"
+  }, {
+    name: "Ms. Priya Sharma",
+    designation: "Training Coordinator",
+    experience: "8 Years",
+    contact: "training@svrmc.edu.in"
+  }, {
+    name: "Mr. Suresh Reddy",
+    designation: "Industry Relations",
+    experience: "12 Years",
+    contact: "industry@svrmc.edu.in"
+  }, {
+    name: "Ms. Lakshmi Devi",
+    designation: "Student Counselor",
+    experience: "6 Years",
+    contact: "counseling@svrmc.edu.in"
+  }];
+  const activities = [{
+    title: "Industry Interaction Sessions",
+    description: "Regular sessions with industry experts",
+    frequency: "Monthly"
+  }, {
+    title: "Mock Interviews",
+    description: "Practice interviews with feedback",
+    frequency: "Weekly"
+  }, {
+    title: "Resume Building Workshops",
+    description: "Professional resume writing guidance",
+    frequency: "Bi-weekly"
+  }, {
+    title: "Soft Skills Training",
+    description: "Communication and personality development",
+    frequency: "Weekly"
+  }, {
+    title: "Technical Training",
+    description: "Latest technology and skill enhancement",
+    frequency: "Daily"
+  }, {
+    title: "Campus Drives",
+    description: "On-campus recruitment drives",
+    frequency: "Regular"
+  }];
+  return <Layout>
       {/* Hero Section */}
       <section className="pt-32 pb-16 bg-gradient-to-br from-primary/5 via-background to-secondary/5">
         <div className="container mx-auto px-4">
@@ -244,8 +303,7 @@ const Placements = () => {
                     </tr>
                   </thead>
                   <tbody>
-                    {departmentPlacements.map((dept, index) => (
-                      <tr key={index} className="border-b border-muted hover:bg-secondary/5 transition-colors">
+                    {departmentPlacements.map((dept, index) => <tr key={index} className="border-b border-muted hover:bg-secondary/5 transition-colors">
                         <td className="py-4 px-4 font-medium">{dept.department}</td>
                         <td className="py-4 px-4">{dept.placed}</td>
                         <td className="py-4 px-4">{dept.total}</td>
@@ -255,8 +313,7 @@ const Placements = () => {
                           </span>
                         </td>
                         <td className="py-4 px-4 font-medium text-secondary">{dept.avgPackage}</td>
-                      </tr>
-                    ))}
+                      </tr>)}
                   </tbody>
                 </table>
               </div>
@@ -274,8 +331,7 @@ const Placements = () => {
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {placementStaff.map((staff, index) => (
-              <Card key={index} className="text-center border-primary/20 hover:shadow-lg transition-all duration-300">
+            {placementStaff.map((staff, index) => <Card key={index} className="text-center border-primary/20 hover:shadow-lg transition-all duration-300">
                 <CardHeader>
                   <div className="mx-auto p-4 rounded-full bg-primary/10 mb-4">
                     <UserCheck className="h-8 w-8 text-primary" />
@@ -287,8 +343,7 @@ const Placements = () => {
                   <p className="text-sm text-muted-foreground mb-2">Experience: {staff.experience}</p>
                   <p className="text-sm text-primary font-medium">{staff.contact}</p>
                 </CardContent>
-              </Card>
-            ))}
+              </Card>)}
           </div>
         </div>
       </section>
@@ -302,8 +357,7 @@ const Placements = () => {
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {activities.map((activity, index) => (
-              <Card key={index} className="border-primary/20 hover:shadow-lg transition-all duration-300">
+            {activities.map((activity, index) => <Card key={index} className="border-primary/20 hover:shadow-lg transition-all duration-300">
                 <CardHeader>
                   <div className="flex items-center space-x-3 mb-2">
                     <Calendar className="h-6 w-6 text-primary" />
@@ -314,8 +368,7 @@ const Placements = () => {
                 <CardContent>
                   <p className="text-muted-foreground">{activity.description}</p>
                 </CardContent>
-              </Card>
-            ))}
+              </Card>)}
           </div>
         </div>
       </section>
@@ -334,14 +387,9 @@ const Placements = () => {
           <Card className="border-primary/20">
             <CardContent className="p-8">
               <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
-                {topRecruiters.map((company, index) => (
-                  <div 
-                    key={index} 
-                    className="border border-muted rounded-lg p-6 flex items-center justify-center h-24 bg-background hover:shadow-md hover:border-primary/30 transition-all duration-300"
-                  >
+                {topRecruiters.map((company, index) => <div key={index} className="border border-muted rounded-lg p-6 flex items-center justify-center h-24 bg-background hover:shadow-md hover:border-primary/30 transition-all duration-300">
                     <span className="font-semibold text-primary text-center">{company}</span>
-                  </div>
-                ))}
+                  </div>)}
               </div>
             </CardContent>
           </Card>
@@ -359,24 +407,16 @@ const Placements = () => {
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button asChild className="bg-primary hover:bg-primary/90">
-                <Link to="/contact" className="flex items-center">
-                  <MapPin className="mr-2 h-4 w-4" />
-                  Contact Placement Cell
-                </Link>
+                
               </Button>
               
               <Button variant="outline" asChild className="border-primary text-primary hover:bg-primary hover:text-primary-foreground">
-                <Link to="/student-login" className="flex items-center">
-                  <GraduationCap className="mr-2 h-4 w-4" />
-                  Student Portal
-                </Link>
+                
               </Button>
             </div>
           </div>
         </div>
       </section>
-    </Layout>
-  );
+    </Layout>;
 };
-
 export default Placements;
