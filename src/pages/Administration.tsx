@@ -18,7 +18,8 @@ const Administration = () => {
       "Published 30+ research papers in educational journals",
       "Former President of Regional Education Board"
     ],
-    message: "As the Correspondent of SVRM College, I am committed to fostering an environment of academic excellence and holistic development. Our institution stands as a beacon of quality education, preparing students to meet the challenges of the modern world with confidence and competence."
+    message: "As the Correspondent of SVRM College, I am committed to fostering an environment of academic excellence and holistic development. Our institution stands as a beacon of quality education, preparing students to meet the challenges of the modern world with confidence and competence.",
+    bio: "Dr. Ramesh Kumar is currently serving as the Correspondent of SVRM College since 2010. He brings a rich interdisciplinary background spanning educational administration, policy development, and institutional governance. Prior to joining SVRM College, he worked as a Senior Education Consultant at the State Education Board, where he was deeply involved in the development of educational frameworks aimed at enhancing quality education, curriculum design, and institutional excellence across multiple educational institutions in the region."
   };
 
   const principal = {
@@ -36,7 +37,8 @@ const Administration = () => {
       "Led digital transformation initiatives in higher education",
       "Guided 25+ Ph.D. scholars to completion"
     ],
-    message: "Under my leadership, SVRM College continues to excel in providing quality education while embracing innovation and technology. We are dedicated to nurturing critical thinking, creativity, and ethical values in our students, preparing them to be future leaders and responsible citizens."
+    message: "Under my leadership, SVRM College continues to excel in providing quality education while embracing innovation and technology. We are dedicated to nurturing critical thinking, creativity, and ethical values in our students, preparing them to be future leaders and responsible citizens.",
+    bio: "Dr. Rajesh Kumar is currently serving as Principal at SVRM College since 2018. He brings a rich interdisciplinary background spanning computer science, educational technology, and academic administration. Prior to joining SVRM College, he worked as a Professor at the Department of Computer Science and Engineering at a premier technical institution, where he was deeply involved in the development of innovative teaching methodologies aimed at enhancing student learning outcomes, research excellence, and industry collaboration for undergraduate and postgraduate programs."
   };
 
   // Teaching Staff data
@@ -110,47 +112,22 @@ const Administration = () => {
                 className="w-full max-w-xs rounded-lg shadow-md object-cover aspect-[3/4]"
               />
             </div>
-            <div className="w-full md:w-2/3 space-y-6">
+            <div className="w-full md:w-2/3 space-y-4">
               <div>
-                <h2 className="text-3xl font-bold text-foreground mb-2">{correspondent.name}</h2>
-                <p className="text-xl text-primary font-semibold mb-1">{correspondent.designation}</p>
-                <p className="text-muted-foreground text-lg">{correspondent.department}</p>
+                <h2 className="text-4xl font-bold text-foreground mb-3">{correspondent.name}</h2>
+                <p className="text-xl text-blue-600 font-semibold mb-2">{correspondent.designation}</p>
+                <p className="text-lg text-muted-foreground mb-4">{correspondent.department}</p>
               </div>
               
-              <div className="grid md:grid-cols-2 gap-4">
-                <div>
-                  <h4 className="font-semibold text-foreground mb-2">Qualifications</h4>
-                  <p className="text-muted-foreground text-sm">{correspondent.qualifications}</p>
-                </div>
-                <div>
-                  <h4 className="font-semibold text-foreground mb-2">Experience</h4>
-                  <p className="text-muted-foreground text-sm">{correspondent.experience}</p>
-                </div>
-                <div>
-                  <h4 className="font-semibold text-foreground mb-2">Specialization</h4>
-                  <p className="text-muted-foreground text-sm">{correspondent.specialization}</p>
-                </div>
+              <div className="space-y-4">
+                <p className="text-muted-foreground leading-relaxed text-justify">
+                  <span className="font-semibold">{correspondent.name}</span> {correspondent.bio}
+                </p>
+                
                 <div className="flex items-center gap-2 text-muted-foreground">
                   <Mail className="h-4 w-4" />
                   <span>{correspondent.email}</span>
                 </div>
-              </div>
-
-              <div>
-                <h4 className="font-semibold text-foreground mb-3">Key Achievements</h4>
-                <ul className="space-y-2">
-                  {correspondent.achievements.map((achievement, index) => (
-                    <li key={index} className="text-muted-foreground text-sm flex items-start">
-                      <span className="text-primary mr-2">•</span>
-                      {achievement}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              <div className="bg-muted/50 p-4 rounded-lg">
-                <h4 className="font-semibold text-foreground mb-2">Message</h4>
-                <p className="text-muted-foreground text-sm italic leading-relaxed">{correspondent.message}</p>
               </div>
             </div>
           </div>
@@ -166,47 +143,22 @@ const Administration = () => {
                 className="w-full max-w-xs rounded-lg shadow-md object-cover aspect-[3/4]"
               />
             </div>
-            <div className="w-full md:w-2/3 space-y-6">
+            <div className="w-full md:w-2/3 space-y-4">
               <div>
-                <h2 className="text-3xl font-bold text-foreground mb-2">{principal.name}</h2>
-                <p className="text-xl text-primary font-semibold mb-1">{principal.designation}</p>
-                <p className="text-muted-foreground text-lg">{principal.department}</p>
+                <h2 className="text-4xl font-bold text-foreground mb-3">{principal.name}</h2>
+                <p className="text-xl text-blue-600 font-semibold mb-2">{principal.designation}</p>
+                <p className="text-lg text-muted-foreground mb-4">{principal.department}</p>
               </div>
               
-              <div className="grid md:grid-cols-2 gap-4">
-                <div>
-                  <h4 className="font-semibold text-foreground mb-2">Qualifications</h4>
-                  <p className="text-muted-foreground text-sm">{principal.qualifications}</p>
-                </div>
-                <div>
-                  <h4 className="font-semibold text-foreground mb-2">Experience</h4>
-                  <p className="text-muted-foreground text-sm">{principal.experience}</p>
-                </div>
-                <div>
-                  <h4 className="font-semibold text-foreground mb-2">Specialization</h4>
-                  <p className="text-muted-foreground text-sm">{principal.specialization}</p>
-                </div>
+              <div className="space-y-4">
+                <p className="text-muted-foreground leading-relaxed text-justify">
+                  <span className="font-semibold">{principal.name}</span> {principal.bio}
+                </p>
+                
                 <div className="flex items-center gap-2 text-muted-foreground">
                   <Mail className="h-4 w-4" />
                   <span>{principal.email}</span>
                 </div>
-              </div>
-
-              <div>
-                <h4 className="font-semibold text-foreground mb-3">Key Achievements</h4>
-                <ul className="space-y-2">
-                  {principal.achievements.map((achievement, index) => (
-                    <li key={index} className="text-muted-foreground text-sm flex items-start">
-                      <span className="text-primary mr-2">•</span>
-                      {achievement}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              <div className="bg-muted/50 p-4 rounded-lg">
-                <h4 className="font-semibold text-foreground mb-2">Message</h4>
-                <p className="text-muted-foreground text-sm italic leading-relaxed">{principal.message}</p>
               </div>
             </div>
           </div>
