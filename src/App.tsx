@@ -121,6 +121,7 @@ const App = () => (
             <Route path="/iqac" element={<IQAC />} />
             <Route path="/iqac/quality-policy" element={<QualityPolicy />} />
             <Route path="/ncc" element={<NCC />} />
+            <Route path="/placements" element={<Placements />} />
             
             {/* Admin Routes */}
             <Route path="/admin" element={<Admin />} />
