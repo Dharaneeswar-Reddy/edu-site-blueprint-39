@@ -303,6 +303,181 @@ const Academics = () => {
           </Card>
         </section>
 
+        {/* Program Outcomes */}
+        <section>
+          <Card className="bg-gradient-to-br from-green-50 to-emerald-50">
+            <CardHeader>
+              <CardTitle className="flex items-center gap-3">
+                <Award className="h-6 w-6 text-green-600" />
+                Program Outcomes
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="space-y-6">
+                <p className="text-gray-700">
+                  Our academic programs are designed to achieve specific learning outcomes that prepare students 
+                  for successful careers and lifelong learning. Each program has well-defined outcomes that align 
+                  with industry requirements and global standards.
+                </p>
+                
+                <div className="grid md:grid-cols-3 gap-6">
+                  <div className="bg-white p-6 rounded-lg shadow-sm">
+                    <div className="flex items-center gap-3 mb-4">
+                      <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center">
+                        <BookOpen className="h-6 w-6 text-green-600" />
+                      </div>
+                      <div>
+                        <h4 className="font-semibold text-gray-900">Knowledge & Skills</h4>
+                        <p className="text-sm text-gray-600">Comprehensive understanding</p>
+                      </div>
+                    </div>
+                    <ul className="text-sm text-gray-700 space-y-1">
+                      <li>• Domain-specific knowledge</li>
+                      <li>• Problem-solving abilities</li>
+                      <li>• Analytical thinking</li>
+                      <li>• Technical proficiency</li>
+                    </ul>
+                  </div>
+                  
+                  <div className="bg-white p-6 rounded-lg shadow-sm">
+                    <div className="flex items-center gap-3 mb-4">
+                      <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
+                        <Users className="h-6 w-6 text-blue-600" />
+                      </div>
+                      <div>
+                        <h4 className="font-semibold text-gray-900">Professional Skills</h4>
+                        <p className="text-sm text-gray-600">Industry readiness</p>
+                      </div>
+                    </div>
+                    <ul className="text-sm text-gray-700 space-y-1">
+                      <li>• Communication skills</li>
+                      <li>• Teamwork & collaboration</li>
+                      <li>• Leadership qualities</li>
+                      <li>• Project management</li>
+                    </ul>
+                  </div>
+                  
+                  <div className="bg-white p-6 rounded-lg shadow-sm">
+                    <div className="flex items-center gap-3 mb-4">
+                      <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center">
+                        <Award className="h-6 w-6 text-purple-600" />
+                      </div>
+                      <div>
+                        <h4 className="font-semibold text-gray-900">Life Skills</h4>
+                        <p className="text-sm text-gray-600">Personal development</p>
+                      </div>
+                    </div>
+                    <ul className="text-sm text-gray-700 space-y-1">
+                      <li>• Ethical reasoning</li>
+                      <li>• Lifelong learning</li>
+                      <li>• Social responsibility</li>
+                      <li>• Global awareness</li>
+                    </ul>
+                  </div>
+                </div>
+                
+                <div className="text-center">
+                  <Link to="/academics/program-outcomes">
+                    <Button variant="outline" className="text-green-600 border-green-600 hover:bg-green-50">
+                      View Detailed Program Outcomes
+                      <ArrowRight className="h-4 w-4 ml-2" />
+                    </Button>
+                  </Link>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+        </section>
+
+        {/* Academic Calendar */}
+        <section>
+          <Card className="bg-gradient-to-br from-orange-50 to-amber-50">
+            <CardHeader>
+              <CardTitle className="flex items-center gap-3">
+                <Calendar className="h-6 w-6 text-orange-600" />
+                Academic Calendar
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="space-y-6">
+                <p className="text-gray-700">
+                  Our academic calendar is structured to provide optimal learning opportunities while ensuring 
+                  adequate time for assessments, examinations, and academic activities throughout the year.
+                </p>
+                
+                <div className="grid md:grid-cols-2 gap-6">
+                  <div className="bg-white p-6 rounded-lg shadow-sm">
+                    <h4 className="font-semibold text-orange-800 mb-4 flex items-center gap-2">
+                      <div className="w-3 h-3 bg-orange-500 rounded-full"></div>
+                      Odd Semester (July - December)
+                    </h4>
+                    <div className="space-y-3">
+                      <div className="flex justify-between items-center p-3 bg-orange-50 rounded">
+                        <span className="text-sm font-medium">Semester Commencement</span>
+                        <span className="text-sm text-orange-600">July 15</span>
+                      </div>
+                      <div className="flex justify-between items-center p-3 bg-orange-50 rounded">
+                        <span className="text-sm font-medium">Mid-Term Examinations</span>
+                        <span className="text-sm text-orange-600">September 15-20</span>
+                      </div>
+                      <div className="flex justify-between items-center p-3 bg-orange-50 rounded">
+                        <span className="text-sm font-medium">Semester End Exams</span>
+                        <span className="text-sm text-orange-600">November 20-30</span>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div className="bg-white p-6 rounded-lg shadow-sm">
+                    <h4 className="font-semibold text-blue-800 mb-4 flex items-center gap-2">
+                      <div className="w-3 h-3 bg-blue-500 rounded-full"></div>
+                      Even Semester (January - June)
+                    </h4>
+                    <div className="space-y-3">
+                      <div className="flex justify-between items-center p-3 bg-blue-50 rounded">
+                        <span className="text-sm font-medium">Semester Commencement</span>
+                        <span className="text-sm text-blue-600">January 10</span>
+                      </div>
+                      <div className="flex justify-between items-center p-3 bg-blue-50 rounded">
+                        <span className="text-sm font-medium">Mid-Term Examinations</span>
+                        <span className="text-sm text-blue-600">March 15-20</span>
+                      </div>
+                      <div className="flex justify-between items-center p-3 bg-blue-50 rounded">
+                        <span className="text-sm font-medium">Semester End Exams</span>
+                        <span className="text-sm text-blue-600">May 15-30</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                <div className="bg-white p-6 rounded-lg border-l-4 border-orange-400">
+                  <h5 className="font-semibold text-gray-900 mb-3">Important Academic Events</h5>
+                  <div className="grid md:grid-cols-2 gap-4">
+                    <div className="space-y-2">
+                      <div className="text-sm"><strong>Orientation Program:</strong> First week of each semester</div>
+                      <div className="text-sm"><strong>Faculty Development:</strong> Semester breaks</div>
+                      <div className="text-sm"><strong>Research Symposium:</strong> March (Annual)</div>
+                    </div>
+                    <div className="space-y-2">
+                      <div className="text-sm"><strong>Cultural Events:</strong> October & February</div>
+                      <div className="text-sm"><strong>Sports Meet:</strong> December & April</div>
+                      <div className="text-sm"><strong>Convocation:</strong> May (Annual)</div>
+                    </div>
+                  </div>
+                </div>
+                
+                <div className="text-center">
+                  <Link to="/academic-calendar">
+                    <Button variant="outline" className="text-orange-600 border-orange-600 hover:bg-orange-50">
+                      View Complete Academic Calendar
+                      <ArrowRight className="h-4 w-4 ml-2" />
+                    </Button>
+                  </Link>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+        </section>
+
         {/* Admission Process */}
         <section>
           <Card>
