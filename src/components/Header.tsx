@@ -64,31 +64,31 @@ const Header = () => {
     closeAllDropdowns();
     dropdownSetter(!currentState);
   };
-  return <header className={`fixed w-full z-50 transition-all duration-300 ${scrolled ? "bg-white shadow-md py-2" : "bg-black/50 backdrop-blur-sm py-4"}`}>
+  return <header className={`fixed w-full z-50 transition-all duration-300 ${scrolled ? "bg-white shadow-md py-1" : "bg-black/50 backdrop-blur-sm py-2"}`}>
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center">
-          <Link to="/" className="flex items-center gap-3">
-            <img src="/lovable-uploads/43b08f5f-94a1-4efc-a4bc-d959843cb7ea.png" alt="SVRMC Logo" className="h-12 w-12" />
+          <Link to="/" className="flex items-center gap-2">
+            <img src="/lovable-uploads/43b08f5f-94a1-4efc-a4bc-d959843cb7ea.png" alt="SVRMC Logo" className="h-8 w-8" />
             <div className={`flex flex-col ${scrolled ? "text-college-blue" : "text-white"}`}>
-              <span className="font-bold text-sm md:text-base">Shri Velagapudi Ramakrishna Memorial College</span>
-              <span className="text-xs">Govt. Aided College Sponsored by R.T.E.I. Society</span>
+              <span className="font-bold text-xs md:text-sm">Shri Velagapudi Ramakrishna Memorial College</span>
+              <span className="text-xs hidden sm:block">Govt. Aided College Sponsored by R.T.E.I. Society</span>
             </div>
           </Link>
 
-          <nav className="hidden lg:flex items-center space-x-1">
-            <Link to="/" className={`nav-link ${isActive("/") ? "active" : ""} ${scrolled ? "text-college-dark hover:text-college-blue" : "text-white hover:text-college-gold"}`}>
+          <nav className="hidden lg:flex items-center space-x-0">
+            <Link to="/" className={`px-2 py-1 text-sm font-medium transition-colors ${isActive("/") ? "active" : ""} ${scrolled ? "text-college-dark hover:text-college-blue" : "text-white hover:text-college-gold"}`}>
               Home
             </Link>
             
-            <Link to="/about-us" className={`nav-link ${isActive("/about-us") ? "active" : ""} ${scrolled ? "text-college-dark hover:text-college-blue" : "text-white hover:text-college-gold"}`}>
+            <Link to="/about-us" className={`px-2 py-1 text-sm font-medium transition-colors ${isActive("/about-us") ? "active" : ""} ${scrolled ? "text-college-dark hover:text-college-blue" : "text-white hover:text-college-gold"}`}>
               About Us
             </Link>
             
-            <Link to="/administration" className={`nav-link ${isActive("/administration") ? "active" : ""} ${scrolled ? "text-college-dark hover:text-college-blue" : "text-white hover:text-college-gold"}`}>
+            <Link to="/administration" className={`px-2 py-1 text-sm font-medium transition-colors ${isActive("/administration") ? "active" : ""} ${scrolled ? "text-college-dark hover:text-college-blue" : "text-white hover:text-college-gold"}`}>
               Administration
             </Link>
 
-            <Link to="/academics" className={`nav-link ${isActive("/academics") ? "active" : ""} ${scrolled ? "text-college-dark hover:text-college-blue" : "text-white hover:text-college-gold"}`}>
+            <Link to="/academics" className={`px-2 py-1 text-sm font-medium transition-colors ${isActive("/academics") ? "active" : ""} ${scrolled ? "text-college-dark hover:text-college-blue" : "text-white hover:text-college-gold"}`}>
               Academics
             </Link>
 
@@ -99,9 +99,9 @@ const Header = () => {
             >
               <button 
                 onClick={() => handleDropdownClick(departmentDropdown, setDepartmentDropdown)}
-                className={`nav-link flex items-center ${isActive("/departments") ? "active" : ""} ${scrolled ? "text-college-dark hover:text-college-blue" : "text-white hover:text-college-gold"}`}
+                className={`px-2 py-1 text-sm font-medium transition-colors flex items-center ${isActive("/departments") ? "active" : ""} ${scrolled ? "text-college-dark hover:text-college-blue" : "text-white hover:text-college-gold"}`}
               >
-                Departments <ChevronDown className="ml-1 h-4 w-4" />
+                Departments <ChevronDown className="ml-1 h-3 w-3" />
               </button>
               {departmentDropdown && (
                 <>
@@ -126,27 +126,27 @@ const Header = () => {
               )}
             </div>
 
-            <Link to="/iqac" className={`nav-link ${isActive("/iqac") ? "active" : ""} ${scrolled ? "text-college-dark hover:text-college-blue" : "text-white hover:text-college-gold"}`}>
+            <Link to="/iqac" className={`px-2 py-1 text-sm font-medium transition-colors ${isActive("/iqac") ? "active" : ""} ${scrolled ? "text-college-dark hover:text-college-blue" : "text-white hover:text-college-gold"}`}>
               IQAC
             </Link>
 
-            <Link to="/ncc" className={`nav-link ${isActive("/ncc") ? "active" : ""} ${scrolled ? "text-college-dark hover:text-college-blue" : "text-white hover:text-college-gold"}`}>
+            <Link to="/ncc" className={`px-2 py-1 text-sm font-medium transition-colors ${isActive("/ncc") ? "active" : ""} ${scrolled ? "text-college-dark hover:text-college-blue" : "text-white hover:text-college-gold"}`}>
               NCC
             </Link>
 
-            <Link to="/placements" className={`nav-link ${isActive("/placements") ? "active" : ""} ${scrolled ? "text-college-dark hover:text-college-blue" : "text-white hover:text-college-gold"}`}>
+            <Link to="/placements" className={`px-2 py-1 text-sm font-medium transition-colors ${isActive("/placements") ? "active" : ""} ${scrolled ? "text-college-dark hover:text-college-blue" : "text-white hover:text-college-gold"}`}>
               Placements
             </Link>
 
-            <Link to="/examination-cell" className={`nav-link ${isActive("/examination-cell") ? "active" : ""} ${scrolled ? "text-college-dark hover:text-college-blue" : "text-white hover:text-college-gold"}`}>
-              Examination Cell
+            <Link to="/examination-cell" className={`px-2 py-1 text-sm font-medium transition-colors ${isActive("/examination-cell") ? "active" : ""} ${scrolled ? "text-college-dark hover:text-college-blue" : "text-white hover:text-college-gold"}`}>
+              Exam Cell
             </Link>
 
-            <Link to="/gallery" className={`nav-link ${isActive("/gallery") ? "active" : ""} ${scrolled ? "text-college-dark hover:text-college-blue" : "text-white hover:text-college-gold"}`}>
-              Photo Gallery
+            <Link to="/gallery" className={`px-2 py-1 text-sm font-medium transition-colors ${isActive("/gallery") ? "active" : ""} ${scrolled ? "text-college-dark hover:text-college-blue" : "text-white hover:text-college-gold"}`}>
+              Gallery
             </Link>
 
-            <Link to="/contact" className={`nav-link ${isActive("/contact") ? "active" : ""} ${scrolled ? "text-college-dark hover:text-college-blue" : "text-white hover:text-college-gold"}`}>
+            <Link to="/contact" className={`px-2 py-1 text-sm font-medium transition-colors ${isActive("/contact") ? "active" : ""} ${scrolled ? "text-college-dark hover:text-college-blue" : "text-white hover:text-college-gold"}`}>
               Contact
             </Link>
           </nav>
