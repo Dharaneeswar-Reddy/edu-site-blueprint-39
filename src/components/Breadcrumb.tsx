@@ -58,7 +58,7 @@ const Breadcrumb = () => {
       'student-support': 'Student Support',
       'jkc': 'JKC',
       'nss': 'NSS',
-      'ncc': 'NCC',
+      'student-support': 'Student Support',
       'women-empowerment-cell': 'Women Empowerment Cell',
       'icc': 'ICC',
       'gym-sports-centre': 'Gym & Sports Centre',

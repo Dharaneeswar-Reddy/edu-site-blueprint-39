@@ -130,8 +130,8 @@ const Header = () => {
               IQAC
             </Link>
 
-            <Link to="/ncc" className={`px-2 py-1 text-sm font-medium transition-colors ${isActive("/ncc") ? "active" : ""} ${scrolled ? "text-college-dark hover:text-college-blue" : "text-white hover:text-college-gold"}`}>
-              NCC
+            <Link to="/student-support" className={`px-2 py-1 text-sm font-medium transition-colors ${isActive("/student-support") ? "active" : ""} ${scrolled ? "text-college-dark hover:text-college-blue" : "text-white hover:text-college-gold"}`}>
+              Student Support
             </Link>
 
             <Link to="/placements" className={`px-2 py-1 text-sm font-medium transition-colors ${isActive("/placements") ? "active" : ""} ${scrolled ? "text-college-dark hover:text-college-blue" : "text-white hover:text-college-gold"}`}>
@@ -232,8 +232,8 @@ const Header = () => {
               <Link to="/iqac" className={`px-4 py-2 ${isActive("/iqac") ? "bg-primary/10 text-primary font-medium" : "text-gray-700"}`} onClick={closeMobileMenu}>
                 IQAC
               </Link>
-              <Link to="/ncc" className={`px-4 py-2 ${isActive("/ncc") ? "bg-primary/10 text-primary font-medium" : "text-gray-700"}`} onClick={closeMobileMenu}>
-                NCC
+               <Link to="/student-support" className={`px-4 py-2 ${isActive("/student-support") ? "bg-primary/10 text-primary font-medium" : "text-gray-700"}`} onClick={closeMobileMenu}>
+                 Student Support
               </Link>
               <Link to="/placements" className={`px-4 py-2 ${isActive("/placements") ? "bg-primary/10 text-primary font-medium" : "text-gray-700"}`} onClick={closeMobileMenu}>
                 Placements

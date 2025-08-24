@@ -66,6 +66,16 @@ import Telugu from "./pages/departments/Telugu";
 import Hindi from "./pages/departments/Hindi";
 import Admin from "./pages/Admin";
 
+// Student Support Pages
+import JKC from "./pages/student-support/JKC";
+import NSS from "./pages/student-support/NSS";
+import NCCProgram from "./pages/student-support/NCCProgram";
+import WomenEmpowerment from "./pages/student-support/WomenEmpowerment";
+import ICCPage from "./pages/student-support/ICCPage";
+import GymSports from "./pages/student-support/GymSports";
+import AntiRagging from "./pages/student-support/AntiRagging";
+import CulturalClub from "./pages/student-support/CulturalClub";
+
 // Admin Components
 import AnnouncementsAdmin from "@/components/admin/AnnouncementsAdmin";
 import ExaminationDocumentsAdmin from "@/components/admin/ExaminationDocumentsAdmin";
@@ -121,6 +131,14 @@ const App = () => (
             <Route path="/iqac" element={<IQAC />} />
             <Route path="/iqac/quality-policy" element={<QualityPolicy />} />
             <Route path="/student-support" element={<StudentSupport />} />
+            <Route path="/student-support/jkc" element={<JKC />} />
+            <Route path="/student-support/nss" element={<NSS />} />
+            <Route path="/student-support/ncc" element={<NCCProgram />} />
+            <Route path="/student-support/women-empowerment" element={<WomenEmpowerment />} />
+            <Route path="/student-support/icc" element={<ICCPage />} />
+            <Route path="/student-support/gym-sports" element={<GymSports />} />
+            <Route path="/student-support/anti-ragging" element={<AntiRagging />} />
+            <Route path="/student-support/cultural-club" element={<CulturalClub />} />
             <Route path="/placements" element={<Placements />} />
             
             {/* Admin Routes */}
