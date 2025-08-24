@@ -164,6 +164,7 @@ const Header = () => {
                     <Link to="/student-support/anti-ragging" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" onClick={() => setStudentSupportDropdown(false)}>Anti-Ragging</Link>
                     <Link to="/student-support/cultural-club" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" onClick={() => setStudentSupportDropdown(false)}>Cultural Club</Link>
                     <Link to="/student-support/consumer-club" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" onClick={() => setStudentSupportDropdown(false)}>Consumer Club</Link>
+                    <Link to="/student-support/eco-club" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" onClick={() => setStudentSupportDropdown(false)}>Eco Club</Link>
                   </div>
                 </>
               )}
@@ -297,6 +298,9 @@ const Header = () => {
                </Link>
                <Link to="/student-support/consumer-club" className={`pl-8 py-2 ${isActive("/student-support/consumer-club") ? "bg-primary/10 text-primary font-medium" : "text-gray-600"}`} onClick={closeMobileMenu}>
                  Consumer Club
+               </Link>
+               <Link to="/student-support/eco-club" className={`pl-8 py-2 ${isActive("/student-support/eco-club") ? "bg-primary/10 text-primary font-medium" : "text-gray-600"}`} onClick={closeMobileMenu}>
+                 Eco Club
                </Link>
               <Link to="/placements" className={`px-4 py-2 ${isActive("/placements") ? "bg-primary/10 text-primary font-medium" : "text-gray-700"}`} onClick={closeMobileMenu}>
                 Placements

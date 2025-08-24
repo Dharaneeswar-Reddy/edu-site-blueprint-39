@@ -75,6 +75,8 @@ import ICCPage from "./pages/student-support/ICCPage";
 import GymSports from "./pages/student-support/GymSports";
 import AntiRagging from "./pages/student-support/AntiRagging";
 import CulturalClub from "./pages/student-support/CulturalClub";
+import ConsumerClub from "./pages/student-support/ConsumerClub";
+import EcoClub from "./pages/student-support/EcoClub";
 
 // Admin Components
 import AnnouncementsAdmin from "@/components/admin/AnnouncementsAdmin";
@@ -133,12 +135,14 @@ const App = () => (
             <Route path="/student-support" element={<StudentSupport />} />
             <Route path="/student-support/jkc" element={<JKC />} />
             <Route path="/student-support/nss" element={<NSS />} />
-            <Route path="/student-support/ncc" element={<NCCProgram />} />
+            <Route path="/student-support/ncc-program" element={<NCCProgram />} />
             <Route path="/student-support/women-empowerment" element={<WomenEmpowerment />} />
             <Route path="/student-support/icc" element={<ICCPage />} />
             <Route path="/student-support/gym-sports" element={<GymSports />} />
             <Route path="/student-support/anti-ragging" element={<AntiRagging />} />
             <Route path="/student-support/cultural-club" element={<CulturalClub />} />
+            <Route path="/student-support/consumer-club" element={<ConsumerClub />} />
+            <Route path="/student-support/eco-club" element={<EcoClub />} />
             <Route path="/placements" element={<Placements />} />
             
             {/* Admin Routes */}
