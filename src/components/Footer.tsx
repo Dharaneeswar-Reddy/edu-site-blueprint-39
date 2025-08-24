@@ -53,7 +53,7 @@ const Footer = () => {
             </h3>
             <ul className="space-y-2">
               <li><Link to="/academic-calendar" className="text-sm text-gray-300 hover:text-white transition-colors">Academic Calendar</Link></li>
-              <li><Link to="/results" className="text-sm text-gray-300 hover:text-white transition-colors">Results</Link></li>
+              
               <li><Link to="/exam-schedule" className="text-sm text-gray-300 hover:text-white transition-colors">Examination Schedule</Link></li>
               
             </ul>
