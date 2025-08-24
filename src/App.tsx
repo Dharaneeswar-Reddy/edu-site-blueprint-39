@@ -56,7 +56,7 @@ import DigitalCampus from "./pages/infrastructure/DigitalCampus";
 import SportsFacilities from "./pages/infrastructure/SportsFacilities";
 import IQAC from "./pages/iqac/IQAC";
 import QualityPolicy from "./pages/iqac/QualityPolicy";
-import NCC from "./pages/NCC";
+import StudentSupport from "./pages/StudentSupport";
 import Physics from "./pages/departments/Physics";
 import Chemistry from "./pages/departments/Chemistry";
 import Mathematics from "./pages/departments/Mathematics";
@@ -120,7 +120,7 @@ const App = () => (
             <Route path="/infrastructure/sports-facilities" element={<SportsFacilities />} />
             <Route path="/iqac" element={<IQAC />} />
             <Route path="/iqac/quality-policy" element={<QualityPolicy />} />
-            <Route path="/ncc" element={<NCC />} />
+            <Route path="/student-support" element={<StudentSupport />} />
             <Route path="/placements" element={<Placements />} />
             
             {/* Admin Routes */}

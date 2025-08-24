@@ -576,6 +576,121 @@ const IQAC = () => {
           </Card>
         </section>
 
+        {/* Student Satisfaction Survey */}
+        <section>
+          <Card>
+            <CardHeader>
+              <CardTitle className="flex items-center gap-3">
+                <Users className="h-6 w-6 text-blue-600" />
+                Student Satisfaction Survey
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="space-y-6">
+                <div className="bg-gradient-to-r from-green-50 to-blue-50 p-6 rounded-lg">
+                  <h3 className="text-xl font-semibold text-gray-900 mb-4">Annual Student Satisfaction Survey</h3>
+                  <p className="text-gray-700 mb-4">
+                    IQAC conducts comprehensive student satisfaction surveys to evaluate various aspects of institutional 
+                    performance including curriculum, teaching-learning process, infrastructure, and student support services.
+                  </p>
+                  <div className="grid md:grid-cols-3 gap-4 mb-6">
+                    <div className="bg-white p-4 rounded-lg text-center">
+                      <div className="text-2xl font-bold text-green-600">87%</div>
+                      <div className="text-sm text-gray-600">Overall Satisfaction</div>
+                    </div>
+                    <div className="bg-white p-4 rounded-lg text-center">
+                      <div className="text-2xl font-bold text-blue-600">92%</div>
+                      <div className="text-sm text-gray-600">Teaching Quality</div>
+                    </div>
+                    <div className="bg-white p-4 rounded-lg text-center">
+                      <div className="text-2xl font-bold text-purple-600">85%</div>
+                      <div className="text-sm text-gray-600">Infrastructure</div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="grid md:grid-cols-2 gap-6">
+                  <div className="bg-blue-50 p-6 rounded-lg">
+                    <div className="flex justify-between items-start mb-4">
+                      <div>
+                        <h4 className="text-lg font-semibold text-blue-900">SSS Report 2023-24</h4>
+                        <p className="text-sm text-gray-600">1,247 Student Responses</p>
+                      </div>
+                      <Badge className="bg-blue-500 text-white">
+                        Published
+                      </Badge>
+                    </div>
+                    <p className="text-gray-700 mb-4">Comprehensive analysis of student feedback on curriculum design, faculty performance, and campus facilities.</p>
+                    <Button size="sm" variant="outline">
+                      <Download className="h-4 w-4 mr-1" />
+                      Download Report
+                    </Button>
+                  </div>
+
+                  <div className="bg-green-50 p-6 rounded-lg">
+                    <div className="flex justify-between items-start mb-4">
+                      <div>
+                        <h4 className="text-lg font-semibold text-green-900">SSS Report 2022-23</h4>
+                        <p className="text-sm text-gray-600">1,186 Student Responses</p>
+                      </div>
+                      <Badge className="bg-green-500 text-white">
+                        Published
+                      </Badge>
+                    </div>
+                    <p className="text-gray-700 mb-4">Student feedback analysis covering academic programs, co-curricular activities, and institutional governance.</p>
+                    <Button size="sm" variant="outline">
+                      <Download className="h-4 w-4 mr-1" />
+                      Download Report
+                    </Button>
+                  </div>
+                </div>
+
+                <div className="bg-gray-50 p-6 rounded-lg">
+                  <h4 className="text-lg font-semibold text-gray-900 mb-4">Key Survey Parameters</h4>
+                  <div className="grid md:grid-cols-2 gap-6">
+                    <ul className="space-y-2 text-gray-700">
+                      <li className="flex items-center gap-2">
+                        <CheckCircle className="h-4 w-4 text-green-500" />
+                        Curriculum Coverage & Relevance
+                      </li>
+                      <li className="flex items-center gap-2">
+                        <CheckCircle className="h-4 w-4 text-green-500" />
+                        Teaching Learning Process
+                      </li>
+                      <li className="flex items-center gap-2">
+                        <CheckCircle className="h-4 w-4 text-green-500" />
+                        Internal Assessment System
+                      </li>
+                      <li className="flex items-center gap-2">
+                        <CheckCircle className="h-4 w-4 text-green-500" />
+                        College Infrastructure
+                      </li>
+                    </ul>
+                    <ul className="space-y-2 text-gray-700">
+                      <li className="flex items-center gap-2">
+                        <CheckCircle className="h-4 w-4 text-green-500" />
+                        Support Services & Mentoring
+                      </li>
+                      <li className="flex items-center gap-2">
+                        <CheckCircle className="h-4 w-4 text-green-500" />
+                        Placement & Career Guidance
+                      </li>
+                      <li className="flex items-center gap-2">
+                        <CheckCircle className="h-4 w-4 text-green-500" />
+                        Research & Innovation Culture
+                      </li>
+                      <li className="flex items-center gap-2">
+                        <CheckCircle className="h-4 w-4 text-green-500" />
+                        Overall Campus Experience
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+        </section>
+
       </div>
     </PageLayout>
   );

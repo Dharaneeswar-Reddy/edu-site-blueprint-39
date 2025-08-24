@@ -7,7 +7,7 @@ import { useExaminationDocuments } from "@/hooks/useExaminationDocuments";
 const ExaminationCell = () => {
   const [activeTab, setActiveTab] = useState("Academic Calendars");
   const { documents, loading } = useExaminationDocuments();
-  const tabs = ["Academic Calendars", "Exam Fee Notifications", "External Time Tables", "Internal Time Tables", "Internal Circulars", "Results"];
+  const tabs = ["Academic Calendars", "Exam Fee Notifications", "Internal Circulars", "Internal Time Tables", "External Time Tables", "Results"];
   const handleOpenFile = (fileUrl: string) => {
     window.open(fileUrl, '_blank');
   };
