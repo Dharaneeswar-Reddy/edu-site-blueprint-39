@@ -5,105 +5,81 @@ import { Badge } from "@/components/ui/badge";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { Calendar, Clock, Users, BookOpen, Award, Download, Globe, Search, Trophy, Mail, Phone, MapPin } from "lucide-react";
 import { useEffect, useState } from "react";
-
 const Library = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-
-  const heroImages = [
-    "/lovable-uploads/c2330428-4591-4e58-92a3-ff6d9918a338.png",
-    "/lovable-uploads/dd09abc5-6c94-4cbf-898d-c7df488183a6.png",
-    "/lovable-uploads/aa64612b-a2c2-4fc2-b645-b756306336a0.png",
-    "/lovable-uploads/4b78b0b7-424d-41e9-b09c-4108e1edd3c0.png"
-  ];
-
-  const galleryImages = [
-    "/lovable-uploads/c2330428-4591-4e58-92a3-ff6d9918a338.png",
-    "/lovable-uploads/dd09abc5-6c94-4cbf-898d-c7df488183a6.png",
-    "/lovable-uploads/aa64612b-a2c2-4fc2-b645-b756306336a0.png",
-    "/lovable-uploads/4b78b0b7-424d-41e9-b09c-4108e1edd3c0.png",
-    "/lovable-uploads/71dea894-961d-4fd6-ac1f-78e8db8d93b4.png",
-    "/lovable-uploads/828ea20e-f759-4b97-aa60-3dc97555221f.png"
-  ];
-
+  const heroImages = ["/lovable-uploads/c2330428-4591-4e58-92a3-ff6d9918a338.png", "/lovable-uploads/dd09abc5-6c94-4cbf-898d-c7df488183a6.png", "/lovable-uploads/aa64612b-a2c2-4fc2-b645-b756306336a0.png", "/lovable-uploads/4b78b0b7-424d-41e9-b09c-4108e1edd3c0.png"];
+  const galleryImages = ["/lovable-uploads/c2330428-4591-4e58-92a3-ff6d9918a338.png", "/lovable-uploads/dd09abc5-6c94-4cbf-898d-c7df488183a6.png", "/lovable-uploads/aa64612b-a2c2-4fc2-b645-b756306336a0.png", "/lovable-uploads/4b78b0b7-424d-41e9-b09c-4108e1edd3c0.png", "/lovable-uploads/71dea894-961d-4fd6-ac1f-78e8db8d93b4.png", "/lovable-uploads/828ea20e-f759-4b97-aa60-3dc97555221f.png"];
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentImageIndex((prevIndex) => 
-        prevIndex === heroImages.length - 1 ? 0 : prevIndex + 1
-      );
+      setCurrentImageIndex(prevIndex => prevIndex === heroImages.length - 1 ? 0 : prevIndex + 1);
     }, 3000);
-
     return () => clearInterval(interval);
   }, [heroImages.length]);
-
-  const libraryHoldings = [
-    { category: "Science & Technology", books: 8500, type: "Books, Journals, E-Resources" },
-    { category: "Humanities & Social Sciences", books: 7200, type: "Books, Research Papers" },
-    { category: "Literature & Languages", books: 6800, type: "Books, Manuscripts" },
-    { category: "Reference Materials", books: 1500, type: "Encyclopedias, Dictionaries" },
-    { category: "Digital Resources", books: 2500, type: "E-Books, Online Databases" },
-    { category: "Periodicals & Journals", books: 450, type: "Print & Electronic Journals" },
-    { category: "Thesis & Dissertations", books: 850, type: "Student Research Works" },
-    { category: "Rare Books Collection", books: 200, type: "Historical & Special Collections" }
-  ];
-
-  const libraryStaff = [
-    {
-      name: "Dr. Priya Sharma",
-      designation: "Chief Librarian",
-      qualification: "Ph.D. in Library Science, MLIS",
-      experience: "15 years",
-      photo: "/lovable-uploads/female-professor-1.jpg"
-    },
-    {
-      name: "Mr. Rajesh Kumar",
-      designation: "Assistant Librarian",
-      qualification: "MLIS, B.Ed",
-      experience: "8 years",
-      photo: "/lovable-uploads/male-professor-1.jpg"
-    },
-    {
-      name: "Ms. Anjali Reddy",
-      designation: "Digital Resources Manager",
-      qualification: "MLIS, PG Dip. in IT",
-      experience: "6 years",
-      photo: "/lovable-uploads/female-professor-2.jpg"
-    },
-    {
-      name: "Mr. Suresh Babu",
-      designation: "Technical Assistant",
-      qualification: "Diploma in Library Science",
-      experience: "12 years",
-      photo: "/lovable-uploads/male-professor-2.jpg"
-    }
-  ];
-
-  const achievements = [
-    "Best College Library Award - State Level (2023)",
-    "Digital Transformation Excellence Award (2022)",
-    "Outstanding Service Award from University (2021)",
-    "Green Library Initiative Recognition (2020)",
-    "Student Satisfaction Excellence Award (2019)"
-  ];
-
-  return (
-    <PageLayout 
-      title="Central Library" 
-      description="A comprehensive learning resource center fostering knowledge, research, and academic excellence for the entire college community."
-    >
+  const libraryHoldings = [{
+    category: "Science & Technology",
+    books: 8500,
+    type: "Books, Journals, E-Resources"
+  }, {
+    category: "Humanities & Social Sciences",
+    books: 7200,
+    type: "Books, Research Papers"
+  }, {
+    category: "Literature & Languages",
+    books: 6800,
+    type: "Books, Manuscripts"
+  }, {
+    category: "Reference Materials",
+    books: 1500,
+    type: "Encyclopedias, Dictionaries"
+  }, {
+    category: "Digital Resources",
+    books: 2500,
+    type: "E-Books, Online Databases"
+  }, {
+    category: "Periodicals & Journals",
+    books: 450,
+    type: "Print & Electronic Journals"
+  }, {
+    category: "Thesis & Dissertations",
+    books: 850,
+    type: "Student Research Works"
+  }, {
+    category: "Rare Books Collection",
+    books: 200,
+    type: "Historical & Special Collections"
+  }];
+  const libraryStaff = [{
+    name: "Dr. Priya Sharma",
+    designation: "Chief Librarian",
+    qualification: "Ph.D. in Library Science, MLIS",
+    experience: "15 years",
+    photo: "/lovable-uploads/female-professor-1.jpg"
+  }, {
+    name: "Mr. Rajesh Kumar",
+    designation: "Assistant Librarian",
+    qualification: "MLIS, B.Ed",
+    experience: "8 years",
+    photo: "/lovable-uploads/male-professor-1.jpg"
+  }, {
+    name: "Ms. Anjali Reddy",
+    designation: "Digital Resources Manager",
+    qualification: "MLIS, PG Dip. in IT",
+    experience: "6 years",
+    photo: "/lovable-uploads/female-professor-2.jpg"
+  }, {
+    name: "Mr. Suresh Babu",
+    designation: "Technical Assistant",
+    qualification: "Diploma in Library Science",
+    experience: "12 years",
+    photo: "/lovable-uploads/male-professor-2.jpg"
+  }];
+  const achievements = ["Best College Library Award - State Level (2023)", "Digital Transformation Excellence Award (2022)", "Outstanding Service Award from University (2021)", "Green Library Initiative Recognition (2020)", "Student Satisfaction Excellence Award (2019)"];
+  return <PageLayout title="Central Library" description="A comprehensive learning resource center fostering knowledge, research, and academic excellence for the entire college community.">
       <div className="space-y-8">
         
         {/* Auto-scrolling Hero Images */}
         <div className="relative h-64 md:h-80 lg:h-96 rounded-lg overflow-hidden shadow-lg">
-          {heroImages.map((image, index) => (
-            <img
-              key={index}
-              src={image}
-              alt={`Library ${index + 1}`}
-              className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${
-                index === currentImageIndex ? 'opacity-100' : 'opacity-0'
-              }`}
-            />
-          ))}
+          {heroImages.map((image, index) => <img key={index} src={image} alt={`Library ${index + 1}`} className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${index === currentImageIndex ? 'opacity-100' : 'opacity-0'}`} />)}
           <div className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
             <div className="text-center text-white">
               <h1 className="text-4xl md:text-6xl font-bold mb-4">Central Library</h1>
@@ -215,15 +191,13 @@ const Library = () => {
                 </TableRow>
               </TableHeader>
               <TableBody>
-                {libraryHoldings.map((item, index) => (
-                  <TableRow key={index}>
+                {libraryHoldings.map((item, index) => <TableRow key={index}>
                     <TableCell className="font-medium">{item.category}</TableCell>
                     <TableCell className="text-right font-semibold text-college-blue">
                       {item.books.toLocaleString()}
                     </TableCell>
                     <TableCell className="text-gray-600">{item.type}</TableCell>
-                  </TableRow>
-                ))}
+                  </TableRow>)}
               </TableBody>
             </Table>
           </CardContent>
@@ -273,12 +247,10 @@ const Library = () => {
           </CardHeader>
           <CardContent>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              {achievements.map((achievement, index) => (
-                <div key={index} className="flex items-center p-3 bg-yellow-50 rounded-lg">
+              {achievements.map((achievement, index) => <div key={index} className="flex items-center p-3 bg-yellow-50 rounded-lg">
                   <Award className="h-5 w-5 text-yellow-600 mr-3 flex-shrink-0" />
                   <span className="text-sm font-medium">{achievement}</span>
-                </div>
-              ))}
+                </div>)}
             </div>
           </CardContent>
         </Card>
@@ -293,14 +265,7 @@ const Library = () => {
           </CardHeader>
           <CardContent>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <div className="text-center p-6 bg-blue-50 rounded-lg">
-                <Search className="h-12 w-12 text-blue-600 mx-auto mb-4" />
-                <h4 className="font-semibold mb-2">Online Databases</h4>
-                <p className="text-sm text-gray-600 mb-4">
-                  Access to JSTOR, IEEE, Springer, and other premium databases
-                </p>
-                <Button variant="outline" size="sm">Access Now</Button>
-              </div>
+              
               
               <div className="text-center p-6 bg-green-50 rounded-lg">
                 <BookOpen className="h-12 w-12 text-green-600 mx-auto mb-4" />
@@ -331,11 +296,7 @@ const Library = () => {
           <CardContent>
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 items-center">
               <div className="lg:col-span-1">
-                <img 
-                  src="/lovable-uploads/female-professor-1.jpg" 
-                  alt="Dr. Priya Sharma - Chief Librarian"
-                  className="w-full max-w-sm mx-auto rounded-lg shadow-md"
-                />
+                <img src="/lovable-uploads/female-professor-1.jpg" alt="Dr. Priya Sharma - Chief Librarian" className="w-full max-w-sm mx-auto rounded-lg shadow-md" />
               </div>
               <div className="lg:col-span-2 space-y-4">
                 <div>
@@ -391,21 +352,15 @@ const Library = () => {
           </CardHeader>
           <CardContent>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {libraryStaff.map((staff, index) => (
-                <Card key={index} className="text-center">
+              {libraryStaff.map((staff, index) => <Card key={index} className="text-center">
                   <CardContent className="p-6">
-                    <img 
-                      src={staff.photo} 
-                      alt={staff.name}
-                      className="w-24 h-24 rounded-full mx-auto mb-4 object-cover"
-                    />
+                    <img src={staff.photo} alt={staff.name} className="w-24 h-24 rounded-full mx-auto mb-4 object-cover" />
                     <h4 className="font-semibold text-lg mb-1">{staff.name}</h4>
                     <p className="text-college-blue font-medium mb-2">{staff.designation}</p>
                     <p className="text-sm text-gray-600 mb-1">{staff.qualification}</p>
                     <Badge variant="secondary">{staff.experience}</Badge>
                   </CardContent>
-                </Card>
-              ))}
+                </Card>)}
             </div>
           </CardContent>
         </Card>
@@ -417,16 +372,10 @@ const Library = () => {
           </CardHeader>
           <CardContent>
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
-              {galleryImages.map((image, index) => (
-                <div key={index} className="group relative overflow-hidden rounded-lg shadow-md hover:shadow-lg transition-shadow">
-                  <img 
-                    src={image} 
-                    alt={`Library Gallery ${index + 1}`}
-                    className="w-full h-32 object-cover group-hover:scale-110 transition-transform duration-300"
-                  />
+              {galleryImages.map((image, index) => <div key={index} className="group relative overflow-hidden rounded-lg shadow-md hover:shadow-lg transition-shadow">
+                  <img src={image} alt={`Library Gallery ${index + 1}`} className="w-full h-32 object-cover group-hover:scale-110 transition-transform duration-300" />
                   <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 transition-opacity duration-300"></div>
-                </div>
-              ))}
+                </div>)}
             </div>
           </CardContent>
         </Card>
@@ -485,8 +434,6 @@ const Library = () => {
         </Card>
 
       </div>
-    </PageLayout>
-  );
+    </PageLayout>;
 };
-
 export default Library;
