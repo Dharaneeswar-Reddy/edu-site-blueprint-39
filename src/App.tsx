@@ -30,7 +30,7 @@ import Scholarships from "./pages/Scholarships";
 import ComputerScience from "./pages/ComputerScience";
 import Staff from "./pages/Staff";
 import ExaminationCell from "./pages/ExaminationCell";
-import LibraryDepartment from "./pages/departments/Library";
+import Library from "./pages/departments/Library";
 import Alumni from "./pages/Alumni";
 import Magazines from "./pages/Magazines";
 import ICC from "./pages/ICC";
@@ -98,7 +98,7 @@ const App = () => (
             <Route path="/administration" element={<Administration />} />
             <Route path="/academics" element={<Academics />} />
             <Route path="/departments" element={<Departments />} />
-            <Route path="/departments/library" element={<LibraryDepartment />} />
+            <Route path="/departments/library" element={<Library />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/admin-login" element={<AdminLogin />} />
             <Route path="/student-documents" element={<StudentDocuments />} />
@@ -121,7 +121,7 @@ const App = () => (
             <Route path="/departments/hindi" element={<Hindi />} />
             <Route path="/staff" element={<Staff />} />
             <Route path="/examination-cell" element={<ExaminationCell />} />
-            <Route path="/library" element={<LibraryDepartment />} />
+            <Route path="/library" element={<Library />} />
             <Route path="/alumni" element={<Alumni />} />
             <Route path="/magazines" element={<Magazines />} />
             <Route path="/icc" element={<ICC />} />
