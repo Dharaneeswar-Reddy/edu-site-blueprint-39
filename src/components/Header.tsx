@@ -117,6 +117,8 @@ const Header = () => {
                   >
                     <Link to="/departments" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" onClick={() => setDepartmentDropdown(false)}>All Departments</Link>
                     <div className="border-t border-gray-100 my-1"></div>
+                    <Link to="/departments/library" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" onClick={() => setDepartmentDropdown(false)}>Library</Link>
+                    <div className="border-t border-gray-100 my-1"></div>
                     <Link to="/departments/computerscience" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" onClick={() => setDepartmentDropdown(false)}>Computer Science</Link>
                     <Link to="/departments/physics" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" onClick={() => setDepartmentDropdown(false)}>Physics</Link>
                     <Link to="/departments/chemistry" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" onClick={() => setDepartmentDropdown(false)}>Chemistry</Link>
