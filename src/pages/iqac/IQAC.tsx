@@ -405,6 +405,72 @@ const IQAC = () => {
           </Card>
         </section>
 
+        {/* NIRF Reports */}
+        <section>
+          <Card>
+            <CardHeader>
+              <CardTitle className="flex items-center gap-3">
+                <TrendingUp className="h-6 w-6 text-blue-600" />
+                NIRF (National Institutional Ranking Framework)
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="space-y-4">
+                <div className="bg-orange-50 p-6 rounded-lg">
+                  <div className="flex justify-between items-start mb-4">
+                    <div>
+                      <h4 className="text-lg font-semibold text-orange-900">NIRF Report 2023-24</h4>
+                      <p className="text-sm text-gray-600">Overall Ranking Data</p>
+                    </div>
+                    <Badge variant="secondary">
+                      Draft Ready
+                    </Badge>
+                  </div>
+                  <p className="text-gray-700 mb-4">Teaching Learning & Resources, Research & Professional Practice, Graduation Outcomes</p>
+                  <Button size="sm" variant="outline">
+                    <Download className="h-4 w-4 mr-1" />
+                    Download NIRF Data
+                  </Button>
+                </div>
+
+                <div className="bg-orange-50 p-6 rounded-lg">
+                  <div className="flex justify-between items-start mb-4">
+                    <div>
+                      <h4 className="text-lg font-semibold text-orange-900">NIRF Report 2022-23</h4>
+                      <p className="text-sm text-gray-600">Comprehensive Institutional Data</p>
+                    </div>
+                    <Badge className="bg-orange-500 text-white">
+                      Submitted
+                    </Badge>
+                  </div>
+                  <p className="text-gray-700 mb-4">Outreach & Inclusivity, Perception Score, Overall Performance Metrics</p>
+                  <Button size="sm" variant="outline">
+                    <Download className="h-4 w-4 mr-1" />
+                    Download NIRF Data
+                  </Button>
+                </div>
+
+                <div className="bg-orange-50 p-6 rounded-lg">
+                  <div className="flex justify-between items-start mb-4">
+                    <div>
+                      <h4 className="text-lg font-semibold text-orange-900">NIRF Report 2021-22</h4>
+                      <p className="text-sm text-gray-600">Institution Performance Data</p>
+                    </div>
+                    <Badge className="bg-orange-500 text-white">
+                      Submitted
+                    </Badge>
+                  </div>
+                  <p className="text-gray-700 mb-4">Academic Excellence, Research Impact, Infrastructure Assessment</p>
+                  <Button size="sm" variant="outline">
+                    <Download className="h-4 w-4 mr-1" />
+                    Download NIRF Data
+                  </Button>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+        </section>
+
         {/* NAAC Section Integrated */}
         <section>
           <Card>

@@ -80,12 +80,6 @@ const AnnouncementsSidebar = ({
                 Academic Calendar
               </Link>
             </li>
-            <li>
-              <Link to="/results" className="flex items-center hover:text-college-gold transition-colors">
-                <ArrowRight className="h-4 w-4 mr-2" />
-                Results
-              </Link>
-            </li>
           </ul>
         </div>
       </div>
