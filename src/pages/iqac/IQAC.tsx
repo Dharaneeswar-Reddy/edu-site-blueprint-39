@@ -2,8 +2,9 @@ import PageLayout from "@/components/PageLayout";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
-import { Award, Users, FileText, Calendar, Target, Download, Activity, ClipboardList, BookOpen, TrendingUp, CheckCircle } from "lucide-react";
+import { Award, Users, FileText, Calendar, Target, Download, Activity, ClipboardList, BookOpen, TrendingUp, CheckCircle, MessageSquare, GraduationCap, Building2, UserCheck } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 const IQAC = () => {
   // IQAC Committee Members
@@ -687,6 +688,400 @@ const IQAC = () => {
                   </div>
                 </div>
               </div>
+            </CardContent>
+          </Card>
+        </section>
+
+        {/* Feedback on Curriculum */}
+        <section>
+          <Card>
+            <CardHeader>
+              <CardTitle className="flex items-center gap-3">
+                <MessageSquare className="h-6 w-6 text-blue-600" />
+                Feedback on Curriculum
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="bg-gradient-to-r from-purple-50 to-pink-50 p-6 rounded-lg mb-6">
+                <p className="text-gray-700 text-lg leading-relaxed">
+                  The institution systematically collects feedback on curriculum from multiple stakeholders to ensure 
+                  continuous improvement and relevance of academic programs. This comprehensive feedback mechanism 
+                  involves students, teachers, employers, and alumni perspectives.
+                </p>
+              </div>
+              
+              <Tabs defaultValue="student" className="w-full">
+                <TabsList className="grid w-full grid-cols-4">
+                  <TabsTrigger value="student" className="flex items-center gap-2">
+                    <GraduationCap className="h-4 w-4" />
+                    Student Feedback
+                  </TabsTrigger>
+                  <TabsTrigger value="teacher" className="flex items-center gap-2">
+                    <Users className="h-4 w-4" />
+                    Teacher Feedback
+                  </TabsTrigger>
+                  <TabsTrigger value="employer" className="flex items-center gap-2">
+                    <Building2 className="h-4 w-4" />
+                    Employer Feedback
+                  </TabsTrigger>
+                  <TabsTrigger value="alumni" className="flex items-center gap-2">
+                    <UserCheck className="h-4 w-4" />
+                    Alumni Feedback
+                  </TabsTrigger>
+                </TabsList>
+
+                <TabsContent value="student" className="mt-6">
+                  <div className="space-y-6">
+                    <div className="bg-blue-50 p-6 rounded-lg">
+                      <h3 className="text-xl font-semibold text-blue-900 mb-4">Student Curriculum Feedback</h3>
+                      <p className="text-gray-700 mb-4">
+                        Regular feedback collection from students on curriculum content, delivery methods, 
+                        assessment patterns, and overall learning experience to enhance academic programs.
+                      </p>
+                      <div className="grid md:grid-cols-3 gap-4 mb-6">
+                        <div className="bg-white p-4 rounded-lg text-center">
+                          <div className="text-2xl font-bold text-blue-600">89%</div>
+                          <div className="text-sm text-gray-600">Curriculum Relevance</div>
+                        </div>
+                        <div className="bg-white p-4 rounded-lg text-center">
+                          <div className="text-2xl font-bold text-green-600">91%</div>
+                          <div className="text-sm text-gray-600">Content Quality</div>
+                        </div>
+                        <div className="bg-white p-4 rounded-lg text-center">
+                          <div className="text-2xl font-bold text-purple-600">86%</div>
+                          <div className="text-sm text-gray-600">Assessment Methods</div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="grid md:grid-cols-2 gap-6">
+                      <div className="bg-white border rounded-lg p-6">
+                        <div className="flex justify-between items-start mb-4">
+                          <div>
+                            <h4 className="text-lg font-semibold text-gray-900">Student Feedback Report 2023-24</h4>
+                            <p className="text-sm text-gray-600">1,324 Student Responses</p>
+                          </div>
+                          <Badge className="bg-blue-500 text-white">Latest</Badge>
+                        </div>
+                        <p className="text-gray-700 mb-4">Comprehensive analysis of student feedback on curriculum design, course content, and teaching methodologies.</p>
+                        <Button size="sm" variant="outline" className="w-full">
+                          <Download className="h-4 w-4 mr-2" />
+                          Download Report
+                        </Button>
+                      </div>
+
+                      <div className="bg-white border rounded-lg p-6">
+                        <div className="flex justify-between items-start mb-4">
+                          <div>
+                            <h4 className="text-lg font-semibold text-gray-900">Student Feedback Report 2022-23</h4>
+                            <p className="text-sm text-gray-600">1,256 Student Responses</p>
+                          </div>
+                          <Badge variant="outline">Published</Badge>
+                        </div>
+                        <p className="text-gray-700 mb-4">Student perspectives on curriculum effectiveness, practical components, and skill development aspects.</p>
+                        <Button size="sm" variant="outline" className="w-full">
+                          <Download className="h-4 w-4 mr-2" />
+                          Download Report
+                        </Button>
+                      </div>
+
+                      <div className="bg-white border rounded-lg p-6">
+                        <div className="flex justify-between items-start mb-4">
+                          <div>
+                            <h4 className="text-lg font-semibold text-gray-900">Student Feedback Report 2021-22</h4>
+                            <p className="text-sm text-gray-600">1,189 Student Responses</p>
+                          </div>
+                          <Badge variant="outline">Published</Badge>
+                        </div>
+                        <p className="text-gray-700 mb-4">Analysis of curriculum adaptability during pandemic and online learning effectiveness.</p>
+                        <Button size="sm" variant="outline" className="w-full">
+                          <Download className="h-4 w-4 mr-2" />
+                          Download Report
+                        </Button>
+                      </div>
+
+                      <div className="bg-white border rounded-lg p-6">
+                        <div className="flex justify-between items-start mb-4">
+                          <div>
+                            <h4 className="text-lg font-semibold text-gray-900">Student Feedback Report 2020-21</h4>
+                            <p className="text-sm text-gray-600">1,098 Student Responses</p>
+                          </div>
+                          <Badge variant="outline">Published</Badge>
+                        </div>
+                        <p className="text-gray-700 mb-4">Student feedback on curriculum modernization and digital integration initiatives.</p>
+                        <Button size="sm" variant="outline" className="w-full">
+                          <Download className="h-4 w-4 mr-2" />
+                          Download Report
+                        </Button>
+                      </div>
+                    </div>
+                  </div>
+                </TabsContent>
+
+                <TabsContent value="teacher" className="mt-6">
+                  <div className="space-y-6">
+                    <div className="bg-green-50 p-6 rounded-lg">
+                      <h3 className="text-xl font-semibold text-green-900 mb-4">Teacher Curriculum Feedback</h3>
+                      <p className="text-gray-700 mb-4">
+                        Faculty feedback on curriculum design, content delivery challenges, resource requirements, 
+                        and suggestions for curriculum enhancement based on teaching experience.
+                      </p>
+                      <div className="grid md:grid-cols-3 gap-4 mb-6">
+                        <div className="bg-white p-4 rounded-lg text-center">
+                          <div className="text-2xl font-bold text-green-600">94%</div>
+                          <div className="text-sm text-gray-600">Content Adequacy</div>
+                        </div>
+                        <div className="bg-white p-4 rounded-lg text-center">
+                          <div className="text-2xl font-bold text-blue-600">88%</div>
+                          <div className="text-sm text-gray-600">Resource Availability</div>
+                        </div>
+                        <div className="bg-white p-4 rounded-lg text-center">
+                          <div className="text-2xl font-bold text-purple-600">92%</div>
+                          <div className="text-sm text-gray-600">Delivery Effectiveness</div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="grid md:grid-cols-2 gap-6">
+                      <div className="bg-white border rounded-lg p-6">
+                        <div className="flex justify-between items-start mb-4">
+                          <div>
+                            <h4 className="text-lg font-semibold text-gray-900">Teacher Feedback Report 2023-24</h4>
+                            <p className="text-sm text-gray-600">87 Faculty Responses</p>
+                          </div>
+                          <Badge className="bg-green-500 text-white">Latest</Badge>
+                        </div>
+                        <p className="text-gray-700 mb-4">Faculty perspectives on curriculum structure, teaching methodologies, and assessment strategies.</p>
+                        <Button size="sm" variant="outline" className="w-full">
+                          <Download className="h-4 w-4 mr-2" />
+                          Download Report
+                        </Button>
+                      </div>
+
+                      <div className="bg-white border rounded-lg p-6">
+                        <div className="flex justify-between items-start mb-4">
+                          <div>
+                            <h4 className="text-lg font-semibold text-gray-900">Teacher Feedback Report 2022-23</h4>
+                            <p className="text-sm text-gray-600">82 Faculty Responses</p>
+                          </div>
+                          <Badge variant="outline">Published</Badge>
+                        </div>
+                        <p className="text-gray-700 mb-4">Faculty recommendations for curriculum updates and pedagogical improvements.</p>
+                        <Button size="sm" variant="outline" className="w-full">
+                          <Download className="h-4 w-4 mr-2" />
+                          Download Report
+                        </Button>
+                      </div>
+
+                      <div className="bg-white border rounded-lg p-6">
+                        <div className="flex justify-between items-start mb-4">
+                          <div>
+                            <h4 className="text-lg font-semibold text-gray-900">Teacher Feedback Report 2021-22</h4>
+                            <p className="text-sm text-gray-600">79 Faculty Responses</p>
+                          </div>
+                          <Badge variant="outline">Published</Badge>
+                        </div>
+                        <p className="text-gray-700 mb-4">Faculty insights on curriculum adaptation and technology integration challenges.</p>
+                        <Button size="sm" variant="outline" className="w-full">
+                          <Download className="h-4 w-4 mr-2" />
+                          Download Report
+                        </Button>
+                      </div>
+
+                      <div className="bg-white border rounded-lg p-6">
+                        <div className="flex justify-between items-start mb-4">
+                          <div>
+                            <h4 className="text-lg font-semibold text-gray-900">Teacher Feedback Report 2020-21</h4>
+                            <p className="text-sm text-gray-600">75 Faculty Responses</p>
+                          </div>
+                          <Badge variant="outline">Published</Badge>
+                        </div>
+                        <p className="text-gray-700 mb-4">Faculty evaluation of curriculum relevance and industry alignment requirements.</p>
+                        <Button size="sm" variant="outline" className="w-full">
+                          <Download className="h-4 w-4 mr-2" />
+                          Download Report
+                        </Button>
+                      </div>
+                    </div>
+                  </div>
+                </TabsContent>
+
+                <TabsContent value="employer" className="mt-6">
+                  <div className="space-y-6">
+                    <div className="bg-orange-50 p-6 rounded-lg">
+                      <h3 className="text-xl font-semibold text-orange-900 mb-4">Employer Curriculum Feedback</h3>
+                      <p className="text-gray-700 mb-4">
+                        Industry feedback on curriculum relevance, skill gaps, employability aspects, and suggestions 
+                        for better industry-academia alignment to meet current market requirements.
+                      </p>
+                      <div className="grid md:grid-cols-3 gap-4 mb-6">
+                        <div className="bg-white p-4 rounded-lg text-center">
+                          <div className="text-2xl font-bold text-orange-600">85%</div>
+                          <div className="text-sm text-gray-600">Industry Relevance</div>
+                        </div>
+                        <div className="bg-white p-4 rounded-lg text-center">
+                          <div className="text-2xl font-bold text-blue-600">78%</div>
+                          <div className="text-sm text-gray-600">Skill Preparedness</div>
+                        </div>
+                        <div className="bg-white p-4 rounded-lg text-center">
+                          <div className="text-2xl font-bold text-green-600">82%</div>
+                          <div className="text-sm text-gray-600">Graduate Readiness</div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="grid md:grid-cols-2 gap-6">
+                      <div className="bg-white border rounded-lg p-6">
+                        <div className="flex justify-between items-start mb-4">
+                          <div>
+                            <h4 className="text-lg font-semibold text-gray-900">Employer Feedback Report 2023-24</h4>
+                            <p className="text-sm text-gray-600">156 Industry Partners</p>
+                          </div>
+                          <Badge className="bg-orange-500 text-white">Latest</Badge>
+                        </div>
+                        <p className="text-gray-700 mb-4">Industry assessment of graduate competencies and curriculum alignment with market needs.</p>
+                        <Button size="sm" variant="outline" className="w-full">
+                          <Download className="h-4 w-4 mr-2" />
+                          Download Report
+                        </Button>
+                      </div>
+
+                      <div className="bg-white border rounded-lg p-6">
+                        <div className="flex justify-between items-start mb-4">
+                          <div>
+                            <h4 className="text-lg font-semibold text-gray-900">Employer Feedback Report 2022-23</h4>
+                            <p className="text-sm text-gray-600">142 Industry Partners</p>
+                          </div>
+                          <Badge variant="outline">Published</Badge>
+                        </div>
+                        <p className="text-gray-700 mb-4">Employer perspectives on skill development and professional readiness of graduates.</p>
+                        <Button size="sm" variant="outline" className="w-full">
+                          <Download className="h-4 w-4 mr-2" />
+                          Download Report
+                        </Button>
+                      </div>
+
+                      <div className="bg-white border rounded-lg p-6">
+                        <div className="flex justify-between items-start mb-4">
+                          <div>
+                            <h4 className="text-lg font-semibold text-gray-900">Employer Feedback Report 2021-22</h4>
+                            <p className="text-sm text-gray-600">128 Industry Partners</p>
+                          </div>
+                          <Badge variant="outline">Published</Badge>
+                        </div>
+                        <p className="text-gray-700 mb-4">Industry feedback on digital transformation requirements and emerging skill needs.</p>
+                        <Button size="sm" variant="outline" className="w-full">
+                          <Download className="h-4 w-4 mr-2" />
+                          Download Report
+                        </Button>
+                      </div>
+
+                      <div className="bg-white border rounded-lg p-6">
+                        <div className="flex justify-between items-start mb-4">
+                          <div>
+                            <h4 className="text-lg font-semibold text-gray-900">Employer Feedback Report 2020-21</h4>
+                            <p className="text-sm text-gray-600">115 Industry Partners</p>
+                          </div>
+                          <Badge variant="outline">Published</Badge>
+                        </div>
+                        <p className="text-gray-700 mb-4">Employer evaluation of curriculum adaptability and remote work readiness aspects.</p>
+                        <Button size="sm" variant="outline" className="w-full">
+                          <Download className="h-4 w-4 mr-2" />
+                          Download Report
+                        </Button>
+                      </div>
+                    </div>
+                  </div>
+                </TabsContent>
+
+                <TabsContent value="alumni" className="mt-6">
+                  <div className="space-y-6">
+                    <div className="bg-purple-50 p-6 rounded-lg">
+                      <h3 className="text-xl font-semibold text-purple-900 mb-4">Alumni Curriculum Feedback</h3>
+                      <p className="text-gray-700 mb-4">
+                        Alumni feedback on curriculum effectiveness based on their professional experience, career 
+                        progression, and recommendations for curriculum improvement to better prepare future students.
+                      </p>
+                      <div className="grid md:grid-cols-3 gap-4 mb-6">
+                        <div className="bg-white p-4 rounded-lg text-center">
+                          <div className="text-2xl font-bold text-purple-600">87%</div>
+                          <div className="text-sm text-gray-600">Career Relevance</div>
+                        </div>
+                        <div className="bg-white p-4 rounded-lg text-center">
+                          <div className="text-2xl font-bold text-green-600">83%</div>
+                          <div className="text-sm text-gray-600">Foundation Strength</div>
+                        </div>
+                        <div className="bg-white p-4 rounded-lg text-center">
+                          <div className="text-2xl font-bold text-blue-600">89%</div>
+                          <div className="text-sm text-gray-600">Overall Satisfaction</div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="grid md:grid-cols-2 gap-6">
+                      <div className="bg-white border rounded-lg p-6">
+                        <div className="flex justify-between items-start mb-4">
+                          <div>
+                            <h4 className="text-lg font-semibold text-gray-900">Alumni Feedback Report 2023-24</h4>
+                            <p className="text-sm text-gray-600">342 Alumni Responses</p>
+                          </div>
+                          <Badge className="bg-purple-500 text-white">Latest</Badge>
+                        </div>
+                        <p className="text-gray-700 mb-4">Alumni insights on curriculum effectiveness and professional development outcomes.</p>
+                        <Button size="sm" variant="outline" className="w-full">
+                          <Download className="h-4 w-4 mr-2" />
+                          Download Report
+                        </Button>
+                      </div>
+
+                      <div className="bg-white border rounded-lg p-6">
+                        <div className="flex justify-between items-start mb-4">
+                          <div>
+                            <h4 className="text-lg font-semibold text-gray-900">Alumni Feedback Report 2022-23</h4>
+                            <p className="text-sm text-gray-600">298 Alumni Responses</p>
+                          </div>
+                          <Badge variant="outline">Published</Badge>
+                        </div>
+                        <p className="text-gray-700 mb-4">Alumni perspectives on curriculum gaps and enhancement opportunities.</p>
+                        <Button size="sm" variant="outline" className="w-full">
+                          <Download className="h-4 w-4 mr-2" />
+                          Download Report
+                        </Button>
+                      </div>
+
+                      <div className="bg-white border rounded-lg p-6">
+                        <div className="flex justify-between items-start mb-4">
+                          <div>
+                            <h4 className="text-lg font-semibold text-gray-900">Alumni Feedback Report 2021-22</h4>
+                            <p className="text-sm text-gray-600">267 Alumni Responses</p>
+                          </div>
+                          <Badge variant="outline">Published</Badge>
+                        </div>
+                        <p className="text-gray-700 mb-4">Alumni feedback on curriculum modernization and industry alignment needs.</p>
+                        <Button size="sm" variant="outline" className="w-full">
+                          <Download className="h-4 w-4 mr-2" />
+                          Download Report
+                        </Button>
+                      </div>
+
+                      <div className="bg-white border rounded-lg p-6">
+                        <div className="flex justify-between items-start mb-4">
+                          <div>
+                            <h4 className="text-lg font-semibold text-gray-900">Alumni Feedback Report 2020-21</h4>
+                            <p className="text-sm text-gray-600">234 Alumni Responses</p>
+                          </div>
+                          <Badge variant="outline">Published</Badge>
+                        </div>
+                        <p className="text-gray-700 mb-4">Alumni evaluation of curriculum foundation and career preparation effectiveness.</p>
+                        <Button size="sm" variant="outline" className="w-full">
+                          <Download className="h-4 w-4 mr-2" />
+                          Download Report
+                        </Button>
+                      </div>
+                    </div>
+                  </div>
+                </TabsContent>
+              </Tabs>
             </CardContent>
           </Card>
         </section>
