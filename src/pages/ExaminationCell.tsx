@@ -66,15 +66,15 @@ const ExaminationCell = () => {
           <Card>
             <CardContent className="p-6">
               <div className="grid md:grid-cols-2 gap-6">
-                <div>
-                  <h3 className="text-lg font-semibold text-primary mb-4">Examination Office</h3>
-                  <div className="space-y-2 text-muted-foreground">
-                    <p><strong>Phone:</strong> +91-8632-235678</p>
-                    <p><strong>Email:</strong> examcell@svrmc.edu.in</p>
-                    <p><strong>Office Hours:</strong> 9:00 AM - 5:00 PM (Mon-Fri)</p>
-                    <p><strong>Location:</strong> Administrative Block, Ground Floor</p>
+                  <div>
+                    <h3 className="text-lg font-semibold text-primary mb-4">Examination Office</h3>
+                    <div className="space-y-2 text-muted-foreground">
+                      <p><strong>Phone:</strong> +91-8632-235678</p>
+                      <p><strong>Email:</strong> examcell@svrmc.edu.in</p>
+                      <p><strong>Office Hours:</strong> 9:00 AM - 5:00 PM (Mon-Fri)</p>
+                      <p><strong>Location:</strong> Administrative Block, Ground Floor</p>
+                    </div>
                   </div>
-                </div>
                 
               </div>
             </CardContent>
