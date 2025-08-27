@@ -6,7 +6,7 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           <div>
             <Link to="/" className="flex items-center gap-3 mb-4">
-              <img src="/lovable-uploads/5c7ebe72-4ecd-4e54-8ce5-6bf0a6141878.png" alt="SVRMC Logo" className="h-12 w-12" />
+              <img src="/lovable-uploads/ad0dcea6-54cc-42ce-85a2-6309e6d3f909.png" alt="SVRMC 50 Years Excellence Logo" className="h-12 w-12" />
               <div className="flex flex-col">
                 <span className="font-bold text-sm">Shri Velagapudi Ramakrishna</span>
                 <span className="font-bold text-sm">Memorial College</span>
