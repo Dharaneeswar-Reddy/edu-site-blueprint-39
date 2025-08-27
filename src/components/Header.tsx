@@ -37,28 +37,24 @@ const Header = () => {
   const closeMobileMenu = () => {
     setMobileMenuOpen(false);
   };
-
   const closeAllDropdowns = () => {
     setAdministrationDropdown(false);
     setDepartmentDropdown(false);
     setQualityDropdown(false);
     setStudentSupportDropdown(false);
   };
-
   const handleMouseEnter = (dropdownSetter: (value: boolean) => void) => {
     if (hoverTimeout) {
       clearTimeout(hoverTimeout);
     }
     dropdownSetter(true);
   };
-
   const handleMouseLeave = (dropdownSetter: (value: boolean) => void) => {
     const timeout = setTimeout(() => {
       dropdownSetter(false);
     }, 300); // 300ms delay before closing
     setHoverTimeout(timeout);
   };
-
   const handleDropdownClick = (currentState: boolean, dropdownSetter: (value: boolean) => void) => {
     if (hoverTimeout) {
       clearTimeout(hoverTimeout);
@@ -73,7 +69,7 @@ const Header = () => {
             <img src="/lovable-uploads/ad0dcea6-54cc-42ce-85a2-6309e6d3f909.png" alt="SVRMC 50 Years Excellence Logo" className="h-8 w-8" />
             <div className={`flex flex-col ${scrolled ? "text-college-blue" : "text-white"}`}>
               <span className="font-bold text-xs md:text-sm">Shri Velagapudi Ramakrishna Memorial College</span>
-              <span className="text-xs hidden sm:block">Govt. Aided College Sponsored by R.T.E.I. Society</span>
+              <span className="text-xs hidden sm:block">Private. Aided College Sponsored by R.T.E.I. Society</span>
             </div>
           </Link>
 
@@ -95,26 +91,13 @@ const Header = () => {
             </Link>
 
             {/* Departments Dropdown */}
-            <div className="relative" 
-              onMouseEnter={() => handleMouseEnter(setDepartmentDropdown)} 
-              onMouseLeave={() => handleMouseLeave(setDepartmentDropdown)}
-            >
-              <button 
-                onClick={() => handleDropdownClick(departmentDropdown, setDepartmentDropdown)}
-                className={`px-2 py-1 text-sm font-medium transition-colors flex items-center ${isActive("/departments") ? "active" : ""} ${scrolled ? "text-college-dark hover:text-college-blue" : "text-white hover:text-college-gold"}`}
-              >
+            <div className="relative" onMouseEnter={() => handleMouseEnter(setDepartmentDropdown)} onMouseLeave={() => handleMouseLeave(setDepartmentDropdown)}>
+              <button onClick={() => handleDropdownClick(departmentDropdown, setDepartmentDropdown)} className={`px-2 py-1 text-sm font-medium transition-colors flex items-center ${isActive("/departments") ? "active" : ""} ${scrolled ? "text-college-dark hover:text-college-blue" : "text-white hover:text-college-gold"}`}>
                 Departments <ChevronDown className="ml-1 h-3 w-3" />
               </button>
-              {departmentDropdown && (
-                <>
-                  <div 
-                    className="fixed inset-0 z-10" 
-                    onClick={() => setDepartmentDropdown(false)}
-                  ></div>
-                  <div className="absolute left-0 mt-1 w-64 bg-white rounded-md shadow-lg py-1 z-20 animate-fade-in border"
-                    onMouseEnter={() => handleMouseEnter(setDepartmentDropdown)}
-                    onMouseLeave={() => handleMouseLeave(setDepartmentDropdown)}
-                  >
+              {departmentDropdown && <>
+                  <div className="fixed inset-0 z-10" onClick={() => setDepartmentDropdown(false)}></div>
+                  <div className="absolute left-0 mt-1 w-64 bg-white rounded-md shadow-lg py-1 z-20 animate-fade-in border" onMouseEnter={() => handleMouseEnter(setDepartmentDropdown)} onMouseLeave={() => handleMouseLeave(setDepartmentDropdown)}>
                     <Link to="/departments" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" onClick={() => setDepartmentDropdown(false)}>All Departments</Link>
                     <div className="border-t border-gray-100 my-1"></div>
                     <Link to="/departments/library" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" onClick={() => setDepartmentDropdown(false)}>Library</Link>
@@ -143,8 +126,7 @@ const Header = () => {
                     <Link to="/departments/politicalscience" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" onClick={() => setDepartmentDropdown(false)}>Political Science</Link>
                     <Link to="/departments/physicaleducation" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" onClick={() => setDepartmentDropdown(false)}>Physical Education</Link>
                   </div>
-                </>
-              )}
+                </>}
             </div>
 
             <Link to="/iqac" className={`px-2 py-1 text-sm font-medium transition-colors ${isActive("/iqac") ? "active" : ""} ${scrolled ? "text-college-dark hover:text-college-blue" : "text-white hover:text-college-gold"}`}>
@@ -152,26 +134,13 @@ const Header = () => {
             </Link>
 
             {/* Student Support Dropdown */}
-            <div className="relative" 
-              onMouseEnter={() => handleMouseEnter(setStudentSupportDropdown)} 
-              onMouseLeave={() => handleMouseLeave(setStudentSupportDropdown)}
-            >
-              <button 
-                onClick={() => handleDropdownClick(studentSupportDropdown, setStudentSupportDropdown)}
-                className={`px-2 py-1 text-sm font-medium transition-colors flex items-center ${isActive("/student-support") ? "active" : ""} ${scrolled ? "text-college-dark hover:text-college-blue" : "text-white hover:text-college-gold"}`}
-              >
+            <div className="relative" onMouseEnter={() => handleMouseEnter(setStudentSupportDropdown)} onMouseLeave={() => handleMouseLeave(setStudentSupportDropdown)}>
+              <button onClick={() => handleDropdownClick(studentSupportDropdown, setStudentSupportDropdown)} className={`px-2 py-1 text-sm font-medium transition-colors flex items-center ${isActive("/student-support") ? "active" : ""} ${scrolled ? "text-college-dark hover:text-college-blue" : "text-white hover:text-college-gold"}`}>
                 Student Support <ChevronDown className="ml-1 h-3 w-3" />
               </button>
-              {studentSupportDropdown && (
-                <>
-                  <div 
-                    className="fixed inset-0 z-10" 
-                    onClick={() => setStudentSupportDropdown(false)}
-                  ></div>
-                  <div className="absolute left-0 mt-1 w-64 bg-white rounded-md shadow-lg py-1 z-20 animate-fade-in border"
-                    onMouseEnter={() => handleMouseEnter(setStudentSupportDropdown)}
-                    onMouseLeave={() => handleMouseLeave(setStudentSupportDropdown)}
-                  >
+              {studentSupportDropdown && <>
+                  <div className="fixed inset-0 z-10" onClick={() => setStudentSupportDropdown(false)}></div>
+                  <div className="absolute left-0 mt-1 w-64 bg-white rounded-md shadow-lg py-1 z-20 animate-fade-in border" onMouseEnter={() => handleMouseEnter(setStudentSupportDropdown)} onMouseLeave={() => handleMouseLeave(setStudentSupportDropdown)}>
                     <Link to="/student-support" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" onClick={() => setStudentSupportDropdown(false)}>All Programs</Link>
                     <div className="border-t border-gray-100 my-1"></div>
                     <Link to="/student-support/jkc" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" onClick={() => setStudentSupportDropdown(false)}>JKC</Link>
@@ -185,8 +154,7 @@ const Header = () => {
                     <Link to="/student-support/consumer-club" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" onClick={() => setStudentSupportDropdown(false)}>Consumer Club</Link>
                     <Link to="/student-support/eco-club" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" onClick={() => setStudentSupportDropdown(false)}>Eco Club</Link>
                   </div>
-                </>
-              )}
+                </>}
             </div>
 
             <Link to="/placements" className={`px-2 py-1 text-sm font-medium transition-colors ${isActive("/placements") ? "active" : ""} ${scrolled ? "text-college-dark hover:text-college-blue" : "text-white hover:text-college-gold"}`}>
