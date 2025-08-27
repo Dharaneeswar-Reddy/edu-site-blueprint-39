@@ -64,6 +64,12 @@ import Commerce from "./pages/departments/Commerce";
 import English from "./pages/departments/English";
 import Telugu from "./pages/departments/Telugu";
 import Hindi from "./pages/departments/Hindi";
+import Botany from "./pages/departments/Botany";
+import Zoology from "./pages/departments/Zoology";
+import Economics from "./pages/departments/Economics";
+import DeptHistory from "./pages/departments/History";
+import PoliticalScience from "./pages/departments/PoliticalScience";
+import PhysicalEducation from "./pages/departments/PhysicalEducation";
 import Admin from "./pages/Admin";
 
 // Student Support Pages
@@ -122,7 +128,7 @@ const App = () => (
             <Route path="/departments/botany" element={<Botany />} />
             <Route path="/departments/zoology" element={<Zoology />} />
             <Route path="/departments/economics" element={<Economics />} />
-            <Route path="/departments/history" element={<History />} />
+            <Route path="/departments/history" element={<DeptHistory />} />
             <Route path="/departments/politicalscience" element={<PoliticalScience />} />
             <Route path="/departments/physicaleducation" element={<PhysicalEducation />} />
             <Route path="/staff" element={<Staff />} />
