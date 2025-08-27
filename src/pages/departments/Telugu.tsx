@@ -2,7 +2,7 @@ import PageLayout from "@/components/PageLayout";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Calendar, Clock, Users, BookOpen, Award, Download, Languages } from "lucide-react";
+import { Calendar, Clock, Users, BookOpen, Award, Download, Languages, Mail } from "lucide-react";
 import { useEffect, useState } from "react";
 
 const Telugu = () => {
@@ -225,20 +225,67 @@ const Telugu = () => {
           </Card>
         </div>
 
-        {/* Academic Calendar */}
+        {/* Department Staff */}
         <Card>
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
-              <Calendar className="h-6 w-6 text-college-blue" />
-              Academic Calendar
+              <Users className="h-6 w-6 text-college-blue" />
+              Department Staff
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <p className="mb-4">Download the latest academic calendar for important dates and schedules.</p>
-            <Button className="bg-college-blue hover:bg-college-blue/90">
-              <Download className="h-4 w-4 mr-2" />
-              Download Academic Calendar (PDF)
-            </Button>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              <div className="bg-card rounded-lg shadow-sm border p-6 text-center hover:shadow-md transition-shadow">
+                <div className="mb-4">
+                  <img 
+                    src="/lovable-uploads/17bb2e0f-adc8-46fd-b6dc-aa370c366ef2.png" 
+                    alt="Dr. Venkata Rao"
+                    className="w-24 h-24 rounded-full mx-auto object-cover shadow-md"
+                  />
+                </div>
+                <h3 className="text-lg font-semibold text-foreground mb-1">Dr. Venkata Rao</h3>
+                <p className="text-primary font-medium text-sm mb-1">Head & Professor</p>
+                <p className="text-muted-foreground text-sm mb-3">Telugu Department</p>
+                <div className="flex items-center justify-center gap-2 text-sm text-muted-foreground">
+                  <Mail className="h-3 w-3" />
+                  <span>venkata.rao@svrmc.edu.in</span>
+                </div>
+              </div>
+              
+              <div className="bg-card rounded-lg shadow-sm border p-6 text-center hover:shadow-md transition-shadow">
+                <div className="mb-4">
+                  <img 
+                    src="/lovable-uploads/3135e1f8-603d-4960-af26-bdc4f401f693.png" 
+                    alt="Dr. Lakshmi Devi"
+                    className="w-24 h-24 rounded-full mx-auto object-cover shadow-md"
+                  />
+                </div>
+                <h3 className="text-lg font-semibold text-foreground mb-1">Dr. Lakshmi Devi</h3>
+                <p className="text-primary font-medium text-sm mb-1">Associate Professor</p>
+                <p className="text-muted-foreground text-sm mb-3">Telugu Department</p>
+                <div className="flex items-center justify-center gap-2 text-sm text-muted-foreground">
+                  <Mail className="h-3 w-3" />
+                  <span>lakshmi.devi@svrmc.edu.in</span>
+                </div>
+              </div>
+              
+              <div className="bg-card rounded-lg shadow-sm border p-6 text-center hover:shadow-md transition-shadow">
+                <div className="mb-4">
+                  <img 
+                    src="/lovable-uploads/662ebac1-9113-46ee-b212-a9a1526878d4.png" 
+                    alt="Dr. Srinivas Kumar"
+                    className="w-24 h-24 rounded-full mx-auto object-cover shadow-md"
+                  />
+                </div>
+                <h3 className="text-lg font-semibold text-foreground mb-1">Dr. Srinivas Kumar</h3>
+                <p className="text-primary font-medium text-sm mb-1">Assistant Professor</p>
+                <p className="text-muted-foreground text-sm mb-3">Telugu Department</p>
+                <div className="flex items-center justify-center gap-2 text-sm text-muted-foreground">
+                  <Mail className="h-3 w-3" />
+                  <span>srinivas.kumar@svrmc.edu.in</span>
+                </div>
+              </div>
+            </div>
           </CardContent>
         </Card>
 

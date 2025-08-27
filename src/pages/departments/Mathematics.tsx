@@ -2,7 +2,7 @@ import PageLayout from "@/components/PageLayout";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Calendar, Clock, Users, BookOpen, Award, Download, Calculator } from "lucide-react";
+import { Calendar, Clock, Users, BookOpen, Award, Download, Calculator, Mail } from "lucide-react";
 import { useEffect, useState } from "react";
 
 const Mathematics = () => {
@@ -226,20 +226,67 @@ const Mathematics = () => {
           </Card>
         </div>
 
-        {/* Academic Calendar */}
+        {/* Department Staff */}
         <Card>
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
-              <Calendar className="h-6 w-6 text-college-blue" />
-              Academic Calendar
+              <Users className="h-6 w-6 text-college-blue" />
+              Department Staff
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <p className="mb-4">Download the latest academic calendar for important dates and schedules.</p>
-            <Button className="bg-college-blue hover:bg-college-blue/90">
-              <Download className="h-4 w-4 mr-2" />
-              Download Academic Calendar (PDF)
-            </Button>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              <div className="bg-card rounded-lg shadow-sm border p-6 text-center hover:shadow-md transition-shadow">
+                <div className="mb-4">
+                  <img 
+                    src="/lovable-uploads/f7ffbe1f-5fed-4b97-9af1-ab0ad2725f32.png" 
+                    alt="Dr. Sanjay Mehta"
+                    className="w-24 h-24 rounded-full mx-auto object-cover shadow-md"
+                  />
+                </div>
+                <h3 className="text-lg font-semibold text-foreground mb-1">Dr. Sanjay Mehta</h3>
+                <p className="text-primary font-medium text-sm mb-1">Head & Professor</p>
+                <p className="text-muted-foreground text-sm mb-3">Mathematics Department</p>
+                <div className="flex items-center justify-center gap-2 text-sm text-muted-foreground">
+                  <Mail className="h-3 w-3" />
+                  <span>sanjay.mehta@svrmc.edu.in</span>
+                </div>
+              </div>
+              
+              <div className="bg-card rounded-lg shadow-sm border p-6 text-center hover:shadow-md transition-shadow">
+                <div className="mb-4">
+                  <img 
+                    src="/lovable-uploads/9f96f106-897d-46e3-a4a1-4c4b8f8f9f0c.png" 
+                    alt="Dr. Rekha Pandey"
+                    className="w-24 h-24 rounded-full mx-auto object-cover shadow-md"
+                  />
+                </div>
+                <h3 className="text-lg font-semibold text-foreground mb-1">Dr. Rekha Pandey</h3>
+                <p className="text-primary font-medium text-sm mb-1">Associate Professor</p>
+                <p className="text-muted-foreground text-sm mb-3">Mathematics Department</p>
+                <div className="flex items-center justify-center gap-2 text-sm text-muted-foreground">
+                  <Mail className="h-3 w-3" />
+                  <span>rekha.pandey@svrmc.edu.in</span>
+                </div>
+              </div>
+              
+              <div className="bg-card rounded-lg shadow-sm border p-6 text-center hover:shadow-md transition-shadow">
+                <div className="mb-4">
+                  <img 
+                    src="/lovable-uploads/aa64612b-a2c2-4fc2-b645-b756306336a0.png" 
+                    alt="Dr. Amit Verma"
+                    className="w-24 h-24 rounded-full mx-auto object-cover shadow-md"
+                  />
+                </div>
+                <h3 className="text-lg font-semibold text-foreground mb-1">Dr. Amit Verma</h3>
+                <p className="text-primary font-medium text-sm mb-1">Assistant Professor</p>
+                <p className="text-muted-foreground text-sm mb-3">Mathematics Department</p>
+                <div className="flex items-center justify-center gap-2 text-sm text-muted-foreground">
+                  <Mail className="h-3 w-3" />
+                  <span>amit.verma@svrmc.edu.in</span>
+                </div>
+              </div>
+            </div>
           </CardContent>
         </Card>
 

@@ -2,7 +2,7 @@ import PageLayout from "@/components/PageLayout";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Calendar, Clock, Users, BookOpen, Award, Download, DollarSign } from "lucide-react";
+import { Calendar, Clock, Users, BookOpen, Award, Download, DollarSign, Mail } from "lucide-react";
 import { useEffect, useState } from "react";
 
 const Commerce = () => {
@@ -230,20 +230,67 @@ const Commerce = () => {
           </Card>
         </div>
 
-        {/* Academic Calendar */}
+        {/* Department Staff */}
         <Card>
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
-              <Calendar className="h-6 w-6 text-college-blue" />
-              Academic Calendar
+              <Users className="h-6 w-6 text-college-blue" />
+              Department Staff
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <p className="mb-4">Download the latest academic calendar for important dates and schedules.</p>
-            <Button className="bg-college-blue hover:bg-college-blue/90">
-              <Download className="h-4 w-4 mr-2" />
-              Download Academic Calendar (PDF)
-            </Button>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              <div className="bg-card rounded-lg shadow-sm border p-6 text-center hover:shadow-md transition-shadow">
+                <div className="mb-4">
+                  <img 
+                    src="/lovable-uploads/d23b165a-50de-4010-841f-59049ee5cf3d.png" 
+                    alt="Dr. Anil Agarwal"
+                    className="w-24 h-24 rounded-full mx-auto object-cover shadow-md"
+                  />
+                </div>
+                <h3 className="text-lg font-semibold text-foreground mb-1">Dr. Anil Agarwal</h3>
+                <p className="text-primary font-medium text-sm mb-1">Head & Professor</p>
+                <p className="text-muted-foreground text-sm mb-3">Commerce Department</p>
+                <div className="flex items-center justify-center gap-2 text-sm text-muted-foreground">
+                  <Mail className="h-3 w-3" />
+                  <span>anil.agarwal@svrmc.edu.in</span>
+                </div>
+              </div>
+              
+              <div className="bg-card rounded-lg shadow-sm border p-6 text-center hover:shadow-md transition-shadow">
+                <div className="mb-4">
+                  <img 
+                    src="/lovable-uploads/8ca0ef83-413e-4894-9e73-7361e0c0106c.png" 
+                    alt="Dr. Kavita Singh"
+                    className="w-24 h-24 rounded-full mx-auto object-cover shadow-md"
+                  />
+                </div>
+                <h3 className="text-lg font-semibold text-foreground mb-1">Dr. Kavita Singh</h3>
+                <p className="text-primary font-medium text-sm mb-1">Associate Professor</p>
+                <p className="text-muted-foreground text-sm mb-3">Commerce Department</p>
+                <div className="flex items-center justify-center gap-2 text-sm text-muted-foreground">
+                  <Mail className="h-3 w-3" />
+                  <span>kavita.singh@svrmc.edu.in</span>
+                </div>
+              </div>
+              
+              <div className="bg-card rounded-lg shadow-sm border p-6 text-center hover:shadow-md transition-shadow">
+                <div className="mb-4">
+                  <img 
+                    src="/lovable-uploads/85f3d76b-36b0-4119-9ae0-75167cea9d0b.png" 
+                    alt="Dr. Vikram Joshi"
+                    className="w-24 h-24 rounded-full mx-auto object-cover shadow-md"
+                  />
+                </div>
+                <h3 className="text-lg font-semibold text-foreground mb-1">Dr. Vikram Joshi</h3>
+                <p className="text-primary font-medium text-sm mb-1">Assistant Professor</p>
+                <p className="text-muted-foreground text-sm mb-3">Commerce Department</p>
+                <div className="flex items-center justify-center gap-2 text-sm text-muted-foreground">
+                  <Mail className="h-3 w-3" />
+                  <span>vikram.joshi@svrmc.edu.in</span>
+                </div>
+              </div>
+            </div>
           </CardContent>
         </Card>
 
