@@ -119,6 +119,12 @@ const App = () => (
             <Route path="/departments/english" element={<English />} />
             <Route path="/departments/telugu" element={<Telugu />} />
             <Route path="/departments/hindi" element={<Hindi />} />
+            <Route path="/departments/botany" element={<Botany />} />
+            <Route path="/departments/zoology" element={<Zoology />} />
+            <Route path="/departments/economics" element={<Economics />} />
+            <Route path="/departments/history" element={<History />} />
+            <Route path="/departments/politicalscience" element={<PoliticalScience />} />
+            <Route path="/departments/physicaleducation" element={<PhysicalEducation />} />
             <Route path="/staff" element={<Staff />} />
             <Route path="/examination-cell" element={<ExaminationCell />} />
             <Route path="/library" element={<Library />} />
