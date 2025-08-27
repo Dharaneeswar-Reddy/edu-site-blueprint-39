@@ -94,10 +94,16 @@ const Departments = () => {
         programs: ["B.A.", "M.A.", "Ph.D"]
       },
       {
-        id: "polisci",
+        id: "politicalscience",
         name: "Political Science",
         description: "Study of governance systems, political behavior, and public policy.",
         programs: ["B.A.", "M.A.", "Ph.D"]
+      },
+      {
+        id: "physicaleducation",
+        name: "Physical Education",
+        description: "Focuses on physical fitness, sports science, and health education.",
+        programs: ["B.P.Ed", "M.P.Ed", "Ph.D"]
       }
     ]
   };
