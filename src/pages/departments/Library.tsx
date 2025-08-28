@@ -7,47 +7,144 @@ import { Calendar, Clock, Users, BookOpen, Award, Download, Globe, Search, Troph
 import { useEffect, useState } from "react";
 const Library = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const heroImages = ["/lovable-uploads/c2330428-4591-4e58-92a3-ff6d9918a338.png", "/lovable-uploads/dd09abc5-6c94-4cbf-898d-c7df488183a6.png", "/lovable-uploads/aa64612b-a2c2-4fc2-b645-b756306336a0.png", "/lovable-uploads/4b78b0b7-424d-41e9-b09c-4108e1edd3c0.png"];
-  const galleryImages = ["/lovable-uploads/c2330428-4591-4e58-92a3-ff6d9918a338.png", "/lovable-uploads/dd09abc5-6c94-4cbf-898d-c7df488183a6.png", "/lovable-uploads/aa64612b-a2c2-4fc2-b645-b756306336a0.png", "/lovable-uploads/4b78b0b7-424d-41e9-b09c-4108e1edd3c0.png", "/lovable-uploads/71dea894-961d-4fd6-ac1f-78e8db8d93b4.png", "/lovable-uploads/828ea20e-f759-4b97-aa60-3dc97555221f.png"];
+  const heroImages = ["/lovable-uploads/a4a3fced-9c78-4413-96d9-6731978af3fa.png", "/lovable-uploads/467dedf6-843d-40ba-a1e0-8ede2a0b2f47.png", "/lovable-uploads/b521958d-dc1c-4b8f-9c88-a1b4d65764c0.png", "/lovable-uploads/39e3f7c9-ef72-457e-81a5-d629357d4453.png", "/lovable-uploads/d10f870e-703e-4026-a4c5-1440977f354a.png"];
+  const galleryImages = ["/lovable-uploads/a4a3fced-9c78-4413-96d9-6731978af3fa.png", "/lovable-uploads/467dedf6-843d-40ba-a1e0-8ede2a0b2f47.png", "/lovable-uploads/b521958d-dc1c-4b8f-9c88-a1b4d65764c0.png", "/lovable-uploads/39e3f7c9-ef72-457e-81a5-d629357d4453.png", "/lovable-uploads/d10f870e-703e-4026-a4c5-1440977f354a.png"];
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentImageIndex(prevIndex => prevIndex === heroImages.length - 1 ? 0 : prevIndex + 1);
     }, 3000);
     return () => clearInterval(interval);
   }, [heroImages.length]);
-  const libraryHoldings = [{
-    category: "Science & Technology",
-    books: 8500,
-    type: "Books, Journals, E-Resources"
-  }, {
-    category: "Humanities & Social Sciences",
-    books: 7200,
-    type: "Books, Research Papers"
-  }, {
-    category: "Literature & Languages",
-    books: 6800,
-    type: "Books, Manuscripts"
-  }, {
-    category: "Reference Materials",
-    books: 1500,
-    type: "Encyclopedias, Dictionaries"
-  }, {
-    category: "Digital Resources",
-    books: 2500,
-    type: "E-Books, Online Databases"
-  }, {
-    category: "Periodicals & Journals",
-    books: 450,
-    type: "Print & Electronic Journals"
-  }, {
-    category: "Thesis & Dissertations",
-    books: 850,
-    type: "Student Research Works"
-  }, {
-    category: "Rare Books Collection",
-    books: 200,
-    type: "Historical & Special Collections"
-  }];
+  const libraryHoldings = [
+    {
+      category: "English",
+      books: 3176,
+      bookBank: 0,
+      genLib: 3176,
+      titleWise: 1779,
+      type: "General Literature & Language Books"
+    },
+    {
+      category: "Telugu", 
+      books: 5903,
+      bookBank: 0,
+      genLib: 5903,
+      titleWise: 3110,
+      type: "Telugu Literature & Culture Books"
+    },
+    {
+      category: "Hindi",
+      books: 1214,
+      bookBank: 0,
+      genLib: 1214,
+      titleWise: 551,
+      type: "Hindi Literature & Language Books"
+    },
+    {
+      category: "Commerce",
+      books: 3050,
+      bookBank: 543,
+      genLib: 2507,
+      titleWise: 1342,
+      type: "Business & Commerce Books"
+    },
+    {
+      category: "Economics",
+      books: 1708,
+      bookBank: 412,
+      genLib: 1296,
+      titleWise: 798,
+      type: "Economics & Policy Books"
+    },
+    {
+      category: "Political Science",
+      books: 1642,
+      bookBank: 326,
+      genLib: 1316,
+      titleWise: 893,
+      type: "Political Science & Governance Books"
+    },
+    {
+      category: "History",
+      books: 2593,
+      bookBank: 323,
+      genLib: 2270,
+      titleWise: 1220,
+      type: "History & Heritage Books"
+    },
+    {
+      category: "Mathematics",
+      books: 2245,
+      bookBank: 143,
+      genLib: 2102,
+      titleWise: 1033,
+      type: "Mathematics & Statistics Books"
+    },
+    {
+      category: "Computer Science",
+      books: 1247,
+      bookBank: 208,
+      genLib: 1039,
+      titleWise: 500,
+      type: "Computer Science & IT Books"
+    },
+    {
+      category: "Physics",
+      books: 2470,
+      bookBank: 382,
+      genLib: 2088,
+      titleWise: 1230,
+      type: "Physics & Applied Sciences Books"
+    },
+    {
+      category: "Electronics",
+      books: 1002,
+      bookBank: 320,
+      genLib: 682,
+      titleWise: 541,
+      type: "Electronics & Engineering Books"
+    },
+    {
+      category: "Chemistry",
+      books: 3091,
+      bookBank: 324,
+      genLib: 2767,
+      titleWise: 1229,
+      type: "Chemistry & Chemical Sciences Books"
+    },
+    {
+      category: "Botany",
+      books: 1555,
+      bookBank: 250,
+      genLib: 1305,
+      titleWise: 855,
+      type: "Botanical Sciences Books"
+    },
+    {
+      category: "Zoology",
+      books: 1895,
+      bookBank: 260,
+      genLib: 1635,
+      titleWise: 894,
+      type: "Zoological Sciences Books"
+    },
+    {
+      category: "Biology",
+      books: 208,
+      bookBank: 0,
+      genLib: 208,
+      titleWise: 127,
+      type: "General Biology Books"
+    },
+    {
+      category: "Reference & General",
+      books: 12141,
+      bookBank: 0,
+      genLib: 12141,
+      titleWise: 8273,
+      type: "Reference Materials & General Collection"
+    }
+  ];
   const libraryStaff = [{
     name: "Dr. Priya Sharma",
     designation: "Chief Librarian",
@@ -73,7 +170,11 @@ const Library = () => {
     experience: "12 years",
     photo: "/lovable-uploads/male-professor-2.jpg"
   }];
-  const achievements = ["Best College Library Award - State Level (2023)", "Digital Transformation Excellence Award (2022)", "Outstanding Service Award from University (2021)", "Green Library Initiative Recognition (2020)", "Student Satisfaction Excellence Award (2019)"];
+  const achievements = [
+    "Best Library Award 2016", 
+    "Library-attached Archaeological Museum, showcasing precious historical treasures, including the original Amaravathi Stupa, officially registered with the National Museum, Delhi. With government permission granted to establish the museum, it serves as a center of learning and heritage, inspiring students, researchers, and the community to explore India's rich cultural legacy.", 
+    "Rare collection of talapatrha grandhas from 16th century of padma puranamu and bhagavadgeetha written by 'pellamaram taata charyulu'"
+  ];
   return <PageLayout title="Central Library" description="A comprehensive learning resource center fostering knowledge, research, and academic excellence for the entire college community.">
       <div className="space-y-8">
         
@@ -83,7 +184,7 @@ const Library = () => {
           <div className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
             <div className="text-center text-white">
               <h1 className="text-4xl md:text-6xl font-bold mb-4">Central Library</h1>
-              <p className="text-xl md:text-2xl">Gateway to Knowledge & Research</p>
+              <p className="text-xl md:text-2xl mb-4">The pride of our college infrastructure is our "magnificent library building Attached with Archaeological Museum and the invaluable volumes in it". It's a comprehensive learning resource center fostering knowledge, research, and academic excellence for the entire college community.</p>
             </div>
           </div>
         </div>
@@ -98,25 +199,33 @@ const Library = () => {
           </CardHeader>
           <CardContent className="space-y-4">
             <p>
-              The Central Library of SVRM College serves as the intellectual heart of our institution, providing 
-              comprehensive information resources and services to support teaching, learning, and research activities. 
-              Our library houses an extensive collection of over 28,000 books, 500+ e-books, and numerous digital resources.
+              Indian population lives in villages. Till recent times the village people have no easy access to education – scientific, technical and literature etc. We are happy to put here that our college as well as our library are playing a significant role in filling this vacuum in this forsaken rural area, NAGARAM.
             </p>
             <p>
-              With a seating capacity of 150 students and modern facilities including high-speed internet, 
-              digital databases, and quiet study spaces, our library creates an ideal environment for academic 
-              pursuits. We are committed to fostering a culture of reading, research, and lifelong learning.
+              Our Library, located in a total rural backdrop, inhabited mostly by scheduled caste and backward class people, came into existence in the year 1969. The College and the library transformed the educational scenario of this backward area. The students of these rural surroundings have been immensely benefited from the library. It literally helped to ignite their minds.
+            </p>
+            <p>
+              The Library building stands majestically as a focal point amidst a beautiful garden with sylvan surroundings. There are numerous plants encompassing the building from the heat of the scorching sun. The flowering plants, the sylvan surroundings and the landscape of the college campus visible through the glass panels of the library building gives a veritable feast to the eyes of the readers at the library.
+            </p>
+            <p>
+              Nearly five decades ago, to put precisely in the year 1969, the College and the Library were started with a noble mission to kindle light into the lives of the poor people of this forsaken backward area by imparting education. This building was constructed by The KCP Ltd., Vuyyuru, the pioneers in sugar manufacturing, are the munificent donors of this magnificent landmark, along with the furniture. The chairs and tables are fiber make. The racks are from 'Godrej and Vinar'. We also have catalogue cabinets and the process of computerization of Library stock has been taken up by using 'Soul software'. The reading room has capacity to seat 150 readers. The total plinth area of the building is around 12000 sft. The ground floor is consisting of reading room, reference room, stock room, issue counter and the Librarian's room. The first floor is also used for the stocks as well as reading room.
+            </p>
+            <p>
+              The library has a most unique annexure to it - an 'Archaeological Museum'. Several photos, portraits of eminent scholars, Literatures, noble personalities and philanthropists adorning the walls of the reading room, shower inspiration to the young minds. The noble mission of our library is service oriented. We provide open access system, audio, video services and display of clippings of different items. We always guide students and staff in the selection of worthy and right books to study.
+            </p>
+            <p>
+              The ambience in the library helped to organize various seminars and debates by faculty for the benefit of students.
             </p>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-6">
               <div className="text-center p-4 bg-blue-50 rounded-lg">
                 <BookOpen className="h-8 w-8 text-college-blue mx-auto mb-2" />
-                <div className="text-2xl font-bold text-college-blue">28,000+</div>
+                <div className="text-2xl font-bold text-college-blue">45,140+</div>
                 <div className="text-sm text-gray-600">Books</div>
               </div>
               <div className="text-center p-4 bg-green-50 rounded-lg">
                 <Globe className="h-8 w-8 text-green-600 mx-auto mb-2" />
-                <div className="text-2xl font-bold text-green-600">500+</div>
-                <div className="text-sm text-gray-600">E-Books</div>
+                <div className="text-2xl font-bold text-green-600">199,500+</div>
+                <div className="text-sm text-gray-600">E-Books (N-LIST)</div>
               </div>
               <div className="text-center p-4 bg-purple-50 rounded-lg">
                 <Users className="h-8 w-8 text-purple-600 mx-auto mb-2" />
@@ -125,7 +234,7 @@ const Library = () => {
               </div>
               <div className="text-center p-4 bg-orange-50 rounded-lg">
                 <Clock className="h-8 w-8 text-orange-600 mx-auto mb-2" />
-                <div className="text-2xl font-bold text-orange-600">12</div>
+                <div className="text-2xl font-bold text-orange-600">9</div>
                 <div className="text-sm text-gray-600">Hours Daily</div>
               </div>
             </div>
@@ -142,17 +251,19 @@ const Library = () => {
               <div>
                 <h4 className="font-semibold text-college-blue mb-2">Vision</h4>
                 <p className="text-sm text-gray-700">
-                  To be a world-class academic library that empowers learning, fosters research excellence, 
-                  and serves as a gateway to global knowledge resources for the academic community.
+                  To be a Center of Excellence in Knowledge and Learning, research, and innovation while empowering rural youth and community through equitable access to information and lifelong education.
                 </p>
               </div>
               <div>
                 <h4 className="font-semibold text-college-blue mb-2">Mission</h4>
-                <p className="text-sm text-gray-700">
-                  To provide comprehensive information services, promote digital literacy, support academic 
-                  research, and create an inclusive learning environment that enhances educational outcomes 
-                  and scholarly achievements.
-                </p>
+                <ul className="text-sm text-gray-700 space-y-1">
+                  <li>1. To provide high-quality print, digital, and cultural resources accessible to students, faculty, rural youth, and the wider community.</li>
+                  <li>2. To adopt modern ICT tools that bridge the urban–rural knowledge gap.</li>
+                  <li>3. To foster a learner-friendly environment that encourages curiosity, creativity, and lifelong learning among all sections of society.</li>
+                  <li>4. To promote reading culture and information literacy in rural areas through outreach, awareness, and extension services.</li>
+                  <li>5. To collaborate with national and global knowledge networks, ensuring our users remain connected to world-class developments in education and research.</li>
+                  <li>6. To preserve and showcase local heritage and rural wisdom alongside global knowledge.</li>
+                </ul>
               </div>
             </CardContent>
           </Card>
@@ -162,15 +273,14 @@ const Library = () => {
               <CardTitle>Objectives</CardTitle>
             </CardHeader>
             <CardContent>
+              <h4 className="font-semibold mb-3 text-college-blue">Objectives ("Opening Minds, Bridging Communities, Empowering Rural Youth.")</h4>
               <ul className="space-y-2 text-sm text-gray-700">
-                <li>• Support curriculum and research activities with relevant resources</li>
-                <li>• Promote information literacy and digital skills among users</li>
-                <li>• Provide equal access to information for all members</li>
-                <li>• Foster collaborative learning and knowledge sharing</li>
-                <li>• Preserve and organize knowledge for future generations</li>
-                <li>• Enhance research capabilities through modern technology</li>
-                <li>• Create a conducive environment for academic excellence</li>
-                <li>• Support faculty research and publication activities</li>
+                <li>• Support Academic Excellence – Provide quality resources to enhance teaching, learning, and research.</li>
+                <li>• Empower Rural Youth – Bridge the urban–rural knowledge gap and enable first-generation learners.</li>
+                <li>• Serve the Community – Promote inclusive learning for students, local residents, and rural communities.</li>
+                <li>• Promote Reading & Lifelong Learning – Inspire curiosity, creativity, and continuous learning.</li>
+                <li>• Facilitate Digital Literacy – Equip users with skills to access and use e-resources and online platforms effectively.</li>
+                <li>• Preserve Heritage & Knowledge – Maintain archives and cultural resources for education and community enrichment.</li>
               </ul>
             </CardContent>
           </Card>
@@ -185,21 +295,48 @@ const Library = () => {
             <Table>
               <TableHeader>
                 <TableRow>
-                  <TableHead>Collection Category</TableHead>
-                  <TableHead className="text-right">Number of Items</TableHead>
-                  <TableHead>Type of Materials</TableHead>
+                  <TableHead>Subject</TableHead>
+                  <TableHead className="text-right">No. of Books</TableHead>
+                  <TableHead className="text-right">Book Bank</TableHead>
+                  <TableHead className="text-right">Gen-Lib</TableHead>
+                  <TableHead className="text-right">Title-wise</TableHead>
                 </TableRow>
               </TableHeader>
               <TableBody>
-                {libraryHoldings.map((item, index) => <TableRow key={index}>
+                {libraryHoldings.map((item, index) => (
+                  <TableRow key={index}>
                     <TableCell className="font-medium">{item.category}</TableCell>
                     <TableCell className="text-right font-semibold text-college-blue">
                       {item.books.toLocaleString()}
                     </TableCell>
-                    <TableCell className="text-gray-600">{item.type}</TableCell>
-                  </TableRow>)}
+                    <TableCell className="text-right">{item.bookBank || 0}</TableCell>
+                    <TableCell className="text-right">{item.genLib}</TableCell>
+                    <TableCell className="text-right">{item.titleWise}</TableCell>
+                  </TableRow>
+                ))}
+                <TableRow className="border-t-2 font-bold">
+                  <TableCell className="font-bold">Total</TableCell>
+                  <TableCell className="text-right font-bold text-college-blue">45,140</TableCell>
+                  <TableCell className="text-right font-bold">3,491</TableCell>
+                  <TableCell className="text-right font-bold">41,649</TableCell>
+                  <TableCell className="text-right font-bold">24,375</TableCell>
+                </TableRow>
               </TableBody>
             </Table>
+            <div className="mt-4 p-4 bg-blue-50 rounded-lg">
+              <h4 className="font-semibold text-college-blue mb-2">Additional Digital Resources</h4>
+              <div className="grid grid-cols-2 md:grid-cols-3 gap-4 text-sm">
+                <div>
+                  <span className="font-medium">E-Books (N-LIST):</span> 1,99,500+
+                </div>
+                <div>
+                  <span className="font-medium">E-Books (NDL):</span> 6,00,000+
+                </div>
+                <div>
+                  <span className="font-medium">Journals Access:</span> 6,000+
+                </div>
+              </div>
+            </div>
           </CardContent>
         </Card>
 
@@ -209,29 +346,89 @@ const Library = () => {
             <CardTitle>Library Rules & Regulations</CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="space-y-6">
               <div>
-                <h4 className="font-semibold mb-3 text-college-blue">General Rules</h4>
-                <ul className="space-y-2 text-sm text-gray-700">
-                  <li>• Maintain absolute silence in reading areas</li>
-                  <li>• Mobile phones must be on silent mode</li>
-                  <li>• No food or beverages allowed inside</li>
-                  <li>• Handle all materials with care</li>
-                  <li>• Follow proper check-in/check-out procedures</li>
-                  <li>• Respect other users and library property</li>
-                </ul>
+                <h4 className="font-semibold mb-3 text-college-blue">Rules and Regulations</h4>
+                <div className="space-y-3 text-sm text-gray-700">
+                  <div>
+                    <h5 className="font-medium mb-2">1. Membership and Access</h5>
+                    <ul className="space-y-1 ml-4">
+                      <li>• Library membership is open to all college students, faculty, staff, rural youth, and community members as per library policies.</li>
+                      <li>• Members must carry a valid library ID or issued library card to enter and use the facilities.</li>
+                    </ul>
+                  </div>
+                  <div>
+                    <h5 className="font-medium mb-2">2. Timing and Conduct</h5>
+                    <ul className="space-y-1 ml-4">
+                      <li>• The library is open during the scheduled hours; members are expected to maintain silence and discipline.</li>
+                      <li>• Eating, drinking, and mobile phone usage inside the library are prohibited.</li>
+                    </ul>
+                  </div>
+                  <div>
+                    <h5 className="font-medium mb-2">3. Borrowing and Returning Materials</h5>
+                    <ul className="space-y-1 ml-4">
+                      <li>• Books, journals, and digital resources can be borrowed according to membership type and loan period.</li>
+                      <li>• Members must return materials on or before the due date; overdue fines will be applicable.</li>
+                      <li>• Lost or damaged items must be reported immediately and replaced or compensated.</li>
+                    </ul>
+                  </div>
+                  <div>
+                    <h5 className="font-medium mb-2">4. Use of Digital Resources</h5>
+                    <ul className="space-y-1 ml-4">
+                      <li>• Library computers and e-resources are to be used for academic, research, and community learning purposes only.</li>
+                      <li>• Users can download, copy, or share content with proper permission.</li>
+                    </ul>
+                  </div>
+                  <div>
+                    <h5 className="font-medium mb-2">5. Rural Youth and Community Programs</h5>
+                    <ul className="space-y-1 ml-4">
+                      <li>• Special sessions, workshops, and outreach programs will be organized for rural youth and local community members.</li>
+                      <li>• Participants are expected to follow library rules and respect resources during these programs.</li>
+                    </ul>
+                  </div>
+                  <div>
+                    <h5 className="font-medium mb-2">6. Preservation and Care</h5>
+                    <ul className="space-y-1 ml-4">
+                      <li>• Members must handle books, journals, and other resources carefully to maintain their condition.</li>
+                      <li>• Rare collections, heritage materials, and archives must be consulted under supervision.</li>
+                    </ul>
+                  </div>
+                  <div>
+                    <h5 className="font-medium mb-2">7. Facilities and Behavior</h5>
+                    <ul className="space-y-1 ml-4">
+                      <li>• Furniture, computers, and other library facilities must be used responsibly.</li>
+                      <li>• Any misconduct, theft, or damage to property will lead to suspension of library privileges.</li>
+                    </ul>
+                  </div>
+                  <div>
+                    <h5 className="font-medium mb-2">8. Suggestions and Feedback</h5>
+                    <ul className="space-y-1 ml-4">
+                      <li>• Members are encouraged to provide suggestions to improve library services, especially for rural youth and community engagement.</li>
+                    </ul>
+                  </div>
+                </div>
               </div>
               
               <div>
                 <h4 className="font-semibold mb-3 text-college-blue">Borrowing Policy</h4>
-                <ul className="space-y-2 text-sm text-gray-700">
-                  <li>• Students: 3 books for 15 days</li>
-                  <li>• Faculty: 10 books for 30 days</li>
-                  <li>• Research Scholars: 5 books for 21 days</li>
-                  <li>• Renewal allowed once if no reservations</li>
-                  <li>• Fine: ₹2 per day for overdue materials</li>
-                  <li>• Lost books must be replaced or paid for</li>
-                </ul>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div className="space-y-2 text-sm text-gray-700">
+                    <h5 className="font-medium">Borrowing Limits & Duration:</h5>
+                    <ul className="space-y-1">
+                      <li>• <strong>Students:</strong> May borrow 2 books for 15 days</li>
+                      <li>• <strong>Faculty:</strong> May borrow 10 books for 30 days</li>
+                      <li>• <strong>Research Scholars:</strong> May borrow 5 books for 21 days</li>
+                      <li>• <strong>Renewal:</strong> Renewal is allowed once if the book has no pending reservations</li>
+                    </ul>
+                  </div>
+                  <div className="space-y-2 text-sm text-gray-700">
+                    <h5 className="font-medium">Fines & Policies:</h5>
+                    <ul className="space-y-1">
+                      <li>• <strong>Overdue Fine:</strong> ₹1 per day for each overdue book</li>
+                      <li>• <strong>Lost Books:</strong> Any lost or damaged book must be replaced or compensated at the current value</li>
+                    </ul>
+                  </div>
+                </div>
               </div>
             </div>
           </CardContent>
@@ -296,11 +493,11 @@ const Library = () => {
           <CardContent>
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 items-center">
               <div className="lg:col-span-1">
-                <img src="/lovable-uploads/female-professor-1.jpg" alt="Dr. Priya Sharma - Chief Librarian" className="w-full max-w-sm mx-auto rounded-lg shadow-md" />
+                <img src="/lovable-uploads/75171aa8-c702-4c3a-a322-9239b933acff.png" alt="Sri Sajja Srinivasa Rao - Chief Librarian" className="w-full max-w-sm mx-auto rounded-lg shadow-md" />
               </div>
               <div className="lg:col-span-2 space-y-4">
                 <div>
-                  <h3 className="text-2xl font-bold text-college-blue mb-1">Dr. Priya Sharma</h3>
+                  <h3 className="text-2xl font-bold text-college-blue mb-1">Sri Sajja Srinivasa Rao</h3>
                   <p className="text-lg text-gray-600 mb-4">Chief Librarian</p>
                 </div>
                 
@@ -308,20 +505,22 @@ const Library = () => {
                   <div>
                     <h4 className="font-semibold mb-2">Qualifications</h4>
                     <ul className="text-sm text-gray-700 space-y-1">
-                      <li>• Ph.D. in Library & Information Science</li>
-                      <li>• MLIS - Master of Library Science</li>
-                      <li>• B.Ed. in Education</li>
-                      <li>• Certificate in Digital Library Management</li>
+                      <li>• M.C.M – Master in Computer Management</li>
+                      <li>• MLIS – Master in Library and Information Science</li>
+                      <li>• 35+ years' Experience</li>
+                      <li>• Skillful in Computer Science</li>
+                      <li>• Skillful in PC trouble shooting and networking</li>
                     </ul>
                   </div>
                   
                   <div>
-                    <h4 className="font-semibold mb-2">Experience & Achievements</h4>
+                    <h4 className="font-semibold mb-2">Experience & Expertise</h4>
                     <ul className="text-sm text-gray-700 space-y-1">
-                      <li>• 15+ years in library management</li>
-                      <li>• Published 25+ research papers</li>
+                      <li>• Over 35 years in library management</li>
                       <li>• Expert in digital library systems</li>
-                      <li>• Member of Indian Library Association</li>
+                      <li>• Computer science and networking specialist</li>
+                      <li>• Library automation and modernization leader</li>
+                      <li>• Community outreach and rural education advocate</li>
                     </ul>
                   </div>
                 </div>
@@ -329,15 +528,15 @@ const Library = () => {
                 <div className="flex flex-wrap gap-4 pt-4">
                   <div className="flex items-center text-sm text-gray-600">
                     <Mail className="h-4 w-4 mr-2" />
-                    librarian@svrmc.edu.in
+                    Srinivas.svrm@gmail.com
                   </div>
                   <div className="flex items-center text-sm text-gray-600">
                     <Phone className="h-4 w-4 mr-2" />
-                    +91-863-2345679
+                    +91-9963465428
                   </div>
                   <div className="flex items-center text-sm text-gray-600">
                     <MapPin className="h-4 w-4 mr-2" />
-                    Main Building, 2nd Floor
+                    Central Library Building, Ground Floor
                   </div>
                 </div>
               </div>
@@ -394,20 +593,16 @@ const Library = () => {
                 <h4 className="font-semibold mb-3">Working Hours</h4>
                 <div className="space-y-2">
                   <div className="flex justify-between">
-                    <span>Monday - Friday:</span>
-                    <span className="font-medium">8:00 AM - 8:00 PM</span>
+                    <span>Monday - Saturday:</span>
+                    <span className="font-medium">9:00 AM - 5:30 PM</span>
                   </div>
                   <div className="flex justify-between">
-                    <span>Saturday:</span>
-                    <span className="font-medium">9:00 AM - 5:00 PM</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span>Sunday:</span>
-                    <span className="font-medium">10:00 AM - 4:00 PM</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span>Holidays:</span>
+                    <span>Public Holidays:</span>
                     <span className="font-medium text-red-600">Closed</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span>Summer Timings:</span>
+                    <span className="font-medium">9:00 AM - 1:00 PM</span>
                   </div>
                 </div>
               </div>
@@ -421,11 +616,11 @@ const Library = () => {
                   </div>
                   <div className="flex items-center">
                     <Phone className="h-4 w-4 mr-2 text-college-blue" />
-                    <span>+91-863-2345679</span>
+                    <span>+91-9963465428</span>
                   </div>
                   <div className="flex items-center">
                     <MapPin className="h-4 w-4 mr-2 text-college-blue" />
-                    <span>Main Building, 2nd Floor</span>
+                    <span>Central Library Building, Ground Floor</span>
                   </div>
                 </div>
               </div>
