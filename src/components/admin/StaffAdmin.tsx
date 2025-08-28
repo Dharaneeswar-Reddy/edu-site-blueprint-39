@@ -457,7 +457,7 @@ const StaffAdmin = () => {
                   <SelectTrigger className="w-48">
                     <SelectValue placeholder="Filter by department" />
                   </SelectTrigger>
-                  <SelectContent>
+                  <SelectContent className="max-h-64 overflow-y-auto">
                     <SelectItem value="all">All Departments</SelectItem>
                     {DEPARTMENTS.map((dept) => (
                       <SelectItem key={dept} value={dept}>
