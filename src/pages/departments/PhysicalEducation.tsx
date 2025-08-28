@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Clock, Users, BookOpen, Award, Zap, Mail } from "lucide-react";
 import { useEffect, useState } from "react";
+import DepartmentStaff from "@/components/DepartmentStaff";
 
 const PhysicalEducation = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -220,68 +221,7 @@ const PhysicalEducation = () => {
         </div>
 
         {/* Department Staff */}
-        <Card>
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2">
-              <Users className="h-6 w-6 text-college-blue" />
-              Department Staff
-            </CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              <div className="bg-card rounded-lg shadow-sm border p-6 text-center hover:shadow-md transition-shadow">
-                <div className="mb-4">
-                  <img 
-                    src="/lovable-uploads/52a8e7b1-5b22-4a0c-b1ec-450f99bfa9bb.png" 
-                    alt="Dr. Ramesh Kumar"
-                    className="w-24 h-24 rounded-full mx-auto object-cover shadow-md"
-                  />
-                </div>
-                <h3 className="text-lg font-semibold text-foreground mb-1">Dr. Ramesh Kumar</h3>
-                <p className="text-primary font-medium text-sm mb-1">Head & Professor</p>
-                <p className="text-muted-foreground text-sm mb-3">Physical Education Department</p>
-                <div className="flex items-center justify-center gap-2 text-sm text-muted-foreground">
-                  <Mail className="h-3 w-3" />
-                  <span>ramesh.kumar@svrmc.edu.in</span>
-                </div>
-              </div>
-              
-              <div className="bg-card rounded-lg shadow-sm border p-6 text-center hover:shadow-md transition-shadow">
-                <div className="mb-4">
-                  <img 
-                    src="/lovable-uploads/60af87cc-1db6-4454-a9d2-88641715b200.png" 
-                    alt="Prof. Kavitha Rao"
-                    className="w-24 h-24 rounded-full mx-auto object-cover shadow-md"
-                  />
-                </div>
-                <h3 className="text-lg font-semibold text-foreground mb-1">Prof. Kavitha Rao</h3>
-                <p className="text-primary font-medium text-sm mb-1">Associate Professor</p>
-                <p className="text-muted-foreground text-sm mb-3">Physical Education Department</p>
-                <div className="flex items-center justify-center gap-2 text-sm text-muted-foreground">
-                  <Mail className="h-3 w-3" />
-                  <span>kavitha.rao@svrmc.edu.in</span>
-                </div>
-              </div>
-              
-              <div className="bg-card rounded-lg shadow-sm border p-6 text-center hover:shadow-md transition-shadow">
-                <div className="mb-4">
-                  <img 
-                    src="/lovable-uploads/662ebac1-9113-46ee-b212-a9a1526878d4.png" 
-                    alt="Coach Arjun Singh"
-                    className="w-24 h-24 rounded-full mx-auto object-cover shadow-md"
-                  />
-                </div>
-                <h3 className="text-lg font-semibold text-foreground mb-1">Coach Arjun Singh</h3>
-                <p className="text-primary font-medium text-sm mb-1">Sports Coach</p>
-                <p className="text-muted-foreground text-sm mb-3">Physical Education Department</p>
-                <div className="flex items-center justify-center gap-2 text-sm text-muted-foreground">
-                  <Mail className="h-3 w-3" />
-                  <span>arjun.singh@svrmc.edu.in</span>
-                </div>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
+        <DepartmentStaff departmentName="Physical Education" />
 
         {/* Time Tables */}
         <Card>

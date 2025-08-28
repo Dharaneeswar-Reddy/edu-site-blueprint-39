@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Clock, Users, BookOpen, Award, TrendingUp, Mail } from "lucide-react";
 import { useEffect, useState } from "react";
+import DepartmentStaff from "@/components/DepartmentStaff";
 
 const Economics = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -227,68 +228,7 @@ const Economics = () => {
         </div>
 
         {/* Department Staff */}
-        <Card>
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2">
-              <Users className="h-6 w-6 text-college-blue" />
-              Department Staff
-            </CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              <div className="bg-card rounded-lg shadow-sm border p-6 text-center hover:shadow-md transition-shadow">
-                <div className="mb-4">
-                  <img 
-                    src="/lovable-uploads/8ca0ef83-413e-4894-9e73-7361e0c0106c.png" 
-                    alt="Dr. Krishnan Iyer"
-                    className="w-24 h-24 rounded-full mx-auto object-cover shadow-md"
-                  />
-                </div>
-                <h3 className="text-lg font-semibold text-foreground mb-1">Dr. Krishnan Iyer</h3>
-                <p className="text-primary font-medium text-sm mb-1">Head & Professor</p>
-                <p className="text-muted-foreground text-sm mb-3">Economics Department</p>
-                <div className="flex items-center justify-center gap-2 text-sm text-muted-foreground">
-                  <Mail className="h-3 w-3" />
-                  <span>krishnan.iyer@svrmc.edu.in</span>
-                </div>
-              </div>
-              
-              <div className="bg-card rounded-lg shadow-sm border p-6 text-center hover:shadow-md transition-shadow">
-                <div className="mb-4">
-                  <img 
-                    src="/lovable-uploads/9ecf085a-3abc-45e7-844b-b132bfa85970.png" 
-                    alt="Dr. Savita Sharma"
-                    className="w-24 h-24 rounded-full mx-auto object-cover shadow-md"
-                  />
-                </div>
-                <h3 className="text-lg font-semibold text-foreground mb-1">Dr. Savita Sharma</h3>
-                <p className="text-primary font-medium text-sm mb-1">Associate Professor</p>
-                <p className="text-muted-foreground text-sm mb-3">Economics Department</p>
-                <div className="flex items-center justify-center gap-2 text-sm text-muted-foreground">
-                  <Mail className="h-3 w-3" />
-                  <span>savita.sharma@svrmc.edu.in</span>
-                </div>
-              </div>
-              
-              <div className="bg-card rounded-lg shadow-sm border p-6 text-center hover:shadow-md transition-shadow">
-                <div className="mb-4">
-                  <img 
-                    src="/lovable-uploads/aa64612b-a2c2-4fc2-b645-b756306336a0.png" 
-                    alt="Dr. Rahul Gupta"
-                    className="w-24 h-24 rounded-full mx-auto object-cover shadow-md"
-                  />
-                </div>
-                <h3 className="text-lg font-semibold text-foreground mb-1">Dr. Rahul Gupta</h3>
-                <p className="text-primary font-medium text-sm mb-1">Assistant Professor</p>
-                <p className="text-muted-foreground text-sm mb-3">Economics Department</p>
-                <div className="flex items-center justify-center gap-2 text-sm text-muted-foreground">
-                  <Mail className="h-3 w-3" />
-                  <span>rahul.gupta@svrmc.edu.in</span>
-                </div>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
+        <DepartmentStaff departmentName="Economics" />
 
         {/* Time Tables */}
         <Card>

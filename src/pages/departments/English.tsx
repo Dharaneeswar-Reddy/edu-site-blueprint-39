@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Calendar, Clock, Users, BookOpen, Award, Download, Book, Mail } from "lucide-react";
 import { useEffect, useState } from "react";
+import DepartmentStaff from "@/components/DepartmentStaff";
 
 const English = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -227,68 +228,7 @@ const English = () => {
         </div>
 
         {/* Department Staff */}
-        <Card>
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2">
-              <Users className="h-6 w-6 text-college-blue" />
-              Department Staff
-            </CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              <div className="bg-card rounded-lg shadow-sm border p-6 text-center hover:shadow-md transition-shadow">
-                <div className="mb-4">
-                  <img 
-                    src="/lovable-uploads/662ebac1-9113-46ee-b212-a9a1526878d4.png" 
-                    alt="Dr. Aardra Surendran"
-                    className="w-24 h-24 rounded-full mx-auto object-cover shadow-md"
-                  />
-                </div>
-                <h3 className="text-lg font-semibold text-foreground mb-1">Dr. Aardra Surendran</h3>
-                <p className="text-primary font-medium text-sm mb-1">Head & Professor</p>
-                <p className="text-muted-foreground text-sm mb-3">English Department</p>
-                <div className="flex items-center justify-center gap-2 text-sm text-muted-foreground">
-                  <Mail className="h-3 w-3" />
-                  <span>aardra.s@svrmc.edu.in</span>
-                </div>
-              </div>
-              
-              <div className="bg-card rounded-lg shadow-sm border p-6 text-center hover:shadow-md transition-shadow">
-                <div className="mb-4">
-                  <img 
-                    src="/lovable-uploads/5eef37d5-a7a2-416d-9fb3-7df167c87f7e.png" 
-                    alt="Dr. Sarah Wilson"
-                    className="w-24 h-24 rounded-full mx-auto object-cover shadow-md"
-                  />
-                </div>
-                <h3 className="text-lg font-semibold text-foreground mb-1">Dr. Sarah Wilson</h3>
-                <p className="text-primary font-medium text-sm mb-1">Associate Professor</p>
-                <p className="text-muted-foreground text-sm mb-3">English Department</p>
-                <div className="flex items-center justify-center gap-2 text-sm text-muted-foreground">
-                  <Mail className="h-3 w-3" />
-                  <span>sarah.wilson@svrmc.edu.in</span>
-                </div>
-              </div>
-              
-              <div className="bg-card rounded-lg shadow-sm border p-6 text-center hover:shadow-md transition-shadow">
-                <div className="mb-4">
-                  <img 
-                    src="/lovable-uploads/805efae8-1428-4b19-9a41-f2f62680aefc.png" 
-                    alt="Dr. Michael Thompson"
-                    className="w-24 h-24 rounded-full mx-auto object-cover shadow-md"
-                  />
-                </div>
-                <h3 className="text-lg font-semibold text-foreground mb-1">Dr. Michael Thompson</h3>
-                <p className="text-primary font-medium text-sm mb-1">Assistant Professor</p>
-                <p className="text-muted-foreground text-sm mb-3">English Department</p>
-                <div className="flex items-center justify-center gap-2 text-sm text-muted-foreground">
-                  <Mail className="h-3 w-3" />
-                  <span>michael.t@svrmc.edu.in</span>
-                </div>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
+        <DepartmentStaff departmentName="English" />
 
         {/* Time Tables */}
         <Card>
