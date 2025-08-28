@@ -344,6 +344,162 @@ export type Database = {
         }
         Relationships: []
       }
+      student_support_galleries: {
+        Row: {
+          created_at: string
+          description: string | null
+          display_order: number | null
+          id: string
+          image_url: string
+          is_active: boolean | null
+          service_name: string
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          description?: string | null
+          display_order?: number | null
+          id?: string
+          image_url: string
+          is_active?: boolean | null
+          service_name: string
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          description?: string | null
+          display_order?: number | null
+          id?: string
+          image_url?: string
+          is_active?: boolean | null
+          service_name?: string
+          title?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      student_support_reports: {
+        Row: {
+          academic_year: string
+          created_at: string
+          description: string | null
+          file_url: string
+          id: string
+          is_active: boolean | null
+          service_name: string
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          academic_year: string
+          created_at?: string
+          description?: string | null
+          file_url: string
+          id?: string
+          is_active?: boolean | null
+          service_name: string
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          academic_year?: string
+          created_at?: string
+          description?: string | null
+          file_url?: string
+          id?: string
+          is_active?: boolean | null
+          service_name?: string
+          title?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      student_support_services: {
+        Row: {
+          created_at: string
+          description: string | null
+          id: string
+          is_active: boolean | null
+          mission: string | null
+          objectives: string[] | null
+          service_name: string
+          title: string
+          updated_at: string
+          vision: string | null
+        }
+        Insert: {
+          created_at?: string
+          description?: string | null
+          id?: string
+          is_active?: boolean | null
+          mission?: string | null
+          objectives?: string[] | null
+          service_name: string
+          title: string
+          updated_at?: string
+          vision?: string | null
+        }
+        Update: {
+          created_at?: string
+          description?: string | null
+          id?: string
+          is_active?: boolean | null
+          mission?: string | null
+          objectives?: string[] | null
+          service_name?: string
+          title?: string
+          updated_at?: string
+          vision?: string | null
+        }
+        Relationships: []
+      }
+      student_support_staff: {
+        Row: {
+          created_at: string
+          department: string | null
+          designation: string
+          display_order: number | null
+          email: string | null
+          id: string
+          is_active: boolean | null
+          name: string
+          phone: string | null
+          photo_url: string | null
+          service_name: string
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          department?: string | null
+          designation: string
+          display_order?: number | null
+          email?: string | null
+          id?: string
+          is_active?: boolean | null
+          name: string
+          phone?: string | null
+          photo_url?: string | null
+          service_name: string
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          department?: string | null
+          designation?: string
+          display_order?: number | null
+          email?: string | null
+          id?: string
+          is_active?: boolean | null
+          name?: string
+          phone?: string | null
+          photo_url?: string | null
+          service_name?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never

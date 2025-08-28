@@ -20,6 +20,7 @@ const AdminLayout = ({ children }: AdminLayoutProps) => {
     { icon: BookOpen, label: "Examination", path: "/admin/examination" },
     { icon: Settings, label: "IQAC", path: "/admin/iqac" },
     { icon: Users, label: "Staff", path: "/admin/staff" },
+    { icon: Users, label: "Student Support", path: "/admin/student-support" },
     { icon: Image, label: "Gallery", path: "/admin/gallery" },
     { icon: BookOpen, label: "Departments", path: "/admin/departments" },
   ];
