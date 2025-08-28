@@ -89,6 +89,8 @@ import AnnouncementsAdmin from "@/components/admin/AnnouncementsAdmin";
 import ExaminationDocumentsAdmin from "@/components/admin/ExaminationDocumentsAdmin";
 import IqacAdmin from "@/components/admin/IqacAdmin";
 import StaffAdmin from "@/components/admin/StaffAdmin";
+import GalleryAdmin from "@/components/admin/GalleryAdmin";
+import DepartmentsAdmin from "@/components/admin/DepartmentsAdmin";
 import AdminLayout from "@/components/admin/AdminLayout";
 
 const queryClient = new QueryClient();
@@ -180,6 +182,16 @@ const App = () => (
             <Route path="/admin/staff" element={
               <AdminLayout>
                 <StaffAdmin />
+              </AdminLayout>
+            } />
+            <Route path="/admin/gallery" element={
+              <AdminLayout>
+                <GalleryAdmin />
+              </AdminLayout>
+            } />
+            <Route path="/admin/departments" element={
+              <AdminLayout>
+                <DepartmentsAdmin />
               </AdminLayout>
             } />
             

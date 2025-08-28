@@ -47,6 +47,45 @@ export type Database = {
         }
         Relationships: []
       }
+      department_timetables: {
+        Row: {
+          academic_year: string | null
+          created_at: string
+          department: string
+          description: string | null
+          file_url: string
+          id: string
+          is_active: boolean | null
+          semester: string | null
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          academic_year?: string | null
+          created_at?: string
+          department: string
+          description?: string | null
+          file_url: string
+          id?: string
+          is_active?: boolean | null
+          semester?: string | null
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          academic_year?: string | null
+          created_at?: string
+          department?: string
+          description?: string | null
+          file_url?: string
+          id?: string
+          is_active?: boolean | null
+          semester?: string | null
+          title?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
       examination_documents: {
         Row: {
           academic_year: string | null
