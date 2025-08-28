@@ -1,7 +1,15 @@
 import PageLayout from "@/components/PageLayout";
 import { Mail } from "lucide-react";
+import { useStaff } from "@/hooks/useStaff";
 
 const Administration = () => {
+  // Fetch staff data from database
+  const { staff: allStaff, loading, error } = useStaff();
+  
+  // Filter staff by type
+  const teachingStaff = allStaff.filter(staff => staff.staff_type === 'teaching');
+  const nonTeachingStaff = allStaff.filter(staff => staff.staff_type === 'non-teaching');
+  
   // Leadership data
   const correspondent = {
     name: "Dr. Ramesh Kumar",
@@ -40,63 +48,6 @@ const Administration = () => {
     message: "Under my leadership, SVRM College continues to excel in providing quality education while embracing innovation and technology. We are dedicated to nurturing critical thinking, creativity, and ethical values in our students, preparing them to be future leaders and responsible citizens.",
     bio: "Dr. Rajesh Kumar is currently serving as Principal at SVRM College since 2018. He brings a rich interdisciplinary background spanning computer science, educational technology, and academic administration. Prior to joining SVRM College, he worked as a Professor at the Department of Computer Science and Engineering at a premier technical institution, where he was deeply involved in the development of innovative teaching methodologies aimed at enhancing student learning outcomes, research excellence, and industry collaboration for undergraduate and postgraduate programs."
   };
-
-  // Teaching Staff data
-  const teachingStaff = [
-    {
-      name: "Dr. Aalok Dinkar Khandekar",
-      designation: "Head & Associate Professor",
-      department: "Computer Science",
-      image: "/lovable-uploads/52a8e7b1-5b22-4a0c-b1ec-450f99bfa9bb.png",
-      email: "aalok.k@svrmc.edu.in"
-    },
-    {
-      name: "Dr. Aardra Surendran",
-      designation: "Assistant Professor",
-      department: "Liberal Arts",
-      image: "/lovable-uploads/662ebac1-9113-46ee-b212-a9a1526878d4.png",
-      email: "aardra.s@svrmc.edu.in"
-    },
-    {
-      name: "Dr. Abhijit Sau",
-      designation: "Assistant Professor", 
-      department: "Chemistry",
-      image: "/lovable-uploads/71dea894-961d-4fd6-ac1f-78e8db8d93b4.png",
-      email: "abhijit.s@svrmc.edu.in"
-    },
-    {
-      name: "Dr. Abhinav Kumar",
-      designation: "Professor",
-      department: "Computer Science",
-      image: "/lovable-uploads/805efae8-1428-4b19-9a41-f2f62680aefc.png",
-      email: "abhinav.k@svrmc.edu.in"
-    }
-  ];
-
-  // Non-Teaching Staff data
-  const nonTeachingStaff = [
-    {
-      name: "Mr. Suresh Kumar",
-      designation: "Administrative Officer",
-      department: "Administration",
-      image: "/lovable-uploads/9ecf085a-3abc-45e7-844b-b132bfa85970.png",
-      email: "suresh.k@svrmc.edu.in"
-    },
-    {
-      name: "Ms. Priya Nair",
-      designation: "Accounts Officer",
-      department: "Finance",
-      image: "/lovable-uploads/8ca0ef83-413e-4894-9e73-7361e0c0106c.png",
-      email: "priya.n@svrmc.edu.in"
-    },
-    {
-      name: "Mr. Rajesh Sharma",
-      designation: "Library Officer",
-      department: "Library",
-      image: "/lovable-uploads/85f3d76b-36b0-4119-9ae0-75167cea9d0b.png",
-      email: "rajesh.s@svrmc.edu.in"
-    }
-  ];
 
   return (
     <PageLayout title="Administration" description="Meet our administration team and faculty members">
@@ -167,51 +118,95 @@ const Administration = () => {
         {/* Teaching Staff Section */}
         <section>
           <h2 className="text-3xl font-bold text-foreground mb-8 text-center">Teaching Staff</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {teachingStaff.map((staff, index) => (
-              <div key={index} className="bg-card rounded-lg shadow-sm border p-6 text-center hover:shadow-md transition-shadow">
-                <div className="mb-4">
-                  <img 
-                    src={staff.image} 
-                    alt={staff.name}
-                    className="w-24 h-24 rounded-full mx-auto object-cover shadow-md"
-                  />
+          {loading ? (
+            <div className="text-center py-8">
+              <p className="text-muted-foreground">Loading teaching staff...</p>
+            </div>
+          ) : error ? (
+            <div className="text-center py-8">
+              <p className="text-red-500">Error loading teaching staff: {error}</p>
+            </div>
+          ) : teachingStaff.length === 0 ? (
+            <div className="text-center py-8">
+              <p className="text-muted-foreground">No teaching staff found.</p>
+            </div>
+          ) : (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {teachingStaff.map((staff) => (
+                <div key={staff.id} className="bg-card rounded-lg shadow-sm border p-6 text-center hover:shadow-md transition-shadow">
+                  <div className="mb-4">
+                    {staff.photo_url ? (
+                      <img 
+                        src={staff.photo_url} 
+                        alt={staff.name}
+                        className="w-24 h-24 rounded-full mx-auto object-cover shadow-md"
+                      />
+                    ) : (
+                      <div className="w-24 h-24 rounded-full mx-auto bg-muted flex items-center justify-center text-lg font-semibold text-muted-foreground">
+                        {staff.name.split(' ').map(n => n[0]).join('').toUpperCase()}
+                      </div>
+                    )}
+                  </div>
+                  <h3 className="text-lg font-semibold text-foreground mb-1">{staff.name}</h3>
+                  <p className="text-primary font-medium text-sm mb-1">{staff.designation}</p>
+                  <p className="text-muted-foreground text-sm mb-3">{staff.department}</p>
+                  {staff.email && (
+                    <div className="flex items-center justify-center gap-2 text-sm text-muted-foreground">
+                      <Mail className="h-3 w-3" />
+                      <span>{staff.email}</span>
+                    </div>
+                  )}
                 </div>
-                <h3 className="text-lg font-semibold text-foreground mb-1">{staff.name}</h3>
-                <p className="text-primary font-medium text-sm mb-1">{staff.designation}</p>
-                <p className="text-muted-foreground text-sm mb-3">{staff.department}</p>
-                <div className="flex items-center justify-center gap-2 text-sm text-muted-foreground">
-                  <Mail className="h-3 w-3" />
-                  <span>{staff.email}</span>
-                </div>
-              </div>
-            ))}
-          </div>
+              ))}
+            </div>
+          )}
         </section>
 
         {/* Non-Teaching Staff Section */}
         <section>
           <h2 className="text-3xl font-bold text-foreground mb-8 text-center">Non-Teaching Staff</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {nonTeachingStaff.map((staff, index) => (
-              <div key={index} className="bg-card rounded-lg shadow-sm border p-6 text-center hover:shadow-md transition-shadow">
-                <div className="mb-4">
-                  <img 
-                    src={staff.image} 
-                    alt={staff.name}
-                    className="w-24 h-24 rounded-full mx-auto object-cover shadow-md"
-                  />
+          {loading ? (
+            <div className="text-center py-8">
+              <p className="text-muted-foreground">Loading non-teaching staff...</p>
+            </div>
+          ) : error ? (
+            <div className="text-center py-8">
+              <p className="text-red-500">Error loading non-teaching staff: {error}</p>
+            </div>
+          ) : nonTeachingStaff.length === 0 ? (
+            <div className="text-center py-8">
+              <p className="text-muted-foreground">No non-teaching staff found.</p>
+            </div>
+          ) : (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {nonTeachingStaff.map((staff) => (
+                <div key={staff.id} className="bg-card rounded-lg shadow-sm border p-6 text-center hover:shadow-md transition-shadow">
+                  <div className="mb-4">
+                    {staff.photo_url ? (
+                      <img 
+                        src={staff.photo_url} 
+                        alt={staff.name}
+                        className="w-24 h-24 rounded-full mx-auto object-cover shadow-md"
+                      />
+                    ) : (
+                      <div className="w-24 h-24 rounded-full mx-auto bg-muted flex items-center justify-center text-lg font-semibold text-muted-foreground">
+                        {staff.name.split(' ').map(n => n[0]).join('').toUpperCase()}
+                      </div>
+                    )}
+                  </div>
+                  <h3 className="text-lg font-semibold text-foreground mb-1">{staff.name}</h3>
+                  <p className="text-primary font-medium text-sm mb-1">{staff.designation}</p>
+                  <p className="text-muted-foreground text-sm mb-3">{staff.department}</p>
+                  {staff.email && (
+                    <div className="flex items-center justify-center gap-2 text-sm text-muted-foreground">
+                      <Mail className="h-3 w-3" />
+                      <span>{staff.email}</span>
+                    </div>
+                  )}
                 </div>
-                <h3 className="text-lg font-semibold text-foreground mb-1">{staff.name}</h3>
-                <p className="text-primary font-medium text-sm mb-1">{staff.designation}</p>
-                <p className="text-muted-foreground text-sm mb-3">{staff.department}</p>
-                <div className="flex items-center justify-center gap-2 text-sm text-muted-foreground">
-                  <Mail className="h-3 w-3" />
-                  <span>{staff.email}</span>
-                </div>
-              </div>
-            ))}
-          </div>
+              ))}
+            </div>
+          )}
         </section>
 
       </div>
