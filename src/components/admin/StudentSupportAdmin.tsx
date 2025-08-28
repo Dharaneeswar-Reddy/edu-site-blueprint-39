@@ -94,11 +94,11 @@ export default function StudentSupportAdmin() {
   const { gallery, refetch: refetchGallery } = useStudentSupportGallery(selectedService);
 
   const uploadFile = async (file: File, bucket: string, folder: string) => {
-    // Check file size limits
-    const maxSize = bucket === 'admin-uploads' ? 50 * 1024 * 1024 : 10 * 1024 * 1024; // 50MB for documents, 10MB for images
+    // Check file size limits - 500KB for documents, 200KB for images
+    const maxSize = bucket === 'admin-uploads' && folder === 'reports' ? 500 * 1024 : 200 * 1024; // 500KB for docs, 200KB for images
     if (file.size > maxSize) {
-      const sizeLimitMB = maxSize / (1024 * 1024);
-      throw new Error(`File size exceeds ${sizeLimitMB}MB limit. Please choose a smaller file.`);
+      const sizeLimitKB = maxSize / 1024;
+      throw new Error(`File size exceeds ${sizeLimitKB}KB limit. Please choose a smaller file.`);
     }
 
     const fileExt = file.name.split('.').pop();
@@ -681,7 +681,7 @@ export default function StudentSupportAdmin() {
                            onChange={(e) => setReportFile(e.target.files?.[0] || null)}
                            required={!reportForm.id}
                          />
-                         <p className="text-xs text-muted-foreground mt-1">Maximum file size: 50MB. Supported formats: PDF, DOC, DOCX, XLS, XLSX, PPT, PPTX</p>
+                         <p className="text-xs text-muted-foreground mt-1">Maximum file size: 500KB. Supported formats: PDF, DOC, DOCX, XLS, XLSX, PPT, PPTX</p>
                          {reportForm.file_url && (
                            <p className="text-sm text-muted-foreground mt-1">
                              Current file: <a href={reportForm.file_url} target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">View</a>
@@ -846,7 +846,7 @@ export default function StudentSupportAdmin() {
                            accept="image/*"
                            onChange={(e) => setStaffPhoto(e.target.files?.[0] || null)}
                          />
-                         <p className="text-xs text-muted-foreground mt-1">Maximum file size: 10MB. Supported formats: JPG, PNG, GIF, WEBP</p>
+                         <p className="text-xs text-muted-foreground mt-1">Maximum file size: 200KB. Supported formats: JPG, PNG, GIF, WEBP</p>
                          {staffForm.photo_url && (
                            <p className="text-sm text-muted-foreground mt-1">
                              Current photo: <a href={staffForm.photo_url} target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">View</a>
@@ -973,7 +973,7 @@ export default function StudentSupportAdmin() {
                            onChange={(e) => setGalleryImage(e.target.files?.[0] || null)}
                            required={!galleryForm.id}
                          />
-                         <p className="text-xs text-muted-foreground mt-1">Maximum file size: 10MB. Supported formats: JPG, PNG, GIF, WEBP</p>
+                         <p className="text-xs text-muted-foreground mt-1">Maximum file size: 200KB. Supported formats: JPG, PNG, GIF, WEBP</p>
                          {galleryForm.image_url && (
                            <p className="text-sm text-muted-foreground mt-1">
                              Current image: <a href={galleryForm.image_url} target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">View</a>
