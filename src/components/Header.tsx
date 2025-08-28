@@ -112,6 +112,7 @@ const Header = () => {
                     {/* Science */}
                     <div className="px-4 py-1 text-xs font-semibold text-gray-500 uppercase mt-2">Science</div>
                     <Link to="/departments/computerscience" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" onClick={() => setDepartmentDropdown(false)}>Computer Science</Link>
+                    <Link to="/departments/electronics" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" onClick={() => setDepartmentDropdown(false)}>Electronics</Link>
                     <Link to="/departments/physics" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" onClick={() => setDepartmentDropdown(false)}>Physics</Link>
                     <Link to="/departments/chemistry" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" onClick={() => setDepartmentDropdown(false)}>Chemistry</Link>
                     <Link to="/departments/mathematics" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" onClick={() => setDepartmentDropdown(false)}>Mathematics</Link>
@@ -223,6 +224,9 @@ const Header = () => {
               </Link>
               <Link to="/departments/computerscience" className={`pl-12 py-2 ${isActive("/departments/computerscience") ? "bg-primary/10 text-primary font-medium" : "text-gray-600"}`} onClick={closeMobileMenu}>
                 Computer Science
+              </Link>
+              <Link to="/departments/electronics" className={`pl-12 py-2 ${isActive("/departments/electronics") ? "bg-primary/10 text-primary font-medium" : "text-gray-600"}`} onClick={closeMobileMenu}>
+                Electronics
               </Link>
               <Link to="/departments/mathematics" className={`pl-12 py-2 ${isActive("/departments/mathematics") ? "bg-primary/10 text-primary font-medium" : "text-gray-600"}`} onClick={closeMobileMenu}>
                 Mathematics

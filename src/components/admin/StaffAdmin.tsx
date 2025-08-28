@@ -55,6 +55,7 @@ interface Leadership {
 
 const DEPARTMENTS = [
   "Computer Science",
+  "Electronics",
   "Physics", 
   "Chemistry",
   "Mathematics",
