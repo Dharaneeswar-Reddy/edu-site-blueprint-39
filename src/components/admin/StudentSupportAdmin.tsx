@@ -1,23 +1,18 @@
-import { useState, useEffect } from "react";
+import React, { useState } from "react";
+import { useStudentSupportServices, useStudentSupportReports, useStudentSupportStaff, useStudentSupportGallery } from "@/hooks/useStudentSupportServices";
 import { supabase } from "@/integrations/supabase/client";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { Badge } from "@/components/ui/badge";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { toast } from "sonner";
-import { Trash2, Edit, Plus, Upload, Eye } from "lucide-react";
-import { 
-  useStudentSupportServices, 
-  useStudentSupportReports, 
-  useStudentSupportStaff, 
-  useStudentSupportGallery 
-} from "@/hooks/useStudentSupportServices";
+import { Plus, Edit, Trash2, Eye, Upload } from "lucide-react";
 
 const serviceOptions = [
   "JKC", "NCC", "NSS", "Women Empowerment", "ICC", "Gym Sports", 
@@ -61,6 +56,7 @@ export default function StudentSupportAdmin() {
     academic_year: "",
     file_url: ""
   });
+  const [reportFile, setReportFile] = useState<File | null>(null);
   
   // Staff Management
   const [staffForm, setStaffForm] = useState({
@@ -74,6 +70,7 @@ export default function StudentSupportAdmin() {
     photo_url: "",
     display_order: 0
   });
+  const [staffPhoto, setStaffPhoto] = useState<File | null>(null);
   
   // Gallery Management
   const [galleryForm, setGalleryForm] = useState({
@@ -84,6 +81,7 @@ export default function StudentSupportAdmin() {
     image_url: "",
     display_order: 0
   });
+  const [galleryImage, setGalleryImage] = useState<File | null>(null);
 
   const [isServiceDialogOpen, setIsServiceDialogOpen] = useState(false);
   const [isReportDialogOpen, setIsReportDialogOpen] = useState(false);
@@ -94,6 +92,23 @@ export default function StudentSupportAdmin() {
   const { reports, refetch: refetchReports } = useStudentSupportReports(selectedService);
   const { staff, refetch: refetchStaff } = useStudentSupportStaff(selectedService);
   const { gallery, refetch: refetchGallery } = useStudentSupportGallery(selectedService);
+
+  const uploadFile = async (file: File, bucket: string, folder: string) => {
+    const fileExt = file.name.split('.').pop();
+    const fileName = `${folder}/${Date.now()}.${fileExt}`;
+    
+    const { data, error } = await supabase.storage
+      .from(bucket)
+      .upload(fileName, file);
+    
+    if (error) throw error;
+    
+    const { data: { publicUrl } } = supabase.storage
+      .from(bucket)
+      .getPublicUrl(fileName);
+    
+    return publicUrl;
+  };
 
   const handleServiceSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -146,12 +161,24 @@ export default function StudentSupportAdmin() {
     e.preventDefault();
     
     try {
+      let fileUrl = reportForm.file_url;
+      
+      // Upload new file if provided
+      if (reportFile) {
+        fileUrl = await uploadFile(reportFile, 'admin-uploads', 'reports');
+      }
+      
+      if (!fileUrl) {
+        toast.error("Please upload a file");
+        return;
+      }
+      
       const reportData = {
-        service_name: reportForm.service_name,
+        service_name: selectedService,
         title: reportForm.title,
         description: reportForm.description || null,
         academic_year: reportForm.academic_year,
-        file_url: reportForm.file_url
+        file_url: fileUrl
       };
 
       if (reportForm.id) {
@@ -179,6 +206,7 @@ export default function StudentSupportAdmin() {
         academic_year: "",
         file_url: ""
       });
+      setReportFile(null);
       setIsReportDialogOpen(false);
       refetchReports();
     } catch (error) {
@@ -191,14 +219,21 @@ export default function StudentSupportAdmin() {
     e.preventDefault();
     
     try {
+      let photoUrl = staffForm.photo_url;
+      
+      // Upload new photo if provided
+      if (staffPhoto) {
+        photoUrl = await uploadFile(staffPhoto, 'staff-photos', 'student-support');
+      }
+      
       const staffData = {
-        service_name: staffForm.service_name,
+        service_name: selectedService,
         name: staffForm.name,
         designation: staffForm.designation,
         department: staffForm.department || null,
         email: staffForm.email || null,
         phone: staffForm.phone || null,
-        photo_url: staffForm.photo_url || null,
+        photo_url: photoUrl || null,
         display_order: staffForm.display_order
       };
 
@@ -230,6 +265,7 @@ export default function StudentSupportAdmin() {
         photo_url: "",
         display_order: 0
       });
+      setStaffPhoto(null);
       setIsStaffDialogOpen(false);
       refetchStaff();
     } catch (error) {
@@ -242,11 +278,23 @@ export default function StudentSupportAdmin() {
     e.preventDefault();
     
     try {
+      let imageUrl = galleryForm.image_url;
+      
+      // Upload new image if provided
+      if (galleryImage) {
+        imageUrl = await uploadFile(galleryImage, 'gallery-images', 'student-support');
+      }
+      
+      if (!imageUrl) {
+        toast.error("Please upload an image");
+        return;
+      }
+      
       const galleryData = {
-        service_name: galleryForm.service_name,
+        service_name: selectedService,
         title: galleryForm.title,
         description: galleryForm.description || null,
-        image_url: galleryForm.image_url,
+        image_url: imageUrl,
         display_order: galleryForm.display_order
       };
 
@@ -275,6 +323,7 @@ export default function StudentSupportAdmin() {
         image_url: "",
         display_order: 0
       });
+      setGalleryImage(null);
       setIsGalleryDialogOpen(false);
       refetchGallery();
     } catch (error) {
@@ -589,19 +638,6 @@ export default function StudentSupportAdmin() {
                     </DialogHeader>
                     <form onSubmit={handleReportSubmit} className="space-y-4">
                       <div>
-                        <Label htmlFor="service_name">Service Name</Label>
-                        <Select value={reportForm.service_name} onValueChange={(value) => setReportForm(prev => ({ ...prev, service_name: value }))}>
-                          <SelectTrigger>
-                            <SelectValue placeholder="Select service" />
-                          </SelectTrigger>
-                          <SelectContent>
-                            {serviceOptions.map(option => (
-                              <SelectItem key={option} value={option}>{option}</SelectItem>
-                            ))}
-                          </SelectContent>
-                        </Select>
-                      </div>
-                      <div>
                         <Label htmlFor="title">Title</Label>
                         <Input
                           id="title"
@@ -621,14 +657,19 @@ export default function StudentSupportAdmin() {
                         />
                       </div>
                       <div>
-                        <Label htmlFor="file_url">File URL</Label>
+                        <Label htmlFor="report_file">Upload Document</Label>
                         <Input
-                          id="file_url"
-                          value={reportForm.file_url}
-                          onChange={(e) => setReportForm(prev => ({ ...prev, file_url: e.target.value }))}
-                          placeholder="https://..."
-                          required
+                          id="report_file"
+                          type="file"
+                          accept=".pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx"
+                          onChange={(e) => setReportFile(e.target.files?.[0] || null)}
+                          required={!reportForm.id}
                         />
+                        {reportForm.file_url && (
+                          <p className="text-sm text-muted-foreground mt-1">
+                            Current file: <a href={reportForm.file_url} target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">View</a>
+                          </p>
+                        )}
                       </div>
                       <div>
                         <Label htmlFor="description">Description</Label>
@@ -738,19 +779,6 @@ export default function StudentSupportAdmin() {
                     </DialogHeader>
                     <form onSubmit={handleStaffSubmit} className="space-y-4">
                       <div>
-                        <Label htmlFor="service_name">Service Name</Label>
-                        <Select value={staffForm.service_name} onValueChange={(value) => setStaffForm(prev => ({ ...prev, service_name: value }))}>
-                          <SelectTrigger>
-                            <SelectValue placeholder="Select service" />
-                          </SelectTrigger>
-                          <SelectContent>
-                            {serviceOptions.map(option => (
-                              <SelectItem key={option} value={option}>{option}</SelectItem>
-                            ))}
-                          </SelectContent>
-                        </Select>
-                      </div>
-                      <div>
                         <Label htmlFor="name">Name</Label>
                         <Input
                           id="name"
@@ -794,13 +822,18 @@ export default function StudentSupportAdmin() {
                         />
                       </div>
                       <div>
-                        <Label htmlFor="photo_url">Photo URL</Label>
+                        <Label htmlFor="staff_photo">Upload Photo</Label>
                         <Input
-                          id="photo_url"
-                          value={staffForm.photo_url}
-                          onChange={(e) => setStaffForm(prev => ({ ...prev, photo_url: e.target.value }))}
-                          placeholder="https://..."
+                          id="staff_photo"
+                          type="file"
+                          accept="image/*"
+                          onChange={(e) => setStaffPhoto(e.target.files?.[0] || null)}
                         />
+                        {staffForm.photo_url && (
+                          <p className="text-sm text-muted-foreground mt-1">
+                            Current photo: <a href={staffForm.photo_url} target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">View</a>
+                          </p>
+                        )}
                       </div>
                       <div>
                         <Label htmlFor="display_order">Display Order</Label>
@@ -905,19 +938,6 @@ export default function StudentSupportAdmin() {
                     </DialogHeader>
                     <form onSubmit={handleGallerySubmit} className="space-y-4">
                       <div>
-                        <Label htmlFor="service_name">Service Name</Label>
-                        <Select value={galleryForm.service_name} onValueChange={(value) => setGalleryForm(prev => ({ ...prev, service_name: value }))}>
-                          <SelectTrigger>
-                            <SelectValue placeholder="Select service" />
-                          </SelectTrigger>
-                          <SelectContent>
-                            {serviceOptions.map(option => (
-                              <SelectItem key={option} value={option}>{option}</SelectItem>
-                            ))}
-                          </SelectContent>
-                        </Select>
-                      </div>
-                      <div>
                         <Label htmlFor="title">Title</Label>
                         <Input
                           id="title"
@@ -927,14 +947,19 @@ export default function StudentSupportAdmin() {
                         />
                       </div>
                       <div>
-                        <Label htmlFor="image_url">Image URL</Label>
+                        <Label htmlFor="gallery_image">Upload Image</Label>
                         <Input
-                          id="image_url"
-                          value={galleryForm.image_url}
-                          onChange={(e) => setGalleryForm(prev => ({ ...prev, image_url: e.target.value }))}
-                          placeholder="https://..."
-                          required
+                          id="gallery_image"
+                          type="file"
+                          accept="image/*"
+                          onChange={(e) => setGalleryImage(e.target.files?.[0] || null)}
+                          required={!galleryForm.id}
                         />
+                        {galleryForm.image_url && (
+                          <p className="text-sm text-muted-foreground mt-1">
+                            Current image: <a href={galleryForm.image_url} target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">View</a>
+                          </p>
+                        )}
                       </div>
                       <div>
                         <Label htmlFor="description">Description</Label>
