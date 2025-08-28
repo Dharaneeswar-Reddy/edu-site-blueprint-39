@@ -7,8 +7,28 @@ import { Calendar, Clock, Users, BookOpen, Award, Download, Globe, Search, Troph
 import { useEffect, useState } from "react";
 const Library = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const heroImages = ["/lovable-uploads/a4a3fced-9c78-4413-96d9-6731978af3fa.png", "/lovable-uploads/467dedf6-843d-40ba-a1e0-8ede2a0b2f47.png", "/lovable-uploads/b521958d-dc1c-4b8f-9c88-a1b4d65764c0.png", "/lovable-uploads/39e3f7c9-ef72-457e-81a5-d629357d4453.png", "/lovable-uploads/d10f870e-703e-4026-a4c5-1440977f354a.png"];
-  const galleryImages = ["/lovable-uploads/a4a3fced-9c78-4413-96d9-6731978af3fa.png", "/lovable-uploads/467dedf6-843d-40ba-a1e0-8ede2a0b2f47.png", "/lovable-uploads/b521958d-dc1c-4b8f-9c88-a1b4d65764c0.png", "/lovable-uploads/39e3f7c9-ef72-457e-81a5-d629357d4453.png", "/lovable-uploads/d10f870e-703e-4026-a4c5-1440977f354a.png"];
+  const heroImages = [
+    "/lovable-uploads/65f4b0e6-34a6-4a76-89d9-2ad5814ea916.png", // Library building exterior
+    "/lovable-uploads/2966f044-90be-41d4-960a-8ecc255707ab.png", // Talapatra Grandhamulu
+    "/lovable-uploads/69a5922c-8de7-45f3-a479-e4b0b6f58065.png", // Services chart
+    "/lovable-uploads/8d4efd31-f8f9-4a60-baa8-79973940c0c1.png", // Facilities collage
+    "/lovable-uploads/fb4a7eeb-4035-49a1-879f-ccd9d8aee887.png", // Interior views
+    "/lovable-uploads/4c46f975-52e2-4da0-9a51-499a4307801b.png", // Best library award
+    "/lovable-uploads/2491335b-5c00-4304-b5e3-c98c1b8c78f3.png", // Librarian in reading room
+    "/lovable-uploads/ed67eb6a-8709-4d75-93bf-30663eb27c7e.png", // Library reading areas
+    "/lovable-uploads/deb710e1-e20c-4c6d-bfdb-9474b1aebb4d.png"  // Amaravathi Stupa
+  ];
+  const galleryImages = [
+    "/lovable-uploads/65f4b0e6-34a6-4a76-89d9-2ad5814ea916.png", // Library building exterior
+    "/lovable-uploads/2966f044-90be-41d4-960a-8ecc255707ab.png", // Talapatra Grandhamulu
+    "/lovable-uploads/69a5922c-8de7-45f3-a479-e4b0b6f58065.png", // Services chart
+    "/lovable-uploads/8d4efd31-f8f9-4a60-baa8-79973940c0c1.png", // Facilities collage
+    "/lovable-uploads/fb4a7eeb-4035-49a1-879f-ccd9d8aee887.png", // Interior views
+    "/lovable-uploads/4c46f975-52e2-4da0-9a51-499a4307801b.png", // Best library award
+    "/lovable-uploads/2491335b-5c00-4304-b5e3-c98c1b8c78f3.png", // Librarian in reading room
+    "/lovable-uploads/ed67eb6a-8709-4d75-93bf-30663eb27c7e.png", // Library reading areas
+    "/lovable-uploads/deb710e1-e20c-4c6d-bfdb-9474b1aebb4d.png"  // Amaravathi Stupa
+  ];
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentImageIndex(prevIndex => prevIndex === heroImages.length - 1 ? 0 : prevIndex + 1);
@@ -493,7 +513,7 @@ const Library = () => {
           <CardContent>
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 items-center">
               <div className="lg:col-span-1">
-                <img src="/lovable-uploads/75171aa8-c702-4c3a-a322-9239b933acff.png" alt="Sri Sajja Srinivasa Rao - Chief Librarian" className="w-full max-w-sm mx-auto rounded-lg shadow-md" />
+                <img src="/lovable-uploads/ab0cf371-3554-4dd8-8788-77c2c2ec991d.png" alt="Sri Sajja Srinivasa Rao - Chief Librarian" className="w-full max-w-sm mx-auto rounded-lg shadow-md" />
               </div>
               <div className="lg:col-span-2 space-y-4">
                 <div>
