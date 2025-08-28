@@ -94,14 +94,30 @@ export default function StudentSupportAdmin() {
   const { gallery, refetch: refetchGallery } = useStudentSupportGallery(selectedService);
 
   const uploadFile = async (file: File, bucket: string, folder: string) => {
+    // Check file size limits
+    const maxSize = bucket === 'admin-uploads' ? 50 * 1024 * 1024 : 10 * 1024 * 1024; // 50MB for documents, 10MB for images
+    if (file.size > maxSize) {
+      const sizeLimitMB = maxSize / (1024 * 1024);
+      throw new Error(`File size exceeds ${sizeLimitMB}MB limit. Please choose a smaller file.`);
+    }
+
     const fileExt = file.name.split('.').pop();
     const fileName = `${folder}/${Date.now()}.${fileExt}`;
     
     const { data, error } = await supabase.storage
       .from(bucket)
-      .upload(fileName, file);
+      .upload(fileName, file, {
+        cacheControl: '3600',
+        upsert: false
+      });
     
-    if (error) throw error;
+    if (error) {
+      console.error('Upload error:', error);
+      if (error.message.includes('maximum allowed size')) {
+        throw new Error('File size exceeds the maximum allowed limit. Please choose a smaller file.');
+      }
+      throw error;
+    }
     
     const { data: { publicUrl } } = supabase.storage
       .from(bucket)
@@ -209,9 +225,9 @@ export default function StudentSupportAdmin() {
       setReportFile(null);
       setIsReportDialogOpen(false);
       refetchReports();
-    } catch (error) {
+    } catch (error: any) {
       console.error("Error saving report:", error);
-      toast.error("Failed to save report");
+      toast.error(error.message || "Failed to save report");
     }
   };
 
@@ -223,7 +239,7 @@ export default function StudentSupportAdmin() {
       
       // Upload new photo if provided
       if (staffPhoto) {
-        photoUrl = await uploadFile(staffPhoto, 'staff-photos', 'student-support');
+        photoUrl = await uploadFile(staffPhoto, 'admin-uploads', 'staff');
       }
       
       const staffData = {
@@ -268,9 +284,9 @@ export default function StudentSupportAdmin() {
       setStaffPhoto(null);
       setIsStaffDialogOpen(false);
       refetchStaff();
-    } catch (error) {
+    } catch (error: any) {
       console.error("Error saving staff:", error);
-      toast.error("Failed to save staff");
+      toast.error(error.message || "Failed to save staff");
     }
   };
 
@@ -282,7 +298,7 @@ export default function StudentSupportAdmin() {
       
       // Upload new image if provided
       if (galleryImage) {
-        imageUrl = await uploadFile(galleryImage, 'gallery-images', 'student-support');
+        imageUrl = await uploadFile(galleryImage, 'admin-uploads', 'gallery');
       }
       
       if (!imageUrl) {
@@ -326,9 +342,9 @@ export default function StudentSupportAdmin() {
       setGalleryImage(null);
       setIsGalleryDialogOpen(false);
       refetchGallery();
-    } catch (error) {
+    } catch (error: any) {
       console.error("Error saving gallery item:", error);
-      toast.error("Failed to save gallery item");
+      toast.error(error.message || "Failed to save gallery item");
     }
   };
 
@@ -657,19 +673,20 @@ export default function StudentSupportAdmin() {
                         />
                       </div>
                       <div>
-                        <Label htmlFor="report_file">Upload Document</Label>
-                        <Input
-                          id="report_file"
-                          type="file"
-                          accept=".pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx"
-                          onChange={(e) => setReportFile(e.target.files?.[0] || null)}
-                          required={!reportForm.id}
-                        />
-                        {reportForm.file_url && (
-                          <p className="text-sm text-muted-foreground mt-1">
-                            Current file: <a href={reportForm.file_url} target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">View</a>
-                          </p>
-                        )}
+                         <Label htmlFor="report_file">Upload Document</Label>
+                         <Input
+                           id="report_file"
+                           type="file"
+                           accept=".pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx"
+                           onChange={(e) => setReportFile(e.target.files?.[0] || null)}
+                           required={!reportForm.id}
+                         />
+                         <p className="text-xs text-muted-foreground mt-1">Maximum file size: 50MB. Supported formats: PDF, DOC, DOCX, XLS, XLSX, PPT, PPTX</p>
+                         {reportForm.file_url && (
+                           <p className="text-sm text-muted-foreground mt-1">
+                             Current file: <a href={reportForm.file_url} target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">View</a>
+                           </p>
+                         )}
                       </div>
                       <div>
                         <Label htmlFor="description">Description</Label>
@@ -822,18 +839,19 @@ export default function StudentSupportAdmin() {
                         />
                       </div>
                       <div>
-                        <Label htmlFor="staff_photo">Upload Photo</Label>
-                        <Input
-                          id="staff_photo"
-                          type="file"
-                          accept="image/*"
-                          onChange={(e) => setStaffPhoto(e.target.files?.[0] || null)}
-                        />
-                        {staffForm.photo_url && (
-                          <p className="text-sm text-muted-foreground mt-1">
-                            Current photo: <a href={staffForm.photo_url} target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">View</a>
-                          </p>
-                        )}
+                         <Label htmlFor="staff_photo">Upload Photo</Label>
+                         <Input
+                           id="staff_photo"
+                           type="file"
+                           accept="image/*"
+                           onChange={(e) => setStaffPhoto(e.target.files?.[0] || null)}
+                         />
+                         <p className="text-xs text-muted-foreground mt-1">Maximum file size: 10MB. Supported formats: JPG, PNG, GIF, WEBP</p>
+                         {staffForm.photo_url && (
+                           <p className="text-sm text-muted-foreground mt-1">
+                             Current photo: <a href={staffForm.photo_url} target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">View</a>
+                           </p>
+                         )}
                       </div>
                       <div>
                         <Label htmlFor="display_order">Display Order</Label>
@@ -947,19 +965,20 @@ export default function StudentSupportAdmin() {
                         />
                       </div>
                       <div>
-                        <Label htmlFor="gallery_image">Upload Image</Label>
-                        <Input
-                          id="gallery_image"
-                          type="file"
-                          accept="image/*"
-                          onChange={(e) => setGalleryImage(e.target.files?.[0] || null)}
-                          required={!galleryForm.id}
-                        />
-                        {galleryForm.image_url && (
-                          <p className="text-sm text-muted-foreground mt-1">
-                            Current image: <a href={galleryForm.image_url} target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">View</a>
-                          </p>
-                        )}
+                         <Label htmlFor="gallery_image">Upload Image</Label>
+                         <Input
+                           id="gallery_image"
+                           type="file"
+                           accept="image/*"
+                           onChange={(e) => setGalleryImage(e.target.files?.[0] || null)}
+                           required={!galleryForm.id}
+                         />
+                         <p className="text-xs text-muted-foreground mt-1">Maximum file size: 10MB. Supported formats: JPG, PNG, GIF, WEBP</p>
+                         {galleryForm.image_url && (
+                           <p className="text-sm text-muted-foreground mt-1">
+                             Current image: <a href={galleryForm.image_url} target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">View</a>
+                           </p>
+                         )}
                       </div>
                       <div>
                         <Label htmlFor="description">Description</Label>
