@@ -87,6 +87,8 @@ import EcoClub from "./pages/student-support/EcoClub";
 // Admin Components
 import AnnouncementsAdmin from "@/components/admin/AnnouncementsAdmin";
 import ExaminationDocumentsAdmin from "@/components/admin/ExaminationDocumentsAdmin";
+import IqacAdmin from "@/components/admin/IqacAdmin";
+import StaffAdmin from "@/components/admin/StaffAdmin";
 import AdminLayout from "@/components/admin/AdminLayout";
 
 const queryClient = new QueryClient();
@@ -168,6 +170,16 @@ const App = () => (
             <Route path="/admin/examination" element={
               <AdminLayout>
                 <ExaminationDocumentsAdmin />
+              </AdminLayout>
+            } />
+            <Route path="/admin/iqac" element={
+              <AdminLayout>
+                <IqacAdmin />
+              </AdminLayout>
+            } />
+            <Route path="/admin/staff" element={
+              <AdminLayout>
+                <StaffAdmin />
               </AdminLayout>
             } />
             

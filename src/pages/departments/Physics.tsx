@@ -4,9 +4,12 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Calendar, Clock, Users, BookOpen, Award, Download, Mail } from "lucide-react";
 import { useEffect, useState } from "react";
+import useStaff from "@/hooks/useStaff";
+import StaffCard from "@/components/StaffCard";
 
 const Physics = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const { staff: departmentStaff, loading: staffLoading } = useStaff("Physics", "teaching");
 
   const heroImages = [
     "/lovable-uploads/d85fb3d3-b73a-4321-ba55-69d5399a79a5.png",
@@ -233,58 +236,23 @@ const Physics = () => {
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              <div className="bg-card rounded-lg shadow-sm border p-6 text-center hover:shadow-md transition-shadow">
-                <div className="mb-4">
-                  <img 
-                    src="/lovable-uploads/d85fb3d3-b73a-4321-ba55-69d5399a79a5.png" 
-                    alt="Dr. Ramesh Patel"
-                    className="w-24 h-24 rounded-full mx-auto object-cover shadow-md"
-                  />
-                </div>
-                <h3 className="text-lg font-semibold text-foreground mb-1">Dr. Ramesh Patel</h3>
-                <p className="text-primary font-medium text-sm mb-1">Head & Professor</p>
-                <p className="text-muted-foreground text-sm mb-3">Physics Department</p>
-                <div className="flex items-center justify-center gap-2 text-sm text-muted-foreground">
-                  <Mail className="h-3 w-3" />
-                  <span>ramesh.patel@svrmc.edu.in</span>
-                </div>
+            {staffLoading ? (
+              <div className="text-center py-8">
+                <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary mx-auto mb-4"></div>
+                <p className="text-muted-foreground">Loading staff information...</p>
               </div>
-              
-              <div className="bg-card rounded-lg shadow-sm border p-6 text-center hover:shadow-md transition-shadow">
-                <div className="mb-4">
-                  <img 
-                    src="/lovable-uploads/a64e202d-8654-4eb7-9a72-956203b85f88.png" 
-                    alt="Dr. Anita Reddy"
-                    className="w-24 h-24 rounded-full mx-auto object-cover shadow-md"
-                  />
-                </div>
-                <h3 className="text-lg font-semibold text-foreground mb-1">Dr. Anita Reddy</h3>
-                <p className="text-primary font-medium text-sm mb-1">Associate Professor</p>
-                <p className="text-muted-foreground text-sm mb-3">Physics Department</p>
-                <div className="flex items-center justify-center gap-2 text-sm text-muted-foreground">
-                  <Mail className="h-3 w-3" />
-                  <span>anita.reddy@svrmc.edu.in</span>
-                </div>
+            ) : departmentStaff.length > 0 ? (
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {departmentStaff.map((staff) => (
+                  <StaffCard key={staff.id} staff={staff} />
+                ))}
               </div>
-              
-              <div className="bg-card rounded-lg shadow-sm border p-6 text-center hover:shadow-md transition-shadow">
-                <div className="mb-4">
-                  <img 
-                    src="/lovable-uploads/52a8e7b1-5b22-4a0c-b1ec-450f99bfa9bb.png" 
-                    alt="Dr. Suresh Kumar"
-                    className="w-24 h-24 rounded-full mx-auto object-cover shadow-md"
-                  />
-                </div>
-                <h3 className="text-lg font-semibold text-foreground mb-1">Dr. Suresh Kumar</h3>
-                <p className="text-primary font-medium text-sm mb-1">Assistant Professor</p>
-                <p className="text-muted-foreground text-sm mb-3">Physics Department</p>
-                <div className="flex items-center justify-center gap-2 text-sm text-muted-foreground">
-                  <Mail className="h-3 w-3" />
-                  <span>suresh.kumar@svrmc.edu.in</span>
-                </div>
+            ) : (
+              <div className="text-center py-8 text-muted-foreground">
+                <Users className="h-16 w-16 mx-auto mb-4 opacity-20" />
+                <p>No staff information available at the moment.</p>
               </div>
-            </div>
+            )}
           </CardContent>
         </Card>
 
