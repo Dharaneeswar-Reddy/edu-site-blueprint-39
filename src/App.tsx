@@ -28,6 +28,7 @@ import Results from "./pages/Results";
 import ExamSchedule from "./pages/ExamSchedule";
 import Scholarships from "./pages/Scholarships";
 import ComputerScience from "./pages/ComputerScience";
+import Electronics from "./pages/Electronics";
 import Staff from "./pages/Staff";
 import ExaminationCell from "./pages/ExaminationCell";
 import Library from "./pages/departments/Library";
@@ -122,6 +123,7 @@ const App = () => (
             <Route path="/exam-schedule" element={<ExamSchedule />} />
             <Route path="/scholarships" element={<Scholarships />} />
             <Route path="/departments/computerscience" element={<ComputerScience />} />
+            <Route path="/departments/electronics" element={<Electronics />} />
             <Route path="/departments/physics" element={<Physics />} />
             <Route path="/departments/chemistry" element={<Chemistry />} />
             <Route path="/departments/mathematics" element={<Mathematics />} />

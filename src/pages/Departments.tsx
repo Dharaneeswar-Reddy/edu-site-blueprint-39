@@ -56,6 +56,12 @@ const Departments = () => {
         programs: ["B.Sc", "M.Sc", "Ph.D"]
       },
       {
+        id: "electronics",
+        name: "Electronics",
+        description: "Study of electronic systems, circuits, communication technology and embedded systems.",
+        programs: ["B.Sc", "M.Sc", "Ph.D"]
+      },
+      {
         id: "botany",
         name: "Botany",
         description: "Study of plant life, plant structure, growth, reproduction, and evolution.",
