@@ -43,7 +43,8 @@ const DEPARTMENTS = [
   "Commerce",
   "Botany",
   "Zoology",
-  "Physical Education"
+  "Physical Education",
+  "Library"
 ];
 
 const DepartmentsAdmin = () => {
