@@ -68,7 +68,7 @@ const Header = () => {
           <Link to="/" className="flex items-center gap-2">
             <img src="/lovable-uploads/cae96e5a-5074-4c0c-bf35-1a2e195983a6.png" alt="SVRMC 50 Years Excellence Logo" className="h-8 w-8" />
             <div className={`flex flex-col ${scrolled ? "text-college-blue" : "text-white"}`}>
-              <span className="font-bold text-xs md:text-sm">Shri Velagapudi Ramakrishna Memorial College</span>
+              <span className="font-bold text-xs md:text-sm">Shree Velagapudi Ramakrishna Memorial College</span>
               <span className="text-xs hidden sm:block">Private. Aided College Sponsored by R.T.E.I. Society</span>
             </div>
           </Link>

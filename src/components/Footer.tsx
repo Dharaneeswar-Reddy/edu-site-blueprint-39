@@ -8,7 +8,7 @@ const Footer = () => {
             <Link to="/" className="flex items-center gap-3 mb-4">
               <img src="/lovable-uploads/ad0dcea6-54cc-42ce-85a2-6309e6d3f909.png" alt="SVRMC 50 Years Excellence Logo" className="h-12 w-12" />
               <div className="flex flex-col">
-                <span className="font-bold text-sm">Shri Velagapudi Ramakrishna</span>
+                <span className="font-bold text-sm">Shree Velagapudi Ramakrishna</span>
                 <span className="font-bold text-sm">Memorial College</span>
               </div>
             </Link>
