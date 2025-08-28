@@ -7,27 +7,41 @@ import { Calendar, Clock, Users, BookOpen, Award, Download, Globe, Search, Troph
 import { useEffect, useState } from "react";
 const Library = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const heroImages = [
-    "/lovable-uploads/65f4b0e6-34a6-4a76-89d9-2ad5814ea916.png", // Library building exterior
-    "/lovable-uploads/2966f044-90be-41d4-960a-8ecc255707ab.png", // Talapatra Grandhamulu
-    "/lovable-uploads/69a5922c-8de7-45f3-a479-e4b0b6f58065.png", // Services chart
-    "/lovable-uploads/8d4efd31-f8f9-4a60-baa8-79973940c0c1.png", // Facilities collage
-    "/lovable-uploads/fb4a7eeb-4035-49a1-879f-ccd9d8aee887.png", // Interior views
-    "/lovable-uploads/4c46f975-52e2-4da0-9a51-499a4307801b.png", // Best library award
-    "/lovable-uploads/2491335b-5c00-4304-b5e3-c98c1b8c78f3.png", // Librarian in reading room
-    "/lovable-uploads/ed67eb6a-8709-4d75-93bf-30663eb27c7e.png", // Library reading areas
-    "/lovable-uploads/deb710e1-e20c-4c6d-bfdb-9474b1aebb4d.png"  // Amaravathi Stupa
+  const heroImages = ["/lovable-uploads/65f4b0e6-34a6-4a76-89d9-2ad5814ea916.png",
+  // Library building exterior
+  "/lovable-uploads/2966f044-90be-41d4-960a-8ecc255707ab.png",
+  // Talapatra Grandhamulu
+  "/lovable-uploads/69a5922c-8de7-45f3-a479-e4b0b6f58065.png",
+  // Services chart
+  "/lovable-uploads/8d4efd31-f8f9-4a60-baa8-79973940c0c1.png",
+  // Facilities collage
+  "/lovable-uploads/fb4a7eeb-4035-49a1-879f-ccd9d8aee887.png",
+  // Interior views
+  "/lovable-uploads/4c46f975-52e2-4da0-9a51-499a4307801b.png",
+  // Best library award
+  "/lovable-uploads/2491335b-5c00-4304-b5e3-c98c1b8c78f3.png",
+  // Librarian in reading room
+  "/lovable-uploads/ed67eb6a-8709-4d75-93bf-30663eb27c7e.png",
+  // Library reading areas
+  "/lovable-uploads/deb710e1-e20c-4c6d-bfdb-9474b1aebb4d.png" // Amaravathi Stupa
   ];
-  const galleryImages = [
-    "/lovable-uploads/65f4b0e6-34a6-4a76-89d9-2ad5814ea916.png", // Library building exterior
-    "/lovable-uploads/2966f044-90be-41d4-960a-8ecc255707ab.png", // Talapatra Grandhamulu
-    "/lovable-uploads/69a5922c-8de7-45f3-a479-e4b0b6f58065.png", // Services chart
-    "/lovable-uploads/8d4efd31-f8f9-4a60-baa8-79973940c0c1.png", // Facilities collage
-    "/lovable-uploads/fb4a7eeb-4035-49a1-879f-ccd9d8aee887.png", // Interior views
-    "/lovable-uploads/4c46f975-52e2-4da0-9a51-499a4307801b.png", // Best library award
-    "/lovable-uploads/2491335b-5c00-4304-b5e3-c98c1b8c78f3.png", // Librarian in reading room
-    "/lovable-uploads/ed67eb6a-8709-4d75-93bf-30663eb27c7e.png", // Library reading areas
-    "/lovable-uploads/deb710e1-e20c-4c6d-bfdb-9474b1aebb4d.png"  // Amaravathi Stupa
+  const galleryImages = ["/lovable-uploads/65f4b0e6-34a6-4a76-89d9-2ad5814ea916.png",
+  // Library building exterior
+  "/lovable-uploads/2966f044-90be-41d4-960a-8ecc255707ab.png",
+  // Talapatra Grandhamulu
+  "/lovable-uploads/69a5922c-8de7-45f3-a479-e4b0b6f58065.png",
+  // Services chart
+  "/lovable-uploads/8d4efd31-f8f9-4a60-baa8-79973940c0c1.png",
+  // Facilities collage
+  "/lovable-uploads/fb4a7eeb-4035-49a1-879f-ccd9d8aee887.png",
+  // Interior views
+  "/lovable-uploads/4c46f975-52e2-4da0-9a51-499a4307801b.png",
+  // Best library award
+  "/lovable-uploads/2491335b-5c00-4304-b5e3-c98c1b8c78f3.png",
+  // Librarian in reading room
+  "/lovable-uploads/ed67eb6a-8709-4d75-93bf-30663eb27c7e.png",
+  // Library reading areas
+  "/lovable-uploads/deb710e1-e20c-4c6d-bfdb-9474b1aebb4d.png" // Amaravathi Stupa
   ];
   useEffect(() => {
     const interval = setInterval(() => {
@@ -35,136 +49,119 @@ const Library = () => {
     }, 3000);
     return () => clearInterval(interval);
   }, [heroImages.length]);
-  const libraryHoldings = [
-    {
-      category: "English",
-      books: 3176,
-      bookBank: 0,
-      genLib: 3176,
-      titleWise: 1779,
-      type: "General Literature & Language Books"
-    },
-    {
-      category: "Telugu", 
-      books: 5903,
-      bookBank: 0,
-      genLib: 5903,
-      titleWise: 3110,
-      type: "Telugu Literature & Culture Books"
-    },
-    {
-      category: "Hindi",
-      books: 1214,
-      bookBank: 0,
-      genLib: 1214,
-      titleWise: 551,
-      type: "Hindi Literature & Language Books"
-    },
-    {
-      category: "Commerce",
-      books: 3050,
-      bookBank: 543,
-      genLib: 2507,
-      titleWise: 1342,
-      type: "Business & Commerce Books"
-    },
-    {
-      category: "Economics",
-      books: 1708,
-      bookBank: 412,
-      genLib: 1296,
-      titleWise: 798,
-      type: "Economics & Policy Books"
-    },
-    {
-      category: "Political Science",
-      books: 1642,
-      bookBank: 326,
-      genLib: 1316,
-      titleWise: 893,
-      type: "Political Science & Governance Books"
-    },
-    {
-      category: "History",
-      books: 2593,
-      bookBank: 323,
-      genLib: 2270,
-      titleWise: 1220,
-      type: "History & Heritage Books"
-    },
-    {
-      category: "Mathematics",
-      books: 2245,
-      bookBank: 143,
-      genLib: 2102,
-      titleWise: 1033,
-      type: "Mathematics & Statistics Books"
-    },
-    {
-      category: "Computer Science",
-      books: 1247,
-      bookBank: 208,
-      genLib: 1039,
-      titleWise: 500,
-      type: "Computer Science & IT Books"
-    },
-    {
-      category: "Physics",
-      books: 2470,
-      bookBank: 382,
-      genLib: 2088,
-      titleWise: 1230,
-      type: "Physics & Applied Sciences Books"
-    },
-    {
-      category: "Electronics",
-      books: 1002,
-      bookBank: 320,
-      genLib: 682,
-      titleWise: 541,
-      type: "Electronics & Engineering Books"
-    },
-    {
-      category: "Chemistry",
-      books: 3091,
-      bookBank: 324,
-      genLib: 2767,
-      titleWise: 1229,
-      type: "Chemistry & Chemical Sciences Books"
-    },
-    {
-      category: "Botany",
-      books: 1555,
-      bookBank: 250,
-      genLib: 1305,
-      titleWise: 855,
-      type: "Botanical Sciences Books"
-    },
-    {
-      category: "Zoology",
-      books: 1895,
-      bookBank: 260,
-      genLib: 1635,
-      titleWise: 894,
-      type: "Zoological Sciences Books"
-    },
-    {
-      category: "Biology",
-      books: 208,
-      bookBank: 0,
-      genLib: 208,
-      titleWise: 127,
-      type: "General Biology Books"
-    },
-    {
-      category: "Reference & General",
-      books: 12141,
-      bookBank: 0,
-      genLib: 12141,
-      titleWise: 8273,
-      type: "Reference Materials & General Collection"
-    }
-  ];
+  const libraryHoldings = [{
+    category: "English",
+    books: 3176,
+    bookBank: 0,
+    genLib: 3176,
+    titleWise: 1779,
+    type: "General Literature & Language Books"
+  }, {
+    category: "Telugu",
+    books: 5903,
+    bookBank: 0,
+    genLib: 5903,
+    titleWise: 3110,
+    type: "Telugu Literature & Culture Books"
+  }, {
+    category: "Hindi",
+    books: 1214,
+    bookBank: 0,
+    genLib: 1214,
+    titleWise: 551,
+    type: "Hindi Literature & Language Books"
+  }, {
+    category: "Commerce",
+    books: 3050,
+    bookBank: 543,
+    genLib: 2507,
+    titleWise: 1342,
+    type: "Business & Commerce Books"
+  }, {
+    category: "Economics",
+    books: 1708,
+    bookBank: 412,
+    genLib: 1296,
+    titleWise: 798,
+    type: "Economics & Policy Books"
+  }, {
+    category: "Political Science",
+    books: 1642,
+    bookBank: 326,
+    genLib: 1316,
+    titleWise: 893,
+    type: "Political Science & Governance Books"
+  }, {
+    category: "History",
+    books: 2593,
+    bookBank: 323,
+    genLib: 2270,
+    titleWise: 1220,
+    type: "History & Heritage Books"
+  }, {
+    category: "Mathematics",
+    books: 2245,
+    bookBank: 143,
+    genLib: 2102,
+    titleWise: 1033,
+    type: "Mathematics & Statistics Books"
+  }, {
+    category: "Computer Science",
+    books: 1247,
+    bookBank: 208,
+    genLib: 1039,
+    titleWise: 500,
+    type: "Computer Science & IT Books"
+  }, {
+    category: "Physics",
+    books: 2470,
+    bookBank: 382,
+    genLib: 2088,
+    titleWise: 1230,
+    type: "Physics & Applied Sciences Books"
+  }, {
+    category: "Electronics",
+    books: 1002,
+    bookBank: 320,
+    genLib: 682,
+    titleWise: 541,
+    type: "Electronics & Engineering Books"
+  }, {
+    category: "Chemistry",
+    books: 3091,
+    bookBank: 324,
+    genLib: 2767,
+    titleWise: 1229,
+    type: "Chemistry & Chemical Sciences Books"
+  }, {
+    category: "Botany",
+    books: 1555,
+    bookBank: 250,
+    genLib: 1305,
+    titleWise: 855,
+    type: "Botanical Sciences Books"
+  }, {
+    category: "Zoology",
+    books: 1895,
+    bookBank: 260,
+    genLib: 1635,
+    titleWise: 894,
+    type: "Zoological Sciences Books"
+  }, {
+    category: "Biology",
+    books: 208,
+    bookBank: 0,
+    genLib: 208,
+    titleWise: 127,
+    type: "General Biology Books"
+  }, {
+    category: "Reference & General",
+    books: 12141,
+    bookBank: 0,
+    genLib: 12141,
+    titleWise: 8273,
+    type: "Reference Materials & General Collection"
+  }];
   const libraryStaff = [{
     name: "Dr. Priya Sharma",
     designation: "Chief Librarian",
@@ -190,11 +187,7 @@ const Library = () => {
     experience: "12 years",
     photo: "/lovable-uploads/male-professor-2.jpg"
   }];
-  const achievements = [
-    "Best Library Award 2016", 
-    "Library-attached Archaeological Museum, showcasing precious historical treasures, including the original Amaravathi Stupa, officially registered with the National Museum, Delhi. With government permission granted to establish the museum, it serves as a center of learning and heritage, inspiring students, researchers, and the community to explore India's rich cultural legacy.", 
-    "Rare collection of talapatrha grandhas from 16th century of padma puranamu and bhagavadgeetha written by 'pellamaram taata charyulu'"
-  ];
+  const achievements = ["Best Library Award 2016", "Library-attached Archaeological Museum, showcasing precious historical treasures, including the original Amaravathi Stupa, officially registered with the National Museum, Delhi. With government permission granted to establish the museum, it serves as a center of learning and heritage, inspiring students, researchers, and the community to explore India's rich cultural legacy.", "Rare collection of talapatrha grandhas from 16th century of padma puranamu and bhagavadgeetha written by 'pellamaram taata charyulu'"];
   return <PageLayout title="Central Library" description="A comprehensive learning resource center fostering knowledge, research, and academic excellence for the entire college community.">
       <div className="space-y-8">
         
@@ -204,7 +197,7 @@ const Library = () => {
           <div className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
             <div className="text-center text-white">
               <h1 className="text-4xl md:text-6xl font-bold mb-4">Central Library</h1>
-              <p className="text-xl md:text-2xl mb-4">The pride of our college infrastructure is our "magnificent library building Attached with Archaeological Museum and the invaluable volumes in it". It's a comprehensive learning resource center fostering knowledge, research, and academic excellence for the entire college community.</p>
+              <p className="text-xl md:text-2xl mb-4"></p>
             </div>
           </div>
         </div>
@@ -323,8 +316,7 @@ const Library = () => {
                 </TableRow>
               </TableHeader>
               <TableBody>
-                {libraryHoldings.map((item, index) => (
-                  <TableRow key={index}>
+                {libraryHoldings.map((item, index) => <TableRow key={index}>
                     <TableCell className="font-medium">{item.category}</TableCell>
                     <TableCell className="text-right font-semibold text-college-blue">
                       {item.books.toLocaleString()}
@@ -332,8 +324,7 @@ const Library = () => {
                     <TableCell className="text-right">{item.bookBank || 0}</TableCell>
                     <TableCell className="text-right">{item.genLib}</TableCell>
                     <TableCell className="text-right">{item.titleWise}</TableCell>
-                  </TableRow>
-                ))}
+                  </TableRow>)}
                 <TableRow className="border-t-2 font-bold">
                   <TableCell className="font-bold">Total</TableCell>
                   <TableCell className="text-right font-bold text-college-blue">45,140</TableCell>
