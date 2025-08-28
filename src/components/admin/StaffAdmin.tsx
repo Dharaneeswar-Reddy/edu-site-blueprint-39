@@ -252,8 +252,8 @@ const StaffAdmin = () => {
   };
 
   const filteredStaff = staff.filter(member => {
-    const departmentMatch = !selectedDepartment || member.department === selectedDepartment;
-    const typeMatch = !selectedStaffType || member.staff_type === selectedStaffType;
+    const departmentMatch = !selectedDepartment || selectedDepartment === "all" || member.department === selectedDepartment;
+    const typeMatch = !selectedStaffType || selectedStaffType === "all" || member.staff_type === selectedStaffType;
     return departmentMatch && typeMatch;
   });
 
@@ -458,7 +458,7 @@ const StaffAdmin = () => {
                     <SelectValue placeholder="Filter by department" />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="">All Departments</SelectItem>
+                    <SelectItem value="all">All Departments</SelectItem>
                     {DEPARTMENTS.map((dept) => (
                       <SelectItem key={dept} value={dept}>
                         {dept}
@@ -471,7 +471,7 @@ const StaffAdmin = () => {
                     <SelectValue placeholder="Filter by staff type" />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="">All Staff Types</SelectItem>
+                    <SelectItem value="all">All Staff Types</SelectItem>
                     {STAFF_TYPES.map((type) => (
                       <SelectItem key={type.value} value={type.value}>
                         {type.label}
@@ -479,12 +479,12 @@ const StaffAdmin = () => {
                     ))}
                   </SelectContent>
                 </Select>
-                {(selectedDepartment || selectedStaffType) && (
+                {((selectedDepartment && selectedDepartment !== "all") || (selectedStaffType && selectedStaffType !== "all")) && (
                   <Button 
                     variant="outline" 
                     onClick={() => {
-                      setSelectedDepartment("");
-                      setSelectedStaffType("");
+                      setSelectedDepartment("all");
+                      setSelectedStaffType("all");
                     }}
                   >
                     Clear Filters
