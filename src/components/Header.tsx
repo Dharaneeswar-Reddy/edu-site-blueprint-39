@@ -97,7 +97,7 @@ const Header = () => {
               </button>
               {departmentDropdown && <>
                   <div className="fixed inset-0 z-10" onClick={() => setDepartmentDropdown(false)}></div>
-                  <div className="absolute left-0 mt-1 w-64 bg-white rounded-md shadow-lg py-1 z-20 animate-fade-in border" onMouseEnter={() => handleMouseEnter(setDepartmentDropdown)} onMouseLeave={() => handleMouseLeave(setDepartmentDropdown)}>
+                  <div className="absolute left-0 mt-1 w-64 bg-white rounded-md shadow-lg py-1 z-20 animate-fade-in border max-h-96 overflow-y-auto" onMouseEnter={() => handleMouseEnter(setDepartmentDropdown)} onMouseLeave={() => handleMouseLeave(setDepartmentDropdown)}>
                     <Link to="/departments" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" onClick={() => setDepartmentDropdown(false)}>All Departments</Link>
                     <div className="border-t border-gray-100 my-1"></div>
                     <Link to="/departments/library" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" onClick={() => setDepartmentDropdown(false)}>Library</Link>
@@ -140,7 +140,7 @@ const Header = () => {
               </button>
               {studentSupportDropdown && <>
                   <div className="fixed inset-0 z-10" onClick={() => setStudentSupportDropdown(false)}></div>
-                  <div className="absolute left-0 mt-1 w-64 bg-white rounded-md shadow-lg py-1 z-20 animate-fade-in border" onMouseEnter={() => handleMouseEnter(setStudentSupportDropdown)} onMouseLeave={() => handleMouseLeave(setStudentSupportDropdown)}>
+                  <div className="absolute left-0 mt-1 w-64 bg-white rounded-md shadow-lg py-1 z-20 animate-fade-in border max-h-96 overflow-y-auto" onMouseEnter={() => handleMouseEnter(setStudentSupportDropdown)} onMouseLeave={() => handleMouseLeave(setStudentSupportDropdown)}>
                     <Link to="/student-support" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" onClick={() => setStudentSupportDropdown(false)}>All Programs</Link>
                     <div className="border-t border-gray-100 my-1"></div>
                     <Link to="/student-support/jkc" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" onClick={() => setStudentSupportDropdown(false)}>JKC</Link>
