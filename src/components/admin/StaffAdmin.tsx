@@ -37,7 +37,7 @@ interface Leadership {
   id: string;
   position: string;
   name: string;
-  designation: string;
+  designation?: string;
   department?: string;
   email?: string;
   phone?: string;
@@ -105,8 +105,6 @@ const StaffAdmin = () => {
   const [leadershipFormData, setLeadershipFormData] = useState({
     position: 'chairman',
     name: '',
-    designation: '',
-    department: '',
     email: '',
     phone: '',
     bio: '',
@@ -345,6 +343,8 @@ const StaffAdmin = () => {
 
       const leadershipData = {
         ...leadershipFormData,
+        designation: '', // Provide empty string as default
+        department: '', // Provide empty string as default
         photo_url: photoUrl || (editingLeadershipId ? leadership.find(l => l.id === editingLeadershipId)?.photo_url : null),
         achievements: leadershipFormData.achievements.filter(a => a.trim() !== '')
       };
@@ -390,8 +390,6 @@ const StaffAdmin = () => {
     setLeadershipFormData({
       position: leader.position,
       name: leader.name,
-      designation: leader.designation,
-      department: leader.department || '',
       email: leader.email || '',
       phone: leader.phone || '',
       bio: leader.bio || '',
@@ -436,8 +434,6 @@ const StaffAdmin = () => {
     setLeadershipFormData({
       position: 'chairman',
       name: '',
-      designation: '',
-      department: '',
       email: '',
       phone: '',
       bio: '',
@@ -843,26 +839,6 @@ const StaffAdmin = () => {
                     />
                   </div>
 
-                  <div>
-                    <Label htmlFor="designation">Designation *</Label>
-                    <Input
-                      id="designation"
-                      type="text"
-                      value={leadershipFormData.designation}
-                      onChange={(e) => setLeadershipFormData({...leadershipFormData, designation: e.target.value})}
-                      required
-                    />
-                  </div>
-
-                  <div>
-                    <Label htmlFor="department">Department</Label>
-                    <Input
-                      id="department"
-                      type="text"
-                      value={leadershipFormData.department}
-                      onChange={(e) => setLeadershipFormData({...leadershipFormData, department: e.target.value})}
-                    />
-                  </div>
 
                   <div>
                     <Label htmlFor="email">Email</Label>
@@ -1043,10 +1019,6 @@ const StaffAdmin = () => {
                           <div className="flex-grow min-w-0">
                             <h3 className="font-semibold text-lg">{leader.name}</h3>
                             <p className="text-sm text-primary font-medium capitalize">{leader.position}</p>
-                            <p className="text-sm text-muted-foreground">{leader.designation}</p>
-                            {leader.department && (
-                              <p className="text-sm text-muted-foreground">{leader.department}</p>
-                            )}
                             {leader.email && (
                               <p className="text-sm text-muted-foreground">{leader.email}</p>
                             )}
