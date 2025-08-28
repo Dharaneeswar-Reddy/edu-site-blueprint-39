@@ -1,8 +1,23 @@
 import PageLayout from "@/components/PageLayout";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { 
+  useStudentSupportServices,
+  useStudentSupportReports, 
+  useStudentSupportStaff, 
+  useStudentSupportGallery 
+} from "@/hooks/useStudentSupportServices";
 
 const EcoClub = () => {
+  const serviceName = "Eco Club";
+  const { services } = useStudentSupportServices(serviceName);
+  const { reports } = useStudentSupportReports(serviceName);
+  const { staff } = useStudentSupportStaff(serviceName);
+  const { gallery } = useStudentSupportGallery(serviceName);
+
+  const service = services[0];
+
+  const defaultDescription = "The Eco Club at SVRM College, established in 2017, is dedicated to creating environmental awareness and promoting sustainable practices among students and the local community. Our club works towards building an eco-friendly campus and fostering a sense of responsibility towards environmental conservation. We organize various activities including tree plantation drives, waste management programs, awareness campaigns, and research initiatives focused on environmental sustainability. Through hands-on projects and educational programs, we aim to develop environmentally conscious citizens who can contribute to global efforts in combating climate change and preserving our planet for future generations.";
   const visionMission = [
     {
       type: "Vision",

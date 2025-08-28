@@ -20,13 +20,26 @@ import {
 } from "@/hooks/useStudentSupportServices";
 
 const serviceOptions = [
-  "JKC", "NCC", "NSS", "Consumer Club", "Anti-Ragging", "Women Empowerment", 
-  "ICC", "Eco Club", "Gym Sports", "Cultural Club"
+  "JKC", "NCC", "NSS", "Women Empowerment", "ICC", "Gym Sports", 
+  "Anti Ragging", "Cultural Club", "Consumer Club", "Eco Club"
 ];
+
+const serviceNameMap = {
+  "JKC": "JKC",
+  "NCC": "NCC", 
+  "NSS": "NSS",
+  "Women Empowerment": "Women Empowerment",
+  "ICC": "ICC",
+  "Gym Sports": "Gym Sports",
+  "Anti Ragging": "Anti Ragging", 
+  "Cultural Club": "Cultural Club",
+  "Consumer Club": "Consumer Club",
+  "Eco Club": "Eco Club"
+};
 
 export default function StudentSupportAdmin() {
   const [activeTab, setActiveTab] = useState("services");
-  const [selectedService, setSelectedService] = useState("");
+  const [selectedService, setSelectedService] = useState("JKC");
   
   // Service Management
   const [serviceForm, setServiceForm] = useState({
@@ -77,10 +90,10 @@ export default function StudentSupportAdmin() {
   const [isStaffDialogOpen, setIsStaffDialogOpen] = useState(false);
   const [isGalleryDialogOpen, setIsGalleryDialogOpen] = useState(false);
 
-  const { services, refetch: refetchServices } = useStudentSupportServices();
-  const { reports, refetch: refetchReports } = useStudentSupportReports();
-  const { staff, refetch: refetchStaff } = useStudentSupportStaff();
-  const { gallery, refetch: refetchGallery } = useStudentSupportGallery();
+  const { services, refetch: refetchServices } = useStudentSupportServices(selectedService);
+  const { reports, refetch: refetchReports } = useStudentSupportReports(selectedService);
+  const { staff, refetch: refetchStaff } = useStudentSupportStaff(selectedService);
+  const { gallery, refetch: refetchGallery } = useStudentSupportGallery(selectedService);
 
   const handleServiceSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -367,11 +380,24 @@ export default function StudentSupportAdmin() {
     <div className="container mx-auto p-6">
       <div className="flex justify-between items-center mb-6">
         <h1 className="text-3xl font-bold">Student Support Services Management</h1>
+        <div className="flex items-center gap-4">
+          <label htmlFor="service-select" className="text-sm font-medium">Select Service:</label>
+          <Select value={selectedService} onValueChange={setSelectedService}>
+            <SelectTrigger className="w-48">
+              <SelectValue placeholder="Choose service" />
+            </SelectTrigger>
+            <SelectContent>
+              {serviceOptions.map(option => (
+                <SelectItem key={option} value={option}>{option}</SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+        </div>
       </div>
 
       <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-6">
         <TabsList className="grid w-full grid-cols-4">
-          <TabsTrigger value="services">Services</TabsTrigger>
+          <TabsTrigger value="services">Service Info</TabsTrigger>
           <TabsTrigger value="reports">Yearly Reports</TabsTrigger>
           <TabsTrigger value="staff">Staff</TabsTrigger>
           <TabsTrigger value="gallery">Gallery</TabsTrigger>
@@ -381,19 +407,19 @@ export default function StudentSupportAdmin() {
           <Card>
             <CardHeader>
               <div className="flex justify-between items-center">
-                <CardTitle>Student Support Services</CardTitle>
+                <CardTitle>{selectedService} - Service Information</CardTitle>
                 <Dialog open={isServiceDialogOpen} onOpenChange={setIsServiceDialogOpen}>
                   <DialogTrigger asChild>
                     <Button onClick={() => setServiceForm({
                       id: "",
-                      service_name: "",
+                      service_name: selectedService,
                       title: "",
                       description: "",
                       vision: "",
                       mission: "",
                       objectives: [""]
                     })}>
-                      <Plus className="mr-2 h-4 w-4" /> Add Service
+                      <Plus className="mr-2 h-4 w-4" /> Add Service Info
                     </Button>
                   </DialogTrigger>
                   <DialogContent className="max-w-2xl max-h-[80vh] overflow-y-auto">
@@ -403,16 +429,12 @@ export default function StudentSupportAdmin() {
                     <form onSubmit={handleServiceSubmit} className="space-y-4">
                       <div>
                         <Label htmlFor="service_name">Service Name</Label>
-                        <Select value={serviceForm.service_name} onValueChange={(value) => setServiceForm(prev => ({ ...prev, service_name: value }))}>
-                          <SelectTrigger>
-                            <SelectValue placeholder="Select service" />
-                          </SelectTrigger>
-                          <SelectContent>
-                            {serviceOptions.map(option => (
-                              <SelectItem key={option} value={option}>{option}</SelectItem>
-                            ))}
-                          </SelectContent>
-                        </Select>
+                        <Input
+                          id="service_name"
+                          value={serviceForm.service_name}
+                          readOnly
+                          className="bg-muted"
+                        />
                       </div>
                       <div>
                         <Label htmlFor="title">Title</Label>
@@ -552,7 +574,7 @@ export default function StudentSupportAdmin() {
                   <DialogTrigger asChild>
                     <Button onClick={() => setReportForm({
                       id: "",
-                      service_name: "",
+                      service_name: selectedService,
                       title: "",
                       description: "",
                       academic_year: "",
@@ -698,7 +720,7 @@ export default function StudentSupportAdmin() {
                   <DialogTrigger asChild>
                     <Button onClick={() => setStaffForm({
                       id: "",
-                      service_name: "",
+                      service_name: selectedService,
                       name: "",
                       designation: "",
                       department: "",
@@ -868,7 +890,7 @@ export default function StudentSupportAdmin() {
                   <DialogTrigger asChild>
                     <Button onClick={() => setGalleryForm({
                       id: "",
-                      service_name: "",
+                      service_name: selectedService,
                       title: "",
                       description: "",
                       image_url: "",
