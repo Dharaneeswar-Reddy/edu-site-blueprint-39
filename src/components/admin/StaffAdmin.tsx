@@ -12,8 +12,9 @@ import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, 
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { toast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
-import { Plus, Users, Edit, Trash2, Mail, Phone, User, Upload } from "lucide-react";
+import { Plus, Users, Edit, Trash2, Mail, Phone, User, Upload, Minus } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { useLeadership } from "@/hooks/useLeadership";
 
 interface Staff {
   id: string;
@@ -27,6 +28,26 @@ interface Staff {
   qualification?: string;
   experience?: string;
   staff_type: string;
+  is_active: boolean;
+  created_at: string;
+  updated_at: string;
+}
+
+interface Leadership {
+  id: string;
+  position: string;
+  name: string;
+  designation: string;
+  department?: string;
+  email?: string;
+  phone?: string;
+  photo_url?: string;
+  bio?: string;
+  qualifications?: string;
+  experience?: string;
+  specialization?: string;
+  message?: string;
+  achievements?: string[];
   is_active: boolean;
   created_at: string;
   updated_at: string;
@@ -77,6 +98,26 @@ const StaffAdmin = () => {
     is_active: true,
     photo: null as File | null,
   });
+
+  // Leadership management state
+  const { leadership, loading: leadershipLoading, error: leadershipError, refetch: refetchLeadership } = useLeadership();
+  const [leadershipFormData, setLeadershipFormData] = useState({
+    position: 'chairman',
+    name: '',
+    designation: '',
+    department: '',
+    email: '',
+    phone: '',
+    bio: '',
+    qualifications: '',
+    experience: '',
+    specialization: '',
+    message: '',
+    achievements: [''],
+    is_active: true
+  });
+  const [editingLeadershipId, setEditingLeadershipId] = useState<string | null>(null);
+  const [leadershipPhotoFile, setLeadershipPhotoFile] = useState<File | null>(null);
 
   useEffect(() => {
     fetchStaff();
@@ -266,6 +307,183 @@ const StaffAdmin = () => {
     return name.split(' ').map(n => n[0]).join('').toUpperCase().slice(0, 2);
   };
 
+  // Leadership management functions
+  const handleLeadershipPhotoUpload = async (file: File): Promise<string | null> => {
+    try {
+      setUploading(true);
+      const fileExt = file.name.split('.').pop();
+      const fileName = `${Date.now()}.${fileExt}`;
+      const filePath = `leadership/${fileName}`;
+
+      const { error: uploadError } = await supabase.storage
+        .from('staff-photos')
+        .upload(filePath, file);
+
+      if (uploadError) {
+        throw uploadError;
+      }
+
+      const { data: { publicUrl } } = supabase.storage
+        .from('staff-photos')
+        .getPublicUrl(filePath);
+
+      return publicUrl;
+    } catch (error) {
+      console.error('Error uploading photo:', error);
+      toast({
+        title: "Error",
+        description: "Failed to upload photo",
+        variant: "destructive"
+      });
+      return null;
+    } finally {
+      setUploading(false);
+    }
+  };
+
+  const handleLeadershipSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setUploading(true);
+
+    try {
+      let photoUrl = null;
+      if (leadershipPhotoFile) {
+        photoUrl = await handleLeadershipPhotoUpload(leadershipPhotoFile);
+        if (!photoUrl) return;
+      }
+
+      const leadershipData = {
+        ...leadershipFormData,
+        photo_url: photoUrl || (editingLeadershipId ? leadership.find(l => l.id === editingLeadershipId)?.photo_url : null),
+        achievements: leadershipFormData.achievements.filter(a => a.trim() !== '')
+      };
+
+      if (editingLeadershipId) {
+        const { error } = await supabase
+          .from('leadership')
+          .update(leadershipData)
+          .eq('id', editingLeadershipId);
+
+        if (error) throw error;
+        toast({
+          title: "Success",
+          description: "Leadership updated successfully!"
+        });
+      } else {
+        const { error } = await supabase
+          .from('leadership')
+          .insert([leadershipData]);
+
+        if (error) throw error;
+        toast({
+          title: "Success",
+          description: "Leadership added successfully!"
+        });
+      }
+
+      resetLeadershipForm();
+      refetchLeadership();
+    } catch (error) {
+      console.error('Error saving leadership:', error);
+      toast({
+        title: "Error",
+        description: "Failed to save leadership",
+        variant: "destructive"
+      });
+    } finally {
+      setUploading(false);
+    }
+  };
+
+  const handleLeadershipEdit = (leadership: Leadership) => {
+    setLeadershipFormData({
+      position: leadership.position,
+      name: leadership.name,
+      designation: leadership.designation,
+      department: leadership.department || '',
+      email: leadership.email || '',
+      phone: leadership.phone || '',
+      bio: leadership.bio || '',
+      qualifications: leadership.qualifications || '',
+      experience: leadership.experience || '',
+      specialization: leadership.specialization || '',
+      message: leadership.message || '',
+      achievements: leadership.achievements || [''],
+      is_active: leadership.is_active
+    });
+    setEditingLeadershipId(leadership.id);
+    setLeadershipPhotoFile(null);
+  };
+
+  const handleLeadershipDelete = async (id: string) => {
+    if (!confirm('Are you sure you want to delete this leadership entry?')) return;
+
+    try {
+      const { error } = await supabase
+        .from('leadership')
+        .delete()
+        .eq('id', id);
+
+      if (error) throw error;
+      
+      toast({
+        title: "Success",
+        description: "Leadership deleted successfully!"
+      });
+      refetchLeadership();
+    } catch (error) {
+      console.error('Error deleting leadership:', error);
+      toast({
+        title: "Error",
+        description: "Failed to delete leadership",
+        variant: "destructive"
+      });
+    }
+  };
+
+  const resetLeadershipForm = () => {
+    setLeadershipFormData({
+      position: 'chairman',
+      name: '',
+      designation: '',
+      department: '',
+      email: '',
+      phone: '',
+      bio: '',
+      qualifications: '',
+      experience: '',
+      specialization: '',
+      message: '',
+      achievements: [''],
+      is_active: true
+    });
+    setEditingLeadershipId(null);
+    setLeadershipPhotoFile(null);
+  };
+
+  const addAchievement = () => {
+    setLeadershipFormData({
+      ...leadershipFormData,
+      achievements: [...leadershipFormData.achievements, '']
+    });
+  };
+
+  const removeAchievement = (index: number) => {
+    setLeadershipFormData({
+      ...leadershipFormData,
+      achievements: leadershipFormData.achievements.filter((_, i) => i !== index)
+    });
+  };
+
+  const updateAchievement = (index: number, value: string) => {
+    const newAchievements = [...leadershipFormData.achievements];
+    newAchievements[index] = value;
+    setLeadershipFormData({
+      ...leadershipFormData,
+      achievements: newAchievements
+    });
+  };
+
   return (
     <div className="space-y-6">
       <div className="flex items-center justify-between">
@@ -281,6 +499,7 @@ const StaffAdmin = () => {
         <TabsList>
           <TabsTrigger value="add">Add/Edit Staff</TabsTrigger>
           <TabsTrigger value="manage">Manage Staff</TabsTrigger>
+          <TabsTrigger value="leadership">Leadership</TabsTrigger>
         </TabsList>
 
         <TabsContent value="add">
@@ -592,6 +811,273 @@ const StaffAdmin = () => {
               )}
             </CardContent>
           </Card>
+        </TabsContent>
+
+        <TabsContent value="leadership" className="space-y-6">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            {/* Leadership Form */}
+            <div className="bg-card rounded-lg p-6">
+              <h2 className="text-xl font-semibold mb-4">
+                {editingLeadershipId ? 'Edit Leadership' : 'Add Leadership'}
+              </h2>
+              
+              <form onSubmit={handleLeadershipSubmit} className="space-y-4">
+                <div>
+                  <Label htmlFor="position">Position</Label>
+                  <Select
+                    value={leadershipFormData.position}
+                    onValueChange={(value) => setLeadershipFormData({...leadershipFormData, position: value})}
+                  >
+                    <SelectTrigger>
+                      <SelectValue placeholder="Select position" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="chairman">Chairman</SelectItem>
+                      <SelectItem value="principal">Principal</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+
+                <div>
+                  <Label htmlFor="name">Name *</Label>
+                  <Input
+                    id="name"
+                    type="text"
+                    value={leadershipFormData.name}
+                    onChange={(e) => setLeadershipFormData({...leadershipFormData, name: e.target.value})}
+                    required
+                  />
+                </div>
+
+                <div>
+                  <Label htmlFor="designation">Designation *</Label>
+                  <Input
+                    id="designation"
+                    type="text"
+                    value={leadershipFormData.designation}
+                    onChange={(e) => setLeadershipFormData({...leadershipFormData, designation: e.target.value})}
+                    required
+                  />
+                </div>
+
+                <div>
+                  <Label htmlFor="department">Department</Label>
+                  <Input
+                    id="department"
+                    type="text"
+                    value={leadershipFormData.department}
+                    onChange={(e) => setLeadershipFormData({...leadershipFormData, department: e.target.value})}
+                  />
+                </div>
+
+                <div>
+                  <Label htmlFor="email">Email</Label>
+                  <Input
+                    id="email"
+                    type="email"
+                    value={leadershipFormData.email}
+                    onChange={(e) => setLeadershipFormData({...leadershipFormData, email: e.target.value})}
+                  />
+                </div>
+
+                <div>
+                  <Label htmlFor="phone">Phone</Label>
+                  <Input
+                    id="phone"
+                    type="text"
+                    value={leadershipFormData.phone}
+                    onChange={(e) => setLeadershipFormData({...leadershipFormData, phone: e.target.value})}
+                  />
+                </div>
+
+                <div>
+                  <Label htmlFor="qualifications">Qualifications</Label>
+                  <Textarea
+                    id="qualifications"
+                    value={leadershipFormData.qualifications}
+                    onChange={(e) => setLeadershipFormData({...leadershipFormData, qualifications: e.target.value})}
+                    rows={2}
+                  />
+                </div>
+
+                <div>
+                  <Label htmlFor="experience">Experience</Label>
+                  <Textarea
+                    id="experience"
+                    value={leadershipFormData.experience}
+                    onChange={(e) => setLeadershipFormData({...leadershipFormData, experience: e.target.value})}
+                    rows={2}
+                  />
+                </div>
+
+                <div>
+                  <Label htmlFor="specialization">Specialization</Label>
+                  <Input
+                    id="specialization"
+                    type="text"
+                    value={leadershipFormData.specialization}
+                    onChange={(e) => setLeadershipFormData({...leadershipFormData, specialization: e.target.value})}
+                  />
+                </div>
+
+                <div>
+                  <Label htmlFor="bio">Biography</Label>
+                  <Textarea
+                    id="bio"
+                    value={leadershipFormData.bio}
+                    onChange={(e) => setLeadershipFormData({...leadershipFormData, bio: e.target.value})}
+                    rows={3}
+                  />
+                </div>
+
+                <div>
+                  <Label htmlFor="message">Message</Label>
+                  <Textarea
+                    id="message"
+                    value={leadershipFormData.message}
+                    onChange={(e) => setLeadershipFormData({...leadershipFormData, message: e.target.value})}
+                    rows={3}
+                  />
+                </div>
+
+                <div>
+                  <div className="flex items-center justify-between">
+                    <Label>Achievements</Label>
+                    <Button
+                      type="button"
+                      onClick={addAchievement}
+                      size="sm"
+                      variant="outline"
+                    >
+                      <Plus className="h-4 w-4" />
+                    </Button>
+                  </div>
+                  <div className="space-y-2">
+                    {leadershipFormData.achievements.map((achievement, index) => (
+                      <div key={index} className="flex gap-2">
+                        <Input
+                          value={achievement}
+                          onChange={(e) => updateAchievement(index, e.target.value)}
+                          placeholder={`Achievement ${index + 1}`}
+                        />
+                        {leadershipFormData.achievements.length > 1 && (
+                          <Button
+                            type="button"
+                            onClick={() => removeAchievement(index)}
+                            size="sm"
+                            variant="outline"
+                          >
+                            <Minus className="h-4 w-4" />
+                          </Button>
+                        )}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                <div>
+                  <Label htmlFor="photo">Profile Photo</Label>
+                  <Input
+                    id="photo"
+                    type="file"
+                    accept="image/*"
+                    onChange={(e) => setLeadershipPhotoFile(e.target.files?.[0] || null)}
+                  />
+                </div>
+
+                <div className="flex items-center space-x-2">
+                  <Switch
+                    id="is_active"
+                    checked={leadershipFormData.is_active}
+                    onCheckedChange={(checked) => setLeadershipFormData({...leadershipFormData, is_active: checked})}
+                  />
+                  <Label htmlFor="is_active">Active</Label>
+                </div>
+
+                <div className="flex gap-4">
+                  <Button type="submit" disabled={uploading}>
+                    <Upload className="w-4 h-4 mr-2" />
+                    {uploading ? 'Saving...' : editingLeadershipId ? 'Update Leadership' : 'Add Leadership'}
+                  </Button>
+                  
+                  {editingLeadershipId && (
+                    <Button type="button" variant="outline" onClick={resetLeadershipForm}>
+                      Cancel Edit
+                    </Button>
+                  )}
+                </div>
+              </form>
+            </div>
+
+            {/* Leadership List */}
+            <div className="bg-card rounded-lg p-6">
+              <h2 className="text-xl font-semibold mb-4">Current Leadership</h2>
+              
+              {leadershipLoading ? (
+                <div className="text-center py-8">
+                  <p className="text-muted-foreground">Loading leadership...</p>
+                </div>
+              ) : leadershipError ? (
+                <div className="text-center py-8">
+                  <p className="text-red-500">Error: {leadershipError}</p>
+                </div>
+              ) : leadership.length === 0 ? (
+                <div className="text-center py-8">
+                  <p className="text-muted-foreground">No leadership entries found.</p>
+                </div>
+              ) : (
+                <div className="space-y-4">
+                  {leadership.map((leader) => (
+                    <div key={leader.id} className="border rounded-lg p-4">
+                      <div className="flex items-start gap-4">
+                        <div className="flex-shrink-0">
+                          {leader.photo_url ? (
+                            <img 
+                              src={leader.photo_url} 
+                              alt={leader.name}
+                              className="w-16 h-16 rounded-full object-cover"
+                            />
+                          ) : (
+                            <div className="w-16 h-16 rounded-full bg-muted flex items-center justify-center text-sm font-semibold">
+                              {getInitials(leader.name)}
+                            </div>
+                          )}
+                        </div>
+                        <div className="flex-grow min-w-0">
+                          <h3 className="font-semibold text-lg">{leader.name}</h3>
+                          <p className="text-sm text-primary font-medium capitalize">{leader.position}</p>
+                          <p className="text-sm text-muted-foreground">{leader.designation}</p>
+                          {leader.department && (
+                            <p className="text-sm text-muted-foreground">{leader.department}</p>
+                          )}
+                          {leader.email && (
+                            <p className="text-sm text-muted-foreground">{leader.email}</p>
+                          )}
+                        </div>
+                        <div className="flex gap-2">
+                          <Button
+                            onClick={() => handleLeadershipEdit(leader)}
+                            size="sm"
+                            variant="outline"
+                          >
+                            <Edit className="h-4 w-4" />
+                          </Button>
+                          <Button
+                            onClick={() => handleLeadershipDelete(leader.id)}
+                            size="sm"
+                            variant="outline"
+                            className="text-red-600 hover:text-red-700"
+                          >
+                            <Trash2 className="h-4 w-4" />
+                          </Button>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+          </div>
         </TabsContent>
       </Tabs>
     </div>

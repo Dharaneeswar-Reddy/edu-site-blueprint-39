@@ -194,6 +194,66 @@ export type Database = {
         }
         Relationships: []
       }
+      leadership: {
+        Row: {
+          achievements: string[] | null
+          bio: string | null
+          created_at: string
+          department: string | null
+          designation: string
+          email: string | null
+          experience: string | null
+          id: string
+          is_active: boolean | null
+          message: string | null
+          name: string
+          phone: string | null
+          photo_url: string | null
+          position: string
+          qualifications: string | null
+          specialization: string | null
+          updated_at: string
+        }
+        Insert: {
+          achievements?: string[] | null
+          bio?: string | null
+          created_at?: string
+          department?: string | null
+          designation: string
+          email?: string | null
+          experience?: string | null
+          id?: string
+          is_active?: boolean | null
+          message?: string | null
+          name: string
+          phone?: string | null
+          photo_url?: string | null
+          position: string
+          qualifications?: string | null
+          specialization?: string | null
+          updated_at?: string
+        }
+        Update: {
+          achievements?: string[] | null
+          bio?: string | null
+          created_at?: string
+          department?: string | null
+          designation?: string
+          email?: string | null
+          experience?: string | null
+          id?: string
+          is_active?: boolean | null
+          message?: string | null
+          name?: string
+          phone?: string | null
+          photo_url?: string | null
+          position?: string
+          qualifications?: string | null
+          specialization?: string | null
+          updated_at?: string
+        }
+        Relationships: []
+      }
       ncc_events: {
         Row: {
           created_at: string
