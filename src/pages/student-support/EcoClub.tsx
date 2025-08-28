@@ -38,23 +38,6 @@ const EcoClub = () => {
     "Foster research in environmental sciences and green technology"
   ];
 
-  const yearlyReports = [
-    { year: "2024", title: "Environmental Action Report", size: "3.2 MB" },
-    { year: "2023", title: "Green Campus Initiative Report", size: "2.8 MB" },
-    { year: "2022", title: "Earth Day Activities Documentation", size: "2.5 MB" }
-  ];
-
-  const staff = [
-    { name: "Dr. Sreenivas Kumar", designation: "Eco Club Coordinator", department: "Botany" },
-    { name: "Prof. Lakshmi Devi", designation: "Environmental Sciences Expert", department: "Chemistry" },
-    { name: "Mr. Rajesh Varma", designation: "Sustainability Advisor", department: "Zoology" }
-  ];
-
-  const galleryImages = [
-    "/lovable-uploads/52a8e7b1-5b22-4a0c-b1ec-450f99bfa9bb.png",
-    "/lovable-uploads/5810381d-fa14-451a-aba2-1235784bf4f2.png",
-    "/lovable-uploads/5c7ebe72-4ecd-4e54-8ce5-6bf0a6141878.png"
-  ];
 
   return (
     <PageLayout 
@@ -69,7 +52,7 @@ const EcoClub = () => {
           </CardHeader>
           <CardContent>
             <p className="text-muted-foreground leading-relaxed">
-              The Eco Club at SVRM College, established in 2017, is dedicated to creating environmental awareness and promoting sustainable practices among students and the local community. Our club works towards building an eco-friendly campus and fostering a sense of responsibility towards environmental conservation. We organize various activities including tree plantation drives, waste management programs, awareness campaigns, and research initiatives focused on environmental sustainability. Through hands-on projects and educational programs, we aim to develop environmentally conscious citizens who can contribute to global efforts in combating climate change and preserving our planet for future generations.
+              {service?.description || defaultDescription}
             </p>
           </CardContent>
         </Card>
@@ -114,17 +97,26 @@ const EcoClub = () => {
           </CardHeader>
           <CardContent>
             <div className="space-y-4">
-              {yearlyReports.map((report, index) => (
+              {reports.length > 0 ? reports.map((report, index) => (
                 <div key={index} className="flex items-center justify-between p-4 border border-border rounded-lg">
                   <div>
                     <h4 className="font-medium">{report.title}</h4>
-                    <p className="text-sm text-muted-foreground">Year: {report.year} | Size: {report.size}</p>
+                    <p className="text-sm text-muted-foreground">
+                      Uploaded: {new Date(report.created_at).getFullYear()}
+                    </p>
                   </div>
-                  <button className="px-4 py-2 bg-primary text-primary-foreground rounded-md hover:bg-primary/90">
+                  <a 
+                    href={report.file_url} 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="px-4 py-2 bg-primary text-primary-foreground rounded-md hover:bg-primary/90"
+                  >
                     Download
-                  </button>
+                  </a>
                 </div>
-              ))}
+              )) : (
+                <p className="text-muted-foreground">No reports available at the moment.</p>
+              )}
             </div>
           </CardContent>
         </Card>
@@ -157,15 +149,17 @@ const EcoClub = () => {
           </CardHeader>
           <CardContent>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-              {galleryImages.map((image, index) => (
+              {gallery.length > 0 ? gallery.map((image, index) => (
                 <div key={index} className="aspect-video bg-muted rounded-lg overflow-hidden">
                   <img 
-                    src={image} 
-                    alt={`Eco Club Activity ${index + 1}`}
+                    src={image.image_url} 
+                    alt={image.description || `Eco Club Activity ${index + 1}`}
                     className="w-full h-full object-cover hover:scale-105 transition-transform"
                   />
                 </div>
-              ))}
+              )) : (
+                <p className="text-muted-foreground">No gallery images available at the moment.</p>
+              )}
             </div>
           </CardContent>
         </Card>
