@@ -528,9 +528,7 @@ const Academics = () => {
                 </div>
 
                 <div className="text-center">
-                  <Button size="lg" className="mr-4">
-                    <Link to="/contact">Apply Now</Link>
-                  </Button>
+                  
                   <Button size="lg" variant="outline">
                     <Link to="/contact">Contact Admissions</Link>
                   </Button>
