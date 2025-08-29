@@ -142,7 +142,7 @@ const Library = () => {
       <div className="space-y-8">
         
         {/* Auto-scrolling Hero Images */}
-        <div className="relative h-64 md:h-80 lg:h-96 rounded-lg overflow-hidden shadow-lg">
+        <div className="relative h-96 md:h-[500px] lg:h-[600px] rounded-lg overflow-hidden shadow-xl">
           {heroImages.map((image, index) => <img key={index} src={image} alt={`Library ${index + 1}`} className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${index === currentImageIndex ? 'opacity-100' : 'opacity-0'}`} />)}
           <div className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
             <div className="text-center text-white">
@@ -558,11 +558,17 @@ const Library = () => {
             <CardTitle>Photo Gallery</CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
-              {galleryImages.map((image, index) => <div key={index} className="group relative overflow-hidden rounded-lg shadow-md hover:shadow-lg transition-shadow">
-                  <img src={image} alt={`Library Gallery ${index + 1}`} className="w-full h-32 object-cover group-hover:scale-110 transition-transform duration-300" />
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
+              {galleryImages.map((image, index) => (
+                <div key={index} className="group relative overflow-hidden rounded-xl shadow-lg hover:shadow-xl transition-all duration-300">
+                  <img 
+                    src={image} 
+                    alt={`Library Gallery ${index + 1}`} 
+                    className="w-full h-48 md:h-56 object-cover group-hover:scale-110 transition-transform duration-500" 
+                  />
                   <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 transition-opacity duration-300"></div>
-                </div>)}
+                </div>
+              ))}
             </div>
           </CardContent>
         </Card>

@@ -41,7 +41,7 @@ const PoliticalScience = () => {
       <div className="space-y-8">
         
         {/* Auto-scrolling Hero Images */}
-        <div className="relative h-64 md:h-80 lg:h-96 rounded-lg overflow-hidden shadow-lg">
+        <div className="relative h-96 md:h-[500px] lg:h-[600px] rounded-lg overflow-hidden shadow-xl">
           {heroImages.map((image, index) => (
             <img
               key={index}

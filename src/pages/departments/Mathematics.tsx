@@ -41,7 +41,7 @@ const Mathematics = () => {
       <div className="space-y-8">
         
         {/* Auto-scrolling Hero Images */}
-        <div className="relative h-64 md:h-80 lg:h-96 rounded-lg overflow-hidden shadow-lg">
+        <div className="relative h-96 md:h-[500px] lg:h-[600px] rounded-lg overflow-hidden shadow-xl">
           {heroImages.map((image, index) => (
             <img
               key={index}
@@ -100,18 +100,25 @@ const Mathematics = () => {
             </Card>
           </div>
 
-          {/* Department Photos */}
-          <div className="space-y-4">
-            {departmentPhotos.map((photo, index) => (
-              <div key={index} className="rounded-lg overflow-hidden shadow-md">
-                <img 
-                  src={photo} 
-                  alt={`Mathematics Classroom ${index + 1}`}
-                  className="w-full h-32 object-cover hover:scale-105 transition-transform duration-300"
-                />
-              </div>
-            ))}
-          </div>
+        {/* Department Photo Gallery */}
+        <Card>
+          <CardHeader>
+            <CardTitle>Department Gallery</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+              {departmentPhotos.map((photo, index) => (
+                <div key={index} className="rounded-xl overflow-hidden shadow-lg group">
+                  <img 
+                    src={photo} 
+                    alt={`Mathematics Classroom ${index + 1}`}
+                    className="w-full h-48 md:h-56 object-cover group-hover:scale-110 transition-transform duration-500"
+                  />
+                </div>
+              ))}
+            </div>
+          </CardContent>
+        </Card>
         </div>
 
         {/* Seat Structure and Programs */}
