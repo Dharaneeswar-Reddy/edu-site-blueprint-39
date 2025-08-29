@@ -6,62 +6,103 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Badge } from "@/components/ui/badge";
 const Academics = () => {
-  const undergraduatePrograms = [{
-    title: "B.Sc Computer Science",
-    duration: "3 Years",
-    seats: 60,
-    eligibility: "10+2 with Mathematics (Min 50%)",
-    highlights: ["Programming Languages", "Data Structures", "Web Development", "Mobile App Development"]
-  }, {
-    title: "B.Sc Mathematics",
-    duration: "3 Years",
-    seats: 40,
-    eligibility: "10+2 with Mathematics (Min 50%)",
-    highlights: ["Pure Mathematics", "Applied Mathematics", "Statistics", "Mathematical Modeling"]
-  }, {
-    title: "B.Sc Physics",
-    duration: "3 Years",
-    seats: 40,
-    eligibility: "10+2 with Physics & Mathematics (Min 50%)",
-    highlights: ["Classical Physics", "Quantum Mechanics", "Electronics", "Research Projects"]
-  }, {
-    title: "B.Sc Chemistry",
-    duration: "3 Years",
-    seats: 40,
-    eligibility: "10+2 with Chemistry & Mathematics (Min 50%)",
-    highlights: ["Organic Chemistry", "Inorganic Chemistry", "Physical Chemistry", "Analytical Chemistry"]
-  }, {
-    title: "B.Com",
-    duration: "3 Years",
-    seats: 120,
-    eligibility: "10+2 in any stream (Min 45%)",
-    highlights: ["Accounting", "Business Management", "Economics", "Taxation"]
-  }, {
-    title: "B.A English",
-    duration: "3 Years",
-    seats: 60,
-    eligibility: "10+2 in any stream (Min 45%)",
-    highlights: ["Literature Studies", "Communication Skills", "Creative Writing", "Linguistics"]
-  }];
-  const postgraduatePrograms = [{
-    title: "M.Sc Computer Science",
-    duration: "2 Years",
-    seats: 30,
-    eligibility: "B.Sc Computer Science/Mathematics/Physics (Min 50%)",
-    highlights: ["Advanced Programming", "AI & Machine Learning", "Cyber Security", "Research Methodology"]
-  }, {
-    title: "M.Sc Mathematics",
-    duration: "2 Years",
-    seats: 20,
-    eligibility: "B.Sc Mathematics (Min 50%)",
-    highlights: ["Abstract Algebra", "Real Analysis", "Topology", "Number Theory"]
-  }, {
-    title: "M.Com",
-    duration: "2 Years",
-    seats: 40,
-    eligibility: "B.Com/BBA (Min 50%)",
-    highlights: ["Advanced Accounting", "Financial Management", "Business Analytics", "Research Methods"]
-  }];
+  const undergraduatePrograms = [
+    {
+      title: "B.Sc Computer Science",
+      designation: "Honors",
+      duration: "3 Years",
+      seats: 88,
+      eligibility: "10+2 with Mathematics (Min 50%)",
+      highlights: ["Programming Languages", "Data Structures", "Web Development", "Mobile App Development", "Machine learning"]
+    },
+    {
+      title: "BCA Computer Applications", 
+      designation: "Honors",
+      duration: "3 Years",
+      seats: 100,
+      eligibility: "10+2 with Mathematics (Min 50%)",
+      highlights: ["Programming Languages", "Data Structures", "Web Development", "Mobile App Development", "Machine learning", "Internet of Things"]
+    },
+    {
+      title: "B.Sc Electronics",
+      designation: "Honors", 
+      duration: "3 Years",
+      seats: 30,
+      eligibility: "10+2 with Mathematics (Min 50%)",
+      highlights: ["Computer Networks", "Industrial Electronics", "Cellular Mobile Communications", "Circuit theory and Electronic Devices", "Digital Electronics"]
+    },
+    {
+      title: "B.Sc Chemistry",
+      designation: "Honors",
+      duration: "3 Years", 
+      seats: 40,
+      eligibility: "10+2 with Chemistry & Mathematics (Min 50%)",
+      highlights: ["Organic Chemistry", "Inorganic Chemistry", "Physical Chemistry", "Analytical Chemistry"]
+    },
+    {
+      title: "B.Com General",
+      designation: "Honors",
+      duration: "3 Years",
+      seats: 60,
+      eligibility: "10+2 in any stream (Min 45%)",
+      highlights: ["Accounting", "Business Management", "Economics", "Taxation"]
+    },
+    {
+      title: "B.Com Computer Applications",
+      designation: "Honors",
+      duration: "3 Years", 
+      seats: 40,
+      eligibility: "10+2 in any stream (Min 45%)",
+      highlights: ["Accounting", "Business Management", "Economics", "Taxation", "E-Commerce and Web Designing", "Digital Marketing"]
+    },
+    {
+      title: "B.A Political Science",
+      designation: "Honors",
+      duration: "3 Years",
+      seats: 60,
+      eligibility: "10+2 in any stream (Min 45%)",
+      highlights: ["Literature Studies", "Communication Skills", "Creative Writing", "Linguistics"]
+    },
+    {
+      title: "B.Sc Zoology",
+      designation: "Honors", 
+      duration: "3 Years",
+      seats: 30,
+      eligibility: "10+2 with Biology/Botany (Min 50%)",
+      highlights: ["Animal Biotechnology", "Sustainable Aquaculture Management", "Poultry Management"]
+    },
+    {
+      title: "B.Sc Aqua Culture",
+      designation: "Honors",
+      duration: "3 Years",
+      seats: 30, 
+      eligibility: "10+2 with Biology/Botany (Min 50%)",
+      highlights: ["Harvest Technology", "Fishery Engineering", "Extension, Economics & Marketing"]
+    }
+  ];
+  const postgraduatePrograms = [
+    {
+      title: "M.Sc Mathematics",
+      duration: "2 Years",
+      seats: 40,
+      eligibility: "B.Sc Mathematics (Min 50%)",
+      highlights: ["Non-Competitive Rings", "Partial differential equations", "Galois theory", "Measure and integration", "Complex Analysis"]
+    },
+    {
+      title: "M.Sc Analytical Chemistry", 
+      duration: "2 Years",
+      seats: 36,
+      eligibility: "B.Sc Chemistry (Min 50%)",
+      highlights: ["Principles and techniques in Classical analysis", "Applied Inorganic Analysis", "Analysis of Applied Industrial Products", "Optical, Thermal and Radiochemical methods of Analysis", "Advanced Methods of Analysis"]
+    },
+    {
+      title: "M.Sc Organic Chemistry",
+      duration: "2 Years", 
+      seats: 36,
+      eligibility: "B.Sc Chemistry (Min 50%)",
+      highlights: ["Organic Synthesis & Reaction Mechanisms", "Chemistry of Alkaloids, Terpenoids, Quinones and Phenothiazines", "Chemistry of Natural Products", "Chemistry of Antibiotics and Drugs", "Essential Lab Techniques for Industry"]
+    }
+  ];
   const admissionProcess = [{
     step: "1",
     title: "Application Submission",
@@ -121,11 +162,11 @@ const Academics = () => {
             </TabsList>
             
             <TabsContent value="undergraduate" className="space-y-6">
-              <div className="grid md:grid-cols-2 gap-6">
+                <div className="grid md:grid-cols-2 gap-6">
                 {undergraduatePrograms.map((program, index) => <Card key={index} className="hover:shadow-lg transition-shadow">
                     <CardHeader>
                       <CardTitle className="flex justify-between items-start">
-                        <span className="text-lg">{program.title}</span>
+                        <span className="text-lg">{program.title} {program.designation}</span>
                         <Badge variant="secondary">{program.seats} Seats</Badge>
                       </CardTitle>
                       <CardDescription>
@@ -213,7 +254,7 @@ const Academics = () => {
                       <div className="text-sm text-gray-600">Semesters (PG)</div>
                     </div>
                     <div className="bg-white p-4 rounded-lg text-center">
-                      <div className="text-2xl font-bold text-purple-600">120-140</div>
+                      <div className="text-2xl font-bold text-purple-600">126</div>
                       <div className="text-sm text-gray-600">Total Credits</div>
                     </div>
                   </div>
@@ -238,7 +279,7 @@ const Academics = () => {
                   <h4 className="font-semibold text-blue-800 mb-3">Assessment Pattern</h4>
                   <div className="grid md:grid-cols-2 gap-6">
                     <div>
-                      <h5 className="font-medium text-gray-900 mb-2">Continuous Assessment (40%)</h5>
+                      <h5 className="font-medium text-gray-900 mb-2">Continuous Assessment (30%)</h5>
                       <ul className="text-sm text-gray-700 space-y-1">
                         <li>• Internal assignments and tests</li>
                         <li>• Practical/laboratory work</li>
@@ -247,7 +288,7 @@ const Academics = () => {
                       </ul>
                     </div>
                     <div>
-                      <h5 className="font-medium text-gray-900 mb-2">Semester End Exam (60%)</h5>
+                      <h5 className="font-medium text-gray-900 mb-2">Semester End Exam (70%)</h5>
                       <ul className="text-sm text-gray-700 space-y-1">
                         <li>• Written examination</li>
                         <li>• Practical examination</li>
