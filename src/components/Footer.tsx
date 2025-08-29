@@ -67,7 +67,7 @@ const Footer = () => {
             <ul className="space-y-3">
               <li className="flex items-start space-x-3">
                 <MapPin size={18} className="text-college-gold mt-1 flex-shrink-0" />
-                <span className="text-sm text-gray-300">SVRM College Campus, NH-5, Nagaram, Guntur District, Andhra Pradesh - 522268</span>
+                <span className="text-sm text-gray-300">SVRM College Campus, NH-5, Nagaram, Bapatla District, Andhra Pradesh - 522268</span>
               </li>
               <li className="flex items-center space-x-3">
                 <Phone size={18} className="text-college-gold flex-shrink-0" />
