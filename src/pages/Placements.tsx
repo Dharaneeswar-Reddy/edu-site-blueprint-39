@@ -6,27 +6,19 @@ import { ArrowRight, Briefcase, Building, Users, Award, TrendingUp, Target, MapP
 import { useState, useEffect } from "react";
 const Placements = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const heroImages = [
-    "/lovable-uploads/1e95f6dd-1e3b-413a-926b-1cd65013d460.png",
-    "/lovable-uploads/aa814823-8dcf-4f41-ba8e-2ba08febadb0.png", 
-    "/lovable-uploads/0a4f9773-a266-423a-b27f-047c99b4a888.png"
-  ];
-
+  const heroImages = ["/lovable-uploads/1e95f6dd-1e3b-413a-926b-1cd65013d460.png", "/lovable-uploads/aa814823-8dcf-4f41-ba8e-2ba08febadb0.png", "/lovable-uploads/0a4f9773-a266-423a-b27f-047c99b4a888.png"];
   useEffect(() => {
     const timer = setInterval(() => {
-      setCurrentImageIndex((prevIndex) => (prevIndex + 1) % heroImages.length);
+      setCurrentImageIndex(prevIndex => (prevIndex + 1) % heroImages.length);
     }, 4000);
     return () => clearInterval(timer);
   }, []);
-
   const nextImage = () => {
-    setCurrentImageIndex((prevIndex) => (prevIndex + 1) % heroImages.length);
+    setCurrentImageIndex(prevIndex => (prevIndex + 1) % heroImages.length);
   };
-
   const prevImage = () => {
-    setCurrentImageIndex((prevIndex) => (prevIndex - 1 + heroImages.length) % heroImages.length);
+    setCurrentImageIndex(prevIndex => (prevIndex - 1 + heroImages.length) % heroImages.length);
   };
-
   const topRecruiters = ["RATNADEEP", "TALBRIDGE GENPACT", "APEX SOLUTIONS", "AKRO SOFT SOLUTIONS", "MOTHERSON SUMI SYSTEMS LIMITED", "MUTHOOT FINANCE", "SERV CRUST", "FOXCONN", "MEDPLUS", "HDB BANK", "QUESS", "NAVATA ROAD TRANSPORT", "BLUE STAR", "MASTER MINDS", "HETERO", "ROYALS", "SBI LIFE", "NSL TEXTILES", "PACE", "TEAMLEASE", "AMARRAJA", "APOLLO PHARMACY", "FLUXTEK", "AADITYA BIRLA", "HERO"];
   const placementStats = [{
     year: "2024-25",
@@ -130,33 +122,16 @@ const Placements = () => {
       {/* Hero Section with Scrolling Images */}
       <section className="pt-20 pb-8">
         <div className="relative h-96 lg:h-[600px] overflow-hidden">
-          {heroImages.map((image, index) => (
-            <div
-              key={index}
-              className={`absolute inset-0 transition-opacity duration-1000 ${
-                index === currentImageIndex ? 'opacity-100' : 'opacity-0'
-              }`}
-            >
-              <img
-                src={image}
-                alt={`Career Guidance ${index + 1}`}
-                className="w-full h-full object-cover"
-              />
+          {heroImages.map((image, index) => <div key={index} className={`absolute inset-0 transition-opacity duration-1000 ${index === currentImageIndex ? 'opacity-100' : 'opacity-0'}`}>
+              <img src={image} alt={`Career Guidance ${index + 1}`} className="w-full h-full object-cover" />
               <div className="absolute inset-0 bg-black/40"></div>
-            </div>
-          ))}
+            </div>)}
           
           {/* Navigation Buttons */}
-          <button
-            onClick={prevImage}
-            className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/20 hover:bg-white/30 text-white p-2 rounded-full transition-all duration-300"
-          >
+          <button onClick={prevImage} className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/20 hover:bg-white/30 text-white p-2 rounded-full transition-all duration-300">
             <ChevronLeft className="h-6 w-6" />
           </button>
-          <button
-            onClick={nextImage}
-            className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/20 hover:bg-white/30 text-white p-2 rounded-full transition-all duration-300"
-          >
+          <button onClick={nextImage} className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/20 hover:bg-white/30 text-white p-2 rounded-full transition-all duration-300">
             <ChevronRight className="h-6 w-6" />
           </button>
 
@@ -164,23 +139,13 @@ const Placements = () => {
           <div className="absolute inset-0 flex items-center justify-center">
             <div className="text-center text-white px-4 max-w-4xl">
               <h1 className="text-4xl md:text-6xl font-bold mb-6">Career Guidance & Placement Cell</h1>
-              <p className="text-lg md:text-xl leading-relaxed">
-                Empowering rural youth and students with career guidance, skill development, and placement opportunities to excel in local and global job markets.
-              </p>
+              
             </div>
           </div>
 
           {/* Image Indicators */}
           <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex space-x-2">
-            {heroImages.map((_, index) => (
-              <button
-                key={index}
-                onClick={() => setCurrentImageIndex(index)}
-                className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                  index === currentImageIndex ? 'bg-white' : 'bg-white/50'
-                }`}
-              />
-            ))}
+            {heroImages.map((_, index) => <button key={index} onClick={() => setCurrentImageIndex(index)} className={`w-3 h-3 rounded-full transition-all duration-300 ${index === currentImageIndex ? 'bg-white' : 'bg-white/50'}`} />)}
           </div>
         </div>
       </section>
@@ -607,11 +572,7 @@ const Placements = () => {
             <Card className="border-primary/20 hover:shadow-lg transition-all duration-300 lg:col-span-1">
               <CardHeader className="text-center">
                 <div className="mx-auto mb-4">
-                  <img 
-                    src="/lovable-uploads/43e4b089-9a01-4b92-ab9f-cf2aaf4e2ae1.png"
-                    alt="Sri Sajja Srinivasa Rao"
-                    className="w-32 h-32 rounded-full object-cover mx-auto border-4 border-primary/20"
-                  />
+                  <img src="/lovable-uploads/43e4b089-9a01-4b92-ab9f-cf2aaf4e2ae1.png" alt="Sri Sajja Srinivasa Rao" className="w-32 h-32 rounded-full object-cover mx-auto border-4 border-primary/20" />
                 </div>
                 <CardTitle className="text-lg">Sri Sajja Srinivasa Rao</CardTitle>
                 <CardDescription className="font-medium text-secondary">Placement Officer</CardDescription>
