@@ -60,10 +60,7 @@ const AnnouncementsSidebar = ({
           <h2 className="text-xl font-bold mb-3">Quick Links</h2>
           <ul className="space-y-2">
             <li>
-              <Link to="/student-documents" className="flex items-center hover:text-college-gold transition-colors">
-                <ArrowRight className="h-4 w-4 mr-2" />
-                Student Documents
-              </Link>
+              
             </li>
             <li>
               
