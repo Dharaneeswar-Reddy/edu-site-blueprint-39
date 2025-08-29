@@ -7,104 +7,94 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Badge } from "@/components/ui/badge";
 import { useAcademicCalendar } from "@/hooks/useAcademicCalendar";
 const Academics = () => {
-  const { latestCalendar, loading: calendarLoading, error: calendarError } = useAcademicCalendar();
-  const undergraduatePrograms = [
-    {
-      title: "B.Sc Computer Science",
-      designation: "Honors",
-      duration: "3 Years",
-      seats: 88,
-      eligibility: "10+2 with Mathematics (Min 50%)",
-      highlights: ["Programming Languages", "Data Structures", "Web Development", "Mobile App Development", "Machine learning"]
-    },
-    {
-      title: "BCA Computer Applications", 
-      designation: "Honors",
-      duration: "3 Years",
-      seats: 100,
-      eligibility: "10+2 with Mathematics (Min 50%)",
-      highlights: ["Programming Languages", "Data Structures", "Web Development", "Mobile App Development", "Machine learning", "Internet of Things"]
-    },
-    {
-      title: "B.Sc Electronics",
-      designation: "Honors", 
-      duration: "3 Years",
-      seats: 30,
-      eligibility: "10+2 with Mathematics (Min 50%)",
-      highlights: ["Computer Networks", "Industrial Electronics", "Cellular Mobile Communications", "Circuit theory and Electronic Devices", "Digital Electronics"]
-    },
-    {
-      title: "B.Sc Chemistry",
-      designation: "Honors",
-      duration: "3 Years", 
-      seats: 40,
-      eligibility: "10+2 with Chemistry & Mathematics (Min 50%)",
-      highlights: ["Organic Chemistry", "Inorganic Chemistry", "Physical Chemistry", "Analytical Chemistry"]
-    },
-    {
-      title: "B.Com General",
-      designation: "Honors",
-      duration: "3 Years",
-      seats: 60,
-      eligibility: "10+2 in any stream (Min 45%)",
-      highlights: ["Accounting", "Business Management", "Economics", "Taxation"]
-    },
-    {
-      title: "B.Com Computer Applications",
-      designation: "Honors",
-      duration: "3 Years", 
-      seats: 40,
-      eligibility: "10+2 in any stream (Min 45%)",
-      highlights: ["Accounting", "Business Management", "Economics", "Taxation", "E-Commerce and Web Designing", "Digital Marketing"]
-    },
-    {
-      title: "B.A Political Science",
-      designation: "Honors",
-      duration: "3 Years",
-      seats: 60,
-      eligibility: "10+2 in any stream (Min 45%)",
-      highlights: ["Literature Studies", "Communication Skills", "Creative Writing", "Linguistics"]
-    },
-    {
-      title: "B.Sc Zoology",
-      designation: "Honors", 
-      duration: "3 Years",
-      seats: 30,
-      eligibility: "10+2 with Biology/Botany (Min 50%)",
-      highlights: ["Animal Biotechnology", "Sustainable Aquaculture Management", "Poultry Management"]
-    },
-    {
-      title: "B.Sc Aqua Culture",
-      designation: "Honors",
-      duration: "3 Years",
-      seats: 30, 
-      eligibility: "10+2 with Biology/Botany (Min 50%)",
-      highlights: ["Harvest Technology", "Fishery Engineering", "Extension, Economics & Marketing"]
-    }
-  ];
-  const postgraduatePrograms = [
-    {
-      title: "M.Sc Mathematics",
-      duration: "2 Years",
-      seats: 40,
-      eligibility: "B.Sc Mathematics (Min 50%)",
-      highlights: ["Non-Competitive Rings", "Partial differential equations", "Galois theory", "Measure and integration", "Complex Analysis"]
-    },
-    {
-      title: "M.Sc Analytical Chemistry", 
-      duration: "2 Years",
-      seats: 36,
-      eligibility: "B.Sc Chemistry (Min 50%)",
-      highlights: ["Principles and techniques in Classical analysis", "Applied Inorganic Analysis", "Analysis of Applied Industrial Products", "Optical, Thermal and Radiochemical methods of Analysis", "Advanced Methods of Analysis"]
-    },
-    {
-      title: "M.Sc Organic Chemistry",
-      duration: "2 Years", 
-      seats: 36,
-      eligibility: "B.Sc Chemistry (Min 50%)",
-      highlights: ["Organic Synthesis & Reaction Mechanisms", "Chemistry of Alkaloids, Terpenoids, Quinones and Phenothiazines", "Chemistry of Natural Products", "Chemistry of Antibiotics and Drugs", "Essential Lab Techniques for Industry"]
-    }
-  ];
+  const {
+    latestCalendar,
+    loading: calendarLoading,
+    error: calendarError
+  } = useAcademicCalendar();
+  const undergraduatePrograms = [{
+    title: "B.Sc Computer Science",
+    designation: "Honors",
+    duration: "3 Years",
+    seats: 88,
+    eligibility: "10+2 with Mathematics (Min 50%)",
+    highlights: ["Programming Languages", "Data Structures", "Web Development", "Mobile App Development", "Machine learning"]
+  }, {
+    title: "BCA Computer Applications",
+    designation: "Honors",
+    duration: "3 Years",
+    seats: 100,
+    eligibility: "10+2 with Mathematics (Min 50%)",
+    highlights: ["Programming Languages", "Data Structures", "Web Development", "Mobile App Development", "Machine learning", "Internet of Things"]
+  }, {
+    title: "B.Sc Electronics",
+    designation: "Honors",
+    duration: "3 Years",
+    seats: 30,
+    eligibility: "10+2 with Mathematics (Min 50%)",
+    highlights: ["Computer Networks", "Industrial Electronics", "Cellular Mobile Communications", "Circuit theory and Electronic Devices", "Digital Electronics"]
+  }, {
+    title: "B.Sc Chemistry",
+    designation: "Honors",
+    duration: "3 Years",
+    seats: 40,
+    eligibility: "10+2 with Chemistry & Mathematics (Min 50%)",
+    highlights: ["Organic Chemistry", "Inorganic Chemistry", "Physical Chemistry", "Analytical Chemistry"]
+  }, {
+    title: "B.Com General",
+    designation: "Honors",
+    duration: "3 Years",
+    seats: 60,
+    eligibility: "10+2 in any stream (Min 45%)",
+    highlights: ["Accounting", "Business Management", "Economics", "Taxation"]
+  }, {
+    title: "B.Com Computer Applications",
+    designation: "Honors",
+    duration: "3 Years",
+    seats: 40,
+    eligibility: "10+2 in any stream (Min 45%)",
+    highlights: ["Accounting", "Business Management", "Economics", "Taxation", "E-Commerce and Web Designing", "Digital Marketing"]
+  }, {
+    title: "B.A Political Science",
+    designation: "Honors",
+    duration: "3 Years",
+    seats: 60,
+    eligibility: "10+2 in any stream (Min 45%)",
+    highlights: ["Literature Studies", "Communication Skills", "Creative Writing", "Linguistics"]
+  }, {
+    title: "B.Sc Zoology",
+    designation: "Honors",
+    duration: "3 Years",
+    seats: 30,
+    eligibility: "10+2 with Biology/Botany (Min 50%)",
+    highlights: ["Animal Biotechnology", "Sustainable Aquaculture Management", "Poultry Management"]
+  }, {
+    title: "B.Sc Aqua Culture",
+    designation: "Honors",
+    duration: "3 Years",
+    seats: 30,
+    eligibility: "10+2 with Biology/Botany (Min 50%)",
+    highlights: ["Harvest Technology", "Fishery Engineering", "Extension, Economics & Marketing"]
+  }];
+  const postgraduatePrograms = [{
+    title: "M.Sc Mathematics",
+    duration: "2 Years",
+    seats: 40,
+    eligibility: "B.Sc Mathematics (Min 50%)",
+    highlights: ["Non-Competitive Rings", "Partial differential equations", "Galois theory", "Measure and integration", "Complex Analysis"]
+  }, {
+    title: "M.Sc Analytical Chemistry",
+    duration: "2 Years",
+    seats: 36,
+    eligibility: "B.Sc Chemistry (Min 50%)",
+    highlights: ["Principles and techniques in Classical analysis", "Applied Inorganic Analysis", "Analysis of Applied Industrial Products", "Optical, Thermal and Radiochemical methods of Analysis", "Advanced Methods of Analysis"]
+  }, {
+    title: "M.Sc Organic Chemistry",
+    duration: "2 Years",
+    seats: 36,
+    eligibility: "B.Sc Chemistry (Min 50%)",
+    highlights: ["Organic Synthesis & Reaction Mechanisms", "Chemistry of Alkaloids, Terpenoids, Quinones and Phenothiazines", "Chemistry of Natural Products", "Chemistry of Antibiotics and Drugs", "Essential Lab Techniques for Industry"]
+  }];
   const admissionProcess = [{
     step: "1",
     title: "Application Submission",
@@ -405,20 +395,15 @@ const Academics = () => {
                 </p>
                 
                 {/* Latest Academic Calendar Download */}
-                {calendarLoading ? (
-                  <div className="bg-white p-6 rounded-lg shadow-sm">
+                {calendarLoading ? <div className="bg-white p-6 rounded-lg shadow-sm">
                     <div className="animate-pulse">
                       <div className="h-4 bg-gray-200 rounded w-3/4 mb-2"></div>
                       <div className="h-4 bg-gray-200 rounded w-1/2"></div>
                     </div>
-                  </div>
-                ) : calendarError ? (
-                  <div className="bg-red-50 p-6 rounded-lg shadow-sm border-l-4 border-red-400">
+                  </div> : calendarError ? <div className="bg-red-50 p-6 rounded-lg shadow-sm border-l-4 border-red-400">
                     <h4 className="font-semibold text-red-800 mb-2">Unable to Load Academic Calendar</h4>
                     <p className="text-sm text-red-600">{calendarError}</p>
-                  </div>
-                ) : latestCalendar ? (
-                  <div className="bg-white p-6 rounded-lg shadow-sm border-l-4 border-orange-400">
+                  </div> : latestCalendar ? <div className="bg-white p-6 rounded-lg shadow-sm border-l-4 border-orange-400">
                     <div className="flex items-start justify-between">
                       <div className="flex-1">
                         <h4 className="font-semibold text-gray-900 mb-2 flex items-center gap-2">
@@ -426,129 +411,44 @@ const Academics = () => {
                           {latestCalendar.title}
                         </h4>
                         <div className="space-y-1 text-sm text-gray-600">
-                          {latestCalendar.academic_year && (
-                            <p><strong>Academic Year:</strong> {latestCalendar.academic_year}</p>
-                          )}
-                          {latestCalendar.semester && (
-                            <p><strong>Semester:</strong> {latestCalendar.semester}</p>
-                          )}
-                          {latestCalendar.department && (
-                            <p><strong>Department:</strong> {latestCalendar.department}</p>
-                          )}
+                          {latestCalendar.academic_year && <p><strong>Academic Year:</strong> {latestCalendar.academic_year}</p>}
+                          {latestCalendar.semester && <p><strong>Semester:</strong> {latestCalendar.semester}</p>}
+                          {latestCalendar.department && <p><strong>Department:</strong> {latestCalendar.department}</p>}
                           <p><strong>Uploaded:</strong> {new Date(latestCalendar.uploaded_at).toLocaleDateString()}</p>
-                          {latestCalendar.description && (
-                            <p className="mt-2 text-gray-700">{latestCalendar.description}</p>
-                          )}
+                          {latestCalendar.description && <p className="mt-2 text-gray-700">{latestCalendar.description}</p>}
                         </div>
                       </div>
                       <div className="ml-4 flex flex-col gap-2">
-                        <Button 
-                          asChild 
-                          size="sm" 
-                          className="bg-orange-600 hover:bg-orange-700"
-                        >
-                          <a 
-                            href={latestCalendar.file_url} 
-                            target="_blank" 
-                            rel="noopener noreferrer"
-                            className="flex items-center gap-2"
-                          >
+                        <Button asChild size="sm" className="bg-orange-600 hover:bg-orange-700">
+                          <a href={latestCalendar.file_url} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
                             <Download className="h-4 w-4" />
                             Download
                           </a>
                         </Button>
-                        <Button 
-                          variant="outline" 
-                          size="sm" 
-                          asChild
-                          className="border-orange-600 text-orange-600 hover:bg-orange-50"
-                        >
-                          <a 
-                            href={latestCalendar.file_url} 
-                            target="_blank" 
-                            rel="noopener noreferrer"
-                            className="flex items-center gap-2"
-                          >
+                        <Button variant="outline" size="sm" asChild className="border-orange-600 text-orange-600 hover:bg-orange-50">
+                          <a href={latestCalendar.file_url} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
                             <ExternalLink className="h-4 w-4" />
                             View
                           </a>
                         </Button>
                       </div>
                     </div>
-                  </div>
-                ) : (
-                  <div className="bg-gray-50 p-6 rounded-lg shadow-sm">
+                  </div> : <div className="bg-gray-50 p-6 rounded-lg shadow-sm">
                     <h4 className="font-semibold text-gray-700 mb-2">Academic Calendar</h4>
                     <p className="text-sm text-gray-600">No academic calendar available. Please check back later or contact the administration.</p>
-                  </div>
-                )}
+                  </div>}
 
                 <div className="grid md:grid-cols-2 gap-6">
-                  <div className="bg-white p-6 rounded-lg shadow-sm">
-                    <h4 className="font-semibold text-orange-800 mb-4 flex items-center gap-2">
-                      <div className="w-3 h-3 bg-orange-500 rounded-full"></div>
-                      Odd Semester (July - December)
-                    </h4>
-                    <div className="space-y-3">
-                      <div className="flex justify-between items-center p-3 bg-orange-50 rounded">
-                        <span className="text-sm font-medium">Semester Commencement</span>
-                        <span className="text-sm text-orange-600">July 15</span>
-                      </div>
-                      <div className="flex justify-between items-center p-3 bg-orange-50 rounded">
-                        <span className="text-sm font-medium">Mid-Term Examinations</span>
-                        <span className="text-sm text-orange-600">September 15-20</span>
-                      </div>
-                      <div className="flex justify-between items-center p-3 bg-orange-50 rounded">
-                        <span className="text-sm font-medium">Semester End Exams</span>
-                        <span className="text-sm text-orange-600">November 20-30</span>
-                      </div>
-                    </div>
-                  </div>
                   
-                  <div className="bg-white p-6 rounded-lg shadow-sm">
-                    <h4 className="font-semibold text-blue-800 mb-4 flex items-center gap-2">
-                      <div className="w-3 h-3 bg-blue-500 rounded-full"></div>
-                      Even Semester (January - June)
-                    </h4>
-                    <div className="space-y-3">
-                      <div className="flex justify-between items-center p-3 bg-blue-50 rounded">
-                        <span className="text-sm font-medium">Semester Commencement</span>
-                        <span className="text-sm text-blue-600">January 10</span>
-                      </div>
-                      <div className="flex justify-between items-center p-3 bg-blue-50 rounded">
-                        <span className="text-sm font-medium">Mid-Term Examinations</span>
-                        <span className="text-sm text-blue-600">March 15-20</span>
-                      </div>
-                      <div className="flex justify-between items-center p-3 bg-blue-50 rounded">
-                        <span className="text-sm font-medium">Semester End Exams</span>
-                        <span className="text-sm text-blue-600">May 15-30</span>
-                      </div>
-                    </div>
-                  </div>
+                  
+                  
                 </div>
                 
-                <div className="bg-white p-6 rounded-lg border-l-4 border-orange-400">
-                  <h5 className="font-semibold text-gray-900 mb-3">Important Academic Events</h5>
-                  <div className="grid md:grid-cols-2 gap-4">
-                    <div className="space-y-2">
-                      <div className="text-sm"><strong>Orientation Program:</strong> First week of each semester</div>
-                      <div className="text-sm"><strong>Faculty Development:</strong> Semester breaks</div>
-                      <div className="text-sm"><strong>Research Symposium:</strong> March (Annual)</div>
-                    </div>
-                    <div className="space-y-2">
-                      <div className="text-sm"><strong>Cultural Events:</strong> October & February</div>
-                      <div className="text-sm"><strong>Sports Meet:</strong> December & April</div>
-                      <div className="text-sm"><strong>Convocation:</strong> May (Annual)</div>
-                    </div>
-                  </div>
-                </div>
+                
                 
                 <div className="text-center">
                   <Link to="/academic-calendar">
-                    <Button variant="outline" className="text-orange-600 border-orange-600 hover:bg-orange-50">
-                      View Complete Academic Calendar
-                      <ArrowRight className="h-4 w-4 ml-2" />
-                    </Button>
+                    
                   </Link>
                 </div>
               </div>
