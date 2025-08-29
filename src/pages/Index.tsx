@@ -5,6 +5,8 @@ import AnnouncementsTicker from "@/components/home/AnnouncementsTicker";
 import AnnouncementsSidebar from "@/components/home/AnnouncementsSidebar";
 import MainContent from "@/components/home/MainContent";
 import CallToAction from "@/components/home/CallToAction";
+import HistoricalGallery from "@/components/home/HistoricalGallery";
+import CampusGallery from "@/components/home/CampusGallery";
 import { useAnnouncements } from "@/hooks/useAnnouncements";
 
 const Index = () => {
@@ -69,15 +71,19 @@ const Index = () => {
         </div>
       </section>
 
+      {/* Historical Gallery */}
+      <HistoricalGallery />
+
       {/* About Section */}
-      <section className="py-16 bg-gray-50">
+      <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
               <h2 className="section-title">Our Institution</h2>
-              <p className="mb-4">Established in 1975, SVRM College has grown to become one of the leading educational institutions in Andhra Pradesh. Named after the visionary philanthropist Shri Velagapudi Ramakrishna, the college was founded with the mission to provide quality education accessible to all sections of society.</p>
-              <p className="mb-4">Over the decades, the college has maintained a tradition of academic excellence while constantly evolving to meet the changing educational needs of students. Today, SVRM College stands as a symbol of educational excellence, offering a wide range of undergraduate and postgraduate programs across various disciplines.</p>
-              <p>The sprawling campus is equipped with modern facilities including well-equipped laboratories, a comprehensive library, sports facilities, and spacious classrooms to provide students with an enriching learning environment.</p>
+              <p className="mb-4">S.V.R.M. College is a premier rural autonomous institution dedicated to providing quality education and holistic development. Nestled in a 30-acre eco-friendly campus adorned with lush gardens, trees, and clean green spaces, the college offers a serene learning environment. The campus features separate boys' and girls' hostels, modern academic facilities, and is conveniently connected to the main road, blending a rural backdrop with the conveniences of urban life.</p>
+              <p className="mb-4">Guided by the motto "A Sound Mind in a Sound Body", the college emphasizes academic excellence, discipline, leadership, and physical fitness. It offers a variety of undergraduate and postgraduate programs across arts, science, commerce, and professional streams, with a strong focus on practical learning, research, and skill development.</p>
+              <p className="mb-4">S.V.R.M. College actively fosters NCC, social service, community engagement, disaster preparedness, and cultural activities, nurturing leadership, patriotism, teamwork, and personal growth. Through continuous self-assessment and NAAC accreditation, the institution ensures that every student emerges as a confident, responsible, and socially conscious citizen, ready to make meaningful contributions to society.</p>
+              <p>Over the decades, S.V.R.M. College has hosted seminars, conferences, and cultural events attended by eminent personalities, including the President of India Sri V.V. Giri, leading academics, and scientists. Despite early challenges, including natural disasters, the college has continued to grow, introducing postgraduate programs and expanding its facilities, while remaining committed to producing confident, responsible, and socially conscious citizens ready to contribute meaningfully to society.</p>
             </div>
             <div className="rounded-lg overflow-hidden shadow-lg">
               <img 
@@ -89,6 +95,9 @@ const Index = () => {
           </div>
         </div>
       </section>
+
+      {/* Campus Gallery */}
+      <CampusGallery />
 
       {/* CTA Section */}
       <CallToAction />

@@ -3,7 +3,8 @@ import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import WelcomeSection from "./WelcomeSection";
-import ChairmanMessage from "./ChairmanMessage";
+import VicePresidentMessage from "./ChairmanMessage";
+import CorrespondentMessage from "./CorrespondentMessage";
 import CollegeStats from "./CollegeStats";
 import LatestNews from "./LatestNews";
 
@@ -24,7 +25,8 @@ const MainContent = ({ latestNews }: MainContentProps) => {
   return (
     <div className="lg:col-span-2">
       <WelcomeSection />
-      <ChairmanMessage />
+      <VicePresidentMessage />
+      <CorrespondentMessage />
       <CollegeStats />
       
       

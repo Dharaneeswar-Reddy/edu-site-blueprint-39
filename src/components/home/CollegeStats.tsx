@@ -11,23 +11,23 @@ const CollegeStats = () => {
   const collegeStats: CollegeStat[] = [
     {
       icon: <BookOpen className="h-8 w-8 text-college-blue" />,
-      count: "45+",
+      count: "56+",
       label: "Years of Excellence"
     },
     {
       icon: <Users className="h-8 w-8 text-college-blue" />,
-      count: "150+",
-      label: "Experienced Faculty"
+      count: "70+",
+      label: "Faculty"
     },
     {
       icon: <Building className="h-8 w-8 text-college-blue" />,
-      count: "12+",
+      count: "15+",
       label: "Departments"
     },
     {
       icon: <Award className="h-8 w-8 text-college-blue" />,
-      count: "95%",
-      label: "Placement Rate"
+      count: "80%",
+      label: "Placement + Higher Studies Rate"
     }
   ];
 
