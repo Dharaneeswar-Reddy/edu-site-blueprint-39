@@ -7,196 +7,147 @@ import { Calendar, Clock, Users, BookOpen, Award, Download, Globe, Search, Troph
 import { useEffect, useState } from "react";
 import { useStaff } from "@/hooks/useStaff";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-
 const Library = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const { staff: libraryStaff, loading: staffLoading } = useStaff("Library");
-
+  const {
+    staff: libraryStaff,
+    loading: staffLoading
+  } = useStaff("Library");
   const getInitials = (name: string) => {
     return name.split(' ').map(n => n[0]).join('').toUpperCase();
   };
-
-  const heroImages = [
-    "/lovable-uploads/65f4b0e6-34a6-4a76-89d9-2ad5814ea916.png",
-    "/lovable-uploads/2966f044-90be-41d4-960a-8ecc255707ab.png",
-    "/lovable-uploads/69a5922c-8de7-45f3-a479-e4b0b6f58065.png",
-    "/lovable-uploads/8d4efd31-f8f9-4a60-baa8-79973940c0c1.png",
-    "/lovable-uploads/fb4a7eeb-4035-49a1-879f-ccd9d8aee887.png",
-    "/lovable-uploads/4c46f975-52e2-4da0-9a51-499a4307801b.png",
-    "/lovable-uploads/2491335b-5c00-4304-b5e3-c98c1b8c78f3.png",
-    "/lovable-uploads/ed67eb6a-8709-4d75-93bf-30663eb27c7e.png",
-    "/lovable-uploads/deb710e1-e20c-4c6d-bfdb-9474b1aebb4d.png"
-  ];
-
-  const galleryImages = [
-    "/lovable-uploads/65f4b0e6-34a6-4a76-89d9-2ad5814ea916.png",
-    "/lovable-uploads/2966f044-90be-41d4-960a-8ecc255707ab.png",
-    "/lovable-uploads/69a5922c-8de7-45f3-a479-e4b0b6f58065.png",
-    "/lovable-uploads/8d4efd31-f8f9-4a60-baa8-79973940c0c1.png",
-    "/lovable-uploads/fb4a7eeb-4035-49a1-879f-ccd9d8aee887.png",
-    "/lovable-uploads/4c46f975-52e2-4da0-9a51-499a4307801b.png",
-    "/lovable-uploads/2491335b-5c00-4304-b5e3-c98c1b8c78f3.png",
-    "/lovable-uploads/ed67eb6a-8709-4d75-93bf-30663eb27c7e.png",
-    "/lovable-uploads/deb710e1-e20c-4c6d-bfdb-9474b1aebb4d.png"
-  ];
-
+  const heroImages = ["/lovable-uploads/65f4b0e6-34a6-4a76-89d9-2ad5814ea916.png", "/lovable-uploads/2966f044-90be-41d4-960a-8ecc255707ab.png", "/lovable-uploads/69a5922c-8de7-45f3-a479-e4b0b6f58065.png", "/lovable-uploads/8d4efd31-f8f9-4a60-baa8-79973940c0c1.png", "/lovable-uploads/fb4a7eeb-4035-49a1-879f-ccd9d8aee887.png", "/lovable-uploads/4c46f975-52e2-4da0-9a51-499a4307801b.png", "/lovable-uploads/2491335b-5c00-4304-b5e3-c98c1b8c78f3.png", "/lovable-uploads/ed67eb6a-8709-4d75-93bf-30663eb27c7e.png", "/lovable-uploads/deb710e1-e20c-4c6d-bfdb-9474b1aebb4d.png"];
+  const galleryImages = ["/lovable-uploads/65f4b0e6-34a6-4a76-89d9-2ad5814ea916.png", "/lovable-uploads/2966f044-90be-41d4-960a-8ecc255707ab.png", "/lovable-uploads/69a5922c-8de7-45f3-a479-e4b0b6f58065.png", "/lovable-uploads/8d4efd31-f8f9-4a60-baa8-79973940c0c1.png", "/lovable-uploads/fb4a7eeb-4035-49a1-879f-ccd9d8aee887.png", "/lovable-uploads/4c46f975-52e2-4da0-9a51-499a4307801b.png", "/lovable-uploads/2491335b-5c00-4304-b5e3-c98c1b8c78f3.png", "/lovable-uploads/ed67eb6a-8709-4d75-93bf-30663eb27c7e.png", "/lovable-uploads/deb710e1-e20c-4c6d-bfdb-9474b1aebb4d.png"];
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentImageIndex(prevIndex => prevIndex === heroImages.length - 1 ? 0 : prevIndex + 1);
     }, 3000);
     return () => clearInterval(interval);
   }, [heroImages.length]);
-
-  const libraryHoldings = [
-    {
-      category: "English",
-      books: 3176,
-      bookBank: 0,
-      genLib: 3176,
-      titleWise: 1779,
-      type: "General Literature & Language Books"
-    },
-    {
-      category: "Telugu",
-      books: 5903,
-      bookBank: 0,
-      genLib: 5903,
-      titleWise: 3110,
-      type: "Telugu Literature & Culture Books"
-    },
-    {
-      category: "Hindi",
-      books: 1214,
-      bookBank: 0,
-      genLib: 1214,
-      titleWise: 551,
-      type: "Hindi Literature & Language Books"
-    },
-    {
-      category: "Commerce",
-      books: 3050,
-      bookBank: 543,
-      genLib: 2507,
-      titleWise: 1342,
-      type: "Business & Commerce Books"
-    },
-    {
-      category: "Economics",
-      books: 1708,
-      bookBank: 412,
-      genLib: 1296,
-      titleWise: 798,
-      type: "Economics & Policy Books"
-    },
-    {
-      category: "Political Science",
-      books: 1642,
-      bookBank: 326,
-      genLib: 1316,
-      titleWise: 893,
-      type: "Political Science & Governance Books"
-    },
-    {
-      category: "History",
-      books: 2593,
-      bookBank: 323,
-      genLib: 2270,
-      titleWise: 1220,
-      type: "History & Heritage Books"
-    },
-    {
-      category: "Mathematics",
-      books: 2245,
-      bookBank: 143,
-      genLib: 2102,
-      titleWise: 1033,
-      type: "Mathematics & Statistics Books"
-    },
-    {
-      category: "Computer Science",
-      books: 1247,
-      bookBank: 208,
-      genLib: 1039,
-      titleWise: 500,
-      type: "Computer Science & IT Books"
-    },
-    {
-      category: "Physics",
-      books: 2470,
-      bookBank: 382,
-      genLib: 2088,
-      titleWise: 1230,
-      type: "Physics & Applied Sciences Books"
-    },
-    {
-      category: "Electronics",
-      books: 1002,
-      bookBank: 320,
-      genLib: 682,
-      titleWise: 541,
-      type: "Electronics & Engineering Books"
-    },
-    {
-      category: "Chemistry",
-      books: 3091,
-      bookBank: 324,
-      genLib: 2767,
-      titleWise: 1229,
-      type: "Chemistry & Chemical Sciences Books"
-    },
-    {
-      category: "Botany",
-      books: 1555,
-      bookBank: 250,
-      genLib: 1305,
-      titleWise: 855,
-      type: "Botanical Sciences Books"
-    },
-    {
-      category: "Zoology",
-      books: 1895,
-      bookBank: 260,
-      genLib: 1635,
-      titleWise: 894,
-      type: "Zoological Sciences Books"
-    },
-    {
-      category: "Biology",
-      books: 208,
-      bookBank: 0,
-      genLib: 208,
-      titleWise: 127,
-      type: "General Biology Books"
-    },
-    {
-      category: "Reference & General",
-      books: 12141,
-      bookBank: 0,
-      genLib: 12141,
-      titleWise: 8273,
-      type: "Reference Materials & General Collection"
-    }
-  ];
-
-  const achievements = [
-    "Best Library Award 2016", 
-    "Library-attached Archaeological Museum, showcasing precious historical treasures, including the original Amaravathi Stupa, officially registered with the National Museum, Delhi. With government permission granted to establish the museum, it serves as a center of learning and heritage, inspiring students, researchers, and the community to explore India's rich cultural legacy.", 
-    "Rare collection of talapatrha grandhas from 16th century of padma puranamu and bhagavadgeetha written by 'pellamaram taata charyulu'"
-  ];
-
-  return (
-    <PageLayout title="Central Library" description="A comprehensive learning resource center fostering knowledge, research, and academic excellence for the entire college community.">
+  const libraryHoldings = [{
+    category: "English",
+    books: 3176,
+    bookBank: 0,
+    genLib: 3176,
+    titleWise: 1779,
+    type: "General Literature & Language Books"
+  }, {
+    category: "Telugu",
+    books: 5903,
+    bookBank: 0,
+    genLib: 5903,
+    titleWise: 3110,
+    type: "Telugu Literature & Culture Books"
+  }, {
+    category: "Hindi",
+    books: 1214,
+    bookBank: 0,
+    genLib: 1214,
+    titleWise: 551,
+    type: "Hindi Literature & Language Books"
+  }, {
+    category: "Commerce",
+    books: 3050,
+    bookBank: 543,
+    genLib: 2507,
+    titleWise: 1342,
+    type: "Business & Commerce Books"
+  }, {
+    category: "Economics",
+    books: 1708,
+    bookBank: 412,
+    genLib: 1296,
+    titleWise: 798,
+    type: "Economics & Policy Books"
+  }, {
+    category: "Political Science",
+    books: 1642,
+    bookBank: 326,
+    genLib: 1316,
+    titleWise: 893,
+    type: "Political Science & Governance Books"
+  }, {
+    category: "History",
+    books: 2593,
+    bookBank: 323,
+    genLib: 2270,
+    titleWise: 1220,
+    type: "History & Heritage Books"
+  }, {
+    category: "Mathematics",
+    books: 2245,
+    bookBank: 143,
+    genLib: 2102,
+    titleWise: 1033,
+    type: "Mathematics & Statistics Books"
+  }, {
+    category: "Computer Science",
+    books: 1247,
+    bookBank: 208,
+    genLib: 1039,
+    titleWise: 500,
+    type: "Computer Science & IT Books"
+  }, {
+    category: "Physics",
+    books: 2470,
+    bookBank: 382,
+    genLib: 2088,
+    titleWise: 1230,
+    type: "Physics & Applied Sciences Books"
+  }, {
+    category: "Electronics",
+    books: 1002,
+    bookBank: 320,
+    genLib: 682,
+    titleWise: 541,
+    type: "Electronics & Engineering Books"
+  }, {
+    category: "Chemistry",
+    books: 3091,
+    bookBank: 324,
+    genLib: 2767,
+    titleWise: 1229,
+    type: "Chemistry & Chemical Sciences Books"
+  }, {
+    category: "Botany",
+    books: 1555,
+    bookBank: 250,
+    genLib: 1305,
+    titleWise: 855,
+    type: "Botanical Sciences Books"
+  }, {
+    category: "Zoology",
+    books: 1895,
+    bookBank: 260,
+    genLib: 1635,
+    titleWise: 894,
+    type: "Zoological Sciences Books"
+  }, {
+    category: "Biology",
+    books: 208,
+    bookBank: 0,
+    genLib: 208,
+    titleWise: 127,
+    type: "General Biology Books"
+  }, {
+    category: "Reference & General",
+    books: 12141,
+    bookBank: 0,
+    genLib: 12141,
+    titleWise: 8273,
+    type: "Reference Materials & General Collection"
+  }];
+  const achievements = ["Best Library Award 2016", "Library-attached Archaeological Museum, showcasing precious historical treasures, including the original Amaravathi Stupa, officially registered with the National Museum, Delhi. With government permission granted to establish the museum, it serves as a center of learning and heritage, inspiring students, researchers, and the community to explore India's rich cultural legacy.", "Rare collection of talapatrha grandhas from 16th century of padma puranamu and bhagavadgeetha written by 'pellamaram taata charyulu'"];
+  return <PageLayout title="Central Library" description="A comprehensive learning resource center fostering knowledge, research, and academic excellence for the entire college community.">
       <div className="space-y-8">
         
         {/* Auto-scrolling Hero Images */}
         <div className="relative h-64 md:h-80 lg:h-96 rounded-lg overflow-hidden shadow-lg">
-          {heroImages.map((image, index) => (
-            <img key={index} src={image} alt={`Library ${index + 1}`} className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${index === currentImageIndex ? 'opacity-100' : 'opacity-0'}`} />
-          ))}
+          {heroImages.map((image, index) => <img key={index} src={image} alt={`Library ${index + 1}`} className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${index === currentImageIndex ? 'opacity-100' : 'opacity-0'}`} />)}
           <div className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
             <div className="text-center text-white">
-              <h1 className="text-4xl md:text-6xl font-bold mb-4">Central Library</h1>
-              <p className="text-xl md:text-2xl mb-4">The pride of our college infrastructure is our "magnificent library building Attached with Archaeological Museum and the invaluable volumes in it". It's a comprehensive learning resource center fostering knowledge, research, and academic excellence for the entire college community.</p>
+              
+              
             </div>
           </div>
         </div>
@@ -315,8 +266,7 @@ const Library = () => {
                 </TableRow>
               </TableHeader>
               <TableBody>
-                {libraryHoldings.map((item, index) => (
-                  <TableRow key={index}>
+                {libraryHoldings.map((item, index) => <TableRow key={index}>
                     <TableCell className="font-medium">{item.category}</TableCell>
                     <TableCell className="text-right font-semibold text-college-blue">
                       {item.books.toLocaleString()}
@@ -324,8 +274,7 @@ const Library = () => {
                     <TableCell className="text-right">{item.bookBank || 0}</TableCell>
                     <TableCell className="text-right">{item.genLib}</TableCell>
                     <TableCell className="text-right">{item.titleWise}</TableCell>
-                  </TableRow>
-                ))}
+                  </TableRow>)}
                 <TableRow className="border-t-2 font-bold">
                   <TableCell className="font-bold">Total</TableCell>
                   <TableCell className="text-right font-bold text-college-blue">45,140</TableCell>
@@ -456,12 +405,10 @@ const Library = () => {
           </CardHeader>
           <CardContent>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              {achievements.map((achievement, index) => (
-                <div key={index} className="flex items-center p-3 bg-yellow-50 rounded-lg">
+              {achievements.map((achievement, index) => <div key={index} className="flex items-center p-3 bg-yellow-50 rounded-lg">
                   <Award className="h-5 w-5 text-yellow-600 mr-3 flex-shrink-0" />
                   <span className="text-sm font-medium">{achievement}</span>
-                </div>
-              ))}
+                </div>)}
             </div>
           </CardContent>
         </Card>
@@ -554,12 +501,8 @@ const Library = () => {
             <CardTitle>Library Staff</CardTitle>
           </CardHeader>
           <CardContent>
-            {staffLoading ? (
-              <div className="text-center py-8">Loading staff information...</div>
-            ) : libraryStaff.length > 0 ? (
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {libraryStaff.map((staff) => (
-                  <div key={staff.id} className="border rounded-lg p-6 hover:shadow-lg transition-shadow">
+            {staffLoading ? <div className="text-center py-8">Loading staff information...</div> : libraryStaff.length > 0 ? <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {libraryStaff.map(staff => <div key={staff.id} className="border rounded-lg p-6 hover:shadow-lg transition-shadow">
                     <div className="flex items-center space-x-4 mb-4">
                       <Avatar className="h-16 w-16">
                         <AvatarImage src={staff.photo_url || ""} alt={staff.name} />
@@ -568,62 +511,44 @@ const Library = () => {
                       <div>
                         <h3 className="text-lg font-semibold text-college-blue">{staff.name}</h3>
                         <p className="text-gray-600">{staff.designation}</p>
-                        {staff.department && (
-                          <Badge variant="secondary" className="mt-1">
+                        {staff.department && <Badge variant="secondary" className="mt-1">
                             {staff.department}
-                          </Badge>
-                        )}
+                          </Badge>}
                       </div>
                     </div>
 
-                    {staff.qualification && (
-                      <div className="mb-3">
+                    {staff.qualification && <div className="mb-3">
                         <h4 className="font-medium text-sm mb-1">Qualifications</h4>
                         <p className="text-sm text-gray-600">{staff.qualification}</p>
-                      </div>
-                    )}
+                      </div>}
 
-                    {staff.experience && (
-                      <div className="mb-3">
+                    {staff.experience && <div className="mb-3">
                         <h4 className="font-medium text-sm mb-1">Experience</h4>
                         <p className="text-sm text-gray-600">{staff.experience}</p>
-                      </div>
-                    )}
+                      </div>}
 
-                    {(staff.email || staff.phone) && (
-                      <div className="space-y-2">
-                        {staff.email && (
-                          <div className="flex items-center text-sm text-gray-600">
+                    {(staff.email || staff.phone) && <div className="space-y-2">
+                        {staff.email && <div className="flex items-center text-sm text-gray-600">
                             <Mail className="h-4 w-4 mr-2 text-college-blue" />
                             <span>{staff.email}</span>
-                          </div>
-                        )}
-                        {staff.phone && (
-                          <div className="flex items-center text-sm text-gray-600">
+                          </div>}
+                        {staff.phone && <div className="flex items-center text-sm text-gray-600">
                             <Phone className="h-4 w-4 mr-2 text-college-blue" />
                             <span>{staff.phone}</span>
-                          </div>
-                        )}
-                      </div>
-                    )}
+                          </div>}
+                      </div>}
 
-                    {staff.bio && (
-                      <div className="mt-3 pt-3 border-t">
+                    {staff.bio && <div className="mt-3 pt-3 border-t">
                         <p className="text-sm text-gray-700">
                           {staff.bio.length > 100 ? `${staff.bio.substring(0, 100)}...` : staff.bio}
                         </p>
-                      </div>
-                    )}
-                  </div>
-                ))}
-              </div>
-            ) : (
-              <div className="text-center py-8 text-gray-500">
+                      </div>}
+                  </div>)}
+              </div> : <div className="text-center py-8 text-gray-500">
                 No staff information available for the Library department.
                 <br />
                 <span className="text-sm">Staff can be added through the admin panel.</span>
-              </div>
-            )}
+              </div>}
           </CardContent>
         </Card>
 
@@ -634,12 +559,10 @@ const Library = () => {
           </CardHeader>
           <CardContent>
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
-              {galleryImages.map((image, index) => (
-                <div key={index} className="group relative overflow-hidden rounded-lg shadow-md hover:shadow-lg transition-shadow">
+              {galleryImages.map((image, index) => <div key={index} className="group relative overflow-hidden rounded-lg shadow-md hover:shadow-lg transition-shadow">
                   <img src={image} alt={`Library Gallery ${index + 1}`} className="w-full h-32 object-cover group-hover:scale-110 transition-transform duration-300" />
                   <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 transition-opacity duration-300"></div>
-                </div>
-              ))}
+                </div>)}
             </div>
           </CardContent>
         </Card>
@@ -694,8 +617,6 @@ const Library = () => {
         </Card>
 
       </div>
-    </PageLayout>
-  );
+    </PageLayout>;
 };
-
 export default Library;
