@@ -34,7 +34,6 @@ import ExaminationCell from "./pages/ExaminationCell";
 import Library from "./pages/departments/Library";
 import Alumni from "./pages/Alumni";
 import Magazines from "./pages/Magazines";
-import ICC from "./pages/ICC";
 import NIRF from "./pages/NIRF";
 import Feedback from "./pages/Feedback";
 import History from "./pages/about/History";
@@ -74,15 +73,12 @@ import PhysicalEducation from "./pages/departments/PhysicalEducation";
 import Admin from "./pages/Admin";
 
 // Student Support Pages
-import JKC from "./pages/student-support/JKC";
 import NSS from "./pages/student-support/NSS";
 import NCCProgram from "./pages/student-support/NCCProgram";
 import WomenEmpowerment from "./pages/student-support/WomenEmpowerment";
-import ICCPage from "./pages/student-support/ICCPage";
 import GymSports from "./pages/student-support/GymSports";
 import AntiRagging from "./pages/student-support/AntiRagging";
 import CulturalClub from "./pages/student-support/CulturalClub";
-import ConsumerClub from "./pages/student-support/ConsumerClub";
 import EcoClub from "./pages/student-support/EcoClub";
 
 // Admin Components
@@ -143,7 +139,6 @@ const App = () => (
             <Route path="/library" element={<Library />} />
             <Route path="/alumni" element={<Alumni />} />
             <Route path="/magazines" element={<Magazines />} />
-            <Route path="/icc" element={<ICC />} />
             <Route path="/nirf" element={<NIRF />} />
             <Route path="/feedback" element={<Feedback />} />
             <Route path="/about/strategic-documents" element={<StrategicDocuments />} />
@@ -153,15 +148,12 @@ const App = () => (
             <Route path="/iqac" element={<IQAC />} />
             <Route path="/iqac/quality-policy" element={<QualityPolicy />} />
             <Route path="/student-support" element={<StudentSupport />} />
-            <Route path="/student-support/jkc" element={<JKC />} />
             <Route path="/student-support/nss" element={<NSS />} />
             <Route path="/student-support/ncc-program" element={<NCCProgram />} />
             <Route path="/student-support/women-empowerment" element={<WomenEmpowerment />} />
-            <Route path="/student-support/icc" element={<ICCPage />} />
             <Route path="/student-support/gym-sports" element={<GymSports />} />
             <Route path="/student-support/anti-ragging" element={<AntiRagging />} />
             <Route path="/student-support/cultural-club" element={<CulturalClub />} />
-            <Route path="/student-support/consumer-club" element={<ConsumerClub />} />
             <Route path="/student-support/eco-club" element={<EcoClub />} />
             <Route path="/placements" element={<Placements />} />
             

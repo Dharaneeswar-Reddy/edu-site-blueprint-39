@@ -13,10 +13,10 @@ const CallToAction = () => {
         animationDelay: "0.3s"
       }}>
           <Button size="lg" className="bg-college-gold text-college-blue hover:bg-yellow-400 hover-scale" asChild>
-            <Link to="/admission">Contact us</Link>
+            <Link to="/contact">Contact us</Link>
           </Button>
           <Button size="lg" variant="outline" className="text-black border-white hover:bg-white/20 hover:text-black hover-scale" asChild>
-            <Link to="/contact">Explore Campus</Link>
+            <Link to="/about-us">Explore Campus</Link>
           </Button>
         </div>
       </div>

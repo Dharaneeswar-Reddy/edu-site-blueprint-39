@@ -354,11 +354,11 @@ const Placements = () => {
         </div>
       </section>
 
-      {/* Employment and Placement Cell/JKC */}
+      {/* Employment and Placement Cell */}
       <section className="py-16 bg-background">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-primary mb-6">EMPLOYMENT AND PLACEMENT CELL/JKC</h2>
+            <h2 className="text-3xl font-bold text-primary mb-6">EMPLOYMENT AND PLACEMENT CELL</h2>
             <div className="w-24 h-1 bg-primary mx-auto mb-6"></div>
           </div>
 
@@ -420,7 +420,7 @@ const Placements = () => {
 
                   <h3 className="text-xl font-semibold text-primary mb-4">6. Campus Recruitment Drives</h3>
                   <p className="text-muted-foreground mb-4">
-                    Placement cell/JKC & APSSDC has conducted Campus recruitment drives on 7/05/2024 with DIVI Laboratories, Hyderabad, on 23-4-2024 with Magic Bus Foundation, Mumbai, on 18-9-2024 with APSSDC and On 28-03-2025 second mega job mela with Magic Bus Foundation, Mumbai. our college and APSSDC jointly organized the drives. We are able to place Students with campus recruitment drives of various companies. Finally 272 students got placed and offer letters were given.
+                    Placement cell has conducted Campus recruitment drives on 7/05/2024 with DIVI Laboratories, Hyderabad, on 23-4-2024 with Magic Bus Foundation, Mumbai, on 18-9-2024 with APSSDC and On 28-03-2025 second mega job mela with Magic Bus Foundation, Mumbai. our college and APSSDC jointly organized the drives. We are able to place Students with campus recruitment drives of various companies. Finally 272 students got placed and offer letters were given.
                   </p>
 
                   <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -595,8 +595,10 @@ const Placements = () => {
             <div className="lg:col-span-2 grid md:grid-cols-2 gap-6">
               <Card className="border-primary/20 hover:shadow-lg transition-all duration-300">
                 <CardHeader className="text-center">
-                  <div className="mx-auto p-4 rounded-full bg-primary/10 mb-4">
-                    <UserCheck className="h-8 w-8 text-primary" />
+                  <div className="mx-auto mb-4">
+                    <div className="w-24 h-24 rounded-lg bg-primary/10 border-2 border-primary/20 flex items-center justify-center mx-auto">
+                      <UserCheck className="h-12 w-12 text-primary" />
+                    </div>
                   </div>
                   <CardTitle className="text-lg">Dr. P.Srinivasa Rao</CardTitle>
                   <CardDescription className="font-medium text-secondary">HOD, Physics</CardDescription>
@@ -605,8 +607,10 @@ const Placements = () => {
 
               <Card className="border-primary/20 hover:shadow-lg transition-all duration-300">
                 <CardHeader className="text-center">
-                  <div className="mx-auto p-4 rounded-full bg-primary/10 mb-4">
-                    <UserCheck className="h-8 w-8 text-primary" />
+                  <div className="mx-auto mb-4">
+                    <div className="w-24 h-24 rounded-lg bg-primary/10 border-2 border-primary/20 flex items-center justify-center mx-auto">
+                      <UserCheck className="h-12 w-12 text-primary" />
+                    </div>
                   </div>
                   <CardTitle className="text-lg">Sri R.Prasanna Babu</CardTitle>
                   <CardDescription className="font-medium text-secondary">HOD, Chemistry</CardDescription>
@@ -615,8 +619,10 @@ const Placements = () => {
 
               <Card className="border-primary/20 hover:shadow-lg transition-all duration-300">
                 <CardHeader className="text-center">
-                  <div className="mx-auto p-4 rounded-full bg-primary/10 mb-4">
-                    <UserCheck className="h-8 w-8 text-primary" />
+                  <div className="mx-auto mb-4">
+                    <div className="w-24 h-24 rounded-lg bg-primary/10 border-2 border-primary/20 flex items-center justify-center mx-auto">
+                      <UserCheck className="h-12 w-12 text-primary" />
+                    </div>
                   </div>
                   <CardTitle className="text-lg">Dr. K.Suresh babu</CardTitle>
                   <CardDescription className="font-medium text-secondary">HOD, Zoology</CardDescription>
@@ -625,8 +631,10 @@ const Placements = () => {
 
               <Card className="border-primary/20 hover:shadow-lg transition-all duration-300">
                 <CardHeader className="text-center">
-                  <div className="mx-auto p-4 rounded-full bg-primary/10 mb-4">
-                    <UserCheck className="h-8 w-8 text-primary" />
+                  <div className="mx-auto mb-4">
+                    <div className="w-24 h-24 rounded-lg bg-primary/10 border-2 border-primary/20 flex items-center justify-center mx-auto">
+                      <UserCheck className="h-12 w-12 text-primary" />
+                    </div>
                   </div>
                   <CardTitle className="text-lg">Sri P. Venkata Narayana</CardTitle>
                   <CardDescription className="font-medium text-secondary">HOD, Botany</CardDescription>
@@ -635,8 +643,10 @@ const Placements = () => {
 
               <Card className="border-primary/20 hover:shadow-lg transition-all duration-300">
                 <CardHeader className="text-center">
-                  <div className="mx-auto p-4 rounded-full bg-primary/10 mb-4">
-                    <UserCheck className="h-8 w-8 text-primary" />
+                  <div className="mx-auto mb-4">
+                    <div className="w-24 h-24 rounded-lg bg-primary/10 border-2 border-primary/20 flex items-center justify-center mx-auto">
+                      <UserCheck className="h-12 w-12 text-primary" />
+                    </div>
                   </div>
                   <CardTitle className="text-lg">Sri U.Siva Prasad</CardTitle>
                   <CardDescription className="font-medium text-secondary">HOD, Mathematics</CardDescription>
@@ -645,8 +655,10 @@ const Placements = () => {
 
               <Card className="border-primary/20 hover:shadow-lg transition-all duration-300">
                 <CardHeader className="text-center">
-                  <div className="mx-auto p-4 rounded-full bg-primary/10 mb-4">
-                    <UserCheck className="h-8 w-8 text-primary" />
+                  <div className="mx-auto mb-4">
+                    <div className="w-24 h-24 rounded-lg bg-primary/10 border-2 border-primary/20 flex items-center justify-center mx-auto">
+                      <UserCheck className="h-12 w-12 text-primary" />
+                    </div>
                   </div>
                   <CardTitle className="text-lg">Dr. B.Prakash babu</CardTitle>
                   <CardDescription className="font-medium text-secondary">HOD, Economics</CardDescription>
@@ -655,8 +667,10 @@ const Placements = () => {
 
               <Card className="border-primary/20 hover:shadow-lg transition-all duration-300">
                 <CardHeader className="text-center">
-                  <div className="mx-auto p-4 rounded-full bg-primary/10 mb-4">
-                    <UserCheck className="h-8 w-8 text-primary" />
+                  <div className="mx-auto mb-4">
+                    <div className="w-24 h-24 rounded-lg bg-primary/10 border-2 border-primary/20 flex items-center justify-center mx-auto">
+                      <UserCheck className="h-12 w-12 text-primary" />
+                    </div>
                   </div>
                   <CardTitle className="text-lg">Sri V. Ramesh babu</CardTitle>
                   <CardDescription className="font-medium text-secondary">HOD, Commerce</CardDescription>

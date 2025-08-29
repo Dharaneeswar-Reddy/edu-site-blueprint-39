@@ -69,9 +69,9 @@ const Contact = () => {
                       <div className="ml-4">
                         <h3 className="font-medium text-gray-900">Address</h3>
                         <address className="not-italic text-gray-600 mt-1">
-                          NH-5, Near Ashram Y Junction<br />
-                          Kommadi, Visakhapatnam<br />
-                          Andhra Pradesh - 530003
+                          SVRM College Campus, NH-5, Nagaram<br />
+                          Bapatla District<br />
+                          Andhra Pradesh - 522268
                         </address>
                       </div>
                     </div>
@@ -82,8 +82,8 @@ const Contact = () => {
                       </div>
                       <div className="ml-4">
                         <h3 className="font-medium text-gray-900">Phone</h3>
-                        <p className="text-gray-600 mt-1">+91 (891) 2511222</p>
-                        <p className="text-gray-600 mt-1">+91 (891) 2511223</p>
+                        <p className="text-gray-600 mt-1">Principal: 9393068272</p>
+                        <p className="text-gray-600 mt-1">Office: 08648 – 256724</p>
                       </div>
                     </div>
 

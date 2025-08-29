@@ -144,15 +144,12 @@ const Header = () => {
                   <div className="absolute left-0 mt-1 w-64 bg-white rounded-md shadow-lg py-1 z-20 animate-fade-in border max-h-96 overflow-y-auto" onMouseEnter={() => handleMouseEnter(setStudentSupportDropdown)} onMouseLeave={() => handleMouseLeave(setStudentSupportDropdown)}>
                     <Link to="/student-support" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" onClick={() => setStudentSupportDropdown(false)}>All Programs</Link>
                     <div className="border-t border-gray-100 my-1"></div>
-                    <Link to="/student-support/jkc" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" onClick={() => setStudentSupportDropdown(false)}>JKC</Link>
                     <Link to="/student-support/nss" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" onClick={() => setStudentSupportDropdown(false)}>NSS</Link>
                     <Link to="/student-support/ncc-program" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" onClick={() => setStudentSupportDropdown(false)}>NCC</Link>
                     <Link to="/student-support/women-empowerment" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" onClick={() => setStudentSupportDropdown(false)}>Women Empowerment</Link>
-                    <Link to="/student-support/icc" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" onClick={() => setStudentSupportDropdown(false)}>ICC</Link>
                     <Link to="/student-support/gym-sports" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" onClick={() => setStudentSupportDropdown(false)}>Gym & Sports</Link>
                     <Link to="/student-support/anti-ragging" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" onClick={() => setStudentSupportDropdown(false)}>Anti-Ragging</Link>
                     <Link to="/student-support/cultural-club" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" onClick={() => setStudentSupportDropdown(false)}>Cultural Club</Link>
-                    <Link to="/student-support/consumer-club" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" onClick={() => setStudentSupportDropdown(false)}>Consumer Club</Link>
                     <Link to="/student-support/eco-club" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" onClick={() => setStudentSupportDropdown(false)}>Eco Club</Link>
                   </div>
                 </>}
@@ -266,9 +263,6 @@ const Header = () => {
                <Link to="/student-support" className={`pl-8 py-2 ${isActive("/student-support") ? "bg-primary/10 text-primary font-medium" : "text-gray-700"}`} onClick={closeMobileMenu}>
                  All Programs
                </Link>
-               <Link to="/student-support/jkc" className={`pl-8 py-2 ${isActive("/student-support/jkc") ? "bg-primary/10 text-primary font-medium" : "text-gray-600"}`} onClick={closeMobileMenu}>
-                 JKC
-               </Link>
                <Link to="/student-support/nss" className={`pl-8 py-2 ${isActive("/student-support/nss") ? "bg-primary/10 text-primary font-medium" : "text-gray-600"}`} onClick={closeMobileMenu}>
                  NSS
                </Link>
@@ -278,9 +272,6 @@ const Header = () => {
                <Link to="/student-support/women-empowerment" className={`pl-8 py-2 ${isActive("/student-support/women-empowerment") ? "bg-primary/10 text-primary font-medium" : "text-gray-600"}`} onClick={closeMobileMenu}>
                  Women Empowerment
                </Link>
-               <Link to="/student-support/icc" className={`pl-8 py-2 ${isActive("/student-support/icc") ? "bg-primary/10 text-primary font-medium" : "text-gray-600"}`} onClick={closeMobileMenu}>
-                 ICC
-               </Link>
                <Link to="/student-support/gym-sports" className={`pl-8 py-2 ${isActive("/student-support/gym-sports") ? "bg-primary/10 text-primary font-medium" : "text-gray-600"}`} onClick={closeMobileMenu}>
                  Gym & Sports
                </Link>
@@ -289,9 +280,6 @@ const Header = () => {
                </Link>
                <Link to="/student-support/cultural-club" className={`pl-8 py-2 ${isActive("/student-support/cultural-club") ? "bg-primary/10 text-primary font-medium" : "text-gray-600"}`} onClick={closeMobileMenu}>
                  Cultural Club
-               </Link>
-               <Link to="/student-support/consumer-club" className={`pl-8 py-2 ${isActive("/student-support/consumer-club") ? "bg-primary/10 text-primary font-medium" : "text-gray-600"}`} onClick={closeMobileMenu}>
-                 Consumer Club
                </Link>
                <Link to="/student-support/eco-club" className={`pl-8 py-2 ${isActive("/student-support/eco-club") ? "bg-primary/10 text-primary font-medium" : "text-gray-600"}`} onClick={closeMobileMenu}>
                  Eco Club

@@ -52,9 +52,9 @@ const Footer = () => {
               <span className="absolute bottom-0 left-0 w-12 h-0.5 bg-college-gold"></span>
             </h3>
             <ul className="space-y-2">
-              <li><Link to="/academic-calendar" className="text-sm text-gray-300 hover:text-white transition-colors">Academic Calendar</Link></li>
+              <li><Link to="/academics" className="text-sm text-gray-300 hover:text-white transition-colors">Academic Calendar</Link></li>
               
-              <li><Link to="/exam-schedule" className="text-sm text-gray-300 hover:text-white transition-colors">Examination Schedule</Link></li>
+              <li><Link to="/examination-cell" className="text-sm text-gray-300 hover:text-white transition-colors">Examination Schedule</Link></li>
               
             </ul>
           </div>
