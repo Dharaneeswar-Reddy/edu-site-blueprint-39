@@ -15,26 +15,23 @@ import { toast } from "sonner";
 import { Plus, Edit, Trash2, Eye, Upload } from "lucide-react";
 
 const serviceOptions = [
-  "JKC", "NCC", "NSS", "Women Empowerment", "ICC", "Gym Sports", 
-  "Anti Ragging", "Cultural Club", "Consumer Club", "Eco Club"
+  "NCC", "NSS", "Women Empowerment", "Gym Sports", 
+  "Anti Ragging", "Cultural Club", "Eco Club"
 ];
 
 const serviceNameMap = {
-  "JKC": "JKC",
   "NCC": "NCC", 
   "NSS": "NSS",
   "Women Empowerment": "Women Empowerment",
-  "ICC": "ICC",
   "Gym Sports": "Gym Sports",
   "Anti Ragging": "Anti Ragging", 
   "Cultural Club": "Cultural Club",
-  "Consumer Club": "Consumer Club",
   "Eco Club": "Eco Club"
 };
 
 export default function StudentSupportAdmin() {
   const [activeTab, setActiveTab] = useState("services");
-  const [selectedService, setSelectedService] = useState("JKC");
+  const [selectedService, setSelectedService] = useState("NCC");
   
   // Service Management
   const [serviceForm, setServiceForm] = useState({

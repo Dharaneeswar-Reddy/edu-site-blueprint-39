@@ -8,15 +8,12 @@ const StudentSupport = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   const supportServices = [
-    { name: "JKC", fullName: "Jawahar Knowledge Centre", path: "/student-support/jkc" },
     { name: "NSS", fullName: "National Service Scheme", path: "/student-support/nss" },
     { name: "NCC", fullName: "National Cadet Corps", path: "/student-support/ncc" },
     { name: "Women Empowerment", fullName: "Women Empowerment Cell", path: "/student-support/women-empowerment" },
-    { name: "ICC", fullName: "Internal Complaints Committee", path: "/student-support/icc" },
     { name: "Gym and Sports", fullName: "Gym and Sports Facility", path: "/student-support/gym-sports" },
     { name: "Anti Ragging", fullName: "Anti Ragging Committee", path: "/student-support/anti-ragging" },
     { name: "Cultural Club", fullName: "Cultural Activities Club", path: "/student-support/cultural-club" },
-    { name: "Consumer Club", fullName: "Consumer Awareness Club", path: "/student-support/consumer-club" },
     { name: "Eco-club", fullName: "Environmental Club", path: "/student-support/eco-club" },
     { name: "Scholarships", fullName: "Scholarship Programs", path: "/student-support/scholarships" }
   ];

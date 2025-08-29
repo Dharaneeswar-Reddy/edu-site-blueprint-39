@@ -14,7 +14,7 @@ const HeroSection = () => {
             <Link to="/admission">Apply Now</Link>
           </Button>
           <Button size="lg" variant="outline" className="text-black border-white hover:bg-white/20 hover:text-black hover-scale" asChild>
-            <Link to="/about">Learn More</Link>
+            <Link to="/about-us">Learn More</Link>
           </Button>
         </div>
       </div>

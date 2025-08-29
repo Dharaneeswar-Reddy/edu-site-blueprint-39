@@ -71,11 +71,19 @@ const Footer = () => {
               </li>
               <li className="flex items-center space-x-3">
                 <Phone size={18} className="text-college-gold flex-shrink-0" />
-                <span className="text-sm text-gray-300">+91 9999999999</span>
+                <span className="text-sm text-gray-300">08648 – 256724</span>
               </li>
               <li className="flex items-center space-x-3">
                 <Mail size={18} className="text-college-gold flex-shrink-0" />
                 <span className="text-sm text-gray-300">info@svrmc.edu.in</span>
+              </li>
+              <li className="flex items-center space-x-3">
+                <Phone size={18} className="text-college-gold flex-shrink-0" />
+                <span className="text-sm text-gray-300">Principal: 9393068272</span>
+              </li>
+              <li className="flex items-center space-x-3">
+                <Mail size={18} className="text-college-gold flex-shrink-0" />
+                <span className="text-sm text-gray-300">principal@svrmc.edu.in</span>
               </li>
             </ul>
           </div>
