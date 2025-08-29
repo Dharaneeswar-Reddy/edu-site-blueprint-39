@@ -1,11 +1,13 @@
 import PageLayout from "@/components/PageLayout";
 import { Link } from "react-router-dom";
-import { ArrowRight, BookOpen, Users, Calendar, Award, FileText, GraduationCap, CheckCircle, Clock, MapPin } from "lucide-react";
+import { ArrowRight, BookOpen, Users, Calendar, Award, FileText, GraduationCap, CheckCircle, Clock, MapPin, Download, ExternalLink } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Badge } from "@/components/ui/badge";
+import { useAcademicCalendar } from "@/hooks/useAcademicCalendar";
 const Academics = () => {
+  const { latestCalendar, loading: calendarLoading, error: calendarError } = useAcademicCalendar();
   const undergraduatePrograms = [
     {
       title: "B.Sc Computer Science",
@@ -402,6 +404,85 @@ const Academics = () => {
                   adequate time for assessments, examinations, and academic activities throughout the year.
                 </p>
                 
+                {/* Latest Academic Calendar Download */}
+                {calendarLoading ? (
+                  <div className="bg-white p-6 rounded-lg shadow-sm">
+                    <div className="animate-pulse">
+                      <div className="h-4 bg-gray-200 rounded w-3/4 mb-2"></div>
+                      <div className="h-4 bg-gray-200 rounded w-1/2"></div>
+                    </div>
+                  </div>
+                ) : calendarError ? (
+                  <div className="bg-red-50 p-6 rounded-lg shadow-sm border-l-4 border-red-400">
+                    <h4 className="font-semibold text-red-800 mb-2">Unable to Load Academic Calendar</h4>
+                    <p className="text-sm text-red-600">{calendarError}</p>
+                  </div>
+                ) : latestCalendar ? (
+                  <div className="bg-white p-6 rounded-lg shadow-sm border-l-4 border-orange-400">
+                    <div className="flex items-start justify-between">
+                      <div className="flex-1">
+                        <h4 className="font-semibold text-gray-900 mb-2 flex items-center gap-2">
+                          <FileText className="h-5 w-5 text-orange-600" />
+                          {latestCalendar.title}
+                        </h4>
+                        <div className="space-y-1 text-sm text-gray-600">
+                          {latestCalendar.academic_year && (
+                            <p><strong>Academic Year:</strong> {latestCalendar.academic_year}</p>
+                          )}
+                          {latestCalendar.semester && (
+                            <p><strong>Semester:</strong> {latestCalendar.semester}</p>
+                          )}
+                          {latestCalendar.department && (
+                            <p><strong>Department:</strong> {latestCalendar.department}</p>
+                          )}
+                          <p><strong>Uploaded:</strong> {new Date(latestCalendar.uploaded_at).toLocaleDateString()}</p>
+                          {latestCalendar.description && (
+                            <p className="mt-2 text-gray-700">{latestCalendar.description}</p>
+                          )}
+                        </div>
+                      </div>
+                      <div className="ml-4 flex flex-col gap-2">
+                        <Button 
+                          asChild 
+                          size="sm" 
+                          className="bg-orange-600 hover:bg-orange-700"
+                        >
+                          <a 
+                            href={latestCalendar.file_url} 
+                            target="_blank" 
+                            rel="noopener noreferrer"
+                            className="flex items-center gap-2"
+                          >
+                            <Download className="h-4 w-4" />
+                            Download
+                          </a>
+                        </Button>
+                        <Button 
+                          variant="outline" 
+                          size="sm" 
+                          asChild
+                          className="border-orange-600 text-orange-600 hover:bg-orange-50"
+                        >
+                          <a 
+                            href={latestCalendar.file_url} 
+                            target="_blank" 
+                            rel="noopener noreferrer"
+                            className="flex items-center gap-2"
+                          >
+                            <ExternalLink className="h-4 w-4" />
+                            View
+                          </a>
+                        </Button>
+                      </div>
+                    </div>
+                  </div>
+                ) : (
+                  <div className="bg-gray-50 p-6 rounded-lg shadow-sm">
+                    <h4 className="font-semibold text-gray-700 mb-2">Academic Calendar</h4>
+                    <p className="text-sm text-gray-600">No academic calendar available. Please check back later or contact the administration.</p>
+                  </div>
+                )}
+
                 <div className="grid md:grid-cols-2 gap-6">
                   <div className="bg-white p-6 rounded-lg shadow-sm">
                     <h4 className="font-semibold text-orange-800 mb-4 flex items-center gap-2">
