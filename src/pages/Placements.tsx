@@ -572,7 +572,7 @@ const Placements = () => {
             <Card className="border-primary/20 hover:shadow-lg transition-all duration-300 lg:col-span-1">
               <CardHeader className="text-center">
                 <div className="mx-auto mb-4">
-                  <img src="/lovable-uploads/43e4b089-9a01-4b92-ab9f-cf2aaf4e2ae1.png" alt="Sri Sajja Srinivasa Rao" className="w-32 h-32 rounded-full object-cover mx-auto border-4 border-primary/20" />
+                  <img src="/lovable-uploads/43e4b089-9a01-4b92-ab9f-cf2aaf4e2ae1.png" alt="Sri Sajja Srinivasa Rao" className="w-32 h-32 rounded-lg object-cover mx-auto border-4 border-primary/20" />
                 </div>
                 <CardTitle className="text-lg">Sri Sajja Srinivasa Rao</CardTitle>
                 <CardDescription className="font-medium text-secondary">Placement Officer</CardDescription>
