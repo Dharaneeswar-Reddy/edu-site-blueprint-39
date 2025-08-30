@@ -9,17 +9,18 @@ const Electronics = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   const heroImages = [
-    "/lovable-uploads/dd09abc5-6c94-4cbf-898d-c7df488183a6.png",
-    "/lovable-uploads/4b78b0b7-424d-41e9-b09c-4108e1edd3c0.png",
-    "/lovable-uploads/c2330428-4591-4e58-92a3-ff6d9918a338.png",
-    "/lovable-uploads/aa64612b-a2c2-4fc2-b645-b756306336a0.png"
+    "/lovable-uploads/62dd7cbb-9d48-41a6-8c1e-138a0a64781f.png",
+    "/lovable-uploads/e9171361-3daf-46c6-9dde-49cee7972f8d.png",
+    "/lovable-uploads/f9770128-6b9e-40f0-b9e0-aa9a3cf2b0cd.png",
+    "/lovable-uploads/548c6401-f5bd-40a6-9341-1a93bccfc0b6.png",
+    "/lovable-uploads/73ac46cf-651f-4353-b496-5a721117f386.png"
   ];
 
   const departmentPhotos = [
-    "/lovable-uploads/ad1edf50-6e71-4375-91d2-7e8d76b3b7b5.png",
-    "/lovable-uploads/9f96f106-897d-46e3-a4a1-4c4b8f8f9f0c.png",
-    "/lovable-uploads/662ebac1-9113-46ee-b212-a9a1526878d4.png",
-    "/lovable-uploads/455edc55-96fe-44fc-a8d0-2b69c6dd6e92.png"
+    "/lovable-uploads/62dd7cbb-9d48-41a6-8c1e-138a0a64781f.png",
+    "/lovable-uploads/e9171361-3daf-46c6-9dde-49cee7972f8d.png",
+    "/lovable-uploads/f9770128-6b9e-40f0-b9e0-aa9a3cf2b0cd.png",
+    "/lovable-uploads/548c6401-f5bd-40a6-9341-1a93bccfc0b6.png"
   ];
 
   useEffect(() => {
@@ -35,7 +36,7 @@ const Electronics = () => {
   return (
     <PageLayout 
       title="Department of Electronics" 
-      description="Advancing electronics through innovative research, practical applications, and comprehensive education in electronic systems and communication technology."
+      description="The Department of Electronics in SVRM college produce innovative Electronics Students by imparting quality Education with Ethical and Moral values to meet the Global Standards"
     >
       <div className="space-y-8">
         
@@ -59,58 +60,70 @@ const Electronics = () => {
           </div>
         </div>
 
-        {/* Department Overview and Photos */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          {/* Department Overview */}
-          <div className="lg:col-span-2">
-            <Card>
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <Zap className="h-6 w-6 text-college-blue" />
-                  Department Overview
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                <p>
-                  The Department of Electronics at SVRMC stands at the forefront of electronic 
-                  education and innovation. Our comprehensive programs integrate theoretical foundations 
-                  with cutting-edge practical applications to prepare students for dynamic careers in electronics and communication technology.
-                </p>
-                <p>
-                  Our state-of-the-art laboratories are equipped with modern electronic equipment including 
-                  oscilloscopes, function generators, microprocessor development kits, and communication systems. 
-                  Faculty members are actively engaged in research areas spanning embedded systems, 
-                  digital signal processing, VLSI design, and wireless communication.
-                </p>
-                <div className="grid grid-cols-2 gap-4 mt-6">
-                  <div className="text-center p-4 bg-blue-50 rounded-lg">
-                    <Users className="h-8 w-8 text-college-blue mx-auto mb-2" />
-                    <div className="text-2xl font-bold text-college-blue">180+</div>
-                    <div className="text-sm text-gray-600">Students</div>
-                  </div>
-                  <div className="text-center p-4 bg-green-50 rounded-lg">
-                    <Award className="h-8 w-8 text-green-600 mx-auto mb-2" />
-                    <div className="text-2xl font-bold text-green-600">15</div>
-                    <div className="text-sm text-gray-600">Faculty Members</div>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-          </div>
+        {/* Department Overview */}
+        <Card>
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+              <Zap className="h-6 w-6 text-college-blue" />
+              Department Overview
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-6">
+            <p>
+              Electronics is a branch of physics that deals with the study of electrons, their behavior, and how they affect electronic devices. It's a subfield of electrical engineering that uses devices like transistors, diodes, and integrated circuits to control and amplify electric currents.
+            </p>
+            <p>
+              Electronics has had a major impact on many aspects of modern society, including: telecommunications, entertainment, education, health care, industry, and security.
+            </p>
+            <p>
+              An Electronics Students can work in aviation and avionics, consumer electronics, electricity plants, manufacturing, transportation, communication & telecommunication, computer application, radio & television, diagnostic equipment manufacturing, and offshore companies.
+            </p>
+            
+            <div className="bg-blue-50 p-6 rounded-lg">
+              <h4 className="font-semibold text-lg mb-3 text-blue-800">VISION</h4>
+              <p className="text-blue-700">
+                To produce innovative Electronics Students by imparting quality Education with Ethical and Moral values to meet the Global Standards
+              </p>
+            </div>
 
-          {/* Department Photos */}
-          <div className="space-y-4">
-            {departmentPhotos.map((photo, index) => (
-              <div key={index} className="rounded-lg overflow-hidden shadow-md">
-                <img 
-                  src={photo} 
-                  alt={`Electronics Lab ${index + 1}`}
-                  className="w-full h-32 object-cover hover:scale-105 transition-transform duration-300"
-                />
+            <div className="bg-green-50 p-6 rounded-lg">
+              <h4 className="font-semibold text-lg mb-3 text-green-800">MISSION</h4>
+              <ul className="text-green-700 space-y-2">
+                <li>• To provide proper training to rural youth in the region</li>
+                <li>• To design academic programs through which the learner fits into global necessity</li>
+                <li>• To create and promote brain storming skills of creativity and innovation inherent in the young minds of the area</li>
+                <li>• To evolve a value-based education system instilling the values of hard work, discipline, and service mindedness</li>
+                <li>• To impart holistic education based on the ethical values of Truth, Love, God. It enables the learners to develop as intellectually mature, morally upright, socially responsible, and spiritually inspired leaders to serve society.</li>
+              </ul>
+            </div>
+
+            <div className="bg-purple-50 p-6 rounded-lg">
+              <h4 className="font-semibold text-lg mb-3 text-purple-800">OBJECTIVES & GOALS</h4>
+              <ul className="text-purple-700 space-y-2">
+                <li>• Creating an interest in Electronics by means of the teaching and learning process</li>
+                <li>• Motivating students to learn basic experimental work to get a conceptual background in Electronics</li>
+                <li>• Maintaining the departmental library to keep valuable books and internet resources at the disposal of the students</li>
+                <li>• Promoting students towards self-employment and also encouraging them to participate in internships with renowned industries and laboratories</li>
+                <li>• Imparting high-quality education by adopting advanced methods of teaching</li>
+                <li>• Conducting seminars and workshops to develop a scientific attitude among students</li>
+                <li>• Establishing curriculum-related features towards applications of AI in Electronics by conducting workshops and webinars by eminent resource persons</li>
+              </ul>
+            </div>
+
+            <div className="grid grid-cols-2 gap-4 mt-6">
+              <div className="text-center p-4 bg-blue-50 rounded-lg">
+                <Users className="h-8 w-8 text-college-blue mx-auto mb-2" />
+                <div className="text-2xl font-bold text-college-blue">90</div>
+                <div className="text-sm text-gray-600">Students</div>
               </div>
-            ))}
-          </div>
-        </div>
+              <div className="text-center p-4 bg-green-50 rounded-lg">
+                <Award className="h-8 w-8 text-green-600 mx-auto mb-2" />
+                <div className="text-2xl font-bold text-green-600">2</div>
+                <div className="text-sm text-gray-600">Faculty Members</div>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
 
         {/* Seat Structure and Programs */}
         <Card>
@@ -123,25 +136,8 @@ const Electronics = () => {
                 <h4 className="font-semibold mb-3">Undergraduate Programs</h4>
                 <div className="space-y-2">
                   <div className="flex justify-between items-center p-3 bg-blue-50 rounded">
-                    <span>B.Sc. Electronics</span>
-                    <Badge variant="secondary">50 Seats</Badge>
-                  </div>
-                  <div className="flex justify-between items-center p-3 bg-green-50 rounded">
-                    <span>B.Sc. Electronics & Communication</span>
-                    <Badge variant="secondary">40 Seats</Badge>
-                  </div>
-                </div>
-              </div>
-              <div>
-                <h4 className="font-semibold mb-3">Postgraduate Programs</h4>
-                <div className="space-y-2">
-                  <div className="flex justify-between items-center p-3 bg-purple-50 rounded">
-                    <span>M.Sc. Electronics</span>
-                    <Badge variant="secondary">25 Seats</Badge>
-                  </div>
-                  <div className="flex justify-between items-center p-3 bg-orange-50 rounded">
-                    <span>M.Sc. Communication Systems</span>
-                    <Badge variant="secondary">20 Seats</Badge>
+                    <span>B.Sc. Electronics Honours</span>
+                    <Badge variant="secondary">30 Seats</Badge>
                   </div>
                 </div>
               </div>
@@ -152,39 +148,106 @@ const Electronics = () => {
         {/* Program Structure */}
         <Card>
           <CardHeader>
-            <CardTitle>Program Structure</CardTitle>
+            <CardTitle>Course Structure - B.Sc. Electronics Honours (4 Years)</CardTitle>
           </CardHeader>
           <CardContent>
             <div className="space-y-6">
-              <div>
-                <h4 className="font-semibold mb-3">B.Sc. Electronics (3 Years)</h4>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="space-y-4">
                   <div className="p-4 border rounded-lg">
-                    <h5 className="font-medium text-blue-600 mb-2">Year 1</h5>
-                    <ul className="text-sm space-y-1">
-                      <li>• Basic Electronics</li>
-                      <li>• Circuit Theory</li>
-                      <li>• Mathematics for Electronics</li>
-                      <li>• Digital Electronics</li>
-                    </ul>
+                    <h5 className="font-medium text-blue-600 mb-3">Year I</h5>
+                    <div className="space-y-3">
+                      <div>
+                        <h6 className="font-medium text-sm">Semester I</h6>
+                        <ul className="text-xs space-y-1 mt-1">
+                          <li>1. Essentials and Applications of Mathematical, Physical and Chemical Sciences</li>
+                          <li>2. Advances in Mathematical, Physical and Chemical Sciences</li>
+                        </ul>
+                      </div>
+                      <div>
+                        <h6 className="font-medium text-sm">Semester II</h6>
+                        <ul className="text-xs space-y-1 mt-1">
+                          <li>3. Fundamental of Electricity and Electronics</li>
+                          <li>4. Fundamental of Electricity and Electronics Practical Course</li>
+                        </ul>
+                      </div>
+                    </div>
                   </div>
+
                   <div className="p-4 border rounded-lg">
-                    <h5 className="font-medium text-green-600 mb-2">Year 2</h5>
-                    <ul className="text-sm space-y-1">
-                      <li>• Analog Electronics</li>
-                      <li>• Microprocessors</li>
-                      <li>• Communication Systems</li>
-                      <li>• Control Systems</li>
-                    </ul>
+                    <h5 className="font-medium text-green-600 mb-3">Year II</h5>
+                    <div className="space-y-3">
+                      <div>
+                        <h6 className="font-medium text-sm">Semester III</h6>
+                        <ul className="text-xs space-y-1 mt-1">
+                          <li>5. Circuit theory and electronic devices</li>
+                          <li>6. Circuit theory and electronic devices Practical Course</li>
+                        </ul>
+                      </div>
+                      <div>
+                        <h6 className="font-medium text-sm">Semester IV</h6>
+                        <ul className="text-xs space-y-1 mt-1">
+                          <li>7. Semiconductor devices and Materials</li>
+                          <li>8. Semiconductor devices and Materials Practical Course</li>
+                          <li>9. Digital Electronics</li>
+                          <li>10. Digital Electronics Practical Course</li>
+                        </ul>
+                      </div>
+                    </div>
                   </div>
+                </div>
+
+                <div className="space-y-4">
                   <div className="p-4 border rounded-lg">
-                    <h5 className="font-medium text-purple-600 mb-2">Year 3</h5>
-                    <ul className="text-sm space-y-1">
-                      <li>• Embedded Systems</li>
-                      <li>• VLSI Design</li>
-                      <li>• Wireless Communication</li>
-                      <li>• Project Work</li>
-                    </ul>
+                    <h5 className="font-medium text-purple-600 mb-3">Year III</h5>
+                    <div className="space-y-3">
+                      <div>
+                        <h6 className="font-medium text-sm">Semester V</h6>
+                        <ul className="text-xs space-y-1 mt-1">
+                          <li>11. Analog Electronics</li>
+                          <li>12. Analog Electronics Practical Course</li>
+                          <li>13. Electronic communication system</li>
+                          <li>14. Electronic communication system Practical Course</li>
+                          <li>15. Electrical and electronics instrumentation</li>
+                          <li>16. Electrical and electronics instrumentation Practical Course</li>
+                        </ul>
+                      </div>
+                      <div>
+                        <h6 className="font-medium text-sm">Semester VI</h6>
+                        <ul className="text-xs space-y-1 mt-1">
+                          <li>17. Microcontrol system</li>
+                          <li>18. Microcontrol system Practical Course</li>
+                          <li>19. Microprocessor system</li>
+                          <li>20. Microprocessor system Practical Course</li>
+                          <li>Internship</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="p-4 border rounded-lg">
+                    <h5 className="font-medium text-orange-600 mb-3">Year IV</h5>
+                    <div className="space-y-3">
+                      <div>
+                        <h6 className="font-medium text-sm">Semester VII</h6>
+                        <ul className="text-xs space-y-1 mt-1">
+                          <li>21. Cellular Mobile Communication</li>
+                          <li>22. Computer Network</li>
+                          <li>23A. Industrial Electronics OR 23B. Embedded system Design</li>
+                          <li>24A. Digital system Design OR 24B. Consumer Electronics</li>
+                        </ul>
+                      </div>
+                      <div>
+                        <h6 className="font-medium text-sm">Semester VIII</h6>
+                        <ul className="text-xs space-y-1 mt-1">
+                          <li>25A. Medical Electronics OR 25B. Advanced Communication Systems</li>
+                          <li>26A. Electronic domestic applications OR 26B. Digital Communication Systems</li>
+                          <li>27A. RF Networks OR 27B. Wireless Sensor Network Design</li>
+                          <li>28A. Sensors OR 28B. Bio-medical Instrumentation</li>
+                          <li>29A. Digital Signal Processing OR 29B. IoT Fundamentals</li>
+                        </ul>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -196,16 +259,43 @@ const Electronics = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <Card>
             <CardHeader>
-              <CardTitle>Course Outcomes</CardTitle>
+              <CardTitle>Course Outcomes for B.Sc. Electronics (Honours)</CardTitle>
             </CardHeader>
             <CardContent>
-              <ul className="space-y-2 text-sm">
-                <li>• Master electronic circuit design and analysis</li>
-                <li>• Understand microprocessor and embedded systems</li>
-                <li>• Design and implement communication systems</li>
-                <li>• Develop VLSI and digital signal processing applications</li>
-                <li>• Apply control systems and automation concepts</li>
-              </ul>
+              <div className="space-y-3 text-sm">
+                <div>
+                  <h6 className="font-medium text-blue-600 mb-1">1. Fundamental Knowledge</h6>
+                  <p className="text-xs">Demonstrate a solid foundation in electronics, physics, and mathematics, enabling comprehensive understanding of theoretical principles and practical applications.</p>
+                </div>
+                <div>
+                  <h6 className="font-medium text-blue-600 mb-1">2. Circuit Analysis and Design</h6>
+                  <p className="text-xs">Apply knowledge of electronic components, circuits, and systems to design, analyze, and troubleshoot both analog and digital circuits.</p>
+                </div>
+                <div>
+                  <h6 className="font-medium text-blue-600 mb-1">3. Laboratory and Technical Skills</h6>
+                  <p className="text-xs">Develop hands-on skills in using laboratory instruments, simulation software, and microcontrollers (e.g., Arduino, Raspberry Pi) for experimental and project-based learning.</p>
+                </div>
+                <div>
+                  <h6 className="font-medium text-blue-600 mb-1">4. Digital Systems and Communication</h6>
+                  <p className="text-xs">Understand and apply concepts of digital electronics, microprocessors, microcontrollers, and communication systems in practical scenarios.</p>
+                </div>
+                <div>
+                  <h6 className="font-medium text-blue-600 mb-1">5. Problem-Solving and Critical Thinking</h6>
+                  <p className="text-xs">Identify, analyze, and solve complex problems in electronics by integrating theoretical and practical approaches.</p>
+                </div>
+                <div>
+                  <h6 className="font-medium text-blue-600 mb-1">6. Embedded Systems and Programming</h6>
+                  <p className="text-xs">Gain proficiency in programming languages (C, Python, VHDL, etc.) and apply them in embedded systems and automation projects.</p>
+                </div>
+                <div>
+                  <h6 className="font-medium text-blue-600 mb-1">7. Modern Tools Usage</h6>
+                  <p className="text-xs">Utilize simulation, CAD, and analysis tools (e.g., Multisim, MATLAB, Proteus) for modeling, designing, and testing of circuits and systems.</p>
+                </div>
+                <div>
+                  <h6 className="font-medium text-blue-600 mb-1">8. Research and Innovation</h6>
+                  <p className="text-xs">Engage in mini-projects, research activities, and innovative solutions.</p>
+                </div>
+              </div>
             </CardContent>
           </Card>
 
@@ -214,13 +304,52 @@ const Electronics = () => {
               <CardTitle>Program Outcomes</CardTitle>
             </CardHeader>
             <CardContent>
-              <ul className="space-y-2 text-sm">
-                <li>• Analytical thinking and problem-solving abilities</li>
-                <li>• Electronic system design and development skills</li>
-                <li>• Industry readiness and professional competence</li>
-                <li>• Research and innovation capabilities</li>
-                <li>• Entrepreneurial mindset in electronics field</li>
-              </ul>
+              <div className="space-y-3 text-sm">
+                <div>
+                  <h6 className="font-medium text-green-600 mb-1">1. Scientific Knowledge</h6>
+                  <p className="text-xs">Apply the knowledge of mathematics, physics, electronics, and computer science to understand, analyze, and solve problems in the interdisciplinary field of electronics.</p>
+                </div>
+                <div>
+                  <h6 className="font-medium text-green-600 mb-1">2. Problem Analysis</h6>
+                  <p className="text-xs">Identify, formulate, and analyze complex problems in electronics using principles of circuits, devices, digital systems, and communication technology.</p>
+                </div>
+                <div>
+                  <h6 className="font-medium text-green-600 mb-1">3. Design and Development of Solutions</h6>
+                  <p className="text-xs">Design and develop electronic circuits, systems, and applications to meet specific needs, considering safety, environmental, and societal aspects.</p>
+                </div>
+                <div>
+                  <h6 className="font-medium text-green-600 mb-1">4. Modern Tool Usage</h6>
+                  <p className="text-xs">Use modern software tools, programming languages, and laboratory instruments for simulation, design, testing, and analysis of electronic systems.</p>
+                </div>
+                <div>
+                  <h6 className="font-medium text-green-600 mb-1">5. Scientific Temper & Research Aptitude</h6>
+                  <p className="text-xs">Develop a scientific outlook and research mindset to carry out experiments, analyze data, and draw valid conclusions in electronics and interdisciplinary fields.</p>
+                </div>
+                <div>
+                  <h6 className="font-medium text-green-600 mb-1">6. Ethics and Professional Responsibility</h6>
+                  <p className="text-xs">Apply ethical principles and commit to professional ethics, responsibilities, and norms of scientific practice.</p>
+                </div>
+                <div>
+                  <h6 className="font-medium text-green-600 mb-1">7. Individual and Team Work</h6>
+                  <p className="text-xs">Work effectively as an individual and as a member/leader in diverse teams, demonstrating communication and collaboration skills.</p>
+                </div>
+                <div>
+                  <h6 className="font-medium text-green-600 mb-1">8. Communication Skills</h6>
+                  <p className="text-xs">Communicate effectively through oral presentations, technical reports, and digital platforms with scientific community, industry, and society at large.</p>
+                </div>
+                <div>
+                  <h6 className="font-medium text-green-600 mb-1">9. Environment and Sustainability</h6>
+                  <p className="text-xs">Understand the impact of electronics and technology on environment and society, and apply knowledge towards sustainable solutions.</p>
+                </div>
+                <div>
+                  <h6 className="font-medium text-green-600 mb-1">10. Lifelong Learning</h6>
+                  <p className="text-xs">Recognize the need for continuous learning and acquire the ability to adapt to emerging technologies and innovations in the field of electronics.</p>
+                </div>
+                <div>
+                  <h6 className="font-medium text-green-600 mb-1">11. Entrepreneurship and Employability</h6>
+                  <p className="text-xs">Develop entrepreneurial skills, innovation capacity, and employability through applied knowledge in electronics, instrumentation, automation, and IT.</p>
+                </div>
+              </div>
             </CardContent>
           </Card>
         </div>
@@ -289,6 +418,29 @@ const Electronics = () => {
           </CardContent>
         </Card>
 
+        {/* Department Gallery */}
+        <Card>
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+              <Award className="h-6 w-6 text-college-blue" />
+              Department Gallery
+            </CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+              {[...heroImages, ...departmentPhotos].map((image, index) => (
+                <div key={index} className="rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow">
+                  <img 
+                    src={image} 
+                    alt={`Electronics Department Activity ${index + 1}`}
+                    className="w-full h-32 object-cover hover:scale-105 transition-transform duration-300"
+                  />
+                </div>
+              ))}
+            </div>
+          </CardContent>
+        </Card>
+
         {/* Time Tables */}
         <Card>
           <CardHeader>
@@ -298,7 +450,7 @@ const Electronics = () => {
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
               <div className="p-4 border rounded-lg text-center">
                 <h4 className="font-semibold mb-2">1st Year B.Sc.</h4>
                 <Button variant="outline" size="sm">View Schedule</Button>
@@ -312,11 +464,7 @@ const Electronics = () => {
                 <Button variant="outline" size="sm">View Schedule</Button>
               </div>
               <div className="p-4 border rounded-lg text-center">
-                <h4 className="font-semibold mb-2">1st Year M.Sc.</h4>
-                <Button variant="outline" size="sm">View Schedule</Button>
-              </div>
-              <div className="p-4 border rounded-lg text-center">
-                <h4 className="font-semibold mb-2">2nd Year M.Sc.</h4>
+                <h4 className="font-semibold mb-2">4th Year B.Sc.</h4>
                 <Button variant="outline" size="sm">View Schedule</Button>
               </div>
             </div>
