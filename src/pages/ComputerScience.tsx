@@ -4,9 +4,12 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Calendar, Clock, Users, BookOpen, Award, Download, Cpu, Mail } from "lucide-react";
 import { useEffect, useState } from "react";
+import DepartmentStaff from "@/components/DepartmentStaff";
+import { useDepartmentTimetables } from "@/hooks/useDepartmentTimetables";
 
 const ComputerScience = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const { timetables, loading, error } = useDepartmentTimetables("Computer Science");
 
   const heroImages = [
     "/lovable-uploads/dd09abc5-6c94-4cbf-898d-c7df488183a6.png",
@@ -226,68 +229,7 @@ const ComputerScience = () => {
         </div>
 
         {/* Department Staff */}
-        <Card>
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2">
-              <Users className="h-6 w-6 text-college-blue" />
-              Department Staff
-            </CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              <div className="bg-card rounded-lg shadow-sm border p-6 text-center hover:shadow-md transition-shadow">
-                <div className="mb-4">
-                  <img 
-                    src="/lovable-uploads/52a8e7b1-5b22-4a0c-b1ec-450f99bfa9bb.png" 
-                    alt="Dr. Aalok Dinkar Khandekar"
-                    className="w-24 h-24 rounded-full mx-auto object-cover shadow-md"
-                  />
-                </div>
-                <h3 className="text-lg font-semibold text-foreground mb-1">Dr. Aalok Dinkar Khandekar</h3>
-                <p className="text-primary font-medium text-sm mb-1">Head & Associate Professor</p>
-                <p className="text-muted-foreground text-sm mb-3">Computer Science Department</p>
-                <div className="flex items-center justify-center gap-2 text-sm text-muted-foreground">
-                  <Mail className="h-3 w-3" />
-                  <span>aalok.k@svrmc.edu.in</span>
-                </div>
-              </div>
-              
-              <div className="bg-card rounded-lg shadow-sm border p-6 text-center hover:shadow-md transition-shadow">
-                <div className="mb-4">
-                  <img 
-                    src="/lovable-uploads/805efae8-1428-4b19-9a41-f2f62680aefc.png" 
-                    alt="Dr. Abhinav Kumar"
-                    className="w-24 h-24 rounded-full mx-auto object-cover shadow-md"
-                  />
-                </div>
-                <h3 className="text-lg font-semibold text-foreground mb-1">Dr. Abhinav Kumar</h3>
-                <p className="text-primary font-medium text-sm mb-1">Professor</p>
-                <p className="text-muted-foreground text-sm mb-3">Computer Science Department</p>
-                <div className="flex items-center justify-center gap-2 text-sm text-muted-foreground">
-                  <Mail className="h-3 w-3" />
-                  <span>abhinav.k@svrmc.edu.in</span>
-                </div>
-              </div>
-              
-              <div className="bg-card rounded-lg shadow-sm border p-6 text-center hover:shadow-md transition-shadow">
-                <div className="mb-4">
-                  <img 
-                    src="/lovable-uploads/662ebac1-9113-46ee-b212-a9a1526878d4.png" 
-                    alt="Dr. Priya Nair"
-                    className="w-24 h-24 rounded-full mx-auto object-cover shadow-md"
-                  />
-                </div>
-                <h3 className="text-lg font-semibold text-foreground mb-1">Dr. Priya Nair</h3>
-                <p className="text-primary font-medium text-sm mb-1">Assistant Professor</p>
-                <p className="text-muted-foreground text-sm mb-3">Computer Science Department</p>
-                <div className="flex items-center justify-center gap-2 text-sm text-muted-foreground">
-                  <Mail className="h-3 w-3" />
-                  <span>priya.nair@svrmc.edu.in</span>
-                </div>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
+        <DepartmentStaff departmentName="Computer Science" />
 
         {/* Time Tables */}
         <Card>
@@ -298,28 +240,54 @@ const ComputerScience = () => {
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-              <div className="p-4 border rounded-lg text-center">
-                <h4 className="font-semibold mb-2">1st Year B.Sc.</h4>
-                <Button variant="outline" size="sm">View Schedule</Button>
+            {loading ? (
+              <div className="text-center py-8">
+                <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary mx-auto"></div>
+                <p className="text-muted-foreground mt-2">Loading timetables...</p>
               </div>
-              <div className="p-4 border rounded-lg text-center">
-                <h4 className="font-semibold mb-2">2nd Year B.Sc.</h4>
-                <Button variant="outline" size="sm">View Schedule</Button>
+            ) : timetables.length === 0 ? (
+              <div className="text-center py-8">
+                <Clock className="h-12 w-12 mx-auto mb-4 opacity-50" />
+                <p className="text-muted-foreground">No timetables available at the moment.</p>
               </div>
-              <div className="p-4 border rounded-lg text-center">
-                <h4 className="font-semibold mb-2">3rd Year B.Sc.</h4>
-                <Button variant="outline" size="sm">View Schedule</Button>
+            ) : (
+              <div className="overflow-x-auto">
+                <table className="w-full">
+                  <thead>
+                    <tr className="border-b bg-muted/20">
+                      <th className="text-left py-3 px-4 font-semibold text-primary">S.No</th>
+                      <th className="text-left py-3 px-4 font-semibold text-primary">Name</th>
+                      <th className="text-center py-3 px-4 font-semibold text-primary">Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {timetables.map((timetable, index) => (
+                      <tr key={timetable.id} className="border-b hover:bg-muted/10">
+                        <td className="py-3 px-4 text-primary font-medium">{index + 1}</td>
+                        <td className="py-3 px-4 text-primary">
+                          <div>
+                            <div className="font-medium">{timetable.title}</div>
+                            {timetable.description && (
+                              <div className="text-sm text-muted-foreground">{timetable.description}</div>
+                            )}
+                          </div>
+                        </td>
+                        <td className="py-3 px-4 text-center">
+                          <Button
+                            variant="outline"
+                            size="sm"
+                            onClick={() => window.open(timetable.file_url, '_blank')}
+                          >
+                            <Download className="h-4 w-4 mr-2" />
+                            Download PDF
+                          </Button>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
               </div>
-              <div className="p-4 border rounded-lg text-center">
-                <h4 className="font-semibold mb-2">1st Year M.Sc.</h4>
-                <Button variant="outline" size="sm">View Schedule</Button>
-              </div>
-              <div className="p-4 border rounded-lg text-center">
-                <h4 className="font-semibold mb-2">2nd Year M.Sc.</h4>
-                <Button variant="outline" size="sm">View Schedule</Button>
-              </div>
-            </div>
+            )}
           </CardContent>
         </Card>
 
