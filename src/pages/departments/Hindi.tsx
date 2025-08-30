@@ -6,34 +6,21 @@ import { Calendar, Clock, Users, BookOpen, Award, Download, Languages, Mail } fr
 import { useEffect, useState } from "react";
 import DepartmentStaff from "@/components/DepartmentStaff";
 import { useDepartmentTimetables } from "@/hooks/useDepartmentTimetables";
-
 const Hindi = () => {
-  const { timetables, loading, error } = useDepartmentTimetables("Hindi");
-
-  const departmentPhotos = [
-    "/lovable-uploads/aae99b11-cfd7-4f65-b39f-c9b2beb0c9d6.png",
-    "/lovable-uploads/6e42ca20-59a4-45f5-919d-59cb9d0413c8.png"
-  ];
-
-  return (
-    <PageLayout 
-      title="हिंदी विभाग - Department of Hindi" 
-      description="हिंदी भाषा और साहित्य की समृद्ध परंपरा को आगे बढ़ाते हुए राष्ट्रीय एकता और सांस्कृतिक मूल्यों का संवर्धन।"
-    >
+  const {
+    timetables,
+    loading,
+    error
+  } = useDepartmentTimetables("Hindi");
+  const departmentPhotos = ["/lovable-uploads/aae99b11-cfd7-4f65-b39f-c9b2beb0c9d6.png", "/lovable-uploads/6e42ca20-59a4-45f5-919d-59cb9d0413c8.png"];
+  return <PageLayout title="हिंदी विभाग - Department of Hindi" description="हिंदी भाषा और साहित्य की समृद्ध परंपरा को आगे बढ़ाते हुए राष्ट्रीय एकता और सांस्कृतिक मूल्यों का संवर्धन।">
       <div className="space-y-8">
         
         {/* Hero Image */}
         <div className="relative h-96 md:h-[500px] lg:h-[600px] rounded-lg overflow-hidden shadow-xl">
-          <img
-            src="/lovable-uploads/90a79da6-220f-4c8f-89c3-4d85fe488101.png"
-            alt="Hindi Department"
-            className="w-full h-full object-cover"
-          />
+          <img src="/lovable-uploads/90a79da6-220f-4c8f-89c3-4d85fe488101.png" alt="Hindi Department" className="w-full h-full object-cover" />
           <div className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
-            <div className="text-center text-white">
-              <h1 className="text-4xl md:text-6xl font-bold mb-4">हिंदी विभाग</h1>
-              <p className="text-xl md:text-2xl">भाषा, साहित्य और संस्कृति</p>
-            </div>
+            
           </div>
         </div>
 
@@ -338,11 +325,7 @@ const Hindi = () => {
                     <p className="mt-3"><strong>Report:</strong> A skill enhancement program was conducted by Department of Hindi on the topic of "Hindi Anuvaad" on 10/01/2024. To improve their Hindi language skills in daily life.</p>
                   </div>
                   <div className="mt-4">
-                    <img 
-                      src="/lovable-uploads/aae99b11-cfd7-4f65-b39f-c9b2beb0c9d6.png" 
-                      alt="Hindi Skill Enhancement Program" 
-                      className="w-full h-48 object-cover rounded-lg shadow-md"
-                    />
+                    <img src="/lovable-uploads/aae99b11-cfd7-4f65-b39f-c9b2beb0c9d6.png" alt="Hindi Skill Enhancement Program" className="w-full h-48 object-cover rounded-lg shadow-md" />
                   </div>
                 </div>
                 
@@ -357,11 +340,7 @@ const Hindi = () => {
                     <p className="mt-3"><strong>Report:</strong> "International Hindi Day" program was conducted by the Department of Hindi on 10/01/2025 in collaboration with college students will know about the importance Hindi language and will improve their language skills.</p>
                   </div>
                   <div className="mt-4">
-                    <img 
-                      src="/lovable-uploads/6e42ca20-59a4-45f5-919d-59cb9d0413c8.png" 
-                      alt="National Hindi Day Celebration" 
-                      className="w-full h-48 object-cover rounded-lg shadow-md"
-                    />
+                    <img src="/lovable-uploads/6e42ca20-59a4-45f5-919d-59cb9d0413c8.png" alt="National Hindi Day Celebration" className="w-full h-48 object-cover rounded-lg shadow-md" />
                   </div>
                 </div>
               </div>
@@ -379,16 +358,10 @@ const Hindi = () => {
           </CardHeader>
           <CardContent>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {departmentPhotos.map((photo, index) => (
-                <div key={index} className="group relative overflow-hidden rounded-xl shadow-lg hover:shadow-xl transition-all duration-300">
-                  <img 
-                    src={photo} 
-                    alt={`Hindi Department Activity ${index + 1}`}
-                    className="w-full h-64 md:h-72 object-cover group-hover:scale-110 transition-transform duration-500"
-                  />
+              {departmentPhotos.map((photo, index) => <div key={index} className="group relative overflow-hidden rounded-xl shadow-lg hover:shadow-xl transition-all duration-300">
+                  <img src={photo} alt={`Hindi Department Activity ${index + 1}`} className="w-full h-64 md:h-72 object-cover group-hover:scale-110 transition-transform duration-500" />
                   <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 transition-opacity duration-300"></div>
-                </div>
-              ))}
+                </div>)}
             </div>
           </CardContent>
         </Card>
@@ -402,18 +375,13 @@ const Hindi = () => {
             </CardTitle>
           </CardHeader>
           <CardContent>
-            {loading ? (
-              <div className="text-center py-8">
+            {loading ? <div className="text-center py-8">
                 <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary mx-auto"></div>
                 <p className="text-muted-foreground mt-2">Loading timetables...</p>
-              </div>
-            ) : timetables.length === 0 ? (
-              <div className="text-center py-8">
+              </div> : timetables.length === 0 ? <div className="text-center py-8">
                 <Clock className="h-12 w-12 mx-auto mb-4 opacity-50" />
                 <p className="text-muted-foreground">No timetables available at the moment.</p>
-              </div>
-            ) : (
-              <div className="overflow-x-auto">
+              </div> : <div className="overflow-x-auto">
                 <table className="w-full">
                   <thead>
                     <tr className="border-b bg-muted/20">
@@ -423,39 +391,28 @@ const Hindi = () => {
                     </tr>
                   </thead>
                   <tbody>
-                    {timetables.map((timetable, index) => (
-                      <tr key={timetable.id} className="border-b hover:bg-muted/10">
+                    {timetables.map((timetable, index) => <tr key={timetable.id} className="border-b hover:bg-muted/10">
                         <td className="py-3 px-4 text-primary font-medium">{index + 1}</td>
                         <td className="py-3 px-4 text-primary">
                           <div>
                             <div className="font-medium">{timetable.title}</div>
-                            {timetable.description && (
-                              <div className="text-sm text-muted-foreground">{timetable.description}</div>
-                            )}
+                            {timetable.description && <div className="text-sm text-muted-foreground">{timetable.description}</div>}
                           </div>
                         </td>
                         <td className="py-3 px-4 text-center">
-                          <Button
-                            variant="outline"
-                            size="sm"
-                            onClick={() => window.open(timetable.file_url, '_blank')}
-                          >
+                          <Button variant="outline" size="sm" onClick={() => window.open(timetable.file_url, '_blank')}>
                             <Download className="h-4 w-4 mr-2" />
                             Download PDF
                           </Button>
                         </td>
-                      </tr>
-                    ))}
+                      </tr>)}
                   </tbody>
                 </table>
-              </div>
-            )}
+              </div>}
           </CardContent>
         </Card>
 
       </div>
-    </PageLayout>
-  );
+    </PageLayout>;
 };
-
 export default Hindi;
