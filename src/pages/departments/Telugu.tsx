@@ -3,20 +3,11 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Calendar, Clock, Users, BookOpen, Award, Download, Languages, Mail } from "lucide-react";
-import { useEffect, useState } from "react";
 import DepartmentStaff from "@/components/DepartmentStaff";
 import { useDepartmentTimetables } from "@/hooks/useDepartmentTimetables";
 
 const Telugu = () => {
-  const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const { timetables, loading, error } = useDepartmentTimetables("Telugu");
-
-  const heroImages = [
-    "/lovable-uploads/17bb2e0f-adc8-46fd-b6dc-aa370c366ef2.png",
-    "/lovable-uploads/2132c67c-81c1-4c7b-a949-3054c289f2ce.png",
-    "/lovable-uploads/3135e1f8-603d-4960-af26-bdc4f401f693.png",
-    "/lovable-uploads/33bce374-c279-4e5c-afa1-9a764d7977c4.png"
-  ];
 
   const departmentPhotos = [
     "/lovable-uploads/365bcf12-2218-4dd4-a6e7-6d4bc591739a.png",
@@ -28,16 +19,6 @@ const Telugu = () => {
     "/lovable-uploads/55f5dacf-2144-4398-a16a-df5f1fb7ab4a.png"
   ];
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentImageIndex((prevIndex) => 
-        prevIndex === heroImages.length - 1 ? 0 : prevIndex + 1
-      );
-    }, 3000);
-
-    return () => clearInterval(interval);
-  }, [heroImages.length]);
-
   return (
     <PageLayout 
       title="తెలుగు విభాగం - Department of Telugu" 
@@ -45,30 +26,17 @@ const Telugu = () => {
     >
       <div className="space-y-8">
         
-        {/* Hero Section with Department Logo */}
+        {/* Static Hero Section - Telugu Department */}
         <div className="relative h-96 md:h-[500px] lg:h-[600px] rounded-lg overflow-hidden shadow-xl">
-          {heroImages.map((image, index) => (
-            <img
-              key={index}
-              src={image}
-              alt={`Telugu Department ${index + 1}`}
-              className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${
-                index === currentImageIndex ? 'opacity-100' : 'opacity-0'
-              }`}
-            />
-          ))}
-          {/* Department Logo Overlay - Fixed Position */}
-          <div className="absolute top-4 left-1/2 transform -translate-x-1/2 z-10">
-            <img
-              src="/lovable-uploads/ff2af4bc-63bb-4c0c-b1fb-463a18d2e5e5.png"
-              alt="Telugu Department Logo"
-              className="h-24 md:h-32 w-auto object-contain bg-white/90 p-2 rounded-lg shadow-lg"
-            />
-          </div>
-          <div className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
-            <div className="text-center text-white mt-16">
-              <h1 className="text-4xl md:text-6xl font-bold mb-4">తెలుగు విభాగం</h1>
-              <p className="text-xl md:text-2xl">సాహిత్య సంస్కృతి పరిరక్షణ</p>
+          <img
+            src="/lovable-uploads/a3ad541d-c0a9-48ab-a65a-1e7b6f4ba722.png"
+            alt="Telugu Department"
+            className="absolute inset-0 w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-black bg-opacity-30 flex items-center justify-center">
+            <div className="text-center text-white">
+              <h1 className="text-4xl md:text-6xl font-bold mb-4 drop-shadow-lg">తెలుగు విభాగం</h1>
+              <p className="text-xl md:text-2xl drop-shadow-md">సాహిత్య సంస్కృతి పరిరక్షణ</p>
             </div>
           </div>
         </div>
