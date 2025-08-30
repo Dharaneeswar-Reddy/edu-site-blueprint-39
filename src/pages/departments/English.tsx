@@ -6,34 +6,21 @@ import { Calendar, Clock, Users, BookOpen, Award, Download, Book, Mail } from "l
 import { useEffect, useState } from "react";
 import DepartmentStaff from "@/components/DepartmentStaff";
 import { useDepartmentTimetables } from "@/hooks/useDepartmentTimetables";
-
 const English = () => {
-  const { timetables, loading, error } = useDepartmentTimetables("English");
-
-  const departmentPhotos = [
-    "/lovable-uploads/3bc86c14-c438-4cb9-a9f5-03bcad4c929d.png",
-    "/lovable-uploads/6108bb5a-5f7c-4701-88a2-1f642b6807fd.png"
-  ];
-
-  return (
-    <PageLayout 
-      title="Department of English" 
-      description="Nurturing literary appreciation, communication skills, and critical thinking through the study of English language and literature."
-    >
+  const {
+    timetables,
+    loading,
+    error
+  } = useDepartmentTimetables("English");
+  const departmentPhotos = ["/lovable-uploads/3bc86c14-c438-4cb9-a9f5-03bcad4c929d.png", "/lovable-uploads/6108bb5a-5f7c-4701-88a2-1f642b6807fd.png"];
+  return <PageLayout title="Department of English" description="Nurturing literary appreciation, communication skills, and critical thinking through the study of English language and literature.">
       <div className="space-y-8">
         
         {/* Hero Image */}
         <div className="relative h-96 md:h-[500px] lg:h-[600px] rounded-lg overflow-hidden shadow-xl">
-          <img
-            src="/lovable-uploads/a3b4a9e7-1cf7-47e5-8f5f-c284f1385e0a.png"
-            alt="English Department"
-            className="w-full h-full object-cover"
-          />
+          <img src="/lovable-uploads/a3b4a9e7-1cf7-47e5-8f5f-c284f1385e0a.png" alt="English Department" className="w-full h-full object-cover" />
           <div className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
-            <div className="text-center text-white">
-              <h1 className="text-4xl md:text-6xl font-bold mb-4">English Department</h1>
-              <p className="text-xl md:text-2xl">Language, Literature & Communication</p>
-            </div>
+            
           </div>
         </div>
 
@@ -374,11 +361,7 @@ const English = () => {
                     <p className="mt-3"><strong>Report:</strong> "Swarna Andhra @2047" an essay writing competition was conducted by the Department of English on 01/10/2024 a Govt Program. Many students participated and students will improve their imagination skills about how Andhra is going to be in upcoming future.</p>
                   </div>
                   <div className="mt-4">
-                    <img 
-                      src="/lovable-uploads/3bc86c14-c438-4cb9-a9f5-03bcad4c929d.png" 
-                      alt="Swarna Andhra Essay Writing Competition" 
-                      className="w-full h-48 object-cover rounded-lg shadow-md"
-                    />
+                    <img src="/lovable-uploads/3bc86c14-c438-4cb9-a9f5-03bcad4c929d.png" alt="Swarna Andhra Essay Writing Competition" className="w-full h-48 object-cover rounded-lg shadow-md" />
                   </div>
                 </div>
                 
@@ -393,11 +376,7 @@ const English = () => {
                     <p className="mt-3"><strong>Report:</strong> A skill Enhancement Programme Based on soft skills was conducted by Department of English on 09/01/2024 on the topic reading comprehensive. Student will improve their reading skills and their speaking.</p>
                   </div>
                   <div className="mt-4">
-                    <img 
-                      src="/lovable-uploads/6108bb5a-5f7c-4701-88a2-1f642b6807fd.png" 
-                      alt="Skill Enhancement Program" 
-                      className="w-full h-48 object-cover rounded-lg shadow-md"
-                    />
+                    <img src="/lovable-uploads/6108bb5a-5f7c-4701-88a2-1f642b6807fd.png" alt="Skill Enhancement Program" className="w-full h-48 object-cover rounded-lg shadow-md" />
                   </div>
                 </div>
               </div>
@@ -415,16 +394,10 @@ const English = () => {
           </CardHeader>
           <CardContent>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {departmentPhotos.map((photo, index) => (
-                <div key={index} className="group relative overflow-hidden rounded-xl shadow-lg hover:shadow-xl transition-all duration-300">
-                  <img 
-                    src={photo} 
-                    alt={`English Department Activity ${index + 1}`}
-                    className="w-full h-64 md:h-72 object-cover group-hover:scale-110 transition-transform duration-500"
-                  />
+              {departmentPhotos.map((photo, index) => <div key={index} className="group relative overflow-hidden rounded-xl shadow-lg hover:shadow-xl transition-all duration-300">
+                  <img src={photo} alt={`English Department Activity ${index + 1}`} className="w-full h-64 md:h-72 object-cover group-hover:scale-110 transition-transform duration-500" />
                   <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 transition-opacity duration-300"></div>
-                </div>
-              ))}
+                </div>)}
             </div>
           </CardContent>
         </Card>
@@ -438,18 +411,13 @@ const English = () => {
             </CardTitle>
           </CardHeader>
           <CardContent>
-            {loading ? (
-              <div className="text-center py-8">
+            {loading ? <div className="text-center py-8">
                 <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary mx-auto"></div>
                 <p className="text-muted-foreground mt-2">Loading timetables...</p>
-              </div>
-            ) : timetables.length === 0 ? (
-              <div className="text-center py-8">
+              </div> : timetables.length === 0 ? <div className="text-center py-8">
                 <Clock className="h-12 w-12 mx-auto mb-4 opacity-50" />
                 <p className="text-muted-foreground">No timetables available at the moment.</p>
-              </div>
-            ) : (
-              <div className="overflow-x-auto">
+              </div> : <div className="overflow-x-auto">
                 <table className="w-full">
                   <thead>
                     <tr className="border-b bg-muted/20">
@@ -459,39 +427,28 @@ const English = () => {
                     </tr>
                   </thead>
                   <tbody>
-                    {timetables.map((timetable, index) => (
-                      <tr key={timetable.id} className="border-b hover:bg-muted/10">
+                    {timetables.map((timetable, index) => <tr key={timetable.id} className="border-b hover:bg-muted/10">
                         <td className="py-3 px-4 text-primary font-medium">{index + 1}</td>
                         <td className="py-3 px-4 text-primary">
                           <div>
                             <div className="font-medium">{timetable.title}</div>
-                            {timetable.description && (
-                              <div className="text-sm text-muted-foreground">{timetable.description}</div>
-                            )}
+                            {timetable.description && <div className="text-sm text-muted-foreground">{timetable.description}</div>}
                           </div>
                         </td>
                         <td className="py-3 px-4 text-center">
-                          <Button
-                            variant="outline"
-                            size="sm"
-                            onClick={() => window.open(timetable.file_url, '_blank')}
-                          >
+                          <Button variant="outline" size="sm" onClick={() => window.open(timetable.file_url, '_blank')}>
                             <Download className="h-4 w-4 mr-2" />
                             Download PDF
                           </Button>
                         </td>
-                      </tr>
-                    ))}
+                      </tr>)}
                   </tbody>
                 </table>
-              </div>
-            )}
+              </div>}
           </CardContent>
         </Card>
 
       </div>
-    </PageLayout>
-  );
+    </PageLayout>;
 };
-
 export default English;
