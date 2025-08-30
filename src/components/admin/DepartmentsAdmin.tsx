@@ -120,20 +120,61 @@ const DepartmentsAdmin = () => {
 
   const handleFileUpload = async (file: File) => {
     setUploading(true);
+    
+    // Check file size (max 10MB)
+    const maxSize = 10 * 1024 * 1024; // 10MB in bytes
+    if (file.size > maxSize) {
+      toast({
+        title: "File Too Large",
+        description: "Please select a file smaller than 10MB",
+        variant: "destructive"
+      });
+      setUploading(false);
+      throw new Error("File size exceeds limit");
+    }
+
+    // Check file type
+    const allowedTypes = ['application/pdf', 'image/jpeg', 'image/png', 'image/jpg'];
+    if (!allowedTypes.includes(file.type)) {
+      toast({
+        title: "Invalid File Type",
+        description: "Please select a PDF, JPEG, or PNG file",
+        variant: "destructive"
+      });
+      setUploading(false);
+      throw new Error("Invalid file type");
+    }
+
     try {
       const fileExt = file.name.split('.').pop();
-      const fileName = `${Math.random()}.${fileExt}`;
+      const fileName = `${Date.now()}_${Math.random().toString(36).substring(2)}.${fileExt}`;
       const filePath = `timetables/${fileName}`;
 
       const { error: uploadError } = await supabase.storage
         .from('admin-uploads')
-        .upload(filePath, file);
+        .upload(filePath, file, {
+          cacheControl: '3600',
+          upsert: false
+        });
 
-      if (uploadError) throw uploadError;
+      if (uploadError) {
+        console.error('Upload error:', uploadError);
+        toast({
+          title: "Upload Failed",
+          description: uploadError.message || "Failed to upload file",
+          variant: "destructive"
+        });
+        throw uploadError;
+      }
 
       const { data: { publicUrl } } = supabase.storage
         .from('admin-uploads')
         .getPublicUrl(filePath);
+
+      toast({
+        title: "Success",
+        description: "File uploaded successfully",
+      });
 
       return publicUrl;
     } catch (error) {

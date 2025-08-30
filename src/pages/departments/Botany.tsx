@@ -5,9 +5,11 @@ import { Badge } from "@/components/ui/badge";
 import { Clock, Users, BookOpen, Award, Leaf, Mail } from "lucide-react";
 import { useEffect, useState } from "react";
 import DepartmentStaff from "@/components/DepartmentStaff";
+import { useDepartmentTimetables } from "@/hooks/useDepartmentTimetables";
 
 const Botany = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const { timetables, loading, error } = useDepartmentTimetables("Botany");
 
   const heroImages = [
     "/lovable-uploads/26e5dd9a-23af-4d35-bf39-50ea0a90dcc1.png",
@@ -247,28 +249,34 @@ const Botany = () => {
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-              <div className="p-4 border rounded-lg text-center">
-                <h4 className="font-semibold mb-2">1st Year B.Sc.</h4>
-                <Button variant="outline" size="sm">View Schedule</Button>
+            {loading ? (
+              <div className="flex justify-center py-8">
+                <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-college-blue"></div>
               </div>
-              <div className="p-4 border rounded-lg text-center">
-                <h4 className="font-semibold mb-2">2nd Year B.Sc.</h4>
-                <Button variant="outline" size="sm">View Schedule</Button>
+            ) : timetables.length > 0 ? (
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                {timetables.map((timetable) => (
+                  <div key={timetable.id} className="p-4 border rounded-lg text-center hover:shadow-md transition-shadow">
+                    <h4 className="font-semibold mb-2">{timetable.title}</h4>
+                    {timetable.description && (
+                      <p className="text-sm text-muted-foreground mb-3">{timetable.description}</p>
+                    )}
+                    <Button 
+                      variant="outline" 
+                      size="sm"
+                      onClick={() => window.open(timetable.file_url, '_blank')}
+                    >
+                      View Schedule
+                    </Button>
+                  </div>
+                ))}
               </div>
-              <div className="p-4 border rounded-lg text-center">
-                <h4 className="font-semibold mb-2">3rd Year B.Sc.</h4>
-                <Button variant="outline" size="sm">View Schedule</Button>
+            ) : (
+              <div className="text-center py-8 text-muted-foreground">
+                <Clock className="h-12 w-12 mx-auto mb-4 opacity-50" />
+                <p>No timetables available at the moment.</p>
               </div>
-              <div className="p-4 border rounded-lg text-center">
-                <h4 className="font-semibold mb-2">1st Year M.Sc.</h4>
-                <Button variant="outline" size="sm">View Schedule</Button>
-              </div>
-              <div className="p-4 border rounded-lg text-center">
-                <h4 className="font-semibold mb-2">2nd Year M.Sc.</h4>
-                <Button variant="outline" size="sm">View Schedule</Button>
-              </div>
-            </div>
+            )}
           </CardContent>
         </Card>
 
