@@ -121,12 +121,12 @@ const DepartmentsAdmin = () => {
   const handleFileUpload = async (file: File) => {
     setUploading(true);
     
-    // Check file size (max 1MB for Supabase compatibility)
-    const maxSize = 1 * 1024 * 1024; // 1MB in bytes
+    // Check file size (max 500KB for Supabase compatibility)
+    const maxSize = 500 * 1024; // 500KB in bytes
     if (file.size > maxSize) {
       toast({
         title: "File Too Large",
-        description: "Please select a file smaller than 1MB",
+        description: "Please compress your PDF to under 500KB and try again",
         variant: "destructive"
       });
       setUploading(false);
@@ -162,7 +162,7 @@ const DepartmentsAdmin = () => {
         console.error('Upload error:', uploadError);
         let errorMessage = "Failed to upload file. ";
         if (uploadError.message?.includes('exceeded') || uploadError.message?.includes('large')) {
-          errorMessage += "File size too large. Please use a PDF file smaller than 1MB.";
+          errorMessage += "File size too large. Please compress your PDF to under 500KB.";
         } else if (uploadError.message?.includes('type')) {
           errorMessage += "Invalid file type. Please use PDF documents only.";
         } else {
@@ -482,7 +482,7 @@ const DepartmentsAdmin = () => {
                        accept=".pdf"
                        ref={fileInputRef}
                      />
-                     {!editingTimetable && <p className="text-sm text-muted-foreground">Please select a PDF document (max 1MB)</p>}
+                     {!editingTimetable && <p className="text-sm text-muted-foreground">Please select a PDF document (max 500KB)</p>}
                   </div>
 
                   <div className="flex flex-col sm:flex-row gap-2">
