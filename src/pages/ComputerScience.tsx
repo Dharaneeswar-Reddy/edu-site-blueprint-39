@@ -32,73 +32,61 @@ const ComputerScience = () => {
           </div>
         </div>
 
-        {/* Department Overview and Photos */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          {/* Department Overview */}
-          <div className="lg:col-span-2">
-            <Card>
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <Cpu className="h-6 w-6 text-college-blue" />
-                  Department Overview
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                <p>
-                  The Department of Computer Science, Sri Velagapudi Ramakrishna Memorial College is the first 
-                  academic Computer Centre in the area of old Repalle providing Quality Higher education in 
-                  Computer Science & Applications and brightening the future with wider educational opportunities 
-                  and better employment prospects for the backward rural youth.
-                </p>
-                <p>
-                  Committed to providing quality education, research opportunities, and skill development in the 
-                  ever-evolving field of computing and technology. Established with the vision of empowering rural 
-                  youth through digital knowledge, the department blends strong academic foundations with practical 
-                  exposure to prepare students for careers in IT, software development, data science, artificial 
-                  intelligence, and emerging technologies.
-                </p>
-                <p>
-                  With a dedicated team of experienced faculty, modern computer labs, and access to the latest 
-                  software and digital resources, the department ensures that students gain both theoretical 
-                  understanding and hands-on skills. Beyond academics, it encourages participation in coding 
-                  competitions, workshops, seminars, and industry collaborations, fostering innovation and 
-                  problem-solving abilities.
-                </p>
-                <p>
-                  The department also plays a vital role in bridging the digital divide for rural learners, 
-                  equipping them with the knowledge, confidence, and adaptability to succeed in higher education, 
-                  research, and the global job market.
-                </p>
-                <p>
-                  Beyond academics, the department is deeply committed to community service and rural development. 
-                  Through digital literacy workshops, computer training camps, and outreach programs, it extends 
-                  the benefits of technology to rural youth, schools, and local communities. These initiatives 
-                  help bridge the digital divide, promote ICT awareness, and empower communities to access 
-                  opportunities in education, employment, and entrepreneurship.
-                </p>
-                <div className="grid grid-cols-2 gap-4 mt-6">
-                  <div className="text-center p-4 bg-blue-50 rounded-lg">
-                    <Users className="h-8 w-8 text-college-blue mx-auto mb-2" />
-                    <div className="text-2xl font-bold text-college-blue">500+</div>
-                    <div className="text-sm text-gray-600">Students</div>
-                  </div>
-                  <div className="text-center p-4 bg-green-50 rounded-lg">
-                    <Award className="h-8 w-8 text-green-600 mx-auto mb-2" />
-                    <div className="text-2xl font-bold text-green-600">10</div>
-                    <div className="text-sm text-gray-600">Faculty Members</div>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-          </div>
-
-          {/* Department Photos */}
-          <div className="space-y-4">
-            {departmentPhotos.map((photo, index) => <div key={index} className="rounded-lg overflow-hidden shadow-md">
-                <img src={photo} alt={`Computer Science Lab ${index + 1}`} className="w-full h-32 object-cover hover:scale-105 transition-transform duration-300" />
-              </div>)}
-          </div>
-        </div>
+        {/* Department Overview */}
+        <Card>
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+              <Cpu className="h-6 w-6 text-college-blue" />
+              Department Overview
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            <p>
+              The Department of Computer Science, Sri Velagapudi Ramakrishna Memorial College is the first 
+              academic Computer Centre in the area of old Repalle providing Quality Higher education in 
+              Computer Science & Applications and brightening the future with wider educational opportunities 
+              and better employment prospects for the backward rural youth.
+            </p>
+            <p>
+              Committed to providing quality education, research opportunities, and skill development in the 
+              ever-evolving field of computing and technology. Established with the vision of empowering rural 
+              youth through digital knowledge, the department blends strong academic foundations with practical 
+              exposure to prepare students for careers in IT, software development, data science, artificial 
+              intelligence, and emerging technologies.
+            </p>
+            <p>
+              With a dedicated team of experienced faculty, modern computer labs, and access to the latest 
+              software and digital resources, the department ensures that students gain both theoretical 
+              understanding and hands-on skills. Beyond academics, it encourages participation in coding 
+              competitions, workshops, seminars, and industry collaborations, fostering innovation and 
+              problem-solving abilities.
+            </p>
+            <p>
+              The department also plays a vital role in bridging the digital divide for rural learners, 
+              equipping them with the knowledge, confidence, and adaptability to succeed in higher education, 
+              research, and the global job market.
+            </p>
+            <p>
+              Beyond academics, the department is deeply committed to community service and rural development. 
+              Through digital literacy workshops, computer training camps, and outreach programs, it extends 
+              the benefits of technology to rural youth, schools, and local communities. These initiatives 
+              help bridge the digital divide, promote ICT awareness, and empower communities to access 
+              opportunities in education, employment, and entrepreneurship.
+            </p>
+            <div className="grid grid-cols-2 gap-4 mt-6">
+              <div className="text-center p-4 bg-blue-50 rounded-lg">
+                <Users className="h-8 w-8 text-college-blue mx-auto mb-2" />
+                <div className="text-2xl font-bold text-college-blue">500+</div>
+                <div className="text-sm text-gray-600">Students</div>
+              </div>
+              <div className="text-center p-4 bg-green-50 rounded-lg">
+                <Award className="h-8 w-8 text-green-600 mx-auto mb-2" />
+                <div className="text-2xl font-bold text-green-600">10</div>
+                <div className="text-sm text-gray-600">Faculty Members</div>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
 
         {/* Seat Structure and Programs */}
         <Card>
