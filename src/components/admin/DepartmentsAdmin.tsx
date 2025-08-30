@@ -10,10 +10,11 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@
 import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle } from "@/components/ui/alert-dialog";
 import { Badge } from "@/components/ui/badge";
 import { Switch } from "@/components/ui/switch";
-import { Upload, Edit, Trash2, BookOpen, Eye, Users } from "lucide-react";
+import { Upload, Edit, Trash2, BookOpen, Eye, Users, FileText } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
 import useStaff from "@/hooks/useStaff";
+import useDepartmentTimetables from "@/hooks/useDepartmentTimetables";
 
 interface DepartmentTimetable {
   id: string;
@@ -59,8 +60,8 @@ const DepartmentsAdmin = () => {
   const { staff, loading: staffLoading, refetch: refetchStaff } = useStaff(selectedDepartment);
   
   // Timetable data
-  const [timetables, setTimetables] = useState<DepartmentTimetable[]>([]);
-  const [timetablesLoading, setTimetablesLoading] = useState(false);
+  const { timetables, loading: timetablesLoading, refetch: refetchTimetables } = useDepartmentTimetables(selectedDepartment);
+  
   const [uploading, setUploading] = useState(false);
   const [deleteDialogOpen, setDeleteDialogOpen] = useState(false);
   const [editingTimetable, setEditingTimetable] = useState<DepartmentTimetable | null>(null);
@@ -74,176 +75,94 @@ const DepartmentsAdmin = () => {
     is_active: true
   });
 
-  // Fetch timetables when department changes
-  const fetchTimetables = async (department: string) => {
-    if (!department) return;
-    
-    setTimetablesLoading(true);
-    try {
-      const { data, error } = await supabase
-        .from("department_timetables")
-        .select("*")
-        .eq("department", department)
-        .order("created_at", { ascending: false });
-
-      if (error) throw error;
-      setTimetables(data || []);
-    } catch (error) {
-      console.error("Error fetching timetables:", error);
-      toast({
-        title: "Error",
-        description: "Failed to fetch timetables",
-        variant: "destructive"
-      });
-    } finally {
-      setTimetablesLoading(false);
-    }
-  };
-
   const handleDepartmentChange = (department: string) => {
     setSelectedDepartment(department);
-    if (activeTab === "timetables") {
-      fetchTimetables(department);
-    }
+    resetTimetableForm();
   };
 
   const handleTabChange = (tab: string) => {
     setActiveTab(tab);
-    if (tab === "timetables" && selectedDepartment) {
-      fetchTimetables(selectedDepartment);
-    }
   };
 
   const handleTimetableInputChange = (field: string, value: any) => {
     setTimetableFormData(prev => ({ ...prev, [field]: value }));
   };
 
-  const handleFileUpload = async (file: File) => {
-    setUploading(true);
-    
-    // Check file size (max 200KB for Supabase compatibility)
-    const maxSize = 200 * 1024; // 200KB in bytes
+  const validateFile = (file: File): string | null => {
+    // File size check - very conservative limit
+    const maxSize = 100 * 1024; // 100KB
     if (file.size > maxSize) {
-      toast({
-        title: "File Too Large", 
-        description: `File size: ${Math.round(file.size/1024)}KB. Please compress your PDF to under 200KB and try again`,
-        variant: "destructive"
-      });
-      setUploading(false);
-      throw new Error("File size exceeds limit");
+      return `File too large (${Math.round(file.size/1024)}KB). Please compress to under 100KB.`;
     }
 
-    // Check file type - primarily PDFs for timetables
-    const allowedTypes = ['application/pdf'];
-    if (!allowedTypes.includes(file.type)) {
-      toast({
-        title: "Invalid File Type",
-        description: "Please select a PDF document only",
-        variant: "destructive"
-      });
-      setUploading(false);
-      throw new Error("Invalid file type");
+    // File type check
+    if (file.type !== 'application/pdf') {
+      return "Only PDF files are allowed.";
     }
 
-    try {
-      const fileExt = file.name.split('.').pop();
-      const sanitizedDepartment = selectedDepartment.toLowerCase().replace(/\s+/g, '-');
-      const fileName = `${sanitizedDepartment}_timetable_${Date.now()}.${fileExt}`;
-      const filePath = `timetables/${fileName}`;
+    return null;
+  };
 
-      const { error: uploadError } = await supabase.storage
-        .from('admin-uploads')
-        .upload(filePath, file, {
-          cacheControl: '3600',
-          upsert: false
-        });
+  const uploadFileToStorage = async (file: File): Promise<string> => {
+    const sanitizedDepartment = selectedDepartment.toLowerCase().replace(/\s+/g, '-');
+    const timestamp = Date.now();
+    const fileName = `${sanitizedDepartment}_timetable_${timestamp}.pdf`;
+    const filePath = `timetables/${fileName}`;
 
-      if (uploadError) {
-        console.error('Upload error:', uploadError);
-        let errorMessage = "Failed to upload file. ";
-        if (uploadError.message?.includes('exceeded') || uploadError.message?.includes('large')) {
-          errorMessage += "File size too large. Please compress your PDF to under 200KB.";
-        } else if (uploadError.message?.includes('type')) {
-          errorMessage += "Invalid file type. Please use PDF documents only.";
-        } else {
-          errorMessage += uploadError.message || "Please try again with a smaller file.";
-        }
-        
-        toast({
-          title: "Upload Failed",
-          description: errorMessage,
-          variant: "destructive"
-        });
-        setUploading(false);
-        throw uploadError;
-      }
-
-      const { data: { publicUrl } } = supabase.storage
-        .from('admin-uploads')
-        .getPublicUrl(filePath);
-
-      toast({
-        title: "Success",
-        description: "Timetable uploaded successfully",
+    const { error: uploadError } = await supabase.storage
+      .from('admin-uploads')
+      .upload(filePath, file, {
+        cacheControl: '3600',
+        upsert: false
       });
 
-      setUploading(false);
-      return publicUrl;
-    } catch (error) {
-      console.error('Error uploading file:', error);
-      setUploading(false);
-      throw error;
+    if (uploadError) {
+      console.error('Storage upload error:', uploadError);
+      throw new Error(uploadError.message || 'Upload failed');
     }
+
+    const { data: { publicUrl } } = supabase.storage
+      .from('admin-uploads')
+      .getPublicUrl(filePath);
+
+    return publicUrl;
   };
 
   const handleTimetableSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setUploading(true);
     
-    if (!timetableFormData.title.trim() || !selectedDepartment) {
-      toast({
-        title: "Validation Error",
-        description: "Please fill in all required fields and select a department",
-        variant: "destructive"
-      });
-      return;
-    }
-
-    const fileInput = fileInputRef.current;
-    const file = fileInput?.files?.[0];
-    
-    if (!editingTimetable && !file) {
-      toast({
-        title: "Validation Error",
-        description: "Please select a file to upload",
-        variant: "destructive"
-      });
-      return;
-    }
-
-    // Additional file size check before upload
-    if (file && file.size > 200 * 1024) {
-      toast({
-        title: "File Too Large",
-        description: `File size: ${Math.round(file.size/1024)}KB. Please compress to under 200KB`,
-        variant: "destructive"
-      });
-      return;
-    }
-
     try {
+      if (!timetableFormData.title.trim() || !selectedDepartment) {
+        throw new Error("Please fill in all required fields");
+      }
+
+      const fileInput = fileInputRef.current;
+      const file = fileInput?.files?.[0];
+      
+      if (!editingTimetable && !file) {
+        throw new Error("Please select a file to upload");
+      }
+
       let fileUrl = editingTimetable?.file_url || "";
       
       if (file) {
-        fileUrl = await handleFileUpload(file);
+        // Validate file before upload
+        const validationError = validateFile(file);
+        if (validationError) {
+          throw new Error(validationError);
+        }
+
+        fileUrl = await uploadFileToStorage(file);
       }
 
       const timetableData = {
         department: selectedDepartment,
-        title: timetableFormData.title,
-        description: timetableFormData.description || null,
+        title: timetableFormData.title.trim(),
+        description: timetableFormData.description?.trim() || null,
         file_url: fileUrl,
-        academic_year: timetableFormData.academic_year || null,
-        semester: timetableFormData.semester || null,
+        academic_year: timetableFormData.academic_year?.trim() || null,
+        semester: timetableFormData.semester?.trim() || null,
         is_active: timetableFormData.is_active
       };
 
@@ -267,14 +186,16 @@ const DepartmentsAdmin = () => {
       });
 
       resetTimetableForm();
-      fetchTimetables(selectedDepartment);
-    } catch (error) {
-      console.error("Error saving timetable:", error);
+      refetchTimetables();
+    } catch (error: any) {
+      console.error("Timetable submission error:", error);
       toast({
         title: "Error",
-        description: `Failed to ${editingTimetable ? 'update' : 'upload'} timetable`,
+        description: error.message || `Failed to ${editingTimetable ? 'update' : 'upload'} timetable`,
         variant: "destructive"
       });
+    } finally {
+      setUploading(false);
     }
   };
 
@@ -305,7 +226,7 @@ const DepartmentsAdmin = () => {
         description: "Timetable deleted successfully"
       });
 
-      fetchTimetables(selectedDepartment);
+      refetchTimetables();
     } catch (error) {
       console.error("Error deleting timetable:", error);
       toast({
@@ -334,20 +255,24 @@ const DepartmentsAdmin = () => {
   };
 
   return (
-    <div className="space-y-6">
-      <div className="flex items-center space-x-2">
-        <BookOpen className="h-6 w-6 text-primary" />
-        <h1 className="text-2xl font-bold">Departments Management</h1>
+    <div className="space-y-6 p-6">
+      <div className="flex items-center space-x-3">
+        <BookOpen className="h-8 w-8 text-primary" />
+        <h1 className="text-3xl font-bold text-foreground">Departments Management</h1>
       </div>
 
+      {/* Department Selection */}
       <Card>
         <CardHeader>
-          <CardTitle>Select Department</CardTitle>
+          <CardTitle className="flex items-center gap-2">
+            <FileText className="h-5 w-5" />
+            Select Department
+          </CardTitle>
         </CardHeader>
         <CardContent>
           <Select value={selectedDepartment} onValueChange={handleDepartmentChange}>
-            <SelectTrigger className="w-full md:w-64">
-              <SelectValue placeholder="Select a department" />
+            <SelectTrigger className="w-full md:w-96">
+              <SelectValue placeholder="Choose a department to manage" />
             </SelectTrigger>
             <SelectContent>
               {DEPARTMENTS.map((dept) => (
@@ -362,25 +287,31 @@ const DepartmentsAdmin = () => {
 
       {selectedDepartment && (
         <Tabs value={activeTab} onValueChange={handleTabChange} className="w-full">
-          <TabsList className="grid w-full grid-cols-2">
-            <TabsTrigger value="staff">
-              <Users className="h-4 w-4 mr-2" />
+          <TabsList className="grid w-full grid-cols-2 mb-6">
+            <TabsTrigger value="staff" className="flex items-center gap-2">
+              <Users className="h-4 w-4" />
               Staff ({staff.length})
             </TabsTrigger>
-            <TabsTrigger value="timetables">
-              <BookOpen className="h-4 w-4 mr-2" />
+            <TabsTrigger value="timetables" className="flex items-center gap-2">
+              <BookOpen className="h-4 w-4" />
               Timetables ({timetables.length})
             </TabsTrigger>
           </TabsList>
 
+          {/* Staff Tab */}
           <TabsContent value="staff" className="space-y-6">
             <Card>
               <CardHeader>
-                <CardTitle>{selectedDepartment} - Staff Members</CardTitle>
+                <CardTitle className="text-xl">
+                  {selectedDepartment} - Staff Members
+                </CardTitle>
               </CardHeader>
               <CardContent>
                 {staffLoading ? (
-                  <div className="text-center py-8">Loading staff...</div>
+                  <div className="text-center py-12">
+                    <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary mx-auto"></div>
+                    <p className="mt-2 text-muted-foreground">Loading staff...</p>
+                  </div>
                 ) : staff.length > 0 ? (
                   <div className="overflow-x-auto">
                     <Table>
@@ -388,8 +319,8 @@ const DepartmentsAdmin = () => {
                         <TableRow>
                           <TableHead>Name</TableHead>
                           <TableHead>Designation</TableHead>
-                          <TableHead>Email</TableHead>
-                          <TableHead>Phone</TableHead>
+                          <TableHead className="hidden md:table-cell">Email</TableHead>
+                          <TableHead className="hidden md:table-cell">Phone</TableHead>
                           <TableHead>Status</TableHead>
                         </TableRow>
                       </TableHeader>
@@ -398,8 +329,8 @@ const DepartmentsAdmin = () => {
                           <TableRow key={member.id}>
                             <TableCell className="font-medium">{member.name}</TableCell>
                             <TableCell>{member.designation}</TableCell>
-                            <TableCell>{member.email || "N/A"}</TableCell>
-                            <TableCell>{member.phone || "N/A"}</TableCell>
+                            <TableCell className="hidden md:table-cell">{member.email || "N/A"}</TableCell>
+                            <TableCell className="hidden md:table-cell">{member.phone || "N/A"}</TableCell>
                             <TableCell>
                               <Badge variant={member.is_active ? "default" : "secondary"}>
                                 {member.is_active ? "Active" : "Inactive"}
@@ -411,36 +342,53 @@ const DepartmentsAdmin = () => {
                     </Table>
                   </div>
                 ) : (
-                  <div className="text-center py-8 text-muted-foreground">
-                    No staff members found for {selectedDepartment}. 
-                    Use the Staff section to add members to this department.
+                  <div className="text-center py-12">
+                    <Users className="h-12 w-12 text-muted-foreground mx-auto mb-4" />
+                    <p className="text-muted-foreground">
+                      No staff members found for {selectedDepartment}. 
+                      Use the Staff section to add members to this department.
+                    </p>
                   </div>
                 )}
               </CardContent>
             </Card>
           </TabsContent>
 
+          {/* Timetables Tab */}
           <TabsContent value="timetables" className="space-y-6">
+            {/* Upload Form */}
             <Card>
               <CardHeader>
-                <CardTitle className="flex flex-col sm:flex-row sm:items-center gap-2">
-                  <span>{editingTimetable ? "Edit Timetable" : "Upload New Timetable"}</span>
-                  <span className="text-sm text-muted-foreground font-normal">
+                <CardTitle className="text-xl flex items-center gap-2">
+                  <Upload className="h-5 w-5" />
+                  {editingTimetable ? "Edit Timetable" : "Upload New Timetable"}
+                  <span className="text-sm font-normal text-muted-foreground">
                     for {selectedDepartment}
                   </span>
                 </CardTitle>
               </CardHeader>
               <CardContent>
-                <form onSubmit={handleTimetableSubmit} className="space-y-4">
-                  <div className="space-y-2">
-                    <Label htmlFor="title">Title *</Label>
-                    <Input
-                      id="title"
-                      value={timetableFormData.title}
-                      onChange={(e) => handleTimetableInputChange("title", e.target.value)}
-                      placeholder="Enter timetable title"
-                      required
-                    />
+                <form onSubmit={handleTimetableSubmit} className="space-y-6">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div className="space-y-2">
+                      <Label htmlFor="title">Title *</Label>
+                      <Input
+                        id="title"
+                        value={timetableFormData.title}
+                        onChange={(e) => handleTimetableInputChange("title", e.target.value)}
+                        placeholder="Enter timetable title"
+                        required
+                        className="w-full"
+                      />
+                    </div>
+
+                    <div className="flex items-center space-x-3 pt-8">
+                      <Switch
+                        checked={timetableFormData.is_active}
+                        onCheckedChange={(checked) => handleTimetableInputChange("is_active", checked)}
+                      />
+                      <Label>Active Status</Label>
+                    </div>
                   </div>
 
                   <div className="space-y-2">
@@ -449,19 +397,20 @@ const DepartmentsAdmin = () => {
                       id="description"
                       value={timetableFormData.description}
                       onChange={(e) => handleTimetableInputChange("description", e.target.value)}
-                      placeholder="Enter timetable description"
+                      placeholder="Enter timetable description (optional)"
                       rows={3}
+                      className="w-full"
                     />
                   </div>
 
-                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div className="space-y-2">
                       <Label htmlFor="academic_year">Academic Year</Label>
                       <Input
                         id="academic_year"
                         value={timetableFormData.academic_year}
                         onChange={(e) => handleTimetableInputChange("academic_year", e.target.value)}
-                        placeholder="e.g., 2023-24"
+                        placeholder="e.g., 2024-25"
                       />
                     </div>
 
@@ -474,34 +423,47 @@ const DepartmentsAdmin = () => {
                         placeholder="e.g., I, II, III"
                       />
                     </div>
-
-                    <div className="flex items-center space-x-2 pt-8">
-                      <Switch
-                        checked={timetableFormData.is_active}
-                        onCheckedChange={(checked) => handleTimetableInputChange("is_active", checked)}
-                      />
-                      <Label>Active</Label>
-                    </div>
                   </div>
 
-                   <div className="space-y-2">
-                     <Label htmlFor="file">File {!editingTimetable && "*"}</Label>
-                     <Input
-                       id="file"
-                       type="file"
-                       accept=".pdf"
-                       ref={fileInputRef}
-                     />
-                     {!editingTimetable && <p className="text-sm text-muted-foreground">Please select a PDF document (max 200KB)</p>}
+                  <div className="space-y-2">
+                    <Label htmlFor="file">PDF File {!editingTimetable && "*"}</Label>
+                    <Input
+                      id="file"
+                      type="file"
+                      accept=".pdf"
+                      ref={fileInputRef}
+                      className="w-full"
+                    />
+                    <p className="text-sm text-muted-foreground">
+                      {!editingTimetable && "Required: "}
+                      PDF files only, maximum size 100KB. 
+                      <a 
+                        href="https://www.ilovepdf.com/compress_pdf" 
+                        target="_blank" 
+                        rel="noopener noreferrer" 
+                        className="text-primary hover:underline ml-1"
+                      >
+                        Compress PDF online
+                      </a>
+                    </p>
                   </div>
 
-                  <div className="flex flex-col sm:flex-row gap-2">
-                    <Button type="submit" disabled={uploading} className="flex-1">
+                  <div className="flex flex-col sm:flex-row gap-3 pt-4">
+                    <Button 
+                      type="submit" 
+                      disabled={uploading} 
+                      className="flex-1 sm:flex-none"
+                    >
                       <Upload className="h-4 w-4 mr-2" />
-                      {uploading ? "Uploading..." : editingTimetable ? "Update Timetable" : "Upload Timetable"}
+                      {uploading ? "Processing..." : editingTimetable ? "Update Timetable" : "Upload Timetable"}
                     </Button>
                     {editingTimetable && (
-                      <Button type="button" variant="outline" onClick={resetTimetableForm} className="flex-1 sm:flex-none">
+                      <Button 
+                        type="button" 
+                        variant="outline" 
+                        onClick={resetTimetableForm}
+                        className="flex-1 sm:flex-none"
+                      >
                         Cancel Edit
                       </Button>
                     )}
@@ -510,107 +472,115 @@ const DepartmentsAdmin = () => {
               </CardContent>
             </Card>
 
+            {/* Manage Timetables */}
             <Card>
               <CardHeader>
-                <CardTitle className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
-                  <span>Manage Timetables ({timetables.length})</span>
-                  <span className="text-sm text-muted-foreground font-normal">
+                <CardTitle className="text-xl">
+                  Manage Timetables ({timetables.length})
+                  <span className="text-sm font-normal text-muted-foreground ml-2">
                     {selectedDepartment}
                   </span>
                 </CardTitle>
               </CardHeader>
               <CardContent>
                 {timetablesLoading ? (
-                  <div className="text-center py-8">Loading timetables...</div>
-                ) : (
+                  <div className="text-center py-12">
+                    <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary mx-auto"></div>
+                    <p className="mt-2 text-muted-foreground">Loading timetables...</p>
+                  </div>
+                ) : timetables.length > 0 ? (
                   <div className="overflow-x-auto">
                     <Table>
                       <TableHeader>
                         <TableRow>
-                          <TableHead className="min-w-[150px]">Title</TableHead>
+                          <TableHead className="min-w-[200px]">Title</TableHead>
                           <TableHead className="hidden sm:table-cell">Academic Year</TableHead>
                           <TableHead className="hidden sm:table-cell">Semester</TableHead>
                           <TableHead className="hidden md:table-cell">Status</TableHead>
                           <TableHead className="text-right">Actions</TableHead>
                         </TableRow>
                       </TableHeader>
-                       <TableBody>
-                         {timetables.map((timetable) => (
-                           <TableRow key={timetable.id}>
-                             <TableCell className="font-medium">
-                               <div>
-                                 <div className="font-semibold">{timetable.title}</div>
-                                 {timetable.description && (
-                                   <div className="text-xs text-muted-foreground mt-1 sm:hidden">
-                                     {timetable.description.slice(0, 50)}...
-                                   </div>
-                                 )}
-                                 <div className="flex gap-1 mt-1 sm:hidden">
-                                   {timetable.academic_year && (
-                                     <Badge variant="outline" className="text-xs">
-                                       {timetable.academic_year}
-                                     </Badge>
-                                   )}
-                                   {timetable.semester && (
-                                     <Badge variant="outline" className="text-xs">
-                                       Sem {timetable.semester}
-                                     </Badge>
-                                   )}
-                                 </div>
-                               </div>
-                             </TableCell>
-                             <TableCell className="hidden sm:table-cell">
-                               {timetable.academic_year || "N/A"}
-                             </TableCell>
-                             <TableCell className="hidden sm:table-cell">
-                               {timetable.semester || "N/A"}
-                             </TableCell>
-                             <TableCell className="hidden md:table-cell">
-                               <Badge variant={timetable.is_active ? "default" : "secondary"}>
-                                 {timetable.is_active ? "Active" : "Inactive"}
-                               </Badge>
-                             </TableCell>
-                             <TableCell className="text-right">
-                               <div className="flex justify-end gap-1">
-                                 <Button
-                                   variant="ghost"
-                                   size="sm"
-                                   onClick={() => window.open(timetable.file_url, '_blank')}
-                                   className="h-8 w-8 p-0"
-                                 >
-                                   <Eye className="h-4 w-4" />
-                                 </Button>
-                                 <Button
-                                   variant="ghost"
-                                   size="sm"
-                                   onClick={() => handleTimetableEdit(timetable)}
-                                   className="h-8 w-8 p-0"
-                                 >
-                                   <Edit className="h-4 w-4" />
-                                 </Button>
-                                 <Button
-                                   variant="ghost"
-                                   size="sm"
-                                   onClick={() => {
-                                     setSelectedTimetableToDelete(timetable.id);
-                                     setDeleteDialogOpen(true);
-                                   }}
-                                   className="h-8 w-8 p-0 text-destructive hover:text-destructive"
-                                 >
-                                   <Trash2 className="h-4 w-4" />
-                                 </Button>
-                               </div>
-                             </TableCell>
-                           </TableRow>
-                         ))}
-                       </TableBody>
+                      <TableBody>
+                        {timetables.map((timetable) => (
+                          <TableRow key={timetable.id}>
+                            <TableCell className="font-medium">
+                              <div>
+                                <div className="font-semibold">{timetable.title}</div>
+                                {timetable.description && (
+                                  <div className="text-xs text-muted-foreground mt-1 sm:hidden">
+                                    {timetable.description.slice(0, 50)}...
+                                  </div>
+                                )}
+                                <div className="flex gap-1 mt-1 sm:hidden">
+                                  {timetable.academic_year && (
+                                    <Badge variant="outline" className="text-xs">
+                                      {timetable.academic_year}
+                                    </Badge>
+                                  )}
+                                  {timetable.semester && (
+                                    <Badge variant="outline" className="text-xs">
+                                      Sem {timetable.semester}
+                                    </Badge>
+                                  )}
+                                </div>
+                              </div>
+                            </TableCell>
+                            <TableCell className="hidden sm:table-cell">
+                              {timetable.academic_year || "N/A"}
+                            </TableCell>
+                            <TableCell className="hidden sm:table-cell">
+                              {timetable.semester || "N/A"}
+                            </TableCell>
+                            <TableCell className="hidden md:table-cell">
+                              <Badge variant={timetable.is_active ? "default" : "secondary"}>
+                                {timetable.is_active ? "Active" : "Inactive"}
+                              </Badge>
+                            </TableCell>
+                            <TableCell className="text-right">
+                              <div className="flex justify-end gap-1">
+                                <Button
+                                  variant="ghost"
+                                  size="sm"
+                                  onClick={() => window.open(timetable.file_url, '_blank')}
+                                  className="h-8 w-8 p-0"
+                                  title="View PDF"
+                                >
+                                  <Eye className="h-4 w-4" />
+                                </Button>
+                                <Button
+                                  variant="ghost"
+                                  size="sm"
+                                  onClick={() => handleTimetableEdit(timetable)}
+                                  className="h-8 w-8 p-0"
+                                  title="Edit"
+                                >
+                                  <Edit className="h-4 w-4" />
+                                </Button>
+                                <Button
+                                  variant="ghost"
+                                  size="sm"
+                                  onClick={() => {
+                                    setSelectedTimetableToDelete(timetable.id);
+                                    setDeleteDialogOpen(true);
+                                  }}
+                                  className="h-8 w-8 p-0 text-destructive hover:text-destructive"
+                                  title="Delete"
+                                >
+                                  <Trash2 className="h-4 w-4" />
+                                </Button>
+                              </div>
+                            </TableCell>
+                          </TableRow>
+                        ))}
+                      </TableBody>
                     </Table>
-
-                    {timetables.length === 0 && (
-                      <div className="text-center py-8 text-muted-foreground">
-                        No timetables uploaded yet for {selectedDepartment}.
-                      </div>
-                    )}
+                  </div>
+                ) : (
+                  <div className="text-center py-12">
+                    <BookOpen className="h-12 w-12 text-muted-foreground mx-auto mb-4" />
+                    <p className="text-muted-foreground">
+                      No timetables uploaded yet for {selectedDepartment}.
+                    </p>
                   </div>
                 )}
               </CardContent>
@@ -619,6 +589,7 @@ const DepartmentsAdmin = () => {
         </Tabs>
       )}
 
+      {/* Delete Confirmation Dialog */}
       <AlertDialog open={deleteDialogOpen} onOpenChange={setDeleteDialogOpen}>
         <AlertDialogContent>
           <AlertDialogHeader>
@@ -629,7 +600,10 @@ const DepartmentsAdmin = () => {
           </AlertDialogHeader>
           <AlertDialogFooter>
             <AlertDialogCancel>Cancel</AlertDialogCancel>
-            <AlertDialogAction onClick={handleTimetableDelete} className="bg-destructive text-destructive-foreground">
+            <AlertDialogAction 
+              onClick={handleTimetableDelete} 
+              className="bg-destructive text-destructive-foreground hover:bg-destructive/90"
+            >
               Delete
             </AlertDialogAction>
           </AlertDialogFooter>
