@@ -121,12 +121,12 @@ const DepartmentsAdmin = () => {
   const handleFileUpload = async (file: File) => {
     setUploading(true);
     
-    // Check file size (max 2MB for better compatibility)
-    const maxSize = 2 * 1024 * 1024; // 2MB in bytes
+    // Check file size (max 1MB for Supabase compatibility)
+    const maxSize = 1 * 1024 * 1024; // 1MB in bytes
     if (file.size > maxSize) {
       toast({
         title: "File Too Large",
-        description: "Please select a file smaller than 2MB",
+        description: "Please select a file smaller than 1MB",
         variant: "destructive"
       });
       setUploading(false);
@@ -134,11 +134,11 @@ const DepartmentsAdmin = () => {
     }
 
     // Check file type - primarily PDFs for timetables
-    const allowedTypes = ['application/pdf', 'application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'];
+    const allowedTypes = ['application/pdf'];
     if (!allowedTypes.includes(file.type)) {
       toast({
         title: "Invalid File Type",
-        description: "Please select a PDF or Word document",
+        description: "Please select a PDF document only",
         variant: "destructive"
       });
       setUploading(false);
@@ -161,12 +161,12 @@ const DepartmentsAdmin = () => {
       if (uploadError) {
         console.error('Upload error:', uploadError);
         let errorMessage = "Failed to upload file. ";
-        if (uploadError.message?.includes('exceeded')) {
-          errorMessage += "File size too large. Please use a file smaller than 2MB.";
+        if (uploadError.message?.includes('exceeded') || uploadError.message?.includes('large')) {
+          errorMessage += "File size too large. Please use a PDF file smaller than 1MB.";
         } else if (uploadError.message?.includes('type')) {
-          errorMessage += "Invalid file type. Please use PDF or Word documents only.";
+          errorMessage += "Invalid file type. Please use PDF documents only.";
         } else {
-          errorMessage += uploadError.message || "Please try again.";
+          errorMessage += uploadError.message || "Please try again with a smaller file.";
         }
         
         toast({
@@ -479,10 +479,10 @@ const DepartmentsAdmin = () => {
                      <Input
                        id="file"
                        type="file"
-                       accept=".pdf,.doc,.docx"
+                       accept=".pdf"
                        ref={fileInputRef}
                      />
-                     {!editingTimetable && <p className="text-sm text-muted-foreground">Please select a PDF or Word document (max 2MB)</p>}
+                     {!editingTimetable && <p className="text-sm text-muted-foreground">Please select a PDF document (max 1MB)</p>}
                   </div>
 
                   <div className="flex flex-col sm:flex-row gap-2">
