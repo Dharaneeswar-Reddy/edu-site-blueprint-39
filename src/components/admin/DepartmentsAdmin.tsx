@@ -89,10 +89,10 @@ const DepartmentsAdmin = () => {
   };
 
   const validateFile = (file: File): string | null => {
-    // File size check - very conservative limit
-    const maxSize = 100 * 1024; // 100KB
+    // File size check - 200KB limit
+    const maxSize = 200 * 1024; // 200KB
     if (file.size > maxSize) {
-      return `File too large (${Math.round(file.size/1024)}KB). Please compress to under 100KB.`;
+      return `File too large (${Math.round(file.size/1024)}KB). Please compress to under 200KB.`;
     }
 
     // File type check
@@ -436,7 +436,7 @@ const DepartmentsAdmin = () => {
                     />
                     <p className="text-sm text-muted-foreground">
                       {!editingTimetable && "Required: "}
-                      PDF files only, maximum size 100KB. 
+                      PDF files only, maximum size 200KB. 
                       <a 
                         href="https://www.ilovepdf.com/compress_pdf" 
                         target="_blank" 
