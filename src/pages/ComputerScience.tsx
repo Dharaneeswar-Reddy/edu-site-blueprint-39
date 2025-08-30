@@ -6,61 +6,29 @@ import { Calendar, Clock, Users, BookOpen, Award, Download, Cpu, Mail } from "lu
 import { useEffect, useState } from "react";
 import DepartmentStaff from "@/components/DepartmentStaff";
 import { useDepartmentTimetables } from "@/hooks/useDepartmentTimetables";
-
 const ComputerScience = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const { timetables, loading, error } = useDepartmentTimetables("Computer Science");
-
-  const heroImages = [
-    "/lovable-uploads/0c919efa-1218-4c67-8c23-35ceaa355014.png",
-    "/lovable-uploads/9ca62294-2911-4407-b13a-c3cba06af79b.png",
-    "/lovable-uploads/2b3acfa1-27c7-4f20-9538-2ae32cc4d7ee.png",
-    "/lovable-uploads/b4c998e6-35dc-46cd-9211-83c5d07a641d.png",
-    "/lovable-uploads/42406bfe-3d1b-499c-a992-6f33c42ceebf.png",
-    "/lovable-uploads/074cdcc3-34a8-4340-88d9-e64c54f80c47.png"
-  ];
-
-  const departmentPhotos = [
-    "/lovable-uploads/e98f9552-31a8-4563-ba1c-d2996d761365.png",
-    "/lovable-uploads/df09bc14-a701-443d-8856-e86228cf804a.png",
-    "/lovable-uploads/2b3acfa1-27c7-4f20-9538-2ae32cc4d7ee.png",
-    "/lovable-uploads/b4c998e6-35dc-46cd-9211-83c5d07a641d.png"
-  ];
-
+  const {
+    timetables,
+    loading,
+    error
+  } = useDepartmentTimetables("Computer Science");
+  const heroImages = ["/lovable-uploads/0c919efa-1218-4c67-8c23-35ceaa355014.png", "/lovable-uploads/9ca62294-2911-4407-b13a-c3cba06af79b.png", "/lovable-uploads/2b3acfa1-27c7-4f20-9538-2ae32cc4d7ee.png", "/lovable-uploads/b4c998e6-35dc-46cd-9211-83c5d07a641d.png", "/lovable-uploads/42406bfe-3d1b-499c-a992-6f33c42ceebf.png", "/lovable-uploads/074cdcc3-34a8-4340-88d9-e64c54f80c47.png"];
+  const departmentPhotos = ["/lovable-uploads/e98f9552-31a8-4563-ba1c-d2996d761365.png", "/lovable-uploads/df09bc14-a701-443d-8856-e86228cf804a.png", "/lovable-uploads/2b3acfa1-27c7-4f20-9538-2ae32cc4d7ee.png", "/lovable-uploads/b4c998e6-35dc-46cd-9211-83c5d07a641d.png"];
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentImageIndex((prevIndex) => 
-        prevIndex === heroImages.length - 1 ? 0 : prevIndex + 1
-      );
+      setCurrentImageIndex(prevIndex => prevIndex === heroImages.length - 1 ? 0 : prevIndex + 1);
     }, 3000);
-
     return () => clearInterval(interval);
   }, [heroImages.length]);
-
-  return (
-    <PageLayout 
-      title="Department of Computer Science" 
-      description="Shaping Digital Futures, Empowering Rural Minds through Technology. Providing quality education, digital skills, and community outreach to prepare students and rural youth for success in the modern world."
-    >
+  return <PageLayout title="Department of Computer Science" description="Shaping Digital Futures, Empowering Rural Minds through Technology. Providing quality education, digital skills, and community outreach to prepare students and rural youth for success in the modern world.">
       <div className="space-y-8">
         
         {/* Auto-scrolling Hero Images */}
         <div className="relative h-64 md:h-80 lg:h-96 rounded-lg overflow-hidden shadow-lg">
-          {heroImages.map((image, index) => (
-            <img
-              key={index}
-              src={image}
-              alt={`Computer Science Department ${index + 1}`}
-              className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${
-                index === currentImageIndex ? 'opacity-100' : 'opacity-0'
-              }`}
-            />
-          ))}
+          {heroImages.map((image, index) => <img key={index} src={image} alt={`Computer Science Department ${index + 1}`} className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${index === currentImageIndex ? 'opacity-100' : 'opacity-0'}`} />)}
           <div className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
-            <div className="text-center text-white">
-              <h1 className="text-4xl md:text-6xl font-bold mb-4">Computer Science Department</h1>
-              <p className="text-xl md:text-2xl">Shaping Digital Innovators</p>
-            </div>
+            
           </div>
         </div>
 
@@ -126,15 +94,9 @@ const ComputerScience = () => {
 
           {/* Department Photos */}
           <div className="space-y-4">
-            {departmentPhotos.map((photo, index) => (
-              <div key={index} className="rounded-lg overflow-hidden shadow-md">
-                <img 
-                  src={photo} 
-                  alt={`Computer Science Lab ${index + 1}`}
-                  className="w-full h-32 object-cover hover:scale-105 transition-transform duration-300"
-                />
-              </div>
-            ))}
+            {departmentPhotos.map((photo, index) => <div key={index} className="rounded-lg overflow-hidden shadow-md">
+                <img src={photo} alt={`Computer Science Lab ${index + 1}`} className="w-full h-32 object-cover hover:scale-105 transition-transform duration-300" />
+              </div>)}
           </div>
         </div>
 
@@ -421,15 +383,9 @@ const ComputerScience = () => {
           </CardHeader>
           <CardContent>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-              {[...heroImages, ...departmentPhotos].map((image, index) => (
-                <div key={index} className="rounded-lg overflow-hidden shadow-md group">
-                  <img 
-                    src={image} 
-                    alt={`Computer Science Department ${index + 1}`}
-                    className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
-                  />
-                </div>
-              ))}
+              {[...heroImages, ...departmentPhotos].map((image, index) => <div key={index} className="rounded-lg overflow-hidden shadow-md group">
+                  <img src={image} alt={`Computer Science Department ${index + 1}`} className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300" />
+                </div>)}
             </div>
           </CardContent>
         </Card>
@@ -443,18 +399,13 @@ const ComputerScience = () => {
             </CardTitle>
           </CardHeader>
           <CardContent>
-            {loading ? (
-              <div className="text-center py-8">
+            {loading ? <div className="text-center py-8">
                 <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary mx-auto"></div>
                 <p className="text-muted-foreground mt-2">Loading timetables...</p>
-              </div>
-            ) : timetables.length === 0 ? (
-              <div className="text-center py-8">
+              </div> : timetables.length === 0 ? <div className="text-center py-8">
                 <Clock className="h-12 w-12 mx-auto mb-4 opacity-50" />
                 <p className="text-muted-foreground">No timetables available at the moment.</p>
-              </div>
-            ) : (
-              <div className="overflow-x-auto">
+              </div> : <div className="overflow-x-auto">
                 <table className="w-full">
                   <thead>
                     <tr className="border-b bg-muted/20">
@@ -464,39 +415,28 @@ const ComputerScience = () => {
                     </tr>
                   </thead>
                   <tbody>
-                    {timetables.map((timetable, index) => (
-                      <tr key={timetable.id} className="border-b hover:bg-muted/10">
+                    {timetables.map((timetable, index) => <tr key={timetable.id} className="border-b hover:bg-muted/10">
                         <td className="py-3 px-4 text-primary font-medium">{index + 1}</td>
                         <td className="py-3 px-4 text-primary">
                           <div>
                             <div className="font-medium">{timetable.title}</div>
-                            {timetable.description && (
-                              <div className="text-sm text-muted-foreground">{timetable.description}</div>
-                            )}
+                            {timetable.description && <div className="text-sm text-muted-foreground">{timetable.description}</div>}
                           </div>
                         </td>
                         <td className="py-3 px-4 text-center">
-                          <Button
-                            variant="outline"
-                            size="sm"
-                            onClick={() => window.open(timetable.file_url, '_blank')}
-                          >
+                          <Button variant="outline" size="sm" onClick={() => window.open(timetable.file_url, '_blank')}>
                             <Download className="h-4 w-4 mr-2" />
                             Download PDF
                           </Button>
                         </td>
-                      </tr>
-                    ))}
+                      </tr>)}
                   </tbody>
                 </table>
-              </div>
-            )}
+              </div>}
           </CardContent>
         </Card>
 
       </div>
-    </PageLayout>
-  );
+    </PageLayout>;
 };
-
 export default ComputerScience;
