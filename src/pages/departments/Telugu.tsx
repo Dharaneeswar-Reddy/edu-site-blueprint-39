@@ -62,48 +62,8 @@ const Telugu = () => {
           </div>
         </div>
 
-        {/* Department Overview and Photos */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          {/* Department Overview */}
-          <div className="lg:col-span-2">
-            <Card>
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <Languages className="h-6 w-6 text-college-blue" />
-                  Department Overview
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                <p>
-                  The Department of Telugu at SVRMC is committed to preserving and promoting the 
-                  rich heritage of Telugu language and literature. Our department serves as a 
-                  cultural beacon, nurturing students' understanding of classical and contemporary 
-                  Telugu literature while fostering linguistic competence.
-                </p>
-                <p>
-                  తెలుగు విభాగం ప్రాచీన మరియు ఆధునిక తెలుగు సాహిత్యాన్ని అధ్యయనం చేయడంలో విద్యార్థులకు 
-                  మార్గదర్శనం అందిస్తుంది. మా అనుభవజ్ఞులైన అధ్యాపకులు భాషా నైపుణ్యం, సాహిత్య విశ్లేషణ 
-                  మరియు సాంస్కృతిక అవగాహనను పెంపొందించడంలో కృషి చేస్తారు.
-                </p>
-                <div className="grid grid-cols-2 gap-4 mt-6">
-                  <div className="text-center p-4 bg-blue-50 rounded-lg">
-                    <Users className="h-8 w-8 text-college-blue mx-auto mb-2" />
-                    <div className="text-2xl font-bold text-college-blue">180+</div>
-                    <div className="text-sm text-gray-600">Students</div>
-                  </div>
-                  <div className="text-center p-4 bg-green-50 rounded-lg">
-                    <Award className="h-8 w-8 text-green-600 mx-auto mb-2" />
-                    <div className="text-2xl font-bold text-green-600">12</div>
-                    <div className="text-sm text-gray-600">Faculty Members</div>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-          </div>
-
-        </div>
-
         {/* Seat Structure and Programs */}
+
         <Card>
           <CardHeader>
             <CardTitle>Seat Structure & Programs Offered</CardTitle>
@@ -178,6 +138,51 @@ const Telugu = () => {
                     </ul>
                   </div>
                 </div>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* Department Overview */}
+        <Card>
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+              <Languages className="h-6 w-6 text-college-blue" />
+              Department Overview
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            <p>
+              The Department of Telugu at SVRMC is committed to preserving and promoting the 
+              rich heritage of Telugu language and literature. Our department serves as a 
+              cultural beacon, nurturing students' understanding of classical and contemporary 
+              Telugu literature while fostering linguistic competence.
+            </p>
+            <p>
+              తెలుగు విభాగం ప్రాచీన మరియు ఆధునిక తెలుగు సాహిత్యాన్ని అధ్యయనం చేయడంలో విద్యార్థులకు 
+              మార్గదర్శనం అందిస్తుంది. మా అనుభవజ్ఞులైన అధ్యాపకులు భాషా నైపుణ్యం, సాహిత్య విశ్లేషణ 
+              మరియు సాంస్కృతిక అవగాహనను పెంపొందించడంలో కృషి చేస్తారు.
+            </p>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mt-6">
+              <div className="text-center p-4 bg-blue-50 rounded-lg">
+                <Users className="h-8 w-8 text-college-blue mx-auto mb-2" />
+                <div className="text-2xl font-bold text-college-blue">180+</div>
+                <div className="text-sm text-gray-600">Students</div>
+              </div>
+              <div className="text-center p-4 bg-green-50 rounded-lg">
+                <Award className="h-8 w-8 text-green-600 mx-auto mb-2" />
+                <div className="text-2xl font-bold text-green-600">12</div>
+                <div className="text-sm text-gray-600">Faculty Members</div>
+              </div>
+              <div className="text-center p-4 bg-purple-50 rounded-lg">
+                <BookOpen className="h-8 w-8 text-purple-600 mx-auto mb-2" />
+                <div className="text-2xl font-bold text-purple-600">4</div>
+                <div className="text-sm text-gray-600">Programs</div>
+              </div>
+              <div className="text-center p-4 bg-orange-50 rounded-lg">
+                <Languages className="h-8 w-8 text-orange-600 mx-auto mb-2" />
+                <div className="text-2xl font-bold text-orange-600">95%</div>
+                <div className="text-sm text-gray-600">Cultural Excellence</div>
               </div>
             </div>
           </CardContent>

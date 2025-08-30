@@ -62,50 +62,8 @@ const Hindi = () => {
           </div>
         </div>
 
-        {/* Department Overview and Photos */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          {/* Department Overview */}
-          <div className="lg:col-span-2">
-            <Card>
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <Languages className="h-6 w-6 text-college-blue" />
-                  Department Overview
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                <p>
-                  The Department of Hindi at SVRMC is dedicated to promoting the rich literary 
-                  heritage of Hindi language and literature. As the national language of India, 
-                  Hindi serves as a bridge connecting diverse cultures and communities across 
-                  the nation. Our department emphasizes both classical and contemporary aspects 
-                  of Hindi literature.
-                </p>
-                <p>
-                  हिंदी विभाग भारतीय संस्कृति और साहित्य की समृद्ध परंपरा को आगे बढ़ाने में 
-                  महत्वपूर्ण भूमिका निभाता है। हमारे अनुभवी प्राध्यापक छात्रों को हिंदी भाषा 
-                  की गहराई से समझ प्रदान करते हैं और उन्हें राष्ट्रीय एवं सांस्कृतिक मूल्यों 
-                  से जोड़ते हैं।
-                </p>
-                <div className="grid grid-cols-2 gap-4 mt-6">
-                  <div className="text-center p-4 bg-blue-50 rounded-lg">
-                    <Users className="h-8 w-8 text-college-blue mx-auto mb-2" />
-                    <div className="text-2xl font-bold text-college-blue">160+</div>
-                    <div className="text-sm text-gray-600">Students</div>
-                  </div>
-                  <div className="text-center p-4 bg-green-50 rounded-lg">
-                    <Award className="h-8 w-8 text-green-600 mx-auto mb-2" />
-                    <div className="text-2xl font-bold text-green-600">11</div>
-                    <div className="text-sm text-gray-600">Faculty Members</div>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-          </div>
-
-        </div>
-
         {/* Seat Structure and Programs */}
+
         <Card>
           <CardHeader>
             <CardTitle>Seat Structure & Programs Offered</CardTitle>
@@ -180,6 +138,53 @@ const Hindi = () => {
                     </ul>
                   </div>
                 </div>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* Department Overview */}
+        <Card>
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+              <Languages className="h-6 w-6 text-college-blue" />
+              Department Overview
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            <p>
+              The Department of Hindi at SVRMC is dedicated to promoting the rich literary 
+              heritage of Hindi language and literature. As the national language of India, 
+              Hindi serves as a bridge connecting diverse cultures and communities across 
+              the nation. Our department emphasizes both classical and contemporary aspects 
+              of Hindi literature.
+            </p>
+            <p>
+              हिंदी विभाग भारतीय संस्कृति और साहित्य की समृद्ध परंपरा को आगे बढ़ाने में 
+              महत्वपूर्ण भूमिका निभाता है। हमारे अनुभवी प्राध्यापक छात्रों को हिंदी भाषा 
+              की गहराई से समझ प्रदान करते हैं और उन्हें राष्ट्रीय एवं सांस्कृतिक मूल्यों 
+              से जोड़ते हैं।
+            </p>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mt-6">
+              <div className="text-center p-4 bg-blue-50 rounded-lg">
+                <Users className="h-8 w-8 text-college-blue mx-auto mb-2" />
+                <div className="text-2xl font-bold text-college-blue">160+</div>
+                <div className="text-sm text-gray-600">Students</div>
+              </div>
+              <div className="text-center p-4 bg-green-50 rounded-lg">
+                <Award className="h-8 w-8 text-green-600 mx-auto mb-2" />
+                <div className="text-2xl font-bold text-green-600">11</div>
+                <div className="text-sm text-gray-600">Faculty Members</div>
+              </div>
+              <div className="text-center p-4 bg-purple-50 rounded-lg">
+                <BookOpen className="h-8 w-8 text-purple-600 mx-auto mb-2" />
+                <div className="text-2xl font-bold text-purple-600">4</div>
+                <div className="text-sm text-gray-600">Programs</div>
+              </div>
+              <div className="text-center p-4 bg-orange-50 rounded-lg">
+                <Languages className="h-8 w-8 text-orange-600 mx-auto mb-2" />
+                <div className="text-2xl font-bold text-orange-600">92%</div>
+                <div className="text-sm text-gray-600">Success Rate</div>
               </div>
             </div>
           </CardContent>

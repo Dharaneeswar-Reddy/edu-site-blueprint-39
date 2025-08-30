@@ -60,49 +60,8 @@ const History = () => {
           </div>
         </div>
 
-        {/* Department Overview and Photos */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          {/* Department Overview */}
-          <div className="lg:col-span-2">
-            <Card>
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <ScrollText className="h-6 w-6 text-college-blue" />
-                  Department Overview
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                <p>
-                  The Department of History at SVRMC is committed to fostering critical understanding 
-                  of human civilization, cultural heritage, and historical processes. Our programs 
-                  cover ancient, medieval, and modern history with special emphasis on Indian history 
-                  and world civilizations.
-                </p>
-                <p>
-                  With experienced faculty specializing in various periods and regions, we encourage 
-                  students to develop analytical skills, historical thinking, and research methodologies. 
-                  Our curriculum combines traditional historical scholarship with contemporary 
-                  approaches to historical studies.
-                </p>
-                <div className="grid grid-cols-2 gap-4 mt-6">
-                  <div className="text-center p-4 bg-blue-50 rounded-lg">
-                    <Users className="h-8 w-8 text-college-blue mx-auto mb-2" />
-                    <div className="text-2xl font-bold text-college-blue">160+</div>
-                    <div className="text-sm text-gray-600">Students</div>
-                  </div>
-                  <div className="text-center p-4 bg-green-50 rounded-lg">
-                    <Award className="h-8 w-8 text-green-600 mx-auto mb-2" />
-                    <div className="text-2xl font-bold text-green-600">13</div>
-                    <div className="text-sm text-gray-600">Faculty Members</div>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-          </div>
-
-        </div>
-
         {/* Seat Structure and Programs */}
+
         <Card>
           <CardHeader>
             <CardTitle>Seat Structure & Programs Offered</CardTitle>
@@ -177,6 +136,52 @@ const History = () => {
                     </ul>
                   </div>
                 </div>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* Department Overview */}
+        <Card>
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+              <ScrollText className="h-6 w-6 text-college-blue" />
+              Department Overview
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            <p>
+              The Department of History at SVRMC is committed to fostering critical understanding 
+              of human civilization, cultural heritage, and historical processes. Our programs 
+              cover ancient, medieval, and modern history with special emphasis on Indian history 
+              and world civilizations.
+            </p>
+            <p>
+              With experienced faculty specializing in various periods and regions, we encourage 
+              students to develop analytical skills, historical thinking, and research methodologies. 
+              Our curriculum combines traditional historical scholarship with contemporary 
+              approaches to historical studies.
+            </p>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mt-6">
+              <div className="text-center p-4 bg-blue-50 rounded-lg">
+                <Users className="h-8 w-8 text-college-blue mx-auto mb-2" />
+                <div className="text-2xl font-bold text-college-blue">160+</div>
+                <div className="text-sm text-gray-600">Students</div>
+              </div>
+              <div className="text-center p-4 bg-green-50 rounded-lg">
+                <Award className="h-8 w-8 text-green-600 mx-auto mb-2" />
+                <div className="text-2xl font-bold text-green-600">13</div>
+                <div className="text-sm text-gray-600">Faculty Members</div>
+              </div>
+              <div className="text-center p-4 bg-purple-50 rounded-lg">
+                <BookOpen className="h-8 w-8 text-purple-600 mx-auto mb-2" />
+                <div className="text-2xl font-bold text-purple-600">4</div>
+                <div className="text-sm text-gray-600">Programs</div>
+              </div>
+              <div className="text-center p-4 bg-orange-50 rounded-lg">
+                <ScrollText className="h-8 w-8 text-orange-600 mx-auto mb-2" />
+                <div className="text-2xl font-bold text-orange-600">50+</div>
+                <div className="text-sm text-gray-600">Historical Archives</div>
               </div>
             </div>
           </CardContent>

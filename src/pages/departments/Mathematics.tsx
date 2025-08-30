@@ -62,49 +62,8 @@ const Mathematics = () => {
           </div>
         </div>
 
-        {/* Department Overview and Photos */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          {/* Department Overview */}
-          <div className="lg:col-span-2">
-            <Card>
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <Calculator className="h-6 w-6 text-college-blue" />
-                  Department Overview
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                <p>
-                  The Department of Mathematics at SVRMC is dedicated to fostering analytical thinking 
-                  and mathematical reasoning among students. Our comprehensive curriculum covers pure 
-                  mathematics, applied mathematics, and statistics with emphasis on both theoretical 
-                  understanding and practical applications.
-                </p>
-                <p>
-                  Our experienced faculty members guide students through various branches of mathematics 
-                  including algebra, calculus, differential equations, numerical analysis, and operations 
-                  research. We prepare students for careers in academia, research, industry, and various 
-                  competitive examinations.
-                </p>
-                <div className="grid grid-cols-2 gap-4 mt-6">
-                  <div className="text-center p-4 bg-blue-50 rounded-lg">
-                    <Users className="h-8 w-8 text-college-blue mx-auto mb-2" />
-                    <div className="text-2xl font-bold text-college-blue">120+</div>
-                    <div className="text-sm text-gray-600">Students</div>
-                  </div>
-                  <div className="text-center p-4 bg-green-50 rounded-lg">
-                    <Award className="h-8 w-8 text-green-600 mx-auto mb-2" />
-                    <div className="text-2xl font-bold text-green-600">10</div>
-                    <div className="text-sm text-gray-600">Faculty Members</div>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-          </div>
-
-        </div>
-
         {/* Seat Structure and Programs */}
+
         <Card>
           <CardHeader>
             <CardTitle>Seat Structure & Programs Offered</CardTitle>
@@ -179,6 +138,52 @@ const Mathematics = () => {
                     </ul>
                   </div>
                 </div>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* Department Overview */}
+        <Card>
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+              <Calculator className="h-6 w-6 text-college-blue" />
+              Department Overview
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            <p>
+              The Department of Mathematics at SVRMC is dedicated to fostering analytical thinking 
+              and mathematical reasoning among students. Our comprehensive curriculum covers pure 
+              mathematics, applied mathematics, and statistics with emphasis on both theoretical 
+              understanding and practical applications.
+            </p>
+            <p>
+              Our experienced faculty members guide students through various branches of mathematics 
+              including algebra, calculus, differential equations, numerical analysis, and operations 
+              research. We prepare students for careers in academia, research, industry, and various 
+              competitive examinations.
+            </p>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mt-6">
+              <div className="text-center p-4 bg-blue-50 rounded-lg">
+                <Users className="h-8 w-8 text-college-blue mx-auto mb-2" />
+                <div className="text-2xl font-bold text-college-blue">120+</div>
+                <div className="text-sm text-gray-600">Students</div>
+              </div>
+              <div className="text-center p-4 bg-green-50 rounded-lg">
+                <Award className="h-8 w-8 text-green-600 mx-auto mb-2" />
+                <div className="text-2xl font-bold text-green-600">10</div>
+                <div className="text-sm text-gray-600">Faculty Members</div>
+              </div>
+              <div className="text-center p-4 bg-purple-50 rounded-lg">
+                <BookOpen className="h-8 w-8 text-purple-600 mx-auto mb-2" />
+                <div className="text-2xl font-bold text-purple-600">4</div>
+                <div className="text-sm text-gray-600">Programs</div>
+              </div>
+              <div className="text-center p-4 bg-orange-50 rounded-lg">
+                <Calculator className="h-8 w-8 text-orange-600 mx-auto mb-2" />
+                <div className="text-2xl font-bold text-orange-600">95%</div>
+                <div className="text-sm text-gray-600">Success Rate</div>
               </div>
             </div>
           </CardContent>

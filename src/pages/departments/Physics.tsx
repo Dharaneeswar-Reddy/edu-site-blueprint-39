@@ -2,7 +2,7 @@ import PageLayout from "@/components/PageLayout";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Calendar, Clock, Users, BookOpen, Award, Download, Mail, ExternalLink } from "lucide-react";
+import { Calendar, Clock, Users, BookOpen, Award, Download, Mail, ExternalLink, TestTube } from "lucide-react";
 import { useEffect, useState } from "react";
 import useStaff from "@/hooks/useStaff";
 import useDepartmentTimetables from "@/hooks/useDepartmentTimetables";
@@ -64,46 +64,8 @@ const Physics = () => {
           </div>
         </div>
 
-        {/* Department Overview and Photos */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          {/* Department Overview */}
-          <div className="lg:col-span-2">
-            <Card>
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <BookOpen className="h-6 w-6 text-college-blue" />
-                  Department Overview
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                <p>
-                  The Department of Physics at SVRMC is committed to providing excellence in physics education 
-                  and fostering scientific research. Our department offers comprehensive programs that combine 
-                  theoretical knowledge with practical applications.
-                </p>
-                <p>
-                  With state-of-the-art laboratories and experienced faculty, we prepare students for careers 
-                  in research, industry, and academia. Our curriculum covers classical physics, quantum mechanics, 
-                  thermodynamics, electromagnetism, and modern physics.
-                </p>
-                <div className="grid grid-cols-2 gap-4 mt-6">
-                  <div className="text-center p-4 bg-blue-50 rounded-lg">
-                    <Users className="h-8 w-8 text-college-blue mx-auto mb-2" />
-                    <div className="text-2xl font-bold text-college-blue">150+</div>
-                    <div className="text-sm text-gray-600">Students</div>
-                  </div>
-                  <div className="text-center p-4 bg-green-50 rounded-lg">
-                    <Award className="h-8 w-8 text-green-600 mx-auto mb-2" />
-                    <div className="text-2xl font-bold text-green-600">12</div>
-                    <div className="text-sm text-gray-600">Faculty Members</div>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-
         {/* Seat Structure and Programs */}
+
         <Card>
           <CardHeader>
             <CardTitle>Seat Structure & Programs Offered</CardTitle>
@@ -178,6 +140,50 @@ const Physics = () => {
                     </ul>
                   </div>
                 </div>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* Department Overview */}
+        <Card>
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+              <BookOpen className="h-6 w-6 text-college-blue" />
+              Department Overview
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            <p>
+              The Department of Physics at SVRMC is committed to providing excellence in physics education 
+              and fostering scientific research. Our department offers comprehensive programs that combine 
+              theoretical knowledge with practical applications.
+            </p>
+            <p>
+              With state-of-the-art laboratories and experienced faculty, we prepare students for careers 
+              in research, industry, and academia. Our curriculum covers classical physics, quantum mechanics, 
+              thermodynamics, electromagnetism, and modern physics.
+            </p>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mt-6">
+              <div className="text-center p-4 bg-blue-50 rounded-lg">
+                <Users className="h-8 w-8 text-college-blue mx-auto mb-2" />
+                <div className="text-2xl font-bold text-college-blue">150+</div>
+                <div className="text-sm text-gray-600">Students</div>
+              </div>
+              <div className="text-center p-4 bg-green-50 rounded-lg">
+                <Award className="h-8 w-8 text-green-600 mx-auto mb-2" />
+                <div className="text-2xl font-bold text-green-600">12</div>
+                <div className="text-sm text-gray-600">Faculty Members</div>
+              </div>
+              <div className="text-center p-4 bg-purple-50 rounded-lg">
+                <BookOpen className="h-8 w-8 text-purple-600 mx-auto mb-2" />
+                <div className="text-2xl font-bold text-purple-600">4</div>
+                <div className="text-sm text-gray-600">Programs</div>
+              </div>
+              <div className="text-center p-4 bg-orange-50 rounded-lg">
+                <TestTube className="h-8 w-8 text-orange-600 mx-auto mb-2" />
+                <div className="text-2xl font-bold text-orange-600">15+</div>
+                <div className="text-sm text-gray-600">Research Labs</div>
               </div>
             </div>
           </CardContent>
