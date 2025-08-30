@@ -89,10 +89,10 @@ const DepartmentsAdmin = () => {
   };
 
   const validateFile = (file: File): string | null => {
-    // File size check - 200KB limit
-    const maxSize = 200 * 1024; // 200KB
+    // File size check - 50KB limit for reliable uploads
+    const maxSize = 50 * 1024; // 50KB
     if (file.size > maxSize) {
-      return `File too large (${Math.round(file.size/1024)}KB). Please compress to under 200KB.`;
+      return `File too large (${Math.round(file.size/1024)}KB). Please compress to under 50KB.`;
     }
 
     // File type check
@@ -153,6 +153,9 @@ const DepartmentsAdmin = () => {
           throw new Error(validationError);
         }
 
+        // Additional check for file content
+        console.log(`Uploading file: ${file.name}, Size: ${file.size} bytes (${Math.round(file.size/1024)}KB)`);
+        
         fileUrl = await uploadFileToStorage(file);
       }
 
@@ -436,7 +439,7 @@ const DepartmentsAdmin = () => {
                     />
                     <p className="text-sm text-muted-foreground">
                       {!editingTimetable && "Required: "}
-                      PDF files only, maximum size 200KB. 
+                      PDF files only, maximum size 50KB. 
                       <a 
                         href="https://www.ilovepdf.com/compress_pdf" 
                         target="_blank" 
