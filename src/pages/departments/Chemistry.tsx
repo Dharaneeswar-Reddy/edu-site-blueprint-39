@@ -256,47 +256,50 @@ const Chemistry = () => {
               <CardContent>
                 {ugTimetablesLoading ? (
                   <div className="text-center py-8">
-                    <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary mx-auto mb-4"></div>
-                    <p className="text-muted-foreground">Loading timetables...</p>
+                    <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary mx-auto"></div>
+                    <p className="text-muted-foreground mt-2">Loading timetables...</p>
                   </div>
-                ) : ugTimetables.length > 0 ? (
-                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                    {ugTimetables.map((timetable) => (
-                      <div key={timetable.id} className="p-4 border rounded-lg hover:shadow-md transition-shadow">
-                        <div className="space-y-3">
-                          <div>
-                            <h4 className="font-semibold text-lg">{timetable.title}</h4>
-                            {timetable.description && (
-                              <p className="text-sm text-muted-foreground mt-1">{timetable.description}</p>
-                            )}
-                          </div>
-                          
-                          <div className="flex flex-wrap gap-2 text-xs">
-                            {timetable.academic_year && (
-                              <Badge variant="outline">AY: {timetable.academic_year}</Badge>
-                            )}
-                            {timetable.semester && (
-                              <Badge variant="outline">Sem: {timetable.semester}</Badge>
-                            )}
-                          </div>
-                          
-                          <Button 
-                            variant="outline" 
-                            size="sm" 
-                            className="w-full"
-                            onClick={() => window.open(timetable.file_url, '_blank')}
-                          >
-                            <ExternalLink className="h-4 w-4 mr-2" />
-                            View Schedule
-                          </Button>
-                        </div>
-                      </div>
-                    ))}
+                ) : ugTimetables.length === 0 ? (
+                  <div className="text-center py-8">
+                    <Clock className="h-12 w-12 mx-auto mb-4 opacity-50" />
+                    <p className="text-muted-foreground">No timetables available at the moment.</p>
                   </div>
                 ) : (
-                  <div className="text-center py-8 text-muted-foreground">
-                    <Clock className="h-16 w-16 mx-auto mb-4 opacity-20" />
-                    <p>No timetables available at the moment.</p>
+                  <div className="overflow-x-auto">
+                    <table className="w-full">
+                      <thead>
+                        <tr className="border-b bg-muted/20">
+                          <th className="text-left py-3 px-4 font-semibold text-primary">S.No</th>
+                          <th className="text-left py-3 px-4 font-semibold text-primary">Name</th>
+                          <th className="text-center py-3 px-4 font-semibold text-primary">Action</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {ugTimetables.map((timetable, index) => (
+                          <tr key={timetable.id} className="border-b hover:bg-muted/10">
+                            <td className="py-3 px-4 text-primary font-medium">{index + 1}</td>
+                            <td className="py-3 px-4 text-primary">
+                              <div>
+                                <div className="font-medium">{timetable.title}</div>
+                                {timetable.description && (
+                                  <div className="text-sm text-muted-foreground">{timetable.description}</div>
+                                )}
+                              </div>
+                            </td>
+                            <td className="py-3 px-4 text-center">
+                              <Button
+                                variant="outline"
+                                size="sm"
+                                onClick={() => window.open(timetable.file_url, '_blank')}
+                              >
+                                <Download className="h-4 w-4 mr-2" />
+                                Download PDF
+                              </Button>
+                            </td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
                   </div>
                 )}
               </CardContent>
@@ -479,47 +482,50 @@ const Chemistry = () => {
               <CardContent>
                 {pgTimetablesLoading ? (
                   <div className="text-center py-8">
-                    <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary mx-auto mb-4"></div>
-                    <p className="text-muted-foreground">Loading timetables...</p>
+                    <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary mx-auto"></div>
+                    <p className="text-muted-foreground mt-2">Loading timetables...</p>
                   </div>
-                ) : pgTimetables.length > 0 ? (
-                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                    {pgTimetables.map((timetable) => (
-                      <div key={timetable.id} className="p-4 border rounded-lg hover:shadow-md transition-shadow">
-                        <div className="space-y-3">
-                          <div>
-                            <h4 className="font-semibold text-lg">{timetable.title}</h4>
-                            {timetable.description && (
-                              <p className="text-sm text-muted-foreground mt-1">{timetable.description}</p>
-                            )}
-                          </div>
-                          
-                          <div className="flex flex-wrap gap-2 text-xs">
-                            {timetable.academic_year && (
-                              <Badge variant="outline">AY: {timetable.academic_year}</Badge>
-                            )}
-                            {timetable.semester && (
-                              <Badge variant="outline">Sem: {timetable.semester}</Badge>
-                            )}
-                          </div>
-                          
-                          <Button 
-                            variant="outline" 
-                            size="sm" 
-                            className="w-full"
-                            onClick={() => window.open(timetable.file_url, '_blank')}
-                          >
-                            <ExternalLink className="h-4 w-4 mr-2" />
-                            View Schedule
-                          </Button>
-                        </div>
-                      </div>
-                    ))}
+                ) : pgTimetables.length === 0 ? (
+                  <div className="text-center py-8">
+                    <Clock className="h-12 w-12 mx-auto mb-4 opacity-50" />
+                    <p className="text-muted-foreground">No timetables available at the moment.</p>
                   </div>
                 ) : (
-                  <div className="text-center py-8 text-muted-foreground">
-                    <Clock className="h-16 w-16 mx-auto mb-4 opacity-20" />
-                    <p>No timetables available at the moment.</p>
+                  <div className="overflow-x-auto">
+                    <table className="w-full">
+                      <thead>
+                        <tr className="border-b bg-muted/20">
+                          <th className="text-left py-3 px-4 font-semibold text-primary">S.No</th>
+                          <th className="text-left py-3 px-4 font-semibold text-primary">Name</th>
+                          <th className="text-center py-3 px-4 font-semibold text-primary">Action</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {pgTimetables.map((timetable, index) => (
+                          <tr key={timetable.id} className="border-b hover:bg-muted/10">
+                            <td className="py-3 px-4 text-primary font-medium">{index + 1}</td>
+                            <td className="py-3 px-4 text-primary">
+                              <div>
+                                <div className="font-medium">{timetable.title}</div>
+                                {timetable.description && (
+                                  <div className="text-sm text-muted-foreground">{timetable.description}</div>
+                                )}
+                              </div>
+                            </td>
+                            <td className="py-3 px-4 text-center">
+                              <Button
+                                variant="outline"
+                                size="sm"
+                                onClick={() => window.open(timetable.file_url, '_blank')}
+                              >
+                                <Download className="h-4 w-4 mr-2" />
+                                Download PDF
+                              </Button>
+                            </td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
                   </div>
                 )}
               </CardContent>
