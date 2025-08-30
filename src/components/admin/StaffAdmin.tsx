@@ -58,6 +58,7 @@ const DEPARTMENTS = [
   "Electronics",
   "Physics", 
   "Chemistry",
+  "PG Chemistry",
   "Mathematics",
   "Commerce",
   "English",

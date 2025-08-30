@@ -101,25 +101,6 @@ const Hindi = () => {
             </Card>
           </div>
 
-        {/* Department Photo Gallery */}
-        <Card>
-          <CardHeader>
-            <CardTitle>Department Gallery</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-              {departmentPhotos.map((photo, index) => (
-                <div key={index} className="rounded-xl overflow-hidden shadow-lg group">
-                  <img 
-                    src={photo} 
-                    alt={`Hindi Classroom ${index + 1}`}
-                    className="w-full h-48 md:h-56 object-cover group-hover:scale-110 transition-transform duration-500"
-                  />
-                </div>
-              ))}
-            </div>
-          </CardContent>
-        </Card>
         </div>
 
         {/* Seat Structure and Programs */}
@@ -237,6 +218,27 @@ const Hindi = () => {
 
         {/* Department Staff */}
         <DepartmentStaff departmentName="Hindi" />
+
+        {/* Department Gallery */}
+        <Card>
+          <CardHeader>
+            <CardTitle>Department Gallery</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
+              {departmentPhotos.map((photo, index) => (
+                <div key={index} className="group relative overflow-hidden rounded-xl shadow-lg hover:shadow-xl transition-all duration-300">
+                  <img 
+                    src={photo} 
+                    alt={`Hindi Department ${index + 1}`}
+                    className="w-full h-48 md:h-56 object-cover group-hover:scale-110 transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 transition-opacity duration-300"></div>
+                </div>
+              ))}
+            </div>
+          </CardContent>
+        </Card>
 
         {/* Time Tables */}
         <Card>
