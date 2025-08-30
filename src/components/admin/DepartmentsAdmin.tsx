@@ -121,24 +121,24 @@ const DepartmentsAdmin = () => {
   const handleFileUpload = async (file: File) => {
     setUploading(true);
     
-    // Check file size (max 10MB)
-    const maxSize = 10 * 1024 * 1024; // 10MB in bytes
+    // Check file size (max 2MB for better compatibility)
+    const maxSize = 2 * 1024 * 1024; // 2MB in bytes
     if (file.size > maxSize) {
       toast({
         title: "File Too Large",
-        description: "Please select a file smaller than 10MB",
+        description: "Please select a file smaller than 2MB",
         variant: "destructive"
       });
       setUploading(false);
       throw new Error("File size exceeds limit");
     }
 
-    // Check file type
-    const allowedTypes = ['application/pdf', 'image/jpeg', 'image/png', 'image/jpg'];
+    // Check file type - primarily PDFs for timetables
+    const allowedTypes = ['application/pdf', 'application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'];
     if (!allowedTypes.includes(file.type)) {
       toast({
         title: "Invalid File Type",
-        description: "Please select a PDF, JPEG, or PNG file",
+        description: "Please select a PDF or Word document",
         variant: "destructive"
       });
       setUploading(false);
@@ -147,7 +147,8 @@ const DepartmentsAdmin = () => {
 
     try {
       const fileExt = file.name.split('.').pop();
-      const fileName = `${Date.now()}_${Math.random().toString(36).substring(2)}.${fileExt}`;
+      const sanitizedDepartment = selectedDepartment.toLowerCase().replace(/\s+/g, '-');
+      const fileName = `${sanitizedDepartment}_timetable_${Date.now()}.${fileExt}`;
       const filePath = `timetables/${fileName}`;
 
       const { error: uploadError } = await supabase.storage
@@ -159,11 +160,21 @@ const DepartmentsAdmin = () => {
 
       if (uploadError) {
         console.error('Upload error:', uploadError);
+        let errorMessage = "Failed to upload file. ";
+        if (uploadError.message?.includes('exceeded')) {
+          errorMessage += "File size too large. Please use a file smaller than 2MB.";
+        } else if (uploadError.message?.includes('type')) {
+          errorMessage += "Invalid file type. Please use PDF or Word documents only.";
+        } else {
+          errorMessage += uploadError.message || "Please try again.";
+        }
+        
         toast({
           title: "Upload Failed",
-          description: uploadError.message || "Failed to upload file",
+          description: errorMessage,
           variant: "destructive"
         });
+        setUploading(false);
         throw uploadError;
       }
 
@@ -173,15 +184,15 @@ const DepartmentsAdmin = () => {
 
       toast({
         title: "Success",
-        description: "File uploaded successfully",
+        description: "Timetable uploaded successfully",
       });
 
+      setUploading(false);
       return publicUrl;
     } catch (error) {
       console.error('Error uploading file:', error);
-      throw error;
-    } finally {
       setUploading(false);
+      throw error;
     }
   };
 
@@ -463,15 +474,15 @@ const DepartmentsAdmin = () => {
                     </div>
                   </div>
 
-                  <div className="space-y-2">
-                    <Label htmlFor="file">File {!editingTimetable && "*"}</Label>
-                    <Input
-                      id="file"
-                      type="file"
-                      accept=".pdf,.doc,.docx,.xls,.xlsx"
-                      ref={fileInputRef}
-                    />
-                    {!editingTimetable && <p className="text-sm text-muted-foreground">Please select a file to upload (PDF, DOC, XLS)</p>}
+                   <div className="space-y-2">
+                     <Label htmlFor="file">File {!editingTimetable && "*"}</Label>
+                     <Input
+                       id="file"
+                       type="file"
+                       accept=".pdf,.doc,.docx"
+                       ref={fileInputRef}
+                     />
+                     {!editingTimetable && <p className="text-sm text-muted-foreground">Please select a PDF or Word document (max 2MB)</p>}
                   </div>
 
                   <div className="flex flex-col sm:flex-row gap-2">
