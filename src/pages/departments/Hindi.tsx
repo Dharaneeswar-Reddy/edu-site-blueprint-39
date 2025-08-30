@@ -8,32 +8,12 @@ import DepartmentStaff from "@/components/DepartmentStaff";
 import { useDepartmentTimetables } from "@/hooks/useDepartmentTimetables";
 
 const Hindi = () => {
-  const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const { timetables, loading, error } = useDepartmentTimetables("Hindi");
 
-  const heroImages = [
-    "/lovable-uploads/a29d5e18-fb3d-47a3-b3d2-a210ce08d66c.png",
-    "/lovable-uploads/a2d2ff22-61cc-47fe-8ef4-7086790f77d0.png",
-    "/lovable-uploads/b010e240-0ffe-43a4-884e-04e9e6094c36.png",
-    "/lovable-uploads/c2330428-4591-4e58-92a3-ff6d9918a338.png"
-  ];
-
   const departmentPhotos = [
-    "/lovable-uploads/d1d2add7-8d38-40a3-9b07-6b30cc16b6bc.png",
-    "/lovable-uploads/dd09abc5-6c94-4cbf-898d-c7df488183a6.png",
-    "/lovable-uploads/ee497235-78d2-427a-9aca-40010a64e520.png",
-    "/lovable-uploads/f7ffbe1f-5fed-4b97-9af1-ab0ad2725f32.png"
+    "/lovable-uploads/aae99b11-cfd7-4f65-b39f-c9b2beb0c9d6.png",
+    "/lovable-uploads/6e42ca20-59a4-45f5-919d-59cb9d0413c8.png"
   ];
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentImageIndex((prevIndex) => 
-        prevIndex === heroImages.length - 1 ? 0 : prevIndex + 1
-      );
-    }, 3000);
-
-    return () => clearInterval(interval);
-  }, [heroImages.length]);
 
   return (
     <PageLayout 
@@ -42,18 +22,13 @@ const Hindi = () => {
     >
       <div className="space-y-8">
         
-        {/* Auto-scrolling Hero Images */}
+        {/* Hero Image */}
         <div className="relative h-96 md:h-[500px] lg:h-[600px] rounded-lg overflow-hidden shadow-xl">
-          {heroImages.map((image, index) => (
-            <img
-              key={index}
-              src={image}
-              alt={`Hindi Department ${index + 1}`}
-              className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${
-                index === currentImageIndex ? 'opacity-100' : 'opacity-0'
-              }`}
-            />
-          ))}
+          <img
+            src="/lovable-uploads/90a79da6-220f-4c8f-89c3-4d85fe488101.png"
+            alt="Hindi Department"
+            className="w-full h-full object-cover"
+          />
           <div className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
             <div className="text-center text-white">
               <h1 className="text-4xl md:text-6xl font-bold mb-4">हिंदी विभाग</h1>
@@ -62,38 +37,96 @@ const Hindi = () => {
           </div>
         </div>
 
+        {/* Department Overview */}
+        <Card>
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+              <Languages className="h-6 w-6 text-college-blue" />
+              Department Overview
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            <p className="text-lg leading-relaxed">
+              हिंदी भारत की राष्ट्रभाषा होने के साथ-साथ करोड़ों लोगों की मातृभाषा भी है। यह केवल एक भाषा नहीं, बल्कि भारतीय संस्कृति, सभ्यता और एकता की पहचान है। हिंदी सरल, सहज और भावनात्मक अभिव्यक्ति की भाषा है, जो जन-जन से जुड़ी हुई है। इसका साहित्य अत्यंत समृद्ध है, जिसमें प्रेम, वीरता, करुणा और समाज के विविध पहलुओं की सुंदर झलक मिलती है। हिंदी कवियों और लेखकों ने विश्व साहित्य को अनमोल रचनाएँ दी हैं। आज शिक्षा, संचार, प्रशासन और मीडिया में हिंदी का महत्व लगातार बढ़ रहा है। हमें गर्व है कि हिंदी जैसी भाषा हमारी विरासत है, जिसे अपनाकर हम अपनी संस्कृति को सहेज सकते हैं। हमें हिंदी का सम्मान करना चाहिए और इसे अपनी दिनचर्या में स्थान देना चाहिए।
+            </p>
+            <p>
+              The department of Hindi was started in August 21 1969. It was developed under the able principal ship of the late Sri S. Madhusudhan Rao, the member student union. Ms. K Vijaya kumari, was the founder Head, department of Hindi. They succeeded the headship and contributed their mite for academic growth of the department as well as the institution.
+            </p>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mt-6">
+              <div className="text-center p-4 bg-blue-50 rounded-lg">
+                <Users className="h-8 w-8 text-college-blue mx-auto mb-2" />
+                <div className="text-2xl font-bold text-college-blue">170+</div>
+                <div className="text-sm text-gray-600">Students enrolled</div>
+              </div>
+              <div className="text-center p-4 bg-green-50 rounded-lg">
+                <Award className="h-8 w-8 text-green-600 mx-auto mb-2" />
+                <div className="text-2xl font-bold text-green-600">1</div>
+                <div className="text-sm text-gray-600">Faculty Members</div>
+              </div>
+              <div className="text-center p-4 bg-purple-50 rounded-lg">
+                <Calendar className="h-8 w-8 text-purple-600 mx-auto mb-2" />
+                <div className="text-2xl font-bold text-purple-600">1969</div>
+                <div className="text-sm text-gray-600">Established</div>
+              </div>
+              <div className="text-center p-4 bg-orange-50 rounded-lg">
+                <BookOpen className="h-8 w-8 text-orange-600 mx-auto mb-2" />
+                <div className="text-2xl font-bold text-orange-600">4</div>
+                <div className="text-sm text-gray-600">Academic Focus Areas</div>
+              </div>
+            </div>
+            
+            <div className="mt-6 space-y-4">
+              <div>
+                <h4 className="font-semibold text-lg mb-2">Academic Focus</h4>
+                <ul className="list-disc list-inside space-y-1 text-sm">
+                  <li>Classical and Modern Hindi Literature</li>
+                  <li>Hindi Grammar and Linguistics</li>
+                  <li>Translation Studies and Creative Writing</li>
+                  <li>Comparative Literature and Cultural Studies</li>
+                </ul>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+
         {/* Seat Structure and Programs */}
 
         <Card>
           <CardHeader>
-            <CardTitle>Seat Structure & Programs Offered</CardTitle>
+            <CardTitle>Vision & Mission</CardTitle>
           </CardHeader>
           <CardContent>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
-                <h4 className="font-semibold mb-3">Undergraduate Programs</h4>
-                <div className="space-y-2">
-                  <div className="flex justify-between items-center p-3 bg-blue-50 rounded">
-                    <span>B.A. Hindi Literature</span>
-                    <Badge variant="secondary">55 Seats</Badge>
-                  </div>
-                  <div className="flex justify-between items-center p-3 bg-green-50 rounded">
-                    <span>B.A. Hindi (Honours)</span>
-                    <Badge variant="secondary">25 Seats</Badge>
-                  </div>
-                </div>
+                <h4 className="font-semibold mb-3 text-blue-600">Vision</h4>
+                <p className="text-sm bg-blue-50 p-4 rounded-lg">
+                  To provide holistic education and employability through Higher education for Rural youth of the area with values Truth, Love and God.
+                </p>
               </div>
               <div>
-                <h4 className="font-semibold mb-3">Postgraduate Programs</h4>
-                <div className="space-y-2">
-                  <div className="flex justify-between items-center p-3 bg-purple-50 rounded">
-                    <span>M.A. Hindi Literature</span>
-                    <Badge variant="secondary">35 Seats</Badge>
-                  </div>
-                  <div className="flex justify-between items-center p-3 bg-orange-50 rounded">
-                    <span>M.A. Hindi Language</span>
-                    <Badge variant="secondary">20 Seats</Badge>
-                  </div>
+                <h4 className="font-semibold mb-3 text-green-600">Mission</h4>
+                <ul className="text-sm space-y-2 bg-green-50 p-4 rounded-lg">
+                  <li>• To provide proper training to rural young men and women of the region</li>
+                  <li>• To design academic programs through which the learner fits to global necessity</li>
+                  <li>• To create and promote, brain storm skills of creativity and innovation inherent in young minds of the area</li>
+                  <li>• A sound value education system instilling the values of hard work, discipline and service mindedness</li>
+                </ul>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+
+        <Card>
+          <CardHeader>
+            <CardTitle>Programs Offered</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="bg-gradient-to-r from-blue-50 to-purple-50 p-6 rounded-lg">
+              <h4 className="font-semibold mb-3">Undergraduate Programs</h4>
+              <div className="space-y-2">
+                <div className="flex justify-between items-center p-3 bg-white rounded shadow-sm">
+                  <span>B. A, B. Com, B.sc, BCA Hindi Literature (I Year)</span>
+                  <Badge variant="secondary">Available</Badge>
                 </div>
               </div>
             </div>
@@ -108,33 +141,141 @@ const Hindi = () => {
           <CardContent>
             <div className="space-y-6">
               <div>
-                <h4 className="font-semibold mb-3">B.A. Hindi Literature (3 Years)</h4>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                  <div className="p-4 border rounded-lg">
-                    <h5 className="font-medium text-blue-600 mb-2">Year 1</h5>
+                <h4 className="font-semibold mb-3">I Year Program Structure</h4>
+                <div className="p-4 border rounded-lg bg-gradient-to-r from-blue-50 to-indigo-50">
+                  <h5 className="font-medium text-blue-600 mb-2">I Year</h5>
+                  <ul className="text-sm space-y-1">
+                    <li>• Introduction to Literature</li>
+                    <li>• Poetry & Prose</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* Goals and Objectives */}
+        <Card>
+          <CardHeader>
+            <CardTitle>Goals and Objectives</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+              <div className="p-4 bg-blue-50 rounded-lg">
+                <h5 className="font-semibold text-blue-600 mb-2">Education</h5>
+                <p className="text-sm">Providing higher quality education in Hindi Language.</p>
+              </div>
+              <div className="p-4 bg-green-50 rounded-lg">
+                <h5 className="font-semibold text-green-600 mb-2">Communication</h5>
+                <p className="text-sm">To develop Hindi speaking ability in students by the end of undergraduate programme</p>
+              </div>
+              <div className="p-4 bg-purple-50 rounded-lg">
+                <h5 className="font-semibold text-purple-600 mb-2">Employment</h5>
+                <p className="text-sm">Providing better employment opportunities for backward and rural youth.</p>
+              </div>
+              <div className="p-4 bg-orange-50 rounded-lg">
+                <h5 className="font-semibold text-orange-600 mb-2">Culture</h5>
+                <p className="text-sm">To make students free from rituals so as to develop love to Indian culture and heritage, through Hindi Literature.</p>
+              </div>
+              <div className="p-4 bg-pink-50 rounded-lg">
+                <h5 className="font-semibold text-pink-600 mb-2">Higher Education</h5>
+                <p className="text-sm">Brightening the future with wider educational opportunities</p>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* Course Structure */}
+        <Card>
+          <CardHeader>
+            <CardTitle>Course Structure</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="space-y-6">
+              <div>
+                <h4 className="font-semibold mb-4 text-blue-600">SEMESTER-I: हिन्दी गद्य साहित्य</h4>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                  <div className="p-4 border rounded-lg bg-blue-50">
+                    <h5 className="font-medium mb-2">Unit-1</h5>
                     <ul className="text-sm space-y-1">
-                      <li>• Hindi Grammar & Language</li>
-                      <li>• Ancient Hindi Literature</li>
-                      <li>• Medieval Poetry</li>
-                      <li>• Language Skills Development</li>
+                      <li>• मित्रता - आचार्य रामचंद्र शुक्ल</li>
+                      <li>• साहित्य की महत्ता - महावीर प्रसाद द्विवेदी</li>
+                      <li>• बिंदा - महादेवी वर्मा</li>
                     </ul>
                   </div>
-                  <div className="p-4 border rounded-lg">
-                    <h5 className="font-medium text-green-600 mb-2">Year 2</h5>
+                  <div className="p-4 border rounded-lg bg-green-50">
+                    <h5 className="font-medium mb-2">Unit-II</h5>
                     <ul className="text-sm space-y-1">
-                      <li>• Modern Hindi Literature</li>
-                      <li>• Hindi Drama & Theatre</li>
-                      <li>• Literary Criticism</li>
-                      <li>• Comparative Literature</li>
+                      <li>• मुक्तिधन- प्रेमचन्द</li>
+                      <li>• पुरस्कार जयशंकर प्रसाद</li>
+                      <li>• और वह पढ़ गई डॉ कुसुम वियोगी</li>
                     </ul>
                   </div>
-                  <div className="p-4 border rounded-lg">
-                    <h5 className="font-medium text-purple-600 mb-2">Year 3</h5>
+                  <div className="p-4 border rounded-lg bg-purple-50">
+                    <h5 className="font-medium mb-2">Unit-III</h5>
                     <ul className="text-sm space-y-1">
-                      <li>• Contemporary Hindi Literature</li>
-                      <li>• Hindi Journalism</li>
-                      <li>• Translation Studies</li>
-                      <li>• Research Methodology</li>
+                      <li>• हिन्दी साहित्य का इतिहास - सामान्य परिचय</li>
+                      <li>• काल विभाजन</li>
+                    </ul>
+                  </div>
+                  <div className="p-4 border rounded-lg bg-orange-50">
+                    <h5 className="font-medium mb-2">Unit-IV</h5>
+                    <ul className="text-sm space-y-1">
+                      <li>• कार्यालयीन शब्दावली</li>
+                      <li>• लिंग, वचन, काल, कारक</li>
+                    </ul>
+                  </div>
+                  <div className="p-4 border rounded-lg bg-pink-50">
+                    <h5 className="font-medium mb-2">Unit-V</h5>
+                    <ul className="text-sm space-y-1">
+                      <li>• व्यक्तिगत पत्र</li>
+                      <li>• आवेन पत्र</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              
+              <div className="mt-8">
+                <h4 className="font-semibold mb-4 text-green-600">SEMESTER-II: हि न्दी पद्य साहित्य</h4>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                  <div className="p-4 border rounded-lg bg-blue-50">
+                    <h5 className="font-medium mb-2">Unit-I (प्राचीन कविता)</h5>
+                    <ul className="text-sm space-y-1">
+                      <li>• कबीर दास-५ दोहे</li>
+                      <li>• सूरदास बाल लीला</li>
+                      <li>• तुलसीदास-५ दोहे</li>
+                    </ul>
+                  </div>
+                  <div className="p-4 border rounded-lg bg-green-50">
+                    <h5 className="font-medium mb-2">Unit-II (आधुनिक कविता)</h5>
+                    <ul className="text-sm space-y-1">
+                      <li>• मातृभाषा - भारतेंदु हरि क्षेद्र</li>
+                      <li>• भिक्षुक - सूर्यकांत त्रिपाठी निराला</li>
+                      <li>• मादा भ्रूण- रजनी तिलक</li>
+                    </ul>
+                  </div>
+                  <div className="p-4 border rounded-lg bg-purple-50">
+                    <h5 className="font-medium mb-2">Unit-III (सामान्य निबन्ध)</h5>
+                    <ul className="text-sm space-y-1">
+                      <li>• विद्यार्थी और अनुशासन</li>
+                      <li>• विश्व भाषा के रूप में हिंदी</li>
+                      <li>• पर्यावरण प्रदूषण</li>
+                    </ul>
+                  </div>
+                  <div className="p-4 border rounded-lg bg-orange-50">
+                    <h5 className="font-medium mb-2">Unit-IV (प्रयोजन मूलक हिन्दी)</h5>
+                    <ul className="text-sm space-y-1">
+                      <li>• परिपत्र</li>
+                      <li>• ज्ञापन</li>
+                      <li>• अधिसूचना</li>
+                    </ul>
+                  </div>
+                  <div className="p-4 border rounded-lg bg-pink-50">
+                    <h5 className="font-medium mb-2">Unit-V</h5>
+                    <ul className="text-sm space-y-1">
+                      <li>• अनुवाद - अंग्रेजी से हिन्दी</li>
+                      <li>• तेलुगु से हिन्दी</li>
+                      <li>• संक्षेपण, संदर्भ ग्रंथ</li>
                     </ul>
                   </div>
                 </div>
@@ -143,52 +284,6 @@ const Hindi = () => {
           </CardContent>
         </Card>
 
-        {/* Department Overview */}
-        <Card>
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2">
-              <Languages className="h-6 w-6 text-college-blue" />
-              Department Overview
-            </CardTitle>
-          </CardHeader>
-          <CardContent className="space-y-4">
-            <p>
-              The Department of Hindi at SVRMC is dedicated to promoting the rich literary 
-              heritage of Hindi language and literature. As the national language of India, 
-              Hindi serves as a bridge connecting diverse cultures and communities across 
-              the nation. Our department emphasizes both classical and contemporary aspects 
-              of Hindi literature.
-            </p>
-            <p>
-              हिंदी विभाग भारतीय संस्कृति और साहित्य की समृद्ध परंपरा को आगे बढ़ाने में 
-              महत्वपूर्ण भूमिका निभाता है। हमारे अनुभवी प्राध्यापक छात्रों को हिंदी भाषा 
-              की गहराई से समझ प्रदान करते हैं और उन्हें राष्ट्रीय एवं सांस्कृतिक मूल्यों 
-              से जोड़ते हैं।
-            </p>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mt-6">
-              <div className="text-center p-4 bg-blue-50 rounded-lg">
-                <Users className="h-8 w-8 text-college-blue mx-auto mb-2" />
-                <div className="text-2xl font-bold text-college-blue">160+</div>
-                <div className="text-sm text-gray-600">Students</div>
-              </div>
-              <div className="text-center p-4 bg-green-50 rounded-lg">
-                <Award className="h-8 w-8 text-green-600 mx-auto mb-2" />
-                <div className="text-2xl font-bold text-green-600">11</div>
-                <div className="text-sm text-gray-600">Faculty Members</div>
-              </div>
-              <div className="text-center p-4 bg-purple-50 rounded-lg">
-                <BookOpen className="h-8 w-8 text-purple-600 mx-auto mb-2" />
-                <div className="text-2xl font-bold text-purple-600">4</div>
-                <div className="text-sm text-gray-600">Programs</div>
-              </div>
-              <div className="text-center p-4 bg-orange-50 rounded-lg">
-                <Languages className="h-8 w-8 text-orange-600 mx-auto mb-2" />
-                <div className="text-2xl font-bold text-orange-600">92%</div>
-                <div className="text-sm text-gray-600">Success Rate</div>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
 
         {/* Course Outcomes & Program Outcomes */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -198,11 +293,11 @@ const Hindi = () => {
             </CardHeader>
             <CardContent>
               <ul className="space-y-2 text-sm">
-                <li>• Master Hindi language proficiency and literature</li>
-                <li>• Understand cultural and national heritage</li>
-                <li>• Develop literary analysis and critical thinking</li>
-                <li>• Enhance creative writing and expression skills</li>
-                <li>• Apply research methods in Hindi studies</li>
+                <li>• मानव मूल्यों को पहचानकर छात्र समाज कल्याण हेतु अपने योगदान दे सकेंगे।</li>
+                <li>• आधुनिक युग की भावनाओं को पहचानकर सामाजिक समस्याओं के प्रति जागरुक हो सकेंगे।</li>
+                <li>• हिन्दी और अंग्रेजी के माध्यम से विध्यार्थी अनुवाद कौशल विकसित कर सकेंगे।</li>
+                <li>• छात्रों को व्याकरण के द्वारा भाषा में निपुणता बढ़ेगी।</li>
+                <li>• छात्रों को पत्र लेखन द्वारा लेखन कौशल बढेगा तथा संप्रेषण का विकास भी होगा।</li>
               </ul>
             </CardContent>
           </Card>
@@ -213,15 +308,66 @@ const Hindi = () => {
             </CardHeader>
             <CardContent>
               <ul className="space-y-2 text-sm">
-                <li>• National integration and cultural awareness</li>
-                <li>• Effective communication in Hindi</li>
-                <li>• Teaching and academic excellence</li>
-                <li>• Media and journalism skills</li>
-                <li>• Literary research and documentation</li>
+                <li>• निबंध, रेखाचित्र, कहानी जैसी गद्य की विभिन्न विधाओं को समझ पाना एवं विश्लेषण कर पाना।</li>
+                <li>• सच्चे मित्र के गुणों से अवगत हो पाना, जो की स्नातक स्तर के विद्यार्थियों के लिए अति आवश्यक है।</li>
+                <li>• पठित रचनाओं में दर्शित सामाजिक, ऐतिहासिक, सांस्कृतिक आदि संदर्भों का मूल्यांकन कर पाना।</li>
+                <li>• धार्मिक सहिष्णुता, देश प्रेम आदि उत्तम भावनाओं को जागृत कर पाना।</li>
+                <li>• हिन्दी साहित्य इतिहास के संक्षिप्त अध्ययन से विविध काल एवं तत्कालीन परिस्थितियों से अवगत होना।</li>
+                <li>• व्याकरणिक इकाइयों की समझ एवं प्रभावपूर्ण पत्र लेखन का ज्ञान अर्जित कर सकना।</li>
               </ul>
             </CardContent>
           </Card>
         </div>
+
+        {/* Departmental Activities */}
+        <Card>
+          <CardHeader>
+            <CardTitle>Departmental Activities</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="space-y-8">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="p-4 border rounded-lg bg-blue-50">
+                  <h4 className="font-semibold text-blue-600 mb-3">Activity 1: Skill Enhancement Program</h4>
+                  <div className="space-y-2 text-sm">
+                    <p><strong>Date:</strong> 10/01/2024</p>
+                    <p><strong>Topic:</strong> Hindi Anuvaad</p>
+                    <p><strong>Conducted by:</strong> Smt.V.V. Jaya Lakshmi</p>
+                    <p><strong>Participants:</strong> 25 students</p>
+                    <p><strong>Chairperson:</strong> Dr. A. Hari Krishna (Principal)</p>
+                    <p className="mt-3"><strong>Report:</strong> A skill enhancement program was conducted by Department of Hindi on the topic of "Hindi Anuvaad" on 10/01/2024. To improve their Hindi language skills in daily life.</p>
+                  </div>
+                  <div className="mt-4">
+                    <img 
+                      src="/lovable-uploads/aae99b11-cfd7-4f65-b39f-c9b2beb0c9d6.png" 
+                      alt="Hindi Skill Enhancement Program" 
+                      className="w-full h-48 object-cover rounded-lg shadow-md"
+                    />
+                  </div>
+                </div>
+                
+                <div className="p-4 border rounded-lg bg-green-50">
+                  <h4 className="font-semibold text-green-600 mb-3">Activity 2: National Hindi Day</h4>
+                  <div className="space-y-2 text-sm">
+                    <p><strong>Date:</strong> 10/01/2024</p>
+                    <p><strong>Conducted by:</strong> Smt V.V. Jaya Lakshmi</p>
+                    <p><strong>Participants:</strong> 30 students</p>
+                    <p><strong>Chairperson:</strong> Dr. A. Hari Krishna (Principal)</p>
+                    <p><strong>Convenor:</strong> Smt V.V. Jaya Lakshmi</p>
+                    <p className="mt-3"><strong>Report:</strong> "International Hindi Day" program was conducted by the Department of Hindi on 10/01/2025 in collaboration with college students will know about the importance Hindi language and will improve their language skills.</p>
+                  </div>
+                  <div className="mt-4">
+                    <img 
+                      src="/lovable-uploads/6e42ca20-59a4-45f5-919d-59cb9d0413c8.png" 
+                      alt="National Hindi Day Celebration" 
+                      className="w-full h-48 object-cover rounded-lg shadow-md"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
 
         {/* Department Staff */}
         <DepartmentStaff departmentName="Hindi" />
@@ -232,13 +378,13 @@ const Hindi = () => {
             <CardTitle>Department Gallery</CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {departmentPhotos.map((photo, index) => (
                 <div key={index} className="group relative overflow-hidden rounded-xl shadow-lg hover:shadow-xl transition-all duration-300">
                   <img 
                     src={photo} 
-                    alt={`Hindi Department ${index + 1}`}
-                    className="w-full h-48 md:h-56 object-cover group-hover:scale-110 transition-transform duration-500"
+                    alt={`Hindi Department Activity ${index + 1}`}
+                    className="w-full h-64 md:h-72 object-cover group-hover:scale-110 transition-transform duration-500"
                   />
                   <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 transition-opacity duration-300"></div>
                 </div>
