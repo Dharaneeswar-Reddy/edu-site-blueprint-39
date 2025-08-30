@@ -67,7 +67,6 @@ const DepartmentsAdmin = () => {
   const [selectedTimetableToDelete, setSelectedTimetableToDelete] = useState<string | null>(null);
   
   const [timetableFormData, setTimetableFormData] = useState({
-    department: "",
     title: "",
     description: "",
     academic_year: "",
@@ -148,10 +147,10 @@ const DepartmentsAdmin = () => {
   const handleTimetableSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
-    if (!timetableFormData.title.trim() || !timetableFormData.department) {
+    if (!timetableFormData.title.trim() || !selectedDepartment) {
       toast({
         title: "Validation Error",
-        description: "Please fill in all required fields",
+        description: "Please fill in all required fields and select a department",
         variant: "destructive"
       });
       return;
@@ -177,7 +176,7 @@ const DepartmentsAdmin = () => {
       }
 
       const timetableData = {
-        department: timetableFormData.department,
+        department: selectedDepartment,
         title: timetableFormData.title,
         description: timetableFormData.description || null,
         file_url: fileUrl,
@@ -206,7 +205,7 @@ const DepartmentsAdmin = () => {
       });
 
       resetTimetableForm();
-      fetchTimetables(timetableFormData.department);
+      fetchTimetables(selectedDepartment);
     } catch (error) {
       console.error("Error saving timetable:", error);
       toast({
@@ -220,7 +219,6 @@ const DepartmentsAdmin = () => {
   const handleTimetableEdit = (timetable: DepartmentTimetable) => {
     setEditingTimetable(timetable);
     setTimetableFormData({
-      department: timetable.department,
       title: timetable.title,
       description: timetable.description || "",
       academic_year: timetable.academic_year || "",
@@ -261,7 +259,6 @@ const DepartmentsAdmin = () => {
 
   const resetTimetableForm = () => {
     setTimetableFormData({
-      department: "",
       title: "",
       description: "",
       academic_year: "",
@@ -364,40 +361,24 @@ const DepartmentsAdmin = () => {
           <TabsContent value="timetables" className="space-y-6">
             <Card>
               <CardHeader>
-                <CardTitle>{editingTimetable ? "Edit Timetable" : "Upload New Timetable"}</CardTitle>
+                <CardTitle className="flex flex-col sm:flex-row sm:items-center gap-2">
+                  <span>{editingTimetable ? "Edit Timetable" : "Upload New Timetable"}</span>
+                  <span className="text-sm text-muted-foreground font-normal">
+                    for {selectedDepartment}
+                  </span>
+                </CardTitle>
               </CardHeader>
               <CardContent>
                 <form onSubmit={handleTimetableSubmit} className="space-y-4">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div className="space-y-2">
-                      <Label htmlFor="title">Title *</Label>
-                      <Input
-                        id="title"
-                        value={timetableFormData.title}
-                        onChange={(e) => handleTimetableInputChange("title", e.target.value)}
-                        placeholder="Enter timetable title"
-                        required
-                      />
-                    </div>
-                    
-                    <div className="space-y-2">
-                      <Label htmlFor="department">Department *</Label>
-                      <Select 
-                        value={timetableFormData.department} 
-                        onValueChange={(value) => handleTimetableInputChange("department", value)}
-                      >
-                        <SelectTrigger>
-                          <SelectValue placeholder="Select department" />
-                        </SelectTrigger>
-                        <SelectContent>
-                          {DEPARTMENTS.map((dept) => (
-                            <SelectItem key={dept} value={dept}>
-                              {dept}
-                            </SelectItem>
-                          ))}
-                        </SelectContent>
-                      </Select>
-                    </div>
+                  <div className="space-y-2">
+                    <Label htmlFor="title">Title *</Label>
+                    <Input
+                      id="title"
+                      value={timetableFormData.title}
+                      onChange={(e) => handleTimetableInputChange("title", e.target.value)}
+                      placeholder="Enter timetable title"
+                      required
+                    />
                   </div>
 
                   <div className="space-y-2">
@@ -411,7 +392,7 @@ const DepartmentsAdmin = () => {
                     />
                   </div>
 
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                     <div className="space-y-2">
                       <Label htmlFor="academic_year">Academic Year</Label>
                       <Input
@@ -452,13 +433,13 @@ const DepartmentsAdmin = () => {
                     {!editingTimetable && <p className="text-sm text-muted-foreground">Please select a file to upload (PDF, DOC, XLS)</p>}
                   </div>
 
-                  <div className="flex space-x-2">
-                    <Button type="submit" disabled={uploading}>
+                  <div className="flex flex-col sm:flex-row gap-2">
+                    <Button type="submit" disabled={uploading} className="flex-1">
                       <Upload className="h-4 w-4 mr-2" />
                       {uploading ? "Uploading..." : editingTimetable ? "Update Timetable" : "Upload Timetable"}
                     </Button>
                     {editingTimetable && (
-                      <Button type="button" variant="outline" onClick={resetTimetableForm}>
+                      <Button type="button" variant="outline" onClick={resetTimetableForm} className="flex-1 sm:flex-none">
                         Cancel Edit
                       </Button>
                     )}
@@ -469,7 +450,12 @@ const DepartmentsAdmin = () => {
 
             <Card>
               <CardHeader>
-                <CardTitle>Manage Timetables ({timetables.length})</CardTitle>
+                <CardTitle className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+                  <span>Manage Timetables ({timetables.length})</span>
+                  <span className="text-sm text-muted-foreground font-normal">
+                    {selectedDepartment}
+                  </span>
+                </CardTitle>
               </CardHeader>
               <CardContent>
                 {timetablesLoading ? (
@@ -479,55 +465,83 @@ const DepartmentsAdmin = () => {
                     <Table>
                       <TableHeader>
                         <TableRow>
-                          <TableHead>Title</TableHead>
-                          <TableHead>Academic Year</TableHead>
-                          <TableHead>Semester</TableHead>
-                          <TableHead>Status</TableHead>
-                          <TableHead>Actions</TableHead>
+                          <TableHead className="min-w-[150px]">Title</TableHead>
+                          <TableHead className="hidden sm:table-cell">Academic Year</TableHead>
+                          <TableHead className="hidden sm:table-cell">Semester</TableHead>
+                          <TableHead className="hidden md:table-cell">Status</TableHead>
+                          <TableHead className="text-right">Actions</TableHead>
                         </TableRow>
                       </TableHeader>
-                      <TableBody>
-                        {timetables.map((timetable) => (
-                          <TableRow key={timetable.id}>
-                            <TableCell className="font-medium">{timetable.title}</TableCell>
-                            <TableCell>{timetable.academic_year || "N/A"}</TableCell>
-                            <TableCell>{timetable.semester || "N/A"}</TableCell>
-                            <TableCell>
-                              <Badge variant={timetable.is_active ? "default" : "secondary"}>
-                                {timetable.is_active ? "Active" : "Inactive"}
-                              </Badge>
-                            </TableCell>
-                            <TableCell>
-                              <div className="flex space-x-2">
-                                <Button
-                                  size="sm"
-                                  variant="outline"
-                                  onClick={() => window.open(timetable.file_url, '_blank')}
-                                >
-                                  <Eye className="h-4 w-4" />
-                                </Button>
-                                <Button
-                                  size="sm"
-                                  variant="outline"
-                                  onClick={() => handleTimetableEdit(timetable)}
-                                >
-                                  <Edit className="h-4 w-4" />
-                                </Button>
-                                <Button
-                                  size="sm"
-                                  variant="destructive"
-                                  onClick={() => {
-                                    setSelectedTimetableToDelete(timetable.id);
-                                    setDeleteDialogOpen(true);
-                                  }}
-                                >
-                                  <Trash2 className="h-4 w-4" />
-                                </Button>
-                              </div>
-                            </TableCell>
-                          </TableRow>
-                        ))}
-                      </TableBody>
+                       <TableBody>
+                         {timetables.map((timetable) => (
+                           <TableRow key={timetable.id}>
+                             <TableCell className="font-medium">
+                               <div>
+                                 <div className="font-semibold">{timetable.title}</div>
+                                 {timetable.description && (
+                                   <div className="text-xs text-muted-foreground mt-1 sm:hidden">
+                                     {timetable.description.slice(0, 50)}...
+                                   </div>
+                                 )}
+                                 <div className="flex gap-1 mt-1 sm:hidden">
+                                   {timetable.academic_year && (
+                                     <Badge variant="outline" className="text-xs">
+                                       {timetable.academic_year}
+                                     </Badge>
+                                   )}
+                                   {timetable.semester && (
+                                     <Badge variant="outline" className="text-xs">
+                                       Sem {timetable.semester}
+                                     </Badge>
+                                   )}
+                                 </div>
+                               </div>
+                             </TableCell>
+                             <TableCell className="hidden sm:table-cell">
+                               {timetable.academic_year || "N/A"}
+                             </TableCell>
+                             <TableCell className="hidden sm:table-cell">
+                               {timetable.semester || "N/A"}
+                             </TableCell>
+                             <TableCell className="hidden md:table-cell">
+                               <Badge variant={timetable.is_active ? "default" : "secondary"}>
+                                 {timetable.is_active ? "Active" : "Inactive"}
+                               </Badge>
+                             </TableCell>
+                             <TableCell className="text-right">
+                               <div className="flex justify-end gap-1">
+                                 <Button
+                                   variant="ghost"
+                                   size="sm"
+                                   onClick={() => window.open(timetable.file_url, '_blank')}
+                                   className="h-8 w-8 p-0"
+                                 >
+                                   <Eye className="h-4 w-4" />
+                                 </Button>
+                                 <Button
+                                   variant="ghost"
+                                   size="sm"
+                                   onClick={() => handleTimetableEdit(timetable)}
+                                   className="h-8 w-8 p-0"
+                                 >
+                                   <Edit className="h-4 w-4" />
+                                 </Button>
+                                 <Button
+                                   variant="ghost"
+                                   size="sm"
+                                   onClick={() => {
+                                     setSelectedTimetableToDelete(timetable.id);
+                                     setDeleteDialogOpen(true);
+                                   }}
+                                   className="h-8 w-8 p-0 text-destructive hover:text-destructive"
+                                 >
+                                   <Trash2 className="h-4 w-4" />
+                                 </Button>
+                               </div>
+                             </TableCell>
+                           </TableRow>
+                         ))}
+                       </TableBody>
                     </Table>
 
                     {timetables.length === 0 && (

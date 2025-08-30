@@ -2,14 +2,16 @@ import PageLayout from "@/components/PageLayout";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Calendar, Clock, Users, BookOpen, Award, Download, Mail } from "lucide-react";
+import { Calendar, Clock, Users, BookOpen, Award, Download, Mail, ExternalLink } from "lucide-react";
 import { useEffect, useState } from "react";
 import useStaff from "@/hooks/useStaff";
+import useDepartmentTimetables from "@/hooks/useDepartmentTimetables";
 import StaffCard from "@/components/StaffCard";
 
 const Physics = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const { staff: departmentStaff, loading: staffLoading } = useStaff("Physics", "teaching");
+  const { timetables, loading: timetablesLoading } = useDepartmentTimetables("Physics");
 
   const heroImages = [
     "/lovable-uploads/d85fb3d3-b73a-4321-ba55-69d5399a79a5.png",
@@ -273,28 +275,51 @@ const Physics = () => {
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-              <div className="p-4 border rounded-lg text-center">
-                <h4 className="font-semibold mb-2">1st Year B.Sc.</h4>
-                <Button variant="outline" size="sm">View Schedule</Button>
+            {timetablesLoading ? (
+              <div className="text-center py-8">
+                <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary mx-auto mb-4"></div>
+                <p className="text-muted-foreground">Loading timetables...</p>
               </div>
-              <div className="p-4 border rounded-lg text-center">
-                <h4 className="font-semibold mb-2">2nd Year B.Sc.</h4>
-                <Button variant="outline" size="sm">View Schedule</Button>
+            ) : timetables.length > 0 ? (
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                {timetables.map((timetable) => (
+                  <div key={timetable.id} className="p-4 border rounded-lg hover:shadow-md transition-shadow">
+                    <div className="space-y-3">
+                      <div>
+                        <h4 className="font-semibold text-lg">{timetable.title}</h4>
+                        {timetable.description && (
+                          <p className="text-sm text-muted-foreground mt-1">{timetable.description}</p>
+                        )}
+                      </div>
+                      
+                      <div className="flex flex-wrap gap-2 text-xs">
+                        {timetable.academic_year && (
+                          <Badge variant="outline">AY: {timetable.academic_year}</Badge>
+                        )}
+                        {timetable.semester && (
+                          <Badge variant="outline">Sem: {timetable.semester}</Badge>
+                        )}
+                      </div>
+                      
+                      <Button 
+                        variant="outline" 
+                        size="sm" 
+                        className="w-full"
+                        onClick={() => window.open(timetable.file_url, '_blank')}
+                      >
+                        <ExternalLink className="h-4 w-4 mr-2" />
+                        View Schedule
+                      </Button>
+                    </div>
+                  </div>
+                ))}
               </div>
-              <div className="p-4 border rounded-lg text-center">
-                <h4 className="font-semibold mb-2">3rd Year B.Sc.</h4>
-                <Button variant="outline" size="sm">View Schedule</Button>
+            ) : (
+              <div className="text-center py-8 text-muted-foreground">
+                <Clock className="h-16 w-16 mx-auto mb-4 opacity-20" />
+                <p>No timetables available at the moment.</p>
               </div>
-              <div className="p-4 border rounded-lg text-center">
-                <h4 className="font-semibold mb-2">1st Year M.Sc.</h4>
-                <Button variant="outline" size="sm">View Schedule</Button>
-              </div>
-              <div className="p-4 border rounded-lg text-center">
-                <h4 className="font-semibold mb-2">2nd Year M.Sc.</h4>
-                <Button variant="outline" size="sm">View Schedule</Button>
-              </div>
-            </div>
+            )}
           </CardContent>
         </Card>
 
