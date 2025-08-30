@@ -411,6 +411,29 @@ const ComputerScience = () => {
         {/* Department Staff */}
         <DepartmentStaff departmentName="Computer Science" />
 
+        {/* Department Gallery */}
+        <Card>
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+              <Award className="h-6 w-6 text-college-blue" />
+              Department Gallery
+            </CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+              {[...heroImages, ...departmentPhotos].map((image, index) => (
+                <div key={index} className="rounded-lg overflow-hidden shadow-md group">
+                  <img 
+                    src={image} 
+                    alt={`Computer Science Department ${index + 1}`}
+                    className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
+                  />
+                </div>
+              ))}
+            </div>
+          </CardContent>
+        </Card>
+
         {/* Time Tables */}
         <Card>
           <CardHeader>
