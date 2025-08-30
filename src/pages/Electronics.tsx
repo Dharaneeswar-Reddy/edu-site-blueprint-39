@@ -4,58 +4,26 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Calendar, Clock, Users, BookOpen, Award, Download, Zap, Mail } from "lucide-react";
 import { useEffect, useState } from "react";
-
 const Electronics = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-
-  const heroImages = [
-    "/lovable-uploads/62dd7cbb-9d48-41a6-8c1e-138a0a64781f.png",
-    "/lovable-uploads/e9171361-3daf-46c6-9dde-49cee7972f8d.png",
-    "/lovable-uploads/f9770128-6b9e-40f0-b9e0-aa9a3cf2b0cd.png",
-    "/lovable-uploads/548c6401-f5bd-40a6-9341-1a93bccfc0b6.png",
-    "/lovable-uploads/73ac46cf-651f-4353-b496-5a721117f386.png"
-  ];
-
-  const departmentPhotos = [
-    "/lovable-uploads/62dd7cbb-9d48-41a6-8c1e-138a0a64781f.png",
-    "/lovable-uploads/e9171361-3daf-46c6-9dde-49cee7972f8d.png",
-    "/lovable-uploads/f9770128-6b9e-40f0-b9e0-aa9a3cf2b0cd.png",
-    "/lovable-uploads/548c6401-f5bd-40a6-9341-1a93bccfc0b6.png"
-  ];
-
+  const heroImages = ["/lovable-uploads/62dd7cbb-9d48-41a6-8c1e-138a0a64781f.png", "/lovable-uploads/e9171361-3daf-46c6-9dde-49cee7972f8d.png", "/lovable-uploads/f9770128-6b9e-40f0-b9e0-aa9a3cf2b0cd.png", "/lovable-uploads/548c6401-f5bd-40a6-9341-1a93bccfc0b6.png", "/lovable-uploads/73ac46cf-651f-4353-b496-5a721117f386.png"];
+  const departmentPhotos = ["/lovable-uploads/62dd7cbb-9d48-41a6-8c1e-138a0a64781f.png", "/lovable-uploads/e9171361-3daf-46c6-9dde-49cee7972f8d.png", "/lovable-uploads/f9770128-6b9e-40f0-b9e0-aa9a3cf2b0cd.png", "/lovable-uploads/548c6401-f5bd-40a6-9341-1a93bccfc0b6.png"];
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentImageIndex((prevIndex) => 
-        prevIndex === heroImages.length - 1 ? 0 : prevIndex + 1
-      );
+      setCurrentImageIndex(prevIndex => prevIndex === heroImages.length - 1 ? 0 : prevIndex + 1);
     }, 3000);
-
     return () => clearInterval(interval);
   }, [heroImages.length]);
-
-  return (
-    <PageLayout 
-      title="Department of Electronics" 
-      description="The Department of Electronics in SVRM college produce innovative Electronics Students by imparting quality Education with Ethical and Moral values to meet the Global Standards"
-    >
+  return <PageLayout title="Department of Electronics" description="The Department of Electronics in SVRM college produce innovative Electronics Students by imparting quality Education with Ethical and Moral values to meet the Global Standards">
       <div className="space-y-8">
         
         {/* Auto-scrolling Hero Images */}
         <div className="relative h-64 md:h-80 lg:h-96 rounded-lg overflow-hidden shadow-lg">
-          {heroImages.map((image, index) => (
-            <img
-              key={index}
-              src={image}
-              alt={`Electronics Department ${index + 1}`}
-              className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${
-                index === currentImageIndex ? 'opacity-100' : 'opacity-0'
-              }`}
-            />
-          ))}
+          {heroImages.map((image, index) => <img key={index} src={image} alt={`Electronics Department ${index + 1}`} className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${index === currentImageIndex ? 'opacity-100' : 'opacity-0'}`} />)}
           <div className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
             <div className="text-center text-white">
-              <h1 className="text-4xl md:text-6xl font-bold mb-4">Electronics Department</h1>
-              <p className="text-xl md:text-2xl">Powering Electronic Innovation</p>
+              
+              
             </div>
           </div>
         </div>
@@ -366,11 +334,7 @@ const Electronics = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               <div className="bg-card rounded-lg shadow-sm border p-6 text-center hover:shadow-md transition-shadow">
                 <div className="mb-4">
-                  <img 
-                    src="/lovable-uploads/52a8e7b1-5b22-4a0c-b1ec-450f99bfa9bb.png" 
-                    alt="Dr. Rajesh Kumar"
-                    className="w-24 h-24 rounded-full mx-auto object-cover shadow-md"
-                  />
+                  <img src="/lovable-uploads/52a8e7b1-5b22-4a0c-b1ec-450f99bfa9bb.png" alt="Dr. Rajesh Kumar" className="w-24 h-24 rounded-full mx-auto object-cover shadow-md" />
                 </div>
                 <h3 className="text-lg font-semibold text-foreground mb-1">Dr. Rajesh Kumar</h3>
                 <p className="text-primary font-medium text-sm mb-1">Head & Professor</p>
@@ -383,11 +347,7 @@ const Electronics = () => {
               
               <div className="bg-card rounded-lg shadow-sm border p-6 text-center hover:shadow-md transition-shadow">
                 <div className="mb-4">
-                  <img 
-                    src="/lovable-uploads/805efae8-1428-4b19-9a41-f2f62680aefc.png" 
-                    alt="Dr. Sunita Sharma"
-                    className="w-24 h-24 rounded-full mx-auto object-cover shadow-md"
-                  />
+                  <img src="/lovable-uploads/805efae8-1428-4b19-9a41-f2f62680aefc.png" alt="Dr. Sunita Sharma" className="w-24 h-24 rounded-full mx-auto object-cover shadow-md" />
                 </div>
                 <h3 className="text-lg font-semibold text-foreground mb-1">Dr. Sunita Sharma</h3>
                 <p className="text-primary font-medium text-sm mb-1">Associate Professor</p>
@@ -400,11 +360,7 @@ const Electronics = () => {
               
               <div className="bg-card rounded-lg shadow-sm border p-6 text-center hover:shadow-md transition-shadow">
                 <div className="mb-4">
-                  <img 
-                    src="/lovable-uploads/662ebac1-9113-46ee-b212-a9a1526878d4.png" 
-                    alt="Dr. Amit Patel"
-                    className="w-24 h-24 rounded-full mx-auto object-cover shadow-md"
-                  />
+                  <img src="/lovable-uploads/662ebac1-9113-46ee-b212-a9a1526878d4.png" alt="Dr. Amit Patel" className="w-24 h-24 rounded-full mx-auto object-cover shadow-md" />
                 </div>
                 <h3 className="text-lg font-semibold text-foreground mb-1">Dr. Amit Patel</h3>
                 <p className="text-primary font-medium text-sm mb-1">Assistant Professor</p>
@@ -428,15 +384,9 @@ const Electronics = () => {
           </CardHeader>
           <CardContent>
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-              {[...heroImages, ...departmentPhotos].map((image, index) => (
-                <div key={index} className="rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow">
-                  <img 
-                    src={image} 
-                    alt={`Electronics Department Activity ${index + 1}`}
-                    className="w-full h-32 object-cover hover:scale-105 transition-transform duration-300"
-                  />
-                </div>
-              ))}
+              {[...heroImages, ...departmentPhotos].map((image, index) => <div key={index} className="rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow">
+                  <img src={image} alt={`Electronics Department Activity ${index + 1}`} className="w-full h-32 object-cover hover:scale-105 transition-transform duration-300" />
+                </div>)}
             </div>
           </CardContent>
         </Card>
@@ -472,8 +422,6 @@ const Electronics = () => {
         </Card>
 
       </div>
-    </PageLayout>
-  );
+    </PageLayout>;
 };
-
 export default Electronics;
