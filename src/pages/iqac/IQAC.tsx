@@ -25,40 +25,64 @@ const IQAC = () => {
   // IQAC Committee Members
   const committeMembers = [
     {
-      name: "Dr. Rajesh Kumar",
-      designation: "Principal & Chairperson",
+      name: "Dr. A. Hari Krishna",
+      designation: "Principal",
       department: "Administration",
-      role: "Chairperson"
+      role: "Chairperson, Head of the Institution"
     },
     {
-      name: "Dr. Priya Sharma", 
+      name: "Dr. R. Prasanna Babu", 
+      designation: "HoD of Chemistry (UG)",
+      department: "Chemistry",
+      role: "IQAC Coordinator"
+    },
+    {
+      name: "Sri. P. Venkata Narayana",
       designation: "Vice Principal",
+      department: "Administration", 
+      role: "Senior Faculty Member"
+    },
+    {
+      name: "Dr. P. Srinivasa Rao",
+      designation: "HOD, Physics",
+      department: "Physics",
+      role: "Faculty Member"
+    },
+    {
+      name: "Dr. K. Suresh Babu",
+      designation: "HOD, Zoology",
+      department: "Zoology",
+      role: "Faculty Member"
+    },
+    {
+      name: "Dr. Prakash Babu",
+      designation: "HOD, Economics",
+      department: "Economics",
+      role: "Faculty Member"
+    },
+    {
+      name: "Dr. A. Koteswara Rao",
+      designation: "HOD, Chemistry (PG)",
+      department: "Chemistry",
+      role: "Faculty Member"
+    },
+    {
+      name: "Mr. U. Siva Prasad",
+      designation: "HOD, Mathematics",
+      department: "Mathematics",
+      role: "Faculty Member"
+    },
+    {
+      name: "Mr. P. Amaresh Reddy",
+      designation: "Administrative Officer",
       department: "Administration",
-      role: "Coordinator"
+      role: "Administrative Staff"
     },
     {
-      name: "Dr. Aalok Khandekar",
-      designation: "Head of Department",
-      department: "Computer Science",
-      role: "Member"
-    },
-    {
-      name: "Dr. Abhijit Sau",
-      designation: "Assistant Professor",
-      department: "Chemistry", 
-      role: "Member"
-    },
-    {
-      name: "Prof. Suresh Kumar",
-      designation: "Senior Faculty",
-      department: "Commerce",
-      role: "Member"
-    },
-    {
-      name: "Ms. Anita Reddy",
-      designation: "Student Representative",
-      department: "Final Year",
-      role: "Student Member"
+      name: "Sri. V. Vishnu Vardhan Rao",
+      designation: "Alumni Representative",
+      department: "Alumni",
+      role: "Alumni Member"
     }
   ];
 
@@ -136,41 +160,87 @@ const IQAC = () => {
             <Award className="h-8 w-8 text-blue-600" />
             <h2 className="text-3xl font-bold text-gray-900">About IQAC</h2>
           </div>
-          <div className="grid md:grid-cols-2 gap-8 items-center">
-            <div>
-              <p className="text-lg text-gray-700 leading-relaxed mb-4">
-                The Internal Quality Assurance Cell (IQAC) was established at SVRMC as per the guidelines of the National Assessment and Accreditation Council (NAAC) to ensure continuous quality improvement in all academic and administrative activities.
+          
+          {/* Vision */}
+          <div className="mb-8">
+            <h3 className="text-2xl font-semibold text-blue-900 mb-4">Vision</h3>
+            <div className="bg-white p-6 rounded-lg shadow-sm">
+              <p className="text-lg text-gray-700 leading-relaxed">
+                To ensure quality culture as the prime concern of Shree Velagapudi Ramakrishna Memorial College, through institutionalizing and internalizing all the initiatives taken with internal and external support. The IQAC envisions promoting a learner-centric environment, fostering innovation, inclusivity, and excellence in higher education to transform students into responsible global citizens.
               </p>
-              <p className="text-lg text-gray-700 leading-relaxed mb-4">
-                IQAC acts as a nodal agency for coordinating quality-related activities including adoption and dissemination of best practices within the institution. It channels the efforts and measures of an institution towards academic excellence.
-              </p>
-              <div className="grid grid-cols-2 gap-4">
-                <div className="bg-white p-4 rounded-lg shadow-sm">
-                  <div className="text-2xl font-bold text-blue-600">2018</div>
-                  <div className="text-sm text-gray-600">Established</div>
-                </div>
-                <div className="bg-white p-4 rounded-lg shadow-sm">
-                  <div className="text-2xl font-bold text-green-600">12</div>
-                  <div className="text-sm text-gray-600">Members</div>
-                </div>
-              </div>
             </div>
-            <div className="bg-white p-6 rounded-lg shadow-lg">
-              <h3 className="text-xl font-semibold text-blue-900 mb-4">IQAC Objectives</h3>
+          </div>
+
+          {/* Mission */}
+          <div className="mb-8">
+            <h3 className="text-2xl font-semibold text-blue-900 mb-4">Mission</h3>
+            <div className="bg-white p-6 rounded-lg shadow-sm">
               <ul className="space-y-3 text-gray-700">
                 <li className="flex items-start">
-                  <Target className="h-5 w-5 text-blue-500 mt-0.5 mr-2 flex-shrink-0" />
-                  Develop quality benchmarks and parameters for various academic activities
+                  <Target className="h-5 w-5 text-blue-500 mt-0.5 mr-3 flex-shrink-0" />
+                  To develop a system for conscious, consistent, and catalytic action to improve the academic and administrative performance of the institution.
                 </li>
                 <li className="flex items-start">
-                  <TrendingUp className="h-5 w-5 text-green-500 mt-0.5 mr-2 flex-shrink-0" />
-                  Facilitate creation of learner-centric environment for quality education
+                  <TrendingUp className="h-5 w-5 text-green-500 mt-0.5 mr-3 flex-shrink-0" />
+                  To promote measures for institutional functioning towards quality enhancement through internalization of quality culture and institutionalization of best practices.
                 </li>
                 <li className="flex items-start">
-                  <Users className="h-5 w-5 text-purple-500 mt-0.5 mr-2 flex-shrink-0" />
-                  Promote measures for institutional functioning towards quality enhancement
+                  <GraduationCap className="h-5 w-5 text-purple-500 mt-0.5 mr-3 flex-shrink-0" />
+                  To ensure learner-centric teaching, innovative pedagogy, and holistic development of students.
+                </li>
+                <li className="flex items-start">
+                  <BookOpen className="h-5 w-5 text-orange-500 mt-0.5 mr-3 flex-shrink-0" />
+                  To enhance research culture, collaborations, and community engagement for societal development.
+                </li>
+                <li className="flex items-start">
+                  <CheckCircle className="h-5 w-5 text-teal-500 mt-0.5 mr-3 flex-shrink-0" />
+                  To nurture values of integrity, equity, inclusiveness, and sustainability in higher education.
                 </li>
               </ul>
+            </div>
+          </div>
+
+          {/* Objectives */}
+          <div>
+            <h3 className="text-2xl font-semibold text-blue-900 mb-4">Objectives</h3>
+            <div className="bg-white p-6 rounded-lg shadow-sm">
+              <ul className="space-y-3 text-gray-700">
+                <li className="flex items-start">
+                  <Target className="h-5 w-5 text-blue-500 mt-0.5 mr-3 flex-shrink-0" />
+                  To develop a quality system for conscious, consistent, and catalytic programmed action to improve the academic and administrative performance of the College.
+                </li>
+                <li className="flex items-start">
+                  <Award className="h-5 w-5 text-green-500 mt-0.5 mr-3 flex-shrink-0" />
+                  To promote measures for institutional functioning towards quality enhancement through internalization of quality culture and institutionalization of best practices.
+                </li>
+                <li className="flex items-start">
+                  <BookOpen className="h-5 w-5 text-purple-500 mt-0.5 mr-3 flex-shrink-0" />
+                  To enhance curriculum design, teaching-learning evaluation, and support services to meet the needs of stakeholders.
+                </li>
+                <li className="flex items-start">
+                  <Users className="h-5 w-5 text-orange-500 mt-0.5 mr-3 flex-shrink-0" />
+                  To encourage faculty development, research, consultancy, and extension activities.
+                </li>
+                <li className="flex items-start">
+                  <MessageSquare className="h-5 w-5 text-teal-500 mt-0.5 mr-3 flex-shrink-0" />
+                  To strengthen feedback mechanisms for continuous improvement of academic and administrative units.
+                </li>
+                <li className="flex items-start">
+                  <Building2 className="h-5 w-5 text-red-500 mt-0.5 mr-3 flex-shrink-0" />
+                  To prepare the institution for assessment, accreditation, and quality benchmarking at national and international levels.
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-2 gap-4 mt-8">
+            <div className="bg-white p-4 rounded-lg shadow-sm">
+              <div className="text-2xl font-bold text-blue-600">2018</div>
+              <div className="text-sm text-gray-600">Established</div>
+            </div>
+            <div className="bg-white p-4 rounded-lg shadow-sm">
+              <div className="text-2xl font-bold text-green-600">10</div>
+              <div className="text-sm text-gray-600">Members</div>
             </div>
           </div>
         </section>
