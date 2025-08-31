@@ -344,6 +344,51 @@ export type Database = {
         }
         Relationships: []
       }
+      student_achievements: {
+        Row: {
+          academic_year: string | null
+          achievement_date: string | null
+          created_at: string
+          department: string
+          description: string | null
+          display_order: number | null
+          file_type: string
+          file_url: string
+          id: string
+          is_active: boolean | null
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          academic_year?: string | null
+          achievement_date?: string | null
+          created_at?: string
+          department: string
+          description?: string | null
+          display_order?: number | null
+          file_type: string
+          file_url: string
+          id?: string
+          is_active?: boolean | null
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          academic_year?: string | null
+          achievement_date?: string | null
+          created_at?: string
+          department?: string
+          description?: string | null
+          display_order?: number | null
+          file_type?: string
+          file_url?: string
+          id?: string
+          is_active?: boolean | null
+          title?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
       student_support_galleries: {
         Row: {
           created_at: string
