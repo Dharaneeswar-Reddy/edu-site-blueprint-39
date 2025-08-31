@@ -12,22 +12,23 @@ const Zoology = () => {
   const { timetables, loading: timetablesLoading } = useDepartmentTimetables("Zoology");
 
   const heroImages = [
-    "/lovable-uploads/76e749fc-2917-4512-b28a-328266b210fe.png",
-    "/lovable-uploads/efecdc8b-f78a-4ff1-947b-c70afb2f2b33.png",
-    "/lovable-uploads/7ecf4141-f3db-4a34-b9c2-4a0c5af6c711.png",
-    "/lovable-uploads/ffb3cc7c-1414-44ed-89b7-a6160bf7578f.png",
-    "/lovable-uploads/31b6ffc3-d5b7-441c-bbdd-294127563557.png"
+    "/lovable-uploads/4696f63f-d3f7-49c7-bc36-69b667664c17.png",
+    "/lovable-uploads/36a70005-7337-4469-bcac-8923147539a0.png",
+    "/lovable-uploads/ea21ce61-dae4-45b3-84a8-b24f6a35f80c.png",
+    "/lovable-uploads/3e27e075-1eb6-4981-8f3f-8ae9e9c1dcd1.png",
+    "/lovable-uploads/851cdbe6-ca62-40de-8d16-1db2b9fd7486.png",
+    "/lovable-uploads/96591788-c738-4e4a-8008-f2e91e49f1b4.png",
+    "/lovable-uploads/d59244a4-0fb8-44f9-b86e-67a09338d232.png"
   ];
 
   const departmentPhotos = [
-    "/lovable-uploads/76e749fc-2917-4512-b28a-328266b210fe.png",
-    "/lovable-uploads/efecdc8b-f78a-4ff1-947b-c70afb2f2b33.png",
-    "/lovable-uploads/7ecf4141-f3db-4a34-b9c2-4a0c5af6c711.png",
-    "/lovable-uploads/ffb3cc7c-1414-44ed-89b7-a6160bf7578f.png",
-    "/lovable-uploads/31b6ffc3-d5b7-441c-bbdd-294127563557.png",
-    "/lovable-uploads/09edbd5d-984f-41ea-9176-ae2cb550d878.png",
-    "/lovable-uploads/888ae344-c040-4057-9423-38e1e4328152.png",
-    "/lovable-uploads/208097d5-1a3d-4850-b72e-7a0e44ded787.png"
+    "/lovable-uploads/4696f63f-d3f7-49c7-bc36-69b667664c17.png",
+    "/lovable-uploads/36a70005-7337-4469-bcac-8923147539a0.png",
+    "/lovable-uploads/ea21ce61-dae4-45b3-84a8-b24f6a35f80c.png",
+    "/lovable-uploads/3e27e075-1eb6-4981-8f3f-8ae9e9c1dcd1.png",
+    "/lovable-uploads/851cdbe6-ca62-40de-8d16-1db2b9fd7486.png",
+    "/lovable-uploads/96591788-c738-4e4a-8008-f2e91e49f1b4.png",
+    "/lovable-uploads/d59244a4-0fb8-44f9-b86e-67a09338d232.png"
   ];
 
   useEffect(() => {
@@ -152,20 +153,89 @@ const Zoology = () => {
                   <div className="p-4 border rounded-lg">
                     <h5 className="font-medium text-green-600 mb-2">Year 2</h5>
                     <ul className="text-sm space-y-1">
-                      <li>• [Course details to be updated]</li>
+                      <li>• Animal Diversity-II Biology of Chordates</li>
+                      <li>• Animal Diversity-II Biology of Chordates Practical Course</li>
+                      <li>• Principles of Genetics</li>
+                      <li>• Principles of Genetics Practical Course</li>
+                      <li>• Animal Biotechnology</li>
+                      <li>• Animal Biotechnology Practical Course</li>
+                      <li>• Evolution and Zoogeography</li>
+                      <li>• Evolution and Zoogeography Practical Course</li>
+                      <li>• Embryology</li>
+                      <li>• Embryology Practical Course</li>
+                      <li>• Animal Physiology: Life Sustaining Systems</li>
+                      <li>• Animal Physiology: Life Sustaining Systems Practical Course</li>
+                      <li>• Immunology</li>
+                      <li>• Immunology Practical Course</li>
                     </ul>
                   </div>
                   <div className="p-4 border rounded-lg">
                     <h5 className="font-medium text-purple-600 mb-2">Year 3</h5>
                     <ul className="text-sm space-y-1">
-                      <li>• [Course details to be updated]</li>
+                      <li>• Poultry Management-I (Poultry Farming)</li>
+                      <li>• Poultry Management-I (Poultry Farming) Practical Course</li>
+                      <li>• Poultry Management-II (Poultry Production and Management)</li>
+                      <li>• Poultry Management-II (Poultry Production and Management) Practical Course</li>
+                      <li>• Sustainable Aquaculture Management</li>
+                      <li>• Sustainable Aquaculture Management Practical Course</li>
+                      <li><strong>OR</strong></li>
+                      <li>• Live Stock Management-1 (Biology of Dairy Animals)</li>
+                      <li>• Live Stock Management-1 (Biology of Dairy Animals) Practical Course</li>
+                      <li>• Post-Harvest Technology of Fish and Fisheries</li>
+                      <li>• Post-Harvest Technology of Fish and Fisheries Practical Course</li>
+                      <li>• Internship</li>
                     </ul>
                   </div>
                 </div>
               </div>
               <div>
                 <h4 className="font-semibold mb-3">B.Sc. Aqua culture (3 Years)</h4>
-                <p className="text-sm text-gray-600">Semester wise syllabus to be updated</p>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                  <div className="p-4 border rounded-lg">
+                    <h5 className="font-medium text-blue-600 mb-2">Year 1</h5>
+                    <ul className="text-sm space-y-1">
+                      <li>• Introduction to Classical Biology</li>
+                      <li>• Introduction to Applied Biology</li>
+                    </ul>
+                  </div>
+                  <div className="p-4 border rounded-lg">
+                    <h5 className="font-medium text-green-600 mb-2">Year 2</h5>
+                    <ul className="text-sm space-y-1">
+                      <li>• Taxonomy and Functional Anatomy of Fin Fish and Shellfish (T)</li>
+                      <li>• Taxonomy and Functional Anatomy of Fin Fish and Shellfish (P)</li>
+                      <li>• Biology of fin fish & shell fish (T)</li>
+                      <li>• Biology of fin fish & shell fish (P)</li>
+                      <li>• Basic Principles of Aquaculture (T)</li>
+                      <li>• Basic Principles of Aquaculture (P)</li>
+                      <li>• Capture Fisheries (T)</li>
+                      <li>• Capture Fisheries (P)</li>
+                      <li>• Fresh water Aquaculture (T)</li>
+                      <li>• Fresh water Aquaculture (P)</li>
+                      <li>• Brackish water Aquaculture (T)</li>
+                      <li>• Brackish water Aquaculture (P)</li>
+                    </ul>
+                  </div>
+                  <div className="p-4 border rounded-lg">
+                    <h5 className="font-medium text-purple-600 mb-2">Year 3</h5>
+                    <ul className="text-sm space-y-1">
+                      <li>• Fish Health management (T)</li>
+                      <li>• Fish Health management (P)</li>
+                      <li>• Shrimp Health Management (T)</li>
+                      <li>• Shrimp Health Management (P)</li>
+                      <li>• Fish nutrition & Feed technology (T)</li>
+                      <li>• Fish nutrition & Feed technology (P)</li>
+                      <li>• Extension, Economics & Marketing (T)</li>
+                      <li>• Extension, Economics & Marketing (P)</li>
+                      <li>• Ornamental Fishery (T)</li>
+                      <li>• Ornamental Fishery (P)</li>
+                      <li>• Fishery Engineering (T)</li>
+                      <li>• Fishery Engineering (P)</li>
+                      <li>• Fish Processing Technology (T)</li>
+                      <li>• Fish Processing Technology (P)</li>
+                      <li>• Internship</li>
+                    </ul>
+                  </div>
+                </div>
               </div>
             </div>
           </CardContent>
