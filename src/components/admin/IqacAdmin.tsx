@@ -240,7 +240,7 @@ const IqacAdmin = () => {
     setEditingDoc(null);
   };
 
-  const filteredDocuments = selectedType 
+  const filteredDocuments = selectedType && selectedType !== "all"
     ? documents.filter(doc => doc.document_type === selectedType)
     : documents;
 
@@ -372,7 +372,7 @@ const IqacAdmin = () => {
                     <SelectValue placeholder="Filter by document type" />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="">All Documents</SelectItem>
+                    <SelectItem value="all">All Documents</SelectItem>
                     {DOCUMENT_TYPES.map((type) => (
                       <SelectItem key={type.value} value={type.value}>
                         {type.label}
@@ -380,8 +380,8 @@ const IqacAdmin = () => {
                     ))}
                   </SelectContent>
                 </Select>
-                {selectedType && (
-                  <Button variant="outline" onClick={() => setSelectedType("")}>
+                {selectedType && selectedType !== "all" && (
+                  <Button variant="outline" onClick={() => setSelectedType("all")}>
                     Clear Filter
                   </Button>
                 )}
