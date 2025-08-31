@@ -5,22 +5,24 @@ import { Badge } from "@/components/ui/badge";
 import { Clock, Users, BookOpen, Award, TrendingUp, Mail } from "lucide-react";
 import { useEffect, useState } from "react";
 import DepartmentStaff from "@/components/DepartmentStaff";
+import { useDepartmentTimetables } from "@/hooks/useDepartmentTimetables";
 
 const Economics = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const { timetables, loading: timetablesLoading } = useDepartmentTimetables("Economics");
 
   const heroImages = [
-    "/lovable-uploads/8ca0ef83-413e-4894-9e73-7361e0c0106c.png",
-    "/lovable-uploads/9ecf085a-3abc-45e7-844b-b132bfa85970.png",
-    "/lovable-uploads/aa64612b-a2c2-4fc2-b645-b756306336a0.png",
-    "/lovable-uploads/ad1edf50-6e71-4375-91d2-7e8d76b3b7b5.png"
+    "/lovable-uploads/a79c3d10-11cb-4e52-8ae9-554109f98dee.png",
+    "/lovable-uploads/a2c89c7b-21a3-4823-84ca-e5946d4ade86.png",
+    "/lovable-uploads/7babac86-1879-4665-8a31-1919527d2637.png",
+    "/lovable-uploads/d7b80186-a39d-4729-91b0-0d72e31950a2.png"
   ];
 
   const departmentPhotos = [
-    "/lovable-uploads/b1fc6422-ad59-4662-83db-90f4d62b1001.png",
-    "/lovable-uploads/bf17da84-634b-4ca1-b09f-996816eb4e61.png",
-    "/lovable-uploads/c845d941-c566-4910-8dbb-82f90fb04f82.png",
-    "/lovable-uploads/d870c473-3320-4d6a-9dd4-15ab9ceab52a.png"
+    "/lovable-uploads/a79c3d10-11cb-4e52-8ae9-554109f98dee.png",
+    "/lovable-uploads/a2c89c7b-21a3-4823-84ca-e5946d4ade86.png",
+    "/lovable-uploads/7babac86-1879-4665-8a31-1919527d2637.png",
+    "/lovable-uploads/d7b80186-a39d-4729-91b0-0d72e31950a2.png"
   ];
 
   useEffect(() => {
@@ -60,38 +62,68 @@ const Economics = () => {
           </div>
         </div>
 
-        {/* Seat Structure and Programs */}
-
+        {/* Vision and Mission */}
         <Card>
           <CardHeader>
-            <CardTitle>Seat Structure & Programs Offered</CardTitle>
+            <CardTitle className="text-center text-college-blue">Vision and Mission</CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-6">
+            <div>
+              <h4 className="font-semibold text-lg mb-3 text-college-blue">Vision</h4>
+              <p className="text-gray-700 italic">
+                "TAMASOMA JYOTHIRGAMAYA" - Expelling darkness of ignorance from the minds of young men by providing real education on the basis of principles TRUTH, LOVE, GOD.
+              </p>
+            </div>
+            <div>
+              <h4 className="font-semibold text-lg mb-3 text-college-blue">Mission</h4>
+              <ul className="space-y-2 text-gray-700">
+                <li>1. To provide proper training to rural youth of the region</li>
+                <li>2. To design academic programs through which the learner fits to global necessity</li>
+                <li>3. To create and promote brain soft skills of creativity and innovation inherent in young minds of the area</li>
+                <li>4. To evolve value based education system instilling the values of hard work, discipline and service mindedness</li>
+                <li>5. To impart holistic education based on ethical values of truth, love, god that enables the learners to develop as intellectually mature, morally upright, socially responsible and spiritually inspired leaders to serve the society</li>
+              </ul>
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* Department Statistics */}
+        <Card>
+          <CardHeader>
+            <CardTitle>Department Statistics</CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div>
-                <h4 className="font-semibold mb-3">Undergraduate Programs</h4>
-                <div className="space-y-2">
-                  <div className="flex justify-between items-center p-3 bg-blue-50 rounded">
-                    <span>B.A. Economics</span>
-                    <Badge variant="secondary">50 Seats</Badge>
-                  </div>
-                  <div className="flex justify-between items-center p-3 bg-green-50 rounded">
-                    <span>B.A. Economics (Honours)</span>
-                    <Badge variant="secondary">30 Seats</Badge>
-                  </div>
-                </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 text-center">
+              <div className="p-6 bg-blue-50 rounded-lg">
+                <Users className="h-12 w-12 text-college-blue mx-auto mb-3" />
+                <div className="text-4xl font-bold text-college-blue">60+</div>
+                <div className="text-lg text-gray-600">Students</div>
               </div>
-              <div>
-                <h4 className="font-semibold mb-3">Postgraduate Programs</h4>
-                <div className="space-y-2">
-                  <div className="flex justify-between items-center p-3 bg-purple-50 rounded">
-                    <span>M.A. Economics</span>
-                    <Badge variant="secondary">35 Seats</Badge>
-                  </div>
-                  <div className="flex justify-between items-center p-3 bg-orange-50 rounded">
-                    <span>M.A. Applied Economics</span>
-                    <Badge variant="secondary">25 Seats</Badge>
-                  </div>
+              <div className="p-6 bg-green-50 rounded-lg">
+                <Award className="h-12 w-12 text-green-600 mx-auto mb-3" />
+                <div className="text-4xl font-bold text-green-600">1</div>
+                <div className="text-lg text-gray-600">Faculty Members</div>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* Programs Offered */}
+        <Card>
+          <CardHeader>
+            <CardTitle>Programs Offered</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="space-y-4">
+              <h4 className="font-semibold mb-3">Undergraduate Programs</h4>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="flex justify-between items-center p-4 bg-blue-50 rounded-lg">
+                  <span className="font-medium">B.A. Economics</span>
+                  <Badge variant="secondary">60 Seats</Badge>
+                </div>
+                <div className="flex justify-between items-center p-4 bg-green-50 rounded-lg">
+                  <span className="font-medium">B.A. Economics (Honours)</span>
+                  <Badge variant="secondary">40 Seats</Badge>
                 </div>
               </div>
             </div>
@@ -162,28 +194,6 @@ const Economics = () => {
               and practical applications. Students engage with real-world economic data and 
               policy challenges through research projects and internships.
             </p>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mt-6">
-              <div className="text-center p-4 bg-blue-50 rounded-lg">
-                <Users className="h-8 w-8 text-college-blue mx-auto mb-2" />
-                <div className="text-2xl font-bold text-college-blue">180+</div>
-                <div className="text-sm text-gray-600">Students</div>
-              </div>
-              <div className="text-center p-4 bg-green-50 rounded-lg">
-                <Award className="h-8 w-8 text-green-600 mx-auto mb-2" />
-                <div className="text-2xl font-bold text-green-600">14</div>
-                <div className="text-sm text-gray-600">Faculty Members</div>
-              </div>
-              <div className="text-center p-4 bg-purple-50 rounded-lg">
-                <BookOpen className="h-8 w-8 text-purple-600 mx-auto mb-2" />
-                <div className="text-2xl font-bold text-purple-600">4</div>
-                <div className="text-sm text-gray-600">Programs</div>
-              </div>
-              <div className="text-center p-4 bg-orange-50 rounded-lg">
-                <TrendingUp className="h-8 w-8 text-orange-600 mx-auto mb-2" />
-                <div className="text-2xl font-bold text-orange-600">90%</div>
-                <div className="text-sm text-gray-600">Research Excellence</div>
-              </div>
-            </div>
           </CardContent>
         </Card>
 
@@ -253,28 +263,31 @@ const Economics = () => {
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-              <div className="p-4 border rounded-lg text-center">
-                <h4 className="font-semibold mb-2">1st Year B.A.</h4>
-                <Button variant="outline" size="sm">View Schedule</Button>
+            {timetablesLoading ? (
+              <div className="text-center py-4">Loading timetables...</div>
+            ) : timetables.length > 0 ? (
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                {timetables.map((timetable) => (
+                  <div key={timetable.id} className="p-4 border rounded-lg text-center">
+                    <h4 className="font-semibold mb-2">{timetable.title}</h4>
+                    {timetable.description && (
+                      <p className="text-sm text-gray-600 mb-3">{timetable.description}</p>
+                    )}
+                    <Button 
+                      variant="outline" 
+                      size="sm"
+                      onClick={() => window.open(timetable.file_url, '_blank')}
+                    >
+                      View Schedule
+                    </Button>
+                  </div>
+                ))}
               </div>
-              <div className="p-4 border rounded-lg text-center">
-                <h4 className="font-semibold mb-2">2nd Year B.A.</h4>
-                <Button variant="outline" size="sm">View Schedule</Button>
+            ) : (
+              <div className="text-center py-8 text-gray-500">
+                No timetables available at the moment.
               </div>
-              <div className="p-4 border rounded-lg text-center">
-                <h4 className="font-semibold mb-2">3rd Year B.A.</h4>
-                <Button variant="outline" size="sm">View Schedule</Button>
-              </div>
-              <div className="p-4 border rounded-lg text-center">
-                <h4 className="font-semibold mb-2">1st Year M.A.</h4>
-                <Button variant="outline" size="sm">View Schedule</Button>
-              </div>
-              <div className="p-4 border rounded-lg text-center">
-                <h4 className="font-semibold mb-2">2nd Year M.A.</h4>
-                <Button variant="outline" size="sm">View Schedule</Button>
-              </div>
-            </div>
+            )}
           </CardContent>
         </Card>
 
