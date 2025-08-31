@@ -291,7 +291,7 @@ const DepartmentsAdmin = () => {
 
       {selectedDepartment && (
         <Tabs value={activeTab} onValueChange={handleTabChange} className="w-full">
-          <TabsList className="grid w-full grid-cols-3 mb-6">
+          <TabsList className={`grid w-full ${selectedDepartment === 'Physical Education' ? 'grid-cols-3' : 'grid-cols-2'} mb-6`}>
             <TabsTrigger value="staff" className="flex items-center gap-2">
               <Users className="h-4 w-4" />
               Staff ({staff.length})
@@ -300,10 +300,12 @@ const DepartmentsAdmin = () => {
               <BookOpen className="h-4 w-4" />
               Timetables ({timetables.length})
             </TabsTrigger>
-            <TabsTrigger value="achievements" className="flex items-center gap-2">
-              <Trophy className="h-4 w-4" />
-              Student Achievements
-            </TabsTrigger>
+            {selectedDepartment === 'Physical Education' && (
+              <TabsTrigger value="achievements" className="flex items-center gap-2">
+                <Trophy className="h-4 w-4" />
+                Student Achievements
+              </TabsTrigger>
+            )}
           </TabsList>
 
           {/* Staff Tab */}
@@ -595,10 +597,12 @@ const DepartmentsAdmin = () => {
             </Card>
           </TabsContent>
 
-          {/* Student Achievements Tab */}
-          <TabsContent value="achievements" className="space-y-6">
-            <StudentAchievementsAdmin />
-          </TabsContent>
+          {/* Student Achievements Tab - Only for Physical Education */}
+          {selectedDepartment === 'Physical Education' && (
+            <TabsContent value="achievements" className="space-y-6">
+              <StudentAchievementsAdmin />
+            </TabsContent>
+          )}
         </Tabs>
       )}
 
