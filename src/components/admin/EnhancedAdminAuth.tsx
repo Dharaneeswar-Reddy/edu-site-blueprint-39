@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
@@ -8,7 +8,6 @@ import { Eye, EyeOff, Shield, AlertTriangle, RefreshCw, KeyRound } from "lucide-
 import { useAuth } from "@/hooks/useAuth";
 import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
-import ReCAPTCHA from "react-google-recaptcha";
 
 interface LoginAttemptData {
   is_locked: boolean;
@@ -25,13 +24,7 @@ const EnhancedAdminAuth = () => {
   const [showForgotPassword, setShowForgotPassword] = useState(false);
   const [formData, setFormData] = useState({ email: "", password: "" });
   const [resetEmail, setResetEmail] = useState("");
-  const [captchaToken, setCaptchaToken] = useState<string | null>(null);
   const [loginAttempts, setLoginAttempts] = useState<LoginAttemptData | null>(null);
-  const [showCaptcha, setShowCaptcha] = useState(false);
-  const captchaRef = useRef<ReCAPTCHA>(null);
-
-  // Test CAPTCHA site key - replace with your actual Google reCAPTCHA v2 site key
-  const RECAPTCHA_SITE_KEY = "6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"; // Google's test key
 
   useEffect(() => {
     checkLoginAttempts();
@@ -49,7 +42,6 @@ const EnhancedAdminAuth = () => {
 
       const attemptData = data as unknown as LoginAttemptData;
       setLoginAttempts(attemptData);
-      setShowCaptcha(attemptData.failed_attempts >= 2);
     } catch (error) {
       console.error('Error checking login attempts:', error);
     }
@@ -58,37 +50,6 @@ const EnhancedAdminAuth = () => {
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
-  };
-
-  const validateCaptcha = async (token: string) => {
-    try {
-      console.log('Validating CAPTCHA token:', token.substring(0, 20) + '...');
-      const { data, error } = await supabase.functions.invoke('validate-captcha', {
-        body: { captchaToken: token },
-      });
-
-      console.log('CAPTCHA validation response:', { data, error });
-
-      if (error) {
-        console.error('CAPTCHA validation error:', error);
-        toast({
-          title: "CAPTCHA Error",
-          description: "CAPTCHA validation service error. Please try again.",
-          variant: "destructive",
-        });
-        return false;
-      }
-
-      return data?.valid === true;
-    } catch (error) {
-      console.error('CAPTCHA validation error:', error);
-      toast({
-        title: "CAPTCHA Error",
-        description: "Unable to verify CAPTCHA. Please try again.",
-        variant: "destructive",
-      });
-      return false;
-    }
   };
 
   const handleSignIn = async (e: React.FormEvent) => {
@@ -103,33 +64,9 @@ const EnhancedAdminAuth = () => {
       return;
     }
 
-    if (showCaptcha && !captchaToken) {
-      toast({
-        title: "CAPTCHA Required",
-        description: "Please complete the CAPTCHA verification.",
-        variant: "destructive",
-      });
-      return;
-    }
-
     setLoading(true);
     
     try {
-      // Validate CAPTCHA if required
-      if (showCaptcha && captchaToken) {
-        const isValidCaptcha = await validateCaptcha(captchaToken);
-        if (!isValidCaptcha) {
-          toast({
-            title: "CAPTCHA Failed",
-            description: "CAPTCHA verification failed. Please try again.",
-            variant: "destructive",
-          });
-          captchaRef.current?.reset();
-          setCaptchaToken(null);
-          return;
-        }
-      }
-
       const { error } = await signIn(formData.email, formData.password);
       
       if (error) {
@@ -146,12 +83,6 @@ const EnhancedAdminAuth = () => {
           description: error.message,
           variant: "destructive",
         });
-
-        // Reset CAPTCHA on failed attempt
-        if (captchaRef.current) {
-          captchaRef.current.reset();
-          setCaptchaToken(null);
-        }
       } else {
         // Reset login attempts on successful login
         await supabase.rpc('reset_login_attempts', {
@@ -334,20 +265,6 @@ const EnhancedAdminAuth = () => {
               </div>
             </div>
 
-            {showCaptcha && (
-              <div className="space-y-2">
-                <Label>Security Verification</Label>
-                <div className="flex justify-center">
-                  <ReCAPTCHA
-                    ref={captchaRef}
-                    sitekey={RECAPTCHA_SITE_KEY}
-                    onChange={setCaptchaToken}
-                    theme="light"
-                  />
-                </div>
-              </div>
-            )}
-            
             <Button 
               type="submit" 
               className="w-full" 
