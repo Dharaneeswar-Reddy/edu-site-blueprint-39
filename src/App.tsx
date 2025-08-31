@@ -90,6 +90,7 @@ import GalleryAdmin from "@/components/admin/GalleryAdmin";
 import DepartmentsAdmin from "@/components/admin/DepartmentsAdmin";
 import StudentSupportAdmin from "@/components/admin/StudentSupportAdmin";
 import AdminLayout from "@/components/admin/AdminLayout";
+import AdminRoleGuard from "@/components/admin/AdminRoleGuard";
 import AdminUsers from "@/pages/AdminUsers";
 import ResetPassword from "@/pages/admin/ResetPassword";
 import AcceptInvitation from "@/pages/admin/AcceptInvitation";
@@ -166,39 +167,53 @@ const App = () => (
             <Route path="/admin/accept-invitation" element={<AcceptInvitation />} />
             <Route path="/admin/users" element={<AdminUsers />} />
             <Route path="/admin/announcements" element={
-              <AdminLayout>
-                <AnnouncementsAdmin />
-              </AdminLayout>
+              <AdminRoleGuard>
+                <AdminLayout>
+                  <AnnouncementsAdmin />
+                </AdminLayout>
+              </AdminRoleGuard>
             } />
             <Route path="/admin/examination" element={
-              <AdminLayout>
-                <ExaminationDocumentsAdmin />
-              </AdminLayout>
+              <AdminRoleGuard>
+                <AdminLayout>
+                  <ExaminationDocumentsAdmin />
+                </AdminLayout>
+              </AdminRoleGuard>
             } />
             <Route path="/admin/iqac" element={
-              <AdminLayout>
-                <IqacAdmin />
-              </AdminLayout>
+              <AdminRoleGuard>
+                <AdminLayout>
+                  <IqacAdmin />
+                </AdminLayout>
+              </AdminRoleGuard>
             } />
             <Route path="/admin/staff" element={
-              <AdminLayout>
-                <StaffAdmin />
-              </AdminLayout>
+              <AdminRoleGuard>
+                <AdminLayout>
+                  <StaffAdmin />
+                </AdminLayout>
+              </AdminRoleGuard>
             } />
             <Route path="/admin/gallery" element={
-              <AdminLayout>
-                <GalleryAdmin />
-              </AdminLayout>
+              <AdminRoleGuard>
+                <AdminLayout>
+                  <GalleryAdmin />
+                </AdminLayout>
+              </AdminRoleGuard>
             } />
             <Route path="/admin/departments" element={
-              <AdminLayout>
-                <DepartmentsAdmin />
-              </AdminLayout>
+              <AdminRoleGuard>
+                <AdminLayout>
+                  <DepartmentsAdmin />
+                </AdminLayout>
+              </AdminRoleGuard>
             } />
             <Route path="/admin/student-support" element={
-              <AdminLayout>
-                <StudentSupportAdmin />
-              </AdminLayout>
+              <AdminRoleGuard>
+                <AdminLayout>
+                  <StudentSupportAdmin />
+                </AdminLayout>
+              </AdminRoleGuard>
             } />
             
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}

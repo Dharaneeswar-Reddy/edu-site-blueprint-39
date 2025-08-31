@@ -11,9 +11,7 @@ import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, 
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { toast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
-import { Plus, FileText, Edit, Trash2, Download, Upload } from "lucide-react";
-import { useAuth } from "@/hooks/useAuth";
-import { useUserRole } from "@/hooks/useUserRole";
+import { FileText, Edit, Trash2, Download, Upload } from "lucide-react";
 
 interface IqacDocument {
   id: string;
@@ -42,8 +40,6 @@ const DOCUMENT_TYPES = [
 ];
 
 const IqacAdmin = () => {
-  const { user } = useAuth();
-  const { isAdmin, loading: roleLoading } = useUserRole();
   const [documents, setDocuments] = useState<IqacDocument[]>([]);
   const [loading, setLoading] = useState(false);
   const [uploading, setUploading] = useState(false);
@@ -57,12 +53,10 @@ const IqacAdmin = () => {
     file: null as File | null,
   });
 
-  // All hooks must be called before any early returns
+  // All hooks must be called before any returns - no conditional hook usage
   useEffect(() => {
-    if (user && isAdmin && !roleLoading) {
-      fetchDocuments();
-    }
-  }, [user, isAdmin, roleLoading]);
+    fetchDocuments();
+  }, []);
 
   const fetchDocuments = async () => {
     setLoading(true);
@@ -254,33 +248,6 @@ const IqacAdmin = () => {
     const docType = DOCUMENT_TYPES.find(t => t.value === type);
     return docType?.label || type;
   };
-
-  // Show loading while checking authentication
-  if (roleLoading) {
-    return (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></div>
-      </div>
-    );
-  }
-
-  // Show error if not authenticated as admin
-  if (!user || !isAdmin) {
-    return (
-      <div className="min-h-screen flex items-center justify-center p-4">
-        <Card className="max-w-md">
-          <CardContent className="pt-6">
-            <div className="text-center">
-              <h2 className="text-lg font-semibold mb-2">Access Denied</h2>
-              <p className="text-muted-foreground">
-                You need admin privileges to manage IQAC documents.
-              </p>
-            </div>
-          </CardContent>
-        </Card>
-      </div>
-    );
-  }
 
   return (
     <div className="space-y-6">
