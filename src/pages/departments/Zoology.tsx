@@ -2,25 +2,32 @@ import PageLayout from "@/components/PageLayout";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Clock, Users, BookOpen, Award, Bug, Mail } from "lucide-react";
+import { Clock, Users, BookOpen, Award, Bug, Mail, Download } from "lucide-react";
 import { useEffect, useState } from "react";
 import DepartmentStaff from "@/components/DepartmentStaff";
+import { useDepartmentTimetables } from "@/hooks/useDepartmentTimetables";
 
 const Zoology = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const { timetables, loading: timetablesLoading } = useDepartmentTimetables("Zoology");
 
   const heroImages = [
-    "/lovable-uploads/33bce374-c279-4e5c-afa1-9a764d7977c4.png",
-    "/lovable-uploads/365bcf12-2218-4dd4-a6e7-6d4bc591739a.png",
-    "/lovable-uploads/43b08f5f-94a1-4efc-a4bc-d959843cb7ea.png",
-    "/lovable-uploads/52a8e7b1-5b22-4a0c-b1ec-450f99bfa9bb.png"
+    "/lovable-uploads/76e749fc-2917-4512-b28a-328266b210fe.png",
+    "/lovable-uploads/efecdc8b-f78a-4ff1-947b-c70afb2f2b33.png",
+    "/lovable-uploads/7ecf4141-f3db-4a34-b9c2-4a0c5af6c711.png",
+    "/lovable-uploads/ffb3cc7c-1414-44ed-89b7-a6160bf7578f.png",
+    "/lovable-uploads/31b6ffc3-d5b7-441c-bbdd-294127563557.png"
   ];
 
   const departmentPhotos = [
-    "/lovable-uploads/4459cba5-4f2b-407d-9115-b78608126cab.png",
-    "/lovable-uploads/455edc55-96fe-44fc-a8d0-2b69c6dd6e92.png",
-    "/lovable-uploads/4b78b0b7-424d-41e9-b09c-4108e1edd3c0.png",
-    "/lovable-uploads/5c7ebe72-4ecd-4e54-8ce5-6bf0a6141878.png"
+    "/lovable-uploads/76e749fc-2917-4512-b28a-328266b210fe.png",
+    "/lovable-uploads/efecdc8b-f78a-4ff1-947b-c70afb2f2b33.png",
+    "/lovable-uploads/7ecf4141-f3db-4a34-b9c2-4a0c5af6c711.png",
+    "/lovable-uploads/ffb3cc7c-1414-44ed-89b7-a6160bf7578f.png",
+    "/lovable-uploads/31b6ffc3-d5b7-441c-bbdd-294127563557.png",
+    "/lovable-uploads/09edbd5d-984f-41ea-9176-ae2cb550d878.png",
+    "/lovable-uploads/888ae344-c040-4057-9423-38e1e4328152.png",
+    "/lovable-uploads/208097d5-1a3d-4850-b72e-7a0e44ded787.png"
   ];
 
   useEffect(() => {
@@ -263,28 +270,41 @@ const Zoology = () => {
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-              <div className="p-4 border rounded-lg text-center">
-                <h4 className="font-semibold mb-2">1st Year B.Sc.</h4>
-                <Button variant="outline" size="sm">View Schedule</Button>
+            {timetablesLoading ? (
+              <div className="text-center py-8">
+                <div className="animate-pulse text-muted-foreground">Loading timetables...</div>
               </div>
-              <div className="p-4 border rounded-lg text-center">
-                <h4 className="font-semibold mb-2">2nd Year B.Sc.</h4>
-                <Button variant="outline" size="sm">View Schedule</Button>
+            ) : timetables.length > 0 ? (
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                {timetables.map((timetable) => (
+                  <div key={timetable.id} className="p-4 border rounded-lg">
+                    <h4 className="font-semibold mb-2">{timetable.title}</h4>
+                    {timetable.description && (
+                      <p className="text-sm text-muted-foreground mb-3">{timetable.description}</p>
+                    )}
+                    {timetable.academic_year && (
+                      <p className="text-xs text-muted-foreground mb-2">Academic Year: {timetable.academic_year}</p>
+                    )}
+                    {timetable.semester && (
+                      <p className="text-xs text-muted-foreground mb-3">Semester: {timetable.semester}</p>
+                    )}
+                    <Button 
+                      variant="outline" 
+                      size="sm"
+                      onClick={() => window.open(timetable.file_url, '_blank')}
+                      className="w-full"
+                    >
+                      <Download className="h-4 w-4 mr-2" />
+                      View Schedule
+                    </Button>
+                  </div>
+                ))}
               </div>
-              <div className="p-4 border rounded-lg text-center">
-                <h4 className="font-semibold mb-2">3rd Year B.Sc.</h4>
-                <Button variant="outline" size="sm">View Schedule</Button>
+            ) : (
+              <div className="text-center py-8 text-muted-foreground">
+                No timetables available at the moment. Please check back later.
               </div>
-              <div className="p-4 border rounded-lg text-center">
-                <h4 className="font-semibold mb-2">1st Year M.Sc.</h4>
-                <Button variant="outline" size="sm">View Schedule</Button>
-              </div>
-              <div className="p-4 border rounded-lg text-center">
-                <h4 className="font-semibold mb-2">2nd Year M.Sc.</h4>
-                <Button variant="outline" size="sm">View Schedule</Button>
-              </div>
-            </div>
+            )}
           </CardContent>
         </Card>
 
