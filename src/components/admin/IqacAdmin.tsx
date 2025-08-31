@@ -12,6 +12,8 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@
 import { toast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
 import { Plus, FileText, Edit, Trash2, Download, Upload } from "lucide-react";
+import { useAuth } from "@/hooks/useAuth";
+import { useUserRole } from "@/hooks/useUserRole";
 
 interface IqacDocument {
   id: string;
@@ -40,6 +42,8 @@ const DOCUMENT_TYPES = [
 ];
 
 const IqacAdmin = () => {
+  const { user } = useAuth();
+  const { isAdmin, loading: roleLoading } = useUserRole();
   const [documents, setDocuments] = useState<IqacDocument[]>([]);
   const [loading, setLoading] = useState(false);
   const [uploading, setUploading] = useState(false);
@@ -52,6 +56,33 @@ const IqacAdmin = () => {
     academic_year: "",
     file: null as File | null,
   });
+
+  // Show loading while checking authentication
+  if (roleLoading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></div>
+      </div>
+    );
+  }
+
+  // Show error if not authenticated as admin
+  if (!user || !isAdmin) {
+    return (
+      <div className="min-h-screen flex items-center justify-center p-4">
+        <Card className="max-w-md">
+          <CardContent className="pt-6">
+            <div className="text-center">
+              <h2 className="text-lg font-semibold mb-2">Access Denied</h2>
+              <p className="text-muted-foreground">
+                You need admin privileges to manage IQAC documents.
+              </p>
+            </div>
+          </CardContent>
+        </Card>
+      </div>
+    );
+  }
 
   useEffect(() => {
     fetchDocuments();
@@ -82,16 +113,19 @@ const IqacAdmin = () => {
   const handleFileUpload = async (file: File) => {
     const fileExt = file.name.split('.').pop();
     const fileName = `${Date.now()}.${fileExt}`;
-    const filePath = `iqac-documents/${fileName}`;
+    const filePath = `${fileName}`;
 
     const { error: uploadError } = await supabase.storage
-      .from('admin-uploads')
+      .from('iqac-documents')
       .upload(filePath, file);
 
-    if (uploadError) throw uploadError;
+    if (uploadError) {
+      console.error('Upload error:', uploadError);
+      throw uploadError;
+    }
 
     const { data: { publicUrl } } = supabase.storage
-      .from('admin-uploads')
+      .from('iqac-documents')
       .getPublicUrl(filePath);
 
     return publicUrl;
