@@ -74,53 +74,35 @@ const PhysicalEducation = () => {
           </div>
         </div>
 
-        {/* Department Overview and Photos */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          {/* Department Overview */}
-          <div className="lg:col-span-2">
-            <Card>
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <Zap className="h-6 w-6 text-college-blue" />
-                  Department Overview
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                <p>
-                  The Department of Physical Education at SVRM College, Nagaram, plays a vital role in shaping well-rounded individuals by promoting fitness, discipline, teamwork, and leadership. With excellent facilities including a spacious playground, indoor stadium, and modern gym, the department encourages students to actively participate in sports and games at local, university, state, and national levels.
-                </p>
-                <p>
-                  Many students have brought laurels to the college and secured placements in the Army, Navy, Police, and other defense and service sectors through sports achievements. From local games to competitive tournaments, we empower rural youth to discover their talent, build confidence, and embrace a healthy lifestyle.
-                </p>
-                <div className="grid grid-cols-2 gap-4 mt-6">
-                  <div className="text-center p-4 bg-blue-50 rounded-lg">
-                    <Users className="h-8 w-8 text-college-blue mx-auto mb-2" />
-                    <div className="text-2xl font-bold text-college-blue">1000+</div>
-                    <div className="text-sm text-gray-600">Students</div>
-                  </div>
-                  <div className="text-center p-4 bg-green-50 rounded-lg">
-                    <Award className="h-8 w-8 text-green-600 mx-auto mb-2" />
-                    <div className="text-2xl font-bold text-green-600">2</div>
-                    <div className="text-sm text-gray-600">Faculty & Coaches</div>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-          </div>
-
-          {/* Department Photos */}
-          <div className="space-y-4">
-            {departmentPhotos.map((photo, index) => (
-              <div key={index} className="rounded-lg overflow-hidden shadow-md">
-                <img 
-                  src={photo} 
-                  alt={`Sports Facility ${index + 1}`}
-                  className="w-full h-32 object-cover hover:scale-105 transition-transform duration-300"
-                />
+        {/* Department Overview */}
+        <Card>
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+              <Zap className="h-6 w-6 text-college-blue" />
+              Department Overview
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            <p>
+              The Department of Physical Education at SVRM College, Nagaram, plays a vital role in shaping well-rounded individuals by promoting fitness, discipline, teamwork, and leadership. With excellent facilities including a spacious playground, indoor stadium, and modern gym, the department encourages students to actively participate in sports and games at local, university, state, and national levels.
+            </p>
+            <p>
+              Many students have brought laurels to the college and secured placements in the Army, Navy, Police, and other defense and service sectors through sports achievements. From local games to competitive tournaments, we empower rural youth to discover their talent, build confidence, and embrace a healthy lifestyle.
+            </p>
+            <div className="grid grid-cols-2 gap-4 mt-6">
+              <div className="text-center p-4 bg-blue-50 rounded-lg">
+                <Users className="h-8 w-8 text-college-blue mx-auto mb-2" />
+                <div className="text-2xl font-bold text-college-blue">1000+</div>
+                <div className="text-sm text-gray-600">Students</div>
               </div>
-            ))}
-          </div>
-        </div>
+              <div className="text-center p-4 bg-green-50 rounded-lg">
+                <Award className="h-8 w-8 text-green-600 mx-auto mb-2" />
+                <div className="text-2xl font-bold text-green-600">2</div>
+                <div className="text-sm text-gray-600">Faculty & Coaches</div>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
 
         {/* Vision & Mission */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
