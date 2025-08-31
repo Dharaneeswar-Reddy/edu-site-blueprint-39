@@ -5,22 +5,22 @@ import { Badge } from "@/components/ui/badge";
 import { Clock, Users, BookOpen, Award, ScrollText, Mail } from "lucide-react";
 import { useEffect, useState } from "react";
 import DepartmentStaff from "@/components/DepartmentStaff";
+import useDepartmentTimetables from "@/hooks/useDepartmentTimetables";
 
 const History = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const { timetables, loading: timetablesLoading } = useDepartmentTimetables("History");
 
   const heroImages = [
-    "/lovable-uploads/b1fc6422-ad59-4662-83db-90f4d62b1001.png",
-    "/lovable-uploads/bf17da84-634b-4ca1-b09f-996816eb4e61.png",
-    "/lovable-uploads/c845d941-c566-4910-8dbb-82f90fb04f82.png",
-    "/lovable-uploads/d1d2add7-8d38-40a3-9b07-6b30cc16b6bc.png"
+    "/lovable-uploads/2f3492d3-c470-4933-b6f0-0009becc36bb.png",
+    "/lovable-uploads/41d15808-c8f5-40b0-9b18-f874a19621a6.png",
+    "/lovable-uploads/6862cc76-f986-492c-b68b-7468bff3e2a8.png"
   ];
 
   const departmentPhotos = [
-    "/lovable-uploads/dd09abc5-6c94-4cbf-898d-c7df488183a6.png",
-    "/lovable-uploads/ee497235-78d2-427a-9aca-40010a64e520.png",
-    "/lovable-uploads/f7ffbe1f-5fed-4b97-9af1-ab0ad2725f32.png",
-    "/lovable-uploads/fa6cd0f0-bbb2-4bf5-bc81-323b4085c47e.png"
+    "/lovable-uploads/2f3492d3-c470-4933-b6f0-0009becc36bb.png",
+    "/lovable-uploads/41d15808-c8f5-40b0-9b18-f874a19621a6.png",
+    "/lovable-uploads/6862cc76-f986-492c-b68b-7468bff3e2a8.png"
   ];
 
   useEffect(() => {
@@ -60,8 +60,38 @@ const History = () => {
           </div>
         </div>
 
-        {/* Seat Structure and Programs */}
+        {/* Vision and Mission */}
+        <Card>
+          <CardHeader>
+            <CardTitle>Department Vision & Mission</CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div>
+                <h4 className="font-semibold text-lg mb-3 text-blue-600">VISION</h4>
+                <p className="text-sm leading-relaxed">
+                  Expelling Darkness of Ignorance from the minds of young men by providing real 
+                  education on the basis of principles Truth, Love, God
+                </p>
+                <p className="text-center font-semibold italic mt-2 text-blue-600">
+                  "TAMASOMA JYOTHIRGAMAYA"
+                </p>
+              </div>
+              <div>
+                <h4 className="font-semibold text-lg mb-3 text-green-600">MISSION</h4>
+                <ul className="text-sm space-y-2">
+                  <li>1. To provide proper training to rural youth of the region</li>
+                  <li>2. To design academic programs through which the learner fits to global necessity</li>
+                  <li>3. To create and promote, brain soft skills of creativity and innovation inherent in young minds of the area</li>
+                  <li>4. To evolve value based education system instilling the values of hard work, discipline and service mindedness</li>
+                  <li>5. To impart holistic education based on ethical values of truth, love, god it enables the learners to develop as intellectually mature, morally upright, socially responsible and spiritually inspired leaders to serve the society</li>
+                </ul>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
 
+        {/* Seat Structure and Programs */}
         <Card>
           <CardHeader>
             <CardTitle>Seat Structure & Programs Offered</CardTitle>
@@ -73,24 +103,11 @@ const History = () => {
                 <div className="space-y-2">
                   <div className="flex justify-between items-center p-3 bg-blue-50 rounded">
                     <span>B.A. History</span>
-                    <Badge variant="secondary">45 Seats</Badge>
+                    <Badge variant="secondary">60 Seats</Badge>
                   </div>
                   <div className="flex justify-between items-center p-3 bg-green-50 rounded">
                     <span>B.A. History (Honours)</span>
-                    <Badge variant="secondary">25 Seats</Badge>
-                  </div>
-                </div>
-              </div>
-              <div>
-                <h4 className="font-semibold mb-3">Postgraduate Programs</h4>
-                <div className="space-y-2">
-                  <div className="flex justify-between items-center p-3 bg-purple-50 rounded">
-                    <span>M.A. History</span>
-                    <Badge variant="secondary">30 Seats</Badge>
-                  </div>
-                  <div className="flex justify-between items-center p-3 bg-orange-50 rounded">
-                    <span>M.A. Ancient Indian History</span>
-                    <Badge variant="secondary">20 Seats</Badge>
+                    <Badge variant="secondary">40 Seats</Badge>
                   </div>
                 </div>
               </div>
@@ -106,8 +123,8 @@ const History = () => {
           <CardContent>
             <div className="space-y-6">
               <div>
-                <h4 className="font-semibold mb-3">B.A. History (3 Years)</h4>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <h4 className="font-semibold mb-3">B.A. History (Honours) (4 Years)</h4>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
                   <div className="p-4 border rounded-lg">
                     <h5 className="font-medium text-blue-600 mb-2">Year 1</h5>
                     <ul className="text-sm space-y-1">
@@ -132,6 +149,12 @@ const History = () => {
                       <li>• Modern Indian History</li>
                       <li>• Contemporary World History</li>
                       <li>• Historiography</li>
+                      <li>• Research Project</li>
+                    </ul>
+                  </div>
+                  <div className="p-4 border rounded-lg">
+                    <h5 className="font-medium text-orange-600 mb-2">Year 4</h5>
+                    <ul className="text-sm space-y-1">
                       <li>• Research Project</li>
                     </ul>
                   </div>
@@ -162,26 +185,16 @@ const History = () => {
               Our curriculum combines traditional historical scholarship with contemporary 
               approaches to historical studies.
             </p>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mt-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
               <div className="text-center p-4 bg-blue-50 rounded-lg">
                 <Users className="h-8 w-8 text-college-blue mx-auto mb-2" />
-                <div className="text-2xl font-bold text-college-blue">160+</div>
+                <div className="text-2xl font-bold text-college-blue">100+</div>
                 <div className="text-sm text-gray-600">Students</div>
               </div>
               <div className="text-center p-4 bg-green-50 rounded-lg">
                 <Award className="h-8 w-8 text-green-600 mx-auto mb-2" />
-                <div className="text-2xl font-bold text-green-600">13</div>
+                <div className="text-2xl font-bold text-green-600">5</div>
                 <div className="text-sm text-gray-600">Faculty Members</div>
-              </div>
-              <div className="text-center p-4 bg-purple-50 rounded-lg">
-                <BookOpen className="h-8 w-8 text-purple-600 mx-auto mb-2" />
-                <div className="text-2xl font-bold text-purple-600">4</div>
-                <div className="text-sm text-gray-600">Programs</div>
-              </div>
-              <div className="text-center p-4 bg-orange-50 rounded-lg">
-                <ScrollText className="h-8 w-8 text-orange-600 mx-auto mb-2" />
-                <div className="text-2xl font-bold text-orange-600">50+</div>
-                <div className="text-sm text-gray-600">Historical Archives</div>
               </div>
             </div>
           </CardContent>
@@ -253,28 +266,29 @@ const History = () => {
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-              <div className="p-4 border rounded-lg text-center">
-                <h4 className="font-semibold mb-2">1st Year B.A.</h4>
-                <Button variant="outline" size="sm">View Schedule</Button>
+            {timetablesLoading ? (
+              <div className="text-center py-4">Loading timetables...</div>
+            ) : timetables.length > 0 ? (
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                {timetables.map((timetable) => (
+                  <div key={timetable.id} className="p-4 border rounded-lg text-center">
+                    <h4 className="font-semibold mb-2">{timetable.title}</h4>
+                    <p className="text-sm text-gray-600 mb-3">{timetable.description}</p>
+                    <Button 
+                      variant="outline" 
+                      size="sm"
+                      onClick={() => window.open(timetable.file_url, '_blank')}
+                    >
+                      View Schedule
+                    </Button>
+                  </div>
+                ))}
               </div>
-              <div className="p-4 border rounded-lg text-center">
-                <h4 className="font-semibold mb-2">2nd Year B.A.</h4>
-                <Button variant="outline" size="sm">View Schedule</Button>
+            ) : (
+              <div className="text-center py-8 text-gray-500">
+                No timetables available at the moment.
               </div>
-              <div className="p-4 border rounded-lg text-center">
-                <h4 className="font-semibold mb-2">3rd Year B.A.</h4>
-                <Button variant="outline" size="sm">View Schedule</Button>
-              </div>
-              <div className="p-4 border rounded-lg text-center">
-                <h4 className="font-semibold mb-2">1st Year M.A.</h4>
-                <Button variant="outline" size="sm">View Schedule</Button>
-              </div>
-              <div className="p-4 border rounded-lg text-center">
-                <h4 className="font-semibold mb-2">2nd Year M.A.</h4>
-                <Button variant="outline" size="sm">View Schedule</Button>
-              </div>
-            </div>
+            )}
           </CardContent>
         </Card>
 
