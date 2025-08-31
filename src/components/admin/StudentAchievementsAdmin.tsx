@@ -31,8 +31,7 @@ const StudentAchievementsAdmin = () => {
   const [formData, setFormData] = useState({
     title: '',
     description: '',
-    academic_year: '',
-    display_order: 0
+    academic_year: ''
   });
   
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
@@ -47,8 +46,8 @@ const StudentAchievementsAdmin = () => {
       const { data, error } = await supabase
         .from('student_achievements')
         .select('*')
-        .order('department')
-        .order('display_order');
+        .eq('department', 'Physical Education')
+        .order('created_at', { ascending: false });
 
       if (error) throw error;
       setAchievements(data || []);
@@ -130,8 +129,7 @@ const StudentAchievementsAdmin = () => {
       setFormData({
         title: '',
         description: '',
-        academic_year: '',
-        display_order: 0
+        academic_year: ''
       });
       setSelectedFile(null);
       fetchAchievements();
@@ -211,27 +209,14 @@ const StudentAchievementsAdmin = () => {
               />
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div>
-                <Label htmlFor="academic_year">Academic Year</Label>
-                <Input
-                  id="academic_year"
-                  value={formData.academic_year}
-                  onChange={(e) => setFormData({...formData, academic_year: e.target.value})}
-                  placeholder="2023-2024"
-                />
-              </div>
-              
-              <div>
-                <Label htmlFor="display_order">Display Order</Label>
-                <Input
-                  id="display_order"
-                  type="number"
-                  value={formData.display_order}
-                  onChange={(e) => setFormData({...formData, display_order: parseInt(e.target.value) || 0})}
-                  placeholder="0"
-                />
-              </div>
+            <div>
+              <Label htmlFor="academic_year">Academic Year</Label>
+              <Input
+                id="academic_year"
+                value={formData.academic_year}
+                onChange={(e) => setFormData({...formData, academic_year: e.target.value})}
+                placeholder="2023-2024"
+              />
             </div>
 
             <div>

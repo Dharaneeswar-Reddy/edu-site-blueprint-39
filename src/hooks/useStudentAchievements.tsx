@@ -41,7 +41,6 @@ export const useStudentAchievements = (department: string) => {
         .select("*")
         .eq("department", department)
         .eq("is_active", true)
-        .order("display_order", { ascending: true })
         .order("created_at", { ascending: false });
 
       if (fetchError) {
