@@ -76,38 +76,103 @@ const Chemistry = () => {
           
           <TabsContent value="ug" className="space-y-8">
             {/* UG Department Overview */}
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-              <Card>
-                <CardHeader>
-                  <CardTitle className="flex items-center gap-2">
-                    <TestTube className="h-6 w-6 text-college-blue" />
-                    UG Department Overview
-                  </CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-4">
-                  <p>
-                    The Undergraduate Chemistry Department at SVRMC provides a solid foundation in chemical sciences 
-                    with comprehensive laboratory experience and theoretical knowledge to prepare students for 
-                    various career opportunities.
+            <Card className="col-span-full">
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2">
+                  <TestTube className="h-6 w-6 text-college-blue" />
+                  Overview of the Department of Chemistry
+                </CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-6">
+                <p>
+                  The Department of Chemistry, established in 1969, had distinguished founding faculty members P.L. Narayana, P. Bhaskara Rao, and V. Kutumba Rao. Over the years, it grew with contributions from esteemed educators and is currently led by Sri R. Prasanna Babu. The department prepares students for university and competitive exams, ensuring academic and professional excellence.
+                </p>
+                <p>
+                  It regularly hosts international and national seminars, offering valuable insights. Two postgraduate courses in Inorganic Chemistry and Analytical Chemistry are offered, led by Dr. A. Koteswara Rao and Dr. K. Surendra Babu, the Director for P.G. courses. Guest and extension lectures on contemporary topics further enrich students' learning.
+                </p>
+                <p>
+                  With consistent student success in various employment sectors, the department also conducts special classes on personality development, career orientation, and interdisciplinary knowledge, fostering holistic growth and future readiness.
+                </p>
+
+                <div className="bg-blue-50 p-6 rounded-lg">
+                  <h4 className="font-semibold text-lg mb-3 text-blue-800">VISION</h4>
+                  <p className="text-blue-700">
+                    To provide high-quality education in Chemistry, fostering scientific knowledge, research skills, and innovation to contribute to societal and industrial advancements.
                   </p>
-                  <p>
-                    Our well-equipped laboratories include modern instrumentation and facilities for hands-on 
-                    learning in organic, inorganic, and physical chemistry.
-                  </p>
-                  <div className="grid grid-cols-2 gap-4 mt-6">
-                    <div className="text-center p-4 bg-blue-50 rounded-lg">
-                      <Users className="h-8 w-8 text-college-blue mx-auto mb-2" />
-                      <div className="text-2xl font-bold text-college-blue">120+</div>
-                      <div className="text-sm text-gray-600">UG Students</div>
+                </div>
+
+                <div className="bg-green-50 p-6 rounded-lg">
+                  <h4 className="font-semibold text-lg mb-3 text-green-800">MISSION</h4>
+                  <ul className="text-green-700 space-y-2">
+                    <li>• To impart fundamental and advanced knowledge in Chemistry through quality teaching and research</li>
+                    <li>• To develop analytical and problem-solving skills among students</li>
+                    <li>• To encourage research and innovation in chemical sciences</li>
+                    <li>• To prepare students for careers in academia, research, and industry</li>
+                  </ul>
+                </div>
+
+                <div className="bg-purple-50 p-6 rounded-lg">
+                  <h4 className="font-semibold text-lg mb-3 text-purple-800">FACILITIES & INFRASTRUCTURE</h4>
+                  <ul className="text-purple-700 space-y-2">
+                    <li>• Well-equipped laboratories for both UG and PG students</li>
+                    <li>• Advanced instrumentation for research and practical learning</li>
+                    <li>• Library resources with textbooks, reference materials, and research journals</li>
+                    <li>• Collaborations with industries and research institutions for hands-on training and projects</li>
+                  </ul>
+                </div>
+
+                <div className="bg-yellow-50 p-6 rounded-lg">
+                  <h4 className="font-semibold text-lg mb-3 text-yellow-800">ACADEMIC PROGRAMS</h4>
+                  <div className="space-y-4">
+                    <div>
+                      <h5 className="font-medium text-yellow-700 mb-2">Undergraduate Programs:</h5>
+                      <ul className="text-sm text-yellow-700 space-y-1">
+                        <li>• B.Sc. (M.P.C) – Mathematics, Physics, Chemistry</li>
+                        <li>• B.Sc. (C.B.Z) – Chemistry, Botany, Zoology</li>
+                        <li>• B.Sc. (C.Z.A) – Chemistry, Zoology, Agriculture</li>
+                        <li>• B.Sc. Chemistry Major (Introduced in 2023-24)</li>
+                      </ul>
                     </div>
-                    <div className="text-center p-4 bg-green-50 rounded-lg">
-                      <Award className="h-8 w-8 text-green-600 mx-auto mb-2" />
-                      <div className="text-2xl font-bold text-green-600">8</div>
-                      <div className="text-sm text-gray-600">UG Faculty Members</div>
+                    <div>
+                      <h5 className="font-medium text-yellow-700 mb-2">Postgraduate Programs:</h5>
+                      <ul className="text-sm text-yellow-700 space-y-1">
+                        <li>• M.Sc. Organic Chemistry</li>
+                        <li>• M.Sc. Analytical Chemistry (Introduced in 2017)</li>
+                      </ul>
                     </div>
                   </div>
-                </CardContent>
-              </Card>
+                </div>
+
+                <div className="bg-indigo-50 p-6 rounded-lg">
+                  <h4 className="font-semibold text-lg mb-3 text-indigo-800">CURRENT FACULTY</h4>
+                  <div className="space-y-2">
+                    <div className="flex justify-between items-center p-2 bg-white rounded">
+                      <span>Sri R. Prasanna Babu</span>
+                      <Badge variant="outline">HOD of Chemistry (UG)</Badge>
+                    </div>
+                    <div className="flex justify-between items-center p-2 bg-white rounded">
+                      <span>Smt. A. Kokila</span>
+                      <Badge variant="outline">Lecturer in Chemistry</Badge>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-2 gap-4 mt-6">
+                  <div className="text-center p-4 bg-blue-50 rounded-lg">
+                    <Users className="h-8 w-8 text-college-blue mx-auto mb-2" />
+                    <div className="text-2xl font-bold text-college-blue">120+</div>
+                    <div className="text-sm text-gray-600">UG Students</div>
+                  </div>
+                  <div className="text-center p-4 bg-green-50 rounded-lg">
+                    <Award className="h-8 w-8 text-green-600 mx-auto mb-2" />
+                    <div className="text-2xl font-bold text-green-600">2</div>
+                    <div className="text-sm text-gray-600">Current Faculty Members</div>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
 
               <Card>
                 <CardHeader>
@@ -131,73 +196,100 @@ const Chemistry = () => {
             {/* UG Program Structure */}
             <Card>
               <CardHeader>
-                <CardTitle>B.Sc. Chemistry Program Structure</CardTitle>
+                <CardTitle>B.Sc. (Honours) Chemistry – Major Course Structure</CardTitle>
               </CardHeader>
               <CardContent>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                  <div className="p-4 border rounded-lg">
-                    <h5 className="font-medium text-blue-600 mb-2">Year 1</h5>
-                    <ul className="text-sm space-y-1">
-                      <li>• Inorganic Chemistry I</li>
-                      <li>• Organic Chemistry I</li>
-                      <li>• Physical Chemistry I</li>
-                      <li>• Chemical Bonding</li>
-                    </ul>
-                  </div>
-                  <div className="p-4 border rounded-lg">
-                    <h5 className="font-medium text-green-600 mb-2">Year 2</h5>
-                    <ul className="text-sm space-y-1">
-                      <li>• Inorganic Chemistry II</li>
-                      <li>• Organic Chemistry II</li>
-                      <li>• Physical Chemistry II</li>
-                      <li>• Analytical Chemistry</li>
-                    </ul>
-                  </div>
-                  <div className="p-4 border rounded-lg">
-                    <h5 className="font-medium text-purple-600 mb-2">Year 3</h5>
-                    <ul className="text-sm space-y-1">
-                      <li>• Inorganic Chemistry III</li>
-                      <li>• Organic Chemistry III</li>
-                      <li>• Physical Chemistry III</li>
-                      <li>• Spectroscopy</li>
-                    </ul>
-                  </div>
+                <div className="overflow-x-auto">
+                  <table className="w-full text-sm">
+                    <thead>
+                      <tr className="border-b bg-muted/20">
+                        <th className="text-left py-2 px-3 font-semibold">Semester</th>
+                        <th className="text-left py-2 px-3 font-semibold">Course Code</th>
+                        <th className="text-left py-2 px-3 font-semibold">Title of the Course</th>
+                        <th className="text-center py-2 px-3 font-semibold">Credits</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr className="border-b">
+                        <td className="py-2 px-3 text-center bg-blue-50 font-medium">I</td>
+                        <td className="py-2 px-3">1</td>
+                        <td className="py-2 px-3">Essentials and Applications of Mathematical, Physical and Chemical Sciences</td>
+                        <td className="py-2 px-3 text-center">4</td>
+                      </tr>
+                      <tr className="border-b">
+                        <td className="py-2 px-3 text-center bg-blue-50 font-medium"></td>
+                        <td className="py-2 px-3">2</td>
+                        <td className="py-2 px-3">Advances in Mathematical, Physical and Chemical Sciences</td>
+                        <td className="py-2 px-3 text-center">4</td>
+                      </tr>
+                      <tr className="border-b">
+                        <td className="py-2 px-3 text-center bg-green-50 font-medium">II</td>
+                        <td className="py-2 px-3">3 (T/P)</td>
+                        <td className="py-2 px-3">General & Inorganic Chemistry (Theory + Practical)</td>
+                        <td className="py-2 px-3 text-center">4</td>
+                      </tr>
+                      <tr className="border-b">
+                        <td className="py-2 px-3 text-center bg-green-50 font-medium"></td>
+                        <td className="py-2 px-3">4 (T/P)</td>
+                        <td className="py-2 px-3">Inorganic Chemistry–I (Theory + Practical)</td>
+                        <td className="py-2 px-3 text-center">4</td>
+                      </tr>
+                      <tr className="border-b">
+                        <td className="py-2 px-3 text-center bg-purple-50 font-medium">III</td>
+                        <td className="py-2 px-3">5-8 (T/P)</td>
+                        <td className="py-2 px-3">Fundamentals of Organic Chemistry, Organic Chemistry (Halogen & Oxygen Compounds), Physical Chemistry–I (Solutions & Electrochemistry), Inorganic & Physical Chemistry</td>
+                        <td className="py-2 px-3 text-center">16</td>
+                      </tr>
+                      <tr className="border-b">
+                        <td className="py-2 px-3 text-center bg-orange-50 font-medium">IV</td>
+                        <td className="py-2 px-3">9-11 (T/P)</td>
+                        <td className="py-2 px-3">Physical Chemistry–II (States of Matter, Phase Rule & Surface Chemistry), General & Physical Chemistry, Nitrogen–Containing Organic Compounds & Spectroscopy</td>
+                        <td className="py-2 px-3 text-center">12</td>
+                      </tr>
+                      <tr className="border-b">
+                        <td className="py-2 px-3 text-center bg-yellow-50 font-medium">V</td>
+                        <td className="py-2 px-3">12A/B-15A/B</td>
+                        <td className="py-2 px-3">Analytical Methods, Environmental Chemistry, Chromatography & Instrumental Methods, Green Chemistry & Nanotechnology, Synthetic Organic Chemistry, Industrial Chemistry</td>
+                        <td className="py-2 px-3 text-center">16</td>
+                      </tr>
+                      <tr className="border-b">
+                        <td className="py-2 px-3 text-center bg-red-50 font-medium">VI</td>
+                        <td className="py-2 px-3">-</td>
+                        <td className="py-2 px-3">Internship</td>
+                        <td className="py-2 px-3 text-center">-</td>
+                      </tr>
+                    </tbody>
+                  </table>
                 </div>
               </CardContent>
             </Card>
 
-            {/* UG Course & Program Outcomes */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <Card>
-                <CardHeader>
-                  <CardTitle>UG Course Outcomes</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <ul className="space-y-2 text-sm">
-                    <li>• Master fundamental chemical principles and theories</li>
-                    <li>• Develop basic laboratory skills and safety practices</li>
-                    <li>• Understand molecular structure and bonding</li>
-                    <li>• Apply basic analytical techniques</li>
-                    <li>• Prepare for advanced studies or industry roles</li>
-                  </ul>
-                </CardContent>
-              </Card>
-
-              <Card>
-                <CardHeader>
-                  <CardTitle>UG Program Outcomes</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <ul className="space-y-2 text-sm">
-                    <li>• Strong foundation in chemical sciences</li>
-                    <li>• Problem-solving and analytical thinking</li>
-                    <li>• Laboratory safety and protocols</li>
-                    <li>• Professional ethics and responsibility</li>
-                    <li>• Preparation for further studies</li>
-                  </ul>
-                </CardContent>
-              </Card>
-            </div>
+            {/* Programme Specific Outcomes */}
+            <Card>
+              <CardHeader>
+                <CardTitle>Programme Specific Outcomes (PSOs) – B.Sc. Chemistry</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="space-y-4">
+                  <div className="p-4 bg-blue-50 rounded-lg">
+                    <h5 className="font-semibold text-blue-800 mb-2">PSO1</h5>
+                    <p className="text-blue-700 text-sm">On successful completion of the B.Sc. Chemistry programme, students acquire strong theoretical foundations and practical skills in handling chemicals, laboratory techniques, and experimental methods.</p>
+                  </div>
+                  <div className="p-4 bg-green-50 rounded-lg">
+                    <h5 className="font-semibold text-green-800 mb-2">PSO2</h5>
+                    <p className="text-green-700 text-sm">Graduates become eligible for careers in government sectors such as food safety departments, water testing laboratories, and pharmacy services, including roles like pharmacist and laboratory analyst.</p>
+                  </div>
+                  <div className="p-4 bg-purple-50 rounded-lg">
+                    <h5 className="font-semibold text-purple-800 mb-2">PSO3</h5>
+                    <p className="text-purple-700 text-sm">In the private sector, students can pursue opportunities in pharmaceutical industries, paint industries, plastic industries, and related chemical enterprises as trainee chemists or quality control assistants. They are also qualified to take up teaching positions in schools as chemistry educators.</p>
+                  </div>
+                  <div className="p-4 bg-orange-50 rounded-lg">
+                    <h5 className="font-semibold text-orange-800 mb-2">PSO4</h5>
+                    <p className="text-orange-700 text-sm">The programme prepares students for higher education, enabling them to pursue postgraduate studies (M.Sc.) in various specializations of chemistry, including Organic, Inorganic, Physical, Analytical, Industrial, Pharmaceutical, and Medicinal Chemistry.</p>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
 
             {/* UG Department Staff */}
             <Card>

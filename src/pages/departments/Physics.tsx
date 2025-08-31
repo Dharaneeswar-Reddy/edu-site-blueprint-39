@@ -15,16 +15,25 @@ const Physics = () => {
 
   const heroImages = [
     "/lovable-uploads/d85fb3d3-b73a-4321-ba55-69d5399a79a5.png",
-    "/lovable-uploads/a64e202d-8654-4eb7-9a72-956203b85f88.png",
-    "/lovable-uploads/fd7697be-4da9-4c9f-99c3-16a23c2dc964.png",
-    "/lovable-uploads/5810381d-fa14-451a-aba2-1235784bf4f2.png"
+    "/lovable-uploads/5ac5ea4b-5580-4969-8658-192e082f8417.png",
+    "/lovable-uploads/d4627f03-9552-464e-93cf-2eca5d4c1408.png",
+    "/lovable-uploads/0f1c4da3-be3f-40ea-8a8e-99e833035b28.png",
+    "/lovable-uploads/9f78b4d0-4434-4a94-b8a6-88be11989e42.png",
+    "/lovable-uploads/07f517fb-d713-4aaf-944d-b8f8d448db39.png"
   ];
 
   const departmentPhotos = [
-    "/lovable-uploads/26e5dd9a-23af-4d35-bf39-50ea0a90dcc1.png",
-    "/lovable-uploads/3f2ac2fe-5cc6-403c-b266-c0a4bfc92b9a.png",
-    "/lovable-uploads/52a8e7b1-5b22-4a0c-b1ec-450f99bfa9bb.png",
-    "/lovable-uploads/662ebac1-9113-46ee-b212-a9a1526878d4.png"
+    "/lovable-uploads/d85fb3d3-b73a-4321-ba55-69d5399a79a5.png",
+    "/lovable-uploads/596e11b2-cd25-48ed-8769-88d01f850463.png",
+    "/lovable-uploads/5ac5ea4b-5580-4969-8658-192e082f8417.png",
+    "/lovable-uploads/d4627f03-9552-464e-93cf-2eca5d4c1408.png",
+    "/lovable-uploads/0f1c4da3-be3f-40ea-8a8e-99e833035b28.png",
+    "/lovable-uploads/225096ea-f8cf-438e-8c55-9040932e6d87.png",
+    "/lovable-uploads/9f78b4d0-4434-4a94-b8a6-88be11989e42.png",
+    "/lovable-uploads/07f517fb-d713-4aaf-944d-b8f8d448db39.png",
+    "/lovable-uploads/0523c75f-0802-48bd-8253-e99fd2384d50.png",
+    "/lovable-uploads/80fc22e8-dd51-4a45-ab3c-1a1af16f51ef.png",
+    "/lovable-uploads/ef841f31-b3bb-40b7-a2f2-d5af0b0957bf.png"
   ];
 
   useEffect(() => {
@@ -64,38 +73,141 @@ const Physics = () => {
           </div>
         </div>
 
-        {/* Seat Structure and Programs */}
+        {/* Department Overview */}
+        <Card>
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+              <BookOpen className="h-6 w-6 text-college-blue" />
+              Department Overview
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-6">
+            <div className="bg-blue-50 p-6 rounded-lg">
+              <h4 className="font-semibold text-lg mb-3 text-blue-800">VISION</h4>
+              <p className="text-blue-700">
+                Expelling the Darkness of ignorance from the minds of young men by providing real education on the basis of the principles "Truth – Love - God" ("Tama soma Jyothirgamaya")
+              </p>
+            </div>
 
+            <div className="bg-green-50 p-6 rounded-lg">
+              <h4 className="font-semibold text-lg mb-3 text-green-800">MISSION</h4>
+              <ul className="text-green-700 space-y-2">
+                <li>• To provide proper training to rural youth in the region</li>
+                <li>• To design academic programs through which the learner fits into global necessity</li>
+                <li>• To create and promote brain storming skills of creativity and innovation inherent in the young minds of the area</li>
+                <li>• To evolve a value-based education system instilling the values of hard work, discipline, and service mindedness</li>
+                <li>• To impart holistic education based on the ethical values of Truth, Love, God. It enables the learners to develop as intellectually mature, morally upright, socially responsible, and spiritually inspired leaders to serve society.</li>
+              </ul>
+            </div>
+
+            <div className="bg-purple-50 p-6 rounded-lg">
+              <h4 className="font-semibold text-lg mb-3 text-purple-800">OBJECTIVES & GOALS</h4>
+              <ul className="text-purple-700 space-y-2">
+                <li>• Creating a genuine interest in physics by means of the teaching and learning process</li>
+                <li>• Motivating students to learn basic experimental work to get a conceptual background in physics</li>
+                <li>• Maintaining the departmental library to keep valuable books and internet resources at the disposal of the students</li>
+                <li>• Promoting students towards self-employment and also encouraging them to participate in internships with renowned industries and laboratories</li>
+                <li>• Imparting high-quality education by adopting advanced methods of teaching</li>
+                <li>• Conducting national-level seminars and workshops to develop a scientific attitude among students</li>
+                <li>• Establishing curriculum-related features towards applications of AI in physics by conducting workshops and webinars by eminent resource persons</li>
+              </ul>
+            </div>
+
+            <div className="bg-yellow-50 p-6 rounded-lg">
+              <h4 className="font-semibold text-lg mb-3 text-yellow-800">ABOUT PHYSICS</h4>
+              <p className="text-yellow-700 mb-3">
+                Physics is the study of nature. All the different events in nature take place according to basic laws. For example, the orbiting of the moon around the earth, the falling of an apple from a tree, and the tides in the sea on a full moon night can all be explained if we know Newton's law of motion and Newton's gravitational law.
+              </p>
+              <p className="text-yellow-700">
+                Physics is related to the rules that are applicable to all domains of life. Understanding physics therefore leads to applications in many fields like communications, information technology, nanotechnology, bio-medical sciences, and artificial intelligence. Physics, being one of the vital basic sciences, has played a significant role in improving the quality of life for mankind.
+              </p>
+            </div>
+
+            <div className="bg-indigo-50 p-6 rounded-lg">
+              <h4 className="font-semibold text-lg mb-3 text-indigo-800">BRIEF HISTORY OF THE DEPARTMENT</h4>
+              <p className="text-indigo-700 mb-3">
+                The department of Physics, Shree Velagapudi Ramakrishna Memorial College, Nagaram, was established in the year 1970. It has a great reputation and distinction of producing many Scholars, Administrators, Scientists, Physicists, Mathematicians, Chemists and other illustrious personalities in various fields.
+              </p>
+              <p className="text-indigo-700">
+                Under the leadership of eminent founder teachers like Dr. M.V. Subba Rao, Dr. T.V. Krishna Rao and under the guidance of many great faculty like Sri. M. Satya Murty, Sri. G.S.B. Prabhakara Rao, Sri G. Srinivasa Rao and Sri Ch. Kishore Babu and with greatly influenced former distinguished staff, the department has developed by leaps and bounds to the present stage of dynamic standards. Currently, Dr. P. Srinivasa Rao is acting as HOD of the department and the remaining faculty are namely Sri B. Venkateswara Rao and Sri Ch. Nageswara Rao.
+              </p>
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* Infrastructure and Learning Resources */}
+        <Card>
+          <CardHeader>
+            <CardTitle>Infrastructure and Learning Resources</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div>
+                <h4 className="font-semibold mb-3">Laboratory Facilities</h4>
+                <div className="space-y-2">
+                  <div className="flex justify-between items-center p-3 bg-blue-50 rounded">
+                    <span>Lab I: Mechanics and Properties of matter</span>
+                    <Badge variant="secondary">30' × 20'</Badge>
+                  </div>
+                  <div className="flex justify-between items-center p-3 bg-green-50 rounded">
+                    <span>Lab II: Optics</span>
+                    <Badge variant="secondary">30' × 20'</Badge>
+                  </div>
+                  <div className="flex justify-between items-center p-3 bg-purple-50 rounded">
+                    <span>Lab III: Electricity and Magnetism</span>
+                    <Badge variant="secondary">30' × 20'</Badge>
+                  </div>
+                  <div className="flex justify-between items-center p-3 bg-orange-50 rounded">
+                    <span>Lab IV: Modern Physics and Electronics</span>
+                    <Badge variant="secondary">30' × 12'</Badge>
+                  </div>
+                  <div className="flex justify-between items-center p-3 bg-yellow-50 rounded">
+                    <span>Staff Room</span>
+                    <Badge variant="secondary">30' × 20'</Badge>
+                  </div>
+                </div>
+              </div>
+              <div>
+                <h4 className="font-semibold mb-3">Resources</h4>
+                <div className="space-y-3">
+                  <div className="p-3 bg-gray-50 rounded">
+                    <strong>Library:</strong> The department library has about 211 books for the use of students and faculty members.
+                  </div>
+                  <div className="p-3 bg-gray-50 rounded">
+                    <strong>Equipment:</strong> The department has procured a sufficient quantity of equipment since its inception.
+                  </div>
+                  <div className="p-3 bg-gray-50 rounded">
+                    <strong>Research Equipment:</strong> High temperature box furnace-1400°C (digital), High temperature furnace-1200°C, Digital electronic balance SHIMADZU, Agate Mortar & Pestle.
+                  </div>
+                  <div className="p-3 bg-gray-50 rounded">
+                    <strong>Heritage Instrument:</strong> SKYSCAN 851 T 75mm refractor telescope used to observe Solar and Lunar eclipses, Saturn rings, Jupiter moons, and Moon craters.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* Seat Structure and Programs */}
         <Card>
           <CardHeader>
             <CardTitle>Seat Structure & Programs Offered</CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div>
-                <h4 className="font-semibold mb-3">Undergraduate Programs</h4>
-                <div className="space-y-2">
-                  <div className="flex justify-between items-center p-3 bg-blue-50 rounded">
-                    <span>B.Sc. Physics (Regular)</span>
-                    <Badge variant="secondary">40 Seats</Badge>
-                  </div>
-                  <div className="flex justify-between items-center p-3 bg-green-50 rounded">
-                    <span>B.Sc. Physics (Honours)</span>
-                    <Badge variant="secondary">20 Seats</Badge>
-                  </div>
+            <div className="space-y-4">
+              <h4 className="font-semibold mb-3">Under Graduate - Honours Programs</h4>
+              <div className="space-y-2">
+                <div className="flex justify-between items-center p-3 bg-blue-50 rounded">
+                  <span>B.Sc., Physics (Major)</span>
+                  <Badge variant="secondary">24 Seats</Badge>
                 </div>
-              </div>
-              <div>
-                <h4 className="font-semibold mb-3">Postgraduate Programs</h4>
-                <div className="space-y-2">
-                  <div className="flex justify-between items-center p-3 bg-purple-50 rounded">
-                    <span>M.Sc. Physics</span>
-                    <Badge variant="secondary">30 Seats</Badge>
-                  </div>
-                  <div className="flex justify-between items-center p-3 bg-orange-50 rounded">
-                    <span>M.Sc. Applied Physics</span>
-                    <Badge variant="secondary">20 Seats</Badge>
-                  </div>
+                <div className="flex justify-between items-center p-3 bg-green-50 rounded">
+                  <span>B.Sc., Chemistry (Major) – Physics (Minor) (Choice based)</span>
+                  <Badge variant="secondary">78 Seats</Badge>
+                </div>
+                <div className="flex justify-between items-center p-3 bg-purple-50 rounded">
+                  <span>B.Sc., Computer Science (Major) – Physics (Minor) (Choice based)</span>
+                  <Badge variant="secondary">88 Seats</Badge>
                 </div>
               </div>
             </div>
@@ -110,33 +222,30 @@ const Physics = () => {
           <CardContent>
             <div className="space-y-6">
               <div>
-                <h4 className="font-semibold mb-3">B.Sc. Physics (3 Years)</h4>
+                <h4 className="font-semibold mb-3">B.Sc Physics Courses (3 years)</h4>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                   <div className="p-4 border rounded-lg">
                     <h5 className="font-medium text-blue-600 mb-2">Year 1</h5>
                     <ul className="text-sm space-y-1">
-                      <li>• Mechanics & Properties of Matter</li>
-                      <li>• Heat & Thermodynamics</li>
-                      <li>• Waves & Oscillations</li>
-                      <li>• Mathematical Physics I</li>
+                      <li>• Introduction to Mathematical Physics (Major)</li>
+                      <li>• Mechanics and Properties of Matter (Major)</li>
+                      <li>• Principles of Physical Sciences (M.D)</li>
                     </ul>
                   </div>
                   <div className="p-4 border rounded-lg">
                     <h5 className="font-medium text-green-600 mb-2">Year 2</h5>
                     <ul className="text-sm space-y-1">
-                      <li>• Electricity & Magnetism</li>
-                      <li>• Optics</li>
-                      <li>• Modern Physics</li>
-                      <li>• Mathematical Physics II</li>
+                      <li>• Optics (Minor)</li>
+                      <li>• Electricity, Magnetism and Electronics (Minor)</li>
+                      <li>• Modern Physics (Minor)</li>
+                      <li>• Introduction to Nano-Technology (M.D)</li>
                     </ul>
                   </div>
                   <div className="p-4 border rounded-lg">
                     <h5 className="font-medium text-purple-600 mb-2">Year 3</h5>
                     <ul className="text-sm space-y-1">
-                      <li>• Quantum Mechanics</li>
-                      <li>• Statistical Mechanics</li>
-                      <li>• Electronics</li>
-                      <li>• Solid State Physics</li>
+                      <li>• Applications of Electricity & Magnetism (Minor)</li>
+                      <li>• Electronic Instrumentation (Minor)</li>
                     </ul>
                   </div>
                 </div>
@@ -145,45 +254,24 @@ const Physics = () => {
           </CardContent>
         </Card>
 
-        {/* Department Overview */}
+        {/* Activities and Development */}
         <Card>
           <CardHeader>
-            <CardTitle className="flex items-center gap-2">
-              <BookOpen className="h-6 w-6 text-college-blue" />
-              Department Overview
-            </CardTitle>
+            <CardTitle>Activities and Development</CardTitle>
           </CardHeader>
-          <CardContent className="space-y-4">
-            <p>
-              The Department of Physics at SVRMC is committed to providing excellence in physics education 
-              and fostering scientific research. Our department offers comprehensive programs that combine 
-              theoretical knowledge with practical applications.
-            </p>
-            <p>
-              With state-of-the-art laboratories and experienced faculty, we prepare students for careers 
-              in research, industry, and academia. Our curriculum covers classical physics, quantum mechanics, 
-              thermodynamics, electromagnetism, and modern physics.
-            </p>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mt-6">
-              <div className="text-center p-4 bg-blue-50 rounded-lg">
-                <Users className="h-8 w-8 text-college-blue mx-auto mb-2" />
-                <div className="text-2xl font-bold text-college-blue">150+</div>
-                <div className="text-sm text-gray-600">Students</div>
+          <CardContent>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <div className="space-y-3">
+                <h5 className="font-semibold text-blue-600">Staff Development Activities</h5>
+                <p className="text-sm">Staff members are encouraged to do research and publications, and are asked to perform faculty development programmes. Most teaching staff have attended orientation programmes and refresher courses.</p>
               </div>
-              <div className="text-center p-4 bg-green-50 rounded-lg">
-                <Award className="h-8 w-8 text-green-600 mx-auto mb-2" />
-                <div className="text-2xl font-bold text-green-600">12</div>
-                <div className="text-sm text-gray-600">Faculty Members</div>
+              <div className="space-y-3">
+                <h5 className="font-semibold text-green-600">Student Development Activities</h5>
+                <p className="text-sm">Students are provided with quiz programmes, field visits organized by the department. Periodical study projects, group discussions and classroom seminars are arranged for their subject acquaintance.</p>
               </div>
-              <div className="text-center p-4 bg-purple-50 rounded-lg">
-                <BookOpen className="h-8 w-8 text-purple-600 mx-auto mb-2" />
-                <div className="text-2xl font-bold text-purple-600">4</div>
-                <div className="text-sm text-gray-600">Programs</div>
-              </div>
-              <div className="text-center p-4 bg-orange-50 rounded-lg">
-                <TestTube className="h-8 w-8 text-orange-600 mx-auto mb-2" />
-                <div className="text-2xl font-bold text-orange-600">15+</div>
-                <div className="text-sm text-gray-600">Research Labs</div>
+              <div className="space-y-3">
+                <h5 className="font-semibold text-purple-600">Overall Development Activities</h5>
+                <p className="text-sm">National and Regional level seminars are arranged by the department. NGPE, a national level physics competitive examination is being hosted by the physics department for the last two decades.</p>
               </div>
             </div>
           </CardContent>
