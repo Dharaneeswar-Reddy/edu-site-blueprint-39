@@ -2,6 +2,7 @@ import { useAuth } from "@/hooks/useAuth";
 import AdminAuth from "@/components/admin/AdminAuth";
 import AdminLayout from "@/components/admin/AdminLayout";
 import AdminDashboard from "@/components/admin/AdminDashboard";
+import AdminRoleGuard from "@/components/admin/AdminRoleGuard";
 
 const Admin = () => {
   const { user, loading } = useAuth();
@@ -19,9 +20,11 @@ const Admin = () => {
   }
 
   return (
-    <AdminLayout>
-      <AdminDashboard />
-    </AdminLayout>
+    <AdminRoleGuard>
+      <AdminLayout>
+        <AdminDashboard />
+      </AdminLayout>
+    </AdminRoleGuard>
   );
 };
 
