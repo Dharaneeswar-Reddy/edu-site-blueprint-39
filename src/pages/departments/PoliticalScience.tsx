@@ -81,9 +81,9 @@ const PoliticalScience = () => {
         </Card>
 
         {/* Department Overview and Photos */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
           {/* Department Overview */}
-          <div className="lg:col-span-2">
+          <div className="lg:col-span-3">
             <Card>
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
@@ -269,6 +269,26 @@ const PoliticalScience = () => {
 
         {/* Department Staff */}
         <DepartmentStaff departmentName="Political Science" />
+
+        {/* Department Gallery */}
+        <Card>
+          <CardHeader>
+            <CardTitle>Department Gallery</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+              {departmentPhotos.map((photo, index) => (
+                <div key={index} className="rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow">
+                  <img 
+                    src={photo} 
+                    alt={`Political Science Activity ${index + 1}`}
+                    className="w-full h-48 object-cover hover:scale-105 transition-transform duration-300"
+                  />
+                </div>
+              ))}
+            </div>
+          </CardContent>
+        </Card>
 
         {/* Time Tables */}
         <Card>

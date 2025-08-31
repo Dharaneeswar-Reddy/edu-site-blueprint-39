@@ -29,11 +29,9 @@ const StudentAchievementsAdmin = () => {
   const [uploading, setUploading] = useState(false);
   
   const [formData, setFormData] = useState({
-    department: '',
     title: '',
     description: '',
     academic_year: '',
-    achievement_date: '',
     display_order: 0
   });
   
@@ -106,7 +104,7 @@ const StudentAchievementsAdmin = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
-    if (!selectedFile || !formData.department || !formData.title) {
+    if (!selectedFile || !formData.title) {
       toast.error('Please fill in all required fields and select a file');
       return;
     }
@@ -120,6 +118,7 @@ const StudentAchievementsAdmin = () => {
         .from('student_achievements')
         .insert({
           ...formData,
+          department: 'Physical Education', // Fixed department
           file_url: fileUrl,
           file_type: fileType,
           is_active: true
@@ -129,11 +128,9 @@ const StudentAchievementsAdmin = () => {
 
       toast.success('Achievement uploaded successfully');
       setFormData({
-        department: '',
         title: '',
         description: '',
         academic_year: '',
-        achievement_date: '',
         display_order: 0
       });
       setSelectedFile(null);
@@ -192,34 +189,15 @@ const StudentAchievementsAdmin = () => {
         </CardHeader>
         <CardContent>
           <form onSubmit={handleSubmit} className="space-y-4">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div>
-                <Label htmlFor="department">Department *</Label>
-                <Select 
-                  value={formData.department} 
-                  onValueChange={(value) => setFormData({...formData, department: value})}
-                >
-                  <SelectTrigger>
-                    <SelectValue placeholder="Select department" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    {departments.map((dept) => (
-                      <SelectItem key={dept} value={dept}>{dept}</SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
-              </div>
-              
-              <div>
-                <Label htmlFor="title">Title *</Label>
-                <Input
-                  id="title"
-                  value={formData.title}
-                  onChange={(e) => setFormData({...formData, title: e.target.value})}
-                  placeholder="Achievement title"
-                  required
-                />
-              </div>
+            <div>
+              <Label htmlFor="title">Title *</Label>
+              <Input
+                id="title"
+                value={formData.title}
+                onChange={(e) => setFormData({...formData, title: e.target.value})}
+                placeholder="Achievement title"
+                required
+              />
             </div>
 
             <div>
@@ -233,7 +211,7 @@ const StudentAchievementsAdmin = () => {
               />
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
                 <Label htmlFor="academic_year">Academic Year</Label>
                 <Input
@@ -241,16 +219,6 @@ const StudentAchievementsAdmin = () => {
                   value={formData.academic_year}
                   onChange={(e) => setFormData({...formData, academic_year: e.target.value})}
                   placeholder="2023-2024"
-                />
-              </div>
-              
-              <div>
-                <Label htmlFor="achievement_date">Achievement Date</Label>
-                <Input
-                  id="achievement_date"
-                  type="date"
-                  value={formData.achievement_date}
-                  onChange={(e) => setFormData({...formData, achievement_date: e.target.value})}
                 />
               </div>
               
@@ -313,7 +281,6 @@ const StudentAchievementsAdmin = () => {
                     )}
                     <div className="flex gap-4 text-sm text-gray-500">
                       {achievement.academic_year && <span>Year: {achievement.academic_year}</span>}
-                      {achievement.achievement_date && <span>Date: {achievement.achievement_date}</span>}
                       <span>Type: {achievement.file_type}</span>
                     </div>
                   </div>

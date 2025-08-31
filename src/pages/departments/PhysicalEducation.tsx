@@ -354,6 +354,26 @@ const PhysicalEducation = () => {
         {/* Department Staff */}
         <DepartmentStaff departmentName="Physical Education" />
 
+        {/* Department Gallery */}
+        <Card>
+          <CardHeader>
+            <CardTitle>Department Gallery</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+              {departmentPhotos.map((photo, index) => (
+                <div key={index} className="rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow">
+                  <img 
+                    src={photo} 
+                    alt={`Sports Activity ${index + 1}`}
+                    className="w-full h-48 object-cover hover:scale-105 transition-transform duration-300"
+                  />
+                </div>
+              ))}
+            </div>
+          </CardContent>
+        </Card>
+
         {/* Time Tables */}
         <Card>
           <CardHeader>
