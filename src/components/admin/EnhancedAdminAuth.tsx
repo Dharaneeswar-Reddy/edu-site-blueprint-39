@@ -62,14 +62,31 @@ const EnhancedAdminAuth = () => {
 
   const validateCaptcha = async (token: string) => {
     try {
+      console.log('Validating CAPTCHA token:', token.substring(0, 20) + '...');
       const { data, error } = await supabase.functions.invoke('validate-captcha', {
         body: { captchaToken: token },
       });
 
-      if (error) throw error;
-      return data.valid;
+      console.log('CAPTCHA validation response:', { data, error });
+
+      if (error) {
+        console.error('CAPTCHA validation error:', error);
+        toast({
+          title: "CAPTCHA Error",
+          description: "CAPTCHA validation service error. Please try again.",
+          variant: "destructive",
+        });
+        return false;
+      }
+
+      return data?.valid === true;
     } catch (error) {
       console.error('CAPTCHA validation error:', error);
+      toast({
+        title: "CAPTCHA Error",
+        description: "Unable to verify CAPTCHA. Please try again.",
+        variant: "destructive",
+      });
       return false;
     }
   };
