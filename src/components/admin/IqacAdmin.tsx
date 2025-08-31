@@ -57,36 +57,12 @@ const IqacAdmin = () => {
     file: null as File | null,
   });
 
-  // Show loading while checking authentication
-  if (roleLoading) {
-    return (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></div>
-      </div>
-    );
-  }
-
-  // Show error if not authenticated as admin
-  if (!user || !isAdmin) {
-    return (
-      <div className="min-h-screen flex items-center justify-center p-4">
-        <Card className="max-w-md">
-          <CardContent className="pt-6">
-            <div className="text-center">
-              <h2 className="text-lg font-semibold mb-2">Access Denied</h2>
-              <p className="text-muted-foreground">
-                You need admin privileges to manage IQAC documents.
-              </p>
-            </div>
-          </CardContent>
-        </Card>
-      </div>
-    );
-  }
-
+  // All hooks must be called before any early returns
   useEffect(() => {
-    fetchDocuments();
-  }, []);
+    if (user && isAdmin && !roleLoading) {
+      fetchDocuments();
+    }
+  }, [user, isAdmin, roleLoading]);
 
   const fetchDocuments = async () => {
     setLoading(true);
@@ -278,6 +254,33 @@ const IqacAdmin = () => {
     const docType = DOCUMENT_TYPES.find(t => t.value === type);
     return docType?.label || type;
   };
+
+  // Show loading while checking authentication
+  if (roleLoading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></div>
+      </div>
+    );
+  }
+
+  // Show error if not authenticated as admin
+  if (!user || !isAdmin) {
+    return (
+      <div className="min-h-screen flex items-center justify-center p-4">
+        <Card className="max-w-md">
+          <CardContent className="pt-6">
+            <div className="text-center">
+              <h2 className="text-lg font-semibold mb-2">Access Denied</h2>
+              <p className="text-muted-foreground">
+                You need admin privileges to manage IQAC documents.
+              </p>
+            </div>
+          </CardContent>
+        </Card>
+      </div>
+    );
+  }
 
   return (
     <div className="space-y-6">
