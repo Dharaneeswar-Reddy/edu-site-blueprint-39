@@ -26,7 +26,11 @@ const Chemistry = () => {
     "/lovable-uploads/958295e9-3189-4f34-8a51-d2aeb431f9ee.png",
     "/lovable-uploads/44151e06-0086-45c1-b1b8-dea0cce05c3b.png",
     "/lovable-uploads/c06797f6-5188-4a68-893e-92274a14b172.png",
-    "/lovable-uploads/dec9abef-758a-4d15-a93a-a9e7e7575c05.png"
+    "/lovable-uploads/dec9abef-758a-4d15-a93a-a9e7e7575c05.png",
+    "/lovable-uploads/1d8f59be-c09f-438d-9557-f1ad61eea667.png",
+    "/lovable-uploads/10b4f684-4d4c-45be-871d-f64daf43e585.png",
+    "/lovable-uploads/1041cbf2-981b-437e-a2eb-72dfb54ca3b1.png",
+    "/lovable-uploads/a32c8f33-64ff-4729-8b86-ba29f7eb5491.png"
   ];
 
   const departmentPhotos = [
@@ -39,7 +43,12 @@ const Chemistry = () => {
     "/lovable-uploads/958295e9-3189-4f34-8a51-d2aeb431f9ee.png",
     "/lovable-uploads/44151e06-0086-45c1-b1b8-dea0cce05c3b.png",
     "/lovable-uploads/c06797f6-5188-4a68-893e-92274a14b172.png",
-    "/lovable-uploads/dec9abef-758a-4d15-a93a-a9e7e7575c05.png"
+    "/lovable-uploads/dec9abef-758a-4d15-a93a-a9e7e7575c05.png",
+    "/lovable-uploads/1d8f59be-c09f-438d-9557-f1ad61eea667.png",
+    "/lovable-uploads/86727585-f64e-465e-802e-95da0dcf41b1.png",
+    "/lovable-uploads/10b4f684-4d4c-45be-871d-f64daf43e585.png",
+    "/lovable-uploads/1041cbf2-981b-437e-a2eb-72dfb54ca3b1.png",
+    "/lovable-uploads/a32c8f33-64ff-4729-8b86-ba29f7eb5491.png"
   ];
 
   useEffect(() => {
@@ -523,28 +532,147 @@ const Chemistry = () => {
               </Card>
             </div>
 
-            {/* Laboratory Instruments Section - To be filled later */}
+            {/* Laboratory Instruments Section */}
             <Card>
               <CardHeader>
-                <CardTitle>Laboratory Instruments</CardTitle>
+                <CardTitle className="flex items-center gap-2">
+                  <TestTube className="h-6 w-6 text-college-blue" />
+                  Laboratory Instruments
+                </CardTitle>
               </CardHeader>
               <CardContent>
-                <div className="text-center py-8 text-muted-foreground">
-                  <TestTube className="h-16 w-16 mx-auto mb-4 opacity-20" />
-                  <p>Laboratory instruments details will be added soon.</p>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                  <div className="text-center p-4 bg-blue-50 rounded-lg">
+                    <img 
+                      src="/lovable-uploads/7bd9e4a8-c3db-4aee-ade8-9ff8a403f294.png" 
+                      alt="Digital Conductometer" 
+                      className="w-full h-32 object-contain mb-3"
+                    />
+                    <h4 className="font-semibold text-blue-800">Digital Conductometer</h4>
+                  </div>
+                  <div className="text-center p-4 bg-green-50 rounded-lg">
+                    <img 
+                      src="/lovable-uploads/0aaca3dd-4095-4efe-90d7-da3f891f4d43.png" 
+                      alt="Digital pH Meter" 
+                      className="w-full h-32 object-contain mb-3"
+                    />
+                    <h4 className="font-semibold text-green-800">Digital pH Meter</h4>
+                  </div>
+                  <div className="text-center p-4 bg-purple-50 rounded-lg">
+                    <img 
+                      src="/lovable-uploads/46bd4e24-be08-469d-a3df-d91da897348c.png" 
+                      alt="Digital Photo Colorimeter" 
+                      className="w-full h-32 object-contain mb-3"
+                    />
+                    <h4 className="font-semibold text-purple-800">Digital Photo Colorimeter</h4>
+                  </div>
+                  <div className="text-center p-4 bg-orange-50 rounded-lg">
+                    <img 
+                      src="/lovable-uploads/e6869eea-1f1d-4110-a8e9-c873d813243b.png" 
+                      alt="Melting Point Apparatus" 
+                      className="w-full h-32 object-contain mb-3"
+                    />
+                    <h4 className="font-semibold text-orange-800">Melting Point Apparatus</h4>
+                  </div>
+                  <div className="text-center p-4 bg-teal-50 rounded-lg">
+                    <img 
+                      src="/lovable-uploads/f3aea75b-6a6b-451b-85cb-e8b6bc6e3f8b.png" 
+                      alt="Electronic Balance" 
+                      className="w-full h-32 object-contain mb-3"
+                    />
+                    <h4 className="font-semibold text-teal-800">Electronic Balance</h4>
+                  </div>
                 </div>
               </CardContent>
             </Card>
 
-            {/* Departmental Activities Section - To be filled later */}
+            {/* Departmental Activities Section */}
             <Card>
               <CardHeader>
-                <CardTitle>Departmental Activities</CardTitle>
+                <CardTitle className="flex items-center gap-2">
+                  <Calendar className="h-6 w-6 text-college-blue" />
+                  Departmental Activities
+                </CardTitle>
               </CardHeader>
-              <CardContent>
-                <div className="text-center py-8 text-muted-foreground">
-                  <Calendar className="h-16 w-16 mx-auto mb-4 opacity-20" />
-                  <p>Departmental activities details will be added soon.</p>
+              <CardContent className="space-y-8">
+                {/* Student Achievements */}
+                <div className="bg-green-50 p-6 rounded-lg">
+                  <h4 className="font-semibold text-lg mb-4 text-green-800 flex items-center gap-2">
+                    <Award className="h-5 w-5" />
+                    STUDENT ACHIEVEMENTS
+                  </h4>
+                  <div className="space-y-4">
+                    <p className="text-green-700">
+                      • All the students who completed M.Sc here have settled in pharmaceutical industries and colleges.
+                    </p>
+                    <div className="flex items-center gap-4 p-4 bg-white rounded-lg">
+                      <img 
+                        src="/lovable-uploads/1d8f59be-c09f-438d-9557-f1ad61eea667.png" 
+                        alt="Gold Medal Achievement" 
+                        className="w-20 h-20 object-cover rounded"
+                      />
+                      <div>
+                        <p className="text-green-700 font-medium">
+                          Ms. T. Deepika, M.Sc (Analytical Chemistry) has secured GOLD MEDAL for getting highest marks from Acharya Nagarjuna University in the year 2012–13.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Career Opportunities */}
+                <div className="bg-blue-50 p-6 rounded-lg">
+                  <h4 className="font-semibold text-lg mb-4 text-blue-800 flex items-center gap-2">
+                    <ExternalLink className="h-5 w-5" />
+                    CAREER OPPORTUNITIES
+                  </h4>
+                  <div className="flex items-center gap-4">
+                    <img 
+                      src="/lovable-uploads/86727585-f64e-465e-802e-95da0dcf41b1.png" 
+                      alt="Career Opportunities Chart" 
+                      className="w-full max-w-md object-contain"
+                    />
+                  </div>
+                </div>
+
+                {/* Industrial Visits */}
+                <div className="bg-purple-50 p-6 rounded-lg">
+                  <h4 className="font-semibold text-lg mb-4 text-purple-800">INDUSTRIAL VISITS</h4>
+                  <div className="space-y-6">
+                    <div className="flex items-center gap-4 p-4 bg-white rounded-lg">
+                      <img 
+                        src="/lovable-uploads/10b4f684-4d4c-45be-871d-f64daf43e585.png" 
+                        alt="Jeypore Sugar Company Visit" 
+                        className="w-24 h-16 object-cover rounded"
+                      />
+                      <div>
+                        <h5 className="font-medium text-purple-800">Industrial Visit to Jeypore Sugar Company Ltd</h5>
+                        <p className="text-purple-700 text-sm">Chagallu, West Godavari (Dt), AP (2009)</p>
+                      </div>
+                    </div>
+                    <div className="flex items-center gap-4 p-4 bg-white rounded-lg">
+                      <img 
+                        src="/lovable-uploads/1041cbf2-981b-437e-a2eb-72dfb54ca3b1.png" 
+                        alt="Rajahmundry Paper Mills Visit" 
+                        className="w-24 h-16 object-cover rounded"
+                      />
+                      <div>
+                        <h5 className="font-medium text-purple-800">Industrial visit to Rajahmundry Paper Mills (P) Ltd</h5>
+                        <p className="text-purple-700 text-sm">East Godavari (Dt), A.P (2010)</p>
+                      </div>
+                    </div>
+                    <div className="flex items-center gap-4 p-4 bg-white rounded-lg">
+                      <img 
+                        src="/lovable-uploads/a32c8f33-64ff-4729-8b86-ba29f7eb5491.png" 
+                        alt="R.V Labs Visit" 
+                        className="w-24 h-16 object-cover rounded"
+                      />
+                      <div>
+                        <h5 className="font-medium text-purple-800">R.V LABS VISIT AND COMPLETED STUDY PROJECT WORK</h5>
+                        <p className="text-purple-700 text-sm">20th March - 27th March - 2023</p>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </CardContent>
             </Card>
