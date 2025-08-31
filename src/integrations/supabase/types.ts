@@ -14,6 +14,45 @@ export type Database = {
   }
   public: {
     Tables: {
+      admin_invitations: {
+        Row: {
+          created_at: string
+          email: string
+          expires_at: string
+          id: string
+          invitation_token: string
+          invited_by: string | null
+          is_active: boolean
+          role: Database["public"]["Enums"]["app_role"]
+          updated_at: string
+          used_at: string | null
+        }
+        Insert: {
+          created_at?: string
+          email: string
+          expires_at: string
+          id?: string
+          invitation_token: string
+          invited_by?: string | null
+          is_active?: boolean
+          role?: Database["public"]["Enums"]["app_role"]
+          updated_at?: string
+          used_at?: string | null
+        }
+        Update: {
+          created_at?: string
+          email?: string
+          expires_at?: string
+          id?: string
+          invitation_token?: string
+          invited_by?: string | null
+          is_active?: boolean
+          role?: Database["public"]["Enums"]["app_role"]
+          updated_at?: string
+          used_at?: string | null
+        }
+        Relationships: []
+      }
       announcements: {
         Row: {
           content: string
@@ -44,6 +83,42 @@ export type Database = {
           title?: string
           type?: string
           updated_at?: string
+        }
+        Relationships: []
+      }
+      audit_logs: {
+        Row: {
+          action: string
+          created_at: string
+          details: Json | null
+          id: string
+          ip_address: unknown | null
+          resource_id: string | null
+          resource_type: string | null
+          user_agent: string | null
+          user_id: string | null
+        }
+        Insert: {
+          action: string
+          created_at?: string
+          details?: Json | null
+          id?: string
+          ip_address?: unknown | null
+          resource_id?: string | null
+          resource_type?: string | null
+          user_agent?: string | null
+          user_id?: string | null
+        }
+        Update: {
+          action?: string
+          created_at?: string
+          details?: Json | null
+          id?: string
+          ip_address?: unknown | null
+          resource_id?: string | null
+          resource_type?: string | null
+          user_agent?: string | null
+          user_id?: string | null
         }
         Relationships: []
       }
@@ -250,6 +325,39 @@ export type Database = {
           position?: string
           qualifications?: string | null
           specialization?: string | null
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      login_attempts: {
+        Row: {
+          created_at: string
+          email: string | null
+          failed_attempts: number
+          id: string
+          ip_address: unknown | null
+          last_attempt_at: string
+          locked_until: string | null
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          email?: string | null
+          failed_attempts?: number
+          id?: string
+          ip_address?: unknown | null
+          last_attempt_at?: string
+          locked_until?: string | null
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          email?: string | null
+          failed_attempts?: number
+          id?: string
+          ip_address?: unknown | null
+          last_attempt_at?: string
+          locked_until?: string | null
           updated_at?: string
         }
         Relationships: []
@@ -595,6 +703,10 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
+      check_login_attempts: {
+        Args: { user_email: string; user_ip?: unknown }
+        Returns: Json
+      }
       get_public_leadership_data: {
         Args: Record<PropertyKey, never>
         Returns: {
@@ -666,9 +778,25 @@ export type Database = {
         Args: { user_id: string }
         Returns: Database["public"]["Enums"]["app_role"]
       }
+      get_user_role_level: {
+        Args: { user_id?: string }
+        Returns: number
+      }
       is_admin: {
         Args: { user_id?: string }
         Returns: boolean
+      }
+      is_super_admin: {
+        Args: { user_id?: string }
+        Returns: boolean
+      }
+      record_failed_login: {
+        Args: { user_email: string; user_ip?: unknown }
+        Returns: Json
+      }
+      reset_login_attempts: {
+        Args: { user_email: string; user_ip?: unknown }
+        Returns: undefined
       }
     }
     Enums: {

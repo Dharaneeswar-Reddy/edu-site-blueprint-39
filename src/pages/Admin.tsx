@@ -1,5 +1,5 @@
 import { useAuth } from "@/hooks/useAuth";
-import AdminAuth from "@/components/admin/AdminAuth";
+import EnhancedAdminAuth from "@/components/admin/EnhancedAdminAuth";
 import AdminLayout from "@/components/admin/AdminLayout";
 import AdminDashboard from "@/components/admin/AdminDashboard";
 import AdminRoleGuard from "@/components/admin/AdminRoleGuard";
@@ -16,7 +16,7 @@ const Admin = () => {
   }
 
   if (!user) {
-    return <AdminAuth />;
+    return <EnhancedAdminAuth />;
   }
 
   return (

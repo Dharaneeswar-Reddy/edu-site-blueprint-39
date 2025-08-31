@@ -12,7 +12,7 @@ interface Profile {
   email: string;
   full_name: string;
   created_at: string;
-  role?: 'admin' | 'moderator' | 'user' | null;
+  role?: 'admin' | 'moderator' | 'user' | 'super_admin' | null;
 }
 
 export default function UserManagement() {
@@ -60,7 +60,7 @@ export default function UserManagement() {
     }
   };
 
-  const updateUserRole = async (userId: string, newRole: 'admin' | 'moderator' | 'user') => {
+  const updateUserRole = async (userId: string, newRole: 'admin' | 'moderator' | 'user' | 'super_admin') => {
     try {
       // First, try to update existing role
       const { error: updateError } = await supabase
@@ -100,6 +100,8 @@ export default function UserManagement() {
 
   const getRoleIcon = (role: string) => {
     switch (role) {
+      case 'super_admin':
+        return <Crown className="h-4 w-4 text-amber-600" />;
       case 'admin':
         return <Crown className="h-4 w-4" />;
       case 'moderator':
@@ -111,6 +113,8 @@ export default function UserManagement() {
 
   const getRoleColor = (role: string) => {
     switch (role) {
+      case 'super_admin':
+        return 'bg-gradient-to-r from-amber-100 to-orange-100 text-amber-800 border-amber-200';
       case 'admin':
         return 'bg-red-100 text-red-800';
       case 'moderator':
@@ -166,7 +170,7 @@ export default function UserManagement() {
               <div className="flex items-center gap-2">
                 <Select
                   value={profile.role || 'user'}
-                  onValueChange={(value: 'admin' | 'moderator' | 'user') => 
+                  onValueChange={(value: 'admin' | 'moderator' | 'user' | 'super_admin') => 
                     updateUserRole(profile.id, value)
                   }
                 >
@@ -177,6 +181,7 @@ export default function UserManagement() {
                     <SelectItem value="user">User</SelectItem>
                     <SelectItem value="moderator">Moderator</SelectItem>
                     <SelectItem value="admin">Admin</SelectItem>
+                    <SelectItem value="super_admin">Super Admin</SelectItem>
                   </SelectContent>
                 </Select>
               </div>
