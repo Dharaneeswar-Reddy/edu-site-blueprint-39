@@ -293,6 +293,30 @@ export type Database = {
         }
         Relationships: []
       }
+      profiles: {
+        Row: {
+          created_at: string
+          email: string | null
+          full_name: string | null
+          id: string
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          email?: string | null
+          full_name?: string | null
+          id: string
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          email?: string | null
+          full_name?: string | null
+          id?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
       staff: {
         Row: {
           bio: string | null
@@ -545,11 +569,52 @@ export type Database = {
         }
         Relationships: []
       }
+      user_roles: {
+        Row: {
+          created_at: string
+          id: string
+          role: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          role: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          role?: Database["public"]["Enums"]["app_role"]
+          user_id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
+      get_public_leadership_data: {
+        Args: Record<PropertyKey, never>
+        Returns: {
+          achievements: string[]
+          bio: string
+          created_at: string
+          department: string
+          designation: string
+          experience: string
+          id: string
+          is_active: boolean
+          message: string
+          name: string
+          photo_url: string
+          position: string
+          qualifications: string
+          specialization: string
+          updated_at: string
+        }[]
+      }
       get_public_staff_data: {
         Args: Record<PropertyKey, never>
         Returns: {
@@ -566,9 +631,48 @@ export type Database = {
           updated_at: string
         }[]
       }
+      get_public_staff_data_secure: {
+        Args: Record<PropertyKey, never>
+        Returns: {
+          bio: string
+          created_at: string
+          department: string
+          designation: string
+          experience: string
+          id: string
+          name: string
+          photo_url: string
+          qualification: string
+          staff_type: string
+          updated_at: string
+        }[]
+      }
+      get_public_student_support_staff: {
+        Args: Record<PropertyKey, never>
+        Returns: {
+          created_at: string
+          department: string
+          designation: string
+          display_order: number
+          id: string
+          is_active: boolean
+          name: string
+          photo_url: string
+          service_name: string
+          updated_at: string
+        }[]
+      }
+      get_user_role: {
+        Args: { user_id: string }
+        Returns: Database["public"]["Enums"]["app_role"]
+      }
+      is_admin: {
+        Args: { user_id?: string }
+        Returns: boolean
+      }
     }
     Enums: {
-      [_ in never]: never
+      app_role: "admin" | "moderator" | "user"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -695,6 +799,8 @@ export type CompositeTypes<
 
 export const Constants = {
   public: {
-    Enums: {},
+    Enums: {
+      app_role: ["admin", "moderator", "user"],
+    },
   },
 } as const
