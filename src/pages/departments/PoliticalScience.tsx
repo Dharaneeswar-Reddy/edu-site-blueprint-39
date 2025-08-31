@@ -2,25 +2,27 @@ import PageLayout from "@/components/PageLayout";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Clock, Users, BookOpen, Award, Scale, Mail } from "lucide-react";
+import { Clock, Users, BookOpen, Award, Scale, ExternalLink } from "lucide-react";
 import { useEffect, useState } from "react";
 import DepartmentStaff from "@/components/DepartmentStaff";
+import useDepartmentTimetables from "@/hooks/useDepartmentTimetables";
 
 const PoliticalScience = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const { timetables, loading: timetablesLoading } = useDepartmentTimetables("Political Science");
 
   const heroImages = [
-    "/lovable-uploads/d1d2add7-8d38-40a3-9b07-6b30cc16b6bc.png",
-    "/lovable-uploads/d23b165a-50de-4010-841f-59049ee5cf3d.png",
-    "/lovable-uploads/d870c473-3320-4d6a-9dd4-15ab9ceab52a.png",
-    "/lovable-uploads/dd09abc5-6c94-4cbf-898d-c7df488183a6.png"
+    "/lovable-uploads/2b10ef1d-4773-4ca9-b45c-4db28077fd0e.png",
+    "/lovable-uploads/38c6f30f-e6ed-4a07-98b7-07b2df3b2f25.png",
+    "/lovable-uploads/53ed32c7-c5aa-4a5d-91ba-d36b7fde27a1.png",
+    "/lovable-uploads/8efaad64-c801-48e1-b4d7-c7e36d250038.png"
   ];
 
   const departmentPhotos = [
-    "/lovable-uploads/ee497235-78d2-427a-9aca-40010a64e520.png",
-    "/lovable-uploads/f7ffbe1f-5fed-4b97-9af1-ab0ad2725f32.png",
-    "/lovable-uploads/fa6cd0f0-bbb2-4bf5-bc81-323b4085c47e.png",
-    "/lovable-uploads/fd7697be-4da9-4c9f-99c3-16a23c2dc964.png"
+    "/lovable-uploads/2b10ef1d-4773-4ca9-b45c-4db28077fd0e.png",
+    "/lovable-uploads/38c6f30f-e6ed-4a07-98b7-07b2df3b2f25.png",
+    "/lovable-uploads/53ed32c7-c5aa-4a5d-91ba-d36b7fde27a1.png",
+    "/lovable-uploads/8efaad64-c801-48e1-b4d7-c7e36d250038.png"
   ];
 
   useEffect(() => {
@@ -36,7 +38,7 @@ const PoliticalScience = () => {
   return (
     <PageLayout 
       title="Department of Political Science" 
-      description="Understanding governance, political processes, and public policy through comprehensive political science education."
+      description="Exploring human civilization, cultural heritage, and historical processes through comprehensive historical education"
     >
       <div className="space-y-8">
         
@@ -55,10 +57,28 @@ const PoliticalScience = () => {
           <div className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
             <div className="text-center text-white">
               <h1 className="text-4xl md:text-6xl font-bold mb-4">Political Science Department</h1>
-              <p className="text-xl md:text-2xl">Governance, Policy & Democracy</p>
+              <p className="text-xl md:text-2xl">Governance, Democracy & Public Policy</p>
             </div>
           </div>
         </div>
+
+        {/* Department Introduction */}
+        <Card>
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+              <Scale className="h-6 w-6 text-college-blue" />
+              Department of Political Science
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            <p>
+              The Department of Political Science at SVRMC, Nagaram, plays a vital role in shaping students into socially responsible, politically aware, and analytically sharp individuals. Political Science is not just the study of governments and institutions — it is a discipline that explores the functioning of power, the nature of justice, the importance of civic participation, and the impact of political decisions on societies.
+            </p>
+            <p>
+              At SVRMC, the Political Science curriculum is designed to provide a strong foundation in political theory, comparative politics, international relations, public administration, and Indian government and politics. Our goal is to encourage critical thinking, informed debate, and a deeper understanding of contemporary political issues — both national and global.
+            </p>
+          </CardContent>
+        </Card>
 
         {/* Department Overview and Photos */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
@@ -68,31 +88,22 @@ const PoliticalScience = () => {
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                   <Scale className="h-6 w-6 text-college-blue" />
-                  Department Overview
+                  Department Overview - Political Science
                 </CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
                 <p>
-                  The Department of Political Science at SVRMC provides comprehensive education 
-                  in political theory, comparative politics, international relations, and public 
-                  administration. Our programs prepare students to understand complex political 
-                  phenomena and contribute to democratic governance.
-                </p>
-                <p>
-                  With experienced faculty specializing in various subfields of political science, 
-                  we encourage students to develop critical thinking about political institutions, 
-                  processes, and policies. Our curriculum combines theoretical knowledge with 
-                  practical applications in governance and public service.
+                  The Department of Political Science is dedicated to the study of power, governance, and public affairs both in theory and practice. Our curriculum explores political ideas, institutions, behavior, and policies at the local, national, and international levels. Through rigorous coursework and experiential learning, students gain the analytical, research, and communication skills necessary to understand and engage with today's most pressing political and social challenges.
                 </p>
                 <div className="grid grid-cols-2 gap-4 mt-6">
                   <div className="text-center p-4 bg-blue-50 rounded-lg">
                     <Users className="h-8 w-8 text-college-blue mx-auto mb-2" />
-                    <div className="text-2xl font-bold text-college-blue">170+</div>
+                    <div className="text-2xl font-bold text-college-blue">60</div>
                     <div className="text-sm text-gray-600">Students</div>
                   </div>
                   <div className="text-center p-4 bg-green-50 rounded-lg">
                     <Award className="h-8 w-8 text-green-600 mx-auto mb-2" />
-                    <div className="text-2xl font-bold text-green-600">12</div>
+                    <div className="text-2xl font-bold text-green-600">2</div>
                     <div className="text-sm text-gray-600">Faculty Members</div>
                   </div>
                 </div>
@@ -100,13 +111,14 @@ const PoliticalScience = () => {
             </Card>
           </div>
 
-          {/* Department Photos */}
+          {/* Department Gallery */}
           <div className="space-y-4">
+            <h3 className="text-lg font-semibold text-college-blue mb-4">Department Gallery</h3>
             {departmentPhotos.map((photo, index) => (
               <div key={index} className="rounded-lg overflow-hidden shadow-md">
                 <img 
                   src={photo} 
-                  alt={`Political Science Classroom ${index + 1}`}
+                  alt={`Political Science Activity ${index + 1}`}
                   className="w-full h-32 object-cover hover:scale-105 transition-transform duration-300"
                 />
               </div>
@@ -120,30 +132,17 @@ const PoliticalScience = () => {
             <CardTitle>Seat Structure & Programs Offered</CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="space-y-6">
               <div>
                 <h4 className="font-semibold mb-3">Undergraduate Programs</h4>
                 <div className="space-y-2">
                   <div className="flex justify-between items-center p-3 bg-blue-50 rounded">
-                    <span>B.A. Political Science</span>
-                    <Badge variant="secondary">50 Seats</Badge>
+                    <span>B.A. Political Science (Regular)</span>
+                    <Badge variant="secondary">60 Seats</Badge>
                   </div>
                   <div className="flex justify-between items-center p-3 bg-green-50 rounded">
                     <span>B.A. Political Science (Honours)</span>
-                    <Badge variant="secondary">30 Seats</Badge>
-                  </div>
-                </div>
-              </div>
-              <div>
-                <h4 className="font-semibold mb-3">Postgraduate Programs</h4>
-                <div className="space-y-2">
-                  <div className="flex justify-between items-center p-3 bg-purple-50 rounded">
-                    <span>M.A. Political Science</span>
-                    <Badge variant="secondary">35 Seats</Badge>
-                  </div>
-                  <div className="flex justify-between items-center p-3 bg-orange-50 rounded">
-                    <span>M.A. Public Administration</span>
-                    <Badge variant="secondary">25 Seats</Badge>
+                    <Badge variant="secondary">60 Seats</Badge>
                   </div>
                 </div>
               </div>
@@ -159,35 +158,76 @@ const PoliticalScience = () => {
           <CardContent>
             <div className="space-y-6">
               <div>
-                <h4 className="font-semibold mb-3">B.A. Political Science (3 Years)</h4>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                  <div className="p-4 border rounded-lg">
-                    <h5 className="font-medium text-blue-600 mb-2">Year 1</h5>
-                    <ul className="text-sm space-y-1">
-                      <li>• Introduction to Political Theory</li>
-                      <li>• Indian Government & Politics</li>
-                      <li>• Political Sociology</li>
-                      <li>• Constitutional Law</li>
-                    </ul>
-                  </div>
-                  <div className="p-4 border rounded-lg">
-                    <h5 className="font-medium text-green-600 mb-2">Year 2</h5>
-                    <ul className="text-sm space-y-1">
-                      <li>• Comparative Government</li>
-                      <li>• International Relations</li>
-                      <li>• Public Administration</li>
-                      <li>• Political Economy</li>
-                    </ul>
-                  </div>
-                  <div className="p-4 border rounded-lg">
-                    <h5 className="font-medium text-purple-600 mb-2">Year 3</h5>
-                    <ul className="text-sm space-y-1">
-                      <li>• Modern Political Thought</li>
-                      <li>• Foreign Policy Analysis</li>
-                      <li>• Research Methodology</li>
-                      <li>• Project Work</li>
-                    </ul>
-                  </div>
+                <h4 className="font-semibold mb-4">B.A. Political Science (Honours)</h4>
+                
+                {/* Semester-wise Structure Table */}
+                <div className="overflow-x-auto">
+                  <table className="w-full border-collapse border border-gray-300">
+                    <thead>
+                      <tr className="bg-gray-100">
+                        <th className="border border-gray-300 px-4 py-2 text-left font-semibold">Semester</th>
+                        <th className="border border-gray-300 px-4 py-2 text-left font-semibold">Papers</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td className="border border-gray-300 px-4 py-3 font-medium">I</td>
+                        <td className="border border-gray-300 px-4 py-3">
+                          <div className="space-y-1">
+                            <div>1. Fundamentals of Social Sciences</div>
+                            <div>2. Perspectives on Indian Society</div>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td className="border border-gray-300 px-4 py-3 font-medium">II</td>
+                        <td className="border border-gray-300 px-4 py-3">
+                          <div className="space-y-1">
+                            <div>3. Fundamentals of Political Science</div>
+                            <div>4. Concepts & Ideologies of Political Science</div>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td className="border border-gray-300 px-4 py-3 font-medium">III</td>
+                        <td className="border border-gray-300 px-4 py-3">
+                          <div className="space-y-1">
+                            <div>5. Political Institutions</div>
+                            <div>6. Indian Constitution</div>
+                            <div>7. Western Political Thought: Ancient & Medieval</div>
+                            <div>8. Indian Federal System</div>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td className="border border-gray-300 px-4 py-3 font-medium">IV</td>
+                        <td className="border border-gray-300 px-4 py-3">
+                          <div className="space-y-1">
+                            <div>9. Indian Government</div>
+                            <div>10. Dynamics of Indian Political System</div>
+                            <div>11. Indian Political Thought</div>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td className="border border-gray-300 px-4 py-3 font-medium">V</td>
+                        <td className="border border-gray-300 px-4 py-3">
+                          <div className="space-y-1">
+                            <div>12. E-Governance</div>
+                            <div>13. Local Administration</div>
+                            <div>14. Legal Literacy – Rights Awareness</div>
+                            <div>15. Electoral Politics & Voting Behaviour</div>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td className="border border-gray-300 px-4 py-3 font-medium">VI</td>
+                        <td className="border border-gray-300 px-4 py-3">
+                          <div>Internship</div>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
                 </div>
               </div>
             </div>
@@ -239,28 +279,39 @@ const PoliticalScience = () => {
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-              <div className="p-4 border rounded-lg text-center">
-                <h4 className="font-semibold mb-2">1st Year B.A.</h4>
-                <Button variant="outline" size="sm">View Schedule</Button>
+            {timetablesLoading ? (
+              <div className="flex items-center justify-center py-8">
+                <div className="text-gray-500">Loading timetables...</div>
               </div>
-              <div className="p-4 border rounded-lg text-center">
-                <h4 className="font-semibold mb-2">2nd Year B.A.</h4>
-                <Button variant="outline" size="sm">View Schedule</Button>
+            ) : timetables.length > 0 ? (
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                {timetables.map((timetable) => (
+                  <div key={timetable.id} className="p-4 border rounded-lg">
+                    <h4 className="font-semibold mb-2">{timetable.title}</h4>
+                    {timetable.description && (
+                      <p className="text-sm text-gray-600 mb-3">{timetable.description}</p>
+                    )}
+                    <div className="flex gap-2 text-xs text-gray-500 mb-3">
+                      {timetable.academic_year && <span>AY: {timetable.academic_year}</span>}
+                      {timetable.semester && <span>Sem: {timetable.semester}</span>}
+                    </div>
+                    <Button 
+                      variant="outline" 
+                      size="sm" 
+                      onClick={() => window.open(timetable.file_url, '_blank')}
+                      className="w-full"
+                    >
+                      <ExternalLink className="h-4 w-4 mr-2" />
+                      View Schedule
+                    </Button>
+                  </div>
+                ))}
               </div>
-              <div className="p-4 border rounded-lg text-center">
-                <h4 className="font-semibold mb-2">3rd Year B.A.</h4>
-                <Button variant="outline" size="sm">View Schedule</Button>
+            ) : (
+              <div className="text-center py-8 text-gray-500">
+                No timetables available at the moment.
               </div>
-              <div className="p-4 border rounded-lg text-center">
-                <h4 className="font-semibold mb-2">1st Year M.A.</h4>
-                <Button variant="outline" size="sm">View Schedule</Button>
-              </div>
-              <div className="p-4 border rounded-lg text-center">
-                <h4 className="font-semibold mb-2">2nd Year M.A.</h4>
-                <Button variant="outline" size="sm">View Schedule</Button>
-              </div>
-            </div>
+            )}
           </CardContent>
         </Card>
 
