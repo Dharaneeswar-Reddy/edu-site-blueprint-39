@@ -80,51 +80,32 @@ const PoliticalScience = () => {
           </CardContent>
         </Card>
 
-        {/* Department Overview and Photos */}
-        <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
-          {/* Department Overview */}
-          <div className="lg:col-span-3">
-            <Card>
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <Scale className="h-6 w-6 text-college-blue" />
-                  Department Overview - Political Science
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                <p>
-                  The Department of Political Science is dedicated to the study of power, governance, and public affairs both in theory and practice. Our curriculum explores political ideas, institutions, behavior, and policies at the local, national, and international levels. Through rigorous coursework and experiential learning, students gain the analytical, research, and communication skills necessary to understand and engage with today's most pressing political and social challenges.
-                </p>
-                <div className="grid grid-cols-2 gap-4 mt-6">
-                  <div className="text-center p-4 bg-blue-50 rounded-lg">
-                    <Users className="h-8 w-8 text-college-blue mx-auto mb-2" />
-                    <div className="text-2xl font-bold text-college-blue">60</div>
-                    <div className="text-sm text-gray-600">Students</div>
-                  </div>
-                  <div className="text-center p-4 bg-green-50 rounded-lg">
-                    <Award className="h-8 w-8 text-green-600 mx-auto mb-2" />
-                    <div className="text-2xl font-bold text-green-600">2</div>
-                    <div className="text-sm text-gray-600">Faculty Members</div>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-          </div>
-
-          {/* Department Gallery */}
-          <div className="space-y-4">
-            <h3 className="text-lg font-semibold text-college-blue mb-4">Department Gallery</h3>
-            {departmentPhotos.map((photo, index) => (
-              <div key={index} className="rounded-lg overflow-hidden shadow-md">
-                <img 
-                  src={photo} 
-                  alt={`Political Science Activity ${index + 1}`}
-                  className="w-full h-32 object-cover hover:scale-105 transition-transform duration-300"
-                />
+        {/* Department Overview */}
+        <Card>
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+              <Scale className="h-6 w-6 text-college-blue" />
+              Department Overview - Political Science
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            <p>
+              The Department of Political Science is dedicated to the study of power, governance, and public affairs both in theory and practice. Our curriculum explores political ideas, institutions, behavior, and policies at the local, national, and international levels. Through rigorous coursework and experiential learning, students gain the analytical, research, and communication skills necessary to understand and engage with today's most pressing political and social challenges.
+            </p>
+            <div className="grid grid-cols-2 gap-4 mt-6">
+              <div className="text-center p-4 bg-blue-50 rounded-lg">
+                <Users className="h-8 w-8 text-college-blue mx-auto mb-2" />
+                <div className="text-2xl font-bold text-college-blue">60</div>
+                <div className="text-sm text-gray-600">Students</div>
               </div>
-            ))}
-          </div>
-        </div>
+              <div className="text-center p-4 bg-green-50 rounded-lg">
+                <Award className="h-8 w-8 text-green-600 mx-auto mb-2" />
+                <div className="text-2xl font-bold text-green-600">2</div>
+                <div className="text-sm text-gray-600">Faculty Members</div>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
 
         {/* Seat Structure and Programs */}
         <Card>
