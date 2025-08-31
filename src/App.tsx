@@ -90,6 +90,9 @@ import GalleryAdmin from "@/components/admin/GalleryAdmin";
 import DepartmentsAdmin from "@/components/admin/DepartmentsAdmin";
 import StudentSupportAdmin from "@/components/admin/StudentSupportAdmin";
 import AdminLayout from "@/components/admin/AdminLayout";
+import AdminUsers from "@/pages/AdminUsers";
+import ResetPassword from "@/pages/admin/ResetPassword";
+import AcceptInvitation from "@/pages/admin/AcceptInvitation";
 
 const queryClient = new QueryClient();
 
@@ -159,6 +162,9 @@ const App = () => (
             
             {/* Admin Routes */}
             <Route path="/admin" element={<Admin />} />
+            <Route path="/admin/reset-password" element={<ResetPassword />} />
+            <Route path="/admin/accept-invitation" element={<AcceptInvitation />} />
+            <Route path="/admin/users" element={<AdminUsers />} />
             <Route path="/admin/announcements" element={
               <AdminLayout>
                 <AnnouncementsAdmin />

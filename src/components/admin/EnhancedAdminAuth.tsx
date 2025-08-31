@@ -30,8 +30,8 @@ const EnhancedAdminAuth = () => {
   const [showCaptcha, setShowCaptcha] = useState(false);
   const captchaRef = useRef<ReCAPTCHA>(null);
 
-  // Mock CAPTCHA site key for demo - replace with actual key
-  const RECAPTCHA_SITE_KEY = "6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"; // Test key
+  // Test CAPTCHA site key - replace with your actual Google reCAPTCHA v2 site key
+  const RECAPTCHA_SITE_KEY = "6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"; // Google's test key
 
   useEffect(() => {
     checkLoginAttempts();
