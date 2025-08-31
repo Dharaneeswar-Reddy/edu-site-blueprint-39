@@ -5,22 +5,26 @@ import { Badge } from "@/components/ui/badge";
 import { Calendar, Clock, Users, BookOpen, Award, Download, DollarSign, Mail } from "lucide-react";
 import { useEffect, useState } from "react";
 import DepartmentStaff from "@/components/DepartmentStaff";
+import { useDepartmentTimetables } from "@/hooks/useDepartmentTimetables";
 
 const Commerce = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const { timetables, loading: timetablesLoading } = useDepartmentTimetables("Commerce");
 
   const heroImages = [
-    "/lovable-uploads/d23b165a-50de-4010-841f-59049ee5cf3d.png",
-    "/lovable-uploads/d870c473-3320-4d6a-9dd4-15ab9ceab52a.png",
-    "/lovable-uploads/085f3d76b-36b0-4119-9ae0-75167cea9d0b.png",
-    "/lovable-uploads/8ca0ef83-413e-4894-9e73-7361e0c0106c.png"
+    "/lovable-uploads/f1fbe1fc-e5a7-4e49-a84e-da74bd880e81.png",
+    "/lovable-uploads/1712e8ba-103d-4e8d-8fcf-f3a58c895690.png",
+    "/lovable-uploads/69e9c1ff-a167-42d9-bc00-f4d58476b4a7.png",
+    "/lovable-uploads/64f74774-7508-4589-8d6f-ee0b9dbf6ec3.png",
+    "/lovable-uploads/2058512e-9124-4ec3-b6a8-d89044b40731.png"
   ];
 
   const departmentPhotos = [
-    "/lovable-uploads/4459cba5-4f2b-407d-9115-b78608126cab.png",
-    "/lovable-uploads/455edc55-96fe-44fc-a8d0-2b69c6dd6e92.png",
-    "/lovable-uploads/4b78b0b7-424d-41e9-b09c-4108e1edd3c0.png",
-    "/lovable-uploads/5c7ebe72-4ecd-4e54-8ce5-6bf0a6141878.png"
+    "/lovable-uploads/f1fbe1fc-e5a7-4e49-a84e-da74bd880e81.png",
+    "/lovable-uploads/1712e8ba-103d-4e8d-8fcf-f3a58c895690.png",
+    "/lovable-uploads/69e9c1ff-a167-42d9-bc00-f4d58476b4a7.png",
+    "/lovable-uploads/64f74774-7508-4589-8d6f-ee0b9dbf6ec3.png",
+    "/lovable-uploads/2058512e-9124-4ec3-b6a8-d89044b40731.png"
   ];
 
   useEffect(() => {
@@ -36,7 +40,7 @@ const Commerce = () => {
   return (
     <PageLayout 
       title="Department of Commerce" 
-      description="Preparing future business leaders with comprehensive knowledge in commerce, finance, and entrepreneurship."
+      description="Commerce is the study of buying, selling, and trading of goods and services, and everything that makes that possible — from economics to finance, business, accounting, and laws."
     >
       <div className="space-y-8">
         
@@ -60,42 +64,43 @@ const Commerce = () => {
           </div>
         </div>
 
-        {/* Seat Structure and Programs */}
+        {/* Department Statistics */}
+        <Card>
+          <CardHeader>
+            <CardTitle>Department Statistics</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 text-center">
+              <div className="p-6 bg-blue-50 rounded-lg">
+                <Users className="h-12 w-12 text-college-blue mx-auto mb-3" />
+                <div className="text-4xl font-bold text-college-blue">54</div>
+                <div className="text-lg text-gray-600">Students</div>
+              </div>
+              <div className="p-6 bg-green-50 rounded-lg">
+                <Award className="h-12 w-12 text-green-600 mx-auto mb-3" />
+                <div className="text-4xl font-bold text-green-600">2</div>
+                <div className="text-lg text-gray-600">Faculty Members</div>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
 
+        {/* Seat Structure and Programs */}
         <Card>
           <CardHeader>
             <CardTitle>Seat Structure & Programs Offered</CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div>
-                <h4 className="font-semibold mb-3">Undergraduate Programs</h4>
-                <div className="space-y-2">
-                  <div className="flex justify-between items-center p-3 bg-blue-50 rounded">
-                    <span>B.Com (General)</span>
-                    <Badge variant="secondary">60 Seats</Badge>
-                  </div>
-                  <div className="flex justify-between items-center p-3 bg-green-50 rounded">
-                    <span>B.Com (Honours)</span>
-                    <Badge variant="secondary">40 Seats</Badge>
-                  </div>
-                  <div className="flex justify-between items-center p-3 bg-yellow-50 rounded">
-                    <span>BBA</span>
-                    <Badge variant="secondary">50 Seats</Badge>
-                  </div>
+            <div className="space-y-4">
+              <h4 className="font-semibold mb-3">Undergraduate Programs</h4>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="flex justify-between items-center p-4 bg-blue-50 rounded-lg">
+                  <span className="font-medium">B.Com General (Honours)</span>
+                  <Badge variant="secondary">60 Seats</Badge>
                 </div>
-              </div>
-              <div>
-                <h4 className="font-semibold mb-3">Postgraduate Programs</h4>
-                <div className="space-y-2">
-                  <div className="flex justify-between items-center p-3 bg-purple-50 rounded">
-                    <span>M.Com</span>
-                    <Badge variant="secondary">40 Seats</Badge>
-                  </div>
-                  <div className="flex justify-between items-center p-3 bg-orange-50 rounded">
-                    <span>MBA</span>
-                    <Badge variant="secondary">60 Seats</Badge>
-                  </div>
+                <div className="flex justify-between items-center p-4 bg-green-50 rounded-lg">
+                  <span className="font-medium">B.Com Computers (Honours)</span>
+                  <Badge variant="secondary">40 Seats</Badge>
                 </div>
               </div>
             </div>
@@ -108,37 +113,72 @@ const Commerce = () => {
             <CardTitle>Program Structure</CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="space-y-6">
+            <div className="space-y-8">
+              {/* B.Com General Program Structure */}
               <div>
-                <h4 className="font-semibold mb-3">B.Com (3 Years)</h4>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                  <div className="p-4 border rounded-lg">
-                    <h5 className="font-medium text-blue-600 mb-2">Year 1</h5>
-                    <ul className="text-sm space-y-1">
-                      <li>• Financial Accounting</li>
-                      <li>• Business Organization</li>
-                      <li>• Business Economics</li>
-                      <li>• Business Mathematics</li>
-                    </ul>
-                  </div>
-                  <div className="p-4 border rounded-lg">
-                    <h5 className="font-medium text-green-600 mb-2">Year 2</h5>
-                    <ul className="text-sm space-y-1">
-                      <li>• Corporate Accounting</li>
-                      <li>• Business Law</li>
-                      <li>• Marketing Management</li>
-                      <li>• Cost Accounting</li>
-                    </ul>
-                  </div>
-                  <div className="p-4 border rounded-lg">
-                    <h5 className="font-medium text-purple-600 mb-2">Year 3</h5>
-                    <ul className="text-sm space-y-1">
-                      <li>• Financial Management</li>
-                      <li>• Auditing</li>
-                      <li>• Income Tax</li>
-                      <li>• Entrepreneurship</li>
-                    </ul>
-                  </div>
+                <h4 className="font-semibold mb-4 text-lg text-college-blue">B.Com General (3 Years) - Semester wise Syllabus</h4>
+                <div className="overflow-x-auto">
+                  <table className="w-full border-collapse border border-gray-300 text-sm">
+                    <thead>
+                      <tr className="bg-gray-50">
+                        <th className="border border-gray-300 px-4 py-2 text-left">Semester</th>
+                        <th className="border border-gray-300 px-4 py-2 text-left">Course Number</th>
+                        <th className="border border-gray-300 px-4 py-2 text-left">Course Name</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr><td className="border border-gray-300 px-4 py-2 font-medium" rowSpan={2}>Semester-I</td><td className="border border-gray-300 px-4 py-2">1</td><td className="border border-gray-300 px-4 py-2">Fundamental of Commerce</td></tr>
+                      <tr><td className="border border-gray-300 px-4 py-2">2</td><td className="border border-gray-300 px-4 py-2">Business Organisation</td></tr>
+                      <tr><td className="border border-gray-300 px-4 py-2 font-medium" rowSpan={3}>Semester-II</td><td className="border border-gray-300 px-4 py-2">3</td><td className="border border-gray-300 px-4 py-2">Financial Accounting</td></tr>
+                      <tr><td className="border border-gray-300 px-4 py-2">4</td><td className="border border-gray-300 px-4 py-2">Business Management</td></tr>
+                      <tr><td className="border border-gray-300 px-4 py-2">5</td><td className="border border-gray-300 px-4 py-2">Advanced Accounting</td></tr>
+                      <tr><td className="border border-gray-300 px-4 py-2 font-medium" rowSpan={3}>Semester-III</td><td className="border border-gray-300 px-4 py-2">6</td><td className="border border-gray-300 px-4 py-2">Income Tax</td></tr>
+                      <tr><td className="border border-gray-300 px-4 py-2">7</td><td className="border border-gray-300 px-4 py-2">Business Laws</td></tr>
+                      <tr><td className="border border-gray-300 px-4 py-2">8</td><td className="border border-gray-300 px-4 py-2">Banking Theory & Practice</td></tr>
+                      <tr><td className="border border-gray-300 px-4 py-2 font-medium" rowSpan={3}>Semester-IV</td><td className="border border-gray-300 px-4 py-2">9</td><td className="border border-gray-300 px-4 py-2">Corporate Accounting</td></tr>
+                      <tr><td className="border border-gray-300 px-4 py-2">10</td><td className="border border-gray-300 px-4 py-2">Cost & Management Accounting</td></tr>
+                      <tr><td className="border border-gray-300 px-4 py-2">11</td><td className="border border-gray-300 px-4 py-2">Auditing</td></tr>
+                      <tr><td className="border border-gray-300 px-4 py-2 font-medium" rowSpan={3}>Semester-V</td><td className="border border-gray-300 px-4 py-2">12</td><td className="border border-gray-300 px-4 py-2">Advertising and Media Planning (OR) Stock Markets Customer Relationship Management (OR) Stock Markets Analysis</td></tr>
+                      <tr><td className="border border-gray-300 px-4 py-2">13</td><td className="border border-gray-300 px-4 py-2">Digital Marketing (OR) Advanced Corporate Accounting</td></tr>
+                      <tr><td className="border border-gray-300 px-4 py-2">14</td><td className="border border-gray-300 px-4 py-2">Service Marketing (OR) Software Solutions to Accounting</td></tr>
+                      <tr><td className="border border-gray-300 px-4 py-2 font-medium">Semester-VI</td><td className="border border-gray-300 px-4 py-2">15</td><td className="border border-gray-300 px-4 py-2">Internship</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+
+              {/* B.Com Computers Program Structure */}
+              <div>
+                <h4 className="font-semibold mb-4 text-lg text-college-blue">B.Com Computers (3 Years) - Program Structure</h4>
+                <div className="overflow-x-auto">
+                  <table className="w-full border-collapse border border-gray-300 text-sm">
+                    <thead>
+                      <tr className="bg-gray-50">
+                        <th className="border border-gray-300 px-4 py-2 text-left">Year</th>
+                        <th className="border border-gray-300 px-4 py-2 text-left">Semester</th>
+                        <th className="border border-gray-300 px-4 py-2 text-left">Course</th>
+                        <th className="border border-gray-300 px-4 py-2 text-left">Title of the Course</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr><td className="border border-gray-300 px-4 py-2 font-medium" rowSpan={6}>I</td><td className="border border-gray-300 px-4 py-2" rowSpan={3}>I</td><td className="border border-gray-300 px-4 py-2">1</td><td className="border border-gray-300 px-4 py-2">Fundamental of Commerce</td></tr>
+                      <tr><td className="border border-gray-300 px-4 py-2">2</td><td className="border border-gray-300 px-4 py-2">Business Organisation</td></tr>
+                      <tr><td className="border border-gray-300 px-4 py-2">3</td><td className="border border-gray-300 px-4 py-2">Financial Accounting & Financial Accounting Practical Course</td></tr>
+                      <tr><td className="border border-gray-300 px-4 py-2" rowSpan={3}>II</td><td className="border border-gray-300 px-4 py-2">4</td><td className="border border-gray-300 px-4 py-2">Office Automation Tools & Office Automation Tools Practical Course</td></tr>
+                      <tr><td className="border border-gray-300 px-4 py-2">5</td><td className="border border-gray-300 px-4 py-2">Advanced Accounting & Advanced Accounting Practical Course</td></tr>
+                      <tr><td className="border border-gray-300 px-4 py-2">6</td><td className="border border-gray-300 px-4 py-2">Income Tax & Income Tax Practical Course</td></tr>
+                      <tr><td className="border border-gray-300 px-4 py-2 font-medium" rowSpan={5}>II</td><td className="border border-gray-300 px-4 py-2" rowSpan={2}>III</td><td className="border border-gray-300 px-4 py-2">7</td><td className="border border-gray-300 px-4 py-2">E Commerce & Web designing & E Commerce & Web designing Practical Course</td></tr>
+                      <tr><td className="border border-gray-300 px-4 py-2">8</td><td className="border border-gray-300 px-4 py-2">Digital Marketing & Digital Marketing Practical Course</td></tr>
+                      <tr><td className="border border-gray-300 px-4 py-2" rowSpan={3}>IV</td><td className="border border-gray-300 px-4 py-2">9</td><td className="border border-gray-300 px-4 py-2">Corporate Accounting & Corporate Accounting Practical Course</td></tr>
+                      <tr><td className="border border-gray-300 px-4 py-2">10</td><td className="border border-gray-300 px-4 py-2">Cost & Management Accounting & Cost & Management Accounting Practical Course</td></tr>
+                      <tr><td className="border border-gray-300 px-4 py-2">11</td><td className="border border-gray-300 px-4 py-2">DBMS with Oracle & DBMS with Oracle Practical Course</td></tr>
+                      <tr><td className="border border-gray-300 px-4 py-2 font-medium" rowSpan={4}>III</td><td className="border border-gray-300 px-4 py-2">V</td><td className="border border-gray-300 px-4 py-2">12</td><td className="border border-gray-300 px-4 py-2">Advertisement Corporate Accounting (OR) Advertisement and Media Planning & Advertisement Corporate Accounting (OR) Advertisement and Media Planning Practical Course</td></tr>
+                      <tr><td className="border border-gray-300 px-4 py-2" rowSpan={3}>VI</td><td className="border border-gray-300 px-4 py-2">13</td><td className="border border-gray-300 px-4 py-2">Stock Markets (OR) GST Procedures and Practices & Stock Markets (OR) GST Procedures and Practices Practical Course</td></tr>
+                      <tr><td className="border border-gray-300 px-4 py-2">14</td><td className="border border-gray-300 px-4 py-2">Business Analytics (OR) Cyber Security & Business Analytics (OR) Cyber Security Practical Course</td></tr>
+                      <tr><td className="border border-gray-300 px-4 py-2">15</td><td className="border border-gray-300 px-4 py-2">Mobile Applications Development (OR) Block Chain Technology & Mobile Applications Development (OR) Block Chain Technology Practical Course</td></tr>
+                      <tr><td className="border border-gray-300 px-4 py-2 font-medium" colSpan={3}>Semester Internship/Apprenticeship with 12 Credits</td><td className="border border-gray-300 px-4 py-2"></td></tr>
+                    </tbody>
+                  </table>
                 </div>
               </div>
             </div>
@@ -155,73 +195,81 @@ const Commerce = () => {
           </CardHeader>
           <CardContent className="space-y-4">
             <p>
-              The Department of Commerce at SVRMC is committed to providing quality education in 
-              business and commerce studies. Our programs are designed to develop students' 
-              understanding of business practices, financial management, accounting principles, 
-              and entrepreneurial skills.
+              The Department of Commerce was one among the six departments started in 1969 under the umbrella of Sri Velagapudi Rama Krishna Memorial College, Nagaram with the objective of importing commerce education to the under-graduates of backward region. The department had its genesis under the able leadership of Sri N. Koteswara Rao who laid the foundation and developed it with academic reputation.
             </p>
             <p>
-              With a curriculum that balances theoretical knowledge with practical applications, 
-              we prepare students for diverse career opportunities in banking, finance, accounting, 
-              marketing, and entrepreneurship. Our faculty brings extensive industry experience 
-              and academic expertise to the classroom.
+              The Department gained the reputation due to concerted efforts of the staff in designing the curriculum, and enriching the students to pursue the other professional courses like CA, ICWA, CFA, and improve their job potentials. The alumni of the department are being placed in higher positions in administration, teaching and research fields of reputed entities. At present the department is offering B.Com and B.Com (Computer Applications) programmes of the campus.
             </p>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mt-6">
-              <div className="text-center p-4 bg-blue-50 rounded-lg">
-                <Users className="h-8 w-8 text-college-blue mx-auto mb-2" />
-                <div className="text-2xl font-bold text-college-blue">250+</div>
-                <div className="text-sm text-gray-600">Students</div>
-              </div>
-              <div className="text-center p-4 bg-green-50 rounded-lg">
-                <Award className="h-8 w-8 text-green-600 mx-auto mb-2" />
-                <div className="text-2xl font-bold text-green-600">18</div>
-                <div className="text-sm text-gray-600">Faculty Members</div>
-              </div>
-              <div className="text-center p-4 bg-purple-50 rounded-lg">
-                <BookOpen className="h-8 w-8 text-purple-600 mx-auto mb-2" />
-                <div className="text-2xl font-bold text-purple-600">6</div>
-                <div className="text-sm text-gray-600">Programs</div>
-              </div>
-              <div className="text-center p-4 bg-orange-50 rounded-lg">
-                <DollarSign className="h-8 w-8 text-orange-600 mx-auto mb-2" />
-                <div className="text-2xl font-bold text-orange-600">85%</div>
-                <div className="text-sm text-gray-600">Industry Placement</div>
-              </div>
-            </div>
           </CardContent>
         </Card>
 
         {/* Course Outcomes & Program Outcomes */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <Card>
-            <CardHeader>
-              <CardTitle>Course Outcomes</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <ul className="space-y-2 text-sm">
-                <li>• Master accounting principles and practices</li>
-                <li>• Understand business operations and management</li>
-                <li>• Develop financial analysis skills</li>
-                <li>• Learn taxation and auditing procedures</li>
-                <li>• Gain entrepreneurial and leadership skills</li>
-              </ul>
-            </CardContent>
-          </Card>
+        <div className="space-y-6">
+          {/* B.Com General Course & Program Outcomes */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <Card>
+              <CardHeader>
+                <CardTitle>B.Com General - Course Outcomes</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <ul className="space-y-2 text-sm">
+                  <li>• Understand core concepts in accounting, business, and economics</li>
+                  <li>• Analyze financial statements and apply decision-making tools</li>
+                  <li>• Gain knowledge of business laws and economic policies</li>
+                  <li>• Develop communication, IT, and professional skills for the workplace</li>
+                  <li>• Foster entrepreneurial thinking, ethical values, and career readiness</li>
+                </ul>
+              </CardContent>
+            </Card>
 
-          <Card>
-            <CardHeader>
-              <CardTitle>Program Outcomes</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <ul className="space-y-2 text-sm">
-                <li>• Business acumen and strategic thinking</li>
-                <li>• Professional ethics and integrity</li>
-                <li>• Effective communication and teamwork</li>
-                <li>• Analytical and decision-making abilities</li>
-                <li>• Industry readiness and adaptability</li>
-              </ul>
-            </CardContent>
-          </Card>
+            <Card>
+              <CardHeader>
+                <CardTitle>B.Com General - Program Outcomes</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <ul className="space-y-2 text-sm">
+                  <li>• Apply fundamental knowledge of commerce in real-world business scenarios</li>
+                  <li>• Demonstrate analytical and problem-solving skills in finance and management</li>
+                  <li>• Understand economic, legal, and ethical aspects of business operations</li>
+                  <li>• Use digital tools and communication skills effectively in a business environment</li>
+                  <li>• Prepare for entrepreneurship, higher education, and professional careers</li>
+                </ul>
+              </CardContent>
+            </Card>
+          </div>
+
+          {/* B.Com Computers Course & Program Outcomes */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <Card>
+              <CardHeader>
+                <CardTitle>B.Com Computers - Course Outcomes</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <ul className="space-y-2 text-sm">
+                  <li>• Understand core concepts of commerce, accounting, and business management</li>
+                  <li>• Apply computer applications like MS Office, Tally, and databases in business tasks</li>
+                  <li>• Analyze financial data using software tools and generate reports</li>
+                  <li>• Gain skills in e-commerce, digital marketing, and IT-enabled services</li>
+                  <li>• Prepare for careers in accounting, IT-enabled roles, and entrepreneurship</li>
+                </ul>
+              </CardContent>
+            </Card>
+
+            <Card>
+              <CardHeader>
+                <CardTitle>B.Com Computers - Program Outcomes</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <ul className="space-y-2 text-sm">
+                  <li>• Apply commerce and computer knowledge to solve real business problems</li>
+                  <li>• Use accounting and business software tools effectively</li>
+                  <li>• Understand the digital aspects of business like e-commerce and data management</li>
+                  <li>• Communicate professionally and work effectively in teams</li>
+                  <li>• Prepare for careers in finance, IT, and higher professional studies</li>
+                </ul>
+              </CardContent>
+            </Card>
+          </div>
         </div>
 
         {/* Department Staff */}
@@ -257,40 +305,31 @@ const Commerce = () => {
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-              <div className="p-4 border rounded-lg text-center">
-                <h4 className="font-semibold mb-2">1st Year B.Com</h4>
-                <Button variant="outline" size="sm">View Schedule</Button>
+            {timetablesLoading ? (
+              <div className="text-center py-4">Loading timetables...</div>
+            ) : timetables.length > 0 ? (
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                {timetables.map((timetable) => (
+                  <div key={timetable.id} className="p-4 border rounded-lg text-center">
+                    <h4 className="font-semibold mb-2">{timetable.title}</h4>
+                    {timetable.description && (
+                      <p className="text-sm text-gray-600 mb-3">{timetable.description}</p>
+                    )}
+                    <Button 
+                      variant="outline" 
+                      size="sm"
+                      onClick={() => window.open(timetable.file_url, '_blank')}
+                    >
+                      View Schedule
+                    </Button>
+                  </div>
+                ))}
               </div>
-              <div className="p-4 border rounded-lg text-center">
-                <h4 className="font-semibold mb-2">2nd Year B.Com</h4>
-                <Button variant="outline" size="sm">View Schedule</Button>
+            ) : (
+              <div className="text-center py-8 text-gray-500">
+                No timetables available at the moment.
               </div>
-              <div className="p-4 border rounded-lg text-center">
-                <h4 className="font-semibold mb-2">3rd Year B.Com</h4>
-                <Button variant="outline" size="sm">View Schedule</Button>
-              </div>
-              <div className="p-4 border rounded-lg text-center">
-                <h4 className="font-semibold mb-2">BBA</h4>
-                <Button variant="outline" size="sm">View Schedule</Button>
-              </div>
-              <div className="p-4 border rounded-lg text-center">
-                <h4 className="font-semibold mb-2">1st Year M.Com</h4>
-                <Button variant="outline" size="sm">View Schedule</Button>
-              </div>
-              <div className="p-4 border rounded-lg text-center">
-                <h4 className="font-semibold mb-2">2nd Year M.Com</h4>
-                <Button variant="outline" size="sm">View Schedule</Button>
-              </div>
-              <div className="p-4 border rounded-lg text-center">
-                <h4 className="font-semibold mb-2">1st Year MBA</h4>
-                <Button variant="outline" size="sm">View Schedule</Button>
-              </div>
-              <div className="p-4 border rounded-lg text-center">
-                <h4 className="font-semibold mb-2">2nd Year MBA</h4>
-                <Button variant="outline" size="sm">View Schedule</Button>
-              </div>
-            </div>
+            )}
           </CardContent>
         </Card>
 
