@@ -15,14 +15,26 @@ const Botany = () => {
     "/lovable-uploads/26e5dd9a-23af-4d35-bf39-50ea0a90dcc1.png",
     "/lovable-uploads/3f2ac2fe-5cc6-403c-b266-c0a4bfc92b9a.png",
     "/lovable-uploads/43b08f5f-94a1-4efc-a4bc-d959843cb7ea.png",
-    "/lovable-uploads/5c7ebe72-4ecd-4e54-8ce5-6bf0a6141878.png"
+    "/lovable-uploads/5c7ebe72-4ecd-4e54-8ce5-6bf0a6141878.png",
+    "/lovable-uploads/7ecf4141-f3db-4a34-b9c2-4a0c5af6c711.png",
+    "/lovable-uploads/09edbd5d-984f-41ea-9176-ae2cb550d878.png",
+    "/lovable-uploads/888ae344-c040-4057-9423-38e1e4328152.png",
+    "/lovable-uploads/208097d5-1a3d-4850-b72e-7a0e44ded787.png",
+    "/lovable-uploads/6119578b-9c06-42e6-b80d-fd03c8c0fffc.png",
+    "/lovable-uploads/ffb3cc7c-1414-44ed-89b7-a6160bf7578f.png",
+    "/lovable-uploads/e6b48831-58cc-474a-81fe-fa4e53081732.png",
+    "/lovable-uploads/31b6ffc3-d5b7-441c-bbdd-294127563557.png"
   ];
 
   const departmentPhotos = [
-    "/lovable-uploads/662ebac1-9113-46ee-b212-a9a1526878d4.png",
-    "/lovable-uploads/71dea894-961d-4fd6-ac1f-78e8db8d93b4.png",
-    "/lovable-uploads/805efae8-1428-4b19-9a41-f2f62680aefc.png",
-    "/lovable-uploads/9f96f106-897d-46e3-a4a1-4c4b8f8f9f0c.png"
+    "/lovable-uploads/7ecf4141-f3db-4a34-b9c2-4a0c5af6c711.png",
+    "/lovable-uploads/09edbd5d-984f-41ea-9176-ae2cb550d878.png",
+    "/lovable-uploads/888ae344-c040-4057-9423-38e1e4328152.png",
+    "/lovable-uploads/208097d5-1a3d-4850-b72e-7a0e44ded787.png",
+    "/lovable-uploads/6119578b-9c06-42e6-b80d-fd03c8c0fffc.png",
+    "/lovable-uploads/ffb3cc7c-1414-44ed-89b7-a6160bf7578f.png",
+    "/lovable-uploads/e6b48831-58cc-474a-81fe-fa4e53081732.png",
+    "/lovable-uploads/31b6ffc3-d5b7-441c-bbdd-294127563557.png"
   ];
 
   useEffect(() => {
@@ -63,36 +75,25 @@ const Botany = () => {
         </div>
 
         {/* Seat Structure and Programs */}
-
         <Card>
           <CardHeader>
             <CardTitle>Seat Structure & Programs Offered</CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div>
-                <h4 className="font-semibold mb-3">Undergraduate Programs</h4>
-                <div className="space-y-2">
+            <div className="space-y-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                  <h4 className="font-semibold mb-3">B.Sc. Botany Minor (Regular) – 30 (Zoology Major)</h4>
                   <div className="flex justify-between items-center p-3 bg-blue-50 rounded">
-                    <span>B.Sc. Botany (Regular)</span>
-                    <Badge variant="secondary">35 Seats</Badge>
-                  </div>
-                  <div className="flex justify-between items-center p-3 bg-green-50 rounded">
-                    <span>B.Sc. Botany (Honours)</span>
-                    <Badge variant="secondary">20 Seats</Badge>
+                    <span>B.Sc. Botany Minor (Regular)</span>
+                    <Badge variant="secondary">30 Seats</Badge>
                   </div>
                 </div>
-              </div>
-              <div>
-                <h4 className="font-semibold mb-3">Postgraduate Programs</h4>
-                <div className="space-y-2">
-                  <div className="flex justify-between items-center p-3 bg-purple-50 rounded">
-                    <span>M.Sc. Botany</span>
-                    <Badge variant="secondary">25 Seats</Badge>
-                  </div>
-                  <div className="flex justify-between items-center p-3 bg-orange-50 rounded">
-                    <span>M.Sc. Plant Biotechnology</span>
-                    <Badge variant="secondary">15 Seats</Badge>
+                <div>
+                  <h4 className="font-semibold mb-3">B.Sc. Botany Minor (Honours) – 30 (Aqua Major)</h4>
+                  <div className="flex justify-between items-center p-3 bg-green-50 rounded">
+                    <span>B.Sc. Botany Minor (Honours)</span>
+                    <Badge variant="secondary">30 Seats</Badge>
                   </div>
                 </div>
               </div>
@@ -106,39 +107,101 @@ const Botany = () => {
             <CardTitle>Program Structure</CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="space-y-6">
-              <div>
-                <h4 className="font-semibold mb-3">B.Sc. Botany (3 Years)</h4>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                  <div className="p-4 border rounded-lg">
-                    <h5 className="font-medium text-blue-600 mb-2">Year 1</h5>
-                    <ul className="text-sm space-y-1">
-                      <li>• Plant Morphology</li>
-                      <li>• Cell Biology</li>
-                      <li>• Biodiversity of Plants</li>
-                      <li>• Plant Ecology</li>
-                    </ul>
-                  </div>
-                  <div className="p-4 border rounded-lg">
-                    <h5 className="font-medium text-green-600 mb-2">Year 2</h5>
-                    <ul className="text-sm space-y-1">
-                      <li>• Plant Physiology</li>
-                      <li>• Plant Taxonomy</li>
-                      <li>• Genetics & Evolution</li>
-                      <li>• Environmental Biology</li>
-                    </ul>
-                  </div>
-                  <div className="p-4 border rounded-lg">
-                    <h5 className="font-medium text-purple-600 mb-2">Year 3</h5>
-                    <ul className="text-sm space-y-1">
-                      <li>• Plant Biotechnology</li>
-                      <li>• Economic Botany</li>
-                      <li>• Research Methodology</li>
-                      <li>• Project Work</li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
+            <div className="overflow-x-auto">
+              <table className="w-full border-collapse border border-gray-300">
+                <thead>
+                  <tr className="bg-gray-100">
+                    <th className="border border-gray-300 px-4 py-2 text-left">Year</th>
+                    <th className="border border-gray-300 px-4 py-2 text-left">Semester</th>
+                    <th className="border border-gray-300 px-4 py-2 text-left">Course No.</th>
+                    <th className="border border-gray-300 px-4 py-2 text-left">Course Title</th>
+                    <th className="border border-gray-300 px-4 py-2 text-left">Hours/Week</th>
+                    <th className="border border-gray-300 px-4 py-2 text-left">Credits</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td rowSpan={2} className="border border-gray-300 px-4 py-2 font-medium">II</td>
+                    <td rowSpan={2} className="border border-gray-300 px-4 py-2">III</td>
+                    <td className="border border-gray-300 px-4 py-2">1</td>
+                    <td className="border border-gray-300 px-4 py-2">Non-vascular Plants</td>
+                    <td className="border border-gray-300 px-4 py-2">3</td>
+                    <td className="border border-gray-300 px-4 py-2">3</td>
+                  </tr>
+                  <tr>
+                    <td className="border border-gray-300 px-4 py-2"></td>
+                    <td className="border border-gray-300 px-4 py-2">Non-vascular Plants – Practical</td>
+                    <td className="border border-gray-300 px-4 py-2">2</td>
+                    <td className="border border-gray-300 px-4 py-2">1</td>
+                  </tr>
+                  <tr>
+                    <td rowSpan={2} className="border border-gray-300 px-4 py-2"></td>
+                    <td rowSpan={2} className="border border-gray-300 px-4 py-2">IV</td>
+                    <td className="border border-gray-300 px-4 py-2">2</td>
+                    <td className="border border-gray-300 px-4 py-2">Vascular Plants</td>
+                    <td className="border border-gray-300 px-4 py-2">3</td>
+                    <td className="border border-gray-300 px-4 py-2">3</td>
+                  </tr>
+                  <tr>
+                    <td className="border border-gray-300 px-4 py-2"></td>
+                    <td className="border border-gray-300 px-4 py-2">Vascular Plants – Practical</td>
+                    <td className="border border-gray-300 px-4 py-2">2</td>
+                    <td className="border border-gray-300 px-4 py-2">1</td>
+                  </tr>
+                  <tr>
+                    <td rowSpan={4} className="border border-gray-300 px-4 py-2 font-medium">III</td>
+                    <td rowSpan={4} className="border border-gray-300 px-4 py-2">V</td>
+                    <td className="border border-gray-300 px-4 py-2">3</td>
+                    <td className="border border-gray-300 px-4 py-2">Anatomy and Embryology of Angiosperms</td>
+                    <td className="border border-gray-300 px-4 py-2">3</td>
+                    <td className="border border-gray-300 px-4 py-2">3</td>
+                  </tr>
+                  <tr>
+                    <td className="border border-gray-300 px-4 py-2"></td>
+                    <td className="border border-gray-300 px-4 py-2">Anatomy and Embryology of Angiosperms – Practical</td>
+                    <td className="border border-gray-300 px-4 py-2">2</td>
+                    <td className="border border-gray-300 px-4 py-2">1</td>
+                  </tr>
+                  <tr>
+                    <td className="border border-gray-300 px-4 py-2">4</td>
+                    <td className="border border-gray-300 px-4 py-2">Plant Ecology, Biodiversity and Phytogeography</td>
+                    <td className="border border-gray-300 px-4 py-2">3</td>
+                    <td className="border border-gray-300 px-4 py-2">3</td>
+                  </tr>
+                  <tr>
+                    <td className="border border-gray-300 px-4 py-2"></td>
+                    <td className="border border-gray-300 px-4 py-2">Plant Ecology, Biodiversity and Phytogeography – Practical</td>
+                    <td className="border border-gray-300 px-4 py-2">2</td>
+                    <td className="border border-gray-300 px-4 py-2">1</td>
+                  </tr>
+                  <tr>
+                    <td rowSpan={4} className="border border-gray-300 px-4 py-2"></td>
+                    <td rowSpan={4} className="border border-gray-300 px-4 py-2">VI</td>
+                    <td className="border border-gray-300 px-4 py-2">5</td>
+                    <td className="border border-gray-300 px-4 py-2">Cell Biology and Genetics</td>
+                    <td className="border border-gray-300 px-4 py-2">3</td>
+                    <td className="border border-gray-300 px-4 py-2">3</td>
+                  </tr>
+                  <tr>
+                    <td className="border border-gray-300 px-4 py-2"></td>
+                    <td className="border border-gray-300 px-4 py-2">Cell Biology and Genetics – Practical</td>
+                    <td className="border border-gray-300 px-4 py-2">2</td>
+                    <td className="border border-gray-300 px-4 py-2">1</td>
+                  </tr>
+                  <tr>
+                    <td className="border border-gray-300 px-4 py-2">6</td>
+                    <td className="border border-gray-300 px-4 py-2">Plant Physiology and Metabolism</td>
+                    <td className="border border-gray-300 px-4 py-2">3</td>
+                    <td className="border border-gray-300 px-4 py-2">3</td>
+                  </tr>
+                  <tr>
+                    <td className="border border-gray-300 px-4 py-2"></td>
+                    <td className="border border-gray-300 px-4 py-2">Plant Physiology and Metabolism – Practical</td>
+                    <td className="border border-gray-300 px-4 py-2">2</td>
+                    <td className="border border-gray-300 px-4 py-2">1</td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
           </CardContent>
         </Card>
@@ -147,43 +210,173 @@ const Botany = () => {
         <Card>
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
-              <Leaf className="h-6 w-6 text-college-blue" />
+              <Award className="h-6 w-6 text-college-blue" />
               Department Overview
             </CardTitle>
           </CardHeader>
+          <CardContent className="space-y-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div>
+                <h4 className="font-semibold mb-3 text-blue-600">Department Information</h4>
+                <div className="grid grid-cols-2 gap-4 text-center">
+                  <div className="p-3 bg-blue-50 rounded-lg">
+                    <Users className="h-6 w-6 text-college-blue mx-auto mb-1" />
+                    <div className="text-lg font-bold text-college-blue">50</div>
+                    <div className="text-xs text-gray-600">Students</div>
+                  </div>
+                  <div className="p-3 bg-green-50 rounded-lg">
+                    <Award className="h-6 w-6 text-green-600 mx-auto mb-1" />
+                    <div className="text-lg font-bold text-green-600">01</div>
+                    <div className="text-xs text-gray-600">Faculty Member</div>
+                  </div>
+                </div>
+              </div>
+              <div>
+                <h4 className="font-semibold mb-3 text-blue-600">Department of Botany</h4>
+                <p className="text-sm text-gray-700">
+                  The Department of Botany studies the world of plants and their importance in our daily 
+                  lives. Students learn about plant structure, growth, functions, and their role in the 
+                  environment. The department also teaches how plants help in agriculture, medicine, 
+                  industry, and biodiversity conservation.
+                </p>
+              </div>
+            </div>
+
+            <div className="space-y-4">
+              <div>
+                <h4 className="font-semibold mb-3 text-green-600">History of Botany Department</h4>
+                <div className="bg-green-50 p-4 rounded-lg">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+                    <div>
+                      <p><strong>Year of establishment:</strong> 1970</p>
+                      <p><strong>Courses offered:</strong> B.Sc. (B.Z.C)</p>
+                      <p><strong>Intermediate:</strong> Bi.P.C Group</p>
+                      <p><strong>Admission:</strong> Through merit</p>
+                    </div>
+                    <div>
+                      <p><strong>Affiliated to:</strong></p>
+                      <p>• B.Sc. course - ANU</p>
+                      <p>• BiP.C - Board of intermediate Education A.P</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div>
+                <h4 className="font-semibold mb-3 text-purple-600">Heads of the Department</h4>
+                <div className="bg-purple-50 p-4 rounded-lg">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-2 text-sm">
+                    <p>1. Sri. C. Suryanarayana raju (1970 – 2001)</p>
+                    <p>2. K.Sambasivarao (2001 – 2004)</p>
+                    <p>3. Sri. J.Mohanarao (2004 – 2010)</p>
+                    <p>4. Sri. P. Venkateswararao (2010 – 2010)</p>
+                    <p>5. Smt. T.Madhaviglory (2011 – 2018)</p>
+                  </div>
+                  <div className="mt-3 pt-3 border-t border-purple-200">
+                    <p className="font-medium"><strong>Present faculty:</strong> Sri. P.Venkatanarayana (HOD) 2019 – onwards</p>
+                    <p className="font-medium"><strong>Supporting staff:</strong> M. Siva Sankar Rao</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* Vision and Mission */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <Card>
+            <CardHeader>
+              <CardTitle>Vision</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="text-sm">
+                "Thamasoma Jyothirgamaya" – From Darkness to Light. Our vision is to dispel ignorance by 
+                imparting true education that is rooted in principles, truth, love, and values of faith. 
+                We aim to nurture young minds into enlightened individuals who contribute positively to 
+                society and the environment.
+              </p>
+            </CardContent>
+          </Card>
+          
+          <Card>
+            <CardHeader>
+              <CardTitle>Mission</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <ul className="text-sm space-y-2">
+                <li>• To prepare academically strong, ecologically responsible, aesthetically sensitive, and well-disciplined graduates in the field of plant sciences.</li>
+                <li>• To foster scientific temper, environmental awareness, and ethical values among students.</li>
+                <li>• To encourage research, innovation, and community engagement for sustainable development.</li>
+                <li>• To inspire students to actively participate in nation-building and contribute to the well-being of society.</li>
+              </ul>
+            </CardContent>
+          </Card>
+        </div>
+
+        {/* Objectives and Goals */}
+        <Card>
+          <CardHeader>
+            <CardTitle>Objectives and Goals</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <ul className="space-y-2 text-sm">
+              <li>• To impart the scientific, moral education and to inculcate competitive, humanitarian values among the students.</li>
+              <li>• The aim of the department is to ensure that you can achieve an up-to-date level of understanding of plant science.</li>
+              <li>• To prepare students for success in profession or career.</li>
+              <li>• To assist farmers of neighboring villages in good harvesting.</li>
+              <li>• To recommend suitable crops for the region.</li>
+            </ul>
+          </CardContent>
+        </Card>
+
+        {/* SVRMC Botanical Garden */}
+        <Card>
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+              <Leaf className="h-6 w-6 text-green-600" />
+              SVRMC Botanical Garden
+            </CardTitle>
+          </CardHeader>
           <CardContent className="space-y-4">
-            <p>
-              The Department of Botany at SVRMC is dedicated to fostering understanding of plant 
-              sciences, from cellular biology to ecosystem dynamics. Our comprehensive programs 
-              cover plant morphology, physiology, taxonomy, ecology, and biotechnology.
+            <p className="text-sm">
+              The Botanical Garden at SVRMC is an important resource for both education and conservation. 
+              It serves as a living laboratory where students, researchers, and visitors can explore the 
+              rich diversity of plant life.
             </p>
-            <p>
-              Our well-equipped laboratories include microscopy facilities, plant tissue culture 
-              labs, and herbarium collections. Students engage in field studies, research projects, 
-              and practical applications of botanical knowledge in agriculture, conservation, 
-              and biotechnology sectors.
-            </p>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mt-6">
-              <div className="text-center p-4 bg-blue-50 rounded-lg">
-                <Users className="h-8 w-8 text-college-blue mx-auto mb-2" />
-                <div className="text-2xl font-bold text-college-blue">140+</div>
-                <div className="text-sm text-gray-600">Students</div>
-              </div>
-              <div className="text-center p-4 bg-green-50 rounded-lg">
-                <Award className="h-8 w-8 text-green-600 mx-auto mb-2" />
-                <div className="text-2xl font-bold text-green-600">12</div>
-                <div className="text-sm text-gray-600">Faculty Members</div>
-              </div>
-              <div className="text-center p-4 bg-purple-50 rounded-lg">
-                <BookOpen className="h-8 w-8 text-purple-600 mx-auto mb-2" />
-                <div className="text-2xl font-bold text-purple-600">4</div>
-                <div className="text-sm text-gray-600">Programs</div>
-              </div>
-              <div className="text-center p-4 bg-orange-50 rounded-lg">
-                <Leaf className="h-8 w-8 text-orange-600 mx-auto mb-2" />
-                <div className="text-2xl font-bold text-orange-600">25+</div>
-                <div className="text-sm text-gray-600">Research Projects</div>
-              </div>
+            <div className="bg-green-50 p-4 rounded-lg">
+              <img 
+                src="/lovable-uploads/31b6ffc3-d5b7-441c-bbdd-294127563557.png" 
+                alt="SVRMC Botanical Garden"
+                className="w-full h-48 object-cover rounded-lg mb-4"
+              />
+              <p className="text-sm">
+                Our garden provides students with hands-on learning opportunities in plant taxonomy, 
+                ecology, physiology, and environmental studies. Well-maintained pathways, labeled plant 
+                collections, and seasonal flowering plants make the garden not only a center for learning 
+                but also a peaceful green space that enhances the campus environment.
+              </p>
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* Future Plans */}
+        <Card>
+          <CardHeader>
+            <CardTitle>Future Plans</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <ul className="space-y-2 text-sm">
+                <li>• To increase the rare collection of the Herbarium</li>
+                <li>• To develop the Botanical Garden with rare collections</li>
+                <li>• Collection of specific plants which are useful to control the pollution and maintained Eco-friendly Environment</li>
+                <li>• To conduct demonstration camp cum exhibition on medicinal plants and medicinal plant products</li>
+              </ul>
+              <ul className="space-y-2 text-sm">
+                <li>• To organize workshops, health talks, displaying banners on the nutritional values of millets in view of "INTERNATIONAL YEAR OF MILLETS 2023"</li>
+                <li>• To assist farmers of neighboring villages in good harvesting</li>
+                <li>• To recommend suitable crops for the region</li>
+              </ul>
             </div>
           </CardContent>
         </Card>

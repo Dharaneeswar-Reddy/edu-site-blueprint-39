@@ -60,52 +60,49 @@ const Zoology = () => {
           </div>
         </div>
 
-        {/* Department Overview and Photos */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          {/* Department Overview */}
-          <div className="lg:col-span-2">
-            <Card>
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <Bug className="h-6 w-6 text-college-blue" />
-                  Department Overview
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                <p>
-                  The Department of Zoology at SVRMC is committed to advancing knowledge of animal 
-                  sciences through comprehensive study of animal structure, function, behavior, 
-                  and evolution. Our programs encompass invertebrate and vertebrate zoology, 
-                  ecology, and conservation biology.
-                </p>
-                <p>
-                  Our modern laboratories feature microscopy facilities, specimen collections, 
-                  and research equipment for physiological studies. Students engage in field work, 
-                  laboratory experiments, and research projects that prepare them for careers 
-                  in research, wildlife conservation, and biotechnology.
-                </p>
-                <div className="grid grid-cols-2 gap-4 mt-6">
-                  <div className="text-center p-4 bg-blue-50 rounded-lg">
-                    <Users className="h-8 w-8 text-college-blue mx-auto mb-2" />
-                    <div className="text-2xl font-bold text-college-blue">130+</div>
-                    <div className="text-sm text-gray-600">Students</div>
-                  </div>
-                  <div className="text-center p-4 bg-green-50 rounded-lg">
-                    <Award className="h-8 w-8 text-green-600 mx-auto mb-2" />
-                    <div className="text-2xl font-bold text-green-600">11</div>
-                    <div className="text-sm text-gray-600">Faculty Members</div>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-          </div>
-
-        </div>
+        {/* Department Overview */}
+        <Card>
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+              <Bug className="h-6 w-6 text-college-blue" />
+              Department Overview
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            <p>
+              Zoology seeks to provide a comprehensive understanding of the animal kingdom to benefit science, conservation, and society.
+            </p>
+            <p>
+              The Zoology department was established in the year 1970. We have B.sc, CBZ and CZA with Aqua culture program. The hall mark of the department is the Zoology Museum with rarest of the rare collections, and it is considered as the best museum among affiliated colleges of Acharya Nagarjuna University.
+            </p>
+            <p>
+              Dr. T. Indira Krishna Rao, Sri G. Ramakrishna Babu, Sri K. Sitarama Raju, Sri P. Venkata Rao & Sri B. Venkata Rao developed the department to the present extent in all aspects. The department is now headed by Dr.K.Suresh babu with two staff members namely Smt.B.Anuradha and Sri.Ch.Sudheer.
+            </p>
+            <p>
+              P. Rama Krishna (1995-1998), P. Koti Sankara Ramesh (2001-2004) and I.Bharghavi (2005- 2008) were awarded Prof. P.N.GANAPATHI MEMORIAL GOLD MEDAL IN ZOOLOGY for the highest marks in Acharya Nagarjuna University affiliated colleges. We conducted two UGC sponsored National seminars in the year of 2009 and 2015.
+            </p>
+            <p>
+              The laboratory of the department is really unique. Its environment is superb. It has around 31Bio – visual charts. It has 26 compound microscopes and 23 dissection microscopes, 2 binocular dissection microscopes, 1 over head projector and 2 LCD projectors with E-class rooms.
+            </p>
+            <div className="grid grid-cols-2 gap-4 mt-6">
+              <div className="text-center p-4 bg-blue-50 rounded-lg">
+                <Users className="h-8 w-8 text-college-blue mx-auto mb-2" />
+                <div className="text-2xl font-bold text-college-blue">73</div>
+                <div className="text-sm text-gray-600">Students</div>
+              </div>
+              <div className="text-center p-4 bg-green-50 rounded-lg">
+                <Award className="h-8 w-8 text-green-600 mx-auto mb-2" />
+                <div className="text-2xl font-bold text-green-600">03</div>
+                <div className="text-sm text-gray-600">Faculty Members</div>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
 
         {/* Seat Structure and Programs */}
         <Card>
           <CardHeader>
-            <CardTitle>Seat Structure & Programs Offered</CardTitle>
+            <CardTitle>Programs Offered</CardTitle>
           </CardHeader>
           <CardContent>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -113,25 +110,12 @@ const Zoology = () => {
                 <h4 className="font-semibold mb-3">Undergraduate Programs</h4>
                 <div className="space-y-2">
                   <div className="flex justify-between items-center p-3 bg-blue-50 rounded">
-                    <span>B.Sc. Zoology (Regular)</span>
-                    <Badge variant="secondary">40 Seats</Badge>
+                    <span>B.Sc. Zoology (Honours)</span>
+                    <Badge variant="secondary">30 Seats</Badge>
                   </div>
                   <div className="flex justify-between items-center p-3 bg-green-50 rounded">
-                    <span>B.Sc. Zoology (Honours)</span>
-                    <Badge variant="secondary">20 Seats</Badge>
-                  </div>
-                </div>
-              </div>
-              <div>
-                <h4 className="font-semibold mb-3">Postgraduate Programs</h4>
-                <div className="space-y-2">
-                  <div className="flex justify-between items-center p-3 bg-purple-50 rounded">
-                    <span>M.Sc. Zoology</span>
-                    <Badge variant="secondary">25 Seats</Badge>
-                  </div>
-                  <div className="flex justify-between items-center p-3 bg-orange-50 rounded">
-                    <span>M.Sc. Wildlife Biology</span>
-                    <Badge variant="secondary">15 Seats</Badge>
+                    <span>B.Sc. Aqua culture (Honours)</span>
+                    <Badge variant="secondary">30 Seats</Badge>
                   </div>
                 </div>
               </div>
@@ -152,31 +136,29 @@ const Zoology = () => {
                   <div className="p-4 border rounded-lg">
                     <h5 className="font-medium text-blue-600 mb-2">Year 1</h5>
                     <ul className="text-sm space-y-1">
-                      <li>• Animal Diversity</li>
-                      <li>• Cell Biology</li>
-                      <li>• Invertebrate Zoology</li>
-                      <li>• Animal Physiology</li>
+                      <li>• Animal Diversity-I Biology of Non-Chordates</li>
+                      <li>• Animal Diversity-I Biology of Non Chordates Practical Course</li>
+                      <li>• Cell and Molecular Biology</li>
+                      <li>• Cell and Molecular Biology Practical Course</li>
                     </ul>
                   </div>
                   <div className="p-4 border rounded-lg">
                     <h5 className="font-medium text-green-600 mb-2">Year 2</h5>
                     <ul className="text-sm space-y-1">
-                      <li>• Vertebrate Zoology</li>
-                      <li>• Genetics & Evolution</li>
-                      <li>• Developmental Biology</li>
-                      <li>• Ecology & Behavior</li>
+                      <li>• [Course details to be updated]</li>
                     </ul>
                   </div>
                   <div className="p-4 border rounded-lg">
                     <h5 className="font-medium text-purple-600 mb-2">Year 3</h5>
                     <ul className="text-sm space-y-1">
-                      <li>• Molecular Biology</li>
-                      <li>• Conservation Biology</li>
-                      <li>• Research Methodology</li>
-                      <li>• Project Work</li>
+                      <li>• [Course details to be updated]</li>
                     </ul>
                   </div>
                 </div>
+              </div>
+              <div>
+                <h4 className="font-semibold mb-3">B.Sc. Aqua culture (3 Years)</h4>
+                <p className="text-sm text-gray-600">Semester wise syllabus to be updated</p>
               </div>
             </div>
           </CardContent>
@@ -186,30 +168,63 @@ const Zoology = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <Card>
             <CardHeader>
-              <CardTitle>Course Outcomes</CardTitle>
+              <CardTitle>Zoology Course Outcomes</CardTitle>
             </CardHeader>
             <CardContent>
               <ul className="space-y-2 text-sm">
-                <li>• Understand animal structure and function</li>
-                <li>• Master taxonomic classification</li>
-                <li>• Analyze animal behavior patterns</li>
-                <li>• Apply molecular techniques</li>
-                <li>• Evaluate conservation strategies</li>
+                <li>• Understand the diversity, structure, and classification of animals across phyla</li>
+                <li>• Gain knowledge of cell biology, genetics, and evolutionary principles</li>
+                <li>• Learn animal physiology, development, and ecological interactions</li>
+                <li>• Acquire practical skills in lab techniques, dissection, and fieldwork</li>
+                <li>• Develop scientific reasoning, research aptitude, and ethical awareness</li>
               </ul>
             </CardContent>
           </Card>
 
           <Card>
             <CardHeader>
-              <CardTitle>Program Outcomes</CardTitle>
+              <CardTitle>Zoology Program Outcomes</CardTitle>
             </CardHeader>
             <CardContent>
               <ul className="space-y-2 text-sm">
-                <li>• Wildlife conservation awareness</li>
-                <li>• Research and analytical skills</li>
-                <li>• Laboratory techniques mastery</li>
-                <li>• Scientific documentation abilities</li>
-                <li>• Career readiness in zoological sciences</li>
+                <li>• Acquire comprehensive knowledge of animal biology, biodiversity, and life processes</li>
+                <li>• Develop analytical and problem-solving skills in biological sciences</li>
+                <li>• Apply laboratory and field techniques in zoological research and studies</li>
+                <li>• Understand environmental and ethical responsibilities in wildlife conservation</li>
+                <li>• Prepare for careers in education, research, healthcare, or environmental sectors</li>
+              </ul>
+            </CardContent>
+          </Card>
+        </div>
+
+        {/* Aquaculture Course Outcomes & Program Outcomes */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <Card>
+            <CardHeader>
+              <CardTitle>Aquaculture Course Outcomes</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <ul className="space-y-2 text-sm">
+                <li>• Understand the basics of aquaculture systems, species, and farming techniques</li>
+                <li>• Learn about water quality management and aquatic animal health</li>
+                <li>• Gain knowledge of fish breeding, nutrition, and hatchery practices</li>
+                <li>• Apply skills in pond management, disease control, and sustainable aquaculture</li>
+                <li>• Prepare for careers in fish farming, fisheries, and aquatic resource management</li>
+              </ul>
+            </CardContent>
+          </Card>
+
+          <Card>
+            <CardHeader>
+              <CardTitle>Aquaculture Program Outcomes</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <ul className="space-y-2 text-sm">
+                <li>• Gain comprehensive knowledge of aquaculture practices and aquatic organism biology</li>
+                <li>• Develop skills in sustainable fish farming, water management, and disease control</li>
+                <li>• Apply scientific techniques in breeding, nutrition, and aquaculture system design</li>
+                <li>• Understand environmental, economic, and ethical aspects of aquaculture</li>
+                <li>• Prepare for professional roles in aquaculture industries, research, and resource management</li>
               </ul>
             </CardContent>
           </Card>

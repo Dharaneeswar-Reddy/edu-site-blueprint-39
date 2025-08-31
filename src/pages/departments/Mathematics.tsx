@@ -15,14 +15,18 @@ const Mathematics = () => {
     "/lovable-uploads/f7ffbe1f-5fed-4b97-9af1-ab0ad2725f32.png",
     "/lovable-uploads/fa6cd0f0-bbb2-4bf5-bc81-323b4085c47e.png",
     "/lovable-uploads/9f96f106-897d-46e3-a4a1-4c4b8f8f9f0c.png",
-    "/lovable-uploads/aa64612b-a2c2-4fc2-b645-b756306336a0.png"
+    "/lovable-uploads/aa64612b-a2c2-4fc2-b645-b756306336a0.png",
+    "/lovable-uploads/76e749fc-2917-4512-b28a-328266b210fe.png",
+    "/lovable-uploads/efecdc8b-f78a-4ff1-947b-c70afb2f2b33.png"
   ];
 
   const departmentPhotos = [
     "/lovable-uploads/ad1edf50-6e71-4375-91d2-7e8d76b3b7b5.png",
     "/lovable-uploads/b1fc6422-ad59-4662-83db-90f4d62b1001.png",
     "/lovable-uploads/bf17da84-634b-4ca1-b09f-996816eb4e61.png",
-    "/lovable-uploads/c845d941-c566-4910-8dbb-82f90fb04f82.png"
+    "/lovable-uploads/c845d941-c566-4910-8dbb-82f90fb04f82.png",
+    "/lovable-uploads/76e749fc-2917-4512-b28a-328266b210fe.png",
+    "/lovable-uploads/efecdc8b-f78a-4ff1-947b-c70afb2f2b33.png"
   ];
 
   useEffect(() => {
@@ -143,27 +147,58 @@ const Mathematics = () => {
           </CardContent>
         </Card>
 
+        {/* Vision and Mission */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <Card>
+            <CardHeader>
+              <CardTitle>Vision</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="text-sm">
+                To Create an Academically sound environment that nurtures, motivates and inspires 
+                excellence in research and teaching in Mathematics along with concern for society.
+              </p>
+            </CardContent>
+          </Card>
+          
+          <Card>
+            <CardHeader>
+              <CardTitle>Mission</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <ul className="text-sm space-y-2">
+                <li>• To provide proper training to rural youth of the region to acquire skills and techniques to cater the meets of the society.</li>
+                <li>• To Providing the Academic Environment to the students that they can transform as skilled users having strong foundation in Applications of Mathematics in other Science Subjects.</li>
+                <li>• To Equip the students with the necessary Competitive skills to build up Their career.</li>
+                <li>• To develop logical, analytical and Mathematical thinking power in the minds of students in order to cater the Mathematical needs of the society.</li>
+              </ul>
+            </CardContent>
+          </Card>
+        </div>
+
         {/* Department Overview */}
         <Card>
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
               <Calculator className="h-6 w-6 text-college-blue" />
-              Department Overview
+              About the Department
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
             <p>
-              The Department of Mathematics at SVRMC is dedicated to fostering analytical thinking 
-              and mathematical reasoning among students. Our comprehensive curriculum covers pure 
-              mathematics, applied mathematics, and statistics with emphasis on both theoretical 
-              understanding and practical applications.
+              Department of Mathematics was established in 1970 with PUC. In 1970, B. Sc. Course with Mathematics, Physics and Chemistry combination was started.
             </p>
             <p>
-              Our experienced faculty members guide students through various branches of mathematics 
-              including algebra, calculus, differential equations, numerical analysis, and operations 
-              research. We prepare students for careers in academia, research, industry, and various 
-              competitive examinations.
+              In The Academic year 2014-15, M.Sc Mathematics Program Introduced. In 2023, under the revised Curriculum and Credit Framework for Undergraduate Programmes (CCFUP) aligned with NEP 2020, many universities—including those in Andhra Pradesh—introduced a 4-year UG Honours program with a Single Major and one Minor.
             </p>
+            <p>
+              Mathematics did not become a major subject by default. Instead:
+            </p>
+            <ul className="space-y-1 text-sm ml-4">
+              <li>• Students now choose one subject as their Major and another as their Minor.</li>
+              <li>• Mathematics can be a Minor, depending on the student's selection and the program structure.</li>
+              <li>• For example, in B.Sc. Hons. (Computer Science) program, Mathematics is offered as a Minor subject.</li>
+            </ul>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mt-6">
               <div className="text-center p-4 bg-blue-50 rounded-lg">
                 <Users className="h-8 w-8 text-college-blue mx-auto mb-2" />
