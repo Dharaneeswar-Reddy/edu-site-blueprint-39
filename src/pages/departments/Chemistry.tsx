@@ -17,17 +17,29 @@ const Chemistry = () => {
   const { timetables: pgTimetables, loading: pgTimetablesLoading } = useDepartmentTimetables("PG Chemistry");
 
   const heroImages = [
-    "/lovable-uploads/71dea894-961d-4fd6-ac1f-78e8db8d93b4.png",
-    "/lovable-uploads/828ea20e-f759-4b97-aa60-3dc97555221f.png",
-    "/lovable-uploads/9ecf085a-3abc-45e7-844b-b132bfa85970.png",
-    "/lovable-uploads/b010e240-0ffe-43a4-884e-04e9e6094c36.png"
+    "/lovable-uploads/0fe00b38-b99b-4a27-bf5b-d43c2778a8fa.png",
+    "/lovable-uploads/5bcaeb67-6bff-44ae-a93c-1d97ef3bac8d.png",
+    "/lovable-uploads/380523da-c2c1-4014-b1ae-6fa50c1df600.png",
+    "/lovable-uploads/7ac42b67-07fe-42f1-9b41-6f119490b786.png",
+    "/lovable-uploads/ac73ea26-e8e0-4756-9c7b-c2a4a18f6d66.png",
+    "/lovable-uploads/6c0f963f-de81-4600-be2e-a311fe83bb96.png",
+    "/lovable-uploads/958295e9-3189-4f34-8a51-d2aeb431f9ee.png",
+    "/lovable-uploads/44151e06-0086-45c1-b1b8-dea0cce05c3b.png",
+    "/lovable-uploads/c06797f6-5188-4a68-893e-92274a14b172.png",
+    "/lovable-uploads/dec9abef-758a-4d15-a93a-a9e7e7575c05.png"
   ];
 
   const departmentPhotos = [
-    "/lovable-uploads/c2330428-4591-4e58-92a3-ff6d9918a338.png",
-    "/lovable-uploads/d1d2add7-8d38-40a3-9b07-6b30cc16b6bc.png",
-    "/lovable-uploads/dd09abc5-6c94-4cbf-898d-c7df488183a6.png",
-    "/lovable-uploads/ee497235-78d2-427a-9aca-40010a64e520.png"
+    "/lovable-uploads/0fe00b38-b99b-4a27-bf5b-d43c2778a8fa.png",
+    "/lovable-uploads/5bcaeb67-6bff-44ae-a93c-1d97ef3bac8d.png",
+    "/lovable-uploads/380523da-c2c1-4014-b1ae-6fa50c1df600.png",
+    "/lovable-uploads/7ac42b67-07fe-42f1-9b41-6f119490b786.png",
+    "/lovable-uploads/ac73ea26-e8e0-4756-9c7b-c2a4a18f6d66.png",
+    "/lovable-uploads/6c0f963f-de81-4600-be2e-a311fe83bb96.png",
+    "/lovable-uploads/958295e9-3189-4f34-8a51-d2aeb431f9ee.png",
+    "/lovable-uploads/44151e06-0086-45c1-b1b8-dea0cce05c3b.png",
+    "/lovable-uploads/c06797f6-5188-4a68-893e-92274a14b172.png",
+    "/lovable-uploads/dec9abef-758a-4d15-a93a-a9e7e7575c05.png"
   ];
 
   useEffect(() => {
@@ -400,26 +412,102 @@ const Chemistry = () => {
 
           <TabsContent value="pg" className="space-y-8">
             {/* PG Department Overview */}
+            <Card className="col-span-full">
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2">
+                  <TestTube className="h-6 w-6 text-college-blue" />
+                  PG Department Overview
+                </CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-6">
+                <div className="bg-blue-50 p-6 rounded-lg">
+                  <h4 className="font-semibold text-lg mb-3 text-blue-800">Year of Establishment</h4>
+                  <p className="text-blue-700">2003</p>
+                </div>
+
+                <div className="bg-green-50 p-6 rounded-lg">
+                  <h4 className="font-semibold text-lg mb-3 text-green-800">Courses Offered</h4>
+                  <ul className="text-green-700 space-y-2">
+                    <li>• M.Sc (Organic Chemistry)</li>
+                    <li>• M.Sc (Analytical Chemistry)</li>
+                  </ul>
+                </div>
+
+                <div className="bg-purple-50 p-6 rounded-lg">
+                  <h4 className="font-semibold text-lg mb-3 text-purple-800">BRIEF HISTORY & INTRODUCTION</h4>
+                  <p className="text-purple-700 mb-3">
+                    The Department of Chemistry (PG) was established in the year 2003. The activities of the department were formally launched and inaugurated by Dr. K. Surendra Babu, under the principalship of Sri. A.V.Raghava Rao. The department is one of the oldest departments in the Acharya Nagarjuna University affiliated colleges.
+                  </p>
+                  <p className="text-purple-700">The department offers the following courses:</p>
+                  <ul className="text-purple-700 space-y-1 mt-2">
+                    <li>1. M.Sc Organic Chemistry (Since 2003)</li>
+                    <li>2. M.Sc Analytical Chemistry (Since 2010)</li>
+                  </ul>
+                </div>
+
+                <div className="bg-yellow-50 p-6 rounded-lg">
+                  <h4 className="font-semibold text-lg mb-3 text-yellow-800">VISION</h4>
+                  <p className="text-yellow-700">
+                    Expelling Darkness of ignorance from the minds of young men providing Real education on the basis of Devine principles- "Truth Love God" (Tama Soma Jyothirgamaya)
+                  </p>
+                </div>
+
+                <div className="bg-indigo-50 p-6 rounded-lg">
+                  <h4 className="font-semibold text-lg mb-3 text-indigo-800">MISSION</h4>
+                  <ul className="text-indigo-700 space-y-2">
+                    <li>• To develop application-oriented courses, with necessary inputs and values with a view to shape the learners for all-round development</li>
+                    <li>• To cultivate knowledge skills, values and confidence in the students to grow, thrive and prosper</li>
+                    <li>• To promote academic exchange and strengthen academic industry interfacing exploring the technology available</li>
+                    <li>• To instigate the spirit of enquiry, integrity, leadership and deep sense of social justice among students</li>
+                    <li>• To provide life skills for a successful career and combat the competition in the society</li>
+                    <li>• To collaborate with the national and international institutes for providing platform for exposure to our students</li>
+                    <li>• Implementation of NEP, to setup reforms for skill development and enhancement of student's competency</li>
+                  </ul>
+                </div>
+
+                <div className="bg-rose-50 p-6 rounded-lg">
+                  <h4 className="font-semibold text-lg mb-3 text-rose-800">HIGHLIGHTS & FACILITIES</h4>
+                  <ul className="text-rose-700 space-y-2">
+                    <li>• The Department has well established laboratories for Previous and Final Year students</li>
+                    <li>• The Department Library has 565 books useful to Faculty members & Students</li>
+                    <li>• In addition to traditional Class room teaching, staff is using 3D models, Charts for better understanding to students</li>
+                    <li>• Eminent Academicians are invited regularly to deliver guest lectures on various topics</li>
+                    <li>• Important web electronic documents of new inventions and innovations are downloaded and distributed to the students regularly</li>
+                    <li>• Additional curriculum is provided to aspiring learners. Book reviews, study projects, discussions on current trends, group discussions, presentation of papers in class room seminars are encouraged</li>
+                    <li>• Power point presentation CD's are prepared for students</li>
+                    <li>• The Department provides career guidance for job opportunities in pharmaceuticals and public sector fields</li>
+                    <li>• The Department provides coaching for various competitive examinations like SLET & CSIR-UGC-NET….etc</li>
+                  </ul>
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* PG Programs & Seats */}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
               <Card>
                 <CardHeader>
-                  <CardTitle className="flex items-center gap-2">
-                    <TestTube className="h-6 w-6 text-college-blue" />
-                    PG Department Overview
-                  </CardTitle>
+                  <CardTitle>PG Programs & Seats</CardTitle>
                 </CardHeader>
-                <CardContent className="space-y-4">
-                  <p>
-                    The Postgraduate Chemistry Department at SVRMC offers advanced studies in chemical sciences 
-                    with specialized research opportunities, modern instrumentation, and comprehensive training 
-                    for research and industry careers.
-                  </p>
-                  <p>
-                    Our state-of-the-art research laboratories are equipped with advanced instrumentation including 
-                    NMR, IR spectroscopy, chromatography systems, and sophisticated analytical instruments for 
-                    cutting-edge research.
-                  </p>
-                  <div className="grid grid-cols-2 gap-4 mt-6">
+                <CardContent>
+                  <div className="space-y-3">
+                    <div className="flex justify-between items-center p-3 bg-purple-50 rounded">
+                      <span>M.Sc. Organic Chemistry</span>
+                      <Badge variant="secondary">35 Seats</Badge>
+                    </div>
+                    <div className="flex justify-between items-center p-3 bg-orange-50 rounded">
+                      <span>M.Sc. Analytical Chemistry</span>
+                      <Badge variant="secondary">20 Seats</Badge>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+
+              <Card>
+                <CardHeader>
+                  <CardTitle>Department Statistics</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <div className="grid grid-cols-2 gap-4">
                     <div className="text-center p-4 bg-purple-50 rounded-lg">
                       <Users className="h-8 w-8 text-purple-600 mx-auto mb-2" />
                       <div className="text-2xl font-bold text-purple-600">60+</div>
@@ -433,89 +521,33 @@ const Chemistry = () => {
                   </div>
                 </CardContent>
               </Card>
-
-              <Card>
-                <CardHeader>
-                  <CardTitle>PG Programs & Seats</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="space-y-3">
-                    <div className="flex justify-between items-center p-3 bg-purple-50 rounded">
-                      <span>M.Sc. Chemistry</span>
-                      <Badge variant="secondary">35 Seats</Badge>
-                    </div>
-                    <div className="flex justify-between items-center p-3 bg-orange-50 rounded">
-                      <span>M.Sc. Analytical Chemistry</span>
-                      <Badge variant="secondary">20 Seats</Badge>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
             </div>
 
-            {/* PG Program Structure */}
+            {/* Laboratory Instruments Section - To be filled later */}
             <Card>
               <CardHeader>
-                <CardTitle>M.Sc. Chemistry Program Structure</CardTitle>
+                <CardTitle>Laboratory Instruments</CardTitle>
               </CardHeader>
               <CardContent>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div className="p-4 border rounded-lg">
-                    <h5 className="font-medium text-purple-600 mb-2">Year 1</h5>
-                    <ul className="text-sm space-y-1">
-                      <li>• Advanced Inorganic Chemistry</li>
-                      <li>• Advanced Organic Chemistry</li>
-                      <li>• Advanced Physical Chemistry</li>
-                      <li>• Quantum Chemistry</li>
-                      <li>• Spectroscopy & Structure</li>
-                    </ul>
-                  </div>
-                  <div className="p-4 border rounded-lg">
-                    <h5 className="font-medium text-orange-600 mb-2">Year 2</h5>
-                    <ul className="text-sm space-y-1">
-                      <li>• Research Methodology</li>
-                      <li>• Advanced Analytical Chemistry</li>
-                      <li>• Organometallic Chemistry</li>
-                      <li>• Materials Chemistry</li>
-                      <li>• Dissertation Project</li>
-                    </ul>
-                  </div>
+                <div className="text-center py-8 text-muted-foreground">
+                  <TestTube className="h-16 w-16 mx-auto mb-4 opacity-20" />
+                  <p>Laboratory instruments details will be added soon.</p>
                 </div>
               </CardContent>
             </Card>
 
-            {/* PG Course & Program Outcomes */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <Card>
-                <CardHeader>
-                  <CardTitle>PG Course Outcomes</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <ul className="space-y-2 text-sm">
-                    <li>• Advanced understanding of chemical principles</li>
-                    <li>• Research skills and methodology</li>
-                    <li>• Advanced instrumentation expertise</li>
-                    <li>• Independent research capabilities</li>
-                    <li>• Scientific writing and presentation skills</li>
-                  </ul>
-                </CardContent>
-              </Card>
-
-              <Card>
-                <CardHeader>
-                  <CardTitle>PG Program Outcomes</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <ul className="space-y-2 text-sm">
-                    <li>• Advanced research and analytical skills</li>
-                    <li>• Innovation and critical thinking</li>
-                    <li>• Industry and academic readiness</li>
-                    <li>• Leadership and project management</li>
-                    <li>• Preparation for Ph.D. studies</li>
-                  </ul>
-                </CardContent>
-              </Card>
-            </div>
+            {/* Departmental Activities Section - To be filled later */}
+            <Card>
+              <CardHeader>
+                <CardTitle>Departmental Activities</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="text-center py-8 text-muted-foreground">
+                  <Calendar className="h-16 w-16 mx-auto mb-4 opacity-20" />
+                  <p>Departmental activities details will be added soon.</p>
+                </div>
+              </CardContent>
+            </Card>
 
             {/* PG Department Staff */}
             <Card>

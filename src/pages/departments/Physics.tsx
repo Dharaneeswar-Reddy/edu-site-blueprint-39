@@ -23,7 +23,6 @@ const Physics = () => {
   ];
 
   const departmentPhotos = [
-    "/lovable-uploads/d85fb3d3-b73a-4321-ba55-69d5399a79a5.png",
     "/lovable-uploads/596e11b2-cd25-48ed-8769-88d01f850463.png",
     "/lovable-uploads/5ac5ea4b-5580-4969-8658-192e082f8417.png",
     "/lovable-uploads/d4627f03-9552-464e-93cf-2eca5d4c1408.png",
