@@ -44,7 +44,7 @@ const IqacAdmin = () => {
   const [loading, setLoading] = useState(false);
   const [uploading, setUploading] = useState(false);
   const [editingDoc, setEditingDoc] = useState<IqacDocument | null>(null);
-  const [selectedType, setSelectedType] = useState<string>("");
+  const [selectedType, setSelectedType] = useState<string>("all");
   const [formData, setFormData] = useState({
     title: "",
     description: "",
