@@ -40,8 +40,8 @@ const ExaminationDocumentsAdmin = () => {
     "Academic Calendars",
     "Exam Fee Notifications", 
     "External Time Tables",
-    "Internal Time Tables",
     "Internal Circulars",
+    "Internal Time Tables",
     "Results"
   ];
 

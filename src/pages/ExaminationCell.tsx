@@ -10,7 +10,7 @@ const ExaminationCell = () => {
     documents,
     loading
   } = useExaminationDocuments();
-  const tabs = ["Academic Calendars", "Exam Fee Notifications", "Internal Circulars", "Internal Time Tables", "External Time Tables", "Results"];
+  const tabs = ["Academic Calendars", "Exam Fee Notifications", "Internal Time Tables", "Internal Circulars", "External Time Tables", "Results"];
   const handleOpenFile = (fileUrl: string) => {
     window.open(fileUrl, '_blank');
   };
