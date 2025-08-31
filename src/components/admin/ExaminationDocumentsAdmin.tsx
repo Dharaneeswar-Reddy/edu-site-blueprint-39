@@ -25,6 +25,7 @@ const ExaminationDocumentsAdmin = () => {
   const { toast } = useToast();
   const { documents, loading, refetch } = useExaminationDocuments();
   const [activeTab, setActiveTab] = useState("Academic Calendars");
+  const [isUploading, setIsUploading] = useState(false);
   const [uploadData, setUploadData] = useState<UploadData>({
     title: "",
     document_type: "Academic Calendars",
@@ -60,25 +61,54 @@ const ExaminationDocumentsAdmin = () => {
       return;
     }
 
+    if (uploadData.file.type !== 'application/pdf') {
+      toast({
+        title: "Error", 
+        description: "Please select a PDF file only.",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    setIsUploading(true);
+
     try {
-      // Upload file to the new examination-docs bucket
+      // Check authentication first
+      const { data: { user }, error: authError } = await supabase.auth.getUser();
+      if (authError || !user) {
+        throw new Error("Authentication required. Please log in again.");
+      }
+
+      // Upload file to the examination-docs bucket
       const fileExt = uploadData.file.name.split('.').pop();
-      const fileName = `${Date.now()}.${fileExt}`;
+      const fileName = `${Date.now()}-${Math.random().toString(36).substring(7)}.${fileExt}`;
       const filePath = `examination-documents/${fileName}`;
 
-      const { error: uploadError } = await supabase.storage
-        .from('examination-docs')
-        .upload(filePath, uploadData.file);
+      console.log('Uploading file to:', filePath);
 
-      if (uploadError) throw uploadError;
+      const { data: uploadResult, error: uploadError } = await supabase.storage
+        .from('examination-docs')
+        .upload(filePath, uploadData.file, {
+          cacheControl: '3600',
+          upsert: false
+        });
+
+      if (uploadError) {
+        console.error('Upload error:', uploadError);
+        throw new Error(`File upload failed: ${uploadError.message}`);
+      }
+
+      console.log('Upload successful:', uploadResult);
 
       // Get public URL
       const { data: { publicUrl } } = supabase.storage
         .from('examination-docs')
         .getPublicUrl(filePath);
 
+      console.log('Public URL:', publicUrl);
+
       // Insert document record
-      const { error: insertError } = await supabase
+      const { data: insertResult, error: insertError } = await supabase
         .from('examination_documents')
         .insert({
           title: uploadData.title,
@@ -88,9 +118,19 @@ const ExaminationDocumentsAdmin = () => {
           academic_year: uploadData.academic_year || null,
           description: uploadData.description || null,
           file_url: publicUrl,
-        });
+        })
+        .select();
 
-      if (insertError) throw insertError;
+      if (insertError) {
+        console.error('Insert error:', insertError);
+        // If database insert fails, clean up the uploaded file
+        await supabase.storage
+          .from('examination-docs')
+          .remove([filePath]);
+        throw new Error(`Failed to save document record: ${insertError.message}`);
+      }
+
+      console.log('Document saved:', insertResult);
 
       toast({
         title: "Success",
@@ -108,15 +148,23 @@ const ExaminationDocumentsAdmin = () => {
         file: null,
       });
 
+      // Reset file input
+      const fileInput = document.getElementById('file') as HTMLInputElement;
+      if (fileInput) {
+        fileInput.value = '';
+      }
+
       // Refresh documents
       refetch();
-    } catch (error) {
-      console.error('Upload error:', error);
+    } catch (error: any) {
+      console.error('Upload process error:', error);
       toast({
         title: "Error",
-        description: "Failed to upload document. Please try again.",
+        description: error.message || "Failed to upload document. Please try again.",
         variant: "destructive",
       });
+    } finally {
+      setIsUploading(false);
     }
   };
 
@@ -131,9 +179,14 @@ const ExaminationDocumentsAdmin = () => {
         const filePath = urlParts.slice(bucketIndex + 1).join('/');
         
         // Delete from storage (handles both old and new bucket files)
-        await supabase.storage
+        const { error: storageError } = await supabase.storage
           .from(bucketName)
           .remove([filePath]);
+
+        if (storageError) {
+          console.warn('Storage deletion warning:', storageError);
+          // Continue with database deletion even if storage fails
+        }
       }
 
       // Delete from database
@@ -150,11 +203,11 @@ const ExaminationDocumentsAdmin = () => {
       });
 
       refetch();
-    } catch (error) {
+    } catch (error: any) {
       console.error('Delete error:', error);
       toast({
         title: "Error",
-        description: "Failed to delete document. Please try again.",
+        description: error.message || "Failed to delete document. Please try again.",
         variant: "destructive",
       });
     }
@@ -208,6 +261,7 @@ const ExaminationDocumentsAdmin = () => {
                   onChange={(e) => handleUploadChange('title', e.target.value)}
                   placeholder="Enter document title"
                   required
+                  disabled={isUploading}
                 />
               </div>
 
@@ -218,6 +272,7 @@ const ExaminationDocumentsAdmin = () => {
                   value={uploadData.department}
                   onChange={(e) => handleUploadChange('department', e.target.value)}
                   placeholder="e.g., Computer Science"
+                  disabled={isUploading}
                 />
               </div>
 
@@ -229,6 +284,7 @@ const ExaminationDocumentsAdmin = () => {
                     value={uploadData.semester}
                     onChange={(e) => handleUploadChange('semester', e.target.value)}
                     placeholder="e.g., I, II"
+                    disabled={isUploading}
                   />
                 </div>
                 <div>
@@ -238,6 +294,7 @@ const ExaminationDocumentsAdmin = () => {
                     value={uploadData.academic_year}
                     onChange={(e) => handleUploadChange('academic_year', e.target.value)}
                     placeholder="e.g., 2024-25"
+                    disabled={isUploading}
                   />
                 </div>
               </div>
@@ -250,6 +307,7 @@ const ExaminationDocumentsAdmin = () => {
                   onChange={(e) => handleUploadChange('description', e.target.value)}
                   placeholder="Optional description"
                   rows={3}
+                  disabled={isUploading}
                 />
               </div>
 
@@ -261,12 +319,13 @@ const ExaminationDocumentsAdmin = () => {
                   accept=".pdf"
                   onChange={(e) => handleUploadChange('file', e.target.files?.[0] || null)}
                   required
+                  disabled={isUploading}
                 />
               </div>
 
-              <Button type="submit" className="w-full">
+              <Button type="submit" className="w-full" disabled={isUploading}>
                 <Upload className="h-4 w-4 mr-2" />
-                Upload Document
+                {isUploading ? 'Uploading...' : 'Upload Document'}
               </Button>
             </form>
           </CardContent>
