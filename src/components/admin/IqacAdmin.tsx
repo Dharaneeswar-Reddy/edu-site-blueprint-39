@@ -113,21 +113,35 @@ const IqacAdmin = () => {
   const handleFileUpload = async (file: File) => {
     const fileExt = file.name.split('.').pop();
     const fileName = `${Date.now()}.${fileExt}`;
-    const filePath = `${fileName}`;
+    const filePath = fileName;
+
+    console.log('Starting file upload:', fileName, 'Size:', file.size);
+
+    // Validate file size (10MB limit)
+    if (file.size > 10485760) {
+      throw new Error('File size must be less than 10MB');
+    }
+
+    // Validate file type
+    const allowedTypes = ['application/pdf', 'application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document', 'image/jpeg', 'image/png', 'image/jpg'];
+    if (!allowedTypes.includes(file.type)) {
+      throw new Error('Invalid file type. Please upload PDF, DOC, DOCX, JPG, or PNG files only.');
+    }
 
     const { error: uploadError } = await supabase.storage
       .from('iqac-documents')
       .upload(filePath, file);
 
     if (uploadError) {
-      console.error('Upload error:', uploadError);
-      throw uploadError;
+      console.error('Storage upload error:', uploadError);
+      throw new Error(`Upload failed: ${uploadError.message}`);
     }
 
     const { data: { publicUrl } } = supabase.storage
       .from('iqac-documents')
       .getPublicUrl(filePath);
 
+    console.log('File uploaded successfully:', publicUrl);
     return publicUrl;
   };
 
@@ -150,6 +164,13 @@ const IqacAdmin = () => {
         fileUrl = await handleFileUpload(formData.file);
       }
 
+      console.log('Submitting document data:', {
+        title: formData.title,
+        document_type: formData.document_type,
+        academic_year: formData.academic_year,
+        description: formData.description
+      });
+
       const documentData = {
         title: formData.title,
         description: formData.description || null,
@@ -159,22 +180,30 @@ const IqacAdmin = () => {
       };
 
       if (editingDoc) {
+        console.log('Updating document:', editingDoc.id);
         const { error } = await supabase
           .from("iqac_documents")
           .update(documentData)
           .eq("id", editingDoc.id);
 
-        if (error) throw error;
+        if (error) {
+          console.error('Database update error:', error);
+          throw error;
+        }
         toast({
           title: "Success",
           description: "Document updated successfully",
         });
       } else {
+        console.log('Inserting new document');
         const { error } = await supabase
           .from("iqac_documents")
           .insert([documentData]);
 
-        if (error) throw error;
+        if (error) {
+          console.error('Database insert error:', error);
+          throw error;
+        }
         toast({
           title: "Success",
           description: "Document uploaded successfully",
@@ -183,11 +212,11 @@ const IqacAdmin = () => {
 
       resetForm();
       fetchDocuments();
-    } catch (error) {
-      console.error("Error:", error);
+    } catch (error: any) {
+      console.error("Error saving document:", error);
       toast({
         title: "Error",
-        description: "Failed to save document",
+        description: error.message || "Failed to save document",
         variant: "destructive",
       });
     } finally {
