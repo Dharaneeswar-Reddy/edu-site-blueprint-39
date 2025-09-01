@@ -102,13 +102,6 @@ const Administration = () => {
             </div>
           ) : (
             <div className="flex flex-col md:flex-row gap-8 items-start">
-              <div className="w-full md:w-1/3">
-                <img 
-                  src={(principal?.photo_url) || defaultPrincipal.photo_url} 
-                  alt={(principal?.name) || defaultPrincipal.name}
-                  className="w-full max-w-xs rounded-lg shadow-md object-cover aspect-[3/4]"
-                />
-              </div>
               <div className="w-full md:w-2/3 space-y-4">
                 <div>
                   <h2 className="text-4xl font-bold text-foreground mb-3">{principal?.name || defaultPrincipal.name}</h2>
@@ -126,6 +119,13 @@ const Administration = () => {
                     <span>{principal?.email || defaultPrincipal.email}</span>
                   </div>
                 </div>
+              </div>
+              <div className="w-full md:w-1/3">
+                <img 
+                  src={(principal?.photo_url) || defaultPrincipal.photo_url} 
+                  alt={(principal?.name) || defaultPrincipal.name}
+                  className="w-full max-w-xs rounded-lg shadow-md object-cover aspect-[3/4]"
+                />
               </div>
             </div>
           )}
