@@ -143,6 +143,13 @@ const Administration = () => {
             </div>
           ) : (
             <div className="flex flex-col md:flex-row gap-8 items-start">
+              <div className="w-full md:w-1/3">
+                <img 
+                  src={(officeSuperintendent?.photo_url) || defaultOfficeSuperintendent.photo_url} 
+                  alt={(officeSuperintendent?.name) || defaultOfficeSuperintendent.name}
+                  className="w-full max-w-xs rounded-lg shadow-md object-cover aspect-[3/4]"
+                />
+              </div>
               <div className="w-full md:w-2/3 space-y-4">
                 <div>
                   <h2 className="text-4xl font-bold text-foreground mb-3">{officeSuperintendent?.name || defaultOfficeSuperintendent.name}</h2>
@@ -160,13 +167,6 @@ const Administration = () => {
                     <span>{officeSuperintendent?.email || defaultOfficeSuperintendent.email}</span>
                   </div>
                 </div>
-              </div>
-              <div className="w-full md:w-1/3">
-                <img 
-                  src={(officeSuperintendent?.photo_url) || defaultOfficeSuperintendent.photo_url} 
-                  alt={(officeSuperintendent?.name) || defaultOfficeSuperintendent.name}
-                  className="w-full max-w-xs rounded-lg shadow-md object-cover aspect-[3/4]"
-                />
               </div>
             </div>
           )}
