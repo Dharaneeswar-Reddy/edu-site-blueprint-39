@@ -826,6 +826,7 @@ const StaffAdmin = () => {
                       <SelectContent>
                         <SelectItem value="chairman">Chairman</SelectItem>
                         <SelectItem value="principal">Principal</SelectItem>
+                        <SelectItem value="office_superintendent">Office Superintendent</SelectItem>
                       </SelectContent>
                     </Select>
                   </div>

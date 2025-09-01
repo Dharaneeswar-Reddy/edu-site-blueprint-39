@@ -15,6 +15,7 @@ const Administration = () => {
   // Get leadership data
   const chairman = leadership.find(leader => leader.position === 'chairman');
   const principal = leadership.find(leader => leader.position === 'principal');
+  const officeSuperintendent = leadership.find(leader => leader.position === 'office_superintendent');
   
   // Default fallback data if no leadership data is available
   const defaultChairman = {
@@ -33,6 +34,15 @@ const Administration = () => {
     photo_url: "/lovable-uploads/9f96f106-897d-46e3-a4a1-4c4b8f8f9f0c.png",
     email: "principal@svrmc.edu.in",
     bio: "Dr. Rajesh Kumar is currently serving as Principal at SVRM College since 2018. He brings a rich interdisciplinary background spanning computer science, educational technology, and academic administration."
+  };
+
+  const defaultOfficeSuperintendent = {
+    name: "Mr. Suresh Reddy",
+    designation: "Office Superintendent",
+    department: "Administration",
+    photo_url: "/lovable-uploads/aa64612b-a2c2-4fc2-b645-b756306336a0.png",
+    email: "superintendent@svrmc.edu.in",
+    bio: "Mr. Suresh Reddy is currently serving as Office Superintendent at SVRM College since 2015. He oversees the administrative operations and ensures smooth functioning of all office activities with his extensive experience in educational administration."
   };
 
   return (
@@ -116,6 +126,47 @@ const Administration = () => {
                     <span>{principal?.email || defaultPrincipal.email}</span>
                   </div>
                 </div>
+              </div>
+            </div>
+          )}
+        </section>
+
+        {/* Office Superintendent Section */}
+        <section className="bg-card rounded-lg shadow-sm border p-8">
+          {leadershipLoading ? (
+            <div className="text-center py-8">
+              <p className="text-muted-foreground">Loading office superintendent information...</p>
+            </div>
+          ) : leadershipError ? (
+            <div className="text-center py-8">
+              <p className="text-red-500">Error loading office superintendent information</p>
+            </div>
+          ) : (
+            <div className="flex flex-col md:flex-row gap-8 items-start">
+              <div className="w-full md:w-2/3 space-y-4">
+                <div>
+                  <h2 className="text-4xl font-bold text-foreground mb-3">{officeSuperintendent?.name || defaultOfficeSuperintendent.name}</h2>
+                  <p className="text-xl text-blue-600 font-semibold mb-2">{officeSuperintendent?.designation || defaultOfficeSuperintendent.designation}</p>
+                  <p className="text-lg text-muted-foreground mb-4">{officeSuperintendent?.department || defaultOfficeSuperintendent.department}</p>
+                </div>
+                
+                <div className="space-y-4">
+                  <p className="text-muted-foreground leading-relaxed text-justify">
+                    <span className="font-semibold">{officeSuperintendent?.name || defaultOfficeSuperintendent.name}</span> {officeSuperintendent?.bio || defaultOfficeSuperintendent.bio}
+                  </p>
+                  
+                  <div className="flex items-center gap-2 text-muted-foreground">
+                    <Mail className="h-4 w-4" />
+                    <span>{officeSuperintendent?.email || defaultOfficeSuperintendent.email}</span>
+                  </div>
+                </div>
+              </div>
+              <div className="w-full md:w-1/3">
+                <img 
+                  src={(officeSuperintendent?.photo_url) || defaultOfficeSuperintendent.photo_url} 
+                  alt={(officeSuperintendent?.name) || defaultOfficeSuperintendent.name}
+                  className="w-full max-w-xs rounded-lg shadow-md object-cover aspect-[3/4]"
+                />
               </div>
             </div>
           )}
