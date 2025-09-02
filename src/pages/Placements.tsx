@@ -5,15 +5,47 @@ import { Link } from "react-router-dom";
 import { ArrowRight, Briefcase, Building, Users, Award, TrendingUp, Target, MapPin, GraduationCap, UserCheck, Calendar, Building2, ChevronLeft, ChevronRight, MessageSquare, Lightbulb, Network, Eye, HeartHandshake } from "lucide-react";
 import { useState, useEffect } from "react";
 import { useStaff } from "@/hooks/useStaff";
-import { useRecruiterLogos } from "@/hooks/useRecruiterLogos";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+
+// Import company logos
+import tcsLogo from "@/assets/logos/tcs-logo.png";
+import infosysLogo from "@/assets/logos/infosys-logo.png";
+import wiproLogo from "@/assets/logos/wipro-logo.png";
+import cognizantLogo from "@/assets/logos/cognizant-logo.png";
+import microsoftLogo from "@/assets/logos/microsoft-logo.png";
+import amazonLogo from "@/assets/logos/amazon-logo.png";
+import ibmLogo from "@/assets/logos/ibm-logo.png";
+import accentureLogo from "@/assets/logos/accenture-logo.png";
+import hclLogo from "@/assets/logos/hcl-logo.png";
+import techMahindraLogo from "@/assets/logos/techmahindra-logo.svg";
+import capgeminiLogo from "@/assets/logos/capgemini-logo.png";
+import mindtreeLogo from "@/assets/logos/mindtree-logo.png";
+import ltiLogo from "@/assets/logos/lti-logo.png";
+import mphasisLogo from "@/assets/logos/mphasis-logo.png";
 
 const Placements = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   
   // Fetch placement staff from database
   const { staff: allStaff, loading: staffLoading, error: staffError } = useStaff();
-  const { getLogoForCompany } = useRecruiterLogos();
+  
+  // Company logo mapping
+  const companyLogos: { [key: string]: string } = {
+    "TCS": tcsLogo,
+    "INFOSYS": infosysLogo,
+    "WIPRO": wiproLogo,
+    "COGNIZANT": cognizantLogo,
+    "HCL": hclLogo,
+    "TECH MAHINDRA": techMahindraLogo,
+    "ACCENTURE": accentureLogo,
+    "IBM": ibmLogo,
+    "CAPGEMINI": capgeminiLogo,
+    "MINDTREE": mindtreeLogo,
+    "MPHASIS": mphasisLogo,
+    "L&T INFOTECH": ltiLogo,
+    "MICROSOFT": microsoftLogo,
+    "AMAZON": amazonLogo,
+  };
   
   // Filter placement related staff - those with placement related designations
   const placementStaff = allStaff.filter(staff => 
@@ -832,34 +864,40 @@ const Placements = () => {
 
           <Card className="border-primary/20">
             <CardContent className="p-8">
-              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
-                {topRecruiters.map((company, index) => {
-                  const logoUrl = getLogoForCompany(company);
-                  return (
-                    <Card key={index} className="hover:shadow-lg transition-all duration-300 border-border/50">
-                      <CardContent className="p-6 text-center space-y-3">
-                        {logoUrl ? (
-                          <div className="flex items-center justify-center h-16 mb-2">
-                            <img 
-                              src={logoUrl} 
-                              alt={`${company} logo`}
-                              className="max-h-12 max-w-full object-contain filter hover:brightness-110 transition-all"
-                              loading="lazy"
-                            />
-                          </div>
-                        ) : (
-                          <div className="flex items-center justify-center h-16 mb-2 bg-muted rounded-lg">
-                            <Building2 className="h-8 w-8 text-muted-foreground" />
-                          </div>
-                        )}
-                        <span className="text-sm font-semibold text-foreground leading-tight block">
-                          {company}
-                        </span>
-                      </CardContent>
-                    </Card>
-                  );
-                })}
-              </div>
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
+              {[
+                "TCS", "INFOSYS", "WIPRO", "COGNIZANT", "HCL", "TECH MAHINDRA",
+                "ACCENTURE", "IBM", "CAPGEMINI", "MINDTREE", "MPHASIS", "L&T INFOTECH",
+                "HEXAWARE", "ZENSAR", "CYIENT", "SONATA SOFTWARE", "RAMCO SYSTEMS",
+                "TALBRIDGE GENPACT", "VIRTUSA", "SYNTEL", "POLARIS", "NEWGEN SOFTWARE",
+                "QUEST GLOBAL", "EFFTRONICS", "MICROSOFT", "AMAZON"
+              ].map((company, index) => {
+                const logoUrl = companyLogos[company];
+                return (
+                  <Card key={index} className="hover:shadow-lg transition-all duration-300 border-border/50 group">
+                    <CardContent className="p-6 text-center space-y-3">
+                      {logoUrl ? (
+                        <div className="flex items-center justify-center h-16 mb-2">
+                          <img 
+                            src={logoUrl} 
+                            alt={`${company} logo`}
+                            className="max-h-12 max-w-full object-contain filter group-hover:brightness-110 transition-all duration-300"
+                            loading="lazy"
+                          />
+                        </div>
+                      ) : (
+                        <div className="flex items-center justify-center h-16 mb-2 bg-muted rounded-lg">
+                          <Building2 className="h-8 w-8 text-muted-foreground" />
+                        </div>
+                      )}
+                      <span className="text-sm font-semibold text-foreground leading-tight block">
+                        {company}
+                      </span>
+                    </CardContent>
+                  </Card>
+                );
+              })}
+            </div>
             </CardContent>
           </Card>
         </div>
