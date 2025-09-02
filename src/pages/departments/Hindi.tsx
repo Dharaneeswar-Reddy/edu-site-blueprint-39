@@ -18,7 +18,7 @@ const Hindi = () => {
         
         {/* Hero Image */}
         <div className="relative h-96 md:h-[500px] lg:h-[600px] rounded-lg overflow-hidden shadow-xl">
-          <img src="/lovable-uploads/90a79da6-220f-4c8f-89c3-4d85fe488101.png" alt="Hindi Department" className="w-full h-full object-cover" />
+          <img src="/lovable-uploads/6da72a11-7918-4a14-90e5-c24347b178d5.png" alt="Hindi Department" className="w-full h-full object-cover" />
           <div className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
             
           </div>
