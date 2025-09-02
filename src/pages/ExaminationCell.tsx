@@ -22,14 +22,20 @@ const ExaminationCell = () => {
   
   const filteredDocuments = documents.filter(doc => doc.document_type === activeTab);
   
-  // Find the Controller of Examination from staff
-  const controller = examinationStaff.find(staff => 
+  // Find the controllers from staff
+  const mainController = examinationStaff.find(staff => 
+    staff.name.toLowerCase().includes('p. srinivasa rao') ||
     staff.designation.toLowerCase().includes('controller of examination')
   );
   
-  // Get other examination staff (excluding the main controller)
+  const additionalController = examinationStaff.find(staff => 
+    staff.name.toLowerCase().includes('u. siva prasad') ||
+    staff.designation.toLowerCase().includes('addl. controller')
+  );
+  
+  // Get other examination staff (excluding the controllers)
   const otherStaff = examinationStaff.filter(staff => 
-    !staff.designation.toLowerCase().includes('controller of examination')
+    !staff.designation.toLowerCase().includes('controller')
   );
   return <PageLayout title="Examination Cell" description="Central hub for all examination-related activities, schedules, and results at SVRMC.">
       <div className="space-y-8">
@@ -108,66 +114,86 @@ const ExaminationCell = () => {
                 </div>
               ) : (
                 <>
-                  {/* Controller of Examinations */}
-                  {controller && (
-                    <div className="mb-8 p-6 bg-muted/20 rounded-lg">
-                      <div className="flex flex-col md:flex-row items-center md:items-start gap-4">
-                        <div className="w-24 h-24 rounded-full flex items-center justify-center flex-shrink-0 overflow-hidden bg-primary/10">
-                          {controller.photo_url ? (
-                            <img 
-                              src={controller.photo_url} 
-                              alt={controller.name}
-                              className="w-full h-full object-cover"
-                            />
-                          ) : (
-                            <span className="text-2xl font-bold text-primary">
-                              {controller.name.split(' ').map(n => n[0]).join('')}
-                            </span>
-                          )}
-                        </div>
-                        <div className="text-center md:text-left">
-                          <h4 className="text-lg font-semibold text-primary">{controller.name}</h4>
-                          <p className="text-primary/80 font-medium">{controller.designation}</p>
-                          <div className="mt-3 space-y-1 text-sm text-muted-foreground">
-                            <p><strong>Email:</strong> {controller.email}</p>
-                            <p><strong>Phone:</strong> {controller.phone}</p>
-                            <p><strong>Department:</strong> {controller.department}</p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  )}
-
-                  {/* Other Staff Grid */}
-                  <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    {otherStaff.map((staff, index) => (
-                      <div key={staff.id} className="bg-card border rounded-lg p-4 hover:shadow-md transition-shadow">
-                        <div className="flex items-center gap-3 mb-3">
-                          <div className="w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0 overflow-hidden bg-primary/10">
-                            {staff.photo_url ? (
+                  {/* Controllers Section */}
+                  <div className="mb-8 p-6 bg-muted/20 rounded-lg">
+                    <div className="grid md:grid-cols-2 gap-6">
+                      {/* Main Controller */}
+                      {mainController && (
+                        <div className="flex flex-col items-center text-center">
+                          <div className="w-24 h-24 rounded-full flex items-center justify-center flex-shrink-0 overflow-hidden bg-primary/10 mb-4">
+                            {mainController.photo_url ? (
                               <img 
-                                src={staff.photo_url} 
-                                alt={staff.name}
+                                src={mainController.photo_url} 
+                                alt={mainController.name}
                                 className="w-full h-full object-cover"
                               />
                             ) : (
-                              <span className="text-sm font-bold text-primary">
-                                {staff.name.split(' ').map(n => n[0]).join('')}
+                              <span className="text-2xl font-bold text-primary">
+                                {mainController.name.split(' ').map(n => n[0]).join('')}
                               </span>
                             )}
                           </div>
                           <div>
-                            <h4 className="font-semibold text-primary text-sm">{staff.name}</h4>
-                            <p className="text-xs text-primary/70">{staff.designation}</p>
+                            <h4 className="text-lg font-semibold text-primary">{mainController.name}</h4>
+                            <p className="text-primary/80 font-medium">{mainController.designation}</p>
+                            <div className="mt-3 space-y-1 text-sm text-muted-foreground">
+                              <p><strong>Email:</strong> {mainController.email}</p>
+                              <p><strong>Phone:</strong> {mainController.phone}</p>
+                              <p><strong>Department:</strong> {mainController.department}</p>
+                            </div>
                           </div>
                         </div>
-                        <div className="space-y-1 text-xs text-muted-foreground">
-                          <p><strong>Email:</strong> {staff.email}</p>
-                          <p><strong>Phone:</strong> {staff.phone}</p>
-                          <p><strong>Department:</strong> {staff.department}</p>
+                      )}
+
+                      {/* Additional Controller */}
+                      {additionalController && (
+                        <div className="flex flex-col items-center text-center">
+                          <div className="w-24 h-24 rounded-full flex items-center justify-center flex-shrink-0 overflow-hidden bg-primary/10 mb-4">
+                            {additionalController.photo_url ? (
+                              <img 
+                                src={additionalController.photo_url} 
+                                alt={additionalController.name}
+                                className="w-full h-full object-cover"
+                              />
+                            ) : (
+                              <span className="text-2xl font-bold text-primary">
+                                {additionalController.name.split(' ').map(n => n[0]).join('')}
+                              </span>
+                            )}
+                          </div>
+                          <div>
+                            <h4 className="text-lg font-semibold text-primary">{additionalController.name}</h4>
+                            <p className="text-primary/80 font-medium">{additionalController.designation}</p>
+                            <p className="text-xs text-muted-foreground mt-1">HOD - Mathematics Department</p>
+                            <div className="mt-3 space-y-1 text-sm text-muted-foreground">
+                              <p><strong>Email:</strong> {additionalController.email}</p>
+                              <p><strong>Phone:</strong> {additionalController.phone}</p>
+                              <p><strong>Department:</strong> {additionalController.department}</p>
+                            </div>
+                          </div>
                         </div>
-                      </div>
-                    ))}
+                      )}
+                    </div>
+                  </div>
+
+                  {/* Other Staff - Text Only */}
+                  <div className="space-y-4">
+                    <h4 className="text-lg font-semibold text-primary mb-4">Support Staff</h4>
+                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+                      {otherStaff.map((staff) => (
+                        <div key={staff.id} className="bg-card border rounded-lg p-4 hover:shadow-md transition-shadow">
+                          <div className="space-y-2">
+                            <h5 className="font-semibold text-primary">{staff.name}</h5>
+                            <p className="text-sm text-primary/70 font-medium">{staff.designation}</p>
+                            <div className="space-y-1 text-xs text-muted-foreground">
+                              <p><strong>Email:</strong> {staff.email}</p>
+                              <p><strong>Phone:</strong> {staff.phone}</p>
+                              <p><strong>Department:</strong> {staff.department}</p>
+                            </div>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
                   </div>
                 </>
               )}
