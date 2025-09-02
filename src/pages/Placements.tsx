@@ -47,6 +47,17 @@ import royalsLogo from "@/assets/logos/royals-logo.png";
 import nslTextilesLogo from "@/assets/logos/nsl-textiles-logo.png";
 import paceLogo from "@/assets/logos/pace-logo.png";
 import fluxtekLogo from "@/assets/logos/fluxtek-logo.png";
+import hexawareLogo from "@/assets/logos/hexaware-logo.png";
+import zensarLogo from "@/assets/logos/zensar-logo.png";
+import cyientLogo from "@/assets/logos/cyient-logo.png";
+import sonataSoftwareLogo from "@/assets/logos/sonata-software-logo.png";
+import ramcoSystemsLogo from "@/assets/logos/ramco-systems-logo.png";
+import virtusaLogo from "@/assets/logos/virtusa-logo.png";
+import syntelLogo from "@/assets/logos/syntel-logo.png";
+import polarisLogo from "@/assets/logos/polaris-logo.png";
+import newgenSoftwareLogo from "@/assets/logos/newgen-software-logo.png";
+import questGlobalLogo from "@/assets/logos/quest-global-logo.png";
+import efftronicsLogo from "@/assets/logos/efftronics-logo.png";
 
 const Placements = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -98,6 +109,17 @@ const Placements = () => {
     "NSL TEXTILES": nslTextilesLogo,
     "PACE": paceLogo,
     "FLUXTEK": fluxtekLogo,
+    "HEXAWARE": hexawareLogo,
+    "ZENSAR": zensarLogo,
+    "CYIENT": cyientLogo,
+    "SONATA SOFTWARE": sonataSoftwareLogo,
+    "RAMCO SYSTEMS": ramcoSystemsLogo,
+    "VIRTUSA": virtusaLogo,
+    "SYNTEL": syntelLogo,
+    "POLARIS": polarisLogo,
+    "NEWGEN SOFTWARE": newgenSoftwareLogo,
+    "QUEST GLOBAL": questGlobalLogo,
+    "EFFTRONICS": efftronicsLogo,
   };
   
   // Filter placement related staff - those with placement related designations
@@ -148,7 +170,17 @@ const Placements = () => {
     setCurrentImageIndex(prevIndex => (prevIndex - 1 + heroImages.length) % heroImages.length);
   };
   
-  const topRecruiters = ["RATNADEEP", "TALBRIDGE GENPACT", "APEX SOLUTIONS", "AKRO SOFT SOLUTIONS", "MOTHERSON SUMI SYSTEMS LIMITED", "MUTHOOT FINANCE", "SERV CRUST", "FOXCONN", "MEDPLUS", "HDB BANK", "QUESS", "NAVATA ROAD TRANSPORT", "BLUE STAR", "MASTER MINDS", "HETERO", "ROYALS", "SBI LIFE", "NSL TEXTILES", "PACE", "TEAMLEASE", "AMARRAJA", "APOLLO PHARMACY", "FLUXTEK", "AADITYA BIRLA", "HERO"];
+  const topRecruiters = [
+    "TCS", "INFOSYS", "WIPRO", "COGNIZANT", "HCL", "TECH MAHINDRA", "ACCENTURE", "IBM", 
+    "CAPGEMINI", "MINDTREE", "MPHASIS", "L&T INFOTECH", "MICROSOFT", "AMAZON",
+    "HEXAWARE", "ZENSAR", "CYIENT", "SONATA SOFTWARE", "RAMCO SYSTEMS", "VIRTUSA", 
+    "SYNTEL", "POLARIS", "NEWGEN SOFTWARE", "QUEST GLOBAL", "EFFTRONICS",
+    "RATNADEEP", "TALBRIDGE GENPACT", "APEX SOLUTIONS", "AKRO SOFT SOLUTIONS", 
+    "MOTHERSON SUMI SYSTEMS LIMITED", "MUTHOOT FINANCE", "SERV CRUST", "FOXCONN", 
+    "MEDPLUS", "HDB BANK", "QUESS", "NAVATA ROAD TRANSPORT", "BLUE STAR", 
+    "MASTER MINDS", "HETERO", "ROYALS", "SBI LIFE", "NSL TEXTILES", "PACE", 
+    "TEAMLEASE", "AMARRAJA", "APOLLO PHARMACY", "FLUXTEK", "AADITYA BIRLA", "HERO"
+  ];
   
   const placementStats = [{
     year: "2024-25",
