@@ -87,8 +87,8 @@ export default function StudentSupportAdmin() {
   const { gallery, refetch: refetchGallery } = useStudentSupportGallery(selectedService);
 
   const uploadFile = async (file: File, bucket: string, folder: string) => {
-    // Check file size limits - 500KB for documents, 200KB for images
-    const maxSize = bucket === 'admin-uploads' && folder === 'reports' ? 500 * 1024 : 200 * 1024; // 500KB for docs, 200KB for images
+    // Check file size limits - 2000KB for documents, 200KB for images
+    const maxSize = bucket === 'admin-uploads' && folder === 'reports' ? 2000 * 1024 : 200 * 1024; // 2000KB for docs, 200KB for images
     if (file.size > maxSize) {
       const sizeLimitKB = maxSize / 1024;
       throw new Error(`File size exceeds ${sizeLimitKB}KB limit. Please choose a smaller file.`);
@@ -692,7 +692,7 @@ export default function StudentSupportAdmin() {
                            onChange={(e) => setReportFile(e.target.files?.[0] || null)}
                            required={!reportForm.id}
                          />
-                         <p className="text-xs text-muted-foreground mt-1">Maximum file size: 500KB. Supported formats: PDF, DOC, DOCX, XLS, XLSX, PPT, PPTX</p>
+                         <p className="text-xs text-muted-foreground mt-1">Maximum file size: 2000KB. Supported formats: PDF, DOC, DOCX, XLS, XLSX, PPT, PPTX</p>
                          {reportForm.file_url && (
                            <p className="text-sm text-muted-foreground mt-1">
                              Current file: <a href={reportForm.file_url} target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">View</a>
