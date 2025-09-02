@@ -72,12 +72,6 @@ const Departments = () => {
         name: "Zoology",
         description: "Study of animals, their behavior, structure, physiology, and classification.",
         programs: ["B.Sc", "M.Sc", "Ph.D"]
-      },
-      {
-        id: "aquaculture",
-        name: "Aquaculture Technology",
-        description: "Programs focusing on fish farming, aquatic organisms, and water resource management.",
-        programs: ["B.Sc", "M.Sc"]
       }
     ],
     humanities: [
