@@ -8,10 +8,29 @@ const Administration = () => {
   const { staff: allStaff, loading, error } = useStaff();
   const { leadership, loading: leadershipLoading, error: leadershipError } = useLeadership();
   
-  // Filter staff by type
-  const teachingStaff = allStaff.filter(staff => staff.staff_type === 'teaching');
+  // Filter and sort staff by type
+  const teachingStaff = allStaff
+    .filter(staff => staff.staff_type === 'teaching')
+    .sort((a, b) => {
+      // HODs first, then others alphabetically
+      const aIsHOD = a.designation.toLowerCase().includes('hod') || a.designation.toLowerCase().includes('head of department');
+      const bIsHOD = b.designation.toLowerCase().includes('hod') || b.designation.toLowerCase().includes('head of department');
+      
+      if (aIsHOD && !bIsHOD) return -1;
+      if (!aIsHOD && bIsHOD) return 1;
+      return a.name.localeCompare(b.name);
+    });
+    
   const nonTeachingStaff = allStaff.filter(staff => staff.staff_type === 'non-teaching');
-  const adminStaff = allStaff.filter(staff => staff.staff_type === 'administration');
+  
+  const adminStaff = allStaff
+    .filter(staff => staff.staff_type === 'administration')
+    .sort((a, b) => {
+      // Amaresh Reddy first, then others alphabetically
+      if (a.name.toLowerCase().includes('amaresh reddy')) return -1;
+      if (b.name.toLowerCase().includes('amaresh reddy')) return 1;
+      return a.name.localeCompare(b.name);
+    });
   
   // Get leadership data
   const chairman = leadership.find(leader => leader.position === 'chairman');
