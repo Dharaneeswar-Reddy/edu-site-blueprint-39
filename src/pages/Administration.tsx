@@ -24,7 +24,7 @@ const Administration = () => {
     department: "Administration",
     photo_url: "/lovable-uploads/aa64612b-a2c2-4fc2-b645-b756306336a0.png",
     email: "correspondent@svrmc.edu.in",
-    bio: "Dr. Ramesh Kumar is currently serving as the Correspondent of SVRM College since 2010. He brings a rich interdisciplinary background spanning educational administration, policy development, and institutional governance."
+    bio: "is currently serving as the Correspondent of SVRM College since 2010. He brings a rich interdisciplinary background spanning educational administration, policy development, and institutional governance."
   };
 
   const defaultPrincipal = {
@@ -33,7 +33,7 @@ const Administration = () => {
     department: "Academic Affairs",
     photo_url: "/lovable-uploads/9f96f106-897d-46e3-a4a1-4c4b8f8f9f0c.png",
     email: "principal@svrmc.edu.in",
-    bio: "Dr. Rajesh Kumar is currently serving as Principal at SVRM College since 2018. He brings a rich interdisciplinary background spanning computer science, educational technology, and academic administration."
+    bio: "is currently serving as Principal at SVRM College since 2018. He brings a rich interdisciplinary background spanning computer science, educational technology, and academic administration."
   };
 
   const defaultOfficeSuperintendent = {
@@ -42,7 +42,7 @@ const Administration = () => {
     department: "Administration",
     photo_url: "/lovable-uploads/aa64612b-a2c2-4fc2-b645-b756306336a0.png",
     email: "superintendent@svrmc.edu.in",
-    bio: "Mr. Suresh Reddy is currently serving as Office Superintendent at SVRM College since 2015. He oversees the administrative operations and ensures smooth functioning of all office activities with his extensive experience in educational administration."
+    bio: "is currently serving as Office Superintendent at SVRM College since 2015. He oversees the administrative operations and ensures smooth functioning of all office activities with his extensive experience in educational administration."
   };
 
   return (
