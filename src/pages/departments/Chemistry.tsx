@@ -331,9 +331,27 @@ const Chemistry = () => {
                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     {chemistryStaff
                       .sort((a, b) => {
-                        // HODs first, then others alphabetically
-                        const aIsHOD = a.designation.toLowerCase().includes('hod') || a.designation.toLowerCase().includes('head of department');
-                        const bIsHOD = b.designation.toLowerCase().includes('hod') || b.designation.toLowerCase().includes('head of department');
+                        // HODs first, then others alphabetically - comprehensive HOD detection
+                        const aDesignation = a.designation.toLowerCase();
+                        const bDesignation = b.designation.toLowerCase();
+                        
+                        const aIsHOD = aDesignation.includes('hod') || 
+                                      aDesignation.includes('head of department') || 
+                                      aDesignation.includes('head of the department') ||
+                                      aDesignation.includes('department head') ||
+                                      aDesignation.includes('head - department') ||
+                                      aDesignation.includes('head-department') ||
+                                      aDesignation.includes('dept. head') ||
+                                      aDesignation.includes('dept head');
+                                      
+                        const bIsHOD = bDesignation.includes('hod') || 
+                                      bDesignation.includes('head of department') || 
+                                      bDesignation.includes('head of the department') ||
+                                      bDesignation.includes('department head') ||
+                                      bDesignation.includes('head - department') ||
+                                      bDesignation.includes('head-department') ||
+                                      bDesignation.includes('dept. head') ||
+                                      bDesignation.includes('dept head');
                         
                         if (aIsHOD && !bIsHOD) return -1;
                         if (!aIsHOD && bIsHOD) return 1;
@@ -706,9 +724,27 @@ const Chemistry = () => {
                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     {pgChemistryStaff
                       .sort((a, b) => {
-                        // HODs first, then others alphabetically
-                        const aIsHOD = a.designation.toLowerCase().includes('hod') || a.designation.toLowerCase().includes('head of department');
-                        const bIsHOD = b.designation.toLowerCase().includes('hod') || b.designation.toLowerCase().includes('head of department');
+                        // HODs first, then others alphabetically - comprehensive HOD detection
+                        const aDesignation = a.designation.toLowerCase();
+                        const bDesignation = b.designation.toLowerCase();
+                        
+                        const aIsHOD = aDesignation.includes('hod') || 
+                                      aDesignation.includes('head of department') || 
+                                      aDesignation.includes('head of the department') ||
+                                      aDesignation.includes('department head') ||
+                                      aDesignation.includes('head - department') ||
+                                      aDesignation.includes('head-department') ||
+                                      aDesignation.includes('dept. head') ||
+                                      aDesignation.includes('dept head');
+                                      
+                        const bIsHOD = bDesignation.includes('hod') || 
+                                      bDesignation.includes('head of department') || 
+                                      bDesignation.includes('head of the department') ||
+                                      bDesignation.includes('department head') ||
+                                      bDesignation.includes('head - department') ||
+                                      bDesignation.includes('head-department') ||
+                                      bDesignation.includes('dept. head') ||
+                                      bDesignation.includes('dept head');
                         
                         if (aIsHOD && !bIsHOD) return -1;
                         if (!aIsHOD && bIsHOD) return 1;
