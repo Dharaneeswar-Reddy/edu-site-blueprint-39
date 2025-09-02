@@ -99,11 +99,6 @@ const WomenEmpowerment = () => {
       name: "Smt P. Rajya Lakshmi",
       designation: "Member",
       department: "Lecturer in Mathematics"
-    },
-    {
-      name: "Smt P. Bala Velankanni Rani",
-      designation: "Member",
-      department: "Lecturer in English"
     }
   ];
 
