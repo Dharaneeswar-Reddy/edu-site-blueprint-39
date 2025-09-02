@@ -9,6 +9,8 @@ import {
   useStudentSupportStaff, 
   useStudentSupportGallery 
 } from "@/hooks/useStudentSupportServices";
+import { supabase } from "@/integrations/supabase/client";
+import { useQuery } from "@tanstack/react-query";
 
 const NCCProgram = () => {
   const serviceName = "NCC";
@@ -20,6 +22,25 @@ const NCCProgram = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   const service = services[0];
+
+  // Fetch Physical Education staff for NCC
+  const { data: physicalEducationStaff = [] } = useQuery({
+    queryKey: ['physical-education-staff'],
+    queryFn: async () => {
+      const { data, error } = await supabase
+        .from('staff')
+        .select('*')
+        .eq('department', 'Physical Education')
+        .eq('is_active', true)
+        .order('name');
+      
+      if (error) throw error;
+      return data || [];
+    }
+  });
+
+  // Combine both staff arrays
+  const allStaff = [...staff, ...physicalEducationStaff];
 
   // Updated comprehensive description
   const defaultDescription = "The NCC unit at our college instills discipline, leadership, and patriotism among students. Cadets participate in drill, community service, adventure activities, and social awareness programs, shaping them into responsible and confident citizens.";
@@ -105,6 +126,106 @@ Current Leadership: The legacy continues under the guidance of Sri Vallabhaneni 
     "Ceremonial Event",
     "Training Formation",
     "Group Photo with Staff and Cadets"
+  ];
+
+  // NCC Activities Data
+  const nccActivities = [
+    {
+      activity: 1,
+      event: "Army day",
+      date: "15-01-2024",
+      description: "The army day was done by the students of the S.V.R.M college and NCC cadets, this were conducted at nagaram college. The program was done in the handover of C.T.O V.Samba murthi sir and as a principle, this program was conducted for to make awareness in nagaram citizen to join army and serve the country."
+    },
+    {
+      activity: 2,
+      event: "Subhash Chandra Bose remember",
+      date: "23-01-2024",
+      description: "The subhash chandra bose remember was done by the students of the S.V.R.M college and NCC cadets, this were conducted at nagaram college. The program was done in the handover of C.T.O V.Samba murthi sir and as a principle, this program was conducted for to make awareness in nagaram citizen how he fought for the motherland."
+    },
+    {
+      activity: 3,
+      event: "Republic day",
+      date: "26-01-2024",
+      description: "The Republic day celebration was done by the students of the S.V.R.M college and NCC cadets, this were conducted at nagaram college. The program was done in the handover of C.T.O V.Samba murthi sir and as a principle, this program was conducted to know about our freedom history."
+    },
+    {
+      activity: 4,
+      event: "Gandhi vardhanti",
+      date: "30-01-2024",
+      description: "The gandhi vardhanti was done by the students of the S.V.R.M college and NCC cadets, this were conducted at nagaram college. The program was done in the handover of C.T.O V.Samba murthi sir and as a principle, this program was conducted for to make awareness in citizen to know how he scarficie his life and fought for freedom."
+    },
+    {
+      activity: 5,
+      event: "YOGA DAY",
+      date: "21/06/2024",
+      description: "We have participated in yoga day celebration at khajipalem kvr &mkr college and the program is handover to C.T.O Samba murthi."
+    },
+    {
+      activity: 6,
+      event: "International day against drug Abuse and Illicit trafficking",
+      date: "25-06-2024",
+      description: "It is observed annually on 26th june since 1989 to raise awareness of the major problems that illicit drugs represents to society. It was handover to CTO V.Samba Murthi.The drug abuse and illcit trafficiking rally was done by the students of the S.V.R.M college and NCC cadets, this were conducted at nagaram college. The program was done in the handover of C.T.O V.Samba murthi sir and as a principle, this program was conducted for to make awareness in citizen to stop use of drug and illicit trafficking."
+    },
+    {
+      activity: 7,
+      event: "Drug Free India",
+      date: "26-06-2024",
+      description: "The drug free india was done by the students of the S.V.R.M college and NCC cadets, this were conducted at nagaram college. The program was done in the handover of C.T.O V.Samba murthi sir and as a principle, this program was conducted for to make awareness in citizen to stop usage of drug and live happy."
+    },
+    {
+      activity: 8,
+      event: "EYE Camp",
+      date: "31/06/2024",
+      description: "The eye camp was done by the students of the S.V.R.M college and NCC cadets, this were conducted at nagaram college. The program was done in the handover of C.T.O V.Samba murthi sir and as a principle, this program was conducted for to make awareness in nagaram citizen to check their eyes and encourage them to eye donation."
+    },
+    {
+      activity: 9,
+      event: "(NMBA)Nasha mukt Bhaarat Abhiyaan",
+      date: "12/08/2024",
+      description: "We the NCC cadets have conducted pledge on the nasha mukt bharat abhiyaan for the stop usage of drug in teenage life and health issues. The program is handover to C.T.O V.Samba murthi."
+    },
+    {
+      activity: 10,
+      event: "HAR GAR TIRANGA",
+      date: "14/08/2024",
+      description: "HAR GAR TIRANGA We have conducted a cycle rally on the har gar tiranga and the NCC cadets have participated and the program was handover to the C.T.O Samba murthi."
+    },
+    {
+      activity: 11,
+      event: "INDEPENDENCE DAY CELEBRATION",
+      date: "15/08/2024",
+      description: "We have celebrated the Independence day celebration in college inviting the correspondent and giving guard of honour to the guest and the program was handover to the C.T.O Samba murthi."
+    },
+    {
+      activity: 12,
+      event: "SPORTS DAY CELEBRTION",
+      date: "29/08/2024",
+      description: "We have conducted Sports for the ncc cadets and students have participated and the students have won the prizes and the program was handover to the C.T.O V.Samba Murthi."
+    },
+    {
+      activity: 13,
+      event: "RANK PROMOTIONS",
+      date: "29/08/2024",
+      description: "The senior cadets have their rank promotion and the program is handover to the C.T.O V.Samba murthi."
+    },
+    {
+      activity: 14,
+      event: "FLOOD FUND COLLECTON",
+      date: "10/09/2024",
+      description: "NCC & NSS Cadets have participated in the fund collection for the flood relief for the AP people to save the people from flood the program was handover to the C.T.O V.Samba Murthi."
+    },
+    {
+      activity: 15,
+      event: "commemoration lecture on Dr. N.V. Krishna Rao",
+      date: "21/09/2024",
+      description: "The program was conducted by the college management and staff on the memory of the Dr. N.V. Krishna Rao what he done for the college on this day the NCC cadets also participated in the program. The program is handover to C.T.O V.Samba Murthi."
+    },
+    {
+      activity: 16,
+      event: "NCC SELECTION FOR 1ST YEAR CADETS",
+      date: "26/09/2024",
+      description: "The program was conducted by the college management and combination of the pi staff from the battalion office to select the 1st year cadets SD and SW. The program is handover to C.T.O V.Samba murthi the battlion co col j.mahesh and group col udaya kumar visited college and given speech to 1st year cadets for selecting in the selection process."
+    }
   ];
 
   const nextImage = () => {
@@ -332,14 +453,14 @@ Current Leadership: The legacy continues under the guidance of Sri Vallabhaneni 
         )}
 
         {/* Staff Photos and Designations */}
-        {staff.length > 0 && (
+        {allStaff.length > 0 && (
           <Card>
             <CardHeader>
               <CardTitle>NCC Staff</CardTitle>
             </CardHeader>
             <CardContent>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {staff.map((member, index) => (
+                {allStaff.map((member, index) => (
                   <div key={member.id || index} className="text-center">
                     <div className="w-32 h-32 bg-muted rounded-full mx-auto mb-4 flex items-center justify-center overflow-hidden">
                       {member.photo_url ? (
@@ -376,6 +497,30 @@ Current Leadership: The legacy continues under the guidance of Sri Vallabhaneni 
                     alt={gallery.length > 0 ? gallery[index]?.title || `NCC Activity ${index + 1}` : imageDescriptions[index] || `NCC Activity ${index + 1}`}
                     className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
                   />
+                </div>
+              ))}
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* NCC Activities */}
+        <Card>
+          <CardHeader>
+            <CardTitle>NCC Activities</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="space-y-6">
+              {nccActivities.map((activity, index) => (
+                <div key={index} className="border-l-4 border-primary pl-4">
+                  <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-2">
+                    <h4 className="font-semibold text-lg">Activity-{activity.activity}: {activity.event}</h4>
+                    <Badge variant="outline" className="w-fit mt-1 md:mt-0">
+                      {activity.date}
+                    </Badge>
+                  </div>
+                  <p className="text-muted-foreground leading-relaxed">
+                    {activity.description}
+                  </p>
                 </div>
               ))}
             </div>
