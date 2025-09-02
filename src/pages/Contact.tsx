@@ -173,7 +173,7 @@ const Contact = () => {
                 <h3 className="text-lg font-semibold mb-4 text-college-blue">Campus Navigation Map</h3>
                 <div className="h-[400px] rounded-lg overflow-hidden shadow-md animate-fade-in" style={{ animationDelay: "0.4s" }}>
                   <iframe 
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3798.3861539630434!2d83.34566931526856!3d17.796376287818396!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a395bedc7efb603%3A0x392c739c2dada6f!2sShri%20Vishnu%20Engineering%20College%20for%20Women!5e0!3m2!1sen!2sin!4v1653405878916!5m2!1sen!2sin"
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3802.8736088947755!2d80.7250852!3d16.0053783!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a4a1ed5e76dc1b3%3A0x89b6cfcd2e338711!2sS%20V%20R%20M%20College!5e0!3m2!1sen!2sin!4v1653405878916!5m2!1sen!2sin"
                     width="100%"
                     height="100%"
                     frameBorder="0"
