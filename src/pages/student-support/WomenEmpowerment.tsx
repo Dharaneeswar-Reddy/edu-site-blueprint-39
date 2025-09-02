@@ -88,7 +88,8 @@ const WomenEmpowerment = () => {
     {
       name: "Smt A. Sridevi",
       designation: "Member",
-      department: "Lecturer in Electronics"
+      department: "Lecturer in Electronics",
+      photo_url: "/lovable-uploads/18069dd0-b00f-4f31-96e1-1d6c1f33c5e8.png"
     },
     {
       name: "Smt A. Kokila",
