@@ -127,6 +127,14 @@ export default {
 						transform: 'scale(1)',
 						opacity: '1'
 					}
+				},
+				'scroll-left': {
+					'0%': {
+						transform: 'translateX(0)'
+					},
+					'100%': {
+						transform: 'translateX(-50%)'
+					}
 				}
 			},
 			animation: {
@@ -135,7 +143,8 @@ export default {
 				'fade-in': 'fade-in 0.3s ease-out',
 				'fade-out': 'fade-out 0.3s ease-out',
 				'slide-in': 'slide-in 0.4s ease-out',
-				'bounce-in': 'bounce-in 0.5s ease-out'
+				'bounce-in': 'bounce-in 0.5s ease-out',
+				'scroll-left': 'scroll-left 20s linear infinite'
 			}
 		}
 	},
