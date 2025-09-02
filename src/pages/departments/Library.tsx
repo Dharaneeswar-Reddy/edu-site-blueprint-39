@@ -502,7 +502,17 @@ const Library = () => {
           </CardHeader>
           <CardContent>
             {staffLoading ? <div className="text-center py-8">Loading staff information...</div> : libraryStaff.length > 0 ? <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {libraryStaff.map(staff => <div key={staff.id} className="border rounded-lg p-6 hover:shadow-lg transition-shadow">
+                {libraryStaff
+                  .sort((a, b) => {
+                    // HODs first, then others alphabetically
+                    const aIsHOD = a.designation.toLowerCase().includes('hod') || a.designation.toLowerCase().includes('head of department');
+                    const bIsHOD = b.designation.toLowerCase().includes('hod') || b.designation.toLowerCase().includes('head of department');
+                    
+                    if (aIsHOD && !bIsHOD) return -1;
+                    if (!aIsHOD && bIsHOD) return 1;
+                    return a.name.localeCompare(b.name);
+                  })
+                  .map(staff => <div key={staff.id} className="border rounded-lg p-6 hover:shadow-lg transition-shadow">
                     <div className="flex items-center space-x-4 mb-4">
                       <Avatar className="h-16 w-16">
                         <AvatarImage src={staff.photo_url || ""} alt={staff.name} />

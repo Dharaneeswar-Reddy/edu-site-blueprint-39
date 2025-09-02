@@ -329,7 +329,17 @@ const Chemistry = () => {
                   </div>
                 ) : (
                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    {chemistryStaff.map((staffMember) => (
+                    {chemistryStaff
+                      .sort((a, b) => {
+                        // HODs first, then others alphabetically
+                        const aIsHOD = a.designation.toLowerCase().includes('hod') || a.designation.toLowerCase().includes('head of department');
+                        const bIsHOD = b.designation.toLowerCase().includes('hod') || b.designation.toLowerCase().includes('head of department');
+                        
+                        if (aIsHOD && !bIsHOD) return -1;
+                        if (!aIsHOD && bIsHOD) return 1;
+                        return a.name.localeCompare(b.name);
+                      })
+                      .map((staffMember) => (
                       <StaffCard key={staffMember.id} staff={staffMember} />
                     ))}
                   </div>
@@ -694,7 +704,17 @@ const Chemistry = () => {
                   </div>
                 ) : (
                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    {pgChemistryStaff.map((staffMember) => (
+                    {pgChemistryStaff
+                      .sort((a, b) => {
+                        // HODs first, then others alphabetically
+                        const aIsHOD = a.designation.toLowerCase().includes('hod') || a.designation.toLowerCase().includes('head of department');
+                        const bIsHOD = b.designation.toLowerCase().includes('hod') || b.designation.toLowerCase().includes('head of department');
+                        
+                        if (aIsHOD && !bIsHOD) return -1;
+                        if (!aIsHOD && bIsHOD) return 1;
+                        return a.name.localeCompare(b.name);
+                      })
+                      .map((staffMember) => (
                       <StaffCard key={staffMember.id} staff={staffMember} />
                     ))}
                   </div>
