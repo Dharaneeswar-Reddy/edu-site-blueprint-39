@@ -102,18 +102,44 @@ const WomenEmpowerment = () => {
     }
   ];
 
-  // Merge photos from main staff table
+  // Merge photos from main staff table with improved name matching
   const wecStaffWithPhotos = wecStaff.map(wecMember => {
     // If member already has photo, keep it
     if (wecMember.photo_url) {
       return wecMember;
     }
     
-    // Find matching staff member by name (case insensitive partial match)
-    const matchingStaff = allStaff.find(staffMember => 
-      staffMember.name.toLowerCase().includes(wecMember.name.toLowerCase()) ||
-      wecMember.name.toLowerCase().includes(staffMember.name.toLowerCase())
-    );
+    // Clean and normalize names for better matching
+    const cleanWecName = wecMember.name.toLowerCase().trim().replace(/\s+/g, ' ');
+    
+    // Find matching staff member with improved matching logic
+    const matchingStaff = allStaff.find(staffMember => {
+      const cleanStaffName = staffMember.name.toLowerCase().trim().replace(/\s+/g, ' ');
+      
+      // Direct name matching strategies
+      if (cleanStaffName === cleanWecName) return true;
+      
+      // Handle "Smt A. Sridevi" vs "A.SRIDEVI"
+      if (cleanWecName.includes('smt a. sridevi') && cleanStaffName.includes('a.sridevi')) return true;
+      
+      // Handle "Smt A. Kokila" vs "Smt.A.Kokila Msc"
+      if (cleanWecName.includes('smt a. kokila') && cleanStaffName.includes('smt.a.kokila')) return true;
+      
+      // Handle "Smt P. Rajya Lakshmi" - this one might not have a match yet
+      if (cleanWecName.includes('smt p. rajya lakshmi')) {
+        return cleanStaffName.includes('rajya') && cleanStaffName.includes('lakshmi');
+      }
+      
+      // General partial matching as fallback
+      const wecParts = cleanWecName.split(' ').filter(part => part.length > 2);
+      const staffParts = cleanStaffName.split(' ').filter(part => part.length > 2);
+      
+      return wecParts.some(wecPart => 
+        staffParts.some(staffPart => 
+          staffPart.includes(wecPart) || wecPart.includes(staffPart)
+        )
+      );
+    });
     
     // Return merged data with photo if found
     return {
