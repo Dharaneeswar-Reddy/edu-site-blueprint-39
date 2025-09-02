@@ -17,7 +17,17 @@ const Library = () => {
     return name.split(' ').map(n => n[0]).join('').toUpperCase();
   };
   const heroImages = ["/lovable-uploads/65f4b0e6-34a6-4a76-89d9-2ad5814ea916.png", "/lovable-uploads/2966f044-90be-41d4-960a-8ecc255707ab.png", "/lovable-uploads/69a5922c-8de7-45f3-a479-e4b0b6f58065.png", "/lovable-uploads/8d4efd31-f8f9-4a60-baa8-79973940c0c1.png", "/lovable-uploads/fb4a7eeb-4035-49a1-879f-ccd9d8aee887.png", "/lovable-uploads/4c46f975-52e2-4da0-9a51-499a4307801b.png", "/lovable-uploads/2491335b-5c00-4304-b5e3-c98c1b8c78f3.png", "/lovable-uploads/ed67eb6a-8709-4d75-93bf-30663eb27c7e.png", "/lovable-uploads/deb710e1-e20c-4c6d-bfdb-9474b1aebb4d.png"];
-  const galleryImages = ["/lovable-uploads/65f4b0e6-34a6-4a76-89d9-2ad5814ea916.png", "/lovable-uploads/2966f044-90be-41d4-960a-8ecc255707ab.png", "/lovable-uploads/69a5922c-8de7-45f3-a479-e4b0b6f58065.png", "/lovable-uploads/8d4efd31-f8f9-4a60-baa8-79973940c0c1.png", "/lovable-uploads/fb4a7eeb-4035-49a1-879f-ccd9d8aee887.png", "/lovable-uploads/4c46f975-52e2-4da0-9a51-499a4307801b.png", "/lovable-uploads/2491335b-5c00-4304-b5e3-c98c1b8c78f3.png", "/lovable-uploads/ed67eb6a-8709-4d75-93bf-30663eb27c7e.png", "/lovable-uploads/deb710e1-e20c-4c6d-bfdb-9474b1aebb4d.png"];
+  const galleryImages = [
+    "/lovable-uploads/00b2ea16-6c9f-4e34-a2c4-7234ae232705.png", // Librarian at desk (display_order: 0)
+    "/lovable-uploads/dde180fe-7341-49cf-94c7-5b7cf7d1606b.png", // Book Expo
+    "/lovable-uploads/a4c41096-9cfd-4998-9ef1-93377c702c57.png", // Library Exterior
+    "/lovable-uploads/00161211-e2a8-4309-a3b3-812c323b0b4b.png", // Near by School
+    "/lovable-uploads/f72ce346-65cb-4df8-b6ca-c5bb31811476.png", // Three people in library office
+    "/lovable-uploads/5f2bd9d7-eb25-44fa-af85-f2d31d4925c4.png", // Library interior with students
+    "/lovable-uploads/0c7e1639-5442-4364-9912-1e7a43a1524f.png", // Library interior with more students
+    "/lovable-uploads/b4838c92-9fbe-4ccd-96aa-3a015c592bec.png", // Library ceremony/event with statue
+    "/lovable-uploads/599bf02e-77e1-41ca-8b07-3a970bab3a40.png"  // Library event with officials
+  ];
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentImageIndex(prevIndex => prevIndex === heroImages.length - 1 ? 0 : prevIndex + 1);
@@ -452,7 +462,7 @@ const Library = () => {
           <CardContent>
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 items-center">
               <div className="lg:col-span-1">
-                <img src="/lovable-uploads/ab0cf371-3554-4dd8-8788-77c2c2ec991d.png" alt="Sri Sajja Srinivasa Rao - Chief Librarian" className="w-full max-w-sm mx-auto rounded-lg shadow-md" />
+                <img src="/lovable-uploads/9dc17f5d-ee26-436d-8563-e920381551f7.png" alt="Sri Sajja Srinivasa Rao - Chief Librarian" className="w-full max-w-sm mx-auto rounded-lg shadow-md" />
               </div>
               <div className="lg:col-span-2 space-y-4">
                 <div>
