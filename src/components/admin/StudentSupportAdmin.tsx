@@ -87,8 +87,28 @@ export default function StudentSupportAdmin() {
   const { gallery, refetch: refetchGallery } = useStudentSupportGallery(selectedService);
 
   const uploadFile = async (file: File, bucket: string, folder: string) => {
+    // Debug logging
+    console.log('Upload file debug:', {
+      fileName: file.name,
+      fileSize: file.size,
+      fileSizeKB: Math.round(file.size / 1024),
+      bucket,
+      folder,
+      bucketMatch: bucket === 'admin-uploads',
+      folderMatch: folder === 'reports',
+      conditionMatch: bucket === 'admin-uploads' && folder === 'reports'
+    });
+    
     // Check file size limits - 2000KB for documents, 200KB for images
     const maxSize = bucket === 'admin-uploads' && folder === 'reports' ? 2000 * 1024 : 200 * 1024; // 2000KB for docs, 200KB for images
+    
+    console.log('File size check:', {
+      fileSize: file.size,
+      maxSize,
+      maxSizeKB: maxSize / 1024,
+      exceedsLimit: file.size > maxSize
+    });
+    
     if (file.size > maxSize) {
       const sizeLimitKB = maxSize / 1024;
       throw new Error(`File size exceeds ${sizeLimitKB}KB limit. Please choose a smaller file.`);
