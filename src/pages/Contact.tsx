@@ -8,6 +8,7 @@ import { Label } from "@/components/ui/label";
 import { MapPin, Phone, Mail, SendIcon } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import Layout from "@/components/Layout";
+import SEO from "@/components/SEO";
 
 const Contact = () => {
   const { toast } = useToast();
@@ -47,6 +48,12 @@ const Contact = () => {
 
   return (
     <Layout>
+      <SEO 
+        title="Contact Us"
+        description="Get in touch with SVRMC - Shri Velagapudi Ramakrishna Memorial College. Find our campus location, contact information, visiting hours, and directions to our Government Aided College in Narasaraopet, Andhra Pradesh."
+        keywords={["Contact SVRMC", "College Address", "Campus Location", "Narasaraopet", "Guntur", "Andhra Pradesh", "College Phone Number", "Email", "Visiting Hours", "Campus Tours"]}
+        url="https://svrmc.edu.in/contact"
+      />
       <div className="bg-gray-50 py-16">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">

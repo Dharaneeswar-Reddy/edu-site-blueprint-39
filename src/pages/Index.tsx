@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Layout from "@/components/Layout";
+import SEO from "@/components/SEO";
 import HeroSection from "@/components/home/HeroSection";
 import AnnouncementsTicker from "@/components/home/AnnouncementsTicker";
 import AnnouncementsSidebar from "@/components/home/AnnouncementsSidebar";
@@ -50,6 +51,12 @@ const Index = () => {
 
   return (
     <Layout>
+      <SEO 
+        title="Home"
+        description="SVRMC - Government Aided College Sponsored by R.T.E.I. Society offering quality higher education in various disciplines. Experience academic excellence in a 30-acre eco-friendly campus with modern facilities."
+        keywords={["SVRMC", "Shri Velagapudi Ramakrishna Memorial College", "Government College", "Higher Education", "Degree College", "Narasaraopet", "Guntur", "Andhra Pradesh", "Academic Excellence", "Rural Education"]}
+        url="https://svrmc.edu.in"
+      />
       {/* Hero Section */}
       <HeroSection />
 

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import PageLayout from "@/components/PageLayout";
+import SEO from "@/components/SEO";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Button } from "@/components/ui/button";
@@ -96,10 +97,17 @@ const AboutUs = () => {
   ];
 
   return (
-    <PageLayout
-      title="About Us"
-      description="Discover SVRM College's rich legacy, vision, and commitment to excellence in education, discipline, and holistic development."
-    >
+    <>
+      <SEO 
+        title="About Us"
+        description="Discover SVRM College's rich legacy spanning over 55 years. Learn about our vision, mission, founders, and commitment to quality education in rural Andhra Pradesh. Founded in 1969 with autonomous status and NAAC accreditation."
+        keywords={["About SVRMC", "College History", "Founders", "Vision Mission", "Velagapudi Ramakrishna", "Rural Education", "Narasaraopet History", "Autonomous College", "NAAC Accredited", "Educational Legacy"]}
+        url="https://svrmc.edu.in/about-us"
+      />
+      <PageLayout
+        title="About Us"
+        description="Discover SVRM College's rich legacy, vision, and commitment to excellence in education, discipline, and holistic development."
+      >
       <div className="space-y-12">
         {/* College Profile */}
         <section className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg p-8">
@@ -679,6 +687,7 @@ const AboutUs = () => {
         </section>
       </div>
     </PageLayout>
+    </>
   );
 };
 
