@@ -21,6 +21,7 @@ interface StudentSupportReport {
   description?: string;
   academic_year: string;
   file_url: string;
+  report_type?: string;
   is_active: boolean;
   created_at: string;
   updated_at: string;

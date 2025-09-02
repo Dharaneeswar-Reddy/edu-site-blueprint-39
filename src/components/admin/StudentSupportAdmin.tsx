@@ -187,7 +187,8 @@ export default function StudentSupportAdmin() {
         title: reportForm.title,
         description: reportForm.description || null,
         academic_year: reportForm.academic_year,
-        file_url: fileUrl
+        file_url: fileUrl,
+        report_type: reportForm.report_type
       };
 
       if (reportForm.id) {
@@ -213,7 +214,8 @@ export default function StudentSupportAdmin() {
         title: "",
         description: "",
         academic_year: "",
-        file_url: ""
+        file_url: "",
+        report_type: "NCC"
       });
       setReportFile(null);
       setIsReportDialogOpen(false);
@@ -636,7 +638,8 @@ export default function StudentSupportAdmin() {
                       title: "",
                       description: "",
                       academic_year: "",
-                      file_url: ""
+                      file_url: "",
+                      report_type: "NCC"
                     })}>
                       <Plus className="mr-2 h-4 w-4" /> Add Report
                     </Button>
@@ -746,7 +749,8 @@ export default function StudentSupportAdmin() {
                                 title: report.title,
                                 description: report.description || "",
                                 academic_year: report.academic_year,
-                                file_url: report.file_url
+                                file_url: report.file_url,
+                                report_type: report.report_type || "NCC"
                               });
                               setIsReportDialogOpen(true);
                             }}
