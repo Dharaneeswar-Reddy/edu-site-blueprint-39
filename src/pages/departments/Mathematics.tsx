@@ -14,8 +14,6 @@ const Mathematics = () => {
   const heroImages = [
     "/lovable-uploads/ad1edf50-6e71-4375-91d2-7e8d76b3b7b5.png",
     "/lovable-uploads/b1fc6422-ad59-4662-83db-90f4d62b1001.png",
-    "/lovable-uploads/bf17da84-634b-4ca1-b09f-996816eb4e61.png",
-    "/lovable-uploads/c845d941-c566-4910-8dbb-82f90fb04f82.png",
     "/lovable-uploads/76e749fc-2917-4512-b28a-328266b210fe.png",
     "/lovable-uploads/efecdc8b-f78a-4ff1-947b-c70afb2f2b33.png"
   ];
@@ -23,8 +21,6 @@ const Mathematics = () => {
   const departmentPhotos = [
     "/lovable-uploads/ad1edf50-6e71-4375-91d2-7e8d76b3b7b5.png",
     "/lovable-uploads/b1fc6422-ad59-4662-83db-90f4d62b1001.png",
-    "/lovable-uploads/bf17da84-634b-4ca1-b09f-996816eb4e61.png",
-    "/lovable-uploads/c845d941-c566-4910-8dbb-82f90fb04f82.png",
     "/lovable-uploads/76e749fc-2917-4512-b28a-328266b210fe.png",
     "/lovable-uploads/efecdc8b-f78a-4ff1-947b-c70afb2f2b33.png"
   ];
