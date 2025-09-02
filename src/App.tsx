@@ -73,13 +73,9 @@ import PhysicalEducation from "./pages/departments/PhysicalEducation";
 import Admin from "./pages/Admin";
 
 // Student Support Pages
-import NSS from "./pages/student-support/NSS";
 import NCCProgram from "./pages/student-support/NCCProgram";
 import WomenEmpowerment from "./pages/student-support/WomenEmpowerment";
 import GymSports from "./pages/student-support/GymSports";
-import AntiRagging from "./pages/student-support/AntiRagging";
-import CulturalClub from "./pages/student-support/CulturalClub";
-import EcoClub from "./pages/student-support/EcoClub";
 
 // Admin Components
 import AnnouncementsAdmin from "@/components/admin/AnnouncementsAdmin";
@@ -153,13 +149,9 @@ const App = () => (
             <Route path="/iqac" element={<IQAC />} />
             <Route path="/iqac/quality-policy" element={<QualityPolicy />} />
             <Route path="/student-support" element={<StudentSupport />} />
-            <Route path="/student-support/nss" element={<NSS />} />
             <Route path="/student-support/ncc-program" element={<NCCProgram />} />
             <Route path="/student-support/women-empowerment" element={<WomenEmpowerment />} />
             <Route path="/student-support/gym-sports" element={<GymSports />} />
-            <Route path="/student-support/anti-ragging" element={<AntiRagging />} />
-            <Route path="/student-support/cultural-club" element={<CulturalClub />} />
-            <Route path="/student-support/eco-club" element={<EcoClub />} />
             <Route path="/placements" element={<Placements />} />
             
             {/* Admin Routes */}

@@ -91,14 +91,14 @@ export const useStudentSupportServices = (serviceName?: string) => {
   return { services, loading, error, refetch: fetchServices };
 };
 
-export const useStudentSupportReports = (serviceName?: string) => {
+export const useStudentSupportReports = (serviceName?: string, reportType?: string) => {
   const [reports, setReports] = useState<StudentSupportReport[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     fetchReports();
-  }, [serviceName]);
+  }, [serviceName, reportType]);
 
   const fetchReports = async () => {
     setLoading(true);
@@ -112,6 +112,10 @@ export const useStudentSupportReports = (serviceName?: string) => {
 
       if (serviceName) {
         query = query.eq("service_name", serviceName);
+      }
+
+      if (reportType) {
+        query = query.eq("report_type", reportType);
       }
 
       const { data, error: fetchError } = await query.order("academic_year", { ascending: false });

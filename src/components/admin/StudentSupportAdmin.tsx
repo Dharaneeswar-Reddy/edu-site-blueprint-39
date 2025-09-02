@@ -15,18 +15,13 @@ import { toast } from "sonner";
 import { Plus, Edit, Trash2, Eye, Upload } from "lucide-react";
 
 const serviceOptions = [
-  "NCC", "NSS", "Women Empowerment", "Gym Sports", 
-  "Anti Ragging", "Cultural Club", "Eco Club"
+  "NCC", "Women Empowerment", "Gym Sports"
 ];
 
 const serviceNameMap = {
   "NCC": "NCC", 
-  "NSS": "NSS",
   "Women Empowerment": "Women Empowerment",
-  "Gym Sports": "Gym Sports",
-  "Anti Ragging": "Anti Ragging", 
-  "Cultural Club": "Cultural Club",
-  "Eco Club": "Eco Club"
+  "Gym Sports": "Gym Sports"
 };
 
 export default function StudentSupportAdmin() {
@@ -51,7 +46,8 @@ export default function StudentSupportAdmin() {
     title: "",
     description: "",
     academic_year: "",
-    file_url: ""
+    file_url: "",
+    report_type: "NCC"
   });
   const [reportFile, setReportFile] = useState<File | null>(null);
   
@@ -668,6 +664,21 @@ export default function StudentSupportAdmin() {
                           placeholder="2023-24"
                           required
                         />
+                      </div>
+                      <div>
+                        <Label htmlFor="report_type">Report Type</Label>
+                        <Select 
+                          value={reportForm.report_type || "NCC"} 
+                          onValueChange={(value) => setReportForm(prev => ({ ...prev, report_type: value }))}
+                        >
+                          <SelectTrigger>
+                            <SelectValue placeholder="Select report type" />
+                          </SelectTrigger>
+                          <SelectContent>
+                            <SelectItem value="NCC">NCC</SelectItem>
+                            <SelectItem value="NSS">NSS</SelectItem>
+                          </SelectContent>
+                        </Select>
                       </div>
                       <div>
                          <Label htmlFor="report_file">Upload Document</Label>

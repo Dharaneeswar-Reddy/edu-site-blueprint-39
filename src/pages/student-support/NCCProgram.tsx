@@ -1,8 +1,9 @@
 import PageLayout from "@/components/PageLayout";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { ChevronLeft, ChevronRight, Download } from "lucide-react";
 import { useState } from "react";
-import { ChevronLeft, ChevronRight } from "lucide-react";
 import { 
   useStudentSupportServices,
   useStudentSupportReports, 
@@ -15,10 +16,13 @@ import { useQuery } from "@tanstack/react-query";
 const NCCProgram = () => {
   const serviceName = "NCC";
   const { services } = useStudentSupportServices(serviceName);
-  const { reports } = useStudentSupportReports(serviceName);
   const { staff } = useStudentSupportStaff(serviceName);
   const { gallery } = useStudentSupportGallery(serviceName);
-
+  
+  // Fetch NCC and NSS reports separately
+  const { reports: nccReports } = useStudentSupportReports(serviceName, "NCC");
+  const { reports: nssReports } = useStudentSupportReports(serviceName, "NSS");
+  
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   const service = services[0];
@@ -420,37 +424,7 @@ Current Leadership: The legacy continues under the guidance of Sri Vallabhaneni 
           </CardContent>
         </Card>
 
-        {/* Yearly Reports */}
-        {reports.length > 0 && (
-          <Card>
-            <CardHeader>
-              <CardTitle>Yearly Reports</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="space-y-4">
-                {reports.map((report) => (
-                  <div key={report.id} className="flex items-center justify-between p-4 border border-border rounded-lg">
-                    <div>
-                      <h4 className="font-medium">{report.title}</h4>
-                      <p className="text-sm text-muted-foreground">
-                        Year: {report.academic_year}
-                        {report.description && ` | ${report.description}`}
-                      </p>
-                    </div>
-                    <a 
-                      href={report.file_url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="px-4 py-2 bg-primary text-primary-foreground rounded-md hover:bg-primary/90"
-                    >
-                      Download
-                    </a>
-                  </div>
-                ))}
-              </div>
-            </CardContent>
-          </Card>
-        )}
+        {/* Yearly Reports - Removed old section */}
 
         {/* Staff Photos and Designations */}
         {allStaff.length > 0 && (
@@ -526,6 +500,95 @@ Current Leadership: The legacy continues under the guidance of Sri Vallabhaneni 
             </div>
           </CardContent>
         </Card>
+
+        {/* Reports Section */}
+        <div className="space-y-8">
+          <h2 className="text-2xl font-bold text-primary">Reports</h2>
+          
+          {/* NCC Reports */}
+          <Card>
+            <CardHeader>
+              <CardTitle>NCC Reports</CardTitle>
+            </CardHeader>
+            <CardContent>
+              {nccReports.length === 0 ? (
+                <div className="text-center py-8">
+                  <p className="text-muted-foreground">No NCC reports available.</p>
+                </div>
+              ) : (
+                <div className="overflow-x-auto">
+                  <table className="w-full">
+                    <thead>
+                      <tr className="border-b bg-muted/20">
+                        <th className="text-left py-3 px-4 font-semibold text-primary">S.No</th>
+                        <th className="text-left py-3 px-4 font-semibold text-primary">Report Title</th>
+                        <th className="text-left py-3 px-4 font-semibold text-primary">Academic Year</th>
+                        <th className="text-center py-3 px-4 font-semibold text-primary">Action</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {nccReports.map((report, index) => (
+                        <tr key={report.id} className="border-b hover:bg-muted/10">
+                          <td className="py-3 px-4 text-primary font-medium">{index + 1}</td>
+                          <td className="py-3 px-4 text-primary">{report.title}</td>
+                          <td className="py-3 px-4 text-primary">{report.academic_year}</td>
+                          <td className="py-3 px-4 text-center">
+                            <Button variant="outline" size="sm" onClick={() => window.open(report.file_url, '_blank')}>
+                              <Download className="h-4 w-4 mr-2" />
+                              Download PDF
+                            </Button>
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              )}
+            </CardContent>
+          </Card>
+
+          {/* NSS Reports */}
+          <Card>
+            <CardHeader>
+              <CardTitle>NSS Reports</CardTitle>
+            </CardHeader>
+            <CardContent>
+              {nssReports.length === 0 ? (
+                <div className="text-center py-8">
+                  <p className="text-muted-foreground">No NSS reports available.</p>
+                </div>
+              ) : (
+                <div className="overflow-x-auto">
+                  <table className="w-full">
+                    <thead>
+                      <tr className="border-b bg-muted/20">
+                        <th className="text-left py-3 px-4 font-semibold text-primary">S.No</th>
+                        <th className="text-left py-3 px-4 font-semibold text-primary">Report Title</th>
+                        <th className="text-left py-3 px-4 font-semibold text-primary">Academic Year</th>
+                        <th className="text-center py-3 px-4 font-semibold text-primary">Action</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {nssReports.map((report, index) => (
+                        <tr key={report.id} className="border-b hover:bg-muted/10">
+                          <td className="py-3 px-4 text-primary font-medium">{index + 1}</td>
+                          <td className="py-3 px-4 text-primary">{report.title}</td>
+                          <td className="py-3 px-4 text-primary">{report.academic_year}</td>
+                          <td className="py-3 px-4 text-center">
+                            <Button variant="outline" size="sm" onClick={() => window.open(report.file_url, '_blank')}>
+                              <Download className="h-4 w-4 mr-2" />
+                              Download PDF
+                            </Button>
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              )}
+            </CardContent>
+          </Card>
+        </div>
       </div>
     </PageLayout>
   );

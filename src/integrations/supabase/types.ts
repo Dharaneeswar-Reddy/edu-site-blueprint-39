@@ -598,6 +598,7 @@ export type Database = {
           file_url: string
           id: string
           is_active: boolean | null
+          report_type: string | null
           service_name: string
           title: string
           updated_at: string
@@ -609,6 +610,7 @@ export type Database = {
           file_url: string
           id?: string
           is_active?: boolean | null
+          report_type?: string | null
           service_name: string
           title: string
           updated_at?: string
@@ -620,6 +622,7 @@ export type Database = {
           file_url?: string
           id?: string
           is_active?: boolean | null
+          report_type?: string | null
           service_name?: string
           title?: string
           updated_at?: string
