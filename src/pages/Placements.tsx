@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { ArrowRight, Briefcase, Building, Users, Award, TrendingUp, Target, MapPin, GraduationCap, UserCheck, Calendar, Building2, ChevronLeft, ChevronRight, MessageSquare, Lightbulb, Network, Eye, HeartHandshake } from "lucide-react";
 import { useState, useEffect } from "react";
 import { useStaff } from "@/hooks/useStaff";
+import { useRecruiterLogos } from "@/hooks/useRecruiterLogos";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 const Placements = () => {
@@ -12,6 +13,7 @@ const Placements = () => {
   
   // Fetch placement staff from database
   const { staff: allStaff, loading: staffLoading, error: staffError } = useStaff();
+  const { getLogoForCompany } = useRecruiterLogos();
   
   // Filter placement related staff - those with placement related designations
   const placementStaff = allStaff.filter(staff => 
@@ -830,10 +832,33 @@ const Placements = () => {
 
           <Card className="border-primary/20">
             <CardContent className="p-8">
-              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
-                {topRecruiters.map((company, index) => <div key={index} className="border border-muted rounded-lg p-6 flex items-center justify-center h-24 bg-background hover:shadow-md hover:border-primary/30 transition-all duration-300">
-                    <span className="font-semibold text-primary text-center text-sm">{company}</span>
-                  </div>)}
+              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
+                {topRecruiters.map((company, index) => {
+                  const logoUrl = getLogoForCompany(company);
+                  return (
+                    <Card key={index} className="hover:shadow-lg transition-all duration-300 border-border/50">
+                      <CardContent className="p-6 text-center space-y-3">
+                        {logoUrl ? (
+                          <div className="flex items-center justify-center h-16 mb-2">
+                            <img 
+                              src={logoUrl} 
+                              alt={`${company} logo`}
+                              className="max-h-12 max-w-full object-contain filter hover:brightness-110 transition-all"
+                              loading="lazy"
+                            />
+                          </div>
+                        ) : (
+                          <div className="flex items-center justify-center h-16 mb-2 bg-muted rounded-lg">
+                            <Building2 className="h-8 w-8 text-muted-foreground" />
+                          </div>
+                        )}
+                        <span className="text-sm font-semibold text-foreground leading-tight block">
+                          {company}
+                        </span>
+                      </CardContent>
+                    </Card>
+                  );
+                })}
               </div>
             </CardContent>
           </Card>

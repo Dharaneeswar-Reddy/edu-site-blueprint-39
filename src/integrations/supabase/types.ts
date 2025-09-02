@@ -425,6 +425,39 @@ export type Database = {
         }
         Relationships: []
       }
+      recruiter_logos: {
+        Row: {
+          company_name: string
+          created_at: string
+          display_order: number | null
+          id: string
+          is_active: boolean
+          logo_url: string
+          normalized_name: string
+          updated_at: string
+        }
+        Insert: {
+          company_name: string
+          created_at?: string
+          display_order?: number | null
+          id?: string
+          is_active?: boolean
+          logo_url: string
+          normalized_name: string
+          updated_at?: string
+        }
+        Update: {
+          company_name?: string
+          created_at?: string
+          display_order?: number | null
+          id?: string
+          is_active?: boolean
+          logo_url?: string
+          normalized_name?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
       staff: {
         Row: {
           bio: string | null
