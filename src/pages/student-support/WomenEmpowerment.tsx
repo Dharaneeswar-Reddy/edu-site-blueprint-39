@@ -9,7 +9,6 @@ import {
   useStudentSupportStaff, 
   useStudentSupportGallery 
 } from "@/hooks/useStudentSupportServices";
-import { useStaff } from "@/hooks/useStaff";
 
 const WomenEmpowerment = () => {
   const serviceName = "Women Empowerment";
@@ -17,7 +16,6 @@ const WomenEmpowerment = () => {
   const { reports } = useStudentSupportReports(serviceName);
   const { staff } = useStudentSupportStaff(serviceName);
   const { gallery } = useStudentSupportGallery(serviceName);
-  const { staff: allStaff } = useStaff(); // Fetch all staff from main staff table
   
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
@@ -285,51 +283,8 @@ const WomenEmpowerment = () => {
           </CardHeader>
           <CardContent>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {/* Student Support Staff */}
-              {staff.map((member, index) => (
+              {(staff.length > 0 ? staff : wecStaff).map((member, index) => (
                 <div key={member.id || index} className="text-center">
-                  <div className="w-32 h-32 bg-muted rounded-full mx-auto mb-4 flex items-center justify-center overflow-hidden">
-                    {member.photo_url ? (
-                      <img 
-                        src={member.photo_url} 
-                        alt={member.name} 
-                        className="w-full h-full object-cover"
-                      />
-                    ) : (
-                      <span className="text-muted-foreground">Photo</span>
-                    )}
-                  </div>
-                  <h4 className="font-medium">{member.name}</h4>
-                  <p className="text-sm text-primary">{member.designation}</p>
-                  <p className="text-xs text-muted-foreground">{member.department}</p>
-                </div>
-              ))}
-              
-              {/* Main Staff Table - Female Staff */}
-              {allStaff
-                .filter(member => member.name.toLowerCase().includes('smt') || member.name.toLowerCase().includes('mrs') || member.name.toLowerCase().includes('dr') || member.department?.toLowerCase().includes('women'))
-                .map((member, index) => (
-                <div key={member.id || `staff-${index}`} className="text-center">
-                  <div className="w-32 h-32 bg-muted rounded-full mx-auto mb-4 flex items-center justify-center overflow-hidden">
-                    {member.photo_url ? (
-                      <img 
-                        src={member.photo_url} 
-                        alt={member.name} 
-                        className="w-full h-full object-cover"
-                      />
-                    ) : (
-                      <span className="text-muted-foreground">Photo</span>
-                    )}
-                  </div>
-                  <h4 className="font-medium">{member.name}</h4>
-                  <p className="text-sm text-primary">{member.designation}</p>
-                  <p className="text-xs text-muted-foreground">{member.department}</p>
-                </div>
-              ))}
-
-              {/* Hardcoded WEC Staff (fallback if no data from database) */}
-              {staff.length === 0 && allStaff.length === 0 && wecStaff.map((member, index) => (
-                <div key={`wec-${index}`} className="text-center">
                   <div className="w-32 h-32 bg-muted rounded-full mx-auto mb-4 flex items-center justify-center overflow-hidden">
                     {member.photo_url ? (
                       <img 
