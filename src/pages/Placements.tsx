@@ -37,6 +37,16 @@ import apolloPharmacyLogo from "@/assets/logos/apollo-pharmacy-logo.png";
 import adityaBirlaLogo from "@/assets/logos/aditya-birla-logo.png";
 import heroMotocorpLogo from "@/assets/logos/hero-motocorp-logo.png";
 import ratnadeepLogo from "@/assets/logos/ratnadeep-logo.png";
+import apexSolutionsLogo from "@/assets/logos/apex-solutions-logo.png";
+import akroSoftLogo from "@/assets/logos/akro-soft-logo.png";
+import mothersonSumiLogo from "@/assets/logos/motherson-sumi-logo.png";
+import servCrustLogo from "@/assets/logos/serv-crust-logo.png";
+import navataLogo from "@/assets/logos/navata-logo.png";
+import masterMindsLogo from "@/assets/logos/master-minds-logo.png";
+import royalsLogo from "@/assets/logos/royals-logo.png";
+import nslTextilesLogo from "@/assets/logos/nsl-textiles-logo.png";
+import paceLogo from "@/assets/logos/pace-logo.png";
+import fluxtekLogo from "@/assets/logos/fluxtek-logo.png";
 
 const Placements = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -78,6 +88,16 @@ const Placements = () => {
     "ADITYA BIRLA": adityaBirlaLogo,
     "HERO": heroMotocorpLogo,
     "MUTHOOT FINANCE": muthootFinanceLogo,
+    "APEX SOLUTIONS": apexSolutionsLogo,
+    "AKRO SOFT SOLUTIONS": akroSoftLogo,
+    "MOTHERSON SUMI SYSTEMS LIMITED": mothersonSumiLogo,
+    "SERV CRUST": servCrustLogo,
+    "NAVATA ROAD TRANSPORT": navataLogo,
+    "MASTER MINDS": masterMindsLogo,
+    "ROYALS": royalsLogo,
+    "NSL TEXTILES": nslTextilesLogo,
+    "PACE": paceLogo,
+    "FLUXTEK": fluxtekLogo,
   };
   
   // Filter placement related staff - those with placement related designations

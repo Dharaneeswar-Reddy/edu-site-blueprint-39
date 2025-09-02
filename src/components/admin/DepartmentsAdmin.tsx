@@ -79,6 +79,10 @@ const DepartmentsAdmin = () => {
   const handleDepartmentChange = (department: string) => {
     setSelectedDepartment(department);
     resetTimetableForm();
+    // If Physical Education is selected and user was on timetables tab, switch to staff tab
+    if (department === 'Physical Education' && activeTab === 'timetables') {
+      setActiveTab('staff');
+    }
   };
 
   const handleTabChange = (tab: string) => {
@@ -291,15 +295,17 @@ const DepartmentsAdmin = () => {
 
       {selectedDepartment && (
         <Tabs value={activeTab} onValueChange={handleTabChange} className="w-full">
-          <TabsList className={`grid w-full ${selectedDepartment === 'Physical Education' ? 'grid-cols-3' : 'grid-cols-2'} mb-6`}>
+          <TabsList className="grid w-full grid-cols-2 mb-6">
             <TabsTrigger value="staff" className="flex items-center gap-2">
               <Users className="h-4 w-4" />
               Staff ({staff.length})
             </TabsTrigger>
-            <TabsTrigger value="timetables" className="flex items-center gap-2">
-              <BookOpen className="h-4 w-4" />
-              Timetables ({timetables.length})
-            </TabsTrigger>
+            {selectedDepartment !== 'Physical Education' && (
+              <TabsTrigger value="timetables" className="flex items-center gap-2">
+                <BookOpen className="h-4 w-4" />
+                Timetables ({timetables.length})
+              </TabsTrigger>
+            )}
             {selectedDepartment === 'Physical Education' && (
               <TabsTrigger value="achievements" className="flex items-center gap-2">
                 <Trophy className="h-4 w-4" />
