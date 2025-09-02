@@ -85,69 +85,34 @@ const Index = () => {
               <p className="mb-4">S.V.R.M. College actively fosters NCC, social service, community engagement, disaster preparedness, and cultural activities, nurturing leadership, patriotism, teamwork, and personal growth. Through continuous self-assessment and NAAC accreditation, the institution ensures that every student emerges as a confident, responsible, and socially conscious citizen, ready to make meaningful contributions to society.</p>
               <p>Over the decades, S.V.R.M. College has hosted seminars, conferences, and cultural events attended by eminent personalities, including the President of India Sri V.V. Giri, leading academics, and scientists. Despite early challenges, including natural disasters, the college has continued to grow, introducing postgraduate programs and expanding its facilities, while remaining committed to producing confident, responsible, and socially conscious citizens ready to contribute meaningfully to society.</p>
             </div>
-            <div className="max-w-full overflow-hidden">
-              <div 
-                className="flex space-x-4 pb-4 animate-scroll-left"
-                style={{
-                  width: 'calc(320px * 8)', // 4 images * 2 for seamless loop
-                }}
-              >
-                {/* First set of images */}
-                <div className="flex-shrink-0 rounded-lg overflow-hidden shadow-lg w-80">
+            <div className="max-w-full">
+              <div className="space-y-4">
+                <div className="rounded-lg overflow-hidden shadow-lg">
                   <img 
                     src="/lovable-uploads/5810381d-fa14-451a-aba2-1235784bf4f2.png" 
                     alt="SVRMC Campus Main Building" 
-                    className="w-full h-[300px] object-cover"
+                    className="w-full h-[250px] object-cover"
                   />
                 </div>
-                <div className="flex-shrink-0 rounded-lg overflow-hidden shadow-lg w-80">
+                <div className="rounded-lg overflow-hidden shadow-lg">
                   <img 
                     src="/lovable-uploads/0067500d-84af-4fed-81ce-5a2d974c5d4c.png" 
                     alt="Memorial Campus Structure" 
-                    className="w-full h-[300px] object-cover"
+                    className="w-full h-[250px] object-cover"
                   />
                 </div>
-                <div className="flex-shrink-0 rounded-lg overflow-hidden shadow-lg w-80">
+                <div className="rounded-lg overflow-hidden shadow-lg">
                   <img 
                     src="/lovable-uploads/c4a8eb50-bdf5-432c-88fd-6057229b8e5c.png" 
                     alt="Campus Memorial Structure" 
-                    className="w-full h-[300px] object-cover"
+                    className="w-full h-[250px] object-cover"
                   />
                 </div>
-                <div className="flex-shrink-0 rounded-lg overflow-hidden shadow-lg w-80">
+                <div className="rounded-lg overflow-hidden shadow-lg">
                   <img 
                     src="/lovable-uploads/d925b782-a791-45ef-a813-589b4b49d681.png" 
                     alt="Chemistry Department Building" 
-                    className="w-full h-[300px] object-cover"
-                  />
-                </div>
-                {/* Duplicate set for seamless loop */}
-                <div className="flex-shrink-0 rounded-lg overflow-hidden shadow-lg w-80">
-                  <img 
-                    src="/lovable-uploads/5810381d-fa14-451a-aba2-1235784bf4f2.png" 
-                    alt="SVRMC Campus Main Building" 
-                    className="w-full h-[300px] object-cover"
-                  />
-                </div>
-                <div className="flex-shrink-0 rounded-lg overflow-hidden shadow-lg w-80">
-                  <img 
-                    src="/lovable-uploads/0067500d-84af-4fed-81ce-5a2d974c5d4c.png" 
-                    alt="Memorial Campus Structure" 
-                    className="w-full h-[300px] object-cover"
-                  />
-                </div>
-                <div className="flex-shrink-0 rounded-lg overflow-hidden shadow-lg w-80">
-                  <img 
-                    src="/lovable-uploads/c4a8eb50-bdf5-432c-88fd-6057229b8e5c.png" 
-                    alt="Campus Memorial Structure" 
-                    className="w-full h-[300px] object-cover"
-                  />
-                </div>
-                <div className="flex-shrink-0 rounded-lg overflow-hidden shadow-lg w-80">
-                  <img 
-                    src="/lovable-uploads/d925b782-a791-45ef-a813-589b4b49d681.png" 
-                    alt="Chemistry Department Building" 
-                    className="w-full h-[300px] object-cover"
+                    className="w-full h-[250px] object-cover"
                   />
                 </div>
               </div>
