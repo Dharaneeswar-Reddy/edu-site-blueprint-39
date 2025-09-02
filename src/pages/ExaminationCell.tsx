@@ -4,17 +4,33 @@ import { Button } from "@/components/ui/button";
 import { Download } from "lucide-react";
 import { useState } from "react";
 import { useExaminationDocuments } from "@/hooks/useExaminationDocuments";
+import { useExaminationStaff } from "@/hooks/useExaminationStaff";
 const ExaminationCell = () => {
   const [activeTab, setActiveTab] = useState("Academic Calendars");
   const {
     documents,
     loading
   } = useExaminationDocuments();
+  
+  const { staff: examinationStaff, loading: staffLoading } = useExaminationStaff();
+  
   const tabs = ["Academic Calendars", "Exam Fee Notifications", "Internal Time Tables", "Internal Circulars", "External Time Tables", "Results"];
+  
   const handleOpenFile = (fileUrl: string) => {
     window.open(fileUrl, '_blank');
   };
+  
   const filteredDocuments = documents.filter(doc => doc.document_type === activeTab);
+  
+  // Find the Controller of Examination from staff
+  const controller = examinationStaff.find(staff => 
+    staff.designation.toLowerCase().includes('controller of examination')
+  );
+  
+  // Get other examination staff (excluding the main controller)
+  const otherStaff = examinationStaff.filter(staff => 
+    !staff.designation.toLowerCase().includes('controller of examination')
+  );
   return <PageLayout title="Examination Cell" description="Central hub for all examination-related activities, schedules, and results at SVRMC.">
       <div className="space-y-8">
         {/* Navigation Tabs */}
@@ -69,10 +85,10 @@ const ExaminationCell = () => {
                   <div>
                     <h3 className="text-lg font-semibold text-primary mb-4">Examination Office</h3>
                     <div className="space-y-2 text-muted-foreground">
-                      <p><strong>Phone:</strong> +91-8632-235678</p>
-                      <p><strong>Email:</strong> examcell@svrmc.edu.in</p>
-                      <p><strong>Office Hours:</strong> 9:00 AM - 5:00 PM (Mon-Fri)</p>
-                      <p><strong>Location:</strong> Administrative Block, Ground Floor</p>
+                      <p><strong>Phone:</strong> 94408 26791, 98490 55376 & 98496 29431</p>
+                      <p><strong>Email:</strong> coesvrmc@gmail.com</p>
+                      <p><strong>Office Hours:</strong> 10:00 AM - 5:00 PM (Monday to Saturday)</p>
+                      <p><strong>Location:</strong> Examination Cell</p>
                     </div>
                   </div>
                 
@@ -85,88 +101,76 @@ const ExaminationCell = () => {
             <CardContent className="p-6">
               <h3 className="text-xl font-semibold text-primary mb-6">Examination Cell Staff</h3>
               
-              {/* Controller of Examinations */}
-              <div className="mb-8 p-6 bg-muted/20 rounded-lg">
-                <div className="flex flex-col md:flex-row items-center md:items-start gap-4">
-                  <div className="w-24 h-24 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0">
-                    <span className="text-2xl font-bold text-primary">CE</span>
-                  </div>
-                  <div className="text-center md:text-left">
-                    <h4 className="text-lg font-semibold text-primary">Dr. Rajesh Kumar</h4>
-                    <p className="text-primary/80 font-medium">Controller of Examinations</p>
-                    <p className="text-muted-foreground mt-2">Ph.D in Mathematics, 15+ years experience in examination administration</p>
-                    <div className="mt-3 space-y-1 text-sm text-muted-foreground">
-                      <p><strong>Email:</strong> controller.exam@svrmc.edu.in</p>
-                      <p><strong>Phone:</strong> +91-8632-235679</p>
-                      <p><strong>Office:</strong> Room 101, Administrative Block</p>
-                    </div>
-                  </div>
+              {staffLoading ? (
+                <div className="text-center py-8">
+                  <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary mx-auto"></div>
+                  <p className="text-muted-foreground mt-2">Loading staff...</p>
                 </div>
-              </div>
+              ) : (
+                <>
+                  {/* Controller of Examinations */}
+                  {controller && (
+                    <div className="mb-8 p-6 bg-muted/20 rounded-lg">
+                      <div className="flex flex-col md:flex-row items-center md:items-start gap-4">
+                        <div className="w-24 h-24 rounded-full flex items-center justify-center flex-shrink-0 overflow-hidden bg-primary/10">
+                          {controller.photo_url ? (
+                            <img 
+                              src={controller.photo_url} 
+                              alt={controller.name}
+                              className="w-full h-full object-cover"
+                            />
+                          ) : (
+                            <span className="text-2xl font-bold text-primary">
+                              {controller.name.split(' ').map(n => n[0]).join('')}
+                            </span>
+                          )}
+                        </div>
+                        <div className="text-center md:text-left">
+                          <h4 className="text-lg font-semibold text-primary">{controller.name}</h4>
+                          <p className="text-primary/80 font-medium">{controller.designation}</p>
+                          <div className="mt-3 space-y-1 text-sm text-muted-foreground">
+                            <p><strong>Email:</strong> {controller.email}</p>
+                            <p><strong>Phone:</strong> {controller.phone}</p>
+                            <p><strong>Department:</strong> {controller.department}</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  )}
 
-              {/* Exam Staff Grid */}
-              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {[{
-                name: "Ms. Priya Sharma",
-                designation: "Assistant Controller",
-                department: "Examination Cell",
-                email: "priya.exam@svrmc.edu.in",
-                phone: "+91-8632-235680",
-                specialization: "Result Processing & Grade Management"
-              }, {
-                name: "Mr. Suresh Reddy",
-                designation: "Exam Coordinator",
-                department: "Examination Cell",
-                email: "suresh.exam@svrmc.edu.in",
-                phone: "+91-8632-235681",
-                specialization: "Time Table & Hall Allocation"
-              }, {
-                name: "Ms. Lakshmi Devi",
-                designation: "Administrative Assistant",
-                department: "Examination Cell",
-                email: "lakshmi.exam@svrmc.edu.in",
-                phone: "+91-8632-235682",
-                specialization: "Student Queries & Documentation"
-              }, {
-                name: "Mr. Venkat Rao",
-                designation: "Technical Assistant",
-                department: "Examination Cell",
-                email: "venkat.exam@svrmc.edu.in",
-                phone: "+91-8632-235683",
-                specialization: "Online Systems & IT Support"
-              }, {
-                name: "Ms. Anitha Kumari",
-                designation: "Data Entry Operator",
-                department: "Examination Cell",
-                email: "anitha.exam@svrmc.edu.in",
-                phone: "+91-8632-235684",
-                specialization: "Mark Entry & Verification"
-              }, {
-                name: "Mr. Krishna Murthy",
-                designation: "Office Assistant",
-                department: "Examination Cell",
-                email: "krishna.exam@svrmc.edu.in",
-                phone: "+91-8632-235685",
-                specialization: "General Administration"
-              }].map((staff, index) => <div key={index} className="bg-card border rounded-lg p-4 hover:shadow-md transition-shadow">
-                    <div className="flex items-center gap-3 mb-3">
-                      <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0">
-                        <span className="text-sm font-bold text-primary">
-                          {staff.name.split(' ').map(n => n[0]).join('')}
-                        </span>
+                  {/* Other Staff Grid */}
+                  <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    {otherStaff.map((staff, index) => (
+                      <div key={staff.id} className="bg-card border rounded-lg p-4 hover:shadow-md transition-shadow">
+                        <div className="flex items-center gap-3 mb-3">
+                          <div className="w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0 overflow-hidden bg-primary/10">
+                            {staff.photo_url ? (
+                              <img 
+                                src={staff.photo_url} 
+                                alt={staff.name}
+                                className="w-full h-full object-cover"
+                              />
+                            ) : (
+                              <span className="text-sm font-bold text-primary">
+                                {staff.name.split(' ').map(n => n[0]).join('')}
+                              </span>
+                            )}
+                          </div>
+                          <div>
+                            <h4 className="font-semibold text-primary text-sm">{staff.name}</h4>
+                            <p className="text-xs text-primary/70">{staff.designation}</p>
+                          </div>
+                        </div>
+                        <div className="space-y-1 text-xs text-muted-foreground">
+                          <p><strong>Email:</strong> {staff.email}</p>
+                          <p><strong>Phone:</strong> {staff.phone}</p>
+                          <p><strong>Department:</strong> {staff.department}</p>
+                        </div>
                       </div>
-                      <div>
-                        <h4 className="font-semibold text-primary text-sm">{staff.name}</h4>
-                        <p className="text-xs text-primary/70">{staff.designation}</p>
-                      </div>
-                    </div>
-                    <div className="space-y-1 text-xs text-muted-foreground">
-                      <p><strong>Specialization:</strong> {staff.specialization}</p>
-                      <p><strong>Email:</strong> {staff.email}</p>
-                      <p><strong>Phone:</strong> {staff.phone}</p>
-                    </div>
-                  </div>)}
-              </div>
+                    ))}
+                  </div>
+                </>
+              )}
             </CardContent>
           </Card>
         </div>
