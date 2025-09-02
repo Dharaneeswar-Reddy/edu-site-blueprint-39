@@ -11,12 +11,21 @@ interface ExaminationStaff {
   photo_url: string | null;
 }
 
+interface ExaminationStaffData {
+  name: string;
+  designation: string;
+  email: string;
+  phone: string;
+  department: string;
+  photo_url?: string; // Optional direct photo URL
+}
+
 export const useExaminationStaff = () => {
   const [staff, setStaff] = useState<ExaminationStaff[]>([]);
   const [loading, setLoading] = useState(true);
 
   // Examination office staff details with their names to match from staff table
-  const examinationStaffData = [
+  const examinationStaffData: ExaminationStaffData[] = [
     {
       name: "Dr. P. Srinivasa Rao",
       designation: "Controller of Examination",
@@ -29,7 +38,8 @@ export const useExaminationStaff = () => {
       designation: "Addl. Controller of Examination",
       email: "spuppala@svrmc.edu.in",
       phone: "98490 55376",
-      department: "Examination Cell"
+      department: "Examination Cell",
+      photo_url: "/lovable-uploads/2c855993-c706-465e-8f14-21984262356f.png" // Direct photo
     },
     {
       name: "Sri L. Suresh Babu",
@@ -83,7 +93,7 @@ export const useExaminationStaff = () => {
             department: examStaff.department,
             email: examStaff.email,
             phone: examStaff.phone,
-            photo_url: matchedRecord?.photo_url || null
+            photo_url: examStaff.photo_url || matchedRecord?.photo_url || null // Prioritize direct photo
           };
         });
 
