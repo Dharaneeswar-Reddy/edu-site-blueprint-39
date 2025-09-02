@@ -14,8 +14,9 @@ const IQAC = () => {
   const { documents: nirfReports, loading: nirfLoading } = useIqacDocuments('nirf');
   const { documents: naacRecords, loading: naacLoading } = useIqacDocuments('naac_records');
   const { documents: ssrDocuments, loading: ssrLoading } = useIqacDocuments('ssr');
-  const { documents: gradeSheets, loading: gradeLoading } = useIqacDocuments('grade_sheet');
-  const { documents: accreditationCerts, loading: accreditationLoading } = useIqacDocuments('accreditation_certificate');
+  // Grade sheets and accreditation certificates hidden for future use
+  // const { documents: gradeSheets, loading: gradeLoading } = useIqacDocuments('grade_sheet');
+  // const { documents: accreditationCerts, loading: accreditationLoading } = useIqacDocuments('accreditation_certificate');
   const { documents: satisfactionSurveys, loading: surveyLoading } = useIqacDocuments('satisfaction_survey');
   const { documents: studentFeedback, loading: studentFeedbackLoading } = useIqacDocuments('feedback_student');
   const { documents: teacherFeedback, loading: teacherFeedbackLoading } = useIqacDocuments('feedback_teacher');
@@ -578,85 +579,6 @@ const IQAC = () => {
             </CardContent>
           </Card>
         </section>
-
-        {/* Grade Sheets & Accreditation Certificates */}
-        <div className="grid md:grid-cols-2 gap-6">
-          <Card>
-            <CardHeader>
-              <CardTitle className="flex items-center gap-3">
-                <CheckCircle className="h-6 w-6 text-blue-600" />
-                Grade Sheets
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              {gradeLoading ? (
-                <div className="text-center py-4">Loading grade sheets...</div>
-              ) : gradeSheets.length === 0 ? (
-                <div className="text-center py-8 text-muted-foreground">
-                  No grade sheets available yet.
-                </div>
-              ) : (
-                <div className="space-y-3">
-                  {gradeSheets.map((sheet) => (
-                    <div key={sheet.id} className="flex justify-between items-center p-3 bg-gray-50 rounded">
-                      <div>
-                        <h4 className="font-medium">{sheet.title}</h4>
-                        {sheet.academic_year && (
-                          <p className="text-sm text-gray-600">{sheet.academic_year}</p>
-                        )}
-                      </div>
-                      <Button 
-                        size="sm" 
-                        variant="outline"
-                        onClick={() => window.open(sheet.file_url, '_blank')}
-                      >
-                        <Download className="h-4 w-4" />
-                      </Button>
-                    </div>
-                  ))}
-                </div>
-              )}
-            </CardContent>
-          </Card>
-
-          <Card>
-            <CardHeader>
-              <CardTitle className="flex items-center gap-3">
-                <Award className="h-6 w-6 text-blue-600" />
-                Accreditation Certificates
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              {accreditationLoading ? (
-                <div className="text-center py-4">Loading certificates...</div>
-              ) : accreditationCerts.length === 0 ? (
-                <div className="text-center py-8 text-muted-foreground">
-                  No certificates available yet.
-                </div>
-              ) : (
-                <div className="space-y-3">
-                  {accreditationCerts.map((cert) => (
-                    <div key={cert.id} className="flex justify-between items-center p-3 bg-gray-50 rounded">
-                      <div>
-                        <h4 className="font-medium">{cert.title}</h4>
-                        {cert.academic_year && (
-                          <p className="text-sm text-gray-600">{cert.academic_year}</p>
-                        )}
-                      </div>
-                      <Button 
-                        size="sm" 
-                        variant="outline"
-                        onClick={() => window.open(cert.file_url, '_blank')}
-                      >
-                        <Download className="h-4 w-4" />
-                      </Button>
-                    </div>
-                  ))}
-                </div>
-              )}
-            </CardContent>
-          </Card>
-        </div>
 
         {/* Satisfaction Surveys */}
         <section>
