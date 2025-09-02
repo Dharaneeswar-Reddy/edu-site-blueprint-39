@@ -725,6 +725,7 @@ export default function StudentSupportAdmin() {
                   <TableRow>
                     <TableHead>Service</TableHead>
                     <TableHead>Title</TableHead>
+                    <TableHead>Report Type</TableHead>
                     <TableHead>Academic Year</TableHead>
                     <TableHead>Actions</TableHead>
                   </TableRow>
@@ -736,6 +737,11 @@ export default function StudentSupportAdmin() {
                         <Badge variant="secondary">{report.service_name}</Badge>
                       </TableCell>
                       <TableCell>{report.title}</TableCell>
+                      <TableCell>
+                        <Badge variant={report.report_type === 'NSS' ? 'default' : 'outline'}>
+                          {report.report_type || 'NCC'}
+                        </Badge>
+                      </TableCell>
                       <TableCell>{report.academic_year}</TableCell>
                       <TableCell>
                         <div className="flex gap-2">
