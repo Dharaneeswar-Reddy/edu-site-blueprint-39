@@ -21,8 +21,8 @@ const WelcomeSection = () => {
         </div>
         <div className="rounded-lg overflow-hidden shadow-lg hover-scale">
           <img 
-            src="/lovable-uploads/9ecf085a-3abc-45e7-844b-b132bfa85970.png" 
-            alt="SVRMC Campus" 
+            src="/lovable-uploads/f3d6ede9-846e-473c-a7f7-c8e948334e8a.png" 
+            alt="College Officials and Dignitaries" 
             className="w-full h-[300px] object-cover"
           />
         </div>
