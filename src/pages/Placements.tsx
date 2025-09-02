@@ -4,22 +4,65 @@ import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { ArrowRight, Briefcase, Building, Users, Award, TrendingUp, Target, MapPin, GraduationCap, UserCheck, Calendar, Building2, ChevronLeft, ChevronRight, MessageSquare, Lightbulb, Network, Eye, HeartHandshake } from "lucide-react";
 import { useState, useEffect } from "react";
+import { useStaff } from "@/hooks/useStaff";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+
 const Placements = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  
+  // Fetch placement staff from database
+  const { staff: allStaff, loading: staffLoading, error: staffError } = useStaff();
+  
+  // Filter placement related staff - those with placement related designations
+  const placementStaff = allStaff.filter(staff => 
+    staff.designation.toLowerCase().includes('placement') ||
+    staff.designation.toLowerCase().includes('training') ||
+    staff.designation.toLowerCase().includes('career') ||
+    staff.designation.toLowerCase().includes('industry') ||
+    staff.designation.toLowerCase().includes('counselor')
+  );
+  
+  // Filter HODs for placement committee
+  const placementCommittee = allStaff.filter(staff => {
+    const designation = staff.designation.toLowerCase();
+    return designation.includes('hod') || 
+           designation.includes('head of department') || 
+           designation.includes('head of the department') ||
+           designation.includes('department head') ||
+           designation.includes('head - department') ||
+           designation.includes('head-department') ||
+           designation.includes('dept. head') ||
+           designation.includes('dept head');
+  }).slice(0, 6); // Limit to 6 committee members for layout
+  
+  const getInitials = (name: string) => {
+    return name
+      .split(' ')
+      .map(word => word.charAt(0))
+      .join('')
+      .toUpperCase()
+      .slice(0, 2);
+  };
+  
   const heroImages = ["/lovable-uploads/1e95f6dd-1e3b-413a-926b-1cd65013d460.png", "/lovable-uploads/aa814823-8dcf-4f41-ba8e-2ba08febadb0.png", "/lovable-uploads/0a4f9773-a266-423a-b27f-047c99b4a888.png"];
+  
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentImageIndex(prevIndex => (prevIndex + 1) % heroImages.length);
     }, 4000);
     return () => clearInterval(timer);
   }, []);
+  
   const nextImage = () => {
     setCurrentImageIndex(prevIndex => (prevIndex + 1) % heroImages.length);
   };
+  
   const prevImage = () => {
     setCurrentImageIndex(prevIndex => (prevIndex - 1 + heroImages.length) % heroImages.length);
   };
+  
   const topRecruiters = ["RATNADEEP", "TALBRIDGE GENPACT", "APEX SOLUTIONS", "AKRO SOFT SOLUTIONS", "MOTHERSON SUMI SYSTEMS LIMITED", "MUTHOOT FINANCE", "SERV CRUST", "FOXCONN", "MEDPLUS", "HDB BANK", "QUESS", "NAVATA ROAD TRANSPORT", "BLUE STAR", "MASTER MINDS", "HETERO", "ROYALS", "SBI LIFE", "NSL TEXTILES", "PACE", "TEAMLEASE", "AMARRAJA", "APOLLO PHARMACY", "FLUXTEK", "AADITYA BIRLA", "HERO"];
+  
   const placementStats = [{
     year: "2024-25",
     placed: 382,
@@ -41,6 +84,7 @@ const Placements = () => {
     totalStudents: 376,
     percentagePlaced: 80
   }];
+  
   const departmentPlacements = [{
     department: "Computer Science",
     placed: 145,
@@ -72,27 +116,7 @@ const Placements = () => {
     percentage: 75,
     avgPackage: "5.2 LPA"
   }];
-  const placementStaff = [{
-    name: "Dr. Rajesh Kumar",
-    designation: "Placement Officer",
-    experience: "15 Years",
-    contact: "placement@svrmc.edu.in"
-  }, {
-    name: "Ms. Priya Sharma",
-    designation: "Training Coordinator",
-    experience: "8 Years",
-    contact: "training@svrmc.edu.in"
-  }, {
-    name: "Mr. Suresh Reddy",
-    designation: "Industry Relations",
-    experience: "12 Years",
-    contact: "industry@svrmc.edu.in"
-  }, {
-    name: "Ms. Lakshmi Devi",
-    designation: "Student Counselor",
-    experience: "6 Years",
-    contact: "counseling@svrmc.edu.in"
-  }];
+  
   const activities = [{
     title: "Industry Interaction Sessions",
     description: "Regular sessions with industry experts",
@@ -118,6 +142,7 @@ const Placements = () => {
     description: "On-campus recruitment drives",
     frequency: "Regular"
   }];
+  
   return <Layout>
       {/* Hero Section with Scrolling Images */}
       <section className="pt-20 pb-8">
@@ -567,117 +592,203 @@ const Placements = () => {
             <div className="w-24 h-1 bg-primary mx-auto mb-6"></div>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {/* Placement Officer */}
-            <Card className="border-primary/20 hover:shadow-lg transition-all duration-300 lg:col-span-1">
-              <CardHeader className="text-center">
-                <div className="mx-auto mb-4">
-                  <img src="/lovable-uploads/43e4b089-9a01-4b92-ab9f-cf2aaf4e2ae1.png" alt="Sri Sajja Srinivasa Rao" className="w-32 h-32 rounded-lg object-cover mx-auto border-4 border-primary/20" />
-                </div>
-                <CardTitle className="text-lg">Sri Sajja Srinivasa Rao</CardTitle>
-                <CardDescription className="font-medium text-secondary">Placement Officer</CardDescription>
-              </CardHeader>
-              <CardContent className="text-center">
-                <div className="space-y-2 text-sm text-muted-foreground">
-                  <p><strong>Qualifications:</strong></p>
-                  <p>M.C.M – Master in Computer Management</p>
-                  <p>MLIS – Master in Library and Information Science</p>
-                  <p><strong>Experience:</strong> 35+ years</p>
-                  <p><strong>Expertise:</strong> Computer Science, PC troubleshooting and networking</p>
-                  <p className="text-primary font-medium">Srinivas.svrm@gmail.com</p>
-                  <p className="text-primary font-medium">+91-9963465428</p>
-                  <p className="text-sm">Central Library Building, Ground Floor</p>
-                </div>
-              </CardContent>
-            </Card>
-
-            {/* Other Staff Members */}
-            <div className="lg:col-span-2 grid md:grid-cols-2 gap-6">
-              <Card className="border-primary/20 hover:shadow-lg transition-all duration-300">
-                <CardHeader className="text-center">
-                  <div className="mx-auto mb-4">
-                    <div className="w-24 h-24 rounded-lg bg-primary/10 border-2 border-primary/20 flex items-center justify-center mx-auto">
-                      <UserCheck className="h-12 w-12 text-primary" />
-                    </div>
-                  </div>
-                  <CardTitle className="text-lg">Dr. P.Srinivasa Rao</CardTitle>
-                  <CardDescription className="font-medium text-secondary">HOD, Physics</CardDescription>
-                </CardHeader>
-              </Card>
-
-              <Card className="border-primary/20 hover:shadow-lg transition-all duration-300">
-                <CardHeader className="text-center">
-                  <div className="mx-auto mb-4">
-                    <div className="w-24 h-24 rounded-lg bg-primary/10 border-2 border-primary/20 flex items-center justify-center mx-auto">
-                      <UserCheck className="h-12 w-12 text-primary" />
-                    </div>
-                  </div>
-                  <CardTitle className="text-lg">Sri R.Prasanna Babu</CardTitle>
-                  <CardDescription className="font-medium text-secondary">HOD, Chemistry</CardDescription>
-                </CardHeader>
-              </Card>
-
-              <Card className="border-primary/20 hover:shadow-lg transition-all duration-300">
-                <CardHeader className="text-center">
-                  <div className="mx-auto mb-4">
-                    <div className="w-24 h-24 rounded-lg bg-primary/10 border-2 border-primary/20 flex items-center justify-center mx-auto">
-                      <UserCheck className="h-12 w-12 text-primary" />
-                    </div>
-                  </div>
-                  <CardTitle className="text-lg">Dr. K.Suresh babu</CardTitle>
-                  <CardDescription className="font-medium text-secondary">HOD, Zoology</CardDescription>
-                </CardHeader>
-              </Card>
-
-              <Card className="border-primary/20 hover:shadow-lg transition-all duration-300">
-                <CardHeader className="text-center">
-                  <div className="mx-auto mb-4">
-                    <div className="w-24 h-24 rounded-lg bg-primary/10 border-2 border-primary/20 flex items-center justify-center mx-auto">
-                      <UserCheck className="h-12 w-12 text-primary" />
-                    </div>
-                  </div>
-                  <CardTitle className="text-lg">Sri P. Venkata Narayana</CardTitle>
-                  <CardDescription className="font-medium text-secondary">HOD, Botany</CardDescription>
-                </CardHeader>
-              </Card>
-
-              <Card className="border-primary/20 hover:shadow-lg transition-all duration-300">
-                <CardHeader className="text-center">
-                  <div className="mx-auto mb-4">
-                    <div className="w-24 h-24 rounded-lg bg-primary/10 border-2 border-primary/20 flex items-center justify-center mx-auto">
-                      <UserCheck className="h-12 w-12 text-primary" />
-                    </div>
-                  </div>
-                  <CardTitle className="text-lg">Sri U.Siva Prasad</CardTitle>
-                  <CardDescription className="font-medium text-secondary">HOD, Mathematics</CardDescription>
-                </CardHeader>
-              </Card>
-
-              <Card className="border-primary/20 hover:shadow-lg transition-all duration-300">
-                <CardHeader className="text-center">
-                  <div className="mx-auto mb-4">
-                    <div className="w-24 h-24 rounded-lg bg-primary/10 border-2 border-primary/20 flex items-center justify-center mx-auto">
-                      <UserCheck className="h-12 w-12 text-primary" />
-                    </div>
-                  </div>
-                  <CardTitle className="text-lg">Dr. B.Prakash babu</CardTitle>
-                  <CardDescription className="font-medium text-secondary">HOD, Economics</CardDescription>
-                </CardHeader>
-              </Card>
-
-              <Card className="border-primary/20 hover:shadow-lg transition-all duration-300">
-                <CardHeader className="text-center">
-                  <div className="mx-auto mb-4">
-                    <div className="w-24 h-24 rounded-lg bg-primary/10 border-2 border-primary/20 flex items-center justify-center mx-auto">
-                      <UserCheck className="h-12 w-12 text-primary" />
-                    </div>
-                  </div>
-                  <CardTitle className="text-lg">Sri V. Ramesh babu</CardTitle>
-                  <CardDescription className="font-medium text-secondary">HOD, Commerce</CardDescription>
-                </CardHeader>
-              </Card>
+          {staffLoading ? (
+            <div className="text-center py-8">
+              <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary mx-auto mb-4"></div>
+              <p className="text-muted-foreground">Loading placement staff...</p>
             </div>
-          </div>
+          ) : staffError ? (
+            <div className="text-center py-8">
+              <p className="text-red-500">Error loading staff: {staffError}</p>
+            </div>
+          ) : (
+            <div className="space-y-8">
+              {/* Main Placement Officer */}
+              <Card className="border-primary/20 hover:shadow-lg transition-all duration-300 max-w-4xl mx-auto">
+                <CardHeader className="text-center">
+                  <div className="mx-auto mb-4">
+                    <img 
+                      src="/lovable-uploads/43e4b089-9a01-4b92-ab9f-cf2aaf4e2ae1.png" 
+                      alt="Sri Sajja Srinivasa Rao" 
+                      className="w-32 h-32 rounded-lg object-cover mx-auto border-4 border-primary/20" 
+                    />
+                  </div>
+                  <CardTitle className="text-xl">Sri Sajja Srinivasa Rao</CardTitle>
+                  <CardDescription className="font-medium text-secondary text-lg">Placement Officer</CardDescription>
+                </CardHeader>
+                <CardContent className="text-center">
+                  <div className="space-y-2 text-sm text-muted-foreground">
+                    <p><strong>Qualifications:</strong></p>
+                    <p>M.C.M – Master in Computer Management</p>
+                    <p>MLIS – Master in Library and Information Science</p>
+                    <p><strong>Experience:</strong> 35+ years</p>
+                    <p><strong>Expertise:</strong> Computer Science, PC troubleshooting and networking</p>
+                    <p className="text-primary font-medium">Srinivas.svrm@gmail.com</p>
+                    <p className="text-primary font-medium">+91-9963465428</p>
+                    <p className="text-sm">Central Library Building, Ground Floor</p>
+                  </div>
+                </CardContent>
+              </Card>
+
+              {/* Placement Committee Members */}
+              <div>
+                <h3 className="text-2xl font-bold text-primary mb-8 text-center">Placement Committee Members</h3>
+                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                  {placementCommittee.length > 0 ? (
+                    placementCommittee.map((staff) => (
+                      <Card key={staff.id} className="border-primary/20 hover:shadow-lg transition-all duration-300">
+                        <CardHeader className="text-center">
+                          <div className="mx-auto mb-4">
+                            {staff.photo_url ? (
+                              <img 
+                                src={staff.photo_url} 
+                                alt={staff.name}
+                                className="w-24 h-24 rounded-lg object-cover mx-auto border-2 border-primary/20" 
+                              />
+                            ) : (
+                              <Avatar className="w-24 h-24 mx-auto">
+                                <AvatarFallback className="text-lg font-semibold bg-primary/10 text-primary">
+                                  {getInitials(staff.name)}
+                                </AvatarFallback>
+                              </Avatar>
+                            )}
+                          </div>
+                          <CardTitle className="text-lg">{staff.name}</CardTitle>
+                          <CardDescription className="font-medium text-secondary">{staff.designation}</CardDescription>
+                          {staff.department && (
+                            <CardDescription className="text-sm text-muted-foreground">{staff.department} Department</CardDescription>
+                          )}
+                        </CardHeader>
+                        {(staff.email || staff.phone) && (
+                          <CardContent className="text-center">
+                            <div className="space-y-1 text-sm">
+                              {staff.email && (
+                                <p className="text-primary font-medium">{staff.email}</p>
+                              )}
+                              {staff.phone && (
+                                <p className="text-primary font-medium">{staff.phone}</p>
+                              )}
+                            </div>
+                          </CardContent>
+                        )}
+                      </Card>
+                    ))
+                  ) : (
+                    // Fallback to hardcoded committee members if no staff found
+                    <>
+                      <Card className="border-primary/20 hover:shadow-lg transition-all duration-300">
+                        <CardHeader className="text-center">
+                          <div className="mx-auto mb-4">
+                            <div className="w-24 h-24 rounded-lg bg-primary/10 border-2 border-primary/20 flex items-center justify-center mx-auto">
+                              <UserCheck className="h-12 w-12 text-primary" />
+                            </div>
+                          </div>
+                          <CardTitle className="text-lg">Dr. P.Srinivasa Rao</CardTitle>
+                          <CardDescription className="font-medium text-secondary">HOD, Physics</CardDescription>
+                        </CardHeader>
+                      </Card>
+
+                      <Card className="border-primary/20 hover:shadow-lg transition-all duration-300">
+                        <CardHeader className="text-center">
+                          <div className="mx-auto mb-4">
+                            <div className="w-24 h-24 rounded-lg bg-primary/10 border-2 border-primary/20 flex items-center justify-center mx-auto">
+                              <UserCheck className="h-12 w-12 text-primary" />
+                            </div>
+                          </div>
+                          <CardTitle className="text-lg">Sri R.Prasanna Babu</CardTitle>
+                          <CardDescription className="font-medium text-secondary">HOD, Chemistry</CardDescription>
+                        </CardHeader>
+                      </Card>
+
+                      <Card className="border-primary/20 hover:shadow-lg transition-all duration-300">
+                        <CardHeader className="text-center">
+                          <div className="mx-auto mb-4">
+                            <div className="w-24 h-24 rounded-lg bg-primary/10 border-2 border-primary/20 flex items-center justify-center mx-auto">
+                              <UserCheck className="h-12 w-12 text-primary" />
+                            </div>
+                          </div>
+                          <CardTitle className="text-lg">Dr. K.Suresh babu</CardTitle>
+                          <CardDescription className="font-medium text-secondary">HOD, Zoology</CardDescription>
+                        </CardHeader>
+                      </Card>
+
+                      <Card className="border-primary/20 hover:shadow-lg transition-all duration-300">
+                        <CardHeader className="text-center">
+                          <div className="mx-auto mb-4">
+                            <div className="w-24 h-24 rounded-lg bg-primary/10 border-2 border-primary/20 flex items-center justify-center mx-auto">
+                              <UserCheck className="h-12 w-12 text-primary" />
+                            </div>
+                          </div>
+                          <CardTitle className="text-lg">Sri P. Venkata Narayana</CardTitle>
+                          <CardDescription className="font-medium text-secondary">HOD, Botany</CardDescription>
+                        </CardHeader>
+                      </Card>
+
+                      <Card className="border-primary/20 hover:shadow-lg transition-all duration-300">
+                        <CardHeader className="text-center">
+                          <div className="mx-auto mb-4">
+                            <div className="w-24 h-24 rounded-lg bg-primary/10 border-2 border-primary/20 flex items-center justify-center mx-auto">
+                              <UserCheck className="h-12 w-12 text-primary" />
+                            </div>
+                          </div>
+                          <CardTitle className="text-lg">Sri U.Siva Prasad</CardTitle>
+                          <CardDescription className="font-medium text-secondary">HOD, Mathematics</CardDescription>
+                        </CardHeader>
+                      </Card>
+                    </>
+                  )}
+                </div>
+              </div>
+
+              {/* Additional Placement Staff if any */}
+              {placementStaff.length > 0 && (
+                <div>
+                  <h3 className="text-2xl font-bold text-primary mb-8 text-center">Additional Placement Team</h3>
+                  <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    {placementStaff.map((staff) => (
+                      <Card key={staff.id} className="border-primary/20 hover:shadow-lg transition-all duration-300">
+                        <CardHeader className="text-center">
+                          <div className="mx-auto mb-4">
+                            {staff.photo_url ? (
+                              <img 
+                                src={staff.photo_url} 
+                                alt={staff.name}
+                                className="w-24 h-24 rounded-lg object-cover mx-auto border-2 border-primary/20" 
+                              />
+                            ) : (
+                              <Avatar className="w-24 h-24 mx-auto">
+                                <AvatarFallback className="text-lg font-semibold bg-primary/10 text-primary">
+                                  {getInitials(staff.name)}
+                                </AvatarFallback>
+                              </Avatar>
+                            )}
+                          </div>
+                          <CardTitle className="text-lg">{staff.name}</CardTitle>
+                          <CardDescription className="font-medium text-secondary">{staff.designation}</CardDescription>
+                          {staff.department && (
+                            <CardDescription className="text-sm text-muted-foreground">{staff.department} Department</CardDescription>
+                          )}
+                        </CardHeader>
+                        <CardContent className="text-center">
+                          <div className="space-y-1 text-sm">
+                            {staff.experience && (
+                              <p className="text-muted-foreground">Experience: {staff.experience}</p>
+                            )}
+                            {staff.email && (
+                              <p className="text-primary font-medium">{staff.email}</p>
+                            )}
+                            {staff.phone && (
+                              <p className="text-primary font-medium">{staff.phone}</p>
+                            )}
+                          </div>
+                        </CardContent>
+                      </Card>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
+          )}
         </div>
       </section>
 
@@ -759,4 +870,5 @@ const Placements = () => {
       </section>
     </Layout>;
 };
+
 export default Placements;
