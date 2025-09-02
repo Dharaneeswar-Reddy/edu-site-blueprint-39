@@ -9,6 +9,7 @@ import {
   useStudentSupportStaff, 
   useStudentSupportGallery 
 } from "@/hooks/useStudentSupportServices";
+import { useStaff } from "@/hooks/useStaff";
 
 const WomenEmpowerment = () => {
   const serviceName = "Women Empowerment";
@@ -16,6 +17,7 @@ const WomenEmpowerment = () => {
   const { reports } = useStudentSupportReports(serviceName);
   const { staff } = useStudentSupportStaff(serviceName);
   const { gallery } = useStudentSupportGallery(serviceName);
+  const { staff: allStaff } = useStaff(); // Fetch all staff to get photos
   
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
@@ -104,6 +106,26 @@ const WomenEmpowerment = () => {
       department: "Lecturer in English"
     }
   ];
+
+  // Merge photos from main staff table
+  const wecStaffWithPhotos = wecStaff.map(wecMember => {
+    // If member already has photo, keep it
+    if (wecMember.photo_url) {
+      return wecMember;
+    }
+    
+    // Find matching staff member by name (case insensitive partial match)
+    const matchingStaff = allStaff.find(staffMember => 
+      staffMember.name.toLowerCase().includes(wecMember.name.toLowerCase()) ||
+      wecMember.name.toLowerCase().includes(staffMember.name.toLowerCase())
+    );
+    
+    // Return merged data with photo if found
+    return {
+      ...wecMember,
+      photo_url: matchingStaff?.photo_url || wecMember.photo_url
+    };
+  });
 
   // Recent Activities
   const recentActivities = [
@@ -283,7 +305,7 @@ const WomenEmpowerment = () => {
           </CardHeader>
           <CardContent>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {(staff.length > 0 ? staff : wecStaff).map((member, index) => (
+              {(staff.length > 0 ? staff : wecStaffWithPhotos).map((member, index) => (
                 <div key={member.id || index} className="text-center">
                   <div className="w-32 h-32 bg-muted rounded-full mx-auto mb-4 flex items-center justify-center overflow-hidden">
                     {member.photo_url ? (
