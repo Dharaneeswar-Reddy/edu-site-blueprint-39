@@ -87,15 +87,31 @@ export default function StudentSupportAdmin() {
   const { gallery, refetch: refetchGallery } = useStudentSupportGallery(selectedService);
 
   const uploadFile = async (file: File, bucket: string, folder: string) => {
+    console.log('=== Upload Debug Info ===');
+    console.log('File name:', file.name);
+    console.log('File size (bytes):', file.size);
+    console.log('File size (KB):', Math.round(file.size / 1024));
+    console.log('File type:', file.type);
+    console.log('Bucket:', bucket);
+    console.log('Folder:', folder);
+    
     // Check file size limits - 2000KB for documents, 200KB for images
-    const maxSize = bucket === 'admin-uploads' && folder === 'reports' ? 2000 * 1024 : 200 * 1024; // 2000KB for docs, 200KB for images
+    const maxSize = bucket === 'admin-uploads' && folder === 'reports' ? 2000 * 1024 : 200 * 1024;
+    console.log('Max size allowed (KB):', maxSize / 1024);
+    
     if (file.size > maxSize) {
       const sizeLimitKB = maxSize / 1024;
+      console.error('File size check failed:', { fileSize: file.size, maxSize, exceedsBy: file.size - maxSize });
       throw new Error(`File size exceeds ${sizeLimitKB}KB limit. Please choose a smaller file.`);
     }
+    
+    console.log('File size check passed');
 
     const fileExt = file.name.split('.').pop();
     const fileName = `${folder}/${Date.now()}.${fileExt}`;
+    
+    console.log('Uploading to:', fileName);
+    console.log('Upload options:', { cacheControl: '3600', upsert: false });
     
     const { data, error } = await supabase.storage
       .from(bucket)
@@ -104,17 +120,30 @@ export default function StudentSupportAdmin() {
         upsert: false
       });
     
+    console.log('Upload response:', { data, error });
+    
     if (error) {
-      console.error('Upload error:', error);
-      if (error.message.includes('maximum allowed size')) {
-        throw new Error('File size exceeds the maximum allowed limit. Please choose a smaller file.');
+      console.error('=== Upload Error Details ===');
+      console.error('Error message:', error.message);
+      console.error('Error details:', error);
+      console.error('Error status:', (error as any)?.status);
+      console.error('Error statusCode:', (error as any)?.statusCode);
+      
+      if (error.message.includes('maximum allowed size') || error.message.includes('file size') || error.message.includes('413')) {
+        throw new Error('File size exceeds server limit. Try a smaller file or contact administrator.');
       }
-      throw error;
+      
+      throw new Error(`Upload failed: ${error.message}`);
     }
+    
+    console.log('Upload successful, getting public URL...');
     
     const { data: { publicUrl } } = supabase.storage
       .from(bucket)
       .getPublicUrl(fileName);
+    
+    console.log('Public URL:', publicUrl);
+    console.log('=== Upload Complete ===');
     
     return publicUrl;
   };
