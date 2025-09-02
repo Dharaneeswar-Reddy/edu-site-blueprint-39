@@ -88,6 +88,7 @@ const StaffAdmin = () => {
   const [editingStaff, setEditingStaff] = useState<Staff | null>(null);
   const [selectedDepartment, setSelectedDepartment] = useState<string>("all");
   const [selectedStaffType, setSelectedStaffType] = useState<string>("all");
+  const [activeTab, setActiveTab] = useState<string>("add");
   const [formData, setFormData] = useState({
     name: "",
     designation: "",
@@ -253,6 +254,7 @@ const StaffAdmin = () => {
       photo: null,
     });
     setEditingStaff(staff);
+    setActiveTab("add"); // Switch to add/edit tab
   };
 
   const handleDelete = async (id: string) => {
@@ -495,7 +497,7 @@ const StaffAdmin = () => {
         <h1 className="text-3xl font-bold">Staff Management</h1>
       </div>
 
-      <Tabs defaultValue="add" className="w-full">
+      <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
         <TabsList className="grid w-full grid-cols-3">
           <TabsTrigger value="add">Add/Edit Staff</TabsTrigger>
           <TabsTrigger value="manage">Manage Staff</TabsTrigger>
