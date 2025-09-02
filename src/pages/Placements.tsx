@@ -22,6 +22,21 @@ import capgeminiLogo from "@/assets/logos/capgemini-logo.png";
 import mindtreeLogo from "@/assets/logos/mindtree-logo.png";
 import ltiLogo from "@/assets/logos/lti-logo.png";
 import mphasisLogo from "@/assets/logos/mphasis-logo.png";
+import genpactLogo from "@/assets/logos/genpact-logo.png";
+import foxconnLogo from "@/assets/logos/foxconn-logo.png";
+import muthootFinanceLogo from "@/assets/logos/muthoot-finance-logo.png";
+import hdfcBankLogo from "@/assets/logos/hdfc-bank-logo.png";
+import blueStarLogo from "@/assets/logos/blue-star-logo.png";
+import medplusLogo from "@/assets/logos/medplus-logo.png";
+import quessLogo from "@/assets/logos/quess-logo.png";
+import heteroLogo from "@/assets/logos/hetero-logo.png";
+import sbiLifeLogo from "@/assets/logos/sbi-life-logo.png";
+import teamleaseLogo from "@/assets/logos/teamlease-logo.png";
+import amarrajaLogo from "@/assets/logos/amarraja-logo.png";
+import apolloPharmacyLogo from "@/assets/logos/apollo-pharmacy-logo.png";
+import adityaBirlaLogo from "@/assets/logos/aditya-birla-logo.png";
+import heroMotocorpLogo from "@/assets/logos/hero-motocorp-logo.png";
+import ratnadeepLogo from "@/assets/logos/ratnadeep-logo.png";
 
 const Placements = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -45,6 +60,24 @@ const Placements = () => {
     "L&T INFOTECH": ltiLogo,
     "MICROSOFT": microsoftLogo,
     "AMAZON": amazonLogo,
+    "RATNADEEP": ratnadeepLogo,
+    "TALBRIDGE GENPACT": genpactLogo,
+    "GENPACT": genpactLogo,
+    "FOXCONN": foxconnLogo,
+    "MEDPLUS": medplusLogo,
+    "HDB BANK": hdfcBankLogo,
+    "HDFC BANK": hdfcBankLogo,
+    "QUESS": quessLogo,
+    "BLUE STAR": blueStarLogo,
+    "HETERO": heteroLogo,
+    "SBI LIFE": sbiLifeLogo,
+    "TEAMLEASE": teamleaseLogo,
+    "AMARRAJA": amarrajaLogo,
+    "APOLLO PHARMACY": apolloPharmacyLogo,
+    "AADITYA BIRLA": adityaBirlaLogo,
+    "ADITYA BIRLA": adityaBirlaLogo,
+    "HERO": heroMotocorpLogo,
+    "MUTHOOT FINANCE": muthootFinanceLogo,
   };
   
   // Filter placement related staff - those with placement related designations
