@@ -11,7 +11,7 @@ const Telugu = () => {
     loading,
     error
   } = useDepartmentTimetables("Telugu");
-  const departmentPhotos = ["/lovable-uploads/365bcf12-2218-4dd4-a6e7-6d4bc591739a.png", "/lovable-uploads/43b08f5f-94a1-4efc-a4bc-d959843cb7ea.png", "/lovable-uploads/52a8e7b1-5b22-4a0c-b1ec-450f99bfa9bb.png", "/lovable-uploads/662ebac1-9113-46ee-b212-a9a1526878d4.png", "/lovable-uploads/2971f306-36b5-4c33-9f8f-d999bf1c534f.png", "/lovable-uploads/666e3831-e7cd-4798-a8e2-25dd407509c3.png", "/lovable-uploads/55f5dacf-2144-4398-a16a-df5f1fb7ab4a.png"];
+  const departmentPhotos = ["/lovable-uploads/2971f306-36b5-4c33-9f8f-d999bf1c534f.png", "/lovable-uploads/666e3831-e7cd-4798-a8e2-25dd407509c3.png", "/lovable-uploads/55f5dacf-2144-4398-a16a-df5f1fb7ab4a.png"];
   return <PageLayout title="తెలుగు విభాగం - Department of Telugu" description="తెలుగు భాష, సాహిత్యం మరియు సంస్కృతిని పరిరక్షిస్తూ, అభివృద్ధి చేస్తూ విద్యా వ్యవస్థను మెరుగుపరచుట.">
       <div className="space-y-8">
         

@@ -14,12 +14,16 @@ const Physics = () => {
   const { timetables, loading: timetablesLoading } = useDepartmentTimetables("Physics");
 
   const heroImages = [
-    "/lovable-uploads/d85fb3d3-b73a-4321-ba55-69d5399a79a5.png",
+    "/lovable-uploads/596e11b2-cd25-48ed-8769-88d01f850463.png",
     "/lovable-uploads/5ac5ea4b-5580-4969-8658-192e082f8417.png",
     "/lovable-uploads/d4627f03-9552-464e-93cf-2eca5d4c1408.png",
     "/lovable-uploads/0f1c4da3-be3f-40ea-8a8e-99e833035b28.png",
+    "/lovable-uploads/225096ea-f8cf-438e-8c55-9040932e6d87.png",
     "/lovable-uploads/9f78b4d0-4434-4a94-b8a6-88be11989e42.png",
-    "/lovable-uploads/07f517fb-d713-4aaf-944d-b8f8d448db39.png"
+    "/lovable-uploads/07f517fb-d713-4aaf-944d-b8f8d448db39.png",
+    "/lovable-uploads/0523c75f-0802-48bd-8253-e99fd2384d50.png",
+    "/lovable-uploads/80fc22e8-dd51-4a45-ab3c-1a1af16f51ef.png",
+    "/lovable-uploads/ef841f31-b3bb-40b7-a2f2-d5af0b0957bf.png"
   ];
 
   const departmentPhotos = [
