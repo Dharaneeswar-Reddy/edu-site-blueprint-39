@@ -80,8 +80,6 @@ const Breadcrumb = () => {
       'nirf': 'NIRF',
       'feedback': 'Feedback',
       'departments': 'Departments',
-      'news': 'News',
-      'staff': 'Staff',
       'gallery': 'Gallery',
       'contact': 'Contact',
       'placements': 'Placements'

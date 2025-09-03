@@ -1,4 +1,3 @@
-import { useState } from "react";
 import Layout from "@/components/Layout";
 import SEO from "@/components/SEO";
 import HeroSection from "@/components/home/HeroSection";
@@ -12,28 +11,6 @@ import { useAnnouncements } from "@/hooks/useAnnouncements";
 
 const Index = () => {
   const { announcements, loading } = useAnnouncements();
-
-  // Keep static news data as it's not part of the admin system yet
-  const latestNews = [
-    {
-      id: 1,
-      title: "College Secures Top Rank in State Rankings",
-      date: "May 18, 2025",
-      image: "/lovable-uploads/d85fb3d3-b73a-4321-ba55-69d5399a79a5.png"
-    },
-    {
-      id: 2,
-      title: "New Research Center Inaugurated",
-      date: "May 14, 2025",
-      image: "/lovable-uploads/a64e202d-8654-4eb7-9a72-956203b85f88.png"
-    },
-    {
-      id: 3,
-      title: "Students Excel in Academic Competitions",
-      date: "May 10, 2025",
-      image: "/lovable-uploads/fd7697be-4da9-4c9f-99c3-16a23c2dc964.png"
-    }
-  ];
 
   // Show first 4 announcements in ticker, rest in sidebar
   const tickerAnnouncements = announcements.slice(0, 4);
@@ -73,7 +50,7 @@ const Index = () => {
             <AnnouncementsSidebar announcements={sidebarAnnouncements} />
             
             {/* Right Column - Main Content */}
-            <MainContent latestNews={latestNews} />
+            <MainContent />
           </div>
         </div>
       </section>

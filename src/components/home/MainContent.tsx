@@ -6,29 +6,14 @@ import WelcomeSection from "./WelcomeSection";
 import VicePresidentMessage from "./ChairmanMessage";
 import CorrespondentMessage from "./CorrespondentMessage";
 import CollegeStats from "./CollegeStats";
-import LatestNews from "./LatestNews";
 
-
-
-interface NewsItem {
-  id: number;
-  title: string;
-  date: string;
-  image: string;
-}
-
-interface MainContentProps {
-  latestNews: NewsItem[];
-}
-
-const MainContent = ({ latestNews }: MainContentProps) => {
+const MainContent = () => {
   return (
     <div className="lg:col-span-2">
       <WelcomeSection />
       <VicePresidentMessage />
       <CorrespondentMessage />
       <CollegeStats />
-      
       
       <div className="mt-12 text-center flex flex-col gap-4 sm:flex-row sm:justify-center">
         <Button variant="outline" className="hover:bg-college-blue hover:text-white" asChild>

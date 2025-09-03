@@ -15,9 +15,7 @@ import Departments from "./pages/Departments";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
 import Administration from "./pages/Administration";
-import News from "./pages/News";
 import Admission from "./pages/Admission";
-import NewsDetail from "./pages/NewsDetail";
 import Placements from "./pages/Placements";
 import Gallery from "./pages/Gallery";
 import ComputerScience from "./pages/ComputerScience";
@@ -95,8 +93,6 @@ const App = () => (
             <Route path="/departments" element={<Departments />} />
             <Route path="/departments/library" element={<Library />} />
             <Route path="/contact" element={<Contact />} />
-            <Route path="/news" element={<News />} />
-            <Route path="/news/:id" element={<NewsDetail />} />
             <Route path="/gallery" element={<Gallery />} />
             <Route path="/departments/computerscience" element={<ComputerScience />} />
             <Route path="/departments/electronics" element={<Electronics />} />

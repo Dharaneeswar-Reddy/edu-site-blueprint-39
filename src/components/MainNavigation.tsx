@@ -13,7 +13,6 @@ const MainNavigation = () => {
     { name: "Admission", path: "/admission" },
     { name: "Departments", path: "/departments" },
     { name: "Placements", path: "/placements" },
-    { name: "News", path: "/news" },
     { name: "Gallery", path: "/gallery" },
     { name: "Contact", path: "/contact" }
   ];

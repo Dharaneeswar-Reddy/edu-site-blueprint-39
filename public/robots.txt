@@ -16,6 +16,8 @@ Allow: /
 # Disallow removed pages
 Disallow: /admin-login
 Disallow: /student-documents
+Disallow: /news
+Disallow: /news/*
 Disallow: /faculty-login
 Disallow: /student-login
 Disallow: /academic-calendar

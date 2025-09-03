@@ -32,7 +32,6 @@ const AnnouncementsSidebar = ({
               <Bell className="mr-2 h-5 w-5" />
               Announcements
             </h2>
-            <Link to="/news" className="text-sm text-college-blue hover:underline">View All</Link>
           </div>
           <div className="space-y-4 announcements-container">
             {announcements.map((announcement, index) => <div key={announcement.id} className="announcement-card slide-in-right" style={{
@@ -60,21 +59,27 @@ const AnnouncementsSidebar = ({
           <h2 className="text-xl font-bold mb-3">Quick Links</h2>
           <ul className="space-y-2">
             <li>
-              
-            </li>
-            <li>
-              
-            </li>
-            <li>
-              <Link to="/exam-schedule" className="flex items-center hover:text-college-gold transition-colors">
+              <Link to="/iqac" className="flex items-center hover:text-college-gold transition-colors">
                 <ArrowRight className="h-4 w-4 mr-2" />
-                Examination Schedule
+                IQAC
               </Link>
             </li>
             <li>
-              <Link to="/academic-calendar" className="flex items-center hover:text-college-gold transition-colors">
+              <Link to="/student-support" className="flex items-center hover:text-college-gold transition-colors">
                 <ArrowRight className="h-4 w-4 mr-2" />
-                Academic Calendar
+                Student Support
+              </Link>
+            </li>
+            <li>
+              <Link to="/placements" className="flex items-center hover:text-college-gold transition-colors">
+                <ArrowRight className="h-4 w-4 mr-2" />
+                Placements
+              </Link>
+            </li>
+            <li>
+              <Link to="/gallery" className="flex items-center hover:text-college-gold transition-colors">
+                <ArrowRight className="h-4 w-4 mr-2" />
+                Gallery
               </Link>
             </li>
           </ul>
