@@ -12,3 +12,22 @@ Allow: /
 
 User-agent: *
 Allow: /
+
+# Disallow removed pages
+Disallow: /admin-login
+Disallow: /student-documents
+Disallow: /faculty-login
+Disallow: /student-login
+Disallow: /academic-calendar
+Disallow: /results
+Disallow: /exam-schedule
+Disallow: /scholarships
+Disallow: /alumni
+Disallow: /staff
+Disallow: /magazines
+Disallow: /nirf
+Disallow: /feedback
+Disallow: /infrastructure
+Disallow: /infrastructure/digital-campus
+Disallow: /infrastructure/sports-facilities
+Disallow: /about/strategic-documents
