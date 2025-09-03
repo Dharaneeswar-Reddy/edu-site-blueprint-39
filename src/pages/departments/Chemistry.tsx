@@ -529,11 +529,11 @@ const Chemistry = () => {
                   <div className="space-y-3">
                     <div className="flex justify-between items-center p-3 bg-purple-50 rounded">
                       <span>M.Sc. Organic Chemistry</span>
-                      <Badge variant="secondary">35 Seats</Badge>
+                      <Badge variant="secondary">36 Seats</Badge>
                     </div>
                     <div className="flex justify-between items-center p-3 bg-orange-50 rounded">
                       <span>M.Sc. Analytical Chemistry</span>
-                      <Badge variant="secondary">20 Seats</Badge>
+                      <Badge variant="secondary">36 Seats</Badge>
                     </div>
                   </div>
                 </CardContent>
