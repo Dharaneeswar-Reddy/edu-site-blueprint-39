@@ -194,6 +194,9 @@ const Header = () => {
               <Link to="/departments" className={`pl-8 py-2 ${isActive("/departments") ? "bg-primary/10 text-primary font-medium" : "text-gray-700"}`} onClick={closeMobileMenu}>
                 All Departments
               </Link>
+              <Link to="/departments/library" className={`pl-8 py-2 ${isActive("/departments/library") ? "bg-primary/10 text-primary font-medium" : "text-gray-700"}`} onClick={closeMobileMenu}>
+                Library
+              </Link>
               
               {/* Languages */}
               <div className="pl-8 py-1 text-xs font-semibold text-gray-500 uppercase">Languages</div>
