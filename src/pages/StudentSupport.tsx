@@ -10,8 +10,7 @@ const StudentSupport = () => {
   const supportServices = [
     { name: "NCC", fullName: "National Cadet Corps", path: "/student-support/ncc" },
     { name: "Women Empowerment", fullName: "Women Empowerment Cell", path: "/student-support/women-empowerment" },
-    { name: "Gym and Sports", fullName: "Gym and Sports Facility", path: "/student-support/gym-sports" },
-    { name: "Scholarships", fullName: "Scholarship Programs", path: "/student-support/scholarships" }
+    { name: "Gym and Sports", fullName: "Gym and Sports Facility", path: "/student-support/gym-sports" }
   ];
 
   return (

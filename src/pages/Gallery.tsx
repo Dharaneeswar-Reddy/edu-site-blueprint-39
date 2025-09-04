@@ -37,7 +37,6 @@ const Gallery = () => {
       { id: 6, image_url: "/lovable-uploads/85f3d76b-36b0-4119-9ae0-75167cea9d0b.png", title: "Lecture Hall" }
     ],
     achievements: [
-      { id: 1, image_url: "/lovable-uploads/d85fb3d3-b73a-4321-ba55-69d5399a79a5.png", title: "Top Rank Achievement" },
       { id: 2, image_url: "/lovable-uploads/a64e202d-8654-4eb7-9a72-956203b85f88.png", title: "Research Center Excellence" },
       { id: 3, image_url: "/lovable-uploads/0708f036-44a6-4d70-817d-74a8097f1e73.png", title: "Robotics Competition" },
       { id: 4, image_url: "/lovable-uploads/d870c473-3320-4d6a-9dd4-15ab9ceab52a.png", title: "NBA Accreditation" },
@@ -45,10 +44,15 @@ const Gallery = () => {
       { id: 6, image_url: "/lovable-uploads/33bce374-c279-4e5c-afa1-9a764d7977c4.png", title: "UGC Recognition" }
     ],
     sports: [
-      { id: 1, image_url: "/lovable-uploads/662ebac1-9113-46ee-b212-a9a1526878d4.png", title: "Cricket Equipment" },
-      { id: 2, image_url: "/lovable-uploads/3135e1f8-603d-4960-af26-bdc4f401f693.png", title: "Basketball" },
-      { id: 3, image_url: "/lovable-uploads/5eef37d5-a7a2-416d-9fb3-7df167c87f7e.png", title: "Annual Athletic Meet" },
-      { id: 4, image_url: "/lovable-uploads/8ca0ef83-413e-4894-9e73-7361e0c0106c.png", title: "Sports Achievement" }
+      { id: 1, image_url: "/lovable-uploads/0a24c18b-02f9-4923-8b35-69a39638563c.png", title: "Gym Equipment" },
+      { id: 2, image_url: "/lovable-uploads/159135ff-efea-4c77-a668-803d3c9b66aa.png", title: "Sports Training" },
+      { id: 3, image_url: "/lovable-uploads/f904993f-8b09-4343-bb50-d6155ec79f58.png", title: "Physical Education" },
+      { id: 4, image_url: "/lovable-uploads/2983da9b-4ea9-4555-9587-2eeacf219b67.png", title: "Sports Facilities" },
+      { id: 5, image_url: "/lovable-uploads/b668c276-535b-4004-80ce-3ab7742ddb38.png", title: "Fitness Center" },
+      { id: 6, image_url: "/lovable-uploads/8406d4c8-0d8c-46c1-8232-83529137997f.png", title: "Sports Ground" },
+      { id: 7, image_url: "/lovable-uploads/dbef153d-61c2-4837-aae4-ccdaf1963618.png", title: "Athletic Training" },
+      { id: 8, image_url: "/lovable-uploads/c22a7a50-9dcb-46f9-8ac6-e8d8a4610e1b.png", title: "Sports Activities" },
+      { id: 9, image_url: "/lovable-uploads/10892d74-b7cb-4944-8cce-627d22c30f62.png", title: "Team Sports" }
     ]
   };
 
