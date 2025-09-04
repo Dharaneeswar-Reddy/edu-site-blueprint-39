@@ -31,7 +31,7 @@ const Index = () => {
       <SEO 
         title="Home"
         description="SVRMC - Government Aided College Sponsored by R.T.E.I. Society offering quality higher education in various disciplines. Experience academic excellence in a 30-acre eco-friendly campus with modern facilities."
-        keywords={["SVRMC", "Shri Velagapudi Ramakrishna Memorial College", "Government College", "Higher Education", "Degree College", "Narasaraopet", "Guntur", "Andhra Pradesh", "Academic Excellence", "Rural Education"]}
+        keywords={["SVRMC", "Shree Velagapudi Ramakrishna Memorial College", "Government College", "Higher Education", "Degree College", "Narasaraopet", "Guntur", "Andhra Pradesh", "Academic Excellence", "Rural Education"]}
         url="https://svrmc.edu.in"
       />
       {/* Hero Section */}

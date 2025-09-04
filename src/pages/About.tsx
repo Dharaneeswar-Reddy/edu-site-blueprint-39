@@ -95,7 +95,7 @@ const About = () => {
               <h2 className="section-title">Principal's Message</h2>
               <div className="space-y-4 text-gray-700">
                 <p>Dear Students, Parents, and Visitors,</p>
-                <p>It gives me immense pleasure to welcome you to Shri Velagapudi Ramakrishna Memorial College. For over four decades, SVRMC has been at the forefront of providing quality education and nurturing young minds to become future leaders.</p>
+                <p>It gives me immense pleasure to welcome you to Shree Velagapudi Ramakrishna Memorial College. For over four decades, SVRMC has been at the forefront of providing quality education and nurturing young minds to become future leaders.</p>
                 <p>At SVRMC, we believe in a holistic approach to education that goes beyond textbooks and classrooms. Our aim is to develop well-rounded individuals who excel not only academically but also possess the skills and values necessary to face real-world challenges.</p>
                 <p>Our dedicated faculty members are committed to creating a stimulating learning environment where curiosity is encouraged, critical thinking is developed, and innovation is fostered. The state-of-the-art infrastructure and modern facilities further enhance the learning experience of our students.</p>
                 <p>We are proud of our alumni who have excelled in various fields and brought laurels to their alma mater. Their success stories serve as an inspiration for our current students and motivate us to continue our pursuit of excellence.</p>

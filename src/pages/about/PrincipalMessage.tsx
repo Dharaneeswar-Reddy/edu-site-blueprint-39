@@ -63,7 +63,7 @@ const PrincipalMessage = () => {
               </p>
               
               <p>
-                It is with great pride and excitement that I welcome you to Shri Velagapudi Ramakrishna Memorial College. 
+                It is with great pride and excitement that I welcome you to Shree Velagapudi Ramakrishna Memorial College. 
                 As we embark on another academic year, I am reminded of our institution's unwavering commitment to 
                 educational excellence and the holistic development of our students.
               </p>

@@ -110,7 +110,7 @@ const QualityPolicy = () => {
           <CardContent>
             <div className="bg-blue-50 p-6 rounded-lg border-l-4 border-blue-500">
               <p className="text-gray-700 text-lg leading-relaxed text-center italic">
-                "Shri Velagapudi Ramakrishna Memorial College is committed to providing quality education that nurtures intellectual growth, promotes research excellence, and develops responsible citizens. We pledge to continuously improve our academic standards, infrastructure, and services through systematic quality assurance mechanisms, stakeholder feedback, and adherence to best practices in higher education."
+                "Shree Velagapudi Ramakrishna Memorial College is committed to providing quality education that nurtures intellectual growth, promotes research excellence, and develops responsible citizens. We pledge to continuously improve our academic standards, infrastructure, and services through systematic quality assurance mechanisms, stakeholder feedback, and adherence to best practices in higher education."
               </p>
               <div className="text-center mt-6">
                 <p className="font-semibold text-college-blue">- SVRMC Management</p>

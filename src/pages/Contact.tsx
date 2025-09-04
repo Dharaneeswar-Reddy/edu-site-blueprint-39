@@ -50,7 +50,7 @@ const Contact = () => {
     <Layout>
       <SEO 
         title="Contact Us"
-        description="Get in touch with SVRMC - Shri Velagapudi Ramakrishna Memorial College. Find our campus location, contact information, visiting hours, and directions to our Government Aided College in Narasaraopet, Andhra Pradesh."
+        description="Get in touch with SVRMC - Shree Velagapudi Ramakrishna Memorial College. Find our campus location, contact information, visiting hours, and directions to our Government Aided College in Narasaraopet, Andhra Pradesh."
         keywords={["Contact SVRMC", "College Address", "Campus Location", "Narasaraopet", "Guntur", "Andhra Pradesh", "College Phone Number", "Email", "Visiting Hours", "Campus Tours"]}
         url="https://svrmc.edu.in/contact"
       />
@@ -163,15 +163,6 @@ const Contact = () => {
                       </div>
                     </div>
                     
-                    <div>
-                      <h3 className="text-lg font-semibold mb-3 text-college-blue">Getting Here</h3>
-                      <div className="space-y-2 text-sm text-gray-600">
-                        <p><strong>By Bus:</strong> Regular bus services available from Visakhapatnam city center</p>
-                        <p><strong>By Train:</strong> Nearest railway station is Visakhapatnam (15 km away)</p>
-                        <p><strong>By Air:</strong> Visakhapatnam Airport is 20 km from the campus</p>
-                        <p><strong>By Car:</strong> Free parking available on campus</p>
-                      </div>
-                    </div>
                   </div>
                 </CardContent>
               </Card>

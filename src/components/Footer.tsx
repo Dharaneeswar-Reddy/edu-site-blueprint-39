@@ -93,7 +93,7 @@ const Footer = () => {
       <div className="bg-[#062c6a] py-4">
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row justify-between items-center">
-            <p className="text-sm text-gray-300">© {new Date().getFullYear()} Shri Velagapudi Ramakrishna Memorial College. All rights reserved.</p>
+            <p className="text-sm text-gray-300">© {new Date().getFullYear()} Shree Velagapudi Ramakrishna Memorial College. All rights reserved.</p>
             <div className="mt-2 md:mt-0">
               <ul className="flex space-x-4">
                 <li><a href="#" className="text-xs text-gray-300 hover:text-white transition-colors">Privacy Policy</a></li>

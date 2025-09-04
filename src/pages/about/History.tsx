@@ -65,7 +65,7 @@ const History = () => {
           <CardContent>
             <div className="prose max-w-none">
               <p className="text-gray-600 leading-relaxed">
-                Shri Velagapudi Ramakrishna Memorial College was established in 1972 by the R.T.E.I. Society 
+                Shree Velagapudi Ramakrishna Memorial College was established in 1972 by the R.T.E.I. Society 
                 with a vision to provide quality higher education to the rural and semi-urban communities of 
                 Krishna district. Named after the revered educationist Shri Velagapudi Ramakrishna, the college 
                 was founded on the principles of academic excellence, character building, and social service.

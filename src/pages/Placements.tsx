@@ -704,7 +704,7 @@ const Placements = () => {
       </section>
 
       {/* Placement Staff */}
-      <section className="py-16 bg-background">
+      <section id="placement-staff" className="py-16 bg-background">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-primary mb-6">Placement Staff</h2>
@@ -1001,10 +1001,18 @@ const Placements = () => {
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button asChild className="bg-primary hover:bg-primary/90">
-                <Link to="/contact" className="flex items-center">
+              <Button 
+                className="bg-primary hover:bg-primary/90"
+                onClick={() => {
+                  const placementStaffSection = document.getElementById('placement-staff');
+                  if (placementStaffSection) {
+                    placementStaffSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                  }
+                }}
+              >
+                <span className="flex items-center">
                   Contact Placement Cell <ArrowRight className="ml-2 h-4 w-4" />
-                </Link>
+                </span>
               </Button>
               
               <Button variant="outline" asChild className="border-primary text-primary hover:bg-primary hover:text-primary-foreground">

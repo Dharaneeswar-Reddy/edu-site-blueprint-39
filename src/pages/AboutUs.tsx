@@ -121,7 +121,7 @@ const AboutUs = () => {
                 College Profile – SVRM College, Nagaram
               </p>
               <p className="text-lg text-gray-700 leading-relaxed mb-4">
-                Shri Velagapudi Ramakrishna Memorial College (SVRMC) stands as a beacon of quality education in Andhra Pradesh, carrying forward a legacy of over five decades in nurturing young minds. Established with the noble vision of providing accessible and excellent higher education in a rural setting, the college is sponsored by the Repalle Taluk Educational Improvement (R.T.E.I.) Society and functions as a Private Aided College affiliated with Acharya Nagarjuna University.
+                Shree Velagapudi Ramakrishna Memorial College (SVRMC) stands as a beacon of quality education in Andhra Pradesh, carrying forward a legacy of over five decades in nurturing young minds. Established with the noble vision of providing accessible and excellent higher education in a rural setting, the college is sponsored by the Repalle Taluk Educational Improvement (R.T.E.I.) Society and functions as a Private Aided College affiliated with Acharya Nagarjuna University.
               </p>
               <p className="text-lg text-gray-700 leading-relaxed mb-4">
                 SVRM College has grown into a distinguished rural autonomous institution, committed to academic excellence, research innovation, and holistic student development. Guided by its motto "A Sound Mind in a Sound Body", the college blends learning, discipline, and character-building with a focus on cultural, physical, and social growth. The foundation stone was laid by the President of India, Sri V.V. Giri, a testimony to its national importance.

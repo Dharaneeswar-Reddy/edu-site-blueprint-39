@@ -17,17 +17,17 @@ interface SEOProps {
 }
 
 const SEO = ({
-  title = "Shri Velagapudi Ramakrishna Memorial College",
-  description = "SVRMC - Government Aided College Sponsored by R.T.E.I. Society offering quality higher education in various disciplines",
-  keywords = ["SVRMC", "Shri Velagapudi Ramakrishna Memorial College", "Government Aided College", "R.T.E.I. Society", "Higher Education", "Degree College", "Andhra Pradesh", "Guntur", "Academic Excellence"],
+  title = "Shree Velagapudi Ramakrishna Memorial College",
+  description = "SVRMC - Government Aided College offering quality higher education in Narasaraopet, Guntur District, Andhra Pradesh. Excellence in academics, research, and holistic development.",
+  keywords = ["SVRMC", "Shree Velagapudi Ramakrishna Memorial College", "Government Aided College", "R.T.E.I. Society", "Higher Education", "Degree College", "Andhra Pradesh", "Guntur", "Academic Excellence"],
   image = "/lovable-uploads/bad84c75-df8e-4775-8183-f270b11757af.png",
   url = "https://svrmc.edu.in",
   type = "website",
   article
 }: SEOProps) => {
-  const fullTitle = title === "Shri Velagapudi Ramakrishna Memorial College" 
+  const fullTitle = title === "Shree Velagapudi Ramakrishna Memorial College" 
     ? title 
-    : `${title} | Shri Velagapudi Ramakrishna Memorial College`;
+    : `${title} | Shree Velagapudi Ramakrishna Memorial College`;
 
   const keywordsString = keywords.join(", ");
 
@@ -45,7 +45,7 @@ const SEO = ({
       <meta property="og:image" content={image} />
       <meta property="og:url" content={url} />
       <meta property="og:type" content={type} />
-      <meta property="og:site_name" content="Shri Velagapudi Ramakrishna Memorial College" />
+      <meta property="og:site_name" content="Shree Velagapudi Ramakrishna Memorial College" />
       <meta property="og:locale" content="en_US" />
       
       {/* Twitter Card Tags */}
