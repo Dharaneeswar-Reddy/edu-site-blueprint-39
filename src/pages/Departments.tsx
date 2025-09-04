@@ -303,7 +303,7 @@ const Departments = () => {
             <Button size="lg" className="bg-college-gold text-black hover:bg-yellow-500" asChild>
               <Link to="/admission">Apply Now</Link>
             </Button>
-            <Button size="lg" variant="outline" className="text-white border-white hover:bg-white/20 hover:text-white" asChild>
+            <Button size="lg" variant="outline" className="text-black border-white hover:bg-white/20 hover:text-black" asChild>
               <Link to="/contact">Request Information</Link>
             </Button>
           </div>
