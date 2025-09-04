@@ -37,8 +37,6 @@ const Gallery = () => {
       { id: 6, image_url: "/lovable-uploads/85f3d76b-36b0-4119-9ae0-75167cea9d0b.png", title: "Lecture Hall" }
     ],
     achievements: [
-      { id: 2, image_url: "/lovable-uploads/a64e202d-8654-4eb7-9a72-956203b85f88.png", title: "Research Center Excellence" },
-      { id: 3, image_url: "/lovable-uploads/0708f036-44a6-4d70-817d-74a8097f1e73.png", title: "Robotics Competition" },
       { id: 4, image_url: "/lovable-uploads/d870c473-3320-4d6a-9dd4-15ab9ceab52a.png", title: "NBA Accreditation" },
       { id: 5, image_url: "/lovable-uploads/455edc55-96fe-44fc-a8d0-2b69c6dd6e92.png", title: "NAAC A Grade" },
       { id: 6, image_url: "/lovable-uploads/33bce374-c279-4e5c-afa1-9a764d7977c4.png", title: "UGC Recognition" }
