@@ -6,7 +6,7 @@ const CorrespondentMessage = () => {
           <div className="md:col-span-1">
             <div className="rounded-lg overflow-hidden shadow-lg">
               <img 
-                src="/lovable-uploads/14ece356-c3f8-44d6-ab10-f049c4fc2d99.png" 
+                src="/lovable-uploads/31efd47f-e4a6-45b0-b0db-f57c8c52fba7.png" 
                 alt="Secretary and Correspondent" 
                 className="w-full h-auto"
               />
