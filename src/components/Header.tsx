@@ -176,7 +176,7 @@ const Header = () => {
         </div>
 
         {/* Mobile Navigation Menu */}
-        {mobileMenuOpen && <div className="lg:hidden bg-white mt-4 rounded-md shadow-lg py-2 animate-fade-in">
+        {mobileMenuOpen && <div className="lg:hidden bg-white mt-4 rounded-md shadow-lg py-2 animate-fade-in max-h-[70vh] overflow-y-auto">
             <div className="flex flex-col space-y-1">
               <Link to="/" className={`px-4 py-2 ${isActive("/") ? "bg-primary/10 text-primary font-medium" : "text-gray-700"}`} onClick={closeMobileMenu}>
                 Home
