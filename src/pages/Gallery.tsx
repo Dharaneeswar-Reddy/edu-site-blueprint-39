@@ -30,7 +30,7 @@ const Gallery = () => {
     ],
     events: [
       { id: 1, image_url: "/lovable-uploads/061b3c84-914c-4bb5-893f-d12d6cff9d3f.png", title: "NCC Cadets Formation" },
-      { id: 2, image_url: "/lovable-uploads/a2d2ff22-61cc-47fe-8ef4-7086790f77d0.png", title: "NCC Group Photo" },
+      { id: 2, image_url: "/lovable-uploads/858270a8-3ca9-455c-9216-63c155cf8b4d.png", title: "NCC Group Photo" },
       { id: 3, image_url: "/lovable-uploads/17bb2e0f-adc8-46fd-b6dc-aa370c366ef2.png", title: "NCC Parade Review" },
       { id: 4, image_url: "/lovable-uploads/c845d941-c566-4910-8dbb-82f90fb04f82.png", title: "NCC Drill Formation" },
       { id: 5, image_url: "/lovable-uploads/b1fc6422-ad59-4662-83db-90f4d62b1001.png", title: "Academic Seminar" },
