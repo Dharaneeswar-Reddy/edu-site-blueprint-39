@@ -6,13 +6,13 @@ const CorrespondentMessage = () => {
           <div className="md:col-span-1">
             <div className="rounded-lg overflow-hidden shadow-lg">
               <img 
-                src="/lovable-uploads/31efd47f-e4a6-45b0-b0db-f57c8c52fba7.png" 
+                src="/lovable-uploads/a0a7a9b0-8d22-4053-abae-e1e8d00b0492.png" 
                 alt="Secretary and Correspondent" 
                 className="w-full h-auto"
               />
             </div>
             <div className="bg-college-blue text-white p-4 mt-4 rounded-lg">
-              <h3 className="text-xl font-bold">Sri Vallabhaneni Buchaiah Chowdary</h3>
+              <h3 className="text-xl font-bold">Sri Vallabhaneni Butchaiah Chowdary</h3>
               <p className="text-sm">Secretary and Correspondent</p>
             </div>
           </div>
@@ -23,7 +23,7 @@ const CorrespondentMessage = () => {
               <p>With dedicated faculty, modern infrastructure, and diverse programs, we empower students to explore, innovate, and excel. Beyond academics, our focus on sports, culture, and community service nurtures leadership and holistic development.</p>
               <p>Together, let us uphold the vision of our founders and continue shaping responsible citizens and future leaders.</p>
               <p className="font-semibold">Warm regards,</p>
-              <p className="font-semibold">Sri Vallabhaneni Buchaiah Chowdary</p>
+              <p className="font-semibold">Sri Vallabhaneni Butchaiah Chowdary</p>
             </div>
           </div>
         </div>

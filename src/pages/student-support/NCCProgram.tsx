@@ -55,7 +55,7 @@ This vision was realized in 1969, marking the birth of NCC at S.V.R.M. College. 
 
 Over the years, our NCC company has expanded its core activities across multiple fields, becoming a model organization in the region. The unit's efforts have been appreciated by the District Police, Revenue Authorities, Medical and Health Departments, and rural communities alike.
 
-Current Leadership: The legacy continues under the guidance of Sri Vallabhaneni Buchaiah Chowdary, the current Secretary & Correspondent, whose dedicated services have further strengthened the NCC's mission of discipline, leadership, and community service, ensuring that S.V.R.M. College remains a beacon of youth empowerment and nation-building.`;
+Current Leadership: The legacy continues under the guidance of Sri Vallabhaneni Butchaiah Chowdary, the current Secretary & Correspondent, whose dedicated services have further strengthened the NCC's mission of discipline, leadership, and community service, ensuring that S.V.R.M. College remains a beacon of youth empowerment and nation-building.`;
 
   const visionContent = "To develop disciplined, responsible, and socially conscious citizens from rural backgrounds, empowering them with leadership, civic awareness, and community service skills, and preparing them to contribute effectively to nation-building.";
   
