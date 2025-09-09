@@ -57,10 +57,10 @@ const Administration = () => {
   
   // Default fallback data if no leadership data is available
   const defaultChairman = {
-    name: "Dr. Ramesh Kumar",
+    name: "Sri Vallabhaneni Butchaiah Chowdary",
     designation: "Correspondent", 
     department: "Administration",
-    photo_url: "/lovable-uploads/aa64612b-a2c2-4fc2-b645-b756306336a0.png",
+    photo_url: "/lovable-uploads/a0a7a9b0-8d22-4053-abae-e1e8d00b0492.png",
     email: "correspondent@svrmc.edu.in",
     bio: "is currently serving as the Correspondent of SVRM College since 2010. He brings a rich interdisciplinary background spanning educational administration, policy development, and institutional governance."
   };
