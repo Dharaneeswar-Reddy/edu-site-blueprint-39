@@ -28,7 +28,7 @@ export const useExaminationStaff = () => {
   const examinationStaffData: ExaminationStaffData[] = [
     {
       name: "Dr. P. Srinivasa Rao",
-      designation: "Controller of Examination",
+      designation: "Controller of Examination\n\nHOD - Physics Department",
       email: "sr.panchumarthi@gmail.com",
       phone: "94408 26791",
       department: "Examination Cell"
