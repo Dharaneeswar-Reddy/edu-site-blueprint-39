@@ -89,7 +89,7 @@ export const useExaminationStaff = () => {
           return {
             id: matchedRecord?.id || `exam-${examStaff.name.replace(/\s+/g, '-').toLowerCase()}`,
             name: examStaff.name,
-            designation: examStaff.designation,
+            designation: matchedRecord?.designation || examStaff.designation, // Prioritize database designation
             department: examStaff.department,
             email: examStaff.email,
             phone: examStaff.phone,
