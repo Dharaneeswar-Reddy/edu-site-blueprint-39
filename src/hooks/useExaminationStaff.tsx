@@ -86,10 +86,41 @@ export const useExaminationStaff = () => {
             examStaff.email.toLowerCase() === dbStaff.email?.toLowerCase()
           );
 
+          const combinedDesignation = (() => {
+            const parts: string[] = [];
+            if (examStaff.designation) {
+              parts.push(
+                ...examStaff.designation
+                  .split(/\n+/)
+                  .map((s) => s.trim())
+                  .filter(Boolean)
+              );
+            }
+            if (matchedRecord?.designation) {
+              parts.push(
+                ...matchedRecord.designation
+                  .split(/\n+/)
+                  .map((s: string) => s.trim())
+                  .filter(Boolean)
+              );
+            }
+            // Deduplicate case-insensitively while preserving order
+            const seen = new Set<string>();
+            const unique: string[] = [];
+            for (const p of parts) {
+              const key = p.toLowerCase();
+              if (!seen.has(key)) {
+                seen.add(key);
+                unique.push(p);
+              }
+            }
+            return unique.join('\n\n');
+          })();
+
           return {
             id: matchedRecord?.id || `exam-${examStaff.name.replace(/\s+/g, '-').toLowerCase()}`,
             name: examStaff.name,
-            designation: matchedRecord?.designation || examStaff.designation, // Prioritize database designation
+            designation: combinedDesignation,
             department: examStaff.department,
             email: examStaff.email,
             phone: examStaff.phone,
