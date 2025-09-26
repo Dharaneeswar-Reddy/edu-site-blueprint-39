@@ -26,16 +26,16 @@ const IQAC = () => {
   // IQAC Committee Members
   const committeMembers = [
     {
-      name: "Dr. A. Hari Krishna",
-      designation: "Principal",
-      department: "Administration",
-      role: "Chairperson, Head of the Institution"
-    },
-    {
       name: "Dr. R. Prasanna Babu", 
       designation: "HoD of Chemistry (UG)",
       department: "Chemistry",
       role: "IQAC Coordinator"
+    },
+    {
+      name: "Dr. A. Hari Krishna",
+      designation: "Principal",
+      department: "Administration",
+      role: "Chairperson, Head of the Institution"
     },
     {
       name: "Sri. P. Venkata Narayana",
