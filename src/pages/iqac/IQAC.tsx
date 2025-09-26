@@ -236,7 +236,7 @@ const IQAC = () => {
 
           <div className="grid grid-cols-2 gap-4 mt-8">
             <div className="bg-white p-4 rounded-lg shadow-sm">
-              <div className="text-2xl font-bold text-blue-600">2018</div>
+              <div className="text-2xl font-bold text-blue-600">2011</div>
               <div className="text-sm text-gray-600">Established</div>
             </div>
             <div className="bg-white p-4 rounded-lg shadow-sm">
@@ -244,6 +244,54 @@ const IQAC = () => {
               <div className="text-sm text-gray-600">Members</div>
             </div>
           </div>
+        </section>
+
+        {/* IQAC Coordinator */}
+        <section>
+          <Card>
+            <CardHeader>
+              <CardTitle className="flex items-center gap-3">
+                <UserCheck className="h-6 w-6 text-blue-600" />
+                IQAC Coordinator
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="flex gap-8 items-start">
+                {/* Coordinator Photo */}
+                <div className="flex-shrink-0">
+                  <div className="w-48 h-48 bg-gray-100 rounded-lg border-2 border-gray-200 flex items-center justify-center">
+                    <div className="text-center text-gray-500">
+                      <Users className="h-12 w-12 mx-auto mb-2" />
+                      <p className="text-sm">Coordinator Photo</p>
+                    </div>
+                  </div>
+                </div>
+                
+                {/* Coordinator Details and Message */}
+                <div className="flex-1">
+                  <div className="mb-6">
+                    <h3 className="text-2xl font-bold text-gray-900 mb-2">Dr. R. Prasanna Babu</h3>
+                    <p className="text-lg text-blue-600 mb-1">IQAC Coordinator</p>
+                    <p className="text-gray-600 mb-1">HoD of Chemistry (UG)</p>
+                    <p className="text-gray-600">Chemistry Department</p>
+                  </div>
+                  
+                  {/* Coordinator's Message Section */}
+                  <div className="bg-gradient-to-r from-blue-50 to-indigo-50 p-6 rounded-lg">
+                    <h4 className="text-lg font-semibold text-gray-900 mb-4 flex items-center gap-2">
+                      <MessageSquare className="h-5 w-5 text-blue-600" />
+                      Coordinator's Message
+                    </h4>
+                    <div className="text-gray-700 leading-relaxed">
+                      <p className="italic text-gray-600">
+                        "Message from the IQAC Coordinator will be displayed here to inspire and guide the institution's quality enhancement initiatives."
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
         </section>
 
         {/* IQAC Committee */}
