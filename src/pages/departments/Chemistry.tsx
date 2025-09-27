@@ -8,82 +8,42 @@ import { useEffect, useState } from "react";
 import { useStaff } from "@/hooks/useStaff";
 import useDepartmentTimetables from "@/hooks/useDepartmentTimetables";
 import StaffCard from "@/components/StaffCard";
-
 const Chemistry = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const { staff: chemistryStaff, loading: staffLoading } = useStaff("Chemistry");
-  const { staff: pgChemistryStaff, loading: pgStaffLoading } = useStaff("PG Chemistry");
-  const { timetables: ugTimetables, loading: ugTimetablesLoading } = useDepartmentTimetables("Chemistry");
-  const { timetables: pgTimetables, loading: pgTimetablesLoading } = useDepartmentTimetables("PG Chemistry");
-
-  const heroImages = [
-    "/lovable-uploads/0fe00b38-b99b-4a27-bf5b-d43c2778a8fa.png",
-    "/lovable-uploads/5bcaeb67-6bff-44ae-a93c-1d97ef3bac8d.png",
-    "/lovable-uploads/380523da-c2c1-4014-b1ae-6fa50c1df600.png",
-    "/lovable-uploads/7ac42b67-07fe-42f1-9b41-6f119490b786.png",
-    "/lovable-uploads/ac73ea26-e8e0-4756-9c7b-c2a4a18f6d66.png",
-    "/lovable-uploads/6c0f963f-de81-4600-be2e-a311fe83bb96.png",
-    "/lovable-uploads/958295e9-3189-4f34-8a51-d2aeb431f9ee.png",
-    "/lovable-uploads/44151e06-0086-45c1-b1b8-dea0cce05c3b.png",
-    "/lovable-uploads/c06797f6-5188-4a68-893e-92274a14b172.png",
-    "/lovable-uploads/dec9abef-758a-4d15-a93a-a9e7e7575c05.png",
-    "/lovable-uploads/1d8f59be-c09f-438d-9557-f1ad61eea667.png",
-    "/lovable-uploads/10b4f684-4d4c-45be-871d-f64daf43e585.png",
-    "/lovable-uploads/1041cbf2-981b-437e-a2eb-72dfb54ca3b1.png",
-    "/lovable-uploads/a32c8f33-64ff-4729-8b86-ba29f7eb5491.png"
-  ];
-
-  const departmentPhotos = [
-    "/lovable-uploads/0fe00b38-b99b-4a27-bf5b-d43c2778a8fa.png",
-    "/lovable-uploads/5bcaeb67-6bff-44ae-a93c-1d97ef3bac8d.png",
-    "/lovable-uploads/380523da-c2c1-4014-b1ae-6fa50c1df600.png",
-    "/lovable-uploads/7ac42b67-07fe-42f1-9b41-6f119490b786.png",
-    "/lovable-uploads/ac73ea26-e8e0-4756-9c7b-c2a4a18f6d66.png",
-    "/lovable-uploads/6c0f963f-de81-4600-be2e-a311fe83bb96.png",
-    "/lovable-uploads/958295e9-3189-4f34-8a51-d2aeb431f9ee.png",
-    "/lovable-uploads/44151e06-0086-45c1-b1b8-dea0cce05c3b.png",
-    "/lovable-uploads/c06797f6-5188-4a68-893e-92274a14b172.png",
-    "/lovable-uploads/dec9abef-758a-4d15-a93a-a9e7e7575c05.png",
-    "/lovable-uploads/1d8f59be-c09f-438d-9557-f1ad61eea667.png",
-    "/lovable-uploads/86727585-f64e-465e-802e-95da0dcf41b1.png",
-    "/lovable-uploads/10b4f684-4d4c-45be-871d-f64daf43e585.png",
-    "/lovable-uploads/1041cbf2-981b-437e-a2eb-72dfb54ca3b1.png",
-    "/lovable-uploads/a32c8f33-64ff-4729-8b86-ba29f7eb5491.png"
-  ];
-
+  const {
+    staff: chemistryStaff,
+    loading: staffLoading
+  } = useStaff("Chemistry");
+  const {
+    staff: pgChemistryStaff,
+    loading: pgStaffLoading
+  } = useStaff("PG Chemistry");
+  const {
+    timetables: ugTimetables,
+    loading: ugTimetablesLoading
+  } = useDepartmentTimetables("Chemistry");
+  const {
+    timetables: pgTimetables,
+    loading: pgTimetablesLoading
+  } = useDepartmentTimetables("PG Chemistry");
+  const heroImages = ["/lovable-uploads/0fe00b38-b99b-4a27-bf5b-d43c2778a8fa.png", "/lovable-uploads/5bcaeb67-6bff-44ae-a93c-1d97ef3bac8d.png", "/lovable-uploads/380523da-c2c1-4014-b1ae-6fa50c1df600.png", "/lovable-uploads/7ac42b67-07fe-42f1-9b41-6f119490b786.png", "/lovable-uploads/ac73ea26-e8e0-4756-9c7b-c2a4a18f6d66.png", "/lovable-uploads/6c0f963f-de81-4600-be2e-a311fe83bb96.png", "/lovable-uploads/958295e9-3189-4f34-8a51-d2aeb431f9ee.png", "/lovable-uploads/44151e06-0086-45c1-b1b8-dea0cce05c3b.png", "/lovable-uploads/c06797f6-5188-4a68-893e-92274a14b172.png", "/lovable-uploads/dec9abef-758a-4d15-a93a-a9e7e7575c05.png", "/lovable-uploads/1d8f59be-c09f-438d-9557-f1ad61eea667.png", "/lovable-uploads/10b4f684-4d4c-45be-871d-f64daf43e585.png", "/lovable-uploads/1041cbf2-981b-437e-a2eb-72dfb54ca3b1.png", "/lovable-uploads/a32c8f33-64ff-4729-8b86-ba29f7eb5491.png"];
+  const departmentPhotos = ["/lovable-uploads/0fe00b38-b99b-4a27-bf5b-d43c2778a8fa.png", "/lovable-uploads/5bcaeb67-6bff-44ae-a93c-1d97ef3bac8d.png", "/lovable-uploads/380523da-c2c1-4014-b1ae-6fa50c1df600.png", "/lovable-uploads/7ac42b67-07fe-42f1-9b41-6f119490b786.png", "/lovable-uploads/ac73ea26-e8e0-4756-9c7b-c2a4a18f6d66.png", "/lovable-uploads/6c0f963f-de81-4600-be2e-a311fe83bb96.png", "/lovable-uploads/958295e9-3189-4f34-8a51-d2aeb431f9ee.png", "/lovable-uploads/44151e06-0086-45c1-b1b8-dea0cce05c3b.png", "/lovable-uploads/c06797f6-5188-4a68-893e-92274a14b172.png", "/lovable-uploads/dec9abef-758a-4d15-a93a-a9e7e7575c05.png", "/lovable-uploads/1d8f59be-c09f-438d-9557-f1ad61eea667.png", "/lovable-uploads/86727585-f64e-465e-802e-95da0dcf41b1.png", "/lovable-uploads/10b4f684-4d4c-45be-871d-f64daf43e585.png", "/lovable-uploads/1041cbf2-981b-437e-a2eb-72dfb54ca3b1.png", "/lovable-uploads/a32c8f33-64ff-4729-8b86-ba29f7eb5491.png"];
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentImageIndex((prevIndex) => 
-        prevIndex === heroImages.length - 1 ? 0 : prevIndex + 1
-      );
+      setCurrentImageIndex(prevIndex => prevIndex === heroImages.length - 1 ? 0 : prevIndex + 1);
     }, 3000);
-
     return () => clearInterval(interval);
   }, [heroImages.length]);
-
-  return (
-    <PageLayout 
-      title="Department of Chemistry" 
-      description="Advancing chemical sciences through innovative research, practical applications, and comprehensive education."
-    >
+  return <PageLayout title="Department of Chemistry" description="Advancing chemical sciences through innovative research, practical applications, and comprehensive education.">
       <div className="space-y-8">
         
         {/* Auto-scrolling Hero Images */}
         <div className="relative h-96 md:h-[500px] lg:h-[600px] rounded-lg overflow-hidden shadow-xl">
-          {heroImages.map((image, index) => (
-            <img
-              key={index}
-              src={image}
-              alt={`Chemistry Department ${index + 1}`}
-              className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${
-                index === currentImageIndex ? 'opacity-100' : 'opacity-0'
-              }`}
-            />
-          ))}
+          {heroImages.map((image, index) => <img key={index} src={image} alt={`Chemistry Department ${index + 1}`} className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${index === currentImageIndex ? 'opacity-100' : 'opacity-0'}`} />)}
           <div className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
             <div className="text-center text-white">
-              <h1 className="text-4xl md:text-6xl font-bold mb-4">Chemistry Department</h1>
-              <p className="text-xl md:text-2xl">Exploring Molecular Frontiers</p>
+              
+              
             </div>
           </div>
         </div>
@@ -800,47 +760,20 @@ const Chemistry = () => {
                 </CardTitle>
               </CardHeader>
               <CardContent>
-                {staffLoading ? (
-                  <div className="text-center py-8">Loading staff information...</div>
-                ) : chemistryStaff.length === 0 ? (
-                  <div className="text-center py-8 text-muted-foreground">
+                {staffLoading ? <div className="text-center py-8">Loading staff information...</div> : chemistryStaff.length === 0 ? <div className="text-center py-8 text-muted-foreground">
                     No staff information available yet.
-                  </div>
-                ) : (
-                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    {chemistryStaff
-                      .sort((a, b) => {
-                        // HODs first, then others alphabetically - comprehensive HOD detection
-                        const aDesignation = a.designation.toLowerCase();
-                        const bDesignation = b.designation.toLowerCase();
-                        
-                        const aIsHOD = aDesignation.includes('hod') || 
-                                      aDesignation.includes('head of department') || 
-                                      aDesignation.includes('head of the department') ||
-                                      aDesignation.includes('department head') ||
-                                      aDesignation.includes('head - department') ||
-                                      aDesignation.includes('head-department') ||
-                                      aDesignation.includes('dept. head') ||
-                                      aDesignation.includes('dept head');
-                                      
-                        const bIsHOD = bDesignation.includes('hod') || 
-                                      bDesignation.includes('head of department') || 
-                                      bDesignation.includes('head of the department') ||
-                                      bDesignation.includes('department head') ||
-                                      bDesignation.includes('head - department') ||
-                                      bDesignation.includes('head-department') ||
-                                      bDesignation.includes('dept. head') ||
-                                      bDesignation.includes('dept head');
-                        
-                        if (aIsHOD && !bIsHOD) return -1;
-                        if (!aIsHOD && bIsHOD) return 1;
-                        return a.name.localeCompare(b.name);
-                      })
-                      .map((staffMember) => (
-                      <StaffCard key={staffMember.id} staff={staffMember} />
-                    ))}
-                  </div>
-                )}
+                  </div> : <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    {chemistryStaff.sort((a, b) => {
+                  // HODs first, then others alphabetically - comprehensive HOD detection
+                  const aDesignation = a.designation.toLowerCase();
+                  const bDesignation = b.designation.toLowerCase();
+                  const aIsHOD = aDesignation.includes('hod') || aDesignation.includes('head of department') || aDesignation.includes('head of the department') || aDesignation.includes('department head') || aDesignation.includes('head - department') || aDesignation.includes('head-department') || aDesignation.includes('dept. head') || aDesignation.includes('dept head');
+                  const bIsHOD = bDesignation.includes('hod') || bDesignation.includes('head of department') || bDesignation.includes('head of the department') || bDesignation.includes('department head') || bDesignation.includes('head - department') || bDesignation.includes('head-department') || bDesignation.includes('dept. head') || bDesignation.includes('dept head');
+                  if (aIsHOD && !bIsHOD) return -1;
+                  if (!aIsHOD && bIsHOD) return 1;
+                  return a.name.localeCompare(b.name);
+                }).map(staffMember => <StaffCard key={staffMember.id} staff={staffMember} />)}
+                  </div>}
               </CardContent>
             </Card>
 
@@ -851,16 +784,10 @@ const Chemistry = () => {
               </CardHeader>
               <CardContent>
                 <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
-                  {departmentPhotos.map((photo, index) => (
-                    <div key={index} className="group relative overflow-hidden rounded-xl shadow-lg hover:shadow-xl transition-all duration-300">
-                      <img 
-                        src={photo} 
-                        alt={`Chemistry Lab ${index + 1}`}
-                        className="w-full h-48 md:h-56 object-cover group-hover:scale-110 transition-transform duration-500"
-                      />
+                  {departmentPhotos.map((photo, index) => <div key={index} className="group relative overflow-hidden rounded-xl shadow-lg hover:shadow-xl transition-all duration-300">
+                      <img src={photo} alt={`Chemistry Lab ${index + 1}`} className="w-full h-48 md:h-56 object-cover group-hover:scale-110 transition-transform duration-500" />
                       <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 transition-opacity duration-300"></div>
-                    </div>
-                  ))}
+                    </div>)}
                 </div>
               </CardContent>
             </Card>
@@ -874,18 +801,13 @@ const Chemistry = () => {
                 </CardTitle>
               </CardHeader>
               <CardContent>
-                {ugTimetablesLoading ? (
-                  <div className="text-center py-8">
+                {ugTimetablesLoading ? <div className="text-center py-8">
                     <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary mx-auto"></div>
                     <p className="text-muted-foreground mt-2">Loading timetables...</p>
-                  </div>
-                ) : ugTimetables.length === 0 ? (
-                  <div className="text-center py-8">
+                  </div> : ugTimetables.length === 0 ? <div className="text-center py-8">
                     <Clock className="h-12 w-12 mx-auto mb-4 opacity-50" />
                     <p className="text-muted-foreground">No timetables available at the moment.</p>
-                  </div>
-                ) : (
-                  <div className="overflow-x-auto">
+                  </div> : <div className="overflow-x-auto">
                     <table className="w-full">
                       <thead>
                         <tr className="border-b bg-muted/20">
@@ -895,33 +817,24 @@ const Chemistry = () => {
                         </tr>
                       </thead>
                       <tbody>
-                        {ugTimetables.map((timetable, index) => (
-                          <tr key={timetable.id} className="border-b hover:bg-muted/10">
+                        {ugTimetables.map((timetable, index) => <tr key={timetable.id} className="border-b hover:bg-muted/10">
                             <td className="py-3 px-4 text-primary font-medium">{index + 1}</td>
                             <td className="py-3 px-4 text-primary">
                               <div>
                                 <div className="font-medium">{timetable.title}</div>
-                                {timetable.description && (
-                                  <div className="text-sm text-muted-foreground">{timetable.description}</div>
-                                )}
+                                {timetable.description && <div className="text-sm text-muted-foreground">{timetable.description}</div>}
                               </div>
                             </td>
                             <td className="py-3 px-4 text-center">
-                              <Button
-                                variant="outline"
-                                size="sm"
-                                onClick={() => window.open(timetable.file_url, '_blank')}
-                              >
+                              <Button variant="outline" size="sm" onClick={() => window.open(timetable.file_url, '_blank')}>
                                 <Download className="h-4 w-4 mr-2" />
                                 Download PDF
                               </Button>
                             </td>
-                          </tr>
-                        ))}
+                          </tr>)}
                       </tbody>
                     </table>
-                  </div>
-                )}
+                  </div>}
               </CardContent>
             </Card>
           </TabsContent>
@@ -1050,43 +963,23 @@ const Chemistry = () => {
               <CardContent>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                   <div className="text-center p-4 bg-blue-50 rounded-lg">
-                    <img 
-                      src="/lovable-uploads/7bd9e4a8-c3db-4aee-ade8-9ff8a403f294.png" 
-                      alt="Digital Conductometer" 
-                      className="w-full h-32 object-contain mb-3"
-                    />
+                    <img src="/lovable-uploads/7bd9e4a8-c3db-4aee-ade8-9ff8a403f294.png" alt="Digital Conductometer" className="w-full h-32 object-contain mb-3" />
                     <h4 className="font-semibold text-blue-800">Digital Conductometer</h4>
                   </div>
                   <div className="text-center p-4 bg-green-50 rounded-lg">
-                    <img 
-                      src="/lovable-uploads/0aaca3dd-4095-4efe-90d7-da3f891f4d43.png" 
-                      alt="Digital pH Meter" 
-                      className="w-full h-32 object-contain mb-3"
-                    />
+                    <img src="/lovable-uploads/0aaca3dd-4095-4efe-90d7-da3f891f4d43.png" alt="Digital pH Meter" className="w-full h-32 object-contain mb-3" />
                     <h4 className="font-semibold text-green-800">Digital pH Meter</h4>
                   </div>
                   <div className="text-center p-4 bg-purple-50 rounded-lg">
-                    <img 
-                      src="/lovable-uploads/46bd4e24-be08-469d-a3df-d91da897348c.png" 
-                      alt="Digital Photo Colorimeter" 
-                      className="w-full h-32 object-contain mb-3"
-                    />
+                    <img src="/lovable-uploads/46bd4e24-be08-469d-a3df-d91da897348c.png" alt="Digital Photo Colorimeter" className="w-full h-32 object-contain mb-3" />
                     <h4 className="font-semibold text-purple-800">Digital Photo Colorimeter</h4>
                   </div>
                   <div className="text-center p-4 bg-orange-50 rounded-lg">
-                    <img 
-                      src="/lovable-uploads/e6869eea-1f1d-4110-a8e9-c873d813243b.png" 
-                      alt="Melting Point Apparatus" 
-                      className="w-full h-32 object-contain mb-3"
-                    />
+                    <img src="/lovable-uploads/e6869eea-1f1d-4110-a8e9-c873d813243b.png" alt="Melting Point Apparatus" className="w-full h-32 object-contain mb-3" />
                     <h4 className="font-semibold text-orange-800">Melting Point Apparatus</h4>
                   </div>
                   <div className="text-center p-4 bg-teal-50 rounded-lg">
-                    <img 
-                      src="/lovable-uploads/f3aea75b-6a6b-451b-85cb-e8b6bc6e3f8b.png" 
-                      alt="Electronic Balance" 
-                      className="w-full h-32 object-contain mb-3"
-                    />
+                    <img src="/lovable-uploads/f3aea75b-6a6b-451b-85cb-e8b6bc6e3f8b.png" alt="Electronic Balance" className="w-full h-32 object-contain mb-3" />
                     <h4 className="font-semibold text-teal-800">Electronic Balance</h4>
                   </div>
                 </div>
@@ -1113,11 +1006,7 @@ const Chemistry = () => {
                       • All the students who completed M.Sc here have settled in pharmaceutical industries and colleges.
                     </p>
                     <div className="flex items-center gap-4 p-4 bg-white rounded-lg">
-                      <img 
-                        src="/lovable-uploads/1d8f59be-c09f-438d-9557-f1ad61eea667.png" 
-                        alt="Gold Medal Achievement" 
-                        className="w-20 h-20 object-cover rounded"
-                      />
+                      <img src="/lovable-uploads/1d8f59be-c09f-438d-9557-f1ad61eea667.png" alt="Gold Medal Achievement" className="w-20 h-20 object-cover rounded" />
                       <div>
                         <p className="text-green-700 font-medium">
                           Ms. T. Deepika, M.Sc (Analytical Chemistry) has secured GOLD MEDAL for getting highest marks from Acharya Nagarjuna University in the year 2012–13.
@@ -1134,11 +1023,7 @@ const Chemistry = () => {
                     CAREER OPPORTUNITIES
                   </h4>
                   <div className="flex items-center gap-4">
-                    <img 
-                      src="/lovable-uploads/86727585-f64e-465e-802e-95da0dcf41b1.png" 
-                      alt="Career Opportunities Chart" 
-                      className="w-full max-w-md object-contain"
-                    />
+                    <img src="/lovable-uploads/86727585-f64e-465e-802e-95da0dcf41b1.png" alt="Career Opportunities Chart" className="w-full max-w-md object-contain" />
                   </div>
                 </div>
 
@@ -1147,33 +1032,21 @@ const Chemistry = () => {
                   <h4 className="font-semibold text-lg mb-4 text-purple-800">INDUSTRIAL VISITS</h4>
                   <div className="space-y-6">
                     <div className="flex items-center gap-4 p-4 bg-white rounded-lg">
-                      <img 
-                        src="/lovable-uploads/10b4f684-4d4c-45be-871d-f64daf43e585.png" 
-                        alt="Jeypore Sugar Company Visit" 
-                        className="w-24 h-16 object-cover rounded"
-                      />
+                      <img src="/lovable-uploads/10b4f684-4d4c-45be-871d-f64daf43e585.png" alt="Jeypore Sugar Company Visit" className="w-24 h-16 object-cover rounded" />
                       <div>
                         <h5 className="font-medium text-purple-800">Industrial Visit to Jeypore Sugar Company Ltd</h5>
                         <p className="text-purple-700 text-sm">Chagallu, West Godavari (Dt), AP (2009)</p>
                       </div>
                     </div>
                     <div className="flex items-center gap-4 p-4 bg-white rounded-lg">
-                      <img 
-                        src="/lovable-uploads/1041cbf2-981b-437e-a2eb-72dfb54ca3b1.png" 
-                        alt="Rajahmundry Paper Mills Visit" 
-                        className="w-24 h-16 object-cover rounded"
-                      />
+                      <img src="/lovable-uploads/1041cbf2-981b-437e-a2eb-72dfb54ca3b1.png" alt="Rajahmundry Paper Mills Visit" className="w-24 h-16 object-cover rounded" />
                       <div>
                         <h5 className="font-medium text-purple-800">Industrial visit to Rajahmundry Paper Mills (P) Ltd</h5>
                         <p className="text-purple-700 text-sm">East Godavari (Dt), A.P (2010)</p>
                       </div>
                     </div>
                     <div className="flex items-center gap-4 p-4 bg-white rounded-lg">
-                      <img 
-                        src="/lovable-uploads/a32c8f33-64ff-4729-8b86-ba29f7eb5491.png" 
-                        alt="R.V Labs Visit" 
-                        className="w-24 h-16 object-cover rounded"
-                      />
+                      <img src="/lovable-uploads/a32c8f33-64ff-4729-8b86-ba29f7eb5491.png" alt="R.V Labs Visit" className="w-24 h-16 object-cover rounded" />
                       <div>
                         <h5 className="font-medium text-purple-800">R.V LABS VISIT AND COMPLETED STUDY PROJECT WORK</h5>
                         <p className="text-purple-700 text-sm">20th March - 27th March - 2023</p>
@@ -1193,47 +1066,20 @@ const Chemistry = () => {
                 </CardTitle>
               </CardHeader>
               <CardContent>
-                {pgStaffLoading ? (
-                  <div className="text-center py-8">Loading staff information...</div>
-                ) : pgChemistryStaff.length === 0 ? (
-                  <div className="text-center py-8 text-muted-foreground">
+                {pgStaffLoading ? <div className="text-center py-8">Loading staff information...</div> : pgChemistryStaff.length === 0 ? <div className="text-center py-8 text-muted-foreground">
                     No staff information available yet.
-                  </div>
-                ) : (
-                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    {pgChemistryStaff
-                      .sort((a, b) => {
-                        // HODs first, then others alphabetically - comprehensive HOD detection
-                        const aDesignation = a.designation.toLowerCase();
-                        const bDesignation = b.designation.toLowerCase();
-                        
-                        const aIsHOD = aDesignation.includes('hod') || 
-                                      aDesignation.includes('head of department') || 
-                                      aDesignation.includes('head of the department') ||
-                                      aDesignation.includes('department head') ||
-                                      aDesignation.includes('head - department') ||
-                                      aDesignation.includes('head-department') ||
-                                      aDesignation.includes('dept. head') ||
-                                      aDesignation.includes('dept head');
-                                      
-                        const bIsHOD = bDesignation.includes('hod') || 
-                                      bDesignation.includes('head of department') || 
-                                      bDesignation.includes('head of the department') ||
-                                      bDesignation.includes('department head') ||
-                                      bDesignation.includes('head - department') ||
-                                      bDesignation.includes('head-department') ||
-                                      bDesignation.includes('dept. head') ||
-                                      bDesignation.includes('dept head');
-                        
-                        if (aIsHOD && !bIsHOD) return -1;
-                        if (!aIsHOD && bIsHOD) return 1;
-                        return a.name.localeCompare(b.name);
-                      })
-                      .map((staffMember) => (
-                      <StaffCard key={staffMember.id} staff={staffMember} />
-                    ))}
-                  </div>
-                )}
+                  </div> : <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    {pgChemistryStaff.sort((a, b) => {
+                  // HODs first, then others alphabetically - comprehensive HOD detection
+                  const aDesignation = a.designation.toLowerCase();
+                  const bDesignation = b.designation.toLowerCase();
+                  const aIsHOD = aDesignation.includes('hod') || aDesignation.includes('head of department') || aDesignation.includes('head of the department') || aDesignation.includes('department head') || aDesignation.includes('head - department') || aDesignation.includes('head-department') || aDesignation.includes('dept. head') || aDesignation.includes('dept head');
+                  const bIsHOD = bDesignation.includes('hod') || bDesignation.includes('head of department') || bDesignation.includes('head of the department') || bDesignation.includes('department head') || bDesignation.includes('head - department') || bDesignation.includes('head-department') || bDesignation.includes('dept. head') || bDesignation.includes('dept head');
+                  if (aIsHOD && !bIsHOD) return -1;
+                  if (!aIsHOD && bIsHOD) return 1;
+                  return a.name.localeCompare(b.name);
+                }).map(staffMember => <StaffCard key={staffMember.id} staff={staffMember} />)}
+                  </div>}
               </CardContent>
             </Card>
 
@@ -1244,16 +1090,10 @@ const Chemistry = () => {
               </CardHeader>
               <CardContent>
                 <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
-                  {departmentPhotos.map((photo, index) => (
-                    <div key={index} className="group relative overflow-hidden rounded-xl shadow-lg hover:shadow-xl transition-all duration-300">
-                      <img 
-                        src={photo} 
-                        alt={`Chemistry Research Lab ${index + 1}`}
-                        className="w-full h-48 md:h-56 object-cover group-hover:scale-110 transition-transform duration-500"
-                      />
+                  {departmentPhotos.map((photo, index) => <div key={index} className="group relative overflow-hidden rounded-xl shadow-lg hover:shadow-xl transition-all duration-300">
+                      <img src={photo} alt={`Chemistry Research Lab ${index + 1}`} className="w-full h-48 md:h-56 object-cover group-hover:scale-110 transition-transform duration-500" />
                       <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 transition-opacity duration-300"></div>
-                    </div>
-                  ))}
+                    </div>)}
                 </div>
               </CardContent>
             </Card>
@@ -1267,18 +1107,13 @@ const Chemistry = () => {
                 </CardTitle>
               </CardHeader>
               <CardContent>
-                {pgTimetablesLoading ? (
-                  <div className="text-center py-8">
+                {pgTimetablesLoading ? <div className="text-center py-8">
                     <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary mx-auto"></div>
                     <p className="text-muted-foreground mt-2">Loading timetables...</p>
-                  </div>
-                ) : pgTimetables.length === 0 ? (
-                  <div className="text-center py-8">
+                  </div> : pgTimetables.length === 0 ? <div className="text-center py-8">
                     <Clock className="h-12 w-12 mx-auto mb-4 opacity-50" />
                     <p className="text-muted-foreground">No timetables available at the moment.</p>
-                  </div>
-                ) : (
-                  <div className="overflow-x-auto">
+                  </div> : <div className="overflow-x-auto">
                     <table className="w-full">
                       <thead>
                         <tr className="border-b bg-muted/20">
@@ -1288,41 +1123,30 @@ const Chemistry = () => {
                         </tr>
                       </thead>
                       <tbody>
-                        {pgTimetables.map((timetable, index) => (
-                          <tr key={timetable.id} className="border-b hover:bg-muted/10">
+                        {pgTimetables.map((timetable, index) => <tr key={timetable.id} className="border-b hover:bg-muted/10">
                             <td className="py-3 px-4 text-primary font-medium">{index + 1}</td>
                             <td className="py-3 px-4 text-primary">
                               <div>
                                 <div className="font-medium">{timetable.title}</div>
-                                {timetable.description && (
-                                  <div className="text-sm text-muted-foreground">{timetable.description}</div>
-                                )}
+                                {timetable.description && <div className="text-sm text-muted-foreground">{timetable.description}</div>}
                               </div>
                             </td>
                             <td className="py-3 px-4 text-center">
-                              <Button
-                                variant="outline"
-                                size="sm"
-                                onClick={() => window.open(timetable.file_url, '_blank')}
-                              >
+                              <Button variant="outline" size="sm" onClick={() => window.open(timetable.file_url, '_blank')}>
                                 <Download className="h-4 w-4 mr-2" />
                                 Download PDF
                               </Button>
                             </td>
-                          </tr>
-                        ))}
+                          </tr>)}
                       </tbody>
                     </table>
-                  </div>
-                )}
+                  </div>}
               </CardContent>
             </Card>
           </TabsContent>
         </Tabs>
 
       </div>
-    </PageLayout>
-  );
+    </PageLayout>;
 };
-
 export default Chemistry;
