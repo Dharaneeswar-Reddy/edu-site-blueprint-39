@@ -6,65 +6,28 @@ import { Clock, Users, BookOpen, Award, Bug, Mail, Download } from "lucide-react
 import { useEffect, useState } from "react";
 import DepartmentStaff from "@/components/DepartmentStaff";
 import { useDepartmentTimetables } from "@/hooks/useDepartmentTimetables";
-
 const Zoology = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const { timetables, loading: timetablesLoading } = useDepartmentTimetables("Zoology");
-
-  const heroImages = [
-    "/lovable-uploads/4696f63f-d3f7-49c7-bc36-69b667664c17.png",
-    "/lovable-uploads/36a70005-7337-4469-bcac-8923147539a0.png",
-    "/lovable-uploads/ea21ce61-dae4-45b3-84a8-b24f6a35f80c.png",
-    "/lovable-uploads/3e27e075-1eb6-4981-8f3f-8ae9e9c1dcd1.png",
-    "/lovable-uploads/851cdbe6-ca62-40de-8d16-1db2b9fd7486.png",
-    "/lovable-uploads/96591788-c738-4e4a-8008-f2e91e49f1b4.png",
-    "/lovable-uploads/d59244a4-0fb8-44f9-b86e-67a09338d232.png"
-  ];
-
-  const departmentPhotos = [
-    "/lovable-uploads/4696f63f-d3f7-49c7-bc36-69b667664c17.png",
-    "/lovable-uploads/36a70005-7337-4469-bcac-8923147539a0.png",
-    "/lovable-uploads/ea21ce61-dae4-45b3-84a8-b24f6a35f80c.png",
-    "/lovable-uploads/3e27e075-1eb6-4981-8f3f-8ae9e9c1dcd1.png",
-    "/lovable-uploads/851cdbe6-ca62-40de-8d16-1db2b9fd7486.png",
-    "/lovable-uploads/96591788-c738-4e4a-8008-f2e91e49f1b4.png",
-    "/lovable-uploads/d59244a4-0fb8-44f9-b86e-67a09338d232.png"
-  ];
-
+  const {
+    timetables,
+    loading: timetablesLoading
+  } = useDepartmentTimetables("Zoology");
+  const heroImages = ["/lovable-uploads/4696f63f-d3f7-49c7-bc36-69b667664c17.png", "/lovable-uploads/36a70005-7337-4469-bcac-8923147539a0.png", "/lovable-uploads/ea21ce61-dae4-45b3-84a8-b24f6a35f80c.png", "/lovable-uploads/3e27e075-1eb6-4981-8f3f-8ae9e9c1dcd1.png", "/lovable-uploads/851cdbe6-ca62-40de-8d16-1db2b9fd7486.png", "/lovable-uploads/96591788-c738-4e4a-8008-f2e91e49f1b4.png", "/lovable-uploads/d59244a4-0fb8-44f9-b86e-67a09338d232.png"];
+  const departmentPhotos = ["/lovable-uploads/4696f63f-d3f7-49c7-bc36-69b667664c17.png", "/lovable-uploads/36a70005-7337-4469-bcac-8923147539a0.png", "/lovable-uploads/ea21ce61-dae4-45b3-84a8-b24f6a35f80c.png", "/lovable-uploads/3e27e075-1eb6-4981-8f3f-8ae9e9c1dcd1.png", "/lovable-uploads/851cdbe6-ca62-40de-8d16-1db2b9fd7486.png", "/lovable-uploads/96591788-c738-4e4a-8008-f2e91e49f1b4.png", "/lovable-uploads/d59244a4-0fb8-44f9-b86e-67a09338d232.png"];
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentImageIndex((prevIndex) => 
-        prevIndex === heroImages.length - 1 ? 0 : prevIndex + 1
-      );
+      setCurrentImageIndex(prevIndex => prevIndex === heroImages.length - 1 ? 0 : prevIndex + 1);
     }, 3000);
-
     return () => clearInterval(interval);
   }, [heroImages.length]);
-
-  return (
-    <PageLayout 
-      title="Department of Zoology" 
-      description="Understanding animal life, behavior, and evolution through comprehensive zoological education and research."
-    >
+  return <PageLayout title="Department of Zoology" description="Understanding animal life, behavior, and evolution through comprehensive zoological education and research.">
       <div className="space-y-8">
         
         {/* Auto-scrolling Hero Images */}
         <div className="relative h-96 md:h-[500px] lg:h-[600px] rounded-lg overflow-hidden shadow-xl">
-          {heroImages.map((image, index) => (
-            <img
-              key={index}
-              src={image}
-              alt={`Zoology Department ${index + 1}`}
-              className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${
-                index === currentImageIndex ? 'opacity-100' : 'opacity-0'
-              }`}
-            />
-          ))}
+          {heroImages.map((image, index) => <img key={index} src={image} alt={`Zoology Department ${index + 1}`} className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${index === currentImageIndex ? 'opacity-100' : 'opacity-0'}`} />)}
           <div className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
-            <div className="text-center text-white">
-              <h1 className="text-4xl md:text-6xl font-bold mb-4">Zoology Department</h1>
-              <p className="text-xl md:text-2xl">Exploring Animal Life & Behavior</p>
-            </div>
+            
           </div>
         </div>
 
@@ -317,16 +280,10 @@ const Zoology = () => {
           </CardHeader>
           <CardContent>
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
-              {departmentPhotos.map((photo, index) => (
-                <div key={index} className="group relative overflow-hidden rounded-xl shadow-lg hover:shadow-xl transition-all duration-300">
-                  <img 
-                    src={photo} 
-                    alt={`Zoology Lab ${index + 1}`}
-                    className="w-full h-48 md:h-56 object-cover group-hover:scale-110 transition-transform duration-500"
-                  />
+              {departmentPhotos.map((photo, index) => <div key={index} className="group relative overflow-hidden rounded-xl shadow-lg hover:shadow-xl transition-all duration-300">
+                  <img src={photo} alt={`Zoology Lab ${index + 1}`} className="w-full h-48 md:h-56 object-cover group-hover:scale-110 transition-transform duration-500" />
                   <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 transition-opacity duration-300"></div>
-                </div>
-              ))}
+                </div>)}
             </div>
           </CardContent>
         </Card>
@@ -340,47 +297,26 @@ const Zoology = () => {
             </CardTitle>
           </CardHeader>
           <CardContent>
-            {timetablesLoading ? (
-              <div className="text-center py-8">
+            {timetablesLoading ? <div className="text-center py-8">
                 <div className="animate-pulse text-muted-foreground">Loading timetables...</div>
-              </div>
-            ) : timetables.length > 0 ? (
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                {timetables.map((timetable) => (
-                  <div key={timetable.id} className="p-4 border rounded-lg">
+              </div> : timetables.length > 0 ? <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                {timetables.map(timetable => <div key={timetable.id} className="p-4 border rounded-lg">
                     <h4 className="font-semibold mb-2">{timetable.title}</h4>
-                    {timetable.description && (
-                      <p className="text-sm text-muted-foreground mb-3">{timetable.description}</p>
-                    )}
-                    {timetable.academic_year && (
-                      <p className="text-xs text-muted-foreground mb-2">Academic Year: {timetable.academic_year}</p>
-                    )}
-                    {timetable.semester && (
-                      <p className="text-xs text-muted-foreground mb-3">Semester: {timetable.semester}</p>
-                    )}
-                    <Button 
-                      variant="outline" 
-                      size="sm"
-                      onClick={() => window.open(timetable.file_url, '_blank')}
-                      className="w-full"
-                    >
+                    {timetable.description && <p className="text-sm text-muted-foreground mb-3">{timetable.description}</p>}
+                    {timetable.academic_year && <p className="text-xs text-muted-foreground mb-2">Academic Year: {timetable.academic_year}</p>}
+                    {timetable.semester && <p className="text-xs text-muted-foreground mb-3">Semester: {timetable.semester}</p>}
+                    <Button variant="outline" size="sm" onClick={() => window.open(timetable.file_url, '_blank')} className="w-full">
                       <Download className="h-4 w-4 mr-2" />
                       View Schedule
                     </Button>
-                  </div>
-                ))}
-              </div>
-            ) : (
-              <div className="text-center py-8 text-muted-foreground">
+                  </div>)}
+              </div> : <div className="text-center py-8 text-muted-foreground">
                 No timetables available at the moment. Please check back later.
-              </div>
-            )}
+              </div>}
           </CardContent>
         </Card>
 
       </div>
-    </PageLayout>
-  );
+    </PageLayout>;
 };
-
 export default Zoology;
