@@ -6,61 +6,28 @@ import { Calendar, Clock, Users, BookOpen, Award, Download, DollarSign, Mail } f
 import { useEffect, useState } from "react";
 import DepartmentStaff from "@/components/DepartmentStaff";
 import { useDepartmentTimetables } from "@/hooks/useDepartmentTimetables";
-
 const Commerce = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const { timetables, loading: timetablesLoading } = useDepartmentTimetables("Commerce");
-
-  const heroImages = [
-    "/lovable-uploads/f1fbe1fc-e5a7-4e49-a84e-da74bd880e81.png",
-    "/lovable-uploads/1712e8ba-103d-4e8d-8fcf-f3a58c895690.png",
-    "/lovable-uploads/69e9c1ff-a167-42d9-bc00-f4d58476b4a7.png",
-    "/lovable-uploads/64f74774-7508-4589-8d6f-ee0b9dbf6ec3.png",
-    "/lovable-uploads/2058512e-9124-4ec3-b6a8-d89044b40731.png"
-  ];
-
-  const departmentPhotos = [
-    "/lovable-uploads/f1fbe1fc-e5a7-4e49-a84e-da74bd880e81.png",
-    "/lovable-uploads/1712e8ba-103d-4e8d-8fcf-f3a58c895690.png",
-    "/lovable-uploads/69e9c1ff-a167-42d9-bc00-f4d58476b4a7.png",
-    "/lovable-uploads/64f74774-7508-4589-8d6f-ee0b9dbf6ec3.png",
-    "/lovable-uploads/2058512e-9124-4ec3-b6a8-d89044b40731.png"
-  ];
-
+  const {
+    timetables,
+    loading: timetablesLoading
+  } = useDepartmentTimetables("Commerce");
+  const heroImages = ["/lovable-uploads/f1fbe1fc-e5a7-4e49-a84e-da74bd880e81.png", "/lovable-uploads/1712e8ba-103d-4e8d-8fcf-f3a58c895690.png", "/lovable-uploads/69e9c1ff-a167-42d9-bc00-f4d58476b4a7.png", "/lovable-uploads/64f74774-7508-4589-8d6f-ee0b9dbf6ec3.png", "/lovable-uploads/2058512e-9124-4ec3-b6a8-d89044b40731.png"];
+  const departmentPhotos = ["/lovable-uploads/f1fbe1fc-e5a7-4e49-a84e-da74bd880e81.png", "/lovable-uploads/1712e8ba-103d-4e8d-8fcf-f3a58c895690.png", "/lovable-uploads/69e9c1ff-a167-42d9-bc00-f4d58476b4a7.png", "/lovable-uploads/64f74774-7508-4589-8d6f-ee0b9dbf6ec3.png", "/lovable-uploads/2058512e-9124-4ec3-b6a8-d89044b40731.png"];
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentImageIndex((prevIndex) => 
-        prevIndex === heroImages.length - 1 ? 0 : prevIndex + 1
-      );
+      setCurrentImageIndex(prevIndex => prevIndex === heroImages.length - 1 ? 0 : prevIndex + 1);
     }, 3000);
-
     return () => clearInterval(interval);
   }, [heroImages.length]);
-
-  return (
-    <PageLayout 
-      title="Department of Commerce" 
-      description="Commerce is the study of buying, selling, and trading of goods and services, and everything that makes that possible — from economics to finance, business, accounting, and laws."
-    >
+  return <PageLayout title="Department of Commerce" description="Commerce is the study of buying, selling, and trading of goods and services, and everything that makes that possible — from economics to finance, business, accounting, and laws.">
       <div className="space-y-8">
         
         {/* Auto-scrolling Hero Images */}
         <div className="relative h-96 md:h-[500px] lg:h-[600px] rounded-lg overflow-hidden shadow-xl">
-          {heroImages.map((image, index) => (
-            <img
-              key={index}
-              src={image}
-              alt={`Commerce Department ${index + 1}`}
-              className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${
-                index === currentImageIndex ? 'opacity-100' : 'opacity-0'
-              }`}
-            />
-          ))}
+          {heroImages.map((image, index) => <img key={index} src={image} alt={`Commerce Department ${index + 1}`} className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${index === currentImageIndex ? 'opacity-100' : 'opacity-0'}`} />)}
           <div className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
-            <div className="text-center text-white">
-              <h1 className="text-4xl md:text-6xl font-bold mb-4">Commerce Department</h1>
-              <p className="text-xl md:text-2xl">Building Business Acumen</p>
-            </div>
+            
           </div>
         </div>
 
@@ -282,16 +249,10 @@ const Commerce = () => {
           </CardHeader>
           <CardContent>
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
-              {departmentPhotos.map((photo, index) => (
-                <div key={index} className="group relative overflow-hidden rounded-xl shadow-lg hover:shadow-xl transition-all duration-300">
-                  <img 
-                    src={photo} 
-                    alt={`Commerce Classroom ${index + 1}`}
-                    className="w-full h-48 md:h-56 object-cover group-hover:scale-110 transition-transform duration-500"
-                  />
+              {departmentPhotos.map((photo, index) => <div key={index} className="group relative overflow-hidden rounded-xl shadow-lg hover:shadow-xl transition-all duration-300">
+                  <img src={photo} alt={`Commerce Classroom ${index + 1}`} className="w-full h-48 md:h-56 object-cover group-hover:scale-110 transition-transform duration-500" />
                   <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 transition-opacity duration-300"></div>
-                </div>
-              ))}
+                </div>)}
             </div>
           </CardContent>
         </Card>
@@ -305,37 +266,21 @@ const Commerce = () => {
             </CardTitle>
           </CardHeader>
           <CardContent>
-            {timetablesLoading ? (
-              <div className="text-center py-4">Loading timetables...</div>
-            ) : timetables.length > 0 ? (
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                {timetables.map((timetable) => (
-                  <div key={timetable.id} className="p-4 border rounded-lg text-center">
+            {timetablesLoading ? <div className="text-center py-4">Loading timetables...</div> : timetables.length > 0 ? <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                {timetables.map(timetable => <div key={timetable.id} className="p-4 border rounded-lg text-center">
                     <h4 className="font-semibold mb-2">{timetable.title}</h4>
-                    {timetable.description && (
-                      <p className="text-sm text-gray-600 mb-3">{timetable.description}</p>
-                    )}
-                    <Button 
-                      variant="outline" 
-                      size="sm"
-                      onClick={() => window.open(timetable.file_url, '_blank')}
-                    >
+                    {timetable.description && <p className="text-sm text-gray-600 mb-3">{timetable.description}</p>}
+                    <Button variant="outline" size="sm" onClick={() => window.open(timetable.file_url, '_blank')}>
                       View Schedule
                     </Button>
-                  </div>
-                ))}
-              </div>
-            ) : (
-              <div className="text-center py-8 text-gray-500">
+                  </div>)}
+              </div> : <div className="text-center py-8 text-gray-500">
                 No timetables available at the moment.
-              </div>
-            )}
+              </div>}
           </CardContent>
         </Card>
 
       </div>
-    </PageLayout>
-  );
+    </PageLayout>;
 };
-
 export default Commerce;
