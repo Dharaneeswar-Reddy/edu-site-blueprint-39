@@ -29,7 +29,7 @@ const PoliticalScience = () => {
           <div className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
             <div className="text-center text-white">
               
-              <p className="text-xl md:text-2xl">Governance, Democracy & Public Policy</p>
+              
             </div>
           </div>
         </div>
