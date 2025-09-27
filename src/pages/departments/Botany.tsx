@@ -6,7 +6,7 @@ import { Clock, Users, BookOpen, Award, Leaf, Mail, Download } from "lucide-reac
 import { useEffect, useState } from "react";
 import DepartmentStaff from "@/components/DepartmentStaff";
 import { useDepartmentTimetables } from "@/hooks/useDepartmentTimetables";
-import botanyHeroImage from "@/assets/botany-hero.png";
+import botanyHeroImage from "@/assets/botany-hero-new.png";
 const Botany = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const {
@@ -30,8 +30,7 @@ const Botany = () => {
           <img 
             src={botanyHeroImage} 
             alt="Department of Botany - Jagadish Chandra Bose Quote" 
-            className="w-full h-full object-cover" 
-            style={{ objectPosition: 'center 60%' }}
+            className="w-full h-full object-cover object-center" 
           />
         </div>
 
