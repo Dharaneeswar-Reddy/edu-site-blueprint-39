@@ -304,7 +304,12 @@ const Botany = () => {
               rich diversity of plant life.
             </p>
             <div className="bg-green-50 p-4 rounded-lg">
-              <img src="/lovable-uploads/31b6ffc3-d5b7-441c-bbdd-294127563557.png" alt="SVRMC Botanical Garden" className="w-full h-48 object-cover rounded-lg mb-4" />
+              <img 
+                src="/lovable-uploads/31b6ffc3-d5b7-441c-bbdd-294127563557.png" 
+                alt="SVRMC Botanical Garden" 
+                className="w-full h-64 object-cover object-center rounded-lg mb-4 shadow-md" 
+                loading="lazy"
+              />
               <p className="text-sm">
                 Our garden provides students with hands-on learning opportunities in plant taxonomy, 
                 ecology, physiology, and environmental studies. Well-maintained pathways, labeled plant 
