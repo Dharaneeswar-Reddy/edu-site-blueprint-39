@@ -6,70 +6,31 @@ import { Clock, Users, BookOpen, Award, Zap, Mail, Download, FileText, Trophy, T
 import { useEffect, useState } from "react";
 import DepartmentStaff from "@/components/DepartmentStaff";
 import useStudentAchievements from "@/hooks/useStudentAchievements";
-
 const PhysicalEducation = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const { achievements, loading: achievementsLoading } = useStudentAchievements("Physical Education");
-
-  const heroImages = [
-    "/lovable-uploads/55aa5548-bd16-49ae-9ed2-274eaa2d77b9.png",
-    "/lovable-uploads/cfe2d382-73ae-4599-a6e2-fbd80328ea8d.png",
-    "/lovable-uploads/fd265fe9-ab8e-4495-a840-95981cfd1f0d.png",
-    "/lovable-uploads/8875444f-eec6-4951-8501-c26abe4d7b3a.png",
-    "/lovable-uploads/26e3aeaf-55dc-4e6e-b76a-a2985fd9a304.png"
-  ];
-
-  const departmentPhotos = [
-    "/lovable-uploads/d87e5dab-fcca-417d-93c3-6e7a95fadefe.png",
-    "/lovable-uploads/e57191fd-f471-4f51-922b-b0469d5e986c.png",
-    "/lovable-uploads/548c502f-f9c1-42ea-a2e5-c1be0587ae3d.png",
-    "/lovable-uploads/20c98bba-762d-44a6-bd81-9e54e4524d60.png",
-    "/lovable-uploads/6f0d123f-d8ba-4e1a-bbbe-c3d2f78f5629.png"
-  ];
-
+  const {
+    achievements,
+    loading: achievementsLoading
+  } = useStudentAchievements("Physical Education");
+  const heroImages = ["/lovable-uploads/55aa5548-bd16-49ae-9ed2-274eaa2d77b9.png", "/lovable-uploads/cfe2d382-73ae-4599-a6e2-fbd80328ea8d.png", "/lovable-uploads/fd265fe9-ab8e-4495-a840-95981cfd1f0d.png", "/lovable-uploads/8875444f-eec6-4951-8501-c26abe4d7b3a.png", "/lovable-uploads/26e3aeaf-55dc-4e6e-b76a-a2985fd9a304.png"];
+  const departmentPhotos = ["/lovable-uploads/d87e5dab-fcca-417d-93c3-6e7a95fadefe.png", "/lovable-uploads/e57191fd-f471-4f51-922b-b0469d5e986c.png", "/lovable-uploads/548c502f-f9c1-42ea-a2e5-c1be0587ae3d.png", "/lovable-uploads/20c98bba-762d-44a6-bd81-9e54e4524d60.png", "/lovable-uploads/6f0d123f-d8ba-4e1a-bbbe-c3d2f78f5629.png"];
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentImageIndex((prevIndex) => 
-        prevIndex === heroImages.length - 1 ? 0 : prevIndex + 1
-      );
+      setCurrentImageIndex(prevIndex => prevIndex === heroImages.length - 1 ? 0 : prevIndex + 1);
     }, 3000);
-
     return () => clearInterval(interval);
   }, [heroImages.length]);
-
-  const events = [
-    "National Sports Day Celebrations", "Cricket", "SVRMC FEST", "BallBadminton Tournament Men & women",
-    "Kabaddi men & women", "Tennikoit Selections", "West Godavari Table Tennis Association Tournament",
-    "Volley Ball Selections", "INDEPENDENCE DAY", "DISTRICT LEVEL YOUTH FESTIVAL", "REPUBLIC DAY",
-    "ANNUAL DAY", "CRR FEST 2", "W.G. Kabaddi Sr. Dist. Tournament", "APMSRV Cricket Tournament",
-    "Circle Day Celebrations", "ABVP Yuvajana Vaarotswalu", "FOUNDER'S DAY", "CULTURAL COMPETITIONS",
-    "District School Games", "AP State Tennis Ranking Circuits", "AP College Teachers Badminton Tournament",
-    "AKNU Intercollegiate Games", "Eenadu Champion Cricket Cup", "Annual Sports Meet"
-  ];
-
-  return (
-    <PageLayout 
-      title="Department of Physical Education" 
-      description="At SVRM College, we believe education goes beyond classrooms. The Department of Physical Education inspires students to stay fit, active, and energetic while learning teamwork and leadership through sports."
-    >
+  const events = ["National Sports Day Celebrations", "Cricket", "SVRMC FEST", "BallBadminton Tournament Men & women", "Kabaddi men & women", "Tennikoit Selections", "West Godavari Table Tennis Association Tournament", "Volley Ball Selections", "INDEPENDENCE DAY", "DISTRICT LEVEL YOUTH FESTIVAL", "REPUBLIC DAY", "ANNUAL DAY", "CRR FEST 2", "W.G. Kabaddi Sr. Dist. Tournament", "APMSRV Cricket Tournament", "Circle Day Celebrations", "ABVP Yuvajana Vaarotswalu", "FOUNDER'S DAY", "CULTURAL COMPETITIONS", "District School Games", "AP State Tennis Ranking Circuits", "AP College Teachers Badminton Tournament", "AKNU Intercollegiate Games", "Eenadu Champion Cricket Cup", "Annual Sports Meet"];
+  return <PageLayout title="Department of Physical Education" description="At SVRM College, we believe education goes beyond classrooms. The Department of Physical Education inspires students to stay fit, active, and energetic while learning teamwork and leadership through sports.">
       <div className="space-y-8">
         
         {/* Auto-scrolling Hero Images */}
         <div className="relative h-96 md:h-[500px] lg:h-[600px] rounded-lg overflow-hidden shadow-xl">
-          {heroImages.map((image, index) => (
-            <img
-              key={index}
-              src={image}
-              alt={`Physical Education Department ${index + 1}`}
-              className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${
-                index === currentImageIndex ? 'opacity-100' : 'opacity-0'
-              }`}
-            />
-          ))}
+          {heroImages.map((image, index) => <img key={index} src={image} alt={`Physical Education Department ${index + 1}`} className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${index === currentImageIndex ? 'opacity-100' : 'opacity-0'}`} />)}
           <div className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
             <div className="text-center text-white">
-              <h1 className="text-4xl md:text-6xl font-bold mb-4">Physical Education Department</h1>
-              <p className="text-xl md:text-2xl">Fitness, Sports & Character Building</p>
+              
+              
             </div>
           </div>
         </div>
@@ -214,45 +175,30 @@ const PhysicalEducation = () => {
             </CardTitle>
           </CardHeader>
           <CardContent>
-            {achievementsLoading ? (
-              <div className="text-center py-8">
+            {achievementsLoading ? <div className="text-center py-8">
                 <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary mx-auto mb-2"></div>
                 <p className="text-gray-500">Loading achievements...</p>
-              </div>
-            ) : achievements.length > 0 ? (
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                {achievements.map((achievement) => (
-                  <div key={achievement.id} className="p-4 border rounded-lg hover:shadow-md transition-shadow">
+              </div> : achievements.length > 0 ? <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                {achievements.map(achievement => <div key={achievement.id} className="p-4 border rounded-lg hover:shadow-md transition-shadow">
                     <div className="flex items-start justify-between mb-2">
                       <h4 className="font-medium text-sm">{achievement.title}</h4>
                       <Badge variant="outline" className="text-xs">
                         {achievement.file_type.toUpperCase()}
                       </Badge>
                     </div>
-                    {achievement.description && (
-                      <p className="text-xs text-gray-600 mb-2">{achievement.description}</p>
-                    )}
+                    {achievement.description && <p className="text-xs text-gray-600 mb-2">{achievement.description}</p>}
                     <div className="flex justify-between items-center text-xs text-gray-500">
                       <span>{achievement.academic_year || 'N/A'}</span>
-                      <Button
-                        variant="outline"
-                        size="sm"
-                        onClick={() => window.open(achievement.file_url, '_blank')}
-                        className="h-6 px-2 text-xs"
-                      >
+                      <Button variant="outline" size="sm" onClick={() => window.open(achievement.file_url, '_blank')} className="h-6 px-2 text-xs">
                         <Download className="h-3 w-3 mr-1" />
                         View
                       </Button>
                     </div>
-                  </div>
-                ))}
-              </div>
-            ) : (
-              <div className="text-center py-8">
+                  </div>)}
+              </div> : <div className="text-center py-8">
                 <Trophy className="h-12 w-12 text-gray-400 mx-auto mb-4" />
                 <p className="text-gray-500">No achievements uploaded yet.</p>
-              </div>
-            )}
+              </div>}
           </CardContent>
         </Card>
 
@@ -324,11 +270,9 @@ const PhysicalEducation = () => {
           </CardHeader>
           <CardContent>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2">
-              {events.map((event, index) => (
-                <div key={index} className="p-3 bg-gray-50 rounded-lg text-sm">
+              {events.map((event, index) => <div key={index} className="p-3 bg-gray-50 rounded-lg text-sm">
                   {event}
-                </div>
-              ))}
+                </div>)}
             </div>
           </CardContent>
         </Card>
@@ -343,22 +287,14 @@ const PhysicalEducation = () => {
           </CardHeader>
           <CardContent>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-              {departmentPhotos.map((photo, index) => (
-                <div key={index} className="rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow">
-                  <img 
-                    src={photo} 
-                    alt={`Sports Activity ${index + 1}`}
-                    className="w-full h-48 object-cover hover:scale-105 transition-transform duration-300"
-                  />
-                </div>
-              ))}
+              {departmentPhotos.map((photo, index) => <div key={index} className="rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow">
+                  <img src={photo} alt={`Sports Activity ${index + 1}`} className="w-full h-48 object-cover hover:scale-105 transition-transform duration-300" />
+                </div>)}
             </div>
           </CardContent>
         </Card>
 
       </div>
-    </PageLayout>
-  );
+    </PageLayout>;
 };
-
 export default PhysicalEducation;
