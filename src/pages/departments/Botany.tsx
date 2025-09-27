@@ -31,7 +31,7 @@ const Botany = () => {
             src={botanyHeroImage} 
             alt="Department of Botany - Jagadish Chandra Bose Quote" 
             className="w-full h-full object-cover" 
-            style={{ objectPosition: 'center 35%' }}
+            style={{ objectPosition: 'center 60%' }}
           />
         </div>
 
