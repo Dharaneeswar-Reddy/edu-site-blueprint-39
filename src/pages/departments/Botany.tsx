@@ -307,7 +307,7 @@ const Botany = () => {
               <img 
                 src="/lovable-uploads/31b6ffc3-d5b7-441c-bbdd-294127563557.png" 
                 alt="SVRMC Botanical Garden" 
-                className="w-full h-64 object-cover object-center rounded-lg mb-4 shadow-md" 
+                className="w-full h-64 object-cover object-center rounded-xl mb-4 shadow-lg border border-green-100/50 transition-all duration-300 hover:shadow-xl hover:scale-[1.02] filter brightness-105 contrast-105" 
                 loading="lazy"
               />
               <p className="text-sm">
