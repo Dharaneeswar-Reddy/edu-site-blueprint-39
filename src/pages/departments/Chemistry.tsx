@@ -1,5 +1,5 @@
 import PageLayout from "@/components/PageLayout";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -218,6 +218,7 @@ const Chemistry = () => {
             <Card>
               <CardHeader>
                 <CardTitle>B.Sc. (Honours) Chemistry – Major Course Structure</CardTitle>
+                <CardDescription>Department of Chemistry, SVRM College, Nagaram (w.e.f. Academic Year 2023–24)</CardDescription>
               </CardHeader>
               <CardContent>
                 <div className="overflow-x-auto">
@@ -227,60 +228,538 @@ const Chemistry = () => {
                         <th className="text-left py-2 px-3 font-semibold">Semester</th>
                         <th className="text-left py-2 px-3 font-semibold">Course Code</th>
                         <th className="text-left py-2 px-3 font-semibold">Title of the Course</th>
+                        <th className="text-center py-2 px-3 font-semibold">Hours/Week</th>
                         <th className="text-center py-2 px-3 font-semibold">Credits</th>
                       </tr>
                     </thead>
                     <tbody>
                       <tr className="border-b">
-                        <td className="py-2 px-3 text-center bg-blue-50 font-medium">I</td>
+                        <td className="py-2 px-3 text-center bg-blue-50 font-medium" rowSpan={2}>I</td>
                         <td className="py-2 px-3">1</td>
                         <td className="py-2 px-3">Essentials and Applications of Mathematical, Physical and Chemical Sciences</td>
+                        <td className="py-2 px-3 text-center">5</td>
                         <td className="py-2 px-3 text-center">4</td>
                       </tr>
                       <tr className="border-b">
-                        <td className="py-2 px-3 text-center bg-blue-50 font-medium"></td>
                         <td className="py-2 px-3">2</td>
                         <td className="py-2 px-3">Advances in Mathematical, Physical and Chemical Sciences</td>
+                        <td className="py-2 px-3 text-center">5</td>
                         <td className="py-2 px-3 text-center">4</td>
                       </tr>
                       <tr className="border-b">
-                        <td className="py-2 px-3 text-center bg-green-50 font-medium">II</td>
-                        <td className="py-2 px-3">3 (T/P)</td>
-                        <td className="py-2 px-3">General & Inorganic Chemistry (Theory + Practical)</td>
-                        <td className="py-2 px-3 text-center">4</td>
+                        <td className="py-2 px-3 text-center bg-green-50 font-medium" rowSpan={4}>II</td>
+                        <td className="py-2 px-3">3 (T)</td>
+                        <td className="py-2 px-3">General & Inorganic Chemistry (Theory)</td>
+                        <td className="py-2 px-3 text-center">3</td>
+                        <td className="py-2 px-3 text-center">3</td>
                       </tr>
                       <tr className="border-b">
-                        <td className="py-2 px-3 text-center bg-green-50 font-medium"></td>
-                        <td className="py-2 px-3">4 (T/P)</td>
-                        <td className="py-2 px-3">Inorganic Chemistry–I (Theory + Practical)</td>
-                        <td className="py-2 px-3 text-center">4</td>
+                        <td className="py-2 px-3">3 (P)</td>
+                        <td className="py-2 px-3">General & Inorganic Chemistry (Practical)</td>
+                        <td className="py-2 px-3 text-center">2</td>
+                        <td className="py-2 px-3 text-center">1</td>
                       </tr>
                       <tr className="border-b">
-                        <td className="py-2 px-3 text-center bg-purple-50 font-medium">III</td>
-                        <td className="py-2 px-3">5-8 (T/P)</td>
-                        <td className="py-2 px-3">Fundamentals of Organic Chemistry, Organic Chemistry (Halogen & Oxygen Compounds), Physical Chemistry–I (Solutions & Electrochemistry), Inorganic & Physical Chemistry</td>
-                        <td className="py-2 px-3 text-center">16</td>
+                        <td className="py-2 px-3">4 (T)</td>
+                        <td className="py-2 px-3">Inorganic Chemistry–I (Theory)</td>
+                        <td className="py-2 px-3 text-center">3</td>
+                        <td className="py-2 px-3 text-center">3</td>
                       </tr>
                       <tr className="border-b">
-                        <td className="py-2 px-3 text-center bg-orange-50 font-medium">IV</td>
-                        <td className="py-2 px-3">9-11 (T/P)</td>
-                        <td className="py-2 px-3">Physical Chemistry–II (States of Matter, Phase Rule & Surface Chemistry), General & Physical Chemistry, Nitrogen–Containing Organic Compounds & Spectroscopy</td>
-                        <td className="py-2 px-3 text-center">12</td>
+                        <td className="py-2 px-3">4 (P)</td>
+                        <td className="py-2 px-3">Inorganic Chemistry–I (Practical)</td>
+                        <td className="py-2 px-3 text-center">2</td>
+                        <td className="py-2 px-3 text-center">1</td>
                       </tr>
                       <tr className="border-b">
-                        <td className="py-2 px-3 text-center bg-yellow-50 font-medium">V</td>
-                        <td className="py-2 px-3">12A/B-15A/B</td>
-                        <td className="py-2 px-3">Analytical Methods, Environmental Chemistry, Chromatography & Instrumental Methods, Green Chemistry & Nanotechnology, Synthetic Organic Chemistry, Industrial Chemistry</td>
-                        <td className="py-2 px-3 text-center">16</td>
+                        <td className="py-2 px-3 text-center bg-purple-50 font-medium" rowSpan={8}>III</td>
+                        <td className="py-2 px-3">5 (T)</td>
+                        <td className="py-2 px-3">Fundamentals of Organic Chemistry (Theory)</td>
+                        <td className="py-2 px-3 text-center">3</td>
+                        <td className="py-2 px-3 text-center">3</td>
+                      </tr>
+                      <tr className="border-b">
+                        <td className="py-2 px-3">5 (P)</td>
+                        <td className="py-2 px-3">Fundamentals of Organic Chemistry (Practical)</td>
+                        <td className="py-2 px-3 text-center">2</td>
+                        <td className="py-2 px-3 text-center">1</td>
+                      </tr>
+                      <tr className="border-b">
+                        <td className="py-2 px-3">6 (T)</td>
+                        <td className="py-2 px-3">Organic Chemistry (Halogen & Oxygen Compounds) – Theory</td>
+                        <td className="py-2 px-3 text-center">3</td>
+                        <td className="py-2 px-3 text-center">3</td>
+                      </tr>
+                      <tr className="border-b">
+                        <td className="py-2 px-3">6 (P)</td>
+                        <td className="py-2 px-3">Organic Chemistry (Halogen & Oxygen Compounds) – Practical</td>
+                        <td className="py-2 px-3 text-center">2</td>
+                        <td className="py-2 px-3 text-center">1</td>
+                      </tr>
+                      <tr className="border-b">
+                        <td className="py-2 px-3">7 (T)</td>
+                        <td className="py-2 px-3">Physical Chemistry–I (Solutions & Electrochemistry) – Theory</td>
+                        <td className="py-2 px-3 text-center">3</td>
+                        <td className="py-2 px-3 text-center">3</td>
+                      </tr>
+                      <tr className="border-b">
+                        <td className="py-2 px-3">7 (P)</td>
+                        <td className="py-2 px-3">Physical Chemistry–I (Solutions & Electrochemistry) – Practical</td>
+                        <td className="py-2 px-3 text-center">2</td>
+                        <td className="py-2 px-3 text-center">1</td>
+                      </tr>
+                      <tr className="border-b">
+                        <td className="py-2 px-3">8 (T)</td>
+                        <td className="py-2 px-3">Inorganic & Physical Chemistry (Theory)</td>
+                        <td className="py-2 px-3 text-center">3</td>
+                        <td className="py-2 px-3 text-center">3</td>
+                      </tr>
+                      <tr className="border-b">
+                        <td className="py-2 px-3">8 (P)</td>
+                        <td className="py-2 px-3">Inorganic & Physical Chemistry (Practical)</td>
+                        <td className="py-2 px-3 text-center">2</td>
+                        <td className="py-2 px-3 text-center">1</td>
+                      </tr>
+                      <tr className="border-b">
+                        <td className="py-2 px-3 text-center bg-orange-50 font-medium" rowSpan={6}>IV</td>
+                        <td className="py-2 px-3">9 (T)</td>
+                        <td className="py-2 px-3">Physical Chemistry–II (States of Matter, Phase Rule & Surface Chemistry) – Theory</td>
+                        <td className="py-2 px-3 text-center">3</td>
+                        <td className="py-2 px-3 text-center">3</td>
+                      </tr>
+                      <tr className="border-b">
+                        <td className="py-2 px-3">9 (P)</td>
+                        <td className="py-2 px-3">Physical Chemistry–II (Practical)</td>
+                        <td className="py-2 px-3 text-center">2</td>
+                        <td className="py-2 px-3 text-center">1</td>
+                      </tr>
+                      <tr className="border-b">
+                        <td className="py-2 px-3">10 (T)</td>
+                        <td className="py-2 px-3">General & Physical Chemistry (Theory)</td>
+                        <td className="py-2 px-3 text-center">3</td>
+                        <td className="py-2 px-3 text-center">3</td>
+                      </tr>
+                      <tr className="border-b">
+                        <td className="py-2 px-3">10 (P)</td>
+                        <td className="py-2 px-3">General & Physical Chemistry (Practical)</td>
+                        <td className="py-2 px-3 text-center">2</td>
+                        <td className="py-2 px-3 text-center">1</td>
+                      </tr>
+                      <tr className="border-b">
+                        <td className="py-2 px-3">11 (T)</td>
+                        <td className="py-2 px-3">Nitrogen–Containing Organic Compounds & Spectroscopy – Theory</td>
+                        <td className="py-2 px-3 text-center">3</td>
+                        <td className="py-2 px-3 text-center">3</td>
+                      </tr>
+                      <tr className="border-b">
+                        <td className="py-2 px-3">11 (P)</td>
+                        <td className="py-2 px-3">Nitrogen–Containing Organic Compounds & Spectroscopy – Practical</td>
+                        <td className="py-2 px-3 text-center">2</td>
+                        <td className="py-2 px-3 text-center">1</td>
+                      </tr>
+                      <tr className="border-b">
+                        <td className="py-2 px-3 text-center bg-yellow-50 font-medium" rowSpan={10}>V</td>
+                        <td className="py-2 px-3">12A (T)</td>
+                        <td className="py-2 px-3">Analytical Methods in Chemistry – Quantitative Analysis (Theory)</td>
+                        <td className="py-2 px-3 text-center">3</td>
+                        <td className="py-2 px-3 text-center">3</td>
+                      </tr>
+                      <tr className="border-b">
+                        <td className="py-2 px-3">12A (P)</td>
+                        <td className="py-2 px-3">Analytical Methods in Chemistry – Quantitative Analysis (Practical)</td>
+                        <td className="py-2 px-3 text-center">2</td>
+                        <td className="py-2 px-3 text-center">1</td>
+                      </tr>
+                      <tr className="border-b">
+                        <td className="py-2 px-3">12B (T)</td>
+                        <td className="py-2 px-3">Environmental Chemistry (Theory)</td>
+                        <td className="py-2 px-3 text-center">3</td>
+                        <td className="py-2 px-3 text-center">3</td>
+                      </tr>
+                      <tr className="border-b">
+                        <td className="py-2 px-3">12B (P)</td>
+                        <td className="py-2 px-3">Environmental Chemistry (Practical)</td>
+                        <td className="py-2 px-3 text-center">2</td>
+                        <td className="py-2 px-3 text-center">1</td>
+                      </tr>
+                      <tr className="border-b">
+                        <td className="py-2 px-3">13A (T)</td>
+                        <td className="py-2 px-3">Chromatography & Instrumental Methods of Analysis (Theory)</td>
+                        <td className="py-2 px-3 text-center">3</td>
+                        <td className="py-2 px-3 text-center">3</td>
+                      </tr>
+                      <tr className="border-b">
+                        <td className="py-2 px-3">13A (P)</td>
+                        <td className="py-2 px-3">Chromatography & Instrumental Methods of Analysis (Practical)</td>
+                        <td className="py-2 px-3 text-center">2</td>
+                        <td className="py-2 px-3 text-center">1</td>
+                      </tr>
+                      <tr className="border-b">
+                        <td className="py-2 px-3">13B (T)</td>
+                        <td className="py-2 px-3">Green Chemistry & Nanotechnology (Theory)</td>
+                        <td className="py-2 px-3 text-center">3</td>
+                        <td className="py-2 px-3 text-center">3</td>
+                      </tr>
+                      <tr className="border-b">
+                        <td className="py-2 px-3">13B (P)</td>
+                        <td className="py-2 px-3">Green Chemistry & Nanotechnology (Practical)</td>
+                        <td className="py-2 px-3 text-center">2</td>
+                        <td className="py-2 px-3 text-center">1</td>
+                      </tr>
+                      <tr className="border-b">
+                        <td className="py-2 px-3">14A</td>
+                        <td className="py-2 px-3">Synthetic Organic Chemistry</td>
+                        <td className="py-2 px-3 text-center">-</td>
+                        <td className="py-2 px-3 text-center">-</td>
+                      </tr>
+                      <tr className="border-b">
+                        <td className="py-2 px-3">14B</td>
+                        <td className="py-2 px-3">Industrial Chemistry – Fertilizers & Surface Coatings</td>
+                        <td className="py-2 px-3 text-center">-</td>
+                        <td className="py-2 px-3 text-center">-</td>
+                      </tr>
+                      <tr className="border-b">
+                        <td className="py-2 px-3">15A</td>
+                        <td className="py-2 px-3">Analysis of Organic Compounds</td>
+                        <td className="py-2 px-3 text-center">-</td>
+                        <td className="py-2 px-3 text-center">-</td>
+                      </tr>
+                      <tr className="border-b">
+                        <td className="py-2 px-3">15B</td>
+                        <td className="py-2 px-3">Industrial Chemistry – Polymers & Water Analysis</td>
+                        <td className="py-2 px-3 text-center">-</td>
+                        <td className="py-2 px-3 text-center">-</td>
                       </tr>
                       <tr className="border-b">
                         <td className="py-2 px-3 text-center bg-red-50 font-medium">VI</td>
                         <td className="py-2 px-3">-</td>
                         <td className="py-2 px-3">Internship</td>
                         <td className="py-2 px-3 text-center">-</td>
+                        <td className="py-2 px-3 text-center">-</td>
                       </tr>
                     </tbody>
                   </table>
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* Course Outcomes */}
+            <Card>
+              <CardHeader>
+                <CardTitle>Course Outcomes (COs) – B.Sc. (Honours) Chemistry – Major</CardTitle>
+                <CardDescription>Department of Chemistry, SVRM College, Nagaram (w.e.f. Academic Year 2023–24)</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="space-y-6">
+                  
+                  {/* I Semester */}
+                  <div className="bg-blue-50 p-6 rounded-lg">
+                    <h4 className="font-semibold text-lg mb-4 text-blue-800">I – Semester</h4>
+                    
+                    <div className="space-y-4">
+                      <div className="bg-white p-4 rounded border-l-4 border-blue-500">
+                        <h5 className="font-semibold text-blue-700 mb-2">Course Code 1: Essentials and Applications of Mathematical, Physical and Chemical Sciences</h5>
+                        <p className="text-sm text-gray-600 mb-2">Credits: 4</p>
+                        <div className="space-y-1">
+                          <p className="text-sm"><strong>CO1:</strong> Apply mathematical tools such as complex numbers, trigonometry, vectors, and statistics to solve scientific problems.</p>
+                          <p className="text-sm"><strong>CO2:</strong> Explain fundamental principles of physics and relate them to everyday applications.</p>
+                          <p className="text-sm"><strong>CO3:</strong> Describe fundamental concepts of chemistry and connect them to daily life situations.</p>
+                          <p className="text-sm"><strong>CO4:</strong> Demonstrate an integrated understanding of mathematics, physics, and chemistry in real-world contexts using scientific models.</p>
+                          <p className="text-sm"><strong>CO5:</strong> Gain basic knowledge of internet history, network security, threats, vulnerabilities, and countermeasures.</p>
+                        </div>
+                      </div>
+                      
+                      <div className="bg-white p-4 rounded border-l-4 border-blue-500">
+                        <h5 className="font-semibold text-blue-700 mb-2">Course Code 2: Advances in Mathematical, Physical and Chemical Sciences</h5>
+                        <p className="text-sm text-gray-600 mb-2">Credits: 4</p>
+                        <div className="space-y-1">
+                          <p className="text-sm"><strong>CO1:</strong> Apply advanced mathematical concepts in physics and chemistry to model and solve real-world problems.</p>
+                          <p className="text-sm"><strong>CO2:</strong> Explain advanced concepts of physics and apply them to everyday situations.</p>
+                          <p className="text-sm"><strong>CO3:</strong> Understand renewable energy sources, nanomaterials, quantum dots, quantum communication, and principles of biophysics and shape memory materials.</p>
+                          <p className="text-sm"><strong>CO4:</strong> Explain the principles of computer-aided drug design, drug delivery systems, nanosensors, and environmental chemistry including the effects of pollutants.</p>
+                          <p className="text-sm"><strong>CO5:</strong> Demonstrate knowledge of number systems, analog and digital signals, and different types of transmission media (wired and wireless).</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* II Semester */}
+                  <div className="bg-green-50 p-6 rounded-lg">
+                    <h4 className="font-semibold text-lg mb-4 text-green-800">II – Semester</h4>
+                    
+                    <div className="space-y-4">
+                      <div className="bg-white p-4 rounded border-l-4 border-green-500">
+                        <h5 className="font-semibold text-green-700 mb-2">Course Code 3: General & Inorganic Chemistry (Theory)</h5>
+                        <p className="text-sm text-gray-600 mb-2">Credits: 3</p>
+                        <div className="space-y-1">
+                          <p className="text-sm"><strong>CO1:</strong> Understand atomic structure and classification of elements in the periodic table.</p>
+                          <p className="text-sm"><strong>CO2:</strong> Explain the nature and properties of ionic compounds.</p>
+                          <p className="text-sm"><strong>CO3:</strong> Identify structures of inorganic compounds.</p>
+                          <p className="text-sm"><strong>CO4:</strong> Describe special types of compounds formed by weak chemical forces.</p>
+                          <p className="text-sm"><strong>CO5:</strong> Define acids, bases, and predict the nature of salts.</p>
+                        </div>
+                      </div>
+                      
+                      <div className="bg-white p-4 rounded border-l-4 border-green-500">
+                        <h5 className="font-semibold text-green-700 mb-2">Course Code 3: General & Inorganic Chemistry (Practical)</h5>
+                        <p className="text-sm text-gray-600 mb-2">Credits: 1</p>
+                        <div className="space-y-1">
+                          <p className="text-sm"><strong>CO1:</strong> Perform qualitative analysis of inorganic salts (minimum six simple salts).</p>
+                          <p className="text-sm"><strong>CO2:</strong> Use laboratory glassware, equipment, and follow safety procedures.</p>
+                          <p className="text-sm"><strong>CO3:</strong> Apply concepts of solubility product, common ion effect, and qualitative analysis.</p>
+                        </div>
+                      </div>
+                      
+                      <div className="bg-white p-4 rounded border-l-4 border-green-500">
+                        <h5 className="font-semibold text-green-700 mb-2">Course Code 4: Inorganic Chemistry–I (Theory)</h5>
+                        <p className="text-sm text-gray-600 mb-2">Credits: 3</p>
+                        <div className="space-y-1">
+                          <p className="text-sm"><strong>CO1:</strong> Explain the chemistry of p-block elements.</p>
+                          <p className="text-sm"><strong>CO2:</strong> Understand the chemistry of d-block elements.</p>
+                          <p className="text-sm"><strong>CO3:</strong> Distinguish properties of lanthanides and actinides.</p>
+                          <p className="text-sm"><strong>CO4:</strong> Describe radioactivity and its importance.</p>
+                        </div>
+                      </div>
+                      
+                      <div className="bg-white p-4 rounded border-l-4 border-green-500">
+                        <h5 className="font-semibold text-green-700 mb-2">Course Code 4: Inorganic Chemistry–I (Practical)</h5>
+                        <p className="text-sm text-gray-600 mb-2">Credits: 1</p>
+                        <div className="space-y-1">
+                          <p className="text-sm"><strong>CO1:</strong> Perform inorganic preparations using laboratory techniques.</p>
+                          <p className="text-sm"><strong>CO2:</strong> Handle chemicals, glassware, and equipment with safety and accuracy.</p>
+                          <p className="text-sm"><strong>CO3:</strong> Apply element properties in preparation of inorganic compounds.</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* III Semester */}
+                  <div className="bg-purple-50 p-6 rounded-lg">
+                    <h4 className="font-semibold text-lg mb-4 text-purple-800">III – Semester</h4>
+                    
+                    <div className="space-y-4">
+                      <div className="bg-white p-4 rounded border-l-4 border-purple-500">
+                        <h5 className="font-semibold text-purple-700 mb-2">Course Code 5: Fundamentals in Organic Chemistry (Theory)</h5>
+                        <p className="text-sm text-gray-600 mb-2">Credits: 3</p>
+                        <div className="space-y-1">
+                          <p className="text-sm"><strong>CO1:</strong> Explain differential behaviour of organic compounds using fundamental concepts.</p>
+                          <p className="text-sm"><strong>CO2:</strong> Formulate and interpret mechanisms of organic reactions.</p>
+                          <p className="text-sm"><strong>CO3:</strong> Identify and compare different organic reaction mechanisms.</p>
+                          <p className="text-sm"><strong>CO4:</strong> Describe stereochemical aspects of organic compounds and reactions.</p>
+                        </div>
+                      </div>
+                      
+                      <div className="bg-white p-4 rounded border-l-4 border-purple-500">
+                        <h5 className="font-semibold text-purple-700 mb-2">Course Code 5: Organic Qualitative Analysis (Practical)</h5>
+                        <p className="text-sm text-gray-600 mb-2">Credits: 1</p>
+                        <div className="space-y-1">
+                          <p className="text-sm"><strong>CO1:</strong> Use laboratory equipment, glassware, and chemicals safely in experiments.</p>
+                          <p className="text-sm"><strong>CO2:</strong> Determine melting and boiling points of organic compounds.</p>
+                          <p className="text-sm"><strong>CO3:</strong> Apply theoretical concepts of organic reactions in qualitative analysis.</p>
+                        </div>
+                      </div>
+                      
+                      <div className="bg-white p-4 rounded border-l-4 border-purple-500">
+                        <h5 className="font-semibold text-purple-700 mb-2">Course Code 6: Organic Chemistry (Halogen & Oxygen Compounds – Theory)</h5>
+                        <p className="text-sm text-gray-600 mb-2">Credits: 3</p>
+                        <div className="space-y-1">
+                          <p className="text-sm"><strong>CO1:</strong> Understand SN1, SN2, and SNi mechanisms.</p>
+                          <p className="text-sm"><strong>CO2:</strong> Describe reactivity of alcohols and phenols.</p>
+                          <p className="text-sm"><strong>CO3:</strong> Develop skills to propose and justify reaction mechanisms.</p>
+                          <p className="text-sm"><strong>CO4:</strong> Apply synthetic strategies to prepare oxygen-containing organic compounds.</p>
+                          <p className="text-sm"><strong>CO5:</strong> Interconvert monosaccharides.</p>
+                        </div>
+                      </div>
+                      
+                      <div className="bg-white p-4 rounded border-l-4 border-purple-500">
+                        <h5 className="font-semibold text-purple-700 mb-2">Course Code 7: Physical Chemistry–I (Solutions & Electrochemistry – Theory)</h5>
+                        <p className="text-sm text-gray-600 mb-2">Credits: 3</p>
+                        <div className="space-y-1">
+                          <p className="text-sm"><strong>CO1:</strong> Explain the behaviour of ideal and non-ideal solutions.</p>
+                          <p className="text-sm"><strong>CO2:</strong> Determine molecular mass of non-volatile solutes.</p>
+                          <p className="text-sm"><strong>CO3:</strong> Discuss the basic principles of photochemistry.</p>
+                          <p className="text-sm"><strong>CO4:</strong> Apply principles of electrical conductivity in solutions.</p>
+                          <p className="text-sm"><strong>CO5:</strong> Explain the significance of emf and its applications.</p>
+                        </div>
+                      </div>
+                      
+                      <div className="bg-white p-4 rounded border-l-4 border-purple-500">
+                        <h5 className="font-semibold text-purple-700 mb-2">Course Code 7: Physical Chemistry–I (Practical)</h5>
+                        <p className="text-sm text-gray-600 mb-2">Credits: 1</p>
+                        <div className="space-y-1">
+                          <p className="text-sm"><strong>CO1:</strong> Perform solution and electrochemistry experiments using proper laboratory techniques.</p>
+                          <p className="text-sm"><strong>CO2:</strong> Apply theoretical concepts of solutions in practical experiments.</p>
+                          <p className="text-sm"><strong>CO3:</strong> Conduct electrochemical experiments and interpret results.</p>
+                        </div>
+                      </div>
+                      
+                      <div className="bg-white p-4 rounded border-l-4 border-purple-500">
+                        <h5 className="font-semibold text-purple-700 mb-2">Course Code 8: Inorganic & Physical Chemistry (Theory)</h5>
+                        <p className="text-sm text-gray-600 mb-2">Credits: 3</p>
+                        <div className="space-y-1">
+                          <p className="text-sm"><strong>CO1:</strong> Apply IUPAC nomenclature to coordination compounds.</p>
+                          <p className="text-sm"><strong>CO2:</strong> Explain theories, structures, and stereochemistry of coordination complexes.</p>
+                          <p className="text-sm"><strong>CO3:</strong> Understand reaction mechanisms in metal complexes.</p>
+                          <p className="text-sm"><strong>CO4:</strong> Apply the 18-electron rule to organometallic compounds.</p>
+                          <p className="text-sm"><strong>CO5:</strong> Discuss the basic concepts of thermodynamics.</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* IV Semester */}
+                  <div className="bg-orange-50 p-6 rounded-lg">
+                    <h4 className="font-semibold text-lg mb-4 text-orange-800">IV – Semester</h4>
+                    
+                    <div className="space-y-4">
+                      <div className="bg-white p-4 rounded border-l-4 border-orange-500">
+                        <h5 className="font-semibold text-orange-700 mb-2">Course Code 9: Physical Chemistry – II (States of Matter, Phase Rule & Surface Chemistry)</h5>
+                        <p className="text-sm text-gray-600 mb-2">Credits: 3</p>
+                        <div className="space-y-1">
+                          <p className="text-sm"><strong>CO1:</strong> Explain the difference between solids, liquids, and gases in terms of intermolecular interactions.</p>
+                          <p className="text-sm"><strong>CO2:</strong> Differentiate between ideal and real gases.</p>
+                          <p className="text-sm"><strong>CO3:</strong> Discuss the basic concepts of two-component systems.</p>
+                          <p className="text-sm"><strong>CO4:</strong> Apply the concepts of adsorption.</p>
+                          <p className="text-sm"><strong>CO5:</strong> Understand the basic concepts of crystallography.</p>
+                        </div>
+                      </div>
+                      
+                      <div className="bg-white p-4 rounded border-l-4 border-orange-500">
+                        <h5 className="font-semibold text-orange-700 mb-2">Course Code 9: Organic Preparations</h5>
+                        <p className="text-sm text-gray-600 mb-2">Credits: 1</p>
+                        <div className="space-y-1">
+                          <p className="text-sm"><strong>CO1:</strong> Use glassware, equipment, and chemicals and follow experimental procedures in the laboratory.</p>
+                          <p className="text-sm"><strong>CO2:</strong> Apply concepts of surface chemistry in experiments.</p>
+                          <p className="text-sm"><strong>CO3:</strong> Demonstrate practical applications of surface tension and viscosity of liquids.</p>
+                        </div>
+                      </div>
+                      
+                      <div className="bg-white p-4 rounded border-l-4 border-orange-500">
+                        <h5 className="font-semibold text-orange-700 mb-2">Course Code 10: General and Physical Chemistry</h5>
+                        <p className="text-sm text-gray-600 mb-2">Credits: 3</p>
+                        <div className="space-y-1">
+                          <p className="text-sm"><strong>CO1:</strong> Correlate and describe the stereochemical properties of organic compounds.</p>
+                          <p className="text-sm"><strong>CO2:</strong> Explain the biological significance of various elements in the human body.</p>
+                          <p className="text-sm"><strong>CO3:</strong> Apply the concepts of ionic equilibrium in qualitative and quantitative analysis.</p>
+                          <p className="text-sm"><strong>CO4:</strong> Determine the order of a chemical reaction.</p>
+                          <p className="text-sm"><strong>CO5:</strong> Describe the basic concepts of enzyme catalysis.</p>
+                        </div>
+                      </div>
+                      
+                      <div className="bg-white p-4 rounded border-l-4 border-orange-500">
+                        <h5 className="font-semibold text-orange-700 mb-2">Course Code 10: Physical Chemistry – Volumetric Analysis</h5>
+                        <p className="text-sm text-gray-600 mb-2">Credits: 1</p>
+                        <div className="space-y-1">
+                          <p className="text-sm"><strong>CO1:</strong> Use laboratory glassware, equipment, and chemicals properly.</p>
+                          <p className="text-sm"><strong>CO2:</strong> Understand and explain volumetric analysis based on concepts of ionic equilibria.</p>
+                          <p className="text-sm"><strong>CO3:</strong> Identify the principles of standard solutions, primary and secondary standards.</p>
+                          <p className="text-sm"><strong>CO4:</strong> Prepare solutions of various molar concentrations.</p>
+                        </div>
+                      </div>
+                      
+                      <div className="bg-white p-4 rounded border-l-4 border-orange-500">
+                        <h5 className="font-semibold text-orange-700 mb-2">Course Code 11: Nitrogen Containing Organic Compounds & Spectroscopy</h5>
+                        <p className="text-sm text-gray-600 mb-2">Credits: 3</p>
+                        <div className="space-y-1">
+                          <p className="text-sm"><strong>CO1:</strong> Distinguish between primary, secondary, and tertiary amines and their properties.</p>
+                          <p className="text-sm"><strong>CO2:</strong> Describe the preparation and properties of amino acids.</p>
+                          <p className="text-sm"><strong>CO3:</strong> Explain the reactivity of nitro hydrocarbons.</p>
+                          <p className="text-sm"><strong>CO4:</strong> Discuss heterocyclic compounds containing N, O, and S.</p>
+                          <p className="text-sm"><strong>CO5:</strong> Apply UV and IR spectroscopy to ascertain functional groups in organic compounds.</p>
+                        </div>
+                      </div>
+                      
+                      <div className="bg-white p-4 rounded border-l-4 border-orange-500">
+                        <h5 className="font-semibold text-orange-700 mb-2">Course Code 11: Organic Preparations and IR Spectral Analysis</h5>
+                        <p className="text-sm text-gray-600 mb-2">Credits: 1</p>
+                        <div className="space-y-1">
+                          <p className="text-sm"><strong>CO1:</strong> Use laboratory glassware, equipment, and chemicals and follow safe experimental procedures.</p>
+                          <p className="text-sm"><strong>CO2:</strong> Calculate limiting reagent, theoretical yield, and percent yield.</p>
+                          <p className="text-sm"><strong>CO3:</strong> Engage in safe laboratory practices by handling reagents appropriately.</p>
+                          <p className="text-sm"><strong>CO4:</strong> Dispose of chemicals in a responsible manner.</p>
+                          <p className="text-sm"><strong>CO5:</strong> Perform common laboratory techniques such as reflux, distillation, recrystallization, and vacuum filtration.</p>
+                          <p className="text-sm"><strong>CO6:</strong> Carry out work-up and separation procedures.</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* V Semester */}
+                  <div className="bg-yellow-50 p-6 rounded-lg">
+                    <h4 className="font-semibold text-lg mb-4 text-yellow-800">V – Semester</h4>
+                    
+                    <div className="space-y-4">
+                      <div className="bg-white p-4 rounded border-l-4 border-yellow-500">
+                        <h5 className="font-semibold text-yellow-700 mb-2">Course Code 12A: Analytical Methods in Chemistry – Quantitative Analysis (SEC Elective)</h5>
+                        <p className="text-sm text-gray-600 mb-2">Credits: 3</p>
+                        <div className="space-y-1">
+                          <p className="text-sm"><strong>LO1:</strong> Explain the importance of solvent extraction and ion-exchange methods.</p>
+                          <p className="text-sm"><strong>LO2:</strong> Understand the basic principles of volumetric and gravimetric analysis.</p>
+                          <p className="text-sm"><strong>LO3:</strong> Demonstrate the usage of common laboratory apparatus in quantitative analysis.</p>
+                          <p className="text-sm"><strong>LO4:</strong> Understand the theories of different titration methods.</p>
+                          <p className="text-sm"><strong>LO5:</strong> Gain knowledge of different types of errors and methods of minimization.</p>
+                        </div>
+                      </div>
+                      
+                      <div className="bg-white p-4 rounded border-l-4 border-yellow-500">
+                        <h5 className="font-semibold text-yellow-700 mb-2">Course Code 12A: Analytical Methods in Chemistry – Quantitative Analysis (Practical)</h5>
+                        <p className="text-sm text-gray-600 mb-2">Credits: 1</p>
+                        <div className="space-y-1">
+                          <p className="text-sm"><strong>LO1:</strong> Estimate Fe(II) using standard potassium dichromate solution.</p>
+                          <p className="text-sm"><strong>LO2:</strong> Estimate total hardness of water.</p>
+                          <p className="text-sm"><strong>LO3:</strong> Determine chloride using Mohr's method.</p>
+                          <p className="text-sm"><strong>LO4:</strong> Operate and calibrate a pH meter.</p>
+                          <p className="text-sm"><strong>LO5:</strong> Perform strong acid vs. strong base titrations using a pH meter.</p>
+                        </div>
+                      </div>
+                      
+                      <div className="bg-white p-4 rounded border-l-4 border-yellow-500">
+                        <h5 className="font-semibold text-yellow-700 mb-2">Course Code 14A: Synthetic Organic Chemistry</h5>
+                        <p className="text-sm text-gray-600 mb-2">Credits: 3</p>
+                        <div className="space-y-1">
+                          <p className="text-sm"><strong>LO1:</strong> Identify the importance of reagents in organic synthesis.</p>
+                          <p className="text-sm"><strong>LO2:</strong> Understand the principles of different types of pericyclic reactions.</p>
+                          <p className="text-sm"><strong>LO3:</strong> Apply retrosynthetic analysis in organic chemistry.</p>
+                          <p className="text-sm"><strong>LO4:</strong> Comprehend the applications of different reactions in synthetic organic chemistry.</p>
+                        </div>
+                      </div>
+                      
+                      <div className="bg-white p-4 rounded border-l-4 border-yellow-500">
+                        <h5 className="font-semibold text-yellow-700 mb-2">Course Code 14A: Synthetic Organic Chemistry (Practical)</h5>
+                        <p className="text-sm text-gray-600 mb-2">Credits: 1</p>
+                        <div className="space-y-1">
+                          <p className="text-sm"><strong>LO1:</strong> Perform qualitative analysis for N, S, and halogens using eco-friendly methods.</p>
+                          <p className="text-sm"><strong>LO2:</strong> Separate amino acids using paper chromatography.</p>
+                          <p className="text-sm"><strong>LO3:</strong> Prepare TLC plates for thin-layer chromatography.</p>
+                          <p className="text-sm"><strong>LO4:</strong> Conduct column chromatography for separation of dyes in mixtures.</p>
+                        </div>
+                      </div>
+                      
+                      <div className="bg-white p-4 rounded border-l-4 border-yellow-500">
+                        <h5 className="font-semibold text-yellow-700 mb-2">Course Code 15B: Industrial Chemistry – Polymers and Water Analysis</h5>
+                        <p className="text-sm text-gray-600 mb-2">Credits: 3</p>
+                        <div className="space-y-1">
+                          <p className="text-sm"><strong>LO1:</strong> Understand the basic concepts of polymers.</p>
+                          <p className="text-sm"><strong>LO2:</strong> Explain the preparation and applications of organic polymers.</p>
+                          <p className="text-sm"><strong>LO3:</strong> Understand sources of air pollution.</p>
+                          <p className="text-sm"><strong>LO4:</strong> Demonstrate analysis of water quality parameters.</p>
+                          <p className="text-sm"><strong>LO5:</strong> Identify the importance of industrial waste management.</p>
+                        </div>
+                      </div>
+                      
+                      <div className="bg-white p-4 rounded border-l-4 border-yellow-500">
+                        <h5 className="font-semibold text-yellow-700 mb-2">Course Code 15B: Industrial Chemistry – Polymers and Water Analysis (Practical)</h5>
+                        <p className="text-sm text-gray-600 mb-2">Credits: 1</p>
+                        <div className="space-y-1">
+                          <p className="text-sm"><strong>LO1:</strong> Determine BOD and COD of water samples.</p>
+                          <p className="text-sm"><strong>LO2:</strong> Estimate chloride in water samples.</p>
+                          <p className="text-sm"><strong>LO3:</strong> Determine hardness of water.</p>
+                          <p className="text-sm"><strong>LO4:</strong> Analyze soil samples.</p>
+                          <p className="text-sm"><strong>LO5:</strong> Operate a pH meter effectively.</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </CardContent>
             </Card>
