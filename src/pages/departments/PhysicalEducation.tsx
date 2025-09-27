@@ -12,7 +12,7 @@ const PhysicalEducation = () => {
     achievements,
     loading: achievementsLoading
   } = useStudentAchievements("Physical Education");
-  const heroImages = [];
+  const heroImages = ["/lovable-uploads/d87e5dab-fcca-417d-93c3-6e7a95fadefe.png", "/lovable-uploads/e57191fd-f471-4f51-922b-b0469d5e986c.png", "/lovable-uploads/548c502f-f9c1-42ea-a2e5-c1be0587ae3d.png", "/lovable-uploads/20c98bba-762d-44a6-bd81-9e54e4524d60.png", "/lovable-uploads/6f0d123f-d8ba-4e1a-bbbe-c3d2f78f5629.png"];
   const departmentPhotos = ["/lovable-uploads/d87e5dab-fcca-417d-93c3-6e7a95fadefe.png", "/lovable-uploads/e57191fd-f471-4f51-922b-b0469d5e986c.png", "/lovable-uploads/548c502f-f9c1-42ea-a2e5-c1be0587ae3d.png", "/lovable-uploads/20c98bba-762d-44a6-bd81-9e54e4524d60.png", "/lovable-uploads/6f0d123f-d8ba-4e1a-bbbe-c3d2f78f5629.png"];
   useEffect(() => {
     const interval = setInterval(() => {
