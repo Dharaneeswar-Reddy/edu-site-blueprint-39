@@ -12,7 +12,7 @@ const PhysicalEducation = () => {
     achievements,
     loading: achievementsLoading
   } = useStudentAchievements("Physical Education");
-  const heroImages = ["/lovable-uploads/55aa5548-bd16-49ae-9ed2-274eaa2d77b9.png", "/lovable-uploads/cfe2d382-73ae-4599-a6e2-fbd80328ea8d.png", "/lovable-uploads/fd265fe9-ab8e-4495-a840-95981cfd1f0d.png", "/lovable-uploads/8875444f-eec6-4951-8501-c26abe4d7b3a.png", "/lovable-uploads/26e3aeaf-55dc-4e6e-b76a-a2985fd9a304.png"];
+  const heroImages = ["/lovable-uploads/55aa5548-bd16-49ae-9ed2-274eaa2d77b9.png", "/lovable-uploads/cfe2d382-73ae-4599-a6e2-fbd80328ea8d.png", "/lovable-uploads/fd265fe9-ab8e-4495-a840-95981cfd1f0d.png", "/lovable-uploads/8875444f-eec6-4951-8501-c26abe4d7b3a.png"];
   const departmentPhotos = ["/lovable-uploads/d87e5dab-fcca-417d-93c3-6e7a95fadefe.png", "/lovable-uploads/e57191fd-f471-4f51-922b-b0469d5e986c.png", "/lovable-uploads/548c502f-f9c1-42ea-a2e5-c1be0587ae3d.png", "/lovable-uploads/20c98bba-762d-44a6-bd81-9e54e4524d60.png", "/lovable-uploads/6f0d123f-d8ba-4e1a-bbbe-c3d2f78f5629.png"];
   useEffect(() => {
     const interval = setInterval(() => {
