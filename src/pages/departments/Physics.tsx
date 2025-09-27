@@ -7,72 +7,32 @@ import { useEffect, useState } from "react";
 import useStaff from "@/hooks/useStaff";
 import useDepartmentTimetables from "@/hooks/useDepartmentTimetables";
 import StaffCard from "@/components/StaffCard";
-
 const Physics = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const { staff: departmentStaff, loading: staffLoading } = useStaff("Physics", "teaching");
-  const { timetables, loading: timetablesLoading } = useDepartmentTimetables("Physics");
-
-  const heroImages = [
-    "/lovable-uploads/596e11b2-cd25-48ed-8769-88d01f850463.png",
-    "/lovable-uploads/5ac5ea4b-5580-4969-8658-192e082f8417.png",
-    "/lovable-uploads/d4627f03-9552-464e-93cf-2eca5d4c1408.png",
-    "/lovable-uploads/0f1c4da3-be3f-40ea-8a8e-99e833035b28.png",
-    "/lovable-uploads/225096ea-f8cf-438e-8c55-9040932e6d87.png",
-    "/lovable-uploads/9f78b4d0-4434-4a94-b8a6-88be11989e42.png",
-    "/lovable-uploads/07f517fb-d713-4aaf-944d-b8f8d448db39.png",
-    "/lovable-uploads/0523c75f-0802-48bd-8253-e99fd2384d50.png",
-    "/lovable-uploads/80fc22e8-dd51-4a45-ab3c-1a1af16f51ef.png",
-    "/lovable-uploads/ef841f31-b3bb-40b7-a2f2-d5af0b0957bf.png"
-  ];
-
-  const departmentPhotos = [
-    "/lovable-uploads/596e11b2-cd25-48ed-8769-88d01f850463.png",
-    "/lovable-uploads/5ac5ea4b-5580-4969-8658-192e082f8417.png",
-    "/lovable-uploads/d4627f03-9552-464e-93cf-2eca5d4c1408.png",
-    "/lovable-uploads/0f1c4da3-be3f-40ea-8a8e-99e833035b28.png",
-    "/lovable-uploads/225096ea-f8cf-438e-8c55-9040932e6d87.png",
-    "/lovable-uploads/9f78b4d0-4434-4a94-b8a6-88be11989e42.png",
-    "/lovable-uploads/07f517fb-d713-4aaf-944d-b8f8d448db39.png",
-    "/lovable-uploads/0523c75f-0802-48bd-8253-e99fd2384d50.png",
-    "/lovable-uploads/80fc22e8-dd51-4a45-ab3c-1a1af16f51ef.png",
-    "/lovable-uploads/ef841f31-b3bb-40b7-a2f2-d5af0b0957bf.png"
-  ];
-
+  const {
+    staff: departmentStaff,
+    loading: staffLoading
+  } = useStaff("Physics", "teaching");
+  const {
+    timetables,
+    loading: timetablesLoading
+  } = useDepartmentTimetables("Physics");
+  const heroImages = ["/lovable-uploads/596e11b2-cd25-48ed-8769-88d01f850463.png", "/lovable-uploads/5ac5ea4b-5580-4969-8658-192e082f8417.png", "/lovable-uploads/d4627f03-9552-464e-93cf-2eca5d4c1408.png", "/lovable-uploads/0f1c4da3-be3f-40ea-8a8e-99e833035b28.png", "/lovable-uploads/225096ea-f8cf-438e-8c55-9040932e6d87.png", "/lovable-uploads/9f78b4d0-4434-4a94-b8a6-88be11989e42.png", "/lovable-uploads/07f517fb-d713-4aaf-944d-b8f8d448db39.png", "/lovable-uploads/0523c75f-0802-48bd-8253-e99fd2384d50.png", "/lovable-uploads/80fc22e8-dd51-4a45-ab3c-1a1af16f51ef.png", "/lovable-uploads/ef841f31-b3bb-40b7-a2f2-d5af0b0957bf.png"];
+  const departmentPhotos = ["/lovable-uploads/596e11b2-cd25-48ed-8769-88d01f850463.png", "/lovable-uploads/5ac5ea4b-5580-4969-8658-192e082f8417.png", "/lovable-uploads/d4627f03-9552-464e-93cf-2eca5d4c1408.png", "/lovable-uploads/0f1c4da3-be3f-40ea-8a8e-99e833035b28.png", "/lovable-uploads/225096ea-f8cf-438e-8c55-9040932e6d87.png", "/lovable-uploads/9f78b4d0-4434-4a94-b8a6-88be11989e42.png", "/lovable-uploads/07f517fb-d713-4aaf-944d-b8f8d448db39.png", "/lovable-uploads/0523c75f-0802-48bd-8253-e99fd2384d50.png", "/lovable-uploads/80fc22e8-dd51-4a45-ab3c-1a1af16f51ef.png", "/lovable-uploads/ef841f31-b3bb-40b7-a2f2-d5af0b0957bf.png"];
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentImageIndex((prevIndex) => 
-        prevIndex === heroImages.length - 1 ? 0 : prevIndex + 1
-      );
+      setCurrentImageIndex(prevIndex => prevIndex === heroImages.length - 1 ? 0 : prevIndex + 1);
     }, 3000);
-
     return () => clearInterval(interval);
   }, [heroImages.length]);
-
-  return (
-    <PageLayout 
-      title="Department of Physics" 
-      description="Exploring the fundamental principles of nature and universe through cutting-edge research and education."
-    >
+  return <PageLayout title="Department of Physics" description="Exploring the fundamental principles of nature and universe through cutting-edge research and education.">
       <div className="space-y-8">
         
         {/* Auto-scrolling Hero Images */}
         <div className="relative h-96 md:h-[500px] lg:h-[600px] rounded-lg overflow-hidden shadow-xl">
-          {heroImages.map((image, index) => (
-            <img
-              key={index}
-              src={image}
-              alt={`Physics Department ${index + 1}`}
-              className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${
-                index === currentImageIndex ? 'opacity-100' : 'opacity-0'
-              }`}
-            />
-          ))}
+          {heroImages.map((image, index) => <img key={index} src={image} alt={`Physics Department ${index + 1}`} className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${index === currentImageIndex ? 'opacity-100' : 'opacity-0'}`} />)}
           <div className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
-            <div className="text-center text-white">
-              <h1 className="text-4xl md:text-6xl font-bold mb-4">Physics Department</h1>
-              <p className="text-xl md:text-2xl">Discovering the Laws of Nature</p>
-            </div>
+            
           </div>
         </div>
 
@@ -322,51 +282,24 @@ const Physics = () => {
             </CardTitle>
           </CardHeader>
           <CardContent>
-            {staffLoading ? (
-              <div className="text-center py-8">
+            {staffLoading ? <div className="text-center py-8">
                 <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary mx-auto mb-4"></div>
                 <p className="text-muted-foreground">Loading staff information...</p>
-              </div>
-            ) : departmentStaff.length > 0 ? (
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {departmentStaff
-                  .sort((a, b) => {
-                    // HODs first, then others alphabetically - comprehensive HOD detection
-                    const aDesignation = a.designation.toLowerCase();
-                    const bDesignation = b.designation.toLowerCase();
-                    
-                    const aIsHOD = aDesignation.includes('hod') || 
-                                  aDesignation.includes('head of department') || 
-                                  aDesignation.includes('head of the department') ||
-                                  aDesignation.includes('department head') ||
-                                  aDesignation.includes('head - department') ||
-                                  aDesignation.includes('head-department') ||
-                                  aDesignation.includes('dept. head') ||
-                                  aDesignation.includes('dept head');
-                                  
-                    const bIsHOD = bDesignation.includes('hod') || 
-                                  bDesignation.includes('head of department') || 
-                                  bDesignation.includes('head of the department') ||
-                                  bDesignation.includes('department head') ||
-                                  bDesignation.includes('head - department') ||
-                                  bDesignation.includes('head-department') ||
-                                  bDesignation.includes('dept. head') ||
-                                  bDesignation.includes('dept head');
-                    
-                    if (aIsHOD && !bIsHOD) return -1;
-                    if (!aIsHOD && bIsHOD) return 1;
-                    return a.name.localeCompare(b.name);
-                  })
-                  .map((staff) => (
-                  <StaffCard key={staff.id} staff={staff} />
-                ))}
-              </div>
-            ) : (
-              <div className="text-center py-8 text-muted-foreground">
+              </div> : departmentStaff.length > 0 ? <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {departmentStaff.sort((a, b) => {
+              // HODs first, then others alphabetically - comprehensive HOD detection
+              const aDesignation = a.designation.toLowerCase();
+              const bDesignation = b.designation.toLowerCase();
+              const aIsHOD = aDesignation.includes('hod') || aDesignation.includes('head of department') || aDesignation.includes('head of the department') || aDesignation.includes('department head') || aDesignation.includes('head - department') || aDesignation.includes('head-department') || aDesignation.includes('dept. head') || aDesignation.includes('dept head');
+              const bIsHOD = bDesignation.includes('hod') || bDesignation.includes('head of department') || bDesignation.includes('head of the department') || bDesignation.includes('department head') || bDesignation.includes('head - department') || bDesignation.includes('head-department') || bDesignation.includes('dept. head') || bDesignation.includes('dept head');
+              if (aIsHOD && !bIsHOD) return -1;
+              if (!aIsHOD && bIsHOD) return 1;
+              return a.name.localeCompare(b.name);
+            }).map(staff => <StaffCard key={staff.id} staff={staff} />)}
+              </div> : <div className="text-center py-8 text-muted-foreground">
                 <Users className="h-16 w-16 mx-auto mb-4 opacity-20" />
                 <p>No staff information available at the moment.</p>
-              </div>
-            )}
+              </div>}
           </CardContent>
         </Card>
 
@@ -377,16 +310,10 @@ const Physics = () => {
           </CardHeader>
           <CardContent>
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
-              {departmentPhotos.map((photo, index) => (
-                <div key={index} className="group relative overflow-hidden rounded-xl shadow-lg hover:shadow-xl transition-all duration-300">
-                  <img 
-                    src={photo} 
-                    alt={`Physics Lab ${index + 1}`}
-                    className="w-full h-48 md:h-56 object-cover group-hover:scale-110 transition-transform duration-500"
-                  />
+              {departmentPhotos.map((photo, index) => <div key={index} className="group relative overflow-hidden rounded-xl shadow-lg hover:shadow-xl transition-all duration-300">
+                  <img src={photo} alt={`Physics Lab ${index + 1}`} className="w-full h-48 md:h-56 object-cover group-hover:scale-110 transition-transform duration-500" />
                   <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 transition-opacity duration-300"></div>
-                </div>
-              ))}
+                </div>)}
             </div>
           </CardContent>
         </Card>
@@ -400,18 +327,13 @@ const Physics = () => {
             </CardTitle>
           </CardHeader>
           <CardContent>
-            {timetablesLoading ? (
-              <div className="text-center py-8">
+            {timetablesLoading ? <div className="text-center py-8">
                 <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary mx-auto"></div>
                 <p className="text-muted-foreground mt-2">Loading timetables...</p>
-              </div>
-            ) : timetables.length === 0 ? (
-              <div className="text-center py-8">
+              </div> : timetables.length === 0 ? <div className="text-center py-8">
                 <Clock className="h-12 w-12 mx-auto mb-4 opacity-50" />
                 <p className="text-muted-foreground">No timetables available at the moment.</p>
-              </div>
-            ) : (
-              <div className="overflow-x-auto">
+              </div> : <div className="overflow-x-auto">
                 <table className="w-full">
                   <thead>
                     <tr className="border-b bg-muted/20">
@@ -421,39 +343,28 @@ const Physics = () => {
                     </tr>
                   </thead>
                   <tbody>
-                    {timetables.map((timetable, index) => (
-                      <tr key={timetable.id} className="border-b hover:bg-muted/10">
+                    {timetables.map((timetable, index) => <tr key={timetable.id} className="border-b hover:bg-muted/10">
                         <td className="py-3 px-4 text-primary font-medium">{index + 1}</td>
                         <td className="py-3 px-4 text-primary">
                           <div>
                             <div className="font-medium">{timetable.title}</div>
-                            {timetable.description && (
-                              <div className="text-sm text-muted-foreground">{timetable.description}</div>
-                            )}
+                            {timetable.description && <div className="text-sm text-muted-foreground">{timetable.description}</div>}
                           </div>
                         </td>
                         <td className="py-3 px-4 text-center">
-                          <Button
-                            variant="outline"
-                            size="sm"
-                            onClick={() => window.open(timetable.file_url, '_blank')}
-                          >
+                          <Button variant="outline" size="sm" onClick={() => window.open(timetable.file_url, '_blank')}>
                             <Download className="h-4 w-4 mr-2" />
                             Download PDF
                           </Button>
                         </td>
-                      </tr>
-                    ))}
+                      </tr>)}
                   </tbody>
                 </table>
-              </div>
-            )}
+              </div>}
           </CardContent>
         </Card>
 
       </div>
-    </PageLayout>
-  );
+    </PageLayout>;
 };
-
 export default Physics;
