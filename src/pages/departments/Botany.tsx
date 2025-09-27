@@ -30,7 +30,8 @@ const Botany = () => {
           <img 
             src={botanyHeroImage} 
             alt="Department of Botany - Jagadish Chandra Bose Quote" 
-            className="w-full h-full object-cover object-center" 
+            className="w-full h-full object-cover" 
+            style={{ objectPosition: 'center 20%' }}
           />
         </div>
 
