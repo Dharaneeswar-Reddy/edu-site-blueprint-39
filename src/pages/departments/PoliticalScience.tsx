@@ -6,57 +6,29 @@ import { Clock, Users, BookOpen, Award, Scale, ExternalLink } from "lucide-react
 import { useEffect, useState } from "react";
 import DepartmentStaff from "@/components/DepartmentStaff";
 import useDepartmentTimetables from "@/hooks/useDepartmentTimetables";
-
 const PoliticalScience = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const { timetables, loading: timetablesLoading } = useDepartmentTimetables("Political Science");
-
-  const heroImages = [
-    "/lovable-uploads/2b10ef1d-4773-4ca9-b45c-4db28077fd0e.png",
-    "/lovable-uploads/38c6f30f-e6ed-4a07-98b7-07b2df3b2f25.png",
-    "/lovable-uploads/53ed32c7-c5aa-4a5d-91ba-d36b7fde27a1.png",
-    "/lovable-uploads/8efaad64-c801-48e1-b4d7-c7e36d250038.png"
-  ];
-
-  const departmentPhotos = [
-    "/lovable-uploads/2b10ef1d-4773-4ca9-b45c-4db28077fd0e.png",
-    "/lovable-uploads/38c6f30f-e6ed-4a07-98b7-07b2df3b2f25.png",
-    "/lovable-uploads/53ed32c7-c5aa-4a5d-91ba-d36b7fde27a1.png",
-    "/lovable-uploads/8efaad64-c801-48e1-b4d7-c7e36d250038.png"
-  ];
-
+  const {
+    timetables,
+    loading: timetablesLoading
+  } = useDepartmentTimetables("Political Science");
+  const heroImages = ["/lovable-uploads/2b10ef1d-4773-4ca9-b45c-4db28077fd0e.png", "/lovable-uploads/38c6f30f-e6ed-4a07-98b7-07b2df3b2f25.png", "/lovable-uploads/53ed32c7-c5aa-4a5d-91ba-d36b7fde27a1.png", "/lovable-uploads/8efaad64-c801-48e1-b4d7-c7e36d250038.png"];
+  const departmentPhotos = ["/lovable-uploads/2b10ef1d-4773-4ca9-b45c-4db28077fd0e.png", "/lovable-uploads/38c6f30f-e6ed-4a07-98b7-07b2df3b2f25.png", "/lovable-uploads/53ed32c7-c5aa-4a5d-91ba-d36b7fde27a1.png", "/lovable-uploads/8efaad64-c801-48e1-b4d7-c7e36d250038.png"];
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentImageIndex((prevIndex) => 
-        prevIndex === heroImages.length - 1 ? 0 : prevIndex + 1
-      );
+      setCurrentImageIndex(prevIndex => prevIndex === heroImages.length - 1 ? 0 : prevIndex + 1);
     }, 3000);
-
     return () => clearInterval(interval);
   }, [heroImages.length]);
-
-  return (
-    <PageLayout 
-      title="Department of Political Science" 
-      description="Exploring human civilization, cultural heritage, and historical processes through comprehensive historical education"
-    >
+  return <PageLayout title="Department of Political Science" description="Exploring human civilization, cultural heritage, and historical processes through comprehensive historical education">
       <div className="space-y-8">
         
         {/* Auto-scrolling Hero Images */}
         <div className="relative h-96 md:h-[500px] lg:h-[600px] rounded-lg overflow-hidden shadow-xl">
-          {heroImages.map((image, index) => (
-            <img
-              key={index}
-              src={image}
-              alt={`Political Science Department ${index + 1}`}
-              className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${
-                index === currentImageIndex ? 'opacity-100' : 'opacity-0'
-              }`}
-            />
-          ))}
+          {heroImages.map((image, index) => <img key={index} src={image} alt={`Political Science Department ${index + 1}`} className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${index === currentImageIndex ? 'opacity-100' : 'opacity-0'}`} />)}
           <div className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
             <div className="text-center text-white">
-              <h1 className="text-4xl md:text-6xl font-bold mb-4">Political Science Department</h1>
+              
               <p className="text-xl md:text-2xl">Governance, Democracy & Public Policy</p>
             </div>
           </div>
@@ -258,15 +230,9 @@ const PoliticalScience = () => {
           </CardHeader>
           <CardContent>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-              {departmentPhotos.map((photo, index) => (
-                <div key={index} className="rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow">
-                  <img 
-                    src={photo} 
-                    alt={`Political Science Activity ${index + 1}`}
-                    className="w-full h-48 object-cover hover:scale-105 transition-transform duration-300"
-                  />
-                </div>
-              ))}
+              {departmentPhotos.map((photo, index) => <div key={index} className="rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow">
+                  <img src={photo} alt={`Political Science Activity ${index + 1}`} className="w-full h-48 object-cover hover:scale-105 transition-transform duration-300" />
+                </div>)}
             </div>
           </CardContent>
         </Card>
@@ -280,45 +246,28 @@ const PoliticalScience = () => {
             </CardTitle>
           </CardHeader>
           <CardContent>
-            {timetablesLoading ? (
-              <div className="flex items-center justify-center py-8">
+            {timetablesLoading ? <div className="flex items-center justify-center py-8">
                 <div className="text-gray-500">Loading timetables...</div>
-              </div>
-            ) : timetables.length > 0 ? (
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                {timetables.map((timetable) => (
-                  <div key={timetable.id} className="p-4 border rounded-lg">
+              </div> : timetables.length > 0 ? <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                {timetables.map(timetable => <div key={timetable.id} className="p-4 border rounded-lg">
                     <h4 className="font-semibold mb-2">{timetable.title}</h4>
-                    {timetable.description && (
-                      <p className="text-sm text-gray-600 mb-3">{timetable.description}</p>
-                    )}
+                    {timetable.description && <p className="text-sm text-gray-600 mb-3">{timetable.description}</p>}
                     <div className="flex gap-2 text-xs text-gray-500 mb-3">
                       {timetable.academic_year && <span>AY: {timetable.academic_year}</span>}
                       {timetable.semester && <span>Sem: {timetable.semester}</span>}
                     </div>
-                    <Button 
-                      variant="outline" 
-                      size="sm" 
-                      onClick={() => window.open(timetable.file_url, '_blank')}
-                      className="w-full"
-                    >
+                    <Button variant="outline" size="sm" onClick={() => window.open(timetable.file_url, '_blank')} className="w-full">
                       <ExternalLink className="h-4 w-4 mr-2" />
                       View Schedule
                     </Button>
-                  </div>
-                ))}
-              </div>
-            ) : (
-              <div className="text-center py-8 text-gray-500">
+                  </div>)}
+              </div> : <div className="text-center py-8 text-gray-500">
                 No timetables available at the moment.
-              </div>
-            )}
+              </div>}
           </CardContent>
         </Card>
 
       </div>
-    </PageLayout>
-  );
+    </PageLayout>;
 };
-
 export default PoliticalScience;
