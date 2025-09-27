@@ -6,58 +6,31 @@ import { Calendar, Clock, Users, BookOpen, Award, Download, Calculator, Mail } f
 import { useEffect, useState } from "react";
 import DepartmentStaff from "@/components/DepartmentStaff";
 import { useDepartmentTimetables } from "@/hooks/useDepartmentTimetables";
-
 const Mathematics = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const { timetables, loading, error } = useDepartmentTimetables("Mathematics");
-
-  const heroImages = [
-    "/lovable-uploads/ad1edf50-6e71-4375-91d2-7e8d76b3b7b5.png",
-    "/lovable-uploads/b1fc6422-ad59-4662-83db-90f4d62b1001.png",
-    "/lovable-uploads/76e749fc-2917-4512-b28a-328266b210fe.png",
-    "/lovable-uploads/efecdc8b-f78a-4ff1-947b-c70afb2f2b33.png"
-  ];
-
-  const departmentPhotos = [
-    "/lovable-uploads/ad1edf50-6e71-4375-91d2-7e8d76b3b7b5.png",
-    "/lovable-uploads/b1fc6422-ad59-4662-83db-90f4d62b1001.png",
-    "/lovable-uploads/76e749fc-2917-4512-b28a-328266b210fe.png",
-    "/lovable-uploads/efecdc8b-f78a-4ff1-947b-c70afb2f2b33.png"
-  ];
-
+  const {
+    timetables,
+    loading,
+    error
+  } = useDepartmentTimetables("Mathematics");
+  const heroImages = ["/lovable-uploads/ad1edf50-6e71-4375-91d2-7e8d76b3b7b5.png", "/lovable-uploads/b1fc6422-ad59-4662-83db-90f4d62b1001.png", "/lovable-uploads/76e749fc-2917-4512-b28a-328266b210fe.png", "/lovable-uploads/efecdc8b-f78a-4ff1-947b-c70afb2f2b33.png"];
+  const departmentPhotos = ["/lovable-uploads/ad1edf50-6e71-4375-91d2-7e8d76b3b7b5.png", "/lovable-uploads/b1fc6422-ad59-4662-83db-90f4d62b1001.png", "/lovable-uploads/76e749fc-2917-4512-b28a-328266b210fe.png", "/lovable-uploads/efecdc8b-f78a-4ff1-947b-c70afb2f2b33.png"];
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentImageIndex((prevIndex) => 
-        prevIndex === heroImages.length - 1 ? 0 : prevIndex + 1
-      );
+      setCurrentImageIndex(prevIndex => prevIndex === heroImages.length - 1 ? 0 : prevIndex + 1);
     }, 3000);
-
     return () => clearInterval(interval);
   }, [heroImages.length]);
-
-  return (
-    <PageLayout 
-      title="Department of Mathematics" 
-      description="Building logical thinking and analytical skills through pure and applied mathematical sciences."
-    >
+  return <PageLayout title="Department of Mathematics" description="Building logical thinking and analytical skills through pure and applied mathematical sciences.">
       <div className="space-y-8">
         
         {/* Auto-scrolling Hero Images */}
         <div className="relative h-96 md:h-[500px] lg:h-[600px] rounded-lg overflow-hidden shadow-xl">
-          {heroImages.map((image, index) => (
-            <img
-              key={index}
-              src={image}
-              alt={`Mathematics Department ${index + 1}`}
-              className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${
-                index === currentImageIndex ? 'opacity-100' : 'opacity-0'
-              }`}
-            />
-          ))}
+          {heroImages.map((image, index) => <img key={index} src={image} alt={`Mathematics Department ${index + 1}`} className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${index === currentImageIndex ? 'opacity-100' : 'opacity-0'}`} />)}
           <div className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
             <div className="text-center text-white">
-              <h1 className="text-4xl md:text-6xl font-bold mb-4">Mathematics Department</h1>
-              <p className="text-xl md:text-2xl">Logic, Reasoning & Problem Solving</p>
+              
+              
             </div>
           </div>
         </div>
@@ -263,16 +236,10 @@ const Mathematics = () => {
           </CardHeader>
           <CardContent>
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
-              {departmentPhotos.map((photo, index) => (
-                <div key={index} className="group relative overflow-hidden rounded-xl shadow-lg hover:shadow-xl transition-all duration-300">
-                  <img 
-                    src={photo} 
-                    alt={`Mathematics Classroom ${index + 1}`}
-                    className="w-full h-48 md:h-56 object-cover group-hover:scale-110 transition-transform duration-500"
-                  />
+              {departmentPhotos.map((photo, index) => <div key={index} className="group relative overflow-hidden rounded-xl shadow-lg hover:shadow-xl transition-all duration-300">
+                  <img src={photo} alt={`Mathematics Classroom ${index + 1}`} className="w-full h-48 md:h-56 object-cover group-hover:scale-110 transition-transform duration-500" />
                   <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 transition-opacity duration-300"></div>
-                </div>
-              ))}
+                </div>)}
             </div>
           </CardContent>
         </Card>
@@ -286,18 +253,13 @@ const Mathematics = () => {
             </CardTitle>
           </CardHeader>
           <CardContent>
-            {loading ? (
-              <div className="text-center py-8">
+            {loading ? <div className="text-center py-8">
                 <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary mx-auto"></div>
                 <p className="text-muted-foreground mt-2">Loading timetables...</p>
-              </div>
-            ) : timetables.length === 0 ? (
-              <div className="text-center py-8">
+              </div> : timetables.length === 0 ? <div className="text-center py-8">
                 <Clock className="h-12 w-12 mx-auto mb-4 opacity-50" />
                 <p className="text-muted-foreground">No timetables available at the moment.</p>
-              </div>
-            ) : (
-              <div className="overflow-x-auto">
+              </div> : <div className="overflow-x-auto">
                 <table className="w-full">
                   <thead>
                     <tr className="border-b bg-muted/20">
@@ -307,39 +269,28 @@ const Mathematics = () => {
                     </tr>
                   </thead>
                   <tbody>
-                    {timetables.map((timetable, index) => (
-                      <tr key={timetable.id} className="border-b hover:bg-muted/10">
+                    {timetables.map((timetable, index) => <tr key={timetable.id} className="border-b hover:bg-muted/10">
                         <td className="py-3 px-4 text-primary font-medium">{index + 1}</td>
                         <td className="py-3 px-4 text-primary">
                           <div>
                             <div className="font-medium">{timetable.title}</div>
-                            {timetable.description && (
-                              <div className="text-sm text-muted-foreground">{timetable.description}</div>
-                            )}
+                            {timetable.description && <div className="text-sm text-muted-foreground">{timetable.description}</div>}
                           </div>
                         </td>
                         <td className="py-3 px-4 text-center">
-                          <Button
-                            variant="outline"
-                            size="sm"
-                            onClick={() => window.open(timetable.file_url, '_blank')}
-                          >
+                          <Button variant="outline" size="sm" onClick={() => window.open(timetable.file_url, '_blank')}>
                             <Download className="h-4 w-4 mr-2" />
                             Download PDF
                           </Button>
                         </td>
-                      </tr>
-                    ))}
+                      </tr>)}
                   </tbody>
                 </table>
-              </div>
-            )}
+              </div>}
           </CardContent>
         </Card>
 
       </div>
-    </PageLayout>
-  );
+    </PageLayout>;
 };
-
 export default Mathematics;
