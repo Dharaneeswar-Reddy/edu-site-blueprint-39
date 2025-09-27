@@ -6,6 +6,7 @@ import { Clock, Users, BookOpen, Award, Leaf, Mail, Download } from "lucide-reac
 import { useEffect, useState } from "react";
 import DepartmentStaff from "@/components/DepartmentStaff";
 import { useDepartmentTimetables } from "@/hooks/useDepartmentTimetables";
+import botanyHeroImage from "@/assets/botany-hero.png";
 const Botany = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const {
@@ -13,7 +14,7 @@ const Botany = () => {
     loading,
     error
   } = useDepartmentTimetables("Botany");
-  const heroImages = ["/lovable-uploads/26e5dd9a-23af-4d35-bf39-50ea0a90dcc1.png", "/lovable-uploads/3f2ac2fe-5cc6-403c-b266-c0a4bfc92b9a.png", "/lovable-uploads/43b08f5f-94a1-4efc-a4bc-d959843cb7ea.png", "/lovable-uploads/5c7ebe72-4ecd-4e54-8ce5-6bf0a6141878.png", "/lovable-uploads/7ecf4141-f3db-4a34-b9c2-4a0c5af6c711.png", "/lovable-uploads/09edbd5d-984f-41ea-9176-ae2cb550d878.png", "/lovable-uploads/888ae344-c040-4057-9423-38e1e4328152.png", "/lovable-uploads/208097d5-1a3d-4850-b72e-7a0e44ded787.png", "/lovable-uploads/6119578b-9c06-42e6-b80d-fd03c8c0fffc.png", "/lovable-uploads/ffb3cc7c-1414-44ed-89b7-a6160bf7578f.png", "/lovable-uploads/e6b48831-58cc-474a-81fe-fa4e53081732.png", "/lovable-uploads/31b6ffc3-d5b7-441c-bbdd-294127563557.png"];
+  const heroImages = [botanyHeroImage];
   const departmentPhotos = ["/lovable-uploads/7ecf4141-f3db-4a34-b9c2-4a0c5af6c711.png", "/lovable-uploads/09edbd5d-984f-41ea-9176-ae2cb550d878.png", "/lovable-uploads/888ae344-c040-4057-9423-38e1e4328152.png", "/lovable-uploads/208097d5-1a3d-4850-b72e-7a0e44ded787.png", "/lovable-uploads/6119578b-9c06-42e6-b80d-fd03c8c0fffc.png", "/lovable-uploads/ffb3cc7c-1414-44ed-89b7-a6160bf7578f.png", "/lovable-uploads/e6b48831-58cc-474a-81fe-fa4e53081732.png", "/lovable-uploads/31b6ffc3-d5b7-441c-bbdd-294127563557.png"];
   useEffect(() => {
     const interval = setInterval(() => {
@@ -24,10 +25,13 @@ const Botany = () => {
   return <PageLayout title="Department of Botany" description="Exploring plant life, biodiversity, and ecological relationships through comprehensive botanical education and research.">
       <div className="space-y-8">
         
-        {/* Auto-scrolling Hero Images */}
+        {/* Hero Image */}
         <div className="relative h-96 md:h-[500px] lg:h-[600px] rounded-lg overflow-hidden shadow-xl">
-          {heroImages.map((image, index) => <img key={index} src={image} alt={`Botany Department ${index + 1}`} className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${index === currentImageIndex ? 'opacity-100' : 'opacity-0'}`} />)}
-          
+          <img 
+            src={botanyHeroImage} 
+            alt="Department of Botany - Jagadish Chandra Bose Quote" 
+            className="w-full h-full object-cover object-center" 
+          />
         </div>
 
         {/* Seat Structure and Programs */}
