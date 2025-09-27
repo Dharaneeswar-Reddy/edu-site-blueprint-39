@@ -6,59 +6,28 @@ import { Clock, Users, BookOpen, Award, TrendingUp, Mail } from "lucide-react";
 import { useEffect, useState } from "react";
 import DepartmentStaff from "@/components/DepartmentStaff";
 import { useDepartmentTimetables } from "@/hooks/useDepartmentTimetables";
-
 const Economics = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const { timetables, loading: timetablesLoading } = useDepartmentTimetables("Economics");
-
-  const heroImages = [
-    "/lovable-uploads/a79c3d10-11cb-4e52-8ae9-554109f98dee.png",
-    "/lovable-uploads/a2c89c7b-21a3-4823-84ca-e5946d4ade86.png",
-    "/lovable-uploads/7babac86-1879-4665-8a31-1919527d2637.png",
-    "/lovable-uploads/d7b80186-a39d-4729-91b0-0d72e31950a2.png"
-  ];
-
-  const departmentPhotos = [
-    "/lovable-uploads/a79c3d10-11cb-4e52-8ae9-554109f98dee.png",
-    "/lovable-uploads/a2c89c7b-21a3-4823-84ca-e5946d4ade86.png",
-    "/lovable-uploads/7babac86-1879-4665-8a31-1919527d2637.png",
-    "/lovable-uploads/d7b80186-a39d-4729-91b0-0d72e31950a2.png"
-  ];
-
+  const {
+    timetables,
+    loading: timetablesLoading
+  } = useDepartmentTimetables("Economics");
+  const heroImages = ["/lovable-uploads/a79c3d10-11cb-4e52-8ae9-554109f98dee.png", "/lovable-uploads/a2c89c7b-21a3-4823-84ca-e5946d4ade86.png", "/lovable-uploads/7babac86-1879-4665-8a31-1919527d2637.png", "/lovable-uploads/d7b80186-a39d-4729-91b0-0d72e31950a2.png"];
+  const departmentPhotos = ["/lovable-uploads/a79c3d10-11cb-4e52-8ae9-554109f98dee.png", "/lovable-uploads/a2c89c7b-21a3-4823-84ca-e5946d4ade86.png", "/lovable-uploads/7babac86-1879-4665-8a31-1919527d2637.png", "/lovable-uploads/d7b80186-a39d-4729-91b0-0d72e31950a2.png"];
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentImageIndex((prevIndex) => 
-        prevIndex === heroImages.length - 1 ? 0 : prevIndex + 1
-      );
+      setCurrentImageIndex(prevIndex => prevIndex === heroImages.length - 1 ? 0 : prevIndex + 1);
     }, 3000);
-
     return () => clearInterval(interval);
   }, [heroImages.length]);
-
-  return (
-    <PageLayout 
-      title="Department of Economics" 
-      description="Understanding economic principles, market dynamics, and policy implications through comprehensive economic education."
-    >
+  return <PageLayout title="Department of Economics" description="Understanding economic principles, market dynamics, and policy implications through comprehensive economic education.">
       <div className="space-y-8">
         
         {/* Auto-scrolling Hero Images */}
         <div className="relative h-96 md:h-[500px] lg:h-[600px] rounded-lg overflow-hidden shadow-xl">
-          {heroImages.map((image, index) => (
-            <img
-              key={index}
-              src={image}
-              alt={`Economics Department ${index + 1}`}
-              className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${
-                index === currentImageIndex ? 'opacity-100' : 'opacity-0'
-              }`}
-            />
-          ))}
+          {heroImages.map((image, index) => <img key={index} src={image} alt={`Economics Department ${index + 1}`} className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${index === currentImageIndex ? 'opacity-100' : 'opacity-0'}`} />)}
           <div className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
-            <div className="text-center text-white">
-              <h1 className="text-4xl md:text-6xl font-bold mb-4">Economics Department</h1>
-              <p className="text-xl md:text-2xl">Analyzing Markets & Economic Policy</p>
-            </div>
+            
           </div>
         </div>
 
@@ -240,16 +209,10 @@ const Economics = () => {
           </CardHeader>
           <CardContent>
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
-              {departmentPhotos.map((photo, index) => (
-                <div key={index} className="group relative overflow-hidden rounded-xl shadow-lg hover:shadow-xl transition-all duration-300">
-                  <img 
-                    src={photo} 
-                    alt={`Economics Classroom ${index + 1}`}
-                    className="w-full h-48 md:h-56 object-cover group-hover:scale-110 transition-transform duration-500"
-                  />
+              {departmentPhotos.map((photo, index) => <div key={index} className="group relative overflow-hidden rounded-xl shadow-lg hover:shadow-xl transition-all duration-300">
+                  <img src={photo} alt={`Economics Classroom ${index + 1}`} className="w-full h-48 md:h-56 object-cover group-hover:scale-110 transition-transform duration-500" />
                   <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 transition-opacity duration-300"></div>
-                </div>
-              ))}
+                </div>)}
             </div>
           </CardContent>
         </Card>
@@ -263,37 +226,21 @@ const Economics = () => {
             </CardTitle>
           </CardHeader>
           <CardContent>
-            {timetablesLoading ? (
-              <div className="text-center py-4">Loading timetables...</div>
-            ) : timetables.length > 0 ? (
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                {timetables.map((timetable) => (
-                  <div key={timetable.id} className="p-4 border rounded-lg text-center">
+            {timetablesLoading ? <div className="text-center py-4">Loading timetables...</div> : timetables.length > 0 ? <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                {timetables.map(timetable => <div key={timetable.id} className="p-4 border rounded-lg text-center">
                     <h4 className="font-semibold mb-2">{timetable.title}</h4>
-                    {timetable.description && (
-                      <p className="text-sm text-gray-600 mb-3">{timetable.description}</p>
-                    )}
-                    <Button 
-                      variant="outline" 
-                      size="sm"
-                      onClick={() => window.open(timetable.file_url, '_blank')}
-                    >
+                    {timetable.description && <p className="text-sm text-gray-600 mb-3">{timetable.description}</p>}
+                    <Button variant="outline" size="sm" onClick={() => window.open(timetable.file_url, '_blank')}>
                       View Schedule
                     </Button>
-                  </div>
-                ))}
-              </div>
-            ) : (
-              <div className="text-center py-8 text-gray-500">
+                  </div>)}
+              </div> : <div className="text-center py-8 text-gray-500">
                 No timetables available at the moment.
-              </div>
-            )}
+              </div>}
           </CardContent>
         </Card>
 
       </div>
-    </PageLayout>
-  );
+    </PageLayout>;
 };
-
 export default Economics;
