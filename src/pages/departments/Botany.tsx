@@ -6,72 +6,28 @@ import { Clock, Users, BookOpen, Award, Leaf, Mail, Download } from "lucide-reac
 import { useEffect, useState } from "react";
 import DepartmentStaff from "@/components/DepartmentStaff";
 import { useDepartmentTimetables } from "@/hooks/useDepartmentTimetables";
-
 const Botany = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const { timetables, loading, error } = useDepartmentTimetables("Botany");
-
-  const heroImages = [
-    "/lovable-uploads/26e5dd9a-23af-4d35-bf39-50ea0a90dcc1.png",
-    "/lovable-uploads/3f2ac2fe-5cc6-403c-b266-c0a4bfc92b9a.png",
-    "/lovable-uploads/43b08f5f-94a1-4efc-a4bc-d959843cb7ea.png",
-    "/lovable-uploads/5c7ebe72-4ecd-4e54-8ce5-6bf0a6141878.png",
-    "/lovable-uploads/7ecf4141-f3db-4a34-b9c2-4a0c5af6c711.png",
-    "/lovable-uploads/09edbd5d-984f-41ea-9176-ae2cb550d878.png",
-    "/lovable-uploads/888ae344-c040-4057-9423-38e1e4328152.png",
-    "/lovable-uploads/208097d5-1a3d-4850-b72e-7a0e44ded787.png",
-    "/lovable-uploads/6119578b-9c06-42e6-b80d-fd03c8c0fffc.png",
-    "/lovable-uploads/ffb3cc7c-1414-44ed-89b7-a6160bf7578f.png",
-    "/lovable-uploads/e6b48831-58cc-474a-81fe-fa4e53081732.png",
-    "/lovable-uploads/31b6ffc3-d5b7-441c-bbdd-294127563557.png"
-  ];
-
-  const departmentPhotos = [
-    "/lovable-uploads/7ecf4141-f3db-4a34-b9c2-4a0c5af6c711.png",
-    "/lovable-uploads/09edbd5d-984f-41ea-9176-ae2cb550d878.png",
-    "/lovable-uploads/888ae344-c040-4057-9423-38e1e4328152.png",
-    "/lovable-uploads/208097d5-1a3d-4850-b72e-7a0e44ded787.png",
-    "/lovable-uploads/6119578b-9c06-42e6-b80d-fd03c8c0fffc.png",
-    "/lovable-uploads/ffb3cc7c-1414-44ed-89b7-a6160bf7578f.png",
-    "/lovable-uploads/e6b48831-58cc-474a-81fe-fa4e53081732.png",
-    "/lovable-uploads/31b6ffc3-d5b7-441c-bbdd-294127563557.png"
-  ];
-
+  const {
+    timetables,
+    loading,
+    error
+  } = useDepartmentTimetables("Botany");
+  const heroImages = ["/lovable-uploads/26e5dd9a-23af-4d35-bf39-50ea0a90dcc1.png", "/lovable-uploads/3f2ac2fe-5cc6-403c-b266-c0a4bfc92b9a.png", "/lovable-uploads/43b08f5f-94a1-4efc-a4bc-d959843cb7ea.png", "/lovable-uploads/5c7ebe72-4ecd-4e54-8ce5-6bf0a6141878.png", "/lovable-uploads/7ecf4141-f3db-4a34-b9c2-4a0c5af6c711.png", "/lovable-uploads/09edbd5d-984f-41ea-9176-ae2cb550d878.png", "/lovable-uploads/888ae344-c040-4057-9423-38e1e4328152.png", "/lovable-uploads/208097d5-1a3d-4850-b72e-7a0e44ded787.png", "/lovable-uploads/6119578b-9c06-42e6-b80d-fd03c8c0fffc.png", "/lovable-uploads/ffb3cc7c-1414-44ed-89b7-a6160bf7578f.png", "/lovable-uploads/e6b48831-58cc-474a-81fe-fa4e53081732.png", "/lovable-uploads/31b6ffc3-d5b7-441c-bbdd-294127563557.png"];
+  const departmentPhotos = ["/lovable-uploads/7ecf4141-f3db-4a34-b9c2-4a0c5af6c711.png", "/lovable-uploads/09edbd5d-984f-41ea-9176-ae2cb550d878.png", "/lovable-uploads/888ae344-c040-4057-9423-38e1e4328152.png", "/lovable-uploads/208097d5-1a3d-4850-b72e-7a0e44ded787.png", "/lovable-uploads/6119578b-9c06-42e6-b80d-fd03c8c0fffc.png", "/lovable-uploads/ffb3cc7c-1414-44ed-89b7-a6160bf7578f.png", "/lovable-uploads/e6b48831-58cc-474a-81fe-fa4e53081732.png", "/lovable-uploads/31b6ffc3-d5b7-441c-bbdd-294127563557.png"];
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentImageIndex((prevIndex) => 
-        prevIndex === heroImages.length - 1 ? 0 : prevIndex + 1
-      );
+      setCurrentImageIndex(prevIndex => prevIndex === heroImages.length - 1 ? 0 : prevIndex + 1);
     }, 3000);
-
     return () => clearInterval(interval);
   }, [heroImages.length]);
-
-  return (
-    <PageLayout 
-      title="Department of Botany" 
-      description="Exploring plant life, biodiversity, and ecological relationships through comprehensive botanical education and research."
-    >
+  return <PageLayout title="Department of Botany" description="Exploring plant life, biodiversity, and ecological relationships through comprehensive botanical education and research.">
       <div className="space-y-8">
         
         {/* Auto-scrolling Hero Images */}
         <div className="relative h-96 md:h-[500px] lg:h-[600px] rounded-lg overflow-hidden shadow-xl">
-          {heroImages.map((image, index) => (
-            <img
-              key={index}
-              src={image}
-              alt={`Botany Department ${index + 1}`}
-              className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${
-                index === currentImageIndex ? 'opacity-100' : 'opacity-0'
-              }`}
-            />
-          ))}
-          <div className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
-            <div className="text-center text-white">
-              <h1 className="text-4xl md:text-6xl font-bold mb-4">Botany Department</h1>
-              <p className="text-xl md:text-2xl">Understanding Plant Life & Biodiversity</p>
-            </div>
-          </div>
+          {heroImages.map((image, index) => <img key={index} src={image} alt={`Botany Department ${index + 1}`} className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${index === currentImageIndex ? 'opacity-100' : 'opacity-0'}`} />)}
+          
         </div>
 
         {/* Seat Structure and Programs */}
@@ -344,11 +300,7 @@ const Botany = () => {
               rich diversity of plant life.
             </p>
             <div className="bg-green-50 p-4 rounded-lg">
-              <img 
-                src="/lovable-uploads/31b6ffc3-d5b7-441c-bbdd-294127563557.png" 
-                alt="SVRMC Botanical Garden"
-                className="w-full h-48 object-cover rounded-lg mb-4"
-              />
+              <img src="/lovable-uploads/31b6ffc3-d5b7-441c-bbdd-294127563557.png" alt="SVRMC Botanical Garden" className="w-full h-48 object-cover rounded-lg mb-4" />
               <p className="text-sm">
                 Our garden provides students with hands-on learning opportunities in plant taxonomy, 
                 ecology, physiology, and environmental studies. Well-maintained pathways, labeled plant 
@@ -424,16 +376,10 @@ const Botany = () => {
           </CardHeader>
           <CardContent>
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
-              {departmentPhotos.map((photo, index) => (
-                <div key={index} className="group relative overflow-hidden rounded-xl shadow-lg hover:shadow-xl transition-all duration-300">
-                  <img 
-                    src={photo} 
-                    alt={`Botany Lab ${index + 1}`}
-                    className="w-full h-48 md:h-56 object-cover group-hover:scale-110 transition-transform duration-500"
-                  />
+              {departmentPhotos.map((photo, index) => <div key={index} className="group relative overflow-hidden rounded-xl shadow-lg hover:shadow-xl transition-all duration-300">
+                  <img src={photo} alt={`Botany Lab ${index + 1}`} className="w-full h-48 md:h-56 object-cover group-hover:scale-110 transition-transform duration-500" />
                   <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 transition-opacity duration-300"></div>
-                </div>
-              ))}
+                </div>)}
             </div>
           </CardContent>
         </Card>
@@ -447,18 +393,13 @@ const Botany = () => {
             </CardTitle>
           </CardHeader>
           <CardContent>
-            {loading ? (
-              <div className="text-center py-8">
+            {loading ? <div className="text-center py-8">
                 <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary mx-auto"></div>
                 <p className="text-muted-foreground mt-2">Loading timetables...</p>
-              </div>
-            ) : timetables.length === 0 ? (
-              <div className="text-center py-8">
+              </div> : timetables.length === 0 ? <div className="text-center py-8">
                 <Clock className="h-12 w-12 mx-auto mb-4 opacity-50" />
                 <p className="text-muted-foreground">No timetables available at the moment.</p>
-              </div>
-            ) : (
-              <div className="overflow-x-auto">
+              </div> : <div className="overflow-x-auto">
                 <table className="w-full">
                   <thead>
                     <tr className="border-b bg-muted/20">
@@ -468,39 +409,28 @@ const Botany = () => {
                     </tr>
                   </thead>
                   <tbody>
-                    {timetables.map((timetable, index) => (
-                      <tr key={timetable.id} className="border-b hover:bg-muted/10">
+                    {timetables.map((timetable, index) => <tr key={timetable.id} className="border-b hover:bg-muted/10">
                         <td className="py-3 px-4 text-primary font-medium">{index + 1}</td>
                         <td className="py-3 px-4 text-primary">
                           <div>
                             <div className="font-medium">{timetable.title}</div>
-                            {timetable.description && (
-                              <div className="text-sm text-muted-foreground">{timetable.description}</div>
-                            )}
+                            {timetable.description && <div className="text-sm text-muted-foreground">{timetable.description}</div>}
                           </div>
                         </td>
                         <td className="py-3 px-4 text-center">
-                          <Button
-                            variant="outline"
-                            size="sm"
-                            onClick={() => window.open(timetable.file_url, '_blank')}
-                          >
+                          <Button variant="outline" size="sm" onClick={() => window.open(timetable.file_url, '_blank')}>
                             <Download className="h-4 w-4 mr-2" />
                             Download PDF
                           </Button>
                         </td>
-                      </tr>
-                    ))}
+                      </tr>)}
                   </tbody>
                 </table>
-              </div>
-            )}
+              </div>}
           </CardContent>
         </Card>
 
       </div>
-    </PageLayout>
-  );
+    </PageLayout>;
 };
-
 export default Botany;
