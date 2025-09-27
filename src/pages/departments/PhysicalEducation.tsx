@@ -12,7 +12,7 @@ const PhysicalEducation = () => {
     achievements,
     loading: achievementsLoading
   } = useStudentAchievements("Physical Education");
-  const heroImages = ["/lovable-uploads/55aa5548-bd16-49ae-9ed2-274eaa2d77b9.png", "/lovable-uploads/cfe2d382-73ae-4599-a6e2-fbd80328ea8d.png", "/lovable-uploads/fd265fe9-ab8e-4495-a840-95981cfd1f0d.png", "/lovable-uploads/8875444f-eec6-4951-8501-c26abe4d7b3a.png"];
+  const heroImages = [];
   const departmentPhotos = ["/lovable-uploads/d87e5dab-fcca-417d-93c3-6e7a95fadefe.png", "/lovable-uploads/e57191fd-f471-4f51-922b-b0469d5e986c.png", "/lovable-uploads/548c502f-f9c1-42ea-a2e5-c1be0587ae3d.png", "/lovable-uploads/20c98bba-762d-44a6-bd81-9e54e4524d60.png", "/lovable-uploads/6f0d123f-d8ba-4e1a-bbbe-c3d2f78f5629.png"];
   useEffect(() => {
     const interval = setInterval(() => {
@@ -25,15 +25,17 @@ const PhysicalEducation = () => {
       <div className="space-y-8">
         
         {/* Auto-scrolling Hero Images */}
-        <div className="relative h-96 md:h-[500px] lg:h-[600px] rounded-lg overflow-hidden shadow-xl">
-          {heroImages.map((image, index) => <img key={index} src={image} alt={`Physical Education Department ${index + 1}`} className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${index === currentImageIndex ? 'opacity-100' : 'opacity-0'}`} />)}
-          <div className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
-            <div className="text-center text-white">
-              
-              
+        {heroImages.length > 0 && (
+          <div className="relative h-96 md:h-[500px] lg:h-[600px] rounded-lg overflow-hidden shadow-xl">
+            {heroImages.map((image, index) => <img key={index} src={image} alt={`Physical Education Department ${index + 1}`} className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${index === currentImageIndex ? 'opacity-100' : 'opacity-0'}`} />)}
+            <div className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
+              <div className="text-center text-white">
+                
+                
+              </div>
             </div>
           </div>
-        </div>
+        )}
 
         {/* Department Overview */}
         <Card>
