@@ -50,6 +50,8 @@ const Administration = () => {
       return a.name.localeCompare(b.name);
     });
   
+  const executiveBodyStaff = allStaff.filter(staff => staff.staff_type === 'executive_body');
+  
   // Get leadership data
   const chairman = leadership.find(leader => leader.position === 'chairman');
   const principal = leadership.find(leader => leader.position === 'principal');
@@ -228,6 +230,53 @@ const Administration = () => {
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {adminStaff.map((staff) => (
+                <div key={staff.id} className="bg-card rounded-lg shadow-sm border p-6 text-center hover:shadow-md transition-shadow">
+                  <div className="mb-4">
+                    {staff.photo_url ? (
+                      <img 
+                        src={staff.photo_url} 
+                        alt={staff.name}
+                        className="w-24 h-24 rounded-full mx-auto object-cover shadow-md"
+                      />
+                    ) : (
+                      <div className="w-24 h-24 rounded-full mx-auto bg-muted flex items-center justify-center text-lg font-semibold text-muted-foreground">
+                        {staff.name.split(' ').map(n => n[0]).join('').toUpperCase()}
+                      </div>
+                    )}
+                  </div>
+                  <h3 className="text-lg font-semibold text-foreground mb-1">{staff.name}</h3>
+                  <p className="text-primary font-medium text-sm mb-1">{staff.designation}</p>
+                  <p className="text-muted-foreground text-sm mb-3">{staff.department}</p>
+                  {staff.email && (
+                    <div className="flex items-center justify-center gap-2 text-sm text-muted-foreground">
+                      <Mail className="h-3 w-3" />
+                      <span>{staff.email}</span>
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+          )}
+        </section>
+
+        {/* Executive Body Section */}
+        <section>
+          <h2 className="text-3xl font-bold text-foreground mb-8 text-center">Executive Body</h2>
+          {loading ? (
+            <div className="text-center py-8">
+              <p className="text-muted-foreground">Loading executive body members...</p>
+            </div>
+          ) : error ? (
+            <div className="text-center py-8">
+              <p className="text-red-500">Error loading executive body members: {error}</p>
+            </div>
+          ) : executiveBodyStaff.length === 0 ? (
+            <div className="text-center py-8">
+              <p className="text-muted-foreground">No executive body members found.</p>
+            </div>
+          ) : (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {executiveBodyStaff.map((staff) => (
                 <div key={staff.id} className="bg-card rounded-lg shadow-sm border p-6 text-center hover:shadow-md transition-shadow">
                   <div className="mb-4">
                     {staff.photo_url ? (

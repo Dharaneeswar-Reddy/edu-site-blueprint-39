@@ -77,7 +77,8 @@ const DEPARTMENTS = [
 const STAFF_TYPES = [
   { value: "teaching", label: "Teaching Staff" },
   { value: "non-teaching", label: "Non-Teaching Staff" },
-  { value: "administration", label: "Administration" }
+  { value: "administration", label: "Administration" },
+  { value: "executive_body", label: "Executive Body" }
 ];
 
 const StaffAdmin = () => {
