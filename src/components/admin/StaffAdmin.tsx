@@ -483,6 +483,12 @@ const StaffAdmin = () => {
     return departmentMatch && typeMatch;
   });
 
+  useEffect(() => {
+    if (selectedStaffType === "administration" || selectedStaffType === "executive_body") {
+      setSelectedDepartment("all");
+    }
+  }, [selectedStaffType]);
+
   const getStaffTypeLabel = (type: string) => {
     const staffType = STAFF_TYPES.find(t => t.value === type);
     return staffType?.label || type;
@@ -561,9 +567,12 @@ const StaffAdmin = () => {
                     <Label htmlFor="department">Department</Label>
                     <Select
                       value={formData.department}
-                      onValueChange={(value) => setFormData(prev => ({ ...prev, department: value }))}
+                      onValueChange={(value) => {
+                        if (formData.staff_type === "administration" || formData.staff_type === "executive_body") return;
+                        setFormData(prev => ({ ...prev, department: value }));
+                      }}
                     >
-                      <SelectTrigger>
+                      <SelectTrigger disabled={formData.staff_type === "administration" || formData.staff_type === "executive_body"}>
                         <SelectValue placeholder="Select department" />
                       </SelectTrigger>
                       <SelectContent className="max-h-60 overflow-y-auto">
@@ -675,7 +684,7 @@ const StaffAdmin = () => {
                 <div className="flex-1">
                   <Label htmlFor="filter_department">Filter by Department</Label>
                   <Select value={selectedDepartment} onValueChange={setSelectedDepartment}>
-                    <SelectTrigger>
+                    <SelectTrigger disabled={selectedStaffType === "administration" || selectedStaffType === "executive_body"}>
                       <SelectValue placeholder="All Departments" />
                     </SelectTrigger>
                     <SelectContent className="max-h-60 overflow-y-auto">
