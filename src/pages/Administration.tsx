@@ -212,24 +212,24 @@ const Administration = () => {
           )}
         </section>
 
-        {/* Admin Staff Section */}
+        {/* Executive Body Section */}
         <section>
-          <h2 className="text-3xl font-bold text-foreground mb-8 text-center">Admin Staff</h2>
+          <h2 className="text-3xl font-bold text-foreground mb-8 text-center">Executive Body</h2>
           {loading ? (
             <div className="text-center py-8">
-              <p className="text-muted-foreground">Loading admin staff...</p>
+              <p className="text-muted-foreground">Loading executive body members...</p>
             </div>
           ) : error ? (
             <div className="text-center py-8">
-              <p className="text-red-500">Error loading admin staff: {error}</p>
+              <p className="text-red-500">Error loading executive body members: {error}</p>
             </div>
-          ) : adminStaff.length === 0 ? (
+          ) : executiveBodyStaff.length === 0 ? (
             <div className="text-center py-8">
-              <p className="text-muted-foreground">No admin staff found.</p>
+              <p className="text-muted-foreground">No executive body members found.</p>
             </div>
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {adminStaff.map((staff) => (
+              {executiveBodyStaff.map((staff) => (
                 <div key={staff.id} className="bg-card rounded-lg shadow-sm border p-6 text-center hover:shadow-md transition-shadow">
                   <div className="mb-4">
                     {staff.photo_url ? (
@@ -259,24 +259,24 @@ const Administration = () => {
           )}
         </section>
 
-        {/* Executive Body Section */}
+        {/* Admin Staff Section */}
         <section>
-          <h2 className="text-3xl font-bold text-foreground mb-8 text-center">Executive Body</h2>
+          <h2 className="text-3xl font-bold text-foreground mb-8 text-center">Admin Staff</h2>
           {loading ? (
             <div className="text-center py-8">
-              <p className="text-muted-foreground">Loading executive body members...</p>
+              <p className="text-muted-foreground">Loading admin staff...</p>
             </div>
           ) : error ? (
             <div className="text-center py-8">
-              <p className="text-red-500">Error loading executive body members: {error}</p>
+              <p className="text-red-500">Error loading admin staff: {error}</p>
             </div>
-          ) : executiveBodyStaff.length === 0 ? (
+          ) : adminStaff.length === 0 ? (
             <div className="text-center py-8">
-              <p className="text-muted-foreground">No executive body members found.</p>
+              <p className="text-muted-foreground">No admin staff found.</p>
             </div>
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {executiveBodyStaff.map((staff) => (
+              {adminStaff.map((staff) => (
                 <div key={staff.id} className="bg-card rounded-lg shadow-sm border p-6 text-center hover:shadow-md transition-shadow">
                   <div className="mb-4">
                     {staff.photo_url ? (
