@@ -3,12 +3,16 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Calendar, Clock, Users, BookOpen, Award, Download, Mail, ExternalLink, TestTube } from "lucide-react";
-import { useEffect, useState } from "react";
 import useStaff from "@/hooks/useStaff";
 import useDepartmentTimetables from "@/hooks/useDepartmentTimetables";
 import StaffCard from "@/components/StaffCard";
+import DepartmentHero from "@/components/department/DepartmentHero";
+import DepartmentGallery from "@/components/department/DepartmentGallery";
+
+const fallbackHeroImages = ["/lovable-uploads/596e11b2-cd25-48ed-8769-88d01f850463.png", "/lovable-uploads/5ac5ea4b-5580-4969-8658-192e082f8417.png", "/lovable-uploads/d4627f03-9552-464e-93cf-2eca5d4c1408.png", "/lovable-uploads/0f1c4da3-be3f-40ea-8a8e-99e833035b28.png", "/lovable-uploads/225096ea-f8cf-438e-8c55-9040932e6d87.png", "/lovable-uploads/9f78b4d0-4434-4a94-b8a6-88be11989e42.png", "/lovable-uploads/07f517fb-d713-4aaf-944d-b8f8d448db39.png", "/lovable-uploads/0523c75f-0802-48bd-8253-e99fd2384d50.png", "/lovable-uploads/80fc22e8-dd51-4a45-ab3c-1a1af16f51ef.png", "/lovable-uploads/ef841f31-b3bb-40b7-a2f2-d5af0b0957bf.png"];
+const fallbackGalleryImages = ["/lovable-uploads/596e11b2-cd25-48ed-8769-88d01f850463.png", "/lovable-uploads/5ac5ea4b-5580-4969-8658-192e082f8417.png", "/lovable-uploads/d4627f03-9552-464e-93cf-2eca5d4c1408.png", "/lovable-uploads/0f1c4da3-be3f-40ea-8a8e-99e833035b28.png", "/lovable-uploads/225096ea-f8cf-438e-8c55-9040932e6d87.png", "/lovable-uploads/9f78b4d0-4434-4a94-b8a6-88be11989e42.png", "/lovable-uploads/07f517fb-d713-4aaf-944d-b8f8d448db39.png", "/lovable-uploads/0523c75f-0802-48bd-8253-e99fd2384d50.png", "/lovable-uploads/80fc22e8-dd51-4a45-ab3c-1a1af16f51ef.png", "/lovable-uploads/ef841f31-b3bb-40b7-a2f2-d5af0b0957bf.png"];
+
 const Physics = () => {
-  const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const {
     staff: departmentStaff,
     loading: staffLoading
@@ -17,24 +21,12 @@ const Physics = () => {
     timetables,
     loading: timetablesLoading
   } = useDepartmentTimetables("Physics");
-  const heroImages = ["/lovable-uploads/596e11b2-cd25-48ed-8769-88d01f850463.png", "/lovable-uploads/5ac5ea4b-5580-4969-8658-192e082f8417.png", "/lovable-uploads/d4627f03-9552-464e-93cf-2eca5d4c1408.png", "/lovable-uploads/0f1c4da3-be3f-40ea-8a8e-99e833035b28.png", "/lovable-uploads/225096ea-f8cf-438e-8c55-9040932e6d87.png", "/lovable-uploads/9f78b4d0-4434-4a94-b8a6-88be11989e42.png", "/lovable-uploads/07f517fb-d713-4aaf-944d-b8f8d448db39.png", "/lovable-uploads/0523c75f-0802-48bd-8253-e99fd2384d50.png", "/lovable-uploads/80fc22e8-dd51-4a45-ab3c-1a1af16f51ef.png", "/lovable-uploads/ef841f31-b3bb-40b7-a2f2-d5af0b0957bf.png"];
-  const departmentPhotos = ["/lovable-uploads/596e11b2-cd25-48ed-8769-88d01f850463.png", "/lovable-uploads/5ac5ea4b-5580-4969-8658-192e082f8417.png", "/lovable-uploads/d4627f03-9552-464e-93cf-2eca5d4c1408.png", "/lovable-uploads/0f1c4da3-be3f-40ea-8a8e-99e833035b28.png", "/lovable-uploads/225096ea-f8cf-438e-8c55-9040932e6d87.png", "/lovable-uploads/9f78b4d0-4434-4a94-b8a6-88be11989e42.png", "/lovable-uploads/07f517fb-d713-4aaf-944d-b8f8d448db39.png", "/lovable-uploads/0523c75f-0802-48bd-8253-e99fd2384d50.png", "/lovable-uploads/80fc22e8-dd51-4a45-ab3c-1a1af16f51ef.png", "/lovable-uploads/ef841f31-b3bb-40b7-a2f2-d5af0b0957bf.png"];
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentImageIndex(prevIndex => prevIndex === heroImages.length - 1 ? 0 : prevIndex + 1);
-    }, 3000);
-    return () => clearInterval(interval);
-  }, [heroImages.length]);
+
   return <PageLayout title="Department of Physics" description="Exploring the fundamental principles of nature and universe through cutting-edge research and education.">
       <div className="space-y-8">
         
         {/* Auto-scrolling Hero Images */}
-        <div className="relative h-96 md:h-[500px] lg:h-[600px] rounded-lg overflow-hidden shadow-xl">
-          {heroImages.map((image, index) => <img key={index} src={image} alt={`Physics Department ${index + 1}`} className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${index === currentImageIndex ? 'opacity-100' : 'opacity-0'}`} />)}
-          <div className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
-            
-          </div>
-        </div>
+        <DepartmentHero department="Physics" fallbackImages={fallbackHeroImages} />
 
         {/* Department Overview */}
         <Card>
@@ -309,12 +301,7 @@ const Physics = () => {
             <CardTitle>Department Gallery</CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
-              {departmentPhotos.map((photo, index) => <div key={index} className="group relative overflow-hidden rounded-xl shadow-lg hover:shadow-xl transition-all duration-300">
-                  <img src={photo} alt={`Physics Lab ${index + 1}`} className="w-full h-48 md:h-56 object-cover group-hover:scale-110 transition-transform duration-500" />
-                  <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 transition-opacity duration-300"></div>
-                </div>)}
-            </div>
+            <DepartmentGallery department="Physics" fallbackImages={fallbackGalleryImages} />
           </CardContent>
         </Card>
 
