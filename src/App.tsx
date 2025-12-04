@@ -70,8 +70,6 @@ import DepartmentsAdmin from "@/components/admin/DepartmentsAdmin";
 import StudentSupportAdmin from "@/components/admin/StudentSupportAdmin";
 import AdminLayout from "@/components/admin/AdminLayout";
 import AdminRoleGuard from "@/components/admin/AdminRoleGuard";
-import AdminUsers from "@/pages/AdminUsers";
-import AdminRecruiters from "@/pages/AdminRecruiters";
 import ResetPassword from "@/pages/admin/ResetPassword";
 import AcceptInvitation from "@/pages/admin/AcceptInvitation";
 
@@ -123,8 +121,6 @@ const App = () => (
             <Route path="/admin" element={<Admin />} />
             <Route path="/admin/reset-password" element={<ResetPassword />} />
             <Route path="/admin/accept-invitation" element={<AcceptInvitation />} />
-            <Route path="/admin/users" element={<AdminUsers />} />
-            <Route path="/admin/recruiters" element={<AdminRecruiters />} />
             <Route path="/admin/announcements" element={
               <AdminRoleGuard>
                 <AdminLayout>

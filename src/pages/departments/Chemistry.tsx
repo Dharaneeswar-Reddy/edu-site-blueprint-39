@@ -4,12 +4,16 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Calendar, Clock, Users, BookOpen, Award, Download, TestTube, Mail, ExternalLink } from "lucide-react";
-import { useEffect, useState } from "react";
 import { useStaff } from "@/hooks/useStaff";
 import useDepartmentTimetables from "@/hooks/useDepartmentTimetables";
 import StaffCard from "@/components/StaffCard";
+import DepartmentHero from "@/components/department/DepartmentHero";
+import DepartmentGallery from "@/components/department/DepartmentGallery";
+
+const fallbackHeroImages = ["/lovable-uploads/0fe00b38-b99b-4a27-bf5b-d43c2778a8fa.png", "/lovable-uploads/5bcaeb67-6bff-44ae-a93c-1d97ef3bac8d.png", "/lovable-uploads/380523da-c2c1-4014-b1ae-6fa50c1df600.png", "/lovable-uploads/7ac42b67-07fe-42f1-9b41-6f119490b786.png", "/lovable-uploads/ac73ea26-e8e0-4756-9c7b-c2a4a18f6d66.png", "/lovable-uploads/6c0f963f-de81-4600-be2e-a311fe83bb96.png", "/lovable-uploads/958295e9-3189-4f34-8a51-d2aeb431f9ee.png", "/lovable-uploads/44151e06-0086-45c1-b1b8-dea0cce05c3b.png", "/lovable-uploads/c06797f6-5188-4a68-893e-92274a14b172.png", "/lovable-uploads/dec9abef-758a-4d15-a93a-a9e7e7575c05.png", "/lovable-uploads/1d8f59be-c09f-438d-9557-f1ad61eea667.png", "/lovable-uploads/10b4f684-4d4c-45be-871d-f64daf43e585.png", "/lovable-uploads/1041cbf2-981b-437e-a2eb-72dfb54ca3b1.png", "/lovable-uploads/a32c8f33-64ff-4729-8b86-ba29f7eb5491.png"];
+const fallbackGalleryImages = ["/lovable-uploads/0fe00b38-b99b-4a27-bf5b-d43c2778a8fa.png", "/lovable-uploads/5bcaeb67-6bff-44ae-a93c-1d97ef3bac8d.png", "/lovable-uploads/380523da-c2c1-4014-b1ae-6fa50c1df600.png", "/lovable-uploads/7ac42b67-07fe-42f1-9b41-6f119490b786.png", "/lovable-uploads/ac73ea26-e8e0-4756-9c7b-c2a4a18f6d66.png", "/lovable-uploads/6c0f963f-de81-4600-be2e-a311fe83bb96.png", "/lovable-uploads/958295e9-3189-4f34-8a51-d2aeb431f9ee.png", "/lovable-uploads/44151e06-0086-45c1-b1b8-dea0cce05c3b.png", "/lovable-uploads/c06797f6-5188-4a68-893e-92274a14b172.png", "/lovable-uploads/dec9abef-758a-4d15-a93a-a9e7e7575c05.png", "/lovable-uploads/1d8f59be-c09f-438d-9557-f1ad61eea667.png", "/lovable-uploads/86727585-f64e-465e-802e-95da0dcf41b1.png", "/lovable-uploads/10b4f684-4d4c-45be-871d-f64daf43e585.png", "/lovable-uploads/1041cbf2-981b-437e-a2eb-72dfb54ca3b1.png", "/lovable-uploads/a32c8f33-64ff-4729-8b86-ba29f7eb5491.png"];
+
 const Chemistry = () => {
-  const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const {
     staff: chemistryStaff,
     loading: staffLoading
@@ -26,27 +30,12 @@ const Chemistry = () => {
     timetables: pgTimetables,
     loading: pgTimetablesLoading
   } = useDepartmentTimetables("PG Chemistry");
-  const heroImages = ["/lovable-uploads/0fe00b38-b99b-4a27-bf5b-d43c2778a8fa.png", "/lovable-uploads/5bcaeb67-6bff-44ae-a93c-1d97ef3bac8d.png", "/lovable-uploads/380523da-c2c1-4014-b1ae-6fa50c1df600.png", "/lovable-uploads/7ac42b67-07fe-42f1-9b41-6f119490b786.png", "/lovable-uploads/ac73ea26-e8e0-4756-9c7b-c2a4a18f6d66.png", "/lovable-uploads/6c0f963f-de81-4600-be2e-a311fe83bb96.png", "/lovable-uploads/958295e9-3189-4f34-8a51-d2aeb431f9ee.png", "/lovable-uploads/44151e06-0086-45c1-b1b8-dea0cce05c3b.png", "/lovable-uploads/c06797f6-5188-4a68-893e-92274a14b172.png", "/lovable-uploads/dec9abef-758a-4d15-a93a-a9e7e7575c05.png", "/lovable-uploads/1d8f59be-c09f-438d-9557-f1ad61eea667.png", "/lovable-uploads/10b4f684-4d4c-45be-871d-f64daf43e585.png", "/lovable-uploads/1041cbf2-981b-437e-a2eb-72dfb54ca3b1.png", "/lovable-uploads/a32c8f33-64ff-4729-8b86-ba29f7eb5491.png"];
-  const departmentPhotos = ["/lovable-uploads/0fe00b38-b99b-4a27-bf5b-d43c2778a8fa.png", "/lovable-uploads/5bcaeb67-6bff-44ae-a93c-1d97ef3bac8d.png", "/lovable-uploads/380523da-c2c1-4014-b1ae-6fa50c1df600.png", "/lovable-uploads/7ac42b67-07fe-42f1-9b41-6f119490b786.png", "/lovable-uploads/ac73ea26-e8e0-4756-9c7b-c2a4a18f6d66.png", "/lovable-uploads/6c0f963f-de81-4600-be2e-a311fe83bb96.png", "/lovable-uploads/958295e9-3189-4f34-8a51-d2aeb431f9ee.png", "/lovable-uploads/44151e06-0086-45c1-b1b8-dea0cce05c3b.png", "/lovable-uploads/c06797f6-5188-4a68-893e-92274a14b172.png", "/lovable-uploads/dec9abef-758a-4d15-a93a-a9e7e7575c05.png", "/lovable-uploads/1d8f59be-c09f-438d-9557-f1ad61eea667.png", "/lovable-uploads/86727585-f64e-465e-802e-95da0dcf41b1.png", "/lovable-uploads/10b4f684-4d4c-45be-871d-f64daf43e585.png", "/lovable-uploads/1041cbf2-981b-437e-a2eb-72dfb54ca3b1.png", "/lovable-uploads/a32c8f33-64ff-4729-8b86-ba29f7eb5491.png"];
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentImageIndex(prevIndex => prevIndex === heroImages.length - 1 ? 0 : prevIndex + 1);
-    }, 3000);
-    return () => clearInterval(interval);
-  }, [heroImages.length]);
+
   return <PageLayout title="Department of Chemistry" description="Advancing chemical sciences through innovative research, practical applications, and comprehensive education.">
       <div className="space-y-8">
         
         {/* Auto-scrolling Hero Images */}
-        <div className="relative h-96 md:h-[500px] lg:h-[600px] rounded-lg overflow-hidden shadow-xl">
-          {heroImages.map((image, index) => <img key={index} src={image} alt={`Chemistry Department ${index + 1}`} className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${index === currentImageIndex ? 'opacity-100' : 'opacity-0'}`} />)}
-          <div className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
-            <div className="text-center text-white">
-              
-              
-            </div>
-          </div>
-        </div>
+        <DepartmentHero department="Chemistry" fallbackImages={fallbackHeroImages} />
 
         {/* Chemistry Program Tabs */}
         <Tabs defaultValue="ug" className="w-full">
@@ -783,12 +772,7 @@ const Chemistry = () => {
                 <CardTitle>Department Gallery</CardTitle>
               </CardHeader>
               <CardContent>
-                <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
-                  {departmentPhotos.map((photo, index) => <div key={index} className="group relative overflow-hidden rounded-xl shadow-lg hover:shadow-xl transition-all duration-300">
-                      <img src={photo} alt={`Chemistry Lab ${index + 1}`} className="w-full h-48 md:h-56 object-cover group-hover:scale-110 transition-transform duration-500" />
-                      <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 transition-opacity duration-300"></div>
-                    </div>)}
-                </div>
+                <DepartmentGallery department="Chemistry" fallbackImages={fallbackGalleryImages} />
               </CardContent>
             </Card>
 
@@ -1089,12 +1073,7 @@ const Chemistry = () => {
                 <CardTitle>Department Gallery</CardTitle>
               </CardHeader>
               <CardContent>
-                <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
-                  {departmentPhotos.map((photo, index) => <div key={index} className="group relative overflow-hidden rounded-xl shadow-lg hover:shadow-xl transition-all duration-300">
-                      <img src={photo} alt={`Chemistry Research Lab ${index + 1}`} className="w-full h-48 md:h-56 object-cover group-hover:scale-110 transition-transform duration-500" />
-                      <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 transition-opacity duration-300"></div>
-                    </div>)}
-                </div>
+                <DepartmentGallery department="PG Chemistry" fallbackImages={fallbackGalleryImages} />
               </CardContent>
             </Card>
 

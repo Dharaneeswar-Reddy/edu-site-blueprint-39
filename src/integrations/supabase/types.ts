@@ -122,6 +122,45 @@ export type Database = {
         }
         Relationships: []
       }
+      department_images: {
+        Row: {
+          created_at: string
+          department: string
+          description: string | null
+          display_order: number | null
+          id: string
+          image_type: string
+          image_url: string
+          is_active: boolean | null
+          title: string | null
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          department: string
+          description?: string | null
+          display_order?: number | null
+          id?: string
+          image_type: string
+          image_url: string
+          is_active?: boolean | null
+          title?: string | null
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          department?: string
+          description?: string | null
+          display_order?: number | null
+          id?: string
+          image_type?: string
+          image_url?: string
+          is_active?: boolean | null
+          title?: string | null
+          updated_at?: string
+        }
+        Relationships: []
+      }
       department_timetables: {
         Row: {
           academic_year: string | null

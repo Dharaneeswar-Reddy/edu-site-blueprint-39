@@ -10,12 +10,13 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@
 import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle } from "@/components/ui/alert-dialog";
 import { Badge } from "@/components/ui/badge";
 import { Switch } from "@/components/ui/switch";
-import { Upload, Edit, Trash2, BookOpen, Eye, Users, FileText, Trophy } from "lucide-react";
+import { Upload, Edit, Trash2, BookOpen, Eye, Users, FileText, Trophy, Image } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
 import useStaff from "@/hooks/useStaff";
 import useDepartmentTimetables from "@/hooks/useDepartmentTimetables";
 import StudentAchievementsAdmin from "./StudentAchievementsAdmin";
+import DepartmentImagesAdmin from "./DepartmentImagesAdmin";
 
 interface DepartmentTimetable {
   id: string;
@@ -295,21 +296,28 @@ const DepartmentsAdmin = () => {
 
       {selectedDepartment && (
         <Tabs value={activeTab} onValueChange={handleTabChange} className="w-full">
-          <TabsList className="grid w-full grid-cols-2 mb-6">
+          <TabsList className="grid w-full grid-cols-4 mb-6">
             <TabsTrigger value="staff" className="flex items-center gap-2">
               <Users className="h-4 w-4" />
-              Staff ({staff.length})
+              Staff
             </TabsTrigger>
-            {selectedDepartment !== 'Physical Education' && (
+            <TabsTrigger value="hero-images" className="flex items-center gap-2">
+              <Image className="h-4 w-4" />
+              Hero Images
+            </TabsTrigger>
+            <TabsTrigger value="gallery-images" className="flex items-center gap-2">
+              <Image className="h-4 w-4" />
+              Gallery
+            </TabsTrigger>
+            {selectedDepartment !== 'Physical Education' ? (
               <TabsTrigger value="timetables" className="flex items-center gap-2">
                 <BookOpen className="h-4 w-4" />
-                Timetables ({timetables.length})
+                Timetables
               </TabsTrigger>
-            )}
-            {selectedDepartment === 'Physical Education' && (
+            ) : (
               <TabsTrigger value="achievements" className="flex items-center gap-2">
                 <Trophy className="h-4 w-4" />
-                Student Achievements
+                Achievements
               </TabsTrigger>
             )}
           </TabsList>
@@ -368,6 +376,24 @@ const DepartmentsAdmin = () => {
                 )}
               </CardContent>
             </Card>
+          </TabsContent>
+
+          {/* Hero Images Tab */}
+          <TabsContent value="hero-images" className="space-y-6">
+            <DepartmentImagesAdmin
+              department={selectedDepartment}
+              imageType="hero"
+              title="Hero Section Images"
+            />
+          </TabsContent>
+
+          {/* Gallery Images Tab */}
+          <TabsContent value="gallery-images" className="space-y-6">
+            <DepartmentImagesAdmin
+              department={selectedDepartment}
+              imageType="gallery"
+              title="Gallery Images"
+            />
           </TabsContent>
 
           {/* Timetables Tab */}
