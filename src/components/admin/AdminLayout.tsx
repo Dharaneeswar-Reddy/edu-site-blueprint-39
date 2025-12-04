@@ -2,7 +2,7 @@ import { ReactNode } from "react";
 import { useAuth } from "@/hooks/useAuth";
 import { Button } from "@/components/ui/button";
 import { Card, CardHeader, CardTitle } from "@/components/ui/card";
-import { LogOut, Settings, Home, Users, FileText, Calendar, Image, BookOpen, Shield, Building } from "lucide-react";
+import { LogOut, Settings, Home, Users, FileText, Image, BookOpen } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 
 interface AdminLayoutProps {
@@ -16,7 +16,6 @@ const AdminLayout = ({ children }: AdminLayoutProps) => {
 
   const navigationItems = [
     { icon: Home, label: "Dashboard", path: "/admin" },
-    { icon: Shield, label: "User Management", path: "/admin/users" },
     { icon: FileText, label: "Announcements", path: "/admin/announcements" },
     { icon: BookOpen, label: "Examination", path: "/admin/examination" },
     { icon: Settings, label: "IQAC", path: "/admin/iqac" },
@@ -24,7 +23,6 @@ const AdminLayout = ({ children }: AdminLayoutProps) => {
     { icon: Users, label: "Student Support", path: "/admin/student-support" },
     { icon: Image, label: "Gallery", path: "/admin/gallery" },
     { icon: BookOpen, label: "Departments", path: "/admin/departments" },
-    { icon: Building, label: "Recruiters", path: "/admin/recruiters" },
   ];
 
   const handleSignOut = async () => {

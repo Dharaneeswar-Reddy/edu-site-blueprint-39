@@ -92,7 +92,7 @@ export type Database = {
           created_at: string
           details: Json | null
           id: string
-          ip_address: unknown | null
+          ip_address: unknown
           resource_id: string | null
           resource_type: string | null
           user_agent: string | null
@@ -103,7 +103,7 @@ export type Database = {
           created_at?: string
           details?: Json | null
           id?: string
-          ip_address?: unknown | null
+          ip_address?: unknown
           resource_id?: string | null
           resource_type?: string | null
           user_agent?: string | null
@@ -114,7 +114,7 @@ export type Database = {
           created_at?: string
           details?: Json | null
           id?: string
-          ip_address?: unknown | null
+          ip_address?: unknown
           resource_id?: string | null
           resource_type?: string | null
           user_agent?: string | null
@@ -335,7 +335,7 @@ export type Database = {
           email: string | null
           failed_attempts: number
           id: string
-          ip_address: unknown | null
+          ip_address: unknown
           last_attempt_at: string
           locked_until: string | null
           updated_at: string
@@ -345,7 +345,7 @@ export type Database = {
           email?: string | null
           failed_attempts?: number
           id?: string
-          ip_address?: unknown | null
+          ip_address?: unknown
           last_attempt_at?: string
           locked_until?: string | null
           updated_at?: string
@@ -355,7 +355,7 @@ export type Database = {
           email?: string | null
           failed_attempts?: number
           id?: string
-          ip_address?: unknown | null
+          ip_address?: unknown
           last_attempt_at?: string
           locked_until?: string | null
           updated_at?: string
@@ -744,7 +744,7 @@ export type Database = {
         Returns: Json
       }
       get_public_leadership_data: {
-        Args: Record<PropertyKey, never>
+        Args: never
         Returns: {
           achievements: string[]
           bio: string
@@ -764,7 +764,7 @@ export type Database = {
         }[]
       }
       get_public_staff_data: {
-        Args: Record<PropertyKey, never>
+        Args: never
         Returns: {
           bio: string
           created_at: string
@@ -780,7 +780,7 @@ export type Database = {
         }[]
       }
       get_public_staff_data_secure: {
-        Args: Record<PropertyKey, never>
+        Args: never
         Returns: {
           bio: string
           created_at: string
@@ -796,7 +796,7 @@ export type Database = {
         }[]
       }
       get_public_student_support_staff: {
-        Args: Record<PropertyKey, never>
+        Args: never
         Returns: {
           created_at: string
           department: string
@@ -814,18 +814,9 @@ export type Database = {
         Args: { user_id: string }
         Returns: Database["public"]["Enums"]["app_role"]
       }
-      get_user_role_level: {
-        Args: { user_id?: string }
-        Returns: number
-      }
-      is_admin: {
-        Args: { user_id?: string }
-        Returns: boolean
-      }
-      is_super_admin: {
-        Args: { user_id?: string }
-        Returns: boolean
-      }
+      get_user_role_level: { Args: { user_id?: string }; Returns: number }
+      is_admin: { Args: { user_id?: string }; Returns: boolean }
+      is_super_admin: { Args: { user_id?: string }; Returns: boolean }
       record_failed_login: {
         Args: { user_email: string; user_ip?: unknown }
         Returns: Json
