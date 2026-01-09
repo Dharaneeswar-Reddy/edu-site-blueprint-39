@@ -53,6 +53,39 @@ export type Database = {
         }
         Relationships: []
       }
+      aicte_documents: {
+        Row: {
+          description: string | null
+          display_order: number | null
+          file_url: string
+          id: string
+          is_active: boolean | null
+          title: string
+          updated_at: string
+          uploaded_at: string
+        }
+        Insert: {
+          description?: string | null
+          display_order?: number | null
+          file_url: string
+          id?: string
+          is_active?: boolean | null
+          title: string
+          updated_at?: string
+          uploaded_at?: string
+        }
+        Update: {
+          description?: string | null
+          display_order?: number | null
+          file_url?: string
+          id?: string
+          is_active?: boolean | null
+          title?: string
+          updated_at?: string
+          uploaded_at?: string
+        }
+        Relationships: []
+      }
       announcements: {
         Row: {
           content: string

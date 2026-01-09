@@ -64,6 +64,7 @@ import GymSports from "./pages/student-support/GymSports";
 import AnnouncementsAdmin from "@/components/admin/AnnouncementsAdmin";
 import ExaminationDocumentsAdmin from "@/components/admin/ExaminationDocumentsAdmin";
 import IqacAdmin from "@/components/admin/IqacAdmin";
+import AicteAdmin from "@/components/admin/AicteAdmin";
 import StaffAdmin from "@/components/admin/StaffAdmin";
 import GalleryAdmin from "@/components/admin/GalleryAdmin";
 import DepartmentsAdmin from "@/components/admin/DepartmentsAdmin";
@@ -139,6 +140,13 @@ const App = () => (
               <AdminRoleGuard>
                 <AdminLayout>
                   <IqacAdmin />
+                </AdminLayout>
+              </AdminRoleGuard>
+            } />
+            <Route path="/admin/about-us" element={
+              <AdminRoleGuard>
+                <AdminLayout>
+                  <AicteAdmin />
                 </AdminLayout>
               </AdminRoleGuard>
             } />
