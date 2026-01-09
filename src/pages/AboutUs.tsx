@@ -700,45 +700,37 @@ const AboutUs = () => {
               <p className="text-muted-foreground">No AICTE documents available at the moment.</p>
             </div>
           ) : (
-            <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+            <div className="space-y-4">
               {aicteDocuments.map((doc) => (
-                <Card key={doc.id} className="hover:shadow-lg transition-shadow">
-                  <CardContent className="p-6">
-                    <div className="flex items-start gap-4">
-                      <div className="p-3 bg-indigo-100 rounded-lg">
-                        <FileText className="h-6 w-6 text-indigo-600" />
-                      </div>
-                      <div className="flex-1 min-w-0">
-                        <h3 className="font-semibold text-foreground truncate">{doc.title}</h3>
-                        {doc.description && (
-                          <p className="text-sm text-muted-foreground mt-1 line-clamp-2">{doc.description}</p>
-                        )}
+                <div 
+                  key={doc.id} 
+                  className="bg-orange-50/80 rounded-lg p-6 hover:shadow-md transition-shadow"
+                >
+                  <div className="flex items-start justify-between gap-4">
+                    <div className="flex-1">
+                      <h3 className="text-lg font-semibold text-amber-800">{doc.title}</h3>
+                      {doc.description && (
+                        <p className="text-sm text-gray-600 mt-1">{doc.description}</p>
+                      )}
+                      <div className="mt-4">
+                        <Button
+                          variant="outline"
+                          size="sm"
+                          className="border-gray-300 hover:bg-gray-100"
+                          asChild
+                        >
+                          <a href={doc.file_url} download>
+                            <Download className="h-4 w-4 mr-2" />
+                            Download Document
+                          </a>
+                        </Button>
                       </div>
                     </div>
-                    <div className="mt-4 flex gap-2">
-                      <Button
-                        variant="outline"
-                        size="sm"
-                        className="flex-1"
-                        onClick={() => window.open(doc.file_url, '_blank')}
-                      >
-                        <ExternalLink className="h-4 w-4 mr-2" />
-                        View
-                      </Button>
-                      <Button
-                        variant="default"
-                        size="sm"
-                        className="flex-1"
-                        asChild
-                      >
-                        <a href={doc.file_url} download>
-                          <Download className="h-4 w-4 mr-2" />
-                          Download
-                        </a>
-                      </Button>
-                    </div>
-                  </CardContent>
-                </Card>
+                    <span className="px-3 py-1 bg-amber-400 text-amber-900 text-sm font-medium rounded-full whitespace-nowrap">
+                      Available
+                    </span>
+                  </div>
+                </div>
               ))}
             </div>
           )}
