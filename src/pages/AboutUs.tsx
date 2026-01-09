@@ -116,8 +116,8 @@ const AboutUs = () => {
             <Award className="h-8 w-8 text-blue-600" />
             <h2 className="text-3xl font-bold text-gray-900">College Profile</h2>
           </div>
-          <div className="grid md:grid-cols-2 gap-8 items-center">
-            <div>
+          <div className="space-y-8">
+            <div className="max-w-none">
               <p className="text-lg text-gray-700 leading-relaxed mb-4">
                 College Profile – SVRM College, Nagaram
               </p>
@@ -140,31 +140,25 @@ const AboutUs = () => {
                 Today, SVRM College stands as a preferred destination for higher education in the region, empowering rural youth to compete globally while remaining deeply rooted in values of service, discipline, and excellence.
               </p>
             </div>
-            <div className="space-y-4">
-              <Card>
-                <CardContent className="p-4">
-                  <div className="text-center">
-                    <div className="text-2xl font-bold text-blue-600">55+</div>
-                    <div className="text-sm text-gray-600">Years of Experience</div>
-                  </div>
-                </CardContent>
-              </Card>
-              <Card>
-                <CardContent className="p-4">
-                  <div className="text-center">
-                    <div className="text-2xl font-bold text-green-600">1000+</div>
-                    <div className="text-sm text-gray-600">Students</div>
-                  </div>
-                </CardContent>
-              </Card>
-              <Card>
-                <CardContent className="p-4">
-                  <div className="text-center">
-                    <div className="text-2xl font-bold text-purple-600">15+</div>
-                    <div className="text-sm text-gray-600">Departments</div>
-                  </div>
-                </CardContent>
-              </Card>
+            
+            {/* Stats in horizontal layout */}
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 pt-6 border-t border-blue-200">
+              <div className="bg-white rounded-xl p-5 text-center shadow-sm hover:shadow-md transition-shadow">
+                <div className="text-3xl font-bold text-blue-600 mb-1">56+</div>
+                <div className="text-sm text-gray-600 font-medium">Years of Excellence</div>
+              </div>
+              <div className="bg-white rounded-xl p-5 text-center shadow-sm hover:shadow-md transition-shadow">
+                <div className="text-3xl font-bold text-green-600 mb-1">1000+</div>
+                <div className="text-sm text-gray-600 font-medium">Students</div>
+              </div>
+              <div className="bg-white rounded-xl p-5 text-center shadow-sm hover:shadow-md transition-shadow">
+                <div className="text-3xl font-bold text-purple-600 mb-1">70+</div>
+                <div className="text-sm text-gray-600 font-medium">Faculty Members</div>
+              </div>
+              <div className="bg-white rounded-xl p-5 text-center shadow-sm hover:shadow-md transition-shadow">
+                <div className="text-3xl font-bold text-amber-600 mb-1">15+</div>
+                <div className="text-sm text-gray-600 font-medium">Departments</div>
+              </div>
             </div>
           </div>
         </section>
@@ -719,9 +713,6 @@ const AboutUs = () => {
                         {doc.description && (
                           <p className="text-sm text-muted-foreground mt-1 line-clamp-2">{doc.description}</p>
                         )}
-                        <p className="text-xs text-muted-foreground mt-2">
-                          Uploaded: {new Date(doc.uploaded_at).toLocaleDateString()}
-                        </p>
                       </div>
                     </div>
                     <div className="mt-4 flex gap-2">
