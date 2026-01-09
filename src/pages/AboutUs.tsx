@@ -4,11 +4,12 @@ import SEO from "@/components/SEO";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Button } from "@/components/ui/button";
-import { Award, Users, Eye, Heart, Trophy, FileCheck, Shield, Globe, Building, BookOpen, FlaskConical, Computer, GraduationCap, ChevronRight } from "lucide-react";
+import { Award, Users, Eye, Heart, Trophy, FileCheck, Shield, Globe, Building, BookOpen, FlaskConical, Computer, GraduationCap, ChevronRight, FileText, Download, ExternalLink } from "lucide-react";
+import { useAicteDocuments } from "@/hooks/useAicteDocuments";
 
 const AboutUs = () => {
   const [expandedBuilding, setExpandedBuilding] = useState<string | null>(null);
-
+  const { documents: aicteDocuments, loading: aicteLoading } = useAicteDocuments();
 
   const toggleExpansion = (buildingId: string) => {
     setExpandedBuilding(expandedBuilding === buildingId ? null : buildingId);
@@ -684,6 +685,72 @@ const AboutUs = () => {
               </Card>
             </TabsContent>
           </Tabs>
+        </section>
+
+        {/* AICTE Section */}
+        <section className="bg-gradient-to-r from-indigo-50 to-purple-50 rounded-lg p-8">
+          <div className="flex items-center gap-4 mb-8">
+            <FileText className="h-8 w-8 text-indigo-600" />
+            <h2 className="text-3xl font-bold text-foreground">AICTE</h2>
+          </div>
+          <p className="text-muted-foreground mb-6">
+            Access important AICTE (All India Council for Technical Education) documents and reports.
+          </p>
+          
+          {aicteLoading ? (
+            <div className="text-center py-8">
+              <p className="text-muted-foreground">Loading documents...</p>
+            </div>
+          ) : aicteDocuments.length === 0 ? (
+            <div className="text-center py-8">
+              <p className="text-muted-foreground">No AICTE documents available at the moment.</p>
+            </div>
+          ) : (
+            <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+              {aicteDocuments.map((doc) => (
+                <Card key={doc.id} className="hover:shadow-lg transition-shadow">
+                  <CardContent className="p-6">
+                    <div className="flex items-start gap-4">
+                      <div className="p-3 bg-indigo-100 rounded-lg">
+                        <FileText className="h-6 w-6 text-indigo-600" />
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <h3 className="font-semibold text-foreground truncate">{doc.title}</h3>
+                        {doc.description && (
+                          <p className="text-sm text-muted-foreground mt-1 line-clamp-2">{doc.description}</p>
+                        )}
+                        <p className="text-xs text-muted-foreground mt-2">
+                          Uploaded: {new Date(doc.uploaded_at).toLocaleDateString()}
+                        </p>
+                      </div>
+                    </div>
+                    <div className="mt-4 flex gap-2">
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        className="flex-1"
+                        onClick={() => window.open(doc.file_url, '_blank')}
+                      >
+                        <ExternalLink className="h-4 w-4 mr-2" />
+                        View
+                      </Button>
+                      <Button
+                        variant="default"
+                        size="sm"
+                        className="flex-1"
+                        asChild
+                      >
+                        <a href={doc.file_url} download>
+                          <Download className="h-4 w-4 mr-2" />
+                          Download
+                        </a>
+                      </Button>
+                    </div>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          )}
         </section>
       </div>
     </PageLayout>
