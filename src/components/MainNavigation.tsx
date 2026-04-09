@@ -12,7 +12,7 @@ const MainNavigation = () => {
     { name: "Admission", path: "/admission" },
     { name: "Departments", path: "/departments" },
     { name: "Placements", path: "/placements" },
-    { name: "NIRF", path: "/nirf" }, // This will now link to your fixed route
+    { name: "NIRF", path: "https://www.svrmc.in/nirf", external: true },
     { name: "Gallery", path: "/gallery" },
     { name: "Contact", path: "/contact" }
   ];
