@@ -13,7 +13,7 @@ const MainNavigation = () => {
     { name: "Departments", path: "/departments" },
     { name: "Placements", path: "/placements" },
     // Add the NIRF navigation item here
-    { name: "NIRF", path: "/nirf" }, 
+    { name: "NIRF", path: "/nirf.html" }, 
     { name: "Gallery", path: "/gallery" },
     { name: "Contact", path: "/contact" }
   ];
