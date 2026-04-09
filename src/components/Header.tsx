@@ -155,6 +155,10 @@ const Header = () => {
               Placements
             </Link>
 
+            <a href="https://www.svrmc.in/nirf" target="_blank" rel="noopener noreferrer" className={`px-2 py-1 text-sm font-medium transition-colors ${scrolled ? "text-college-dark hover:text-college-blue" : "text-white hover:text-college-gold"}`}>
+              NIRF
+            </a>
+
             <Link to="/examination-cell" className={`px-2 py-1 text-sm font-medium transition-colors ${isActive("/examination-cell") ? "active" : ""} ${scrolled ? "text-college-dark hover:text-college-blue" : "text-white hover:text-college-gold"}`}>
               Exam Cell
             </Link>
@@ -274,6 +278,9 @@ const Header = () => {
               <Link to="/placements" className={`px-4 py-2 ${isActive("/placements") ? "bg-primary/10 text-primary font-medium" : "text-gray-700"}`} onClick={closeMobileMenu}>
                 Placements
               </Link>
+              <a href="https://www.svrmc.in/nirf" target="_blank" rel="noopener noreferrer" className="px-4 py-2 text-gray-700" onClick={closeMobileMenu}>
+                NIRF
+              </a>
               <Link to="/examination-cell" className={`px-4 py-2 ${isActive("/examination-cell") ? "bg-primary/10 text-primary font-medium" : "text-gray-700"}`} onClick={closeMobileMenu}>
                 Examination Cell
               </Link>
