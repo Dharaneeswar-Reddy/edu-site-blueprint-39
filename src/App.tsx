@@ -21,9 +21,35 @@ import ComputerScience from "./pages/ComputerScience";
 import Electronics from "./pages/Electronics";
 import ExaminationCell from "./pages/ExaminationCell";
 import Library from "./pages/departments/Library";
-import Nirf from "./pages/Nirf"; // NIRF Page Import
+import Nirf from "./pages/Nirf"; // Import the NIRF page you created
 
-// ... keep all your other imports the same ...
+// About Us Sub-pages
+import History from "./pages/about/History";
+import VisionMission from "./pages/about/VisionMission";
+import PrincipalMessage from "./pages/about/PrincipalMessage";
+import CollegePledgeSong from "./pages/about/CollegePledgeSong";
+
+// Administration Sub-pages
+import TeachingStaff from "./pages/administration/TeachingStaff";
+import NonTeachingStaff from "./pages/administration/NonTeachingStaff";
+import Organogram from "./pages/administration/Organogram";
+import GoverningBody from "./pages/administration/GoverningBody";
+import AcademicCouncil from "./pages/administration/AcademicCouncil";
+import CPDC from "./pages/administration/CPDC";
+
+// Academics Sub-pages
+import ProgramStructure from "./pages/academics/ProgramStructure";
+import ProgrammesOffered from "./pages/academics/ProgrammesOffered";
+import CourseOutcomes from "./pages/academics/CourseOutcomes";
+import ProgramOutcomes from "./pages/academics/ProgramOutcomes";
+
+// IQAC and Other Pages
+import IQAC from "./pages/iqac/IQAC";
+import QualityPolicy from "./pages/iqac/QualityPolicy";
+import StudentSupport from "./pages/StudentSupport";
+import Admin from "./pages/Admin";
+
+// Department Pages
 import Physics from "./pages/departments/Physics";
 import Chemistry from "./pages/departments/Chemistry";
 import Mathematics from "./pages/departments/Mathematics";
@@ -37,7 +63,6 @@ import Economics from "./pages/departments/Economics";
 import DeptHistory from "./pages/departments/History";
 import PoliticalScience from "./pages/departments/PoliticalScience";
 import PhysicalEducation from "./pages/departments/PhysicalEducation";
-import Admin from "./pages/Admin";
 
 // Student Support Pages
 import NCCProgram from "./pages/student-support/NCCProgram";
@@ -69,15 +94,21 @@ const App = () => (
           <Sonner />
           <BrowserRouter>
             <Routes>
+              {/* Main Public Routes */}
               <Route path="/" element={<Index />} />
               <Route path="/about-us" element={<AboutUs />} />
               <Route path="/administration" element={<Administration />} />
               <Route path="/academics" element={<Academics />} />
               <Route path="/departments" element={<Departments />} />
-              <Route path="/departments/library" element={<Library />} />
               <Route path="/contact" element={<Contact />} />
               <Route path="/gallery" element={<Gallery />} />
-              <Route path="/nirf" element={<Nirf />} /> {/* NIRF Route added here */}
+              <Route path="/placements" element={<Placements />} />
+              
+              {/* NIRF Route - FIXED: Now properly inside Routes */}
+              <Route path="/nirf" element={<Nirf />} /> 
+
+              {/* Departmental Routes */}
+              <Route path="/departments/library" element={<Library />} />
               <Route path="/departments/computerscience" element={<ComputerScience />} />
               <Route path="/departments/electronics" element={<Electronics />} />
               <Route path="/departments/physics" element={<Physics />} />
@@ -93,77 +124,47 @@ const App = () => (
               <Route path="/departments/history" element={<DeptHistory />} />
               <Route path="/departments/politicalscience" element={<PoliticalScience />} />
               <Route path="/departments/physicaleducation" element={<PhysicalEducation />} />
+              
+              {/* Support and Cell Routes */}
               <Route path="/examination-cell" element={<ExaminationCell />} />
-              <Route path="/library" element={<Library />} />
               <Route path="/iqac" element={<IQAC />} />
               <Route path="/iqac/quality-policy" element={<QualityPolicy />} />
               <Route path="/student-support" element={<StudentSupport />} />
               <Route path="/student-support/ncc-program" element={<NCCProgram />} />
               <Route path="/student-support/women-empowerment" element={<WomenEmpowerment />} />
               <Route path="/student-support/gym-sports" element={<GymSports />} />
-              <Route path="/placements" element={<Placements />} />
-              
+
               {/* Admin Routes */}
               <Route path="/admin" element={<Admin />} />
               <Route path="/admin/reset-password" element={<ResetPassword />} />
               <Route path="/admin/accept-invitation" element={<AcceptInvitation />} />
+              
               <Route path="/admin/announcements" element={
-                <AdminRoleGuard>
-                  <AdminLayout>
-                    <AnnouncementsAdmin />
-                  </AdminLayout>
-                </AdminRoleGuard>
+                <AdminRoleGuard><AdminLayout><AnnouncementsAdmin /></AdminLayout></AdminRoleGuard>
               } />
               <Route path="/admin/examination" element={
-                <AdminRoleGuard>
-                  <AdminLayout>
-                    <ExaminationDocumentsAdmin />
-                  </AdminLayout>
-                </AdminRoleGuard>
+                <AdminRoleGuard><AdminLayout><ExaminationDocumentsAdmin /></AdminLayout></AdminRoleGuard>
               } />
               <Route path="/admin/iqac" element={
-                <AdminRoleGuard>
-                  <AdminLayout>
-                    <IqacAdmin />
-                  </AdminLayout>
-                </AdminRoleGuard>
+                <AdminRoleGuard><AdminLayout><IqacAdmin /></AdminLayout></AdminRoleGuard>
               } />
               <Route path="/admin/about-us" element={
-                <AdminRoleGuard>
-                  <AdminLayout>
-                    <AicteAdmin />
-                  </AdminLayout>
-                </AdminRoleGuard>
+                <AdminRoleGuard><AdminLayout><AicteAdmin /></AdminLayout></AdminRoleGuard>
               } />
               <Route path="/admin/staff" element={
-                <AdminRoleGuard>
-                  <AdminLayout>
-                    <StaffAdmin />
-                  </AdminLayout>
-                </AdminRoleGuard>
+                <AdminRoleGuard><AdminLayout><StaffAdmin /></AdminLayout></AdminRoleGuard>
               } />
               <Route path="/admin/gallery" element={
-                <AdminRoleGuard>
-                  <AdminLayout>
-                    <GalleryAdmin />
-                  </AdminLayout>
-                </AdminRoleGuard>
+                <AdminRoleGuard><AdminLayout><GalleryAdmin /></AdminLayout></AdminRoleGuard>
               } />
               <Route path="/admin/departments" element={
-                <AdminRoleGuard>
-                  <AdminLayout>
-                    <DepartmentsAdmin />
-                  </AdminLayout>
-                </AdminRoleGuard>
+                <AdminRoleGuard><AdminLayout><DepartmentsAdmin /></AdminLayout></AdminRoleGuard>
               } />
               <Route path="/admin/student-support" element={
-                <AdminRoleGuard>
-                  <AdminLayout>
-                    <StudentSupportAdmin />
-                  </AdminLayout>
-                </AdminRoleGuard>
+                <AdminRoleGuard><AdminLayout><StudentSupportAdmin /></AdminLayout></AdminRoleGuard>
               } />
-              
+
+              {/* Catch-all route */}
               <Route path="*" element={<NotFound />} />
             </Routes>
           </BrowserRouter>
