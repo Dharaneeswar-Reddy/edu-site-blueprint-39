@@ -12,8 +12,7 @@ const MainNavigation = () => {
     { name: "Admission", path: "/admission" },
     { name: "Departments", path: "/departments" },
     { name: "Placements", path: "/placements" },
-    // Add the NIRF navigation item here
-    { name: "NIRF", path: "/nirf.html" }, 
+    { name: "NIRF", path: "/nirf" }, // This will now link to your fixed route
     { name: "Gallery", path: "/gallery" },
     { name: "Contact", path: "/contact" }
   ];
