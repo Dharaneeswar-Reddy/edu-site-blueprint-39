@@ -7,6 +7,10 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { AuthProvider } from "@/hooks/useAuth";
 import SEOProvider from "@/components/SEOProvider";
 
+import Nirf from "./pages/Nirf";
+// ... inside your Routes
+<Route path="/nirf" element={<Nirf />} />
+
 // Import pages
 import Index from "./pages/Index";
 import AboutUs from "./pages/AboutUs";
