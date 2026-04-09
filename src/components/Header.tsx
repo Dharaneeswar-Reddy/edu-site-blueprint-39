@@ -155,6 +155,10 @@ const Header = () => {
               Placements
             </Link>
 
+            <a href="https://www.svrmc.in/nirf" target="_blank" rel="noopener noreferrer" className={`px-2 py-1 text-sm font-medium transition-colors ${scrolled ? "text-college-dark hover:text-college-blue" : "text-white hover:text-college-gold"}`}>
+              NIRF
+            </a>
+
             <Link to="/examination-cell" className={`px-2 py-1 text-sm font-medium transition-colors ${isActive("/examination-cell") ? "active" : ""} ${scrolled ? "text-college-dark hover:text-college-blue" : "text-white hover:text-college-gold"}`}>
               Exam Cell
             </Link>
