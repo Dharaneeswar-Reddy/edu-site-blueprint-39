@@ -21,7 +21,7 @@ import ComputerScience from "./pages/ComputerScience";
 import Electronics from "./pages/Electronics";
 import ExaminationCell from "./pages/ExaminationCell";
 import Library from "./pages/departments/Library";
-import Nirf from "./pages/Nirf"; // Import the NIRF page you created
+
 
 // About Us Sub-pages
 import History from "./pages/about/History";
@@ -104,8 +104,7 @@ const App = () => (
               <Route path="/gallery" element={<Gallery />} />
               <Route path="/placements" element={<Placements />} />
               
-              {/* NIRF Route - FIXED: Now properly inside Routes */}
-              <Route path="/nirf" element={<Nirf />} /> 
+              
 
               {/* Departmental Routes */}
               <Route path="/departments/library" element={<Library />} />
