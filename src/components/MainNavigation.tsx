@@ -1,4 +1,3 @@
-
 import { Link, useLocation } from "react-router-dom";
 import { cn } from "@/lib/utils";
 
@@ -13,6 +12,8 @@ const MainNavigation = () => {
     { name: "Admission", path: "/admission" },
     { name: "Departments", path: "/departments" },
     { name: "Placements", path: "/placements" },
+    // Add the NIRF navigation item here
+    { name: "NIRF", path: "/nirf" }, 
     { name: "Gallery", path: "/gallery" },
     { name: "Contact", path: "/contact" }
   ];
