@@ -92,6 +92,7 @@ export type Database = {
           created_at: string
           id: string
           is_active: boolean | null
+          link: string | null
           priority: number | null
           title: string
           type: string
@@ -102,6 +103,7 @@ export type Database = {
           created_at?: string
           id?: string
           is_active?: boolean | null
+          link?: string | null
           priority?: number | null
           title: string
           type?: string
@@ -112,6 +114,7 @@ export type Database = {
           created_at?: string
           id?: string
           is_active?: boolean | null
+          link?: string | null
           priority?: number | null
           title?: string
           type?: string
