@@ -11,6 +11,7 @@ interface Announcement {
   priority: number;
   is_active: boolean;
   created_at: string;
+  link?: string | null;
 }
 
 interface FormattedAnnouncement {
@@ -38,7 +39,7 @@ export const useAnnouncements = () => {
       if (error) throw error;
 
       // Format announcements to match the existing interface
-      const formattedAnnouncements: FormattedAnnouncement[] = (data || []).map((announcement, index) => ({
+      const formattedAnnouncements: FormattedAnnouncement[] = (data || []).map((announcement: any, index) => ({
         id: index + 1,
         title: announcement.title,
         date: new Date(announcement.created_at).toLocaleDateString("en-US", {
@@ -46,7 +47,7 @@ export const useAnnouncements = () => {
           month: "short",
           day: "numeric"
         }),
-        link: "#", // You can modify this to link to announcement details if needed
+        link: announcement.link && announcement.link.trim() !== "" ? announcement.link : "#",
         category: announcement.type.charAt(0).toUpperCase() + announcement.type.slice(1)
       }));
 

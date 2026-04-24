@@ -19,6 +19,10 @@ const AnnouncementsSidebar = ({
     toast
   } = useToast();
   const handleAnnouncementView = (announcement: Announcement) => {
+    if (announcement.link && announcement.link !== "#") {
+      window.open(announcement.link, "_blank", "noopener,noreferrer");
+      return;
+    }
     toast({
       title: `Viewing: ${announcement.title}`,
       description: `Opening document from ${announcement.date}`
@@ -34,9 +38,14 @@ const AnnouncementsSidebar = ({
             </h2>
           </div>
           <div className="space-y-4 announcements-container">
-            {announcements.map((announcement, index) => <div key={announcement.id} className="announcement-card slide-in-right" style={{
-            animationDelay: `${index * 0.1}s`
-          }}>
+            {announcements.map((announcement, index) => {
+              const hasLink = announcement.link && announcement.link !== "#";
+              return <div
+                key={announcement.id}
+                className={`announcement-card slide-in-right ${hasLink ? "cursor-pointer" : ""}`}
+                style={{ animationDelay: `${index * 0.1}s` }}
+                onClick={hasLink ? () => handleAnnouncementView(announcement) : undefined}
+              >
                 <div className="flex justify-between items-start">
                   <div>
                     <span className="inline-block px-2 py-1 text-xs rounded bg-college-blue/10 text-college-blue mb-2">
@@ -47,11 +56,12 @@ const AnnouncementsSidebar = ({
                       <Calendar className="h-3 w-3 mr-1" /> {announcement.date}
                     </p>
                   </div>
-                  <Button variant="ghost" size="sm" className="h-8 w-8 p-0" onClick={() => handleAnnouncementView(announcement)}>
+                  <Button variant="ghost" size="sm" className="h-8 w-8 p-0" onClick={(e) => { e.stopPropagation(); handleAnnouncementView(announcement); }}>
                     <ExternalLink className="h-4 w-4" />
                   </Button>
                 </div>
-              </div>)}
+              </div>;
+            })}
           </div>
         </div>
         
