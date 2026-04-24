@@ -18,6 +18,7 @@ interface Announcement {
   priority: number;
   is_active: boolean;
   created_at: string;
+  link?: string | null;
 }
 
 const AnnouncementsAdmin = () => {
@@ -32,6 +33,7 @@ const AnnouncementsAdmin = () => {
     type: "general",
     priority: 1,
     is_active: true,
+    link: "",
   });
 
   useEffect(() => {
@@ -62,10 +64,11 @@ const AnnouncementsAdmin = () => {
     e.preventDefault();
     
     try {
+      const payload = { ...formData, link: formData.link?.trim() || null };
       if (editingId) {
         const { error } = await supabase
           .from("announcements")
-          .update(formData)
+          .update(payload)
           .eq("id", editingId);
 
         if (error) throw error;
@@ -77,7 +80,7 @@ const AnnouncementsAdmin = () => {
       } else {
         const { error } = await supabase
           .from("announcements")
-          .insert([formData]);
+          .insert([payload]);
 
         if (error) throw error;
         
@@ -93,6 +96,7 @@ const AnnouncementsAdmin = () => {
         type: "general",
         priority: 1,
         is_active: true,
+        link: "",
       });
       setEditingId(null);
       setShowAddForm(false);
@@ -113,6 +117,7 @@ const AnnouncementsAdmin = () => {
       type: announcement.type,
       priority: announcement.priority,
       is_active: announcement.is_active,
+      link: announcement.link ?? "",
     });
     setEditingId(announcement.id);
     setShowAddForm(true);
@@ -151,6 +156,7 @@ const AnnouncementsAdmin = () => {
       type: "general",
       priority: 1,
       is_active: true,
+      link: "",
     });
     setEditingId(null);
     setShowAddForm(false);
@@ -237,6 +243,20 @@ const AnnouncementsAdmin = () => {
                   rows={4}
                   required
                 />
+              </div>
+
+              <div className="space-y-2">
+                <Label htmlFor="link">Link (optional)</Label>
+                <Input
+                  id="link"
+                  type="url"
+                  placeholder="https://example.com/details"
+                  value={formData.link}
+                  onChange={(e) => setFormData({ ...formData, link: e.target.value })}
+                />
+                <p className="text-xs text-muted-foreground">
+                  If provided, clicking the announcement will open this URL in a new tab.
+                </p>
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -332,6 +352,19 @@ const AnnouncementsAdmin = () => {
                 <p className="text-sm text-muted-foreground mb-2">
                   {announcement.content}
                 </p>
+                {announcement.link && (
+                  <p className="text-xs mb-1">
+                    <span className="text-muted-foreground">Link: </span>
+                    <a
+                      href={announcement.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-primary hover:underline break-all"
+                    >
+                      {announcement.link}
+                    </a>
+                  </p>
+                )}
                 <p className="text-xs text-muted-foreground">
                   Created: {new Date(announcement.created_at).toLocaleDateString()}
                 </p>
