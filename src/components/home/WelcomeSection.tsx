@@ -2,8 +2,10 @@
 import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useSiteAsset } from "@/hooks/useSiteAsset";
 
 const WelcomeSection = () => {
+  const welcomePhoto = useSiteAsset("welcome_photo", "/lovable-uploads/f3d6ede9-846e-473c-a7f7-c8e948334e8a.png");
   return (
     <div className="mb-12">
       <h2 className="section-title">Welcome to SVRMC</h2>
@@ -21,7 +23,7 @@ const WelcomeSection = () => {
         </div>
         <div className="rounded-lg overflow-hidden shadow-lg hover-scale">
           <img 
-            src="/lovable-uploads/f3d6ede9-846e-473c-a7f7-c8e948334e8a.png" 
+            src={welcomePhoto} 
             alt="College Officials and Dignitaries" 
             className="w-full h-[300px] object-cover"
           />

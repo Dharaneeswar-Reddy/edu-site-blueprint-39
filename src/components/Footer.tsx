@@ -1,12 +1,14 @@
 import { Link } from "react-router-dom";
 import { Facebook, Instagram, Twitter, Youtube, Mail, Phone, MapPin } from "lucide-react";
+import { useSiteAsset } from "@/hooks/useSiteAsset";
 const Footer = () => {
+  const footerLogo = useSiteAsset("footer_logo", "/lovable-uploads/ad0dcea6-54cc-42ce-85a2-6309e6d3f909.png");
   return <footer className="bg-college-blue text-white">
       <div className="container mx-auto px-4 py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           <div>
             <Link to="/" className="flex items-center gap-3 mb-4">
-              <img src="/lovable-uploads/ad0dcea6-54cc-42ce-85a2-6309e6d3f909.png" alt="SVRMC 50 Years Excellence Logo" className="h-12 w-12" />
+              <img src={footerLogo} alt="SVRMC 50 Years Excellence Logo" className="h-12 w-12" />
               <div className="flex flex-col">
                 <span className="font-bold text-sm">Shree Velagapudi Ramakrishna</span>
                 <span className="font-bold text-sm">Memorial College</span>
@@ -41,6 +43,7 @@ const Footer = () => {
               <li><Link to="/about" className="text-sm text-gray-300 hover:text-white transition-colors">About Us</Link></li>
               <li><Link to="/departments" className="text-sm text-gray-300 hover:text-white transition-colors">Departments</Link></li>
               <li><Link to="/placements" className="text-sm text-gray-300 hover:text-white transition-colors">Placements</Link></li>
+              <li><Link to="/events" className="text-sm text-gray-300 hover:text-white transition-colors">Current Events</Link></li>
               
               <li><Link to="/gallery" className="text-sm text-gray-300 hover:text-white transition-colors">Gallery</Link></li>
             </ul>

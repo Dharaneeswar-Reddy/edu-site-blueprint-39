@@ -1,4 +1,7 @@
+import { useSiteAsset } from "@/hooks/useSiteAsset";
+
 const CorrespondentMessage = () => {
+  const correspondentPhoto = useSiteAsset("correspondent_photo", "/lovable-uploads/a0a7a9b0-8d22-4053-abae-e1e8d00b0492.png");
   return (
     <section className="py-16 bg-white">
       <div className="container mx-auto px-4">
@@ -6,7 +9,7 @@ const CorrespondentMessage = () => {
           <div className="md:col-span-1">
             <div className="rounded-lg overflow-hidden shadow-lg">
               <img 
-                src="/lovable-uploads/a0a7a9b0-8d22-4053-abae-e1e8d00b0492.png" 
+                src={correspondentPhoto} 
                 alt="Secretary and Correspondent" 
                 className="w-full h-auto"
               />

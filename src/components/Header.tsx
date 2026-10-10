@@ -3,6 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Menu, X, ChevronDown } from "lucide-react";
 import { useIsMobile } from "@/hooks/use-mobile";
+import { useSiteAsset } from "@/hooks/useSiteAsset";
 const Header = () => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -12,6 +13,7 @@ const Header = () => {
   const [administrationDropdown, setAdministrationDropdown] = useState(false);
   const [qualityDropdown, setQualityDropdown] = useState(false);
   const [studentSupportDropdown, setStudentSupportDropdown] = useState(false);
+  const headerLogo = useSiteAsset("header_logo", "/lovable-uploads/cae96e5a-5074-4c0c-bf35-1a2e195983a6.png");
   const [hoverTimeout, setHoverTimeout] = useState<NodeJS.Timeout | null>(null);
   useEffect(() => {
     const handleScroll = () => {
@@ -66,7 +68,7 @@ const Header = () => {
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center">
           <Link to="/" className="flex items-center gap-2">
-            <img src="/lovable-uploads/cae96e5a-5074-4c0c-bf35-1a2e195983a6.png" alt="SVRMC 50 Years Excellence Logo" className="h-8 w-8" />
+            <img src={headerLogo} alt="SVRMC 50 Years Excellence Logo" className="h-8 w-8" />
             <div className={`flex flex-col ${scrolled ? "text-college-blue" : "text-white"}`}>
               <span className="font-bold text-xs md:text-sm">Shree Velagapudi Ramakrishna Memorial College</span>
               <span className="text-xs hidden sm:block">Private. Aided College Sponsored by R.T.E.I. Society</span>
@@ -153,6 +155,10 @@ const Header = () => {
 
             <Link to="/placements" className={`px-2 py-1 text-sm font-medium transition-colors ${isActive("/placements") ? "active" : ""} ${scrolled ? "text-college-dark hover:text-college-blue" : "text-white hover:text-college-gold"}`}>
               Placements
+            </Link>
+
+            <Link to="/events" className={`px-2 py-1 text-sm font-medium transition-colors ${isActive("/events") ? "active" : ""} ${scrolled ? "text-college-dark hover:text-college-blue" : "text-white hover:text-college-gold"}`}>
+              Events
             </Link>
 
             <a href="https://www.svrmc.in/nirf" target="_blank" rel="noopener noreferrer" className={`px-2 py-1 text-sm font-medium transition-colors ${scrolled ? "text-college-dark hover:text-college-blue" : "text-white hover:text-college-gold"}`}>
@@ -277,6 +283,9 @@ const Header = () => {
                </Link>
               <Link to="/placements" className={`px-4 py-2 ${isActive("/placements") ? "bg-primary/10 text-primary font-medium" : "text-gray-700"}`} onClick={closeMobileMenu}>
                 Placements
+              </Link>
+              <Link to="/events" className={`px-4 py-2 ${isActive("/events") ? "bg-primary/10 text-primary font-medium" : "text-gray-700"}`} onClick={closeMobileMenu}>
+                Current Events
               </Link>
               <a href="https://www.svrmc.in/nirf" target="_blank" rel="noopener noreferrer" className="px-4 py-2 text-gray-700" onClick={closeMobileMenu}>
                 NIRF
