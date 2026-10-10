@@ -236,6 +236,54 @@ export type Database = {
         }
         Relationships: []
       }
+      events: {
+        Row: {
+          content: string
+          cover_image_url: string | null
+          created_at: string
+          event_date: string | null
+          gallery_urls: string[]
+          id: string
+          is_active: boolean
+          location: string | null
+          registration_url: string | null
+          slug: string
+          summary: string
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          content: string
+          cover_image_url?: string | null
+          created_at?: string
+          event_date?: string | null
+          gallery_urls?: string[]
+          id?: string
+          is_active?: boolean
+          location?: string | null
+          registration_url?: string | null
+          slug: string
+          summary: string
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          content?: string
+          cover_image_url?: string | null
+          created_at?: string
+          event_date?: string | null
+          gallery_urls?: string[]
+          id?: string
+          is_active?: boolean
+          location?: string | null
+          registration_url?: string | null
+          slug?: string
+          summary?: string
+          title?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
       examination_documents: {
         Row: {
           academic_year: string | null
@@ -529,6 +577,39 @@ export type Database = {
           is_active?: boolean
           logo_url?: string
           normalized_name?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      site_assets: {
+        Row: {
+          asset_key: string
+          created_at: string
+          description: string | null
+          id: string
+          image_url: string
+          storage_path: string | null
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          asset_key: string
+          created_at?: string
+          description?: string | null
+          id?: string
+          image_url: string
+          storage_path?: string | null
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          asset_key?: string
+          created_at?: string
+          description?: string | null
+          id?: string
+          image_url?: string
+          storage_path?: string | null
+          title?: string
           updated_at?: string
         }
         Relationships: []
