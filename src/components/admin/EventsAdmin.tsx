@@ -88,7 +88,7 @@ const EventsAdmin = () => {
         title: form.title.trim(), slug: eventSlug, summary: form.summary.trim(), content: form.content.trim(),
         event_date: form.event_date ? new Date(form.event_date).toISOString() : null,
         location: form.location.trim() || null, registration_url: form.registration_url.trim() || null,
-        cover_image_url: uploadedCover?.url ?? coverUrl || null,
+        cover_image_url: uploadedCover?.url ?? (coverUrl || null),
         gallery_urls: [...galleryUrls, ...uploadedGallery.map((image) => image.url)],
         is_active: form.is_active,
       };
