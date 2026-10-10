@@ -82,6 +82,11 @@ import AdminLayout from "@/components/admin/AdminLayout";
 import AdminRoleGuard from "@/components/admin/AdminRoleGuard";
 import ResetPassword from "@/pages/admin/ResetPassword";
 import AcceptInvitation from "@/pages/admin/AcceptInvitation";
+import SiteImagesAdmin from "@/components/admin/SiteImagesAdmin";
+import EventsAdmin from "@/components/admin/EventsAdmin";
+import Events from "./pages/Events";
+import EventDetail from "./pages/EventDetail";
+import { SiteAssetsProvider } from "@/contexts/SiteAssetsContext";
 
 const queryClient = new QueryClient();
 
@@ -93,6 +98,7 @@ const App = () => (
           <Toaster />
           <Sonner />
           <BrowserRouter>
+            <SiteAssetsProvider>
             <Routes>
               {/* Main Public Routes */}
               <Route path="/" element={<Index />} />
@@ -103,6 +109,8 @@ const App = () => (
               <Route path="/contact" element={<Contact />} />
               <Route path="/gallery" element={<Gallery />} />
               <Route path="/placements" element={<Placements />} />
+              <Route path="/events" element={<Events />} />
+              <Route path="/events/:slug" element={<EventDetail />} />
               
               
 
@@ -162,10 +170,17 @@ const App = () => (
               <Route path="/admin/student-support" element={
                 <AdminRoleGuard><AdminLayout><StudentSupportAdmin /></AdminLayout></AdminRoleGuard>
               } />
+              <Route path="/admin/site-images" element={
+                <AdminRoleGuard><AdminLayout><SiteImagesAdmin /></AdminLayout></AdminRoleGuard>
+              } />
+              <Route path="/admin/events" element={
+                <AdminRoleGuard><AdminLayout><EventsAdmin /></AdminLayout></AdminRoleGuard>
+              } />
 
               {/* Catch-all route */}
               <Route path="*" element={<NotFound />} />
             </Routes>
+            </SiteAssetsProvider>
           </BrowserRouter>
         </AuthProvider>
       </TooltipProvider>
