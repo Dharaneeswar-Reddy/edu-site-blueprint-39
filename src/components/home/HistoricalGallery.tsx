@@ -1,15 +1,6 @@
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
-import { useSiteAsset } from "@/hooks/useSiteAsset";
 
 const HistoricalGallery = () => {
-  const heritageImages = [
-    useSiteAsset("heritage_1", "/lovable-uploads/003761c8-21ea-431f-b686-daaa89289a77.png"),
-    useSiteAsset("heritage_2", "/lovable-uploads/7a24c2ce-e1fa-4e29-9298-994587287b76.png"),
-    useSiteAsset("heritage_3", "/lovable-uploads/106dbe77-c38e-40f8-a8ff-e4ef8bf83d80.png"),
-    useSiteAsset("heritage_4", "/lovable-uploads/22d1b775-7f93-42dd-b3d9-3de870ca21e3.png"),
-    useSiteAsset("heritage_5", "/lovable-uploads/bcf46b8d-3b9a-4d4c-9141-60084c7ccb4e.png"),
-    useSiteAsset("heritage_6", "/lovable-uploads/5d1d1740-7329-4875-84f6-c30f1ccc1f3b.png"),
-  ];
   const historicalImages = [
     {
       src: "/lovable-uploads/003761c8-21ea-431f-b686-daaa89289a77.png",
@@ -42,7 +33,6 @@ const HistoricalGallery = () => {
       caption: "Dr. Kosaraju Lakshmi Narayana Bhavan - Sports Hall Building"
     }
   ];
-  const images = historicalImages.map((image, index) => ({ ...image, src: heritageImages[index] }));
 
   return (
     <section className="py-16 bg-gray-50">
@@ -51,7 +41,7 @@ const HistoricalGallery = () => {
         <div className="max-w-6xl mx-auto">
           <Carousel className="w-full">
             <CarouselContent className="-ml-2 md:-ml-4">
-              {images.map((image, index) => (
+              {historicalImages.map((image, index) => (
                 <CarouselItem key={index} className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/3">
                   <div className="rounded-lg overflow-hidden shadow-lg bg-white p-4 hover:shadow-xl transition-shadow h-full">
                     <img 

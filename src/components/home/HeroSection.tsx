@@ -1,12 +1,10 @@
 
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { useSiteAsset } from "@/hooks/useSiteAsset";
 
 const HeroSection = () => {
-  const heroImage = useSiteAsset("home_hero", "/lovable-uploads/9ecf085a-3abc-45e7-844b-b132bfa85970.png");
   return (
-    <section className="relative h-screen flex items-center justify-center bg-cover bg-center" style={{ backgroundImage: `linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url("${heroImage}")` }}>
+    <section className="relative h-screen flex items-center justify-center bg-cover bg-center" style={{ backgroundImage: 'linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url("/lovable-uploads/9ecf085a-3abc-45e7-844b-b132bfa85970.png")' }}>
       <div className="hero-overlay"></div>
       <div className="hero-content container mx-auto px-4 text-center text-white">
         <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 animate-fade-in">Shree Velagapudi Ramakrishna Memorial College</h1>

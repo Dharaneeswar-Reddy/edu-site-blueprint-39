@@ -1,8 +1,6 @@
 import { ArrowRight } from "lucide-react";
-import { useSiteAsset } from "@/hooks/useSiteAsset";
 
 const VicePresidentMessage = () => {
-  const portrait = useSiteAsset("vice_president_photo", "/lovable-uploads/69a5e469-616f-4fe5-9e58-87c598505f45.png");
   return (
     <section className="py-16 bg-gray-50">
       <div className="container mx-auto px-4">
@@ -10,7 +8,7 @@ const VicePresidentMessage = () => {
           <div className="md:col-span-1">
             <div className="rounded-lg overflow-hidden shadow-lg">
               <img 
-                src={portrait} 
+                src="/lovable-uploads/69a5e469-616f-4fe5-9e58-87c598505f45.png" 
                 alt="Vice President" 
                 className="w-full h-auto"
               />

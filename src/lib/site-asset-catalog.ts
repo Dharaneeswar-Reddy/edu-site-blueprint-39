@@ -27,11 +27,4 @@ export const SITE_ASSET_PLACEMENTS: SiteAssetPlacement[] = [
   { key: "heritage_6", title: "Heritage photo 6", location: "Home page · Our Heritage", fallbackUrl: "/lovable-uploads/5d1d1740-7329-4875-84f6-c30f1ccc1f3b.png" },
   { key: "welcome_photo", title: "Welcome section photo", location: "Home page · Welcome", fallbackUrl: "/lovable-uploads/f3d6ede9-846e-473c-a7f7-c8e948334e8a.png" },
   { key: "correspondent_photo", title: "Correspondent portrait", location: "Home page · Correspondent message", fallbackUrl: "/lovable-uploads/a0a7a9b0-8d22-4053-abae-e1e8d00b0492.png" },
-  { key: "vice_president_photo", title: "Vice-President portrait", location: "Home page · Vice-President message", fallbackUrl: "/lovable-uploads/69a5e469-616f-4fe5-9e58-87c598505f45.png" },
-  { key: "research_highlight_photo", title: "Research feature photo", location: "Home page · Research highlights", fallbackUrl: "/lovable-uploads/52a8e7b1-5b22-4a0c-b1ec-450f99bfa9bb.png" },
-  { key: "admission_hero", title: "Admission page cover", location: "Admission page · opening image", fallbackUrl: "/lovable-uploads/bf17da84-634b-4ca1-b09f-996816eb4e61.png" },
-  { key: "departments_hero", title: "Departments page cover", location: "Departments page · opening image", fallbackUrl: "/lovable-uploads/ad1edf50-6e71-4375-91d2-7e8d76b3b7b5.png" },
-  { key: "naac_logo", title: "NAAC accreditation mark", location: "About page · accreditation", fallbackUrl: "/lovable-uploads/f7ffbe1f-5fed-4b97-9af1-ab0ad2725f32.png" },
-  { key: "nba_logo", title: "NBA accreditation mark", location: "About page · accreditation", fallbackUrl: "/lovable-uploads/d23b165a-50de-4010-841f-59049ee5cf3d.png" },
-  { key: "ugc_logo", title: "UGC recognition mark", location: "About page · accreditation", fallbackUrl: "/lovable-uploads/fa6cd0f0-bbb2-4bf5-bc81-323b4085c47e.png" },
 ];

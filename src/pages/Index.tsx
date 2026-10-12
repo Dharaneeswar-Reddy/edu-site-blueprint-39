@@ -8,7 +8,6 @@ import CallToAction from "@/components/home/CallToAction";
 import HistoricalGallery from "@/components/home/HistoricalGallery";
 import CampusGallery from "@/components/home/CampusGallery";
 import { useAnnouncements } from "@/hooks/useAnnouncements";
-import { useSiteAsset } from "@/hooks/useSiteAsset";
 
 const Index = () => {
   const { announcements, loading } = useAnnouncements();
@@ -16,12 +15,6 @@ const Index = () => {
   // Show first 4 announcements in ticker, rest in sidebar
   const tickerAnnouncements = announcements.slice(0, 4);
   const sidebarAnnouncements = announcements;
-  const profileImages = [
-    useSiteAsset("home_profile_1", "/lovable-uploads/5810381d-fa14-451a-aba2-1235784bf4f2.png"),
-    useSiteAsset("home_profile_2", "/lovable-uploads/0067500d-84af-4fed-81ce-5a2d974c5d4c.png"),
-    useSiteAsset("home_profile_3", "/lovable-uploads/c4a8eb50-bdf5-432c-88fd-6057229b8e5c.png"),
-    useSiteAsset("home_profile_4", "/lovable-uploads/d925b782-a791-45ef-a813-589b4b49d681.png"),
-  ];
 
   if (loading) {
     return (
@@ -80,28 +73,28 @@ const Index = () => {
               <div className="space-y-3">
                 <div className="rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow">
                   <img 
-                    src={profileImages[0]} 
+                    src="/lovable-uploads/5810381d-fa14-451a-aba2-1235784bf4f2.png" 
                     alt="SVRMC Campus Main Building" 
                     className="w-full h-[180px] object-cover"
                   />
                 </div>
                 <div className="rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow">
                   <img 
-                    src={profileImages[1]} 
+                    src="/lovable-uploads/0067500d-84af-4fed-81ce-5a2d974c5d4c.png" 
                     alt="Memorial Campus Structure" 
                     className="w-full h-[180px] object-cover"
                   />
                 </div>
                 <div className="rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow">
                   <img 
-                    src={profileImages[2]} 
+                    src="/lovable-uploads/c4a8eb50-bdf5-432c-88fd-6057229b8e5c.png" 
                     alt="Campus Memorial Structure" 
                     className="w-full h-[180px] object-cover"
                   />
                 </div>
                 <div className="rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow">
                   <img 
-                    src={profileImages[3]} 
+                    src="/lovable-uploads/d925b782-a791-45ef-a813-589b4b49d681.png" 
                     alt="Chemistry Department Building" 
                     className="w-full h-[180px] object-cover"
                   />
