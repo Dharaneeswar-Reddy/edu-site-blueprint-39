@@ -91,6 +91,7 @@ export type Database = {
           content: string
           created_at: string
           id: string
+          image_url: string | null
           is_active: boolean | null
           link: string | null
           priority: number | null
@@ -102,6 +103,7 @@ export type Database = {
           content: string
           created_at?: string
           id?: string
+          image_url?: string | null
           is_active?: boolean | null
           link?: string | null
           priority?: number | null
@@ -113,6 +115,7 @@ export type Database = {
           content?: string
           created_at?: string
           id?: string
+          image_url?: string | null
           is_active?: boolean | null
           link?: string | null
           priority?: number | null
