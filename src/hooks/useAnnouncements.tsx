@@ -12,6 +12,7 @@ interface Announcement {
   is_active: boolean;
   created_at: string;
   link?: string | null;
+  image_url?: string | null;
 }
 
 interface FormattedAnnouncement {
@@ -20,6 +21,8 @@ interface FormattedAnnouncement {
   date: string;
   link: string;
   category: string;
+  image?: string;
+  content?: string;
 }
 
 export const useAnnouncements = () => {
@@ -48,7 +51,9 @@ export const useAnnouncements = () => {
           day: "numeric"
         }),
         link: announcement.link && announcement.link.trim() !== "" ? announcement.link : "#",
-        category: announcement.type.charAt(0).toUpperCase() + announcement.type.slice(1)
+        category: announcement.type.charAt(0).toUpperCase() + announcement.type.slice(1),
+        image: announcement.image_url || undefined,
+        content: announcement.content
       }));
 
       setAnnouncements(formattedAnnouncements);
