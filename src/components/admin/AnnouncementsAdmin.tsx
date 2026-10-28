@@ -65,11 +65,75 @@ const AnnouncementsAdmin = () => {
     }
   };
 
+  const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0] || null;
+    if (!file) return;
+
+    if (!file.type.startsWith("image/")) {
+      toast({
+        title: "Invalid file",
+        description: "Please choose an image file (JPG, PNG, WebP, etc.)",
+        variant: "destructive",
+      });
+      e.target.value = "";
+      return;
+    }
+
+    if (file.size > 10 * 1024 * 1024) {
+      toast({
+        title: "File too large",
+        description: "Image must be smaller than 10MB",
+        variant: "destructive",
+      });
+      e.target.value = "";
+      return;
+    }
+
+    setImageFile(file);
+    setImagePreview(URL.createObjectURL(file));
+  };
+
+  const uploadImage = async (file: File): Promise<string> => {
+    const fileExt = file.name.split(".").pop();
+    const fileName = `announcement_${Date.now()}.${fileExt}`;
+
+    const { error: uploadError } = await supabase.storage
+      .from("admin-uploads")
+      .upload(fileName, file);
+
+    if (uploadError) {
+      throw new Error(`Image upload failed: ${uploadError.message}`);
+    }
+
+    const { data: { publicUrl } } = supabase.storage
+      .from("admin-uploads")
+      .getPublicUrl(fileName);
+
+    return publicUrl;
+  };
+
+  const removeImage = () => {
+    setImageFile(null);
+    setImagePreview(null);
+    setFormData({ ...formData, image_url: null });
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     try {
-      const payload = { ...formData, link: formData.link?.trim() || null };
+      setUploadingImage(true);
+      let imageUrl = formData.image_url || null;
+      if (imageFile) {
+        imageUrl = await uploadImage(imageFile);
+      }
+
+      const payload = {
+        ...formData,
+        link: formData.link?.trim() || null,
+        image_url: imageUrl,
+      };
+
       if (editingId) {
         const { error } = await supabase
           .from("announcements")
@@ -77,7 +141,7 @@ const AnnouncementsAdmin = () => {
           .eq("id", editingId);
 
         if (error) throw error;
-        
+
         toast({
           title: "Success",
           description: "Announcement updated successfully",
@@ -88,7 +152,7 @@ const AnnouncementsAdmin = () => {
           .insert([payload]);
 
         if (error) throw error;
-        
+
         toast({
           title: "Success",
           description: "Announcement created successfully",
@@ -102,7 +166,10 @@ const AnnouncementsAdmin = () => {
         priority: 1,
         is_active: true,
         link: "",
+        image_url: "",
       });
+      setImageFile(null);
+      setImagePreview(null);
       setEditingId(null);
       setShowAddForm(false);
       fetchAnnouncements();
@@ -112,6 +179,8 @@ const AnnouncementsAdmin = () => {
         description: error.message,
         variant: "destructive",
       });
+    } finally {
+      setUploadingImage(false);
     }
   };
 
@@ -123,7 +192,10 @@ const AnnouncementsAdmin = () => {
       priority: announcement.priority,
       is_active: announcement.is_active,
       link: announcement.link ?? "",
+      image_url: announcement.image_url ?? "",
     });
+    setImageFile(null);
+    setImagePreview(announcement.image_url ?? null);
     setEditingId(announcement.id);
     setShowAddForm(true);
   };
@@ -138,12 +210,12 @@ const AnnouncementsAdmin = () => {
         .eq("id", id);
 
       if (error) throw error;
-      
+
       toast({
         title: "Success",
         description: "Announcement deleted successfully",
       });
-      
+
       fetchAnnouncements();
     } catch (error: any) {
       toast({
@@ -162,7 +234,10 @@ const AnnouncementsAdmin = () => {
       priority: 1,
       is_active: true,
       link: "",
+      image_url: "",
     });
+    setImageFile(null);
+    setImagePreview(null);
     setEditingId(null);
     setShowAddForm(false);
   };
@@ -264,6 +339,42 @@ const AnnouncementsAdmin = () => {
                 </p>
               </div>
 
+              <div className="space-y-2">
+                <Label htmlFor="image" className="flex items-center gap-2">
+                  <ImagePlus className="h-4 w-4" />
+                  Image (optional)
+                </Label>
+                {(imagePreview || formData.image_url) && (
+                  <div className="relative w-fit">
+                    <img
+                      src={imagePreview ?? (formData.image_url as string)}
+                      alt="Announcement preview"
+                      className="h-32 rounded-md border object-cover"
+                    />
+                    <Button
+                      type="button"
+                      size="sm"
+                      variant="destructive"
+                      className="absolute -top-2 -right-2 h-7 w-7 p-0"
+                      onClick={removeImage}
+                      aria-label="Remove image"
+                    >
+                      <X className="h-4 w-4" />
+                    </Button>
+                  </div>
+                )}
+                <Input
+                  id="image"
+                  type="file"
+                  accept="image/*"
+                  onChange={handleImageChange}
+                  disabled={uploadingImage}
+                />
+                <p className="text-xs text-muted-foreground">
+                  Shown with the announcement on the home page. Visitors can click it to enlarge in a popup. Max size 10MB.
+                </p>
+              </div>
+
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="space-y-2">
                   <Label htmlFor="priority">Priority (1-5)</Label>
@@ -294,9 +405,9 @@ const AnnouncementsAdmin = () => {
               </div>
 
               <div className="flex space-x-2">
-                <Button type="submit" className="flex items-center space-x-2">
+                <Button type="submit" disabled={uploadingImage} className="flex items-center space-x-2">
                   <Save className="h-4 w-4" />
-                  <span>{editingId ? "Update" : "Create"}</span>
+                  <span>{uploadingImage ? "Saving..." : editingId ? "Update" : "Create"}</span>
                 </Button>
                 <Button type="button" variant="outline" onClick={resetForm}>
                   <X className="h-4 w-4" />
@@ -354,6 +465,13 @@ const AnnouncementsAdmin = () => {
                 </div>
               </CardHeader>
               <CardContent>
+                {announcement.image_url && (
+                  <img
+                    src={announcement.image_url}
+                    alt={announcement.title}
+                    className="h-32 w-full max-w-sm object-cover rounded-md border mb-3"
+                  />
+                )}
                 <p className="text-sm text-muted-foreground mb-2">
                   {announcement.content}
                 </p>
