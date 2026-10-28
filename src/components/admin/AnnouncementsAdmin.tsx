@@ -6,7 +6,7 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Badge } from "@/components/ui/badge";
-import { Trash2, Edit, Plus, Save, X } from "lucide-react";
+import { Trash2, Edit, Plus, Save, X, ImagePlus } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
 
@@ -19,6 +19,7 @@ interface Announcement {
   is_active: boolean;
   created_at: string;
   link?: string | null;
+  image_url?: string | null;
 }
 
 const AnnouncementsAdmin = () => {
