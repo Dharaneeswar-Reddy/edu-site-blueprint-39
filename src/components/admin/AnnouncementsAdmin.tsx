@@ -28,6 +28,9 @@ const AnnouncementsAdmin = () => {
   const [loading, setLoading] = useState(true);
   const [editingId, setEditingId] = useState<string | null>(null);
   const [showAddForm, setShowAddForm] = useState(false);
+  const [imageFile, setImageFile] = useState<File | null>(null);
+  const [imagePreview, setImagePreview] = useState<string | null>(null);
+  const [uploadingImage, setUploadingImage] = useState(false);
   const [formData, setFormData] = useState({
     title: "",
     content: "",
@@ -35,6 +38,7 @@ const AnnouncementsAdmin = () => {
     priority: 1,
     is_active: true,
     link: "",
+    image_url: "" as string | null,
   });
 
   useEffect(() => {
