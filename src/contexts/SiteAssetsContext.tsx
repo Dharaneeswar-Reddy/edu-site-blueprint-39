@@ -13,6 +13,11 @@ export const SiteAssetsContext = createContext<SiteAssetsContextValue>({
   refresh: async () => {},
 });
 
+export function useSiteAssets() {
+  return useContext(SiteAssetsContext);
+}
+
+
 export function SiteAssetsProvider({ children }: { children: ReactNode }) {
   const [images, setImages] = useState<Record<string, string>>({});
   const [loading, setLoading] = useState(true);
