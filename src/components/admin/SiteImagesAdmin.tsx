@@ -8,7 +8,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
 import { SITE_ASSET_PLACEMENTS } from "@/lib/site-asset-catalog";
-import { useSiteAssets } from "@/hooks/useSiteAssets";
+import { useSiteAssets } from "@/contexts/SiteAssetsContext";
 
 interface SiteAssetRecord {
   asset_key: string;
