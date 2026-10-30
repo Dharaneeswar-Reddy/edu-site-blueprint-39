@@ -1,4 +1,4 @@
-import { createContext, useEffect, useMemo, useState, type ReactNode } from "react";
+import { createContext, useContext, useEffect, useMemo, useState, type ReactNode } from "react";
 import { supabase } from "@/integrations/supabase/client";
 
 interface SiteAssetsContextValue {
@@ -12,6 +12,11 @@ export const SiteAssetsContext = createContext<SiteAssetsContextValue>({
   loading: true,
   refresh: async () => {},
 });
+
+export function useSiteAssets() {
+  return useContext(SiteAssetsContext);
+}
+
 
 export function SiteAssetsProvider({ children }: { children: ReactNode }) {
   const [images, setImages] = useState<Record<string, string>>({});
