@@ -160,12 +160,32 @@
   
   /* Announcement scroller */
   .announcements-container {
-    @apply relative overflow-hidden;
-    height: 400px;
+    @apply relative;
+    height: auto;
+    max-height: 520px;
   }
-  
+
+  .announcements-scroll {
+    @apply overflow-y-auto;
+    scrollbar-width: thin;
+    scrollbar-color: rgb(59 130 246 / 0.4) transparent;
+  }
+
+  .announcements-scroll::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  .announcements-scroll::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .announcements-scroll::-webkit-scrollbar-thumb {
+    @apply rounded-full;
+    background: rgb(59 130 246 / 0.4);
+  }
+
   .announcement-scroller {
-    @apply absolute w-full transition-all duration-500;
+    @apply relative w-full transition-all duration-500;
     transform: translateY(0);
   }
   
