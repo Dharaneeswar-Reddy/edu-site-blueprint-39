@@ -42,7 +42,7 @@ const AnnouncementsSidebar = ({
               Announcements
             </h2>
           </div>
-          <div className="space-y-4 announcements-container">
+          <div className="max-h-[520px] overflow-y-auto pr-1.5 -mr-1.5 space-y-4 announcements-container announcements-scroll">
             {announcements.map((announcement, index) => {
               const hasLink = announcement.link && announcement.link !== "#";
               const hasImage = !!announcement.image;
